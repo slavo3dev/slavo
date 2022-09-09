@@ -1,0 +1,54 @@
+.hero {
+  text-align: center;
+  padding: var(--size-8) 0;
+  background-image: var(--color-blue-900);
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(0, 102, 204, 0.8),
+    rgba(0, 188, 241, 0.4)
+  );
+}
+
+.quote{
+  font-family: "Lato", "Work sans", sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #cbffdc !important;
+  transition: color 0.5s ease !important;
+}
+
+.quote:hover {
+  color: white !important;
+  font-size: 1.5rem;
+}
+
+.image {
+  width: 300px;
+  height: 300px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--color-blue-700);
+  margin: auto;
+}
+
+.image img {
+  object-fit: cover;
+  object-position: top;
+  width: 100%;
+  height: 100%;
+}
+
+.hero h1 {
+  font-size: var(--size-16);
+  margin: var(--size-4) 0;
+  color: var(--color-blue-100);
+}
+
+.hero p {
+  font-size: var(--size-6);
+  color: var(--color-blue-100);
+  width: 90%;
+  max-width: 40rem;
+  margin: auto;
+}
