@@ -1,6 +1,6 @@
 import Link from "next/link";
 import classes from "./navigation.module.css";
-// import { Logo } from "../Logo";
+import { Logo } from "../Logo";
 import { FC } from 'react'
 
 
@@ -9,8 +9,7 @@ export const MainNavigation: FC = () => {
 		<header className={classes.header}>
 			<Link href="/">
                 <a>
-                    Slavo_3
-					{/* <Logo /> */}
+					 <Logo /> 
 				</a>
 			</Link>
 			<nav>
