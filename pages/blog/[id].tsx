@@ -1,11 +1,10 @@
 import type { NextPage } from 'next'
+import { PostContent } from "@/components/index";
 
 const Post: NextPage= () =>
 {
     
-    return (
-        <h1>Post</h1>
-    )
+    return <PostContent postContentData={ {} } />
 };
 
 export default Post;
