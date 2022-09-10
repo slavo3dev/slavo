@@ -30,7 +30,7 @@ export const HeadBasePage: FC<Props> = (props) => {
 				<meta property="og:description" key="og:description" content={metaDescription} />
 				<meta property="og:image" key="og:image" content={`${process.env.BASE_URL}/images/lion-favicon.png`} />
 				<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet"></link>
-				<link rel="icon" type="image/x-icon" href="/images/lion-favicon.png"/>
+				<link rel="icon" type="image/x-icon" href="/images/lion-favicon.jpeg"/>
 				<link
 					rel="canonical"
 					href={`${process.env.BASE_URL}${canonicalPath ? canonicalPath : router.asPath}`} />

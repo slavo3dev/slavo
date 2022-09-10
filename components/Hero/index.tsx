@@ -6,7 +6,7 @@ import Link from "next/link";
 export const Hero: FC = () => {
     return (
     <section className={ classes.hero }>
-			<div className={classes.image}>
+			<div className={classes.imagehero}>
 				<Image
 					className="animate__animated animate__fadeIn profile-image-hero"
 					src="/images/profile/profile-image.png"
