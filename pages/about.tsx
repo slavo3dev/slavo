@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 
 const About: NextPage = () => {
     return (
-       <h1>Contact</h1>
+       <h1>About us</h1>
   )
 }
 
