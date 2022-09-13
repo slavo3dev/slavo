@@ -2,6 +2,7 @@ import { FC } from 'react'
 import classes from "./postcontent.module.css"
 // import { PostType } from "Types/PostType";
 import { PostHeader } from "../PostHeader";
+import ReactMarkdown from 'react-markdown'
 
 interface PostContentDataType
 {
@@ -21,9 +22,9 @@ export const PostContent: FC<PostContentDataType> = ({ postContentData }) =>
     
     const imgPath = `/images/post/${DUMMY_DATA.image}`
   return (
-      <article>
+      <article className={classes.content}>
           <PostHeader title={DUMMY_DATA.title} imgSrc={imgPath} />
-          Content
+          <ReactMarkdown>{DUMMY_DATA.content}</ReactMarkdown>
       </article>
   )
 }

@@ -10,8 +10,8 @@
 }
 
 .postheader h1 {
-  font-size: var(--size-4);
-  color: var(--color-blue-50);
+  font-size: var(--size-2);
+  color: var(--color-blue-300);
   margin: 0;
   line-height: initial;
   text-align: center;
