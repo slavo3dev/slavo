@@ -4,7 +4,7 @@ import classes from "./logo.module.css";
 export const Logo: FC = () => {
 	return (
 		<div className={classes.logo}>
-           slavo_3
+           Prototype.NEXT
 		</div>
 	);
 }
