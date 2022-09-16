@@ -1,15 +1,13 @@
 import type { NextPage } from 'next'
 import { Hero, FeaturedPosts } from "../components";
 import { getFeaturedPosts } from "@/lib/posts-lib";
-import Head from 'next/head'
-import Image from 'next/image'
 
 
 const Home: NextPage = ( { posts }: any ) => {
     return (
       <>
         <Hero />
-            <FeaturedPosts posts={posts} />
+        <FeaturedPosts posts={posts} />
       </>
   )
 }

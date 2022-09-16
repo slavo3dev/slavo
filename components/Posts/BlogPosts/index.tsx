@@ -8,7 +8,7 @@ export const BlogPosts: FC<PostsList> = ({ posts }) =>
   return (
       <section className={ classes.allposts }>
           <h1>Articles</h1>
-          <PostsGrid posts={[1,2,3,4]} />
+          <PostsGrid posts={posts} />
       </section>
   )
 }

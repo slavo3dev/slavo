@@ -3,8 +3,8 @@ title: 'What is React Native'
 date: '2022-13-9'
 author: 'Slavo'
 image: 'getting-started-nextjs.png'
-excerpt: 'React is a JavaScript library for building user interfaces.'
-isFeatured: true
+excerpt: 'React is a JavaScript library for building...'
+isFeatured: false
 ---
 
 React is a JavaScript library for building user interfaces.
@@ -27,8 +27,6 @@ How does React Native works?
 We build normal React Components with JavaScript because JavaScript is our language to build React Native apps. Still, we use "Special React Components" like View and Text ( as you can see in the example below ) because the standard HTML elements are not supported, the native platforms don't know how to use them.
 
 It's important to understand that the View component is compiling to real native widgets. Your JavaScript logic where you manage your business logic will not be compiled into the native code. Still, your views will be, and that, of course, also means that you get excellent performance when you build React Native apps because of the large chunk of the is actual native code.
-
-![Picture](/images/post-img/nextjs-file.png)
 
 ```js
  const App = props => {
