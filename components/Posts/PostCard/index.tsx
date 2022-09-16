@@ -15,14 +15,14 @@ export const PostCard: FC<PostType> = ( { post } ) =>
         month: "long",
         year: "numeric"
     } )
-    
+
   return (
 
       <li className={classes.post}>
           <Link href={`/blog/${slug}`}>
             <a>
                   <div className={classes.image}>
-                      <Image src={ image } width={ 500 } height={ 300 } alt={title} layout="responsive"/>
+                      <Image src={`/images/post-img/${image}` } width={ 500 } height={ 300 } alt={title} layout="responsive"/>
                   </div>
                   <div className={classes.content}>
                       <h3>{title}</h3>
