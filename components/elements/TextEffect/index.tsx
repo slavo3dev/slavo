@@ -3,9 +3,9 @@ import ReactTypingEffect from "react-typing-effect";
 
 
 export const TextEffect: FC = ({ text1, text2 }: any) => {
-  return (
-    <>
-      <ReactTypingEffect text={[text1, text2]} />
-    </>
-  );
+	return (
+		<>
+			<ReactTypingEffect text={[text1, text2]} />
+		</>
+	);
 };
