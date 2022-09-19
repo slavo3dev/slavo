@@ -25,7 +25,7 @@ export default async (req: any, res: any) => {
     department,
     subject,
     name,
-    message
+    message,
   };
 
   let client: any;

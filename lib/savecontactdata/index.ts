@@ -1,3 +1,5 @@
+import axios from "axios";
+
 interface MessageForm
 {
     text: string;
@@ -6,20 +8,15 @@ interface MessageForm
 }
 
 
-export async function saveContactData ( contactDetails: MessageForm )
-{
-	
-	const resposne = await fetch( "/api/contact", {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-		},
-		body: JSON.stringify({ contactDetails }),
-	});
-
-	const data = await resposne.json();
-
-	if (!resposne.ok) {
-		throw new Error(data.message || "Sorry, Something went wrong!!");
-	}
-}
+export const saveContactData = async (data: MessageForm) => {
+  try {
+    const response = await axios.post("/api/contact", data, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return response;
+  } catch (error) {
+    throw new Error(data.message || "Something went wrong!!");
+  }
+};
