@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { Hero, FeaturedPosts } from "../components";
+import { Hero, FeaturedPosts, Subscribe } from "../components";
 import { getFeaturedPosts } from "@/lib/posts-lib";
 
 
@@ -7,7 +7,10 @@ const Home: NextPage = ( { posts }: any ) => {
     return (
       <>
         <Hero />
-        <FeaturedPosts posts={posts} />
+        <FeaturedPosts posts={ posts } />
+        <section className="py-20 bg-blue-400">
+            <Subscribe />
+        </section>
       </>
   )
 }
