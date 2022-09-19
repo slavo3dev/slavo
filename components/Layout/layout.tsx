@@ -1,4 +1,5 @@
-import { FC } from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { FC } from "react";
 
 type Props = {
     children: React.ReactNode | any;
@@ -6,10 +7,10 @@ type Props = {
 
 
 export const Layout: FC<Props> = (props) => {
-  return (
-     <div className="container-main">
-        {props.children}
-    </div>
-  )
-}
+	return (
+		<div className="container-main">
+			{props.children}
+		</div>
+	);
+};
 
