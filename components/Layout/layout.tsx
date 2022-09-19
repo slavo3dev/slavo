@@ -7,7 +7,7 @@ type Props = {
 
 export const Layout: FC<Props> = (props) => {
   return (
-     <div className="container">
+     <div className="container-main">
         {props.children}
     </div>
   )
