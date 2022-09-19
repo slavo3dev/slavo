@@ -1,4 +1,3 @@
-import ReactDOM from "react-dom";
 import { FC } from "react";
 import classes from "./notification.module.css";
 
