@@ -71,7 +71,7 @@ export const Subscribe: FC= () => {
             </p>
             {state === "Success" ? (
                 <p className="lg:text-4xl text-blueGray-200">
-                Awesome, you have been subscribed to Prototype.NEXT
+                Awesome, you have been subscribed to Slavo
                 </p>
             ) : (
                 subscribeForm

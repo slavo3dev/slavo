@@ -15,7 +15,7 @@ export const Hero: FC = () => {
 					height={300}
 				/>
 			</div>
-            <h1>Prototype.NEXT</h1>
+            <h1>Slavo</h1>
 			<p className={classes.quote}>The future depends on what<br /> you do today.</p>
 			<Link href="/blog"><a><button style={{ margin: "10px" }}>Articles</button></a></Link>
 		</section>

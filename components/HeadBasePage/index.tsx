@@ -11,7 +11,7 @@ type Props = {
 export const HeadBasePage: FC<Props> = (props) => {
 	const router = useRouter();
 	const {
-		title = "Prototype.NEXT Software Development Consulting",
+		title = "Slavo Software Development Consulting",
 		metaDescription="My name is Slavo and I am an experienced software web engineer and freelance developer. The enthusiastic professional developer of web/chatbots/aws cloud who is used to fast-paced environments. Hardworking and effective as both a team leader and in an individual role",
 		canonicalPath,} = props;
 
