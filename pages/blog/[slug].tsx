@@ -18,7 +18,7 @@ export function getStaticProps ( context: { params :{ slug: string} } )
 		props: {
 			post: postData
 		},
-		revalidate: 600
+		revalidate: 60
 	};
 }
 
@@ -29,7 +29,7 @@ export function getStaticPaths ()
 	const slugs = postName.map(fileName => fileName.replace(/\.md$/, ""));
 	return {
 		paths: slugs.map( slug => ( { params: {slug: slug} } )),
-		fallback: true
+		fallback: false
 	};    
 }
 
