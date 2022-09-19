@@ -23,14 +23,26 @@ export const PostContent: FC<PostContentDataType> = ({ post }) =>
 		p(paragraph: any) {
 			const { node } = paragraph;
 
-			if (node.children[0].tagName === "img") {
+			if (node.children[0].tagName === "img" ) {
 				const image = node.children[0];
-
+				if ( image.properties.src )
+				{
+					return (
+						<div className={classes.image}>
+							<Image
+								src={`${image.properties.src}`}
+								alt={image.alt}
+								width={600}
+								height={300}
+							/>
+						</div>
+					);
+				}
 				return (
 					<div className={classes.image}>
 						<Image
-							src={`${image.properties.src}`}
-							alt={image.alt}
+							src={"/images/post-img/nextjs-file.png"}
+							alt={"PlaceHolder image"}
 							width={600}
 							height={300}
 						/>
