@@ -29,7 +29,7 @@ function MyApp ( { Component, pageProps }: AppProps )
 		<Layout>
 			<HeadBasePage
 				title="Slavo Software Web Development | SEO | Web3.0 | Crypto"
-				metaDescription="My name is Slavo Popovic and I am an experienced software web engineer and freelance developer. The enthusiastic professional developer of web/chatbots/aws cloud who is used to fast-paced environments. Hardworking and effective as both a team leader and in an individual role" />
+				metaDescription="My name is Slavo Popovic and I am an experienced software web engineer and freelance developer. Helping companies and individuals to build there online business, optimize websites and scale. For future Digital Nomads and Freelancers" />
 			<MainNavigation />
 			<Component { ...pageProps } />
 		</Layout>
