@@ -39,7 +39,9 @@ export const ContactForm: FC= () => {
         status: string, 
         title: string, 
         message: string 
-    } = notificationStatus(reqStatus);
+    } = notificationStatus( reqStatus );
+
+
 	return (
 		<>
 			<div
@@ -171,9 +173,9 @@ export const ContactForm: FC= () => {
 					className="py-4 px-8 text-sm text-white font-semibold leading-none bg-blue-400 hover:bg-blue-500 rounded"
 					// type="submit"
 					onClick={(e) => {
-						payload.terms === "accept"
+						(payload.terms === "accept" && payload.department)
 							? sendPayload(e, payload)
-							: alert("Please, Mark Accept Terms Box!!");
+							: payload?.terms === "accept" ? alert("Please Choose Deparment") : alert("Pleases Accept Terms and Contitions");
 					}}
 				>
           Submit
