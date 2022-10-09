@@ -4,7 +4,8 @@ import { Logo } from "../Logo";
 import { FC } from "react";
 
 
-export const MainNavigation: FC = () => {
+export const MainNavigation: FC = () =>
+{
 	return (
 		<header className={classes.header}>
 			<Link href="/">

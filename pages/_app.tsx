@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import * as ga from "../lib/ga";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { Layout, HeadBasePage, MainNavigation } from "../components";
+import { Layout, HeadBasePage, MainNavigation, Footer } from "../components";
 
 function MyApp ( { Component, pageProps }: AppProps )
 {
@@ -32,6 +32,7 @@ function MyApp ( { Component, pageProps }: AppProps )
 				metaDescription="My name is Slavo Popovic and I am an experienced software web engineer and freelance developer. Helping companies and individuals to build there online business, optimize websites and scale. For future Digital Nomads and Freelancers" />
 			<MainNavigation />
 			<Component { ...pageProps } />
+			<Footer />
 		</Layout>
 	);
 }
