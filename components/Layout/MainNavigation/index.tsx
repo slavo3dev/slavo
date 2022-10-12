@@ -13,9 +13,9 @@ export const MainNavigation: FC = () =>
 			</Link>
 			<nav>
 				<ul>
-					<li>
+					{/* <li>
 						<Link href="/about">About</Link>
-					</li>
+					</li> */}
 					<li>
 						<Link href="/blog">Blog</Link>
 					</li>
