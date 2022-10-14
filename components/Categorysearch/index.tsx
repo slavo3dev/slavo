@@ -11,7 +11,7 @@ interface Props {
 export const CategorySearch: FC<Props> = ( { onSearch , posts}: Props ) => {
 	const categoryInputRef = useRef<HTMLSelectElement | null>( null );
 	
-	const categories: [string] = posts.map(( post: any ) => post.fields.category).sort().filter((item: string, index:number, arr:[]) => {
+	const categories: [string] = posts.map(( post: any ) => post.category).sort().filter((item: string, index:number, arr:[]) => {
 		return !index || item != arr[index - 1];
 	});
 
