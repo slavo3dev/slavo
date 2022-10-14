@@ -1,6 +1,6 @@
 ---
 title: 'Proof Of Ownership with NFT!!'
-date: '2022-14-10'
+date: '2022-10-14'
 author: 'Slavo'
 image: 'proof-of-ownership-post.png'
 excerpt: 'NFTs have been around since as early as 2012...'
