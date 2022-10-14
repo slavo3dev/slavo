@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextPage } from "next";
-import { Hero, FeaturedPosts, Subscribe } from "../components";
+import { Hero, FeaturedPosts, Subscribe } from "@components";
 import { getFeaturedPosts } from "@/lib/posts-lib";
 
 
-const Home: NextPage = ( { posts }: any ) => {
+
+const Home: NextPage = ( { posts }: any ) =>
+{
 	return (
 		<>
 			<Hero />
