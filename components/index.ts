@@ -8,5 +8,6 @@ import { PostContent, PostHeader } from "./Posts/Post";
 import { ContactForm } from "./ContactForm";
 import { Subscribe } from "./Subscribe";
 import { Footer } from "./Footer";
+import { CategorySearch } from "./Categorysearch";
 
-export {Layout, Hero, FeaturedPosts, HeadBasePage, MainNavigation, BlogPosts, PostContent, PostHeader, ContactForm, Subscribe, Footer};
+export {Layout, Hero, FeaturedPosts, HeadBasePage, MainNavigation, BlogPosts, PostContent, PostHeader, ContactForm, Subscribe, Footer,  CategorySearch};

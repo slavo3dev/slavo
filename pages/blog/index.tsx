@@ -1,11 +1,27 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextPage } from "next";
-import { BlogPosts } from "@/components/index";
+import { BlogPosts, CategorySearch } from "@/components/index";
 import { getAllPosts } from "@/lib/posts-lib";
+import { useRouter } from "next/router";
+
 
 const blog: NextPage = ( { posts }: any ) =>
 {
-	return <BlogPosts posts={posts} />;
+
+	const router = useRouter();
+    
+	function findCategoryHandle ( category: string )
+	{
+		
+		const fullPath = `/category/${category}`;
+
+		router.push(fullPath);
+	}
+	return (
+		<> 
+			<CategorySearch onSearch={findCategoryHandle} posts={posts} />
+			<BlogPosts posts={posts} />
+		</> );
 };
 
 
