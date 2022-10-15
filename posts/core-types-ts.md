@@ -4,7 +4,7 @@ date: '2022-10-15'
 author: 'Slavo'
 image: 'core-types-ts-post.png'
 excerpt: 'Truthy/Falsy concept in JavaScript, which you should know is not related to data types. '
-isFeatured: true
+isFeatured: false
 category: 'Type Script'
 ---
 

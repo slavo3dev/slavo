@@ -4,7 +4,7 @@ date: '2022-09-13'
 author: 'Slavo'
 image: 'what-is-typescript-post.png'
 excerpt: 'React is a JavaScript library for building...'
-isFeatured: truey
+isFeatured: true
 category: 'Type Script'
 ---
 
