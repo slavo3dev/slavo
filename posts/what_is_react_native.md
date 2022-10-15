@@ -1,6 +1,6 @@
 ---
 title: 'What is React Native'
-date: '2022-12-10'
+date: '2022-09-12'
 author: 'Slavo'
 image: 'reactnative-post.png'
 excerpt: 'React is a JavaScript library for building user interfaces.'
