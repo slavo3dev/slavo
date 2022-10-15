@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  ul, ol {
+    list-style: revert;
+    margin: revert;
+    padding: revert;
+  }
+  h1, h2, h3, h4, h5 {
+    font-size:  revert; 
+    font-weight: revert;
+  }
+}
 
 .fit {
   min-height: calc(100vh - 88px);
@@ -73,7 +84,7 @@ h3 {
 
 a {
   text-decoration:underline;
-  color: white;
+  color: red;
   transition: 0.3s color ease-in-out;
 }
 

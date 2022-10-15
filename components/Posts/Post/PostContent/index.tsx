@@ -22,7 +22,7 @@ export const PostContent: FC<PostContentDataType> = ({ post }) =>
 	const customRenderers = {
 		p(paragraph: any) {
 			const { node } = paragraph;
-
+			console.log("NODE: ", paragraph);
 			if (node.children[0].tagName === "img" ) {
 				const image = node.children[0];
 			
