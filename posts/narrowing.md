@@ -4,7 +4,7 @@ date: '2022-10-15'
 author: 'Slavo'
 image: 'narrowing-post.png'
 excerpt: 'The narrowing is moving a variable from a less precise type to a more accurate type'
-isFeatured: false
+isFeatured: true
 category: 'Type Script'
 ---
 

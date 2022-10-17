@@ -4,7 +4,7 @@ date: '2022-10-16'
 author: 'Slavo'
 image: 'intersection-type-post.png'
 excerpt: 'Intersection and Union types are one of the ways in which you can compose types'
-isFeatured: false 
+isFeatured: true 
 category: 'Type Script'
 ---
 
