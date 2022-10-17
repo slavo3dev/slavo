@@ -1,4 +1,4 @@
-import { BlogPosts  } from "@/components/index";
+import { BlogPosts, CategorySearch } from "@/components/index";
 import { useRouter } from "next/router";
 import { getAllPosts } from "@/lib/posts-lib";
 
@@ -6,8 +6,6 @@ import { getAllPosts } from "@/lib/posts-lib";
 
 export async function getStaticProps ()
 {
-
-
 	const blogArticles = getAllPosts(); 
 
 	return {
@@ -19,7 +17,8 @@ export async function getStaticProps ()
 	
 }
 
-export const getStaticPaths = async () => {
+export const getStaticPaths = async () =>
+{
 
 	return {
 		paths: [], //indicates that no page needs be created at build time
@@ -37,13 +36,22 @@ export default function Category ( props: any )
 	{
 		slugId = router?.query?.category[ 0 ];
 	}
+    
+	function findCategoryHandle ( category: string )
+	{
+		
+		const fullPath = `/category/${category}`;
+
+		router.push(fullPath);
+	}
 
 	const categoryPosts = props.posts.filter( ( blog: any ) => blog.category.toLowerCase().replace( " ", "-" ) === slugId && blog );
     
 	
 	return (
 		<>
-			<h1 style={{ textAlign: "center", padding: "10px"}}>Category: {slugId.toUpperCase().replace("-", " ") }</h1>
+			<CategorySearch onSearch={findCategoryHandle} posts={props.posts} />
+			<h1 style={ { textAlign: "center", padding: "10px" } }>Category: { slugId.toUpperCase().replace( "-", " " ) }</h1>
 			<BlogPosts posts={ categoryPosts } />
 		</>
 	);
