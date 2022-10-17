@@ -34,16 +34,14 @@ Suppose that you have two types: UserName and MemberName
         paidSubscription: new Date() | string 
 
     }
-
-   } 
 ```
 
 When you intersect types, the order of the types doesn’t matter.
 
-As we are doing in the example above, intersection types can be helpful when used with object types. 
-You can use them with any types. 
+As we are doing in the example above, intersection types can be helpful when used with object types.
+You can use them with any types.
 
-```js 
+```js
 
   type Numeric = string | number;
   type Combinable = number | boolean 
@@ -52,5 +50,5 @@ You can use them with any types.
 
 ```
 
-TypeScript sees that universal as type number because that is the only intersection we have in the example. 
-Intersection operator can be used with any type and then builds the intersection of these types 
+TypeScript sees that universal as type number because that is the only intersection we have in the example.
+Intersection operator can be used with any type and then builds the intersection of these types
