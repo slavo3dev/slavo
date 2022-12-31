@@ -1,6 +1,6 @@
 .post {
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  background-color: var(--color-blue-800);
+  box-shadow: 1.1rem 1.1rem  1.1rem  rgba(0, 0, 0, 0.3);
+  background-image: linear-gradient(var(--color-blue-100), var(--color-blue-900));
   text-align: center;
 }
 
@@ -9,6 +9,7 @@
 }
 
 .imagepost {
+  padding: 1rem;
   width: 100%;
   max-height: 20rem;
   overflow: hidden;

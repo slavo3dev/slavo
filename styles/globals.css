@@ -30,8 +30,8 @@ html {
 body {
   --color-grey-50: hsl(214, 55%, 96%);
   --color-blue-100: hsl(210, 10%, 90%);
-  --color-blue-200: hsl(210, 10%, 40%);
-  --color-blue-300: hsl(210, 20%, 40%);
+  --color-blue-200: hsl(210, 10%, 20%);
+  --color-blue-300: hsl(210, 20%, 30%);
   --color-blue-400: hsl(210, 50%, 40%);
   --color-blue-500: hsl(210, 60%, 40%);
   --color-blue-600: hsl(210, 70%, 40%);

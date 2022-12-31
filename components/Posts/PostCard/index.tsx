@@ -21,7 +21,7 @@ export const PostCard: FC<PostType> = ( { post } ) =>
 		<li className={classes.post}>
 			<Link href={`/blog/${slug}`}>
 				<a>
-					<div className={classes.image}>
+					<div className={classes.imagepost}>
 						<Image src={`/images/post-img/${image}` } width={ 500 } height={ 300 } alt={title} layout="responsive"/>
 					</div>
 					<div className={classes.content}>
