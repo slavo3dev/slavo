@@ -8,7 +8,7 @@ export const FeaturedPosts: FC<PostsList> = ({ posts }) =>
 {
 	return (
 		<div className={classes.latest}>
-			<h2> Featured Posts </h2> 
+			<h2>Featured Posts </h2> 
 			<PostsGrid posts={posts} /> 
 		</div>
 	);
