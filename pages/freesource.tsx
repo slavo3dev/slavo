@@ -85,7 +85,7 @@ const CATEGORIES: any = [
 	{ name: "DataBase", color: "#14b8a6" },
 	{ name: "Learning", color: "#db2777" },
 	{ name: "Science", color: "#f97316" },
-	// { name: "News", color: "#8b5cf6" },
+	{ name: "News", color: "#8b5cf6" },
 ];
 
 function isValidHttpUrl(string: string | URL) {

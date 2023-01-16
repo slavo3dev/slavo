@@ -229,6 +229,11 @@ h1 {
   gap: 24px;
 }
 
+aside {
+    height: 100%;
+    overflow: scroll;
+}
+
 @media (max-width: 1200px) {
   .fact {
     flex-direction: column;
