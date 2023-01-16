@@ -78,12 +78,12 @@ function Header({ showForm, setShowForm }: any) {
 
 const CATEGORIES: any = [
 	{ name: "FrontEnd", color: "#3b82f6" },
-	{ name: "JavaScript", color: "#eab308" },
-	{ name: "NodeJS", color: "#16a34a" },
+	{ name: "JavaScript", color: "#f0db4f" },
+	{ name: "TypeScript", color: "#007acc" },
+	{ name: "NodeJS", color: "#3C873A" },
 	{ name: "NextJS", color: "#5e72e4" },
-	{ name: "NestJS", color: "#ef4444" },
-	{ name: "Learning", color: "#db2777" },
 	{ name: "DataBase", color: "#14b8a6" },
+	{ name: "Learning", color: "#db2777" },
 	{ name: "Science", color: "#f97316" },
 	// { name: "News", color: "#8b5cf6" },
 ];
@@ -185,7 +185,7 @@ function CategoryFilter({ setCurrentCategory }: any) {
 					<li key={cat.name} className='category'>
 						<button
 							className='btn btn-category'
-							style={{ backgroundColor: cat.color }}
+							style={{ backgroundColor: cat.color, color: "whitesmoke" }}
 							onClick={() => setCurrentCategory(cat.name)}
 						>
 							{cat.name}
@@ -248,7 +248,7 @@ function Fact({ fact, setFacts }: any) {
 			</p>
 			<span
 				className='tag'
-				style={{ backgroundColor: CATEGORIES.find((cat: any) => cat?.name === fact?.category).color, padding: "0.4rem"
+				style={{ backgroundColor: CATEGORIES.find((cat: any) => cat?.name === fact?.category).color, padding: "0.4 rem"
 				}}
 			>
 				{fact.category}
