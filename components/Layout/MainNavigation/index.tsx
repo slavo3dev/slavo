@@ -20,6 +20,9 @@ export const MainNavigation: FC = () =>
 						<Link href="/blog">Blog</Link>
 					</li>
 					<li>
+						<Link href="/freeresource">ReSource</Link>
+					</li>
+					<li>
 						<Link href="/contact">Contact</Link>
 					</li>
 					{/* <li>
