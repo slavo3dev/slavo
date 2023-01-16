@@ -78,7 +78,7 @@ function Header({ showForm, setShowForm }: any) {
 
 const CATEGORIES: any = [
 	{ name: "FrontEnd", color: "#3b82f6" },
-	{ name: "JavaScript", color: "#f0db4f" },
+	{ name: "JavaScript", color: "#cccc00" },
 	{ name: "TypeScript", color: "#007acc" },
 	{ name: "NodeJS", color: "#3C873A" },
 	{ name: "NextJS", color: "#5e72e4" },
