@@ -82,6 +82,7 @@ const CATEGORIES: any = [
 	{ name: "TypeScript", color: "#007acc" },
 	{ name: "NodeJS", color: "#3C873A" },
 	{ name: "NextJS", color: "#5e72e4" },
+	{ name: "Git", color: "#171515" },
 	{ name: "DataBase", color: "#14b8a6" },
 	{ name: "Learning", color: "#db2777" },
 	{ name: "Science", color: "#f97316" },
