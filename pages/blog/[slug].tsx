@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import React from "react";
-import { PostContent } from "@/components";
-import { getPostData, getPostsFiles } from "@/lib/posts-lib";
+import { PostContent } from "../../components";
+import { getPostData, getPostsFiles } from "../../lib/posts-lib";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Post: NextPage = ( { post }: any ) =>

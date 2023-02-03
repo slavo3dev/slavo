@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import React from "react";
 import { ContactForm } from "../components";
 
 
