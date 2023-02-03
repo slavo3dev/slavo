@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import * as ga from "../lib/ga";
 import type { AppProps } from "next/app";
@@ -10,7 +10,6 @@ import "../styles/font-awesome-pro.min.css";
 import "../styles/font-linea.css";
 import "../styles/fonts.css";
 import "../styles/swiper.css";
-import React from "react";
 
 function MyApp ( { Component, pageProps }: AppProps )
 {
