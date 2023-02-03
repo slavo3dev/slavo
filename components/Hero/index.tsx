@@ -10,6 +10,9 @@ export const Hero: FC = () => {
 	const [ userEmail, setUserEmail ] = useState<string | undefined | null>("");
 	const [ userVerified, setUserVerified ] = useState<boolean | null>();
     
+	const urlPath = userVerified ? "/freesource" : "/api/auth/login"; 
+	const titleBtn = userVerified ? "Free Sources" : "Verify Your Email\nClick to Login";
+    
 	useEffect( () => {
 		if ( user )
 		{
@@ -17,12 +20,6 @@ export const Hero: FC = () => {
 			setUserVerified(user?.email_verified);
 		}
 	},[userEmail, userVerified, user]);
-
-	const isAuth = (userEmail && userVerified);
-	console.log( isAuth );
-	console.log("User: ", user);
-	console.log( "userEmail: ", userEmail );
-	console.log( "userVerify: ", userVerified );
     
 	return (
 		<section className={ classes.hero }>
@@ -37,7 +34,7 @@ export const Hero: FC = () => {
 			</div>
 			<h1>Slavo</h1>
 			<p className={classes.quote}>The future depends on what<br /> you do today.</p>
-			<Link href={isAuth ? "/freesource" : "/api/auth/login"}><button className="hover:bg-blue-100 bg-blue-500 text-white hover:text-red-500 font-bold py-2 px-4 rounded">{isAuth ? "Free Sources" : "Login"}</button></Link>
+			<Link href={userEmail ? urlPath : "/api/auth/login"}><button className="hover:bg-blue-100 bg-blue-500 text-white hover:text-red-500 font-bold py-2 px-4 rounded">{userEmail ? titleBtn : "Login"}</button></Link>
 		</section>
 	);
 };
