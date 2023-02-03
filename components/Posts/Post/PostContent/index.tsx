@@ -54,8 +54,10 @@ export const PostContent: FC<PostContentDataType> = ({ post }) =>
 	};
 	return (
 		<article className={classes.content}>
-			<PostHeader title={post.title} imgSrc={imgPath} />
-			<ReactMarkdown components={customRenderers}>{post.content}</ReactMarkdown>
+			<PostHeader title={ post.title } imgSrc={ imgPath } />
+			<div className="prose lg:prose-xl">
+				<ReactMarkdown components={customRenderers}>{post.content}</ReactMarkdown>
+			</div>
 		</article>
 	);
 };
