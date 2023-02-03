@@ -2,6 +2,7 @@ import Link from "next/link";
 import classes from "./navigation.module.css";
 import { Logo } from "../Logo";
 import { FC } from "react";
+import React from "react";
 
 
 export const MainNavigation: FC = () =>
