@@ -15,14 +15,13 @@ const blog: NextPage = ( { posts }: any ) =>
 	{
 		
 		const fullPath = `/category/${category}`;
-
 		router.push(fullPath);
 	}
 	return (
-		<> 
+		<React.Fragment> 
 			<CategorySearch onSearch={findCategoryHandle} posts={posts} />
 			<BlogPosts posts={posts} />
-		</> );
+		</React.Fragment> );
 };
 
 
