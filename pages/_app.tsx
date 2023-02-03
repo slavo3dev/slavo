@@ -5,11 +5,11 @@ import type { AppProps } from "next/app";
 import { Layout, HeadBasePage, MainNavigation, Footer } from "../components";
 
 // importing styles 
-import "@/styles/globals.css";
-import "@/styles/font-awesome-pro.min.css";
-import "@/styles/font-linea.css";
-import "@/styles/fonts.css";
-import "@/styles/swiper.css";
+import "../styles/globals.css";
+import "../styles/font-awesome-pro.min.css";
+import "../styles/font-linea.css";
+import "../styles/fonts.css";
+import "../styles/swiper.css";
 
 function MyApp ( { Component, pageProps }: AppProps )
 {
