@@ -4,6 +4,7 @@ import * as ga from "../lib/ga";
 import type { AppProps } from "next/app";
 import { Layout, HeadBasePage, MainNavigation, Footer } from "../components";
 
+
 // importing styles 
 import "../styles/globals.css";
 import "../styles/font-awesome-pro.min.css";
