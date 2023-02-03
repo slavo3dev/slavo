@@ -51,12 +51,15 @@
     },
     "include": [
         "next-env.d.ts",
-        "**/*.ts",
-        "**/*.tsx",
-        "pages/index.jsx",
-        "."
+        "next.config.js",
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "tailwind.config.js",
+        "postcss.config.js",
+        "next-sitemap.config.js"
     ],
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "public"
     ]
 }
