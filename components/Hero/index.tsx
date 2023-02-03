@@ -2,6 +2,7 @@ import { FC } from "react";
 import classes from "./hero.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 
 export const Hero: FC = () => {
 	return (

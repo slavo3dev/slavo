@@ -4,6 +4,7 @@ import * as ga from "../lib/ga";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { Layout, HeadBasePage, MainNavigation, Footer } from "../components";
+import React from "react";
 
 function MyApp ( { Component, pageProps }: AppProps )
 {
