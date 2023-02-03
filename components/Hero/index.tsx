@@ -17,7 +17,7 @@ export const Hero: FC = () => {
 			</div>
 			<h1>Slavo</h1>
 			<p className={classes.quote}>The future depends on what<br /> you do today.</p>
-			<Link href="/blog"><a><button className="hover:bg-blue-100 bg-blue-500 text-white hover:text-red-500 font-bold py-2 px-4 rounded">Articles</button></a></Link>
+			<Link href="/blog"><a><button className="hover:bg-blue-100 bg-blue-500 text-white hover:text-red-500 font-bold py-2 px-4 rounded">Read...</button></a></Link>
 		</section>
 	);
 };
