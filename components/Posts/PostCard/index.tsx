@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import classes from "./postcard.module.css";
 import { PostType } from "../../../Types/PostType";
+import React from "react";
 
 
 export const PostCard: FC<PostType> = ( { post } ) =>
