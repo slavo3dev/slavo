@@ -39,13 +39,13 @@
                 "Types/*"
             ],
             "@assets/*": [
-                "./public/assets/*"
+                "public/assets/*"
             ],
             "@ui/*": [
-                "./components/ui/*"
+                "components/ui/*"
             ],
             "@styles/*": [
-                "/styles/*"
+                "styles/*"
             ]
         },
     },
