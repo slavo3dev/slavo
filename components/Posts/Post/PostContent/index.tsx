@@ -7,6 +7,7 @@ import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import React from "react";
 
 interface PostContentDataType
 {

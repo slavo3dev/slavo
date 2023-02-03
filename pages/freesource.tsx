@@ -2,6 +2,7 @@
 import { useState, useEffect, Key } from "react";
 import type { NextPage } from "next";
 import supabase from "../lib/supabase";
+import React from "react";
 
 
 const FreeSource: NextPage = () => {

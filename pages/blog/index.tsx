@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextPage } from "next";
-import { BlogPosts, CategorySearch } from "@/components/index";
-import { getAllPosts } from "@/lib/posts-lib";
+import { BlogPosts, CategorySearch } from "../../components";
+import { getAllPosts } from "../../lib/posts-lib";
 import { useRouter } from "next/router";
+import React from "react";
 
 
-const blog: NextPage = ( { posts }: any ) =>
+const Blog: NextPage = ( { posts }: any ) =>
 {
 
 	const router = useRouter();
@@ -14,14 +15,13 @@ const blog: NextPage = ( { posts }: any ) =>
 	{
 		
 		const fullPath = `/category/${category}`;
-
 		router.push(fullPath);
 	}
 	return (
-		<> 
+		<React.Fragment> 
 			<CategorySearch onSearch={findCategoryHandle} posts={posts} />
 			<BlogPosts posts={posts} />
-		</> );
+		</React.Fragment> );
 };
 
 
@@ -36,4 +36,4 @@ export function getStaticProps() {
 	};
 }
 
-export default blog;
+export default Blog;

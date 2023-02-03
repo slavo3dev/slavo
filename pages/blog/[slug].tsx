@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
-import { PostContent } from "@/components/index";
-import { getPostData, getPostsFiles } from "@/lib/posts-lib";
+import React from "react";
+import { PostContent } from "../../components";
+import { getPostData, getPostsFiles } from "../../lib/posts-lib";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Post: NextPage = ( { post }: any ) =>
@@ -11,7 +12,6 @@ const Post: NextPage = ( { post }: any ) =>
 export function getStaticProps ( context: { params :{ slug: string} } )
 {
 	const { slug } = context.params;
-
 	const postData = getPostData(slug); 
 
 	return {

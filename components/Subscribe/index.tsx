@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { FC, useState } from "react";
 import axios from "axios";
+import React from "react";
 
 export const Subscribe: FC= () => {
 	const [email, setEmail] = useState<any>("");

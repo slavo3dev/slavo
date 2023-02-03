@@ -1,7 +1,8 @@
 import { FC } from "react";
 import classes from "./blogposts.module.css";
 import { PostsGrid } from "../PostsGrid";
-import { PostsList } from "Types/PostsList";
+import { PostsList } from "../../../Types/PostsList";
+import React from "react";
 
 export const BlogPosts: FC<PostsList> = ({ posts }) =>
 {

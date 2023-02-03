@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import classes from "./postcard.module.css";
 import { PostType } from "../../../Types/PostType";
+import React from "react";
 
 
 export const PostCard: FC<PostType> = ( { post } ) =>
@@ -20,16 +21,15 @@ export const PostCard: FC<PostType> = ( { post } ) =>
 
 		<li className={classes.post}>
 			<Link href={`/blog/${slug}`}>
-				<a>
-					<div className={classes.imagepost}>
-						<Image src={`/images/post-img/${image}` } width={ 500 } height={ 300 } alt={title} layout="responsive"/>
-					</div>
-					<div className={classes.content}>
-						<h3>{title}</h3>
-						<time>{formattedDate}</time>
-						<p>{excerpt}</p>
-					</div>
-				</a>
+				
+				<div className={classes.imagepost}>
+					<Image src={`/images/post-img/${image}` } width={ 500 } height={ 300 } alt={title} />
+				</div>
+				<div className={classes.content}>
+					<h3>{title}</h3>
+					<time>{formattedDate}</time>
+					<p>{excerpt}</p>
+				</div>
 			</Link>  
 		</li>
 

@@ -1,6 +1,5 @@
 import { FC } from "react";
 import React from "react";
-import Link from "next/link";
 
 export const Footer:FC = () => {
 	return (
