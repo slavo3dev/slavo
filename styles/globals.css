@@ -38,7 +38,7 @@ body {
   --color-blue-700: hsl(210, 80%, 40%);
   --color-blue-800: hsl(210, 90%, 40%);
   --color-blue-900: hsl(210, 100%, 40%);
-
+  
   --color-primary-50: #c8b3ce;
   --color-primary-100: #a07aaa;
   --color-primary-200: #884c97;
@@ -68,19 +68,13 @@ body {
   margin: 0;
   background-color: var(--color-grey-50);
   color: var(--color-blue-800);
-  font-family: "Quicksand", 'Montserrat', 'Helvetica' !important;
-  line-height: 1.5;
+  font-family:  "Gilroy", "sans-serif";
   min-height: 100vh;
   min-width: 300px;
   overflow-x: hidden;
   text-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 }
 
-h1,
-h2,
-h3 {
-  font-family: "Oswald", "Roboto", sans-serif;
-}
 
 a {
   text-decoration:underline;
@@ -203,10 +197,8 @@ section {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: #1d1e18;
-  text-transform: uppercase;
-  font-family: 'Coiny', sans-serif;
   line-height: 1;
   margin-top: 6px;
 }

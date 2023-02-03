@@ -1,9 +1,15 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import * as ga from "../lib/ga";
-import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { Layout, HeadBasePage, MainNavigation, Footer } from "../components";
+
+// importing styles 
+import "@styles/globals.css";
+import "@styles/font-awesome-pro.min.css";
+import "@styles/font-linea.css";
+import "@styles/fonts.css";
+import "@styles/swiper.css";
 
 function MyApp ( { Component, pageProps }: AppProps )
 {
@@ -28,7 +34,7 @@ function MyApp ( { Component, pageProps }: AppProps )
 	return (
 		<Layout>
 			<HeadBasePage
-				title="Consulting | Mentorship Software Web Development | SEO | Web3.0 | Crypto"
+				title="Consulting | Mentorship Software Web Development Free Sources | SEO | Web3.0 | NFT/Crypto"
 				metaDescription="My name is Slavo Popovic and I am an experienced software web engineer and freelance developer. Helping companies and individuals to build there online business, optimize websites and scale. For future Digital Nomads & Freelancers" />
 			<MainNavigation />
 			<Component { ...pageProps } />
