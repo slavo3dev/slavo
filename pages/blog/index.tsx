@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import React from "react";
 
 
-const blog: NextPage = ( { posts }: any ) =>
+const Blog: NextPage = ( { posts }: any ) =>
 {
 
 	const router = useRouter();
@@ -36,4 +36,4 @@ export function getStaticProps() {
 	};
 }
 
-export default blog;
+export default Blog;
