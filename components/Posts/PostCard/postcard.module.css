@@ -4,8 +4,14 @@
   text-align: center;
 }
 
-.post a {
+.post div {
   color: var(--color-blue-100);
+   opacity: 1;
+   transition: 0.3s;
+}
+
+.post:hover div {
+    opacity: 0.6;
 }
 
 .imagepost {

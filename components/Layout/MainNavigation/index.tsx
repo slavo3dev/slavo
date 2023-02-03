@@ -6,10 +6,12 @@ import { FC } from "react";
 
 export const MainNavigation: FC = () =>
 {
+
+	const isAuth = false;
 	return (
 		<header className={classes.header}>
 			<Link href="/">
-				<a><Logo /></a>
+				<Logo />
 			</Link>
 			<nav>
 				<ul>
@@ -25,9 +27,10 @@ export const MainNavigation: FC = () =>
 					<li>
 						<Link href="/contact">Contact</Link>
 					</li>
-					{/* <li>
-						<Link href="/contact">Contact</Link>
-					</li> */}
+					<li>
+						<Link href="/api/auth/login">Login</Link>
+					</li>
+					{ isAuth && <li><Link href="/contact">Logout</Link></li> }
 				</ul>
 			</nav>
 		</header>

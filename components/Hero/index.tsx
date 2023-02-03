@@ -3,7 +3,11 @@ import classes from "./hero.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
-export const Hero: FC = () => {
+export const Hero: FC = () =>
+{
+    
+	// eslint-disable-next-line no-constant-condition
+	const isAuthTitle = false ? "Login" : "Create Account";
 	return (
 		<section className={ classes.hero }>
 			<div className={classes.imagehero}>
@@ -17,7 +21,7 @@ export const Hero: FC = () => {
 			</div>
 			<h1>Slavo</h1>
 			<p className={classes.quote}>The future depends on what<br /> you do today.</p>
-			<Link href="/blog"><a><button className="hover:bg-blue-100 bg-blue-500 text-white hover:text-red-500 font-bold py-2 px-4 rounded">Read...</button></a></Link>
+			<Link href="/api/auth/login"><button className="hover:bg-blue-100 bg-blue-500 text-white hover:text-red-500 font-bold py-2 px-4 rounded">{isAuthTitle}</button></Link>
 		</section>
 	);
 };
