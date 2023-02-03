@@ -28,7 +28,7 @@
         "framer-motion": "^7.6.7",
         "gray-matter": "^4.0.3",
         "marked": "^4.2.2",
-        "next": "^13.0.3",
+        "next": "^13.0.0",
         "next-pwa": "^5.6.0",
         "next-seo": "^5.14.1",
         "next-sitemap": "^3.1.32",
