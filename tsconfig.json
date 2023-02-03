@@ -22,7 +22,7 @@
         "noUnusedParameters": true,
         "noImplicitReturns": true,
         "allowSyntheticDefaultImports": true,
-        "baseUrl": "./src",
+        "baseUrl": ".",
         "paths": {
             "@/components/*": [
                 "components/*"
