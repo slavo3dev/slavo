@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect, Key } from "react";
 import type { NextPage } from "next";
-import supabase from "../lib/supabase";
+import supabase from "@/lib/supabase";
 
 
 const FreeSource: NextPage = () => {

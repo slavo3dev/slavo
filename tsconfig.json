@@ -20,31 +20,31 @@
         "incremental": true,
         "baseUrl": ".",
         "paths": {
-            "@components/*": [
+            "@/components/*": [
                 "components/*"
             ],
-            "@components": [
+            "@/components": [
                 "components"
             ],
-            "@images/*": [
+            "@/images/*": [
                 "public/images*"
             ],
-            "@lib/*": [
+            "@/lib/*": [
                 "lib/*"
             ],
-            "@api/*": [
+            "@/api/*": [
                 "pages/api/*"
             ],
-            "@Types/*": [
+            "@/Types/*": [
                 "Types/*"
             ],
-            "@assets/*": [
+            "@/assets/*": [
                 "public/assets/*"
             ],
-            "@ui/*": [
+            "@/ui/*": [
                 "components/ui/*"
             ],
-            "@styles/*": [
+            "@/styles/*": [
                 "styles/*"
             ]
         },

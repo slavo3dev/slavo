@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect, FC } from "react";
-import { saveContactData } from "@lib/savecontactdata";
-import { notificationStatus } from "@lib/notificationStatus";
+import { saveContactData } from "@/lib/savecontactdata";
+import { notificationStatus } from "@/lib/notificationStatus";
 import { Notification } from "../Notification";
 
 export const ContactForm: FC= () => {

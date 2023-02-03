@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import BottomShapeSVG from "@assets/svgs/bottom-shape.svg";
+import BottomShapeSVG from "@/assets/svgs/bottom-shape.svg";
 
 const BottomShape = () => {
 	return (
