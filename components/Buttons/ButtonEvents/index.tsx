@@ -1,4 +1,5 @@
 import Link from "next/link";
+import React from "react";
 import { FC } from "react";
 
 import classes from "./button-events.module.css";

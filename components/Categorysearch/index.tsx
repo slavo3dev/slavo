@@ -1,3 +1,4 @@
+import React from "react";
 import { useRef } from "react";
 import { FC } from "react";
 import classes from "./category-search.module.css";
