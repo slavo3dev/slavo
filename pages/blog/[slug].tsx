@@ -12,7 +12,6 @@ const Post: NextPage = ( { post }: any ) =>
 export function getStaticProps ( context: { params :{ slug: string} } )
 {
 	const { slug } = context.params;
-
 	const postData = getPostData(slug); 
 
 	return {
