@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
-import { saveUserAuth } from "@/lib/auth";
-
+import { saveUserAuth } from "../../lib/auth";
+import React from "react";
 
 export const Login: FC = () =>
 {

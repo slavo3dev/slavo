@@ -1,9 +1,10 @@
 import { FC } from "react";
 import Link from "next/link";
-import Button from "@/ui/button";
+import Button from "../ui/button";
 import { motion } from "framer-motion";
 import clsx from "clsx";
 import { scrollUpVariants } from "../../lib/types/variants";
+import React from "react";
 
 export const Hero: FC = () => {
 	return (
