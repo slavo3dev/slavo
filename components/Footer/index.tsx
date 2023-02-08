@@ -1,11 +1,12 @@
 import { FC } from "react";
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 export const Footer:FC = () => {
 	return (
 		<>
-			<section className="py-2 bg-sky-600">
+			<section className="py-2 bg-gray-300">
 				<div
 					className="container px-4 mx-auto wow animate__animated animate__fadeIn"
 					data-wow-delay=".3s"
@@ -50,10 +51,10 @@ export const Footer:FC = () => {
 						</div> */}
 					{/* </div> */}
 					<div className="flex flex-col lg:flex-row items-center lg:justify-between">
-						<p className="text-sm text-slate-50">
-              &copy; 2022. All rights reserved. Designed by{" "}
+						<p className="text-sm text-blue-800">
+                            &copy;{new Date().getFullYear()}. All rights reserved. Designed by{" "}
 							<a
-								className="text-slate-50"
+								className="text-blue-800"
 								href="https://www.prototypenext.com"
 								target="_blank"
 								rel="noreferrer"
@@ -71,33 +72,33 @@ export const Footer:FC = () => {
 									alt="slavo.io software development - Consulting "
 								/>
 							</a> */}
-							<a
-								className="inline-block px-2"
+							<a  className="inline-block px-2"
 								href="https://twitter.com/slavo3dev"
+								target="_blank"
 							>
 								<img
 									src={"/images/icons/twitter-blue.svg"}
-									alt="slavo.io software development - Consulting "
+									alt="slavo.io software development - Consulting"
 								/>
 							</a>
-							<a
-								className="inline-block px-2"
-								href="https://www.linkedin.com/in/slavopopovic/"
+							<a  className="inline-block px-2"
+								href="https://www.instagram.com/slavo_3/"
+								target="_blank"
 							>
 								<img
 									src={"/images/icons/instagram-blue.svg"}
 									alt="slavo.io software development - Consulting "
 								/>
 							</a>
-							{/* <a
-								className="inline-block px-2"
-								href="https://www.instagram.com/prototypenext/"
+							<a  className="inline-block px-2"
+								href="https://www.linkedin.com/in/slavopopovic/"
 							>
-								<img
-									src={"/images/icons/linkedin-circled-48.png"}
+								<Image src={"/images/icons/linkedin-circled-48.png"}
 									alt="slavo.io software development - Consulting "
+									width={ 22 }
+									height={ 22 }
 								/>
-							</a> */}
+							</a>
 							{/* <a
 								className="inline-block px-2"
 								href="https://www.instagram.com/slavo.io software development/"
