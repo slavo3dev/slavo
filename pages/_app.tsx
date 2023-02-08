@@ -4,6 +4,7 @@ import * as ga from "../lib/ga";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { Layout, HeadBasePage, MainNavigation, Footer } from "../components";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 function MyApp ( { Component, pageProps }: AppProps )
 {
@@ -26,14 +27,16 @@ function MyApp ( { Component, pageProps }: AppProps )
 	}, [ router.events ] );
     
 	return (
-		<Layout>
-			<HeadBasePage
-				title="Consulting | Mentorship Software Web Development | SEO | Web3.0 | Crypto"
-				metaDescription="My name is Slavo Popovic and I am an experienced software web engineer and freelance developer. Helping companies and individuals to build there online business, optimize websites and scale. For future Digital Nomads & Freelancers" />
-			<MainNavigation />
-			<Component { ...pageProps } />
-			<Footer />
-		</Layout>
+		<UserProvider>
+			<Layout>
+				<HeadBasePage
+					title="Consulting | Mentorship Software Web Development | SEO | Web3.0 | Crypto"
+					metaDescription="My name is Slavo Popovic and I am an experienced software web engineer and freelance developer. Helping companies and individuals to build there online business, optimize websites and scale. For future Digital Nomads & Freelancers" />
+				<MainNavigation />
+				<Component { ...pageProps } />
+				<Footer />
+			</Layout>
+		</UserProvider>
 	);
 }
 

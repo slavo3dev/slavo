@@ -6,8 +6,8 @@ import classes from "./button-events.module.css";
 export const ButtonEvents: FC = (props: any) => {
 	if (props.link) {
 		return (
-			<Link href={props.link}>
-				<a className={classes.btn}>{props.children}</a>
+			<Link href={props.link} className={classes.btn}>
+				{props.children}
 			</Link>
 		);
 	}
