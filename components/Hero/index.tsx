@@ -34,7 +34,7 @@ export const Hero: FC = () => {
 			</div>
 			<h1>Slavo</h1>
 			<p className={classes.quote}>The future depends on what<br /> you do today.</p>
-			<Link href={userEmail ? urlPath : "/api/auth/login"}><button className="hover:bg-blue-100 bg-blue-500 text-white hover:text-red-500 font-bold py-2 px-4 rounded">{userEmail ? titleBtn : "Login"}</button></Link>
+			<Link href={userEmail ? urlPath : "/api/auth/login"}><button className="hover:bg-blue-100 bg-blue-500 text-white hover:text-red-500 font-bold py-2 px-4 mt-3 rounded">{userEmail ? titleBtn : "Login -> Access to ReSources"}</button></Link>
 		</section>
 	);
 };
