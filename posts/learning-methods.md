@@ -182,8 +182,4 @@ Before explaining the system, I developed a few prerequisites, and you need to b
 
 - **Day 181-190:** Repeat/ReLearn (All topics)
 
-### You are ready
-
-### Never Give Up
-
-### Your learn Jounry just started
+# Never Give Up
