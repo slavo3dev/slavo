@@ -7,7 +7,7 @@ export const OpenAI: FC = () => {
 	const [aiRes, setAiRes] = useState<any>();
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [ questionInput, setQuestionInput ] = useState<string>( "" );
-	const [ tech, setTech ] = useState<string>("Andrew");
+	const [ tech, setTech ] = useState<string>("HTML");
 
 	const handleApiAI = async () =>
 	{
