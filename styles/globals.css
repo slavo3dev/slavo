@@ -389,3 +389,15 @@ aside {
         height: 3rem;
     }
 } 
+
+code {
+  color: #fff;
+  padding: 0.1rem !important;
+  background: #000;
+  display: block;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: scroll;
+  max-width: 100%;
+  min-width: 100px;
+  padding: 0;
+}

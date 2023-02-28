@@ -58,7 +58,7 @@ export const HeroAI: FC = () =>
 					</div>
 					<div className="w-full lg:w-1/2 px-3 lg:bg-blueGray-10 mb-12 lg:mb-0 pb-10 md:p-2">
 						<div className="flex items-center justify-center">
-							{ user?.email !== undefined ? <OpenAI /> : 
+							{ user?.email !== undefined && user?.email_verified? <OpenAI /> : 
 								<img
 									className="lg:max-w-lg lg:scale-100"
 									src="/images/components/team.svg"
