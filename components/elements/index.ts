@@ -1,4 +1,4 @@
-import { CounterUp } from "./CounterUp/index";
+import { CounterUp } from "./CounterUp";
 import { TextEffect } from "./TextEffect";
 
 

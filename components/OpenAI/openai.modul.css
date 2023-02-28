@@ -1,0 +1,32 @@
+.aicontainer {
+    padding: 1rem;
+    color: black; 
+    border: 1px solid red;
+    text-align: center;
+    align-items: center;
+    background-color: lightblue;
+    border-radius: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+
+.titleDes {
+    padding: 1rem;
+    fontSize: 1.5rem;
+}
+
+.btn-style {
+    padding: 1rem;
+}
+
+.answare {
+    padding: 1rem;
+    color: #000;
+}
+
+.inputQuestion {
+    padding: 0.4rem;
+    width: 50%;
+    border-radius: 0.6rem
+}
