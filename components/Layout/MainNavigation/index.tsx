@@ -26,7 +26,9 @@ export const MainNavigation: FC = () =>
 					<li>
 						<Link href="/blog">Blog</Link>
 					</li>
-					{ isAuth ? emailVarified : <li onClick={() => alert(auth_terms)}><Link href="/">ReSource</Link></li> }
+					<li>
+						<Link href="/freesource">ReSource</Link>
+					</li> 
 					<li>
 						<Link href="/contact">Contact</Link>
 					</li>

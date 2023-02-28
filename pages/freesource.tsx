@@ -2,14 +2,15 @@
 import { useState, useEffect, Key } from "react";
 import type { NextPage } from "next";
 import supabase from "../lib/supabase";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 
 const FreeSource: NextPage = () => {
 	const [showForm, setShowForm] = useState(false);
 	const [facts, setFacts] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
-	const [currentCategory, setCurrentCategory] = useState("all");
-
+	const [ currentCategory, setCurrentCategory ] = useState( "all" );
+    
 	useEffect(
 		function () {
 			async function getFacts() {
@@ -59,7 +60,8 @@ function Loader() {
 
 function Header({ showForm, setShowForm }: any) {
 	const appTitle = "Web Dev - Free Resources";
-
+	const { user } = useUser();
+	
 	return (
 		<header className='header'>
 			<div className='logo'>
@@ -68,7 +70,10 @@ function Header({ showForm, setShowForm }: any) {
 
 			<button
 				className='btn btn-large btn-open'
-				onClick={() => setShowForm((show: any) => !show)}
+				onClick={ () =>
+				{
+					user?.email_verified ? setShowForm( ( show: any ) => !show ) : alert("Please log in or verify your email address");
+				} }
 			>
 				{showForm ? "Close" : "Share Source"}
 			</button>
@@ -202,7 +207,7 @@ function FactList({ facts, setFacts }: any) {
 	if (facts.length === 0)
 		return (
 			<p className='message'>
-        No facts for this category yet! Create the first one ✌️
+        No Content for this category yet! Create the first one ✌️
 			</p>
 		);
 
@@ -221,21 +226,31 @@ function FactList({ facts, setFacts }: any) {
 function Fact({ fact, setFacts }: any) {
 	const [isUpdating, setIsUpdating] = useState(false);
 	const badSource =
-    fact.like + fact.exelent < fact.false;
+        fact.like + fact.exelent < fact.false;
+    
+	const { user } = useUser();
+   
+	async function handleVote ( columnName: string )
+	{
+		if ( user?.email_verified )
+		{
+			setIsUpdating(true);
+			const { data: updatedFact, error } = await supabase
+				.from("sources")
+				.update({ [columnName]: fact[columnName] + 1 })
+				.eq("id", fact.id)
+				.select();
+			setIsUpdating(false);
 
-	async function handleVote(columnName: string) {
-		setIsUpdating(true);
-		const { data: updatedFact, error } = await supabase
-			.from("sources")
-			.update({ [columnName]: fact[columnName] + 1 })
-			.eq("id", fact.id)
-			.select();
-		setIsUpdating(false);
-
-		if (!error)
-			setFacts((facts: any[]) =>
-				facts.map((f: { id: any; }) => (f.id === fact.id ? updatedFact[0] : f))
-			);
+			if (!error)
+				setFacts((facts: any[]) =>
+					facts.map((f: { id: any; }) => (f.id === fact.id ? updatedFact[0] : f))
+				);
+		} else
+		{
+			alert("Please Login or Verify email address");
+		}
+          
 	}
 
 	return (
