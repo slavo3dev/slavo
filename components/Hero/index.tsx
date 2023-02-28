@@ -10,8 +10,8 @@ export const Hero: FC = () => {
 	const [ userEmail, setUserEmail ] = useState<string | undefined | null>("");
 	const [ userVerified, setUserVerified ] = useState<boolean | null>();
     
-	const urlPath = userVerified ? "/freesource" : "/api/auth/login"; 
-	const titleBtn = userVerified ? "Free Sources" : "Verify Your Email\nClick to Login";
+	const urlPath = userVerified ? "#aimentor" : "/api/auth/login"; 
+	const titleBtn = userVerified ? "AI Mentor" : "Verify Your Email\nClick to Login";
     
 	useEffect( () => {
 		if ( user )
@@ -34,7 +34,7 @@ export const Hero: FC = () => {
 			</div>
 			<h1>Slavo</h1>
 			<p className={classes.quote}>The future depends on what<br /> you do today.</p>
-			<Link href={userEmail ? urlPath : "/api/auth/login"}><button className="hover:bg-blue-100 bg-blue-500 text-white hover:text-red-500 font-bold py-2 px-4 mt-3 rounded">{userEmail ? titleBtn : "Login -> Access to ReSources"}</button></Link>
+			<Link href={userEmail ? urlPath : "/api/auth/login"}><button className="hover:bg-blue-100 bg-blue-500 text-white hover:text-red-500 font-bold py-2 px-4 mt-3 rounded">{userEmail ? titleBtn : "Login to try AI Mentor"}</button></Link>
 		</section>
 	);
 };

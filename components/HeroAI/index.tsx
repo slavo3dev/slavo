@@ -9,7 +9,7 @@ export const HeroAI: FC = () =>
 	const { user } = useUser();
 
 	return (
-		<section className="bg-white text-black p-6">
+		<section className="bg-white text-black p-6" id='aimentor'>
 			<div
 				className="hidden lg:block absolute inset-0 w-1/2 ml-auto bg-blueGray-100 z-0"
 				style={{ "zIndex": "-1" }}
