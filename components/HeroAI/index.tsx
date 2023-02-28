@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { TextEffect } from "@/components/Elements";
+import ReactTypingEffect from "react-typing-effect";
 import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { OpenAI } from "../OpenAI";
@@ -32,10 +32,8 @@ export const HeroAI: FC = () =>
                                       If you feel stack ask about advice, suggestions... etc.</p><br />
 								<p>Practice Every Day with your , {" "}
 									<span className="typewrite d-inline text-brand">
-										<TextEffect
-											text1="FrontEnd Mantor"
-											text2="Front End Mentor and learn about: HTML, CSS , JavaScript, TypeScript, React"
-										/>
+										<ReactTypingEffect text={["FrontEnd Mantor", "Front End Mentor and learn about: HTML, CSS , JavaScript, TypeScript, React"]} />
+
 									</span>
 								</p>
 								<h4 className="text-blueGray-400 leading-relaxed wow animate__animated animate__fadeIn mt-3 text-xl">
