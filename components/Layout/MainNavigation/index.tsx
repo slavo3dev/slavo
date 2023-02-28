@@ -9,10 +9,7 @@ export const MainNavigation: FC = () =>
 {
 	const { user } = useUser();
 	const isAuth = user?.email; 
-    
-	const emailVarified = user?.email_verified && <li><Link href="/freesource">ReSource</Link></li>;
-	const auth_terms = "Please log in/Verify your e-mail\nTo access the Free Sources Page.";
-    
+        
 	return (
 		<header className={ classes.header }>
 			<Link href="/">
