@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { TextEffect } from "../Elements/TextEffect";
+import { TextEffect } from "../Elements";
 import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { OpenAI } from "../OpenAI";
