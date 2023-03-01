@@ -24,9 +24,8 @@ export const HeroAI: FC = () =>
                       Future & Growth
 							</h2>
 							<p className="text-blueGray-400 leading-relaxed wow animate__animated animate__fadeIn">
-                      Slavo{" "}
 								<strong className="text-blue-500">
-                                        connects you with AI Mentor, available 24/7! <br />
+                                    Mentor is available 24/7! <br />
 								</strong><br />
                                       If you feel stack ask about advice, suggestions... etc.</p><br />
 							<p>Practice Every Day with your , {" "}
