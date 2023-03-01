@@ -14,7 +14,7 @@ export const HeroAI: FC = () =>
 				className="hidden lg:block absolute inset-0 w-1/2 ml-auto bg-blueGray-100 z-0"
 				style={{ "zIndex": "-1" }}
 			></div>
-			<div className="flex flex-wrap items-center -mx-3">
+			<div className="flex flex-wrap items-center mx-auto container">
 				<div className="w-full lg:w-1/2 px-3">
 					<div className="py-12">
 						<div className="max-w-lg lg:max-w-md mx-auto lg:mx-0 mb-8 text-center lg:text-left">
