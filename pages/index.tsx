@@ -9,7 +9,6 @@ const Home: NextPage = ( { posts }: any ) =>
 {
 	return (
 		<>
-			<NewResourceFrom setNewSource={() => console.log("test")} setShowForm={true}/>
 			<Hero />
 			<HeroAI />
 			<FeaturedPosts posts={ posts } />

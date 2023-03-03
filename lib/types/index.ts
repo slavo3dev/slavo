@@ -30,7 +30,7 @@ export interface QuestionProps {
 }
 
 export interface NewResourceFromProps {
-    setNewSource: ( arg: any ) => void; 
+    setSources: ( arg: any ) => void; 
     setShowForm: any
 }
 

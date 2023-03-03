@@ -4,10 +4,10 @@ import Link from "next/link";
 
 export const Logo: FC = () => {
 	return (
-		<Link href="/">
-			<div className={classes.logo}>
-				<p>Slavo</p>
-			</div>
-		</Link>
+		<div className={classes.logo}>
+			<Link href="/">
+				Slavo
+			</Link>
+		</div>
 	);
 };

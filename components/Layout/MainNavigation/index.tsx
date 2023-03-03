@@ -12,9 +12,7 @@ export const MainNavigation: FC = () =>
         
 	return (
 		<header className={ classes.header }>
-			<Link href="/">
-				<Logo />
-			</Link>
+			<Logo />
 			<nav className={classes.navMenu}>
 				<ul>
 					{/* <li>
