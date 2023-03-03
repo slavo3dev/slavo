@@ -6,7 +6,7 @@ export const Logo: FC = () => {
 	return (
 		<Link href="/">
 			<div className={classes.logo}>
-           Slavo
+				<p>Slavo</p>
 			</div>
 		</Link>
 	);

@@ -28,12 +28,10 @@ export const HeroAI: FC = () =>
                                     Mentor is available 24/7! <br />
 								</strong><br />
                                       If you feel stack ask about advice, suggestions... etc.</p><br />
-							<p>Practice Every Day with your , {" "}
-								<span className="typewrite d-inline text-brand">
-									<ReactTypingEffect text={["FrontEnd Mantor", "Front End Mentor and learn about: HTML, CSS , JavaScript, TypeScript, React"]} />
-
-								</span>
-							</p>
+							<p>Practice Every Day with your {" "}</p>
+							<span className="typewrite d-inline text-brand">
+								<ReactTypingEffect text={["FrontEnd Mantor", "Front End Mentor and learn about: HTML, CSS , JavaScript, TypeScript, React"]} />
+							</span>
 							<h4 className="text-blueGray-400 leading-relaxed wow animate__animated animate__fadeIn mt-3 text-xl">
                                 Learn HTML, CSS, JavaScript, React, TypeScript<br/><strong>with power of ChatGPT</strong> 
 							</h4>

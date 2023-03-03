@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextPage } from "next";
-import { Hero, FeaturedPosts, Subscribe, HeroAI } from "@components";
+import { Hero, FeaturedPosts, Subscribe, HeroAI, NewResourceFrom } from "@components";
 import { getFeaturedPosts } from "@/lib/posts-lib";
 
 
@@ -9,6 +9,7 @@ const Home: NextPage = ( { posts }: any ) =>
 {
 	return (
 		<>
+			<NewResourceFrom setNewSource={() => console.log("test")} setShowForm={true}/>
 			<Hero />
 			<HeroAI />
 			<FeaturedPosts posts={ posts } />

@@ -10,5 +10,6 @@ import { Subscribe } from "./Subscribe";
 import { Footer } from "./Footer";
 import { CategorySearch } from "./Categorysearch";
 import { HeroAI } from "./HeroAI";
+import { NewResourceFrom } from "./Forms";
 
-export {Layout, Hero, FeaturedPosts, HeadBasePage, MainNavigation, BlogPosts, PostContent, PostHeader, ContactForm, Subscribe, Footer,  CategorySearch, HeroAI };
+export {Layout, Hero, FeaturedPosts, HeadBasePage, MainNavigation, BlogPosts, PostContent, PostHeader, ContactForm, Subscribe, Footer,  CategorySearch, HeroAI, NewResourceFrom };
