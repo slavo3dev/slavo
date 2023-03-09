@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextPage } from "next";
-import { Hero, FeaturedPosts, Subscribe, HeroAI, NewResourceFrom } from "@components";
+import { Hero, FeaturedPosts, Subscribe, HeroAI } from "@components";
 import { getFeaturedPosts } from "@/lib/posts-lib";
 
 
@@ -9,8 +9,8 @@ const Home: NextPage = ( { posts }: any ) =>
 {
 	return (
 		<>
-			<Hero />
 			<HeroAI />
+			<Hero />
 			<FeaturedPosts posts={ posts } />
 			<section className="py-20 bg-blue-400">
 				<Subscribe />

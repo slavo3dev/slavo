@@ -11,5 +11,6 @@ import { Footer } from "./Footer";
 import { CategorySearch } from "./Categorysearch";
 import { HeroAI } from "./HeroAI";
 import { NewResourceFrom } from "./Forms";
+import { FreeSourcesList } from "./FreeSourcesList";
 
-export {Layout, Hero, FeaturedPosts, HeadBasePage, MainNavigation, BlogPosts, PostContent, PostHeader, ContactForm, Subscribe, Footer,  CategorySearch, HeroAI, NewResourceFrom };
+export {Layout, Hero, FeaturedPosts, HeadBasePage, MainNavigation, BlogPosts, PostContent, PostHeader, ContactForm, Subscribe, Footer,  CategorySearch, HeroAI, NewResourceFrom, FreeSourcesList };

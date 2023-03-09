@@ -4,6 +4,7 @@ import type { NextPage } from "next";
 import supabase from "../lib/supabase";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { CATEGORIES, isValidHttpUrl } from "@/lib/constants";
+import { Loader } from "@/components/ui/Loader";
 
 
 const FreeSource: NextPage = () => {
@@ -46,7 +47,7 @@ const FreeSource: NextPage = () => {
 				<CategoryFilter setCurrentCategory={setCurrentCategory} />
 
 				{isLoading ? (
-					<Loader />
+					<Loader title="Please Wiat... Loading..."/>
 				) : (
 					<FactList facts={facts} setFacts={setFacts} />
 				)}
@@ -55,9 +56,6 @@ const FreeSource: NextPage = () => {
 	);
 };
 
-function Loader() {
-	return <p className='message'>Loading...</p>;
-}
 
 function Header({ showForm, setShowForm }: any) {
 	const appTitle = "Web Dev - Free Resources";
@@ -244,7 +242,7 @@ function Fact({ fact, setFacts }: any) {
 			</p>
 			<span
 				className='tag'
-				style={{ backgroundColor: CATEGORIES.find((cat: any) => cat?.name === fact?.category).color, padding: "0.4 rem"
+				style={{ backgroundColor: "blue", padding: "0.4 rem"
 				}}
 			>
 				{fact.category}
