@@ -6,6 +6,7 @@ import supabase from "@/lib/supabase";
 import { FreeSourcesList } from "../FreeSourcesList";
 import { CategoryFilter } from "../CategoryFilter";
 import { Loader } from "../ui/Loader";
+import { Title } from "../Title";
 
 export const Hero: FC = () => {
 	const { user } = useUser();
@@ -51,6 +52,7 @@ export const Hero: FC = () => {
 		<>
 			{ showForm && <NewResourceFrom setSources={ setFacts } setShowForm={ setShowForm } /> }
 			<section className="flex flex-wrap items-center mx-auto container">
+				<Title title={"Learning Sources"} />
 				<CategoryFilter setCurrentCategory={setCurrentCategory} />
 				<div className="w-full px-3 py-9">
 					{isLoading ? 
@@ -58,9 +60,9 @@ export const Hero: FC = () => {
 						<FreeSourcesList facts={ facts } setFacts={ setFacts } /> }
 				</div>
 			</section>
-			<div className="w-full flex items-center justify-center pb-5" >
+			{userVerified && <div className="w-full flex items-center justify-center pb-5" >
 				<button className="hover:bg-blue-100 bg-blue-500 text-white hover:text-red-500 font-bold py-2 px-4 rounded w-1/2" onClick={ handleOnClose }>Add Source</button>
-			</div>
+			</div>}
 		</>
 	);
 };

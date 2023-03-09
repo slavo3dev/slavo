@@ -38,3 +38,8 @@ export interface LoaderProp
 {
     title: string
 }
+
+export interface TitleProps
+{
+    title: string
+}
