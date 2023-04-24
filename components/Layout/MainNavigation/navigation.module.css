@@ -1,11 +1,13 @@
 .header {
   width: 100%;
   height: 4rem;
-  background-color: var(--color-blue-600);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 10%;
+  position: fixed;
+  z-index:10;
+  background-color: white;
 }
 
 .navMenu {
@@ -27,12 +29,12 @@
 .user_email {
    border: 0.2px groove var(--color-blue-100);
    padding: 0.3rem; 
-   color: var(--color-blue-100);
+   color: #475569;
    font-size: 0.6rem
 }
 
 .header a {
-  color: var(--color-blue-100) !important;
+  color: #475569;
   font-size: var(--size-6) !important;
   transition: color 0.5s ease !important;
   text-decoration: none !important;
@@ -41,7 +43,7 @@
 .header a:hover,
 .header a:active,
 .header a.active {
-  color: var( --color-primary-100) !important;;
+  color: #64748b;
 }
 
 @media (max-width: 500px) {
@@ -52,6 +54,7 @@
   }
   .header li {
     margin: 6px;
+    
   }
   .header a {
     font-size: var(--size-4) !important;
