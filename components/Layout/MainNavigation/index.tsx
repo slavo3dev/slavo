@@ -1,7 +1,7 @@
 import Link from "next/link";
 import classes from "./navigation.module.css";
 import { Logo } from "../Logo";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
 
@@ -10,8 +10,24 @@ export const MainNavigation: FC = () =>
 	const { user } = useUser();
 	const isAuth = user?.email; 
         
+	const [headStyle, setHeadStyle]= useState<boolean>(true);
+	useEffect(()=>{document.addEventListener("scroll",()=>{
+		const scrolled = window.scrollY;
+		if(scrolled > 100){
+			setHeadStyle(false);
+		}else{
+			setHeadStyle(true);
+		}
+
+	});
+	});
+
+	
+
+
+
 	return (
-		<header className={ classes.header }>
+		<header className= { headStyle ? classes.header : classes.header1 }>
 			<Logo />
 			<nav className={classes.navMenu}>
 				<ul>
