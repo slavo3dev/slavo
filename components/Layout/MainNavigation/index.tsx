@@ -24,45 +24,46 @@ export const MainNavigation: FC = () => {
 	return (
 		<header className={headStyle ? classes.header : classes.header1}>
 			<Logo />
-			<nav className={classes.navMenu}>
-				<ul>
-					{/* <li>
+			<div>
+				<nav className={classes.navMenu}>
+					<ul>
+						{/* <li>
 						<Link href="/about">About</Link>
 					</li> */}
-					<li>
-						<Link href="/blog">Blog</Link>
-					</li>
-					{/* <li>
+						<li>
+							<Link href="/blog">Blog</Link>
+						</li>
+						{/* <li>
 						<Link href="/freesource">ReSource</Link>
 					</li>  */}
-					<li>
-						<Link href="/contact">Contact</Link>
-					</li>
-
-					{isAuth && user?.email_verified && (
 						<li>
-							<Link href="/api/auth/logout">Logout</Link>
+							<Link href="/contact">Contact</Link>
 						</li>
-					)}
 
-					<li>
-						{isAuth ? (
-							user?.email_verified ? (
-								<span className={classes.user_email}>
-									{user.email}
-								</span>
-							) : (
-								<Link href="/api/auth/login">
-                  Verify Email & Login
-								</Link>
-							)
-						) : (
-							<Link href="/api/auth/login">Login</Link>
+						{isAuth && user?.email_verified && (
+							<li>
+								<Link href="/api/auth/logout">Logout</Link>
+							</li>
 						)}
-					</li>
-				</ul>
-			</nav>
-			<Burger />
+
+						<li>
+							{isAuth ? (
+								user?.email_verified ? (
+									<span className={classes.user_email}>
+										{user.email}
+									</span>
+								) : (
+									<Link href="/api/auth/login">
+                  Verify Email & Login
+									</Link>
+								)
+							) : (
+								<Link href="/api/auth/login">Login</Link>
+							)}
+						</li>
+					</ul>
+				</nav>
+				<Burger /></div>
 		</header>
 	);
 };
