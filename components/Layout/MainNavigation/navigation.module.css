@@ -39,6 +39,7 @@
 
 .header li {
   margin: 0 var(--size-4);
+    color: #475569;
 }
 
 .user_email {
@@ -49,19 +50,15 @@
 }
 
 .header a {
-  color: #475569;
-  font-size: 0875rem !important;
-  text-decoration: none !important;
-  line-height: 1.25rem !important;
+
+  font-size: 0875rem;
+  text-decoration: none ;
+  line-height: 1.25rem ;
   font-weight: 600;
   font-family: "Montserrat", sans-serif;
 }
 
-.header a:hover,
-.header a:active,
-.header a.active {
-  color: #64748b;
-}
+
 
 .header1 ul {
   list-style: none;
@@ -73,17 +70,18 @@
 
 .header1 li {
   margin: 0 var(--size-4);
+   color: #475569;
 }
 .header1 a {
-  color: #475569;
-  text-decoration: none !important;
-  line-height: 1.25rem !important;
+ 
+  text-decoration: none ;
+  line-height: 1.25rem ;
   font-weight: 600;
   font-family: "Montserrat", sans-serif;
 } 
-.header1 a:hover,
-.header1 a:active,
-.header1 a.active {
+.header1 li:hover,
+.header1 li:active,
+.header1 li.active {
   color: #64748b;
 }  
 
@@ -93,7 +91,7 @@
     margin: 6px;
   }
   .header a {
-    font-size: var(--size-4) !important;
+    font-size: var(--size-4) ;
     transition: 0.6s;
   }
 
@@ -106,7 +104,7 @@
   }
 }
   .header a {
-    font-size: var(--size-3) !important;
+    font-size: var(--size-3);
   }
 
   .user_email {

@@ -83,15 +83,12 @@ h3 {
 }
 
 a {
-  text-decoration:underline;
-  color: red;
+  text-decoration:none;
   transition: 0.3s color ease-in-out;
 }
 
 a:hover {
-  color: red; 
   text-decoration: none;
-  font-size: 1rem;
 }
 
 button {
