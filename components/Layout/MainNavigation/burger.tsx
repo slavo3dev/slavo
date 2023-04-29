@@ -7,9 +7,20 @@ import face from "public/images/icons/facebook-blue.svg";
 export const Burger : FC = ()=>{
 
 	const [showDrop, setShowDrop]= useState(false);
+	const [showHome, setShowHome]= useState(false);
+	const [showBlog, setShowBlog]= useState(false);
+
 
 	const handleBurger = ()=>{
 		setShowDrop(!showDrop);
+	};
+
+	const handleMenu = ()=>{
+		setShowHome( !showHome);
+	};
+
+	const handleBlog = ()=>{
+		setShowBlog(!showBlog);
 	};
 
 	return <div className="sm:hidden flex-row overflow-show">
@@ -26,13 +37,36 @@ export const Burger : FC = ()=>{
 			<div className="fixed flex-col h-5/6 overflow-scroll bg-white left-0 z-40 mt-2 w-full rounded border-[.5px] border-light px-5 py-5 transition-all">
 
 				<ul className="overflow-y-scroll  mr-auto w-full flex list-none flex-col ">
-					<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Home</li>
-					<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">About Us</li>
+					<li className="w-11/12 text-sm text-gray-500  rounded-xl">
+						<span onClick={handleMenu}className="block hover:text-blue-500 hover:bg-blue-50 w-11/12 p-4 rounded-xl">Home</span>
+					</li>
+
+					<ul className= {showHome ? "flex-col visible": "invisible"} >
+						<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Home 1</li>
+						<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Home 2</li>
+						<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Home 3</li>
+						<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Home 4</li>
+					</ul>
+					
+				
+					<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">About Us
+						
+					</li>
 					<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Services</li>
 					<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Portfolio</li>
 					<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Pricing</li>
 					<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Team</li>
-					<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Blog</li>
+					<li className="w-11/12 text-sm text-gray-500  rounded-xl">
+						
+						<span onClick={handleBlog} className="block hover:text-blue-500 hover:bg-blue-50 w-11/12 p-4 rounded-xl">Blog</span>
+						<ul className= {showBlog ? "flex-col visible": "invisible none"}>
+							<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Blog 1</li>
+							<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Blog 2</li>
+							<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Blog 3</li>
+							<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Blog 4</li>
+						</ul>
+					
+					</li>
 					<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Faqs</li>
 					<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Contact Us</li>
 				</ul>
