@@ -22,54 +22,56 @@ export const MainNavigation: FC = () => {
 	});
 
 	return (
-		<div className="flex flex-row bg-white ">
+		
 
-			<header className={headStyle ? classes.header : classes.header1}>
-				<Logo />
-				<div>
-					<nav className={classes.navMenu}>
-						<ul>
-							{/* <li>
+		<header className={headStyle ? classes.header : classes.header1}>
+			
+
+			<Logo />
+			<div>
+				<nav className={classes.navMenu}>
+					<ul>
+						{/* <li>
 						<Link href="/about">About</Link>
 					</li> */}
-							<li>
-								<Link href="/blog">Blog</Link>
-							</li>
-							{/* <li>
+						<li>
+							<Link href="/blog">Blog</Link>
+						</li>
+						{/* <li>
 						<Link href="/freesource">ReSource</Link>
 					</li>  */}
+						<li>
+							<Link href="/contact">Contact</Link>
+						</li>
+
+						{isAuth && user?.email_verified && (
 							<li>
-								<Link href="/contact">Contact</Link>
+								<Link href="/api/auth/logout">Logout</Link>
 							</li>
+						)}
 
-							{isAuth && user?.email_verified && (
-								<li>
-									<Link href="/api/auth/logout">Logout</Link>
-								</li>
-							)}
-
-							<li>
-								{isAuth ? (
-									user?.email_verified ? (
-										<span className={classes.user_email}>
-											{user.email}
-										</span>
-									) : (
-										<Link href="/api/auth/login">
-                  Verify Email & Login
-										</Link>
-									)
+						<li>
+							{isAuth ? (
+								user?.email_verified ? (
+									<span className={classes.user_email}>
+										{user.email}
+									</span>
 								) : (
-									<Link href="/api/auth/login">Login</Link>
-								)}
-							</li>
-						</ul>
-					</nav>
-				</div>
-
-				
-			</header>
+									<Link href="/api/auth/login">
+                  Verify Email & Login
+									</Link>
+								)
+							) : (
+								<Link href="/api/auth/login">Login</Link>
+							)}
+						</li>
+					</ul>
+				</nav>
+			</div>
 			<Burger />
-		</div>
+		
+		</header>
+		
+		
 	);
 };
