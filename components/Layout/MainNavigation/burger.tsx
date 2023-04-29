@@ -41,7 +41,7 @@ export const Burger : FC = ()=>{
 						<span onClick={handleMenu}className="block hover:text-blue-500 hover:bg-blue-50 w-11/12 p-4 rounded-xl">Home</span>
 					</li>
 
-					<ul className= {showHome ? "flex-col visible": "invisible"} >
+					<ul className= {showHome ? "flex-col visible": "invisible absolute"} >
 						<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Home 1</li>
 						<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Home 2</li>
 						<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Home 3</li>
@@ -59,7 +59,7 @@ export const Burger : FC = ()=>{
 					<li className="w-11/12 text-sm text-gray-500  rounded-xl">
 						
 						<span onClick={handleBlog} className="block hover:text-blue-500 hover:bg-blue-50 w-11/12 p-4 rounded-xl">Blog</span>
-						<ul className= {showBlog ? "flex-col visible": "invisible none"}>
+						<ul className= {showBlog ? "flex-col visible": "invisible absolute"}>
 							<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Blog 1</li>
 							<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Blog 2</li>
 							<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Blog 3</li>
