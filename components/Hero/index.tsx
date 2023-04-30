@@ -10,7 +10,7 @@ import { Title } from "../Title";
 
 export const Hero: FC = () => {
 	const { user } = useUser();
-	const [facts, setFacts] = useState<any[]>([]);
+	const [facts, setFacts] = useState<[]>([]);
 	const [ userEmail, setUserEmail ] = useState<string | undefined | null>("");
 	const [ userVerified, setUserVerified ] = useState<boolean | null>();
 	const [ showForm, setShowForm ] = useState<boolean>( false );
