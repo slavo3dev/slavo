@@ -22,11 +22,7 @@ export const MainNavigation: FC = () => {
 	});
 
 	return (
-		
-
 		<header className={headStyle ? classes.header : classes.header1}>
-			
-
 			<Logo />
 			<div>
 				<nav className={classes.navMenu}>
@@ -58,7 +54,7 @@ export const MainNavigation: FC = () => {
 									</span>
 								) : (
 									<Link href="/api/auth/login">
-                  Verify Email & Login
+                    Verify Email & Login
 									</Link>
 								)
 							) : (
@@ -69,9 +65,6 @@ export const MainNavigation: FC = () => {
 				</nav>
 			</div>
 			<Burger />
-		
 		</header>
-		
-		
 	);
 };
