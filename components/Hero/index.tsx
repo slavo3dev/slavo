@@ -55,9 +55,7 @@ export const Hero: FC = () => {
 				<Title title={"Learning Sources"} />
 				<CategoryFilter setCurrentCategory={setCurrentCategory} />
 				<div className="w-full px-3 py-9">
-					{isLoading ? 
-						<Loader title="Please Wait... Loading..." /> :
-						<FreeSourcesList facts={ facts } setFacts={ setFacts } /> }
+					{isLoading ? <Loader title="Please Wait... Loading..." /> : <FreeSourcesList facts={ facts } setFacts={ setFacts } /> }
 				</div>
 			</section>
 			{userVerified && <div className="w-full flex items-center justify-center pb-5" >
