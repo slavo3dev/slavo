@@ -5,22 +5,30 @@ import { FC, useState } from "react";
 import insta from "public/images/icons/instagram-blue.svg";
 import twit from "public/images/icons/twitter-blue.svg";
 import face from "public/images/icons/facebook-blue.svg";
+import link from "public/images/icons/linkedinIcon.webp";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import classes from "./navigation.module.css";
+
 export const Burger: FC = () => {
   const [showDrop, setShowDrop] = useState(false);
-  const [showHome, setShowHome] = useState(false);
-  const [showBlog, setShowBlog] = useState(false);
+//   const [showHome, setShowHome] = useState(false);
+//   const [showBlog, setShowBlog] = useState(false);
+
+const { user } = useUser();
+	const isAuth = user?.email;
+
 
   const handleBurger = () => {
     setShowDrop(!showDrop);
   };
 
-  const handleMenu = () => {
-    setShowHome(!showHome);
-  };
+//   const handleMenu = () => {
+//     setShowHome(!showHome);
+//   };
 
-  const handleBlog = () => {
-    setShowBlog(!showBlog);
-  };
+//   const handleBlog = () => {
+//     setShowBlog(!showBlog);
+//   };
 
   return (
     <div className="sm:hidden flex-row overflow-show">
@@ -33,7 +41,7 @@ export const Burger: FC = () => {
       <div className={showDrop ? "visible " : "hidden"}>
         <div className="fixed flex-col h-5/6 overflow-scroll bg-white left-0 z-40 mt-2 w-full rounded border-[.5px] border-light px-5 py-5 transition-all">
           <ul className="overflow-y-scroll  mr-auto w-full flex list-none flex-col ">
-            <li className="w-11/12 text-sm text-gray-500 rounded-xl">
+            {/* <li className="w-11/12 text-sm text-gray-500 rounded-xl">
               <span onClick={handleMenu} className="relative block hover:text-blue-500 hover:bg-blue-50 w-full p-4 rounded-xl">
                 <p>Home</p>
                 <div className="absolute right-2 bottom-1">
@@ -47,43 +55,55 @@ export const Burger: FC = () => {
                 <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Home 3</li>
                 <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Home 4</li>
               </ul>
-            </li>
-            <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">About Us</li>
+            </li> */}
+            {/* <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">About Us</li>
             <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Services</li>
             <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Portfolio</li>
             <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Pricing</li>
-            <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Team</li>
+            <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Team</li> */}
             <li className="w-11/12 text-sm text-gray-500 rounded-xl">
-              <span onClick={handleBlog} className="relative block hover:text-blue-500 hover:bg-blue-50 w-full p-4 rounded-xl">
+               <span /*onClick={handleBlog}*/ className="relative block hover:text-blue-500 hover:bg-blue-50 w-full p-4 rounded-xl"> 
                 <p>Blog</p>
-				<div className="absolute right-2 bottom-1">
+				{/* <div className="absolute right-2 bottom-1">
                   {!showBlog ? ( <p className="text-md h-8 w-8 text-center ">+</p>)
 				: (<p className="absolute right-1 bottom-0.5 text-md h-8 w-8 text-center ">-</p>)}
-                </div>
+                </div> */}
               </span>
-              <ul className={showBlog ? "flex-col visible" : "invisible absolute"}>
+              {/* <ul className={showBlog ? "flex-col visible" : "invisible absolute"}>
                 <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Blog 1</li>
                 <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Blog 2</li>
                 <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Blog 3</li>
                 <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Blog 4</li>
-              </ul>
+              </ul> */}
             </li>
-			<li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Faqs</li>
+			{/* <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Faqs</li> */}
             <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Contact Us</li>
         </ul>
 		<div className="w-full mt-4 pt-6 border-t border-blueGray-50 flex flex-col">
-            <div className="w-11/12 px-4 py-3 mb-3 text-xs text-center no-underline font-semibold rounded-xl bg-blue-400 hover:bg-blue-500 text-white rounded-xl">
+            {/* <div className="w-11/12 px-4 py-3 mb-3 text-xs text-center no-underline font-semibold rounded-xl bg-blue-400 hover:bg-blue-500 text-white rounded-xl">
               <Link className="" href={""}>SignUp</Link>
-            </div>
-            <div className="w-11/12 px-4 py-3 mb-3 text-xs text-center font-semibold rounded-xl text-blue-500 hover:text-blue-700 border border-blue-200 hover:border-blue-300 rounded">
-              <Link href={""}>Login</Link>
+            </div> */}
+            <div className="w-11/12 px-4 py-3 mb-3 text-xs text-blue-500 hover:text-blue-700 text-center font-semibold rounded-xl border border-blue-200 hover:border-blue-300 rounded">
+
+
+
+
+
+              
+{isAuth ? (user?.email_verified ? (<span className={classes.user_email}>{user.email}</span>): (<Link href="/api/auth/login">Verify Email & Login</Link>))
+ : (<Link className="" href="/api/auth/login">Login</Link>)}
+						
+
+
+
             </div>
           </div>
-          <div>Contact us example@example.com</div>
+          <div>Contact us slavo@slavo.io</div>
           <div>
-            <Image src={insta}></Image>
-            <Image src={twit}></Image>
-            <Image src={face}></Image>
+            <Link href={"https://www.instagram.com/slavo_3/"}><Image width={50} height={50} src={insta}></Image></Link>
+            <Link href={"https://twitter.com/slavo3dev"}><Image width={50} height={50} src={twit}></Image></Link>
+            <Link href={"https://facebook.com"}><Image width={50} height={50} src={face}></Image></Link>
+			<Link href={"https://www.linkedin.com/in/slavopopovic/"}><Image width={50} height={50} src={link}></Image></Link>
           </div>
         </div>
       </div>
