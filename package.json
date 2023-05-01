@@ -21,10 +21,11 @@
         "react": "18.2.0",
         "react-countup": "^6.3.1",
         "react-dom": "18.2.0",
-        "react-markdown": "^8.0.3",
+        "react-markdown": "^8.0.7",
         "react-syntax-highlighter": "^15.4.4",
         "react-typing-effect": "^2.0.5",
-        "react-visibility-sensor": "^5.1.1"
+        "react-visibility-sensor": "^5.1.1",
+        "remark-gfm": "^3.0.1"
     },
     "devDependencies": {
         "@tailwindcss/typography": "^0.5.9",
