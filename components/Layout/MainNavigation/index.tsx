@@ -3,7 +3,7 @@ import classes from "./navigation.module.css";
 import { Logo } from "../Logo";
 import { FC, useEffect, useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { Burger } from "./burger";
+import { Burger } from "./mobileView";
 
 export const MainNavigation: FC = () => {
 	const { user } = useUser();
@@ -46,20 +46,7 @@ export const MainNavigation: FC = () => {
 							</li>
 						)}
 
-						<li>
-							{isAuth ? (
-								user?.email_verified ? (
-									<span className={classes.user_email}>
-										{user.email}
-									</span>
-								) : (
-									<Link href="/api/auth/login">
-                    Verify Email & Login
-									</Link>
-								)
-							) : (
-								<Link href="/api/auth/login">Login</Link>
-							)}
+						<li>{isAuth ? (user?.email_verified ? (<span className={classes.user_email}>{user.email}</span>): (<Link href="/api/auth/login">Verify Email & Login</Link>)) : (<Link href="/api/auth/login">Login</Link>)}
 						</li>
 					</ul>
 				</nav>

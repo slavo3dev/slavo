@@ -1,5 +1,5 @@
 .logo {
-  font-size: var(--size-6) !important;
+  font-size: var(--size-6) ;
   font-weight: bold;
   font-family: 'Oswald', sans-serif;
   color: var(--color-black-900);
@@ -8,13 +8,13 @@
 }
 
 .logo:hover {
-  color: var(--color-black-900)!important;
+  color: var(--color-black-900);
   opacity: 0.6;
 }
 
 @media (min-width: 768px) {
   .logo {
-    font-size: var(--size-6) !important;
+    font-size: var(--size-6);
   }
 }
 
