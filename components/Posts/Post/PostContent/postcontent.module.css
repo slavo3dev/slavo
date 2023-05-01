@@ -24,3 +24,16 @@
     padding: var(--size-8);
   }
 }
+
+.hoverLink {
+  position: relative;
+  font-weight: bold;
+  transition: transform 0.9s ease-in-out;
+}
+
+
+
+.hoverLink:hover {
+  transform: scaleX(1);
+  font-size: 2rem;
+}

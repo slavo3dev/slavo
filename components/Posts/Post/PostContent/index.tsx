@@ -2,6 +2,7 @@
 import { FC } from "react";
 import classes from "./postcontent.module.css";
 // import { PostType } from "Types/PostType";
+import remarkGfm from "remark-gfm";
 import { PostHeader } from "../PostHeader";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
@@ -14,12 +15,12 @@ interface PostContentDataType
 }
 
 
-
 export const PostContent: FC<PostContentDataType> = ({ post }) =>
 {
 	const imgPath = `/images/post-img/${ post.image }`;
     
 	const customRenderers = {
+
 		p(paragraph: any) {
 			const { node } = paragraph;
 			if (node.children[0].tagName === "img" ) {
@@ -51,12 +52,23 @@ export const PostContent: FC<PostContentDataType> = ({ post }) =>
 				/>
 			);
 		},
+        
+		a ( a: any ) {
+			const urlLink: string = a.node.properties.href;
+			const linkTitle: string = a.node.children[ 0 ].value;
+            
+			return <a
+				className={classes.hoverLink}
+				href={ urlLink } target="_blank">{ linkTitle }
+				<span className={classes.hoverLine}></span>
+			</a>;
+		}
 	};
 	return (
 		<article className={classes.content}>
 			<PostHeader title={ post.title } imgSrc={ imgPath } />
 			<div className="prose lg:prose-xl">
-				<ReactMarkdown components={customRenderers}>{post.content}</ReactMarkdown>
+				<ReactMarkdown remarkPlugins={ [ remarkGfm ] } components={ customRenderers } linkTarget='_blank'>{post.content}</ReactMarkdown>
 			</div>
 		</article>
 	);
