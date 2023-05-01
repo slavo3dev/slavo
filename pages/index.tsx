@@ -4,7 +4,6 @@ import { Hero, FeaturedPosts, Subscribe, HeroAI } from "@components";
 import { getFeaturedPosts } from "@/lib/posts-lib";
 
 
-
 const Home: NextPage = ( { posts }: any ) =>
 {
 	return (

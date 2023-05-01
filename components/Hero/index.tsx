@@ -10,7 +10,7 @@ import { Title } from "../Title";
 
 export const Hero: FC = () => {
 	const { user } = useUser();
-	const [facts, setFacts] = useState<any[]>([]);
+	const [facts, setFacts] = useState<[]>([]);
 	const [ userEmail, setUserEmail ] = useState<string | undefined | null>("");
 	const [ userVerified, setUserVerified ] = useState<boolean | null>();
 	const [ showForm, setShowForm ] = useState<boolean>( false );
@@ -55,9 +55,7 @@ export const Hero: FC = () => {
 				<Title title={"Learning Sources"} />
 				<CategoryFilter setCurrentCategory={setCurrentCategory} />
 				<div className="w-full px-3 py-9">
-					{isLoading ? 
-						<Loader title="Please Wait... Loading..." /> :
-						<FreeSourcesList facts={ facts } setFacts={ setFacts } /> }
+					{isLoading ? <Loader title="Please Wait... Loading..." /> : <FreeSourcesList facts={ facts } setFacts={ setFacts } /> }
 				</div>
 			</section>
 			{userVerified && <div className="w-full flex items-center justify-center pb-5" >

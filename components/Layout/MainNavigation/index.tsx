@@ -1,43 +1,57 @@
 import Link from "next/link";
 import classes from "./navigation.module.css";
 import { Logo } from "../Logo";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import { Burger } from "./mobileView";
 
-
-export const MainNavigation: FC = () =>
-{
+export const MainNavigation: FC = () => {
 	const { user } = useUser();
-	const isAuth = user?.email; 
-        
+	const isAuth = user?.email;
+
+	const [headStyle, setHeadStyle] = useState<boolean>(true);
+	useEffect(() => {
+		document.addEventListener("scroll", () => {
+			const scrolled: number = window.scrollY;
+			if (scrolled > 50) {
+				setHeadStyle(false);
+			} else {
+				setHeadStyle(true);
+			}
+		});
+	});
+
 	return (
-		<header className={ classes.header }>
+		<header className={headStyle ? classes.header : classes.header1}>
 			<Logo />
-			<nav className={classes.navMenu}>
-				<ul>
-					{/* <li>
+			<div>
+				<nav className={classes.navMenu}>
+					<ul>
+						{/* <li>
 						<Link href="/about">About</Link>
 					</li> */}
-					<li>
-						<Link href="/blog">Blog</Link>
-					</li>
-					{/* <li>
+						<li>
+							<Link href="/blog">Blog</Link>
+						</li>
+						{/* <li>
 						<Link href="/freesource">ReSource</Link>
 					</li>  */}
-					<li>
-						<Link href="/contact">Contact</Link>
-					</li>
+						<li>
+							<Link href="/contact">Contact</Link>
+						</li>
 
-					{ isAuth && user?.email_verified && <li><Link href="/api/auth/logout">Logout</Link></li> }
-					
-					<li>
-						{ isAuth ?
-							( user?.email_verified ? <span className={classes.user_email }>{ user.email }</span> : <Link href="/api/auth/login">Verify Email & Login</Link> ) :
-							<Link href="/api/auth/login">Login</Link>
-						}
-					</li>
-				</ul>
-			</nav>
+						{isAuth && user?.email_verified && (
+							<li>
+								<Link href="/api/auth/logout">Logout</Link>
+							</li>
+						)}
+
+						<li>{isAuth ? (user?.email_verified ? (<span className={classes.user_email}>{user.email}</span>): (<Link href="/api/auth/login">Verify Email & Login</Link>)) : (<Link href="/api/auth/login">Login</Link>)}
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<Burger />
 		</header>
 	);
 };
