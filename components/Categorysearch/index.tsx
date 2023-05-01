@@ -25,7 +25,7 @@ export const CategorySearch: FC<Props> = ( { onSearch , posts}: Props ) => {
 	}
 
 	return (
-		<form className={classes.form} onSubmit={submitHandler}>
+		<form className={classes.form} onChange={submitHandler}>
 			<div className={classes.controls}>
 				<div className={classes.control}>
 					<label htmlFor="category">Category</label>
@@ -34,7 +34,6 @@ export const CategorySearch: FC<Props> = ( { onSearch , posts}: Props ) => {
 					</select>
 				</div>
 			</div>
-			<button>Categories</button>
 		</form>
 	);
 };
