@@ -51,18 +51,19 @@
   border: 0.2px groove var(--color-blue-100);
   padding: 0.3rem;
   color: #475569;
-  font-size: 0.6rem;
+  font-size: large;
 }
 
 .header a {
-  font-size: 0875rem;
+  font-size: large;
   text-decoration: none;
-  line-height: 1.25rem;
+  line-height: large;
   font-weight: 600;
   font-family: "Montserrat", sans-serif;
 }
 
 .header1 ul {
+
   list-style: none;
   display: flex;
   align-items: baseline;
@@ -75,8 +76,9 @@
   color: #475569;
 }
 .header1 a {
+  font-size: large;
   text-decoration: none;
-  line-height: 1.25rem;
+  line-height: large;
   font-weight: 600;
   font-family: "Montserrat", sans-serif;
 }
@@ -87,12 +89,9 @@
 }
 
 @media (max-width: 500px) {
-  .header li {
-    margin: 6px;
-  }
   .header a {
-    font-size: var(--size-4);
-    transition: 0.6s;
+    /* font-size: var(--size-4);
+    transition: 0.6s; */
   }
 
   .user_email {
@@ -104,7 +103,7 @@
   }
 }
 .header a {
-  font-size: var(--size-3);
+  /* font-size: var(--size-3); */
 }
 
 .user_email {
