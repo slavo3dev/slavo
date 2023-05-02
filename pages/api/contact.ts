@@ -1,12 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { MongoClient } from "mongodb";
 import type { NextApiRequest, NextApiResponse } from "next";
+import supabase from "@/lib/supabase";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const { subject, department, name, email, message } = req.body;
-
-	const uri = `mongodb+srv://${process.env.mongodb_username}:${process.env.mongodb_password}@${process.env.mongodb_contact_cluster}.wbdvr.mongodb.net/${process.env.mongodb_database}?retryWrites=true&w=majority`;
-
+    
 	if (req.method === "POST") {
 		if (
 			(!email || !email.includes("@") || !name || name.trim() === "",
@@ -21,28 +19,20 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		}
 	}
 
-	// Store to DB
-	const storeMessage: any = { email, department, subject, name, message };
-
-	let client: any;
-
-	try {
-		client = await MongoClient.connect(uri);
-	} catch (error) {
-		res.status(500).json({
-			message: "Oops something went workn, Please try again!",
-		});
-		console.error("Error Message: ", error);
-	}
-
-	const db = client.db();
+	const storeContactInfo = {
+		email,
+		department,
+		subject,
+		name,
+		message,
+		website: "slavo.io",
+	};
 
 	try {
-		const result = await db
-			.collection("contact_messages: ")
-			.insertOne(storeMessage);
-
-		storeMessage.id = result.intertedId;
+		await supabase
+			.from("contact_messages")
+			.insert([storeContactInfo])
+			.select();
 	} catch (error) {
 		console.error("Error: ", error);
 		res.status(500).json({
@@ -50,9 +40,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		});
 	}
 
-	client.close();
-
 	res
 		.status(201)
-		.json({ message: "Succesfuly Stored", payload: storeMessage });
+		.json({ message: "Succesfuly Stored", payload: storeContactInfo });
 };
