@@ -40,7 +40,7 @@ const { user } = useUser();
 
       <div className={showDrop ? "visible " : "hidden"}>
         <div className="fixed flex-col h-5/6 overflow-scroll bg-white left-0 z-40 mt-2 w-full rounded border-[.5px] border-light px-5 py-5 transition-all">
-          <ul className="overflow-y-scroll  mr-auto w-full flex list-none flex-col ">
+          <ul onClick={handleBurger} className="overflow-y-scroll  mr-auto w-full flex list-none flex-col ">
             {/* <li className="w-11/12 text-sm text-gray-500 rounded-xl">
               <span onClick={handleMenu} className="relative block hover:text-blue-500 hover:bg-blue-50 w-full p-4 rounded-xl">
                 <p>Home</p>
@@ -63,7 +63,7 @@ const { user } = useUser();
             <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Team</li> */}
             <li className="w-11/12 text-sm text-gray-500 rounded-xl">
                <span /*onClick={handleBlog}*/ className="relative block hover:text-blue-500 hover:bg-blue-50 w-full p-4 rounded-xl"> 
-                <p>Blog</p>
+               <Link href="/blog">Blog</Link>
 				{/* <div className="absolute right-2 bottom-1">
                   {!showBlog ? ( <p className="text-md h-8 w-8 text-center ">+</p>)
 				: (<p className="absolute right-1 bottom-0.5 text-md h-8 w-8 text-center ">-</p>)}
@@ -77,23 +77,34 @@ const { user } = useUser();
               </ul> */}
             </li>
 			{/* <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Faqs</li> */}
-            <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Contact Us</li>
+            <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
+				<Link href="/contact">Contact</Link>
+			</li>
         </ul>
-		<div className="w-full mt-4 pt-6 border-t border-blueGray-50 flex flex-col">
+		<div className="w-full mt-4 pt-6 border-t items-center border-blueGray-50 flex flex-col">
             {/* <div className="w-11/12 px-4 py-3 mb-3 text-xs text-center no-underline font-semibold rounded-xl bg-blue-400 hover:bg-blue-500 text-white rounded-xl">
               <Link className="" href={""}>SignUp</Link>
             </div> */}
-            <div className="w-11/12 px-4 py-3 mb-3 text-xs text-blue-500 hover:text-blue-700 text-center font-semibold rounded-xl border border-blue-200 hover:border-blue-300 rounded">  
+            <div className="w-11/12 px-4 py-3 mb-3 text-xs  text-blue-500 hover:text-blue-700 text-center font-semibold rounded-xl border border-blue-200 hover:border-blue-300 rounded">  
 {isAuth ? (user?.email_verified ? (<span className={classes.user_email}>{user.email}</span>): (<Link href="/api/auth/login">Verify Email & Login</Link>))
  : (<Link className="" href="/api/auth/login">Login</Link>)} </div>
           </div>
+		<div className="text-center">
           <div>Contact us slavo@slavo.io</div>
-          <div>
-            <Link href={"https://www.instagram.com/slavo_3/"}><Image width={50} height={50} src={insta}></Image></Link>
-            <Link href={"https://twitter.com/slavo3dev"}><Image width={50} height={50} src={twit}></Image></Link>
-            <Link href={"https://facebook.com"}><Image width={50} height={50} src={face}></Image></Link>
-			<Link href={"https://www.linkedin.com/in/slavopopovic/"}><Image width={50} height={50} src={link}></Image></Link>
+     <div>
+          <a href={"https://www.instagram.com/slavo_3/"} target="_blank" rel="noopener noreferrer">
+             <Image width={50} height={50} src={insta} /></a>
+          <a href={"https://twitter.com/slavo3dev"} target="_blank" rel="noopener noreferrer">
+              <Image width={50} height={50} src={twit} />
+          </a>
+          <a href={"https://facebook.com/slavo.io"} target="_blank" rel="noopener noreferrer">
+            <Image width={50} height={50} src={face} />
+          </a>
+          <a href={"https://www.linkedin.com/in/slavopopovic/"} target="_blank" rel="noopener noreferrer">
+            <Image width={50} height={50} src={link} />
+          </a>
           </div>
+		</div>
         </div>
       </div>
     </div>
