@@ -5,7 +5,14 @@ import { notificationStatus } from "@/lib/notificationStatus";
 import { Notification } from "../Notification";
 
 export const ContactForm: FC= () => {
-	const [payload, setPayload] = useState<any>();
+	const [payload, setPayload] = useState({
+		email: "",
+		subject: "No Subject",
+		message: "No Message",
+		department: "",
+		name: "No Name",
+		terms: "none"
+	});
 	const [reqStatus, setReqStatus] = useState<any>();
 	// const [reqError, setReqError] = useState<any>();
 
@@ -41,6 +48,13 @@ export const ContactForm: FC= () => {
         message: string 
     } = notificationStatus( reqStatus );
 
+	const isValidEmail = (email: string) => {
+		// eslint-disable-next-line no-useless-escape
+		const emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+		return emailReg.test(email);
+	};
+    
+	console.log("Terms: ", payload.terms);
 
 	return (
 		<>
@@ -116,6 +130,13 @@ export const ContactForm: FC= () => {
 							className="w-full p-4 text-xs font-semibold leading-none bg-blueGray-50 rounded outline-none"
 							type="email"
 							placeholder="name@example.com"
+							style={{
+								border: payload.email
+									? !isValidEmail(payload?.email)
+										? "1px solid red"
+										: "none"
+									: "none",
+							}}
 							onChange={(e) =>
 								setPayload((prevState: any) => ({
 									...prevState,
@@ -173,12 +194,15 @@ export const ContactForm: FC= () => {
 					className="py-4 px-8 text-sm text-white font-semibold leading-none bg-blue-400 hover:bg-blue-500 rounded"
 					// type="submit"
 					onClick={(e) => {
-						(payload.terms === "accept" && payload.department)
-							? sendPayload(e, payload)
-							: payload?.terms === "accept" ? alert("Please Choose Deparment") : alert("Pleases Accept Terms and Contitions");
-					}}
-				>
-          Submit
+						payload?.terms === "accept" && isValidEmail( payload.email ) && payload?.department
+							? sendPayload( e, payload )
+							: alert( `Please check: 
+                                ${ !isValidEmail( payload.email ) && "eMail is not Valid, " } 
+                                ${ payload.terms !== "accept" ? "You need to Accept Terms, ": "" }
+                                ${!payload.department ? "Please Choose Deparment" : "" }`
+								, );
+					} } >
+                    Submit
 				</button>
 			</div>
 			{notification && (
