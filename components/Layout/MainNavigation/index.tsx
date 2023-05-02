@@ -30,7 +30,7 @@ export const MainNavigation: FC = () => {
 						{/* <li>
 						<Link href="/about">About</Link>
 					</li> */}
-						<li>
+						<li onClick={() => localStorage.setItem("selectedOption", "ALL")}>
 							<Link href="/blog">Blog</Link>
 						</li>
 						{/* <li>

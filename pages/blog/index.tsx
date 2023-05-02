@@ -10,12 +10,15 @@ const blog: NextPage = ( { posts }: any ) =>
 
 	const router = useRouter();
     
-	function findCategoryHandle ( category: string )
-	{
-		
-		const fullPath = `/category/${category}`;
-
-		router.push(fullPath);
+	function findCategoryHandle ( category: string ) {
+        
+		if ( category === "ALL" ) {
+			router.push("/blog");
+		} else
+		{
+			const fullPath = `/category/${category}`;
+			router.push(fullPath);
+		}
 	}
 	return (
 		<> 

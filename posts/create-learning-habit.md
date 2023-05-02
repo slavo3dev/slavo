@@ -5,7 +5,7 @@ author: "Slavo"
 image: "learning-habit.png"
 excerpt: "Learning is a lifelong process, and forming habits that foster learning can have numerous benefits...."
 isFeatured: true
-category: "Slef Help"
+category: "Self Help"
 ---
 
 Learning is a lifelong process, and forming habits that foster learning can benefit personal and professional growth. In this blog post, we will discuss the benefits of creating patterns for learning and provide tips on how to do so effectively.

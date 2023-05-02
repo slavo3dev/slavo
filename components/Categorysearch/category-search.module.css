@@ -9,7 +9,7 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .controls {
@@ -22,7 +22,7 @@
 .control {
   flex: 1;
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   align-items: center;
   justify-content: space-between;
 }
@@ -66,4 +66,21 @@
   .form button {
     width: 20%;
   }
+}
+
+.selectElement {
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: none; 
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.selectElement:hover {
+  border: none; 
+  background-color: #e0e0e0;
+}
+
+.selectElement:focus {
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
