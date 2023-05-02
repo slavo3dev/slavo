@@ -39,9 +39,7 @@ export default function Category ( props: any )
     
 	function findCategoryHandle ( category: string )
 	{
-		
 		const fullPath = `/category/${category}`;
-
 		router.push(fullPath);
 	}
 
@@ -51,7 +49,7 @@ export default function Category ( props: any )
 	return (
 		<>
 			<CategorySearch onSearch={findCategoryHandle} posts={props.posts} />
-			<h1 style={ { textAlign: "center", padding: "10px" } }>Category: { slugId.toUpperCase().replace( "-", " " ) }</h1>
+			<h1 style={ { textAlign: "center", padding: "10px" } }>{ slugId.toUpperCase().replace( "-", " " ) }</h1>
 			<BlogPosts posts={ categoryPosts } />
 		</>
 	);

@@ -5,7 +5,7 @@ author: "Slavo"
 image: "learning-system.png"
 excerpt: "Best Learning System/Method to learn FrontEnd Software Development...."
 isFeatured: true
-category: "Slef Help"
+category: "Self Help"
 ---
 
 ### Questions that are hard to answer
