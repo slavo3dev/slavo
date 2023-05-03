@@ -1,17 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextPage } from "next";
-import { Hero, FeaturedPosts, Subscribe, HeroAI, Growth } from "@components";
+import {Hero,FeaturedPosts,Subscribe,HeroAI,Growth,Solution,} from "@components";
 import { getFeaturedPosts } from "@/lib/posts-lib";
 
-
-const Home: NextPage = ( { posts }: any ) =>
-{
+const Home: NextPage = ({ posts }: any) => {
 	return (
 		<>
 			<HeroAI />
 			<Hero />
-			<FeaturedPosts posts={ posts } />
-			<Growth />
+			<FeaturedPosts posts={posts} />
+			<section className="flex flex-col justify-center items-center h-full">
+				<Solution />
+				<Growth />
+			</section>
 			<section className="py-20 bg-blue-400">
 				<Subscribe />
 			</section>
@@ -20,13 +21,13 @@ const Home: NextPage = ( { posts }: any ) =>
 };
 
 export function getStaticProps() {
-	const featuredPost = getFeaturedPosts(); 
+	const featuredPost = getFeaturedPosts();
 
 	return {
 		props: {
-			posts: featuredPost
+			posts: featuredPost,
 		},
-		revalidate: 60
+		revalidate: 60,
 	};
 }
 

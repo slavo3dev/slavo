@@ -13,5 +13,6 @@ import { HeroAI } from "./HeroAI";
 import { NewResourceFrom } from "./Forms";
 import { FreeSourcesList } from "./FreeSourcesList";
 import { Growth } from "./Growth";
+import { Solution } from "./Solution";
 
-export {Layout, Hero, FeaturedPosts, HeadBasePage, MainNavigation, BlogPosts, PostContent, PostHeader, ContactForm, Subscribe, Footer,  CategorySearch, HeroAI, NewResourceFrom, FreeSourcesList, Growth };
+export {Layout, Hero, FeaturedPosts, HeadBasePage, MainNavigation, BlogPosts, PostContent, PostHeader, ContactForm, Subscribe, Footer,  CategorySearch, HeroAI, NewResourceFrom, FreeSourcesList, Growth, Solution };
