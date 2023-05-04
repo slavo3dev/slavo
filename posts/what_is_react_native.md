@@ -1,11 +1,11 @@
 ---
-title: 'What is React Native'
-date: '2022-09-12'
-author: 'Slavo'
-image: 'reactnative-post.png'
-excerpt: 'React is a JavaScript library for building user interfaces.'
-isFeatured: true
-category: 'React Native'
+title: "What is React Native"
+date: "2022-09-12"
+author: "Slavo"
+image: "reactnative-post.png"
+excerpt: "React is a JavaScript library for building user interfaces."
+isFeatured: false
+category: "React Native"
 ---
 
 ### React is a JavaScript library for building user interfaces
@@ -33,13 +33,13 @@ category: 'React Native'
 ![Picture](/images/post-img/reactnative-body-post.png)
 
 ```js
- const App = props => {
-     return(
-         <View>
-            <Text>foo(Nomad)</Text>
-         </View>
-         )
-}
+const App = (props) => {
+  return (
+    <View>
+      <Text>foo(Nomad)</Text>
+    </View>
+  );
+};
 ```
 
 #### React Native gives you unique components, which are then compiled to native code/views. For other logic, if you are sending HTTP requests, you are transforming data... all your other JavaScript code is not compiled to Native Code, but instead, it's running on a particular thread hosted by React Native. You can imagine it, like a mini javascript app running inside your app, hosted and started by React Native, which runs all your JavaScript code and then talks to the native platform. It is happening because that JavaScript Core ( Virtual Machine ) knows how to communicate to the native platform features. Your app's operating system communicates through the bridge, and React Native automatically provides that bridge and the virtual machine
