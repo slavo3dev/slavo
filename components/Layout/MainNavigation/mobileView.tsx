@@ -39,8 +39,8 @@ const { user } = useUser();
       </button>
 
       <div className={showDrop ? "visible " : "hidden"}>
-        <div className="fixed flex-col h-5/6 overflow-scroll bg-white left-0 z-40 mt-2 w-full rounded border-[.5px] border-light px-5 py-5 transition-all">
-          <ul onClick={handleBurger} className="overflow-y-scroll  mr-auto w-full flex list-none flex-col ">
+        <div className="fixed flex-col h-5/6 overflow-scroll top-20 bg-white left-0 z-40 mt-2 w-full rounded border-[.5px] border-light px-5 py-5 transition-all">
+          <ul onClick={handleBurger} className="overflow-y-scroll mr-auto w-full flex list-none flex-col ">
             {/* <li className="w-11/12 text-sm text-gray-500 rounded-xl">
               <span onClick={handleMenu} className="relative block hover:text-blue-500 hover:bg-blue-50 w-full p-4 rounded-xl">
                 <p>Home</p>
