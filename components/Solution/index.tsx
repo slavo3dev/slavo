@@ -33,7 +33,7 @@ export const Solution : FC = () =>{
 					<div className="flex flex-wrap items-center mb-12">
 						<div className="w-full lg:w-1/2 mb-6 lg:mb-0">
 							<h2
-								className="text-4xl font-bold font-heading wow animate__animated animate__fadeIn"
+								className="text-4xl p-4 font-bold font-heading wow animate__animated animate__fadeIn"
 								data-wow-delay=".1s"
 							>
 								<span>Solutions for </span>
@@ -49,7 +49,7 @@ export const Solution : FC = () =>{
 						</div>
 						<div className="w-full lg:w-1/2">
 							<p
-								className="lg:pl-16 text-blueGray-400 leading-loose wow animate__animated animate__fadeIn"
+								className="lg:pl-16 text-blueGray-400 p-4 leading-loose wow animate__animated animate__fadeIn"
 								data-wow-delay=".4s"
 							>
                   Skill development and training helps instill

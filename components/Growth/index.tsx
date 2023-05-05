@@ -34,7 +34,7 @@ export const Growth: FC = () => {
 	
 
 		<div ref={elementRef} className={`${styles["fade-in"]} ${show ? styles.active : ""}`}>
-			<section className="py-20 " id="how-we-work">
+			<section className="py-20 px-4" id="how-we-work">
 				<div className="container overflow-hidden">
 					<div className="flex flex-wrap -mx-8">
 						<div className="w-full lg:w-1/2 px-8">
