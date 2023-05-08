@@ -3,7 +3,7 @@ import { FC } from "react";
 
 export const Growth: FC = () => {
 	return (
-		<div className="flex flex-col justify-center items-center h-full">
+		<div className="flex flex-col justify-center bg-white items-center h-full">
 			<section className="pt-16 pb-20 px-8" id="key-features">
 				<div className="container">
 					<div className="flex flex-wrap items-center mb-12">

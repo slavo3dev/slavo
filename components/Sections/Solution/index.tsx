@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const Solution : FC = () =>{
 	return(
-		<div className="flex flex-col justify-center items-center h-full p-8">
+		<div className="flex flex-col bg-white justify-center items-center h-full p-8">
 			<section className="py-20" id="how-we-work">
 				<div className="container overflow-hidden">
 					<div className="flex flex-wrap -mx-8">
