@@ -39,7 +39,9 @@ export const MainNavigation: FC = () => {
 						<li>
 							<Link href="/contact">Contact</Link>
 						</li>
-
+						<li>
+							<Link href="/videos">Videos</Link>
+						</li>
 						{isAuth && user?.email_verified && (
 							<li>
 								<Link href="/api/auth/logout">Logout</Link>
