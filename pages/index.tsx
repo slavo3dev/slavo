@@ -7,12 +7,10 @@ const Home: NextPage = ({ posts }: any) => {
 	return (
 		<>
 			<HeroAI />
+			<Solution />
 			<Hero />
 			<FeaturedPosts posts={posts} />
-			<section className="flex flex-col justify-center items-center h-full">
-				<Solution />
-				<Growth />
-			</section>
+			<Growth />
 			<section className="py-20 bg-blue-400">
 				<Subscribe />
 			</section>

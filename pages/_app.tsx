@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import * as ga from "../lib/ga";
+import "animate.css";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { Layout, HeadBasePage, MainNavigation, Footer } from "../components";

@@ -7,7 +7,14 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      maxWidth: {
+        "8xl": "1920px",
+      },
+    },
+  },
+  variants: {
+    opacity: ({ after }) => after(["disabled"]),
   },
   plugins: [require("@tailwindcss/typography")],
 };

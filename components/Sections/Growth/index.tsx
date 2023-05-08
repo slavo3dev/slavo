@@ -1,39 +1,15 @@
-import { FC, useEffect, useRef, useState } from "react";
-import styles from "./Solution.module.css";
-
-export const Solution : FC = () =>{
+import { FC } from "react";
 
 
-	const [show, setShow] = useState<boolean>();
-	const elementRef = useRef<HTMLDivElement>(null);
-
-	useEffect(() => {
-		const handleScroll = () => {
-			if (elementRef.current) {
-				const elementTop = elementRef.current.getBoundingClientRect().top;
-				const elementBottom = elementRef.current.getBoundingClientRect().bottom;
-
-				if (elementTop < window.innerHeight && elementBottom >= 0) {
-					setShow(true);
-				}
-			}
-		};
-
-		window.addEventListener("scroll", handleScroll);
-
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, []);
-
-	return(
-		<div ref={elementRef} className={`${styles["fade-in"]} ${show ? styles.active : ""}`}>
+export const Growth: FC = () => {
+	return (
+		<div className="flex flex-col justify-center items-center h-full">
 			<section className="pt-16 pb-20" id="key-features">
-				<div className="container overflow-hidden">
+				<div className="container">
 					<div className="flex flex-wrap items-center mb-12">
 						<div className="w-full lg:w-1/2 mb-6 lg:mb-0">
 							<h2
-								className="text-4xl p-4 font-bold font-heading wow animate__animated animate__fadeIn"
+								className="text-4xl font-bold font-heading wow animate__animated animate__fadeIn"
 								data-wow-delay=".1s"
 							>
 								<span>Solutions for </span>
@@ -49,7 +25,7 @@ export const Solution : FC = () =>{
 						</div>
 						<div className="w-full lg:w-1/2">
 							<p
-								className="lg:pl-16 text-blueGray-400 p-4 leading-loose wow animate__animated animate__fadeIn"
+								className="lg:pl-16 text-blueGray-400 leading-loose wow animate__animated animate__fadeIn"
 								data-wow-delay=".4s"
 							>
                   Skill development and training helps instill
@@ -199,6 +175,6 @@ export const Solution : FC = () =>{
 				</div>
 			</section>
 		</div>
+		
 	);
 };
-

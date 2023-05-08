@@ -12,7 +12,6 @@ import { CategorySearch } from "./Categorysearch";
 import { HeroAI } from "./HeroAI";
 import { NewResourceFrom } from "./Forms";
 import { FreeSourcesList } from "./FreeSourcesList";
-import { Growth } from "./Growth";
-import { Solution } from "./Solution";
+import { Growth, Solution } from "./Sections";
 
 export {Layout, Hero, FeaturedPosts, HeadBasePage, MainNavigation, BlogPosts, PostContent, PostHeader, ContactForm, Subscribe, Footer,  CategorySearch, HeroAI, NewResourceFrom, FreeSourcesList, Growth, Solution };
