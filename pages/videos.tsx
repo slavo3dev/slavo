@@ -3,7 +3,7 @@ import { Card } from "../components";
 
 const Videos: NextPage = () => {
 	return (
-		<div>
+		<div className="p-8">
 			<div><h1 className="text-3xl  ml-6 font-bold font-family-jakarta text-black">Free Code Camp</h1>
 				<Card/>
 			</div>
