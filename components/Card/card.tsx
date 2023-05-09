@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { cardTypes } from "@/lib/types";
 
-export const Card : FC<cardTypes> = ({imgUrl,title,name,id})=>{
+export const Card : FC<cardTypes> = ({imgUrl,title,name})=>{
 
 
  

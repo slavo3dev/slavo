@@ -7,9 +7,10 @@ interface ObjectVideoType {
     }
 }
 export const getVideos: getVideosType = (channel)=>{
-	const channelType = channel ? channel : "channelTwo";
+	const channelType = channel ? channel : "channelOne";
 	return data[channelType as keyof ObjectVideoType].items.map(
 		(item:{
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         id:any
         snippet:{
             thumbnails:{high:{url:string}}

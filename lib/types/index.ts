@@ -45,7 +45,7 @@ export interface TitleProps
 }
 export type cardTypes= {
 	imgUrl:string,
-    id:object
+    id:object,
 	title:string,
 	name:string,
 	
@@ -56,3 +56,10 @@ export type getVideosType = (channel:string)=>{
     channelName:string,
     id:string
 }[];
+
+export type VideoType={
+    imgUrl:string,
+    title:string,
+    channelName:string,
+    id:string
+}
