@@ -43,7 +43,7 @@ export const PostContent: FC<PostContentDataType> = ({ post }) =>
 
 		code(code: any) {
 			const { className, children } = code;
-			const language = className.split("-")[1]; // className is something like language-js => We need the "js" part here
+			const language = className ? className.split("-")[1] : "js"; // className is something like language-js => We need the "js" part here
 			return (
 				<SyntaxHighlighter
 					style={atomDark}
@@ -67,9 +67,9 @@ export const PostContent: FC<PostContentDataType> = ({ post }) =>
 	return (
 		<article className={classes.content}>
 			<PostHeader title={ post.title } imgSrc={ imgPath } />
-			<div className="prose lg:prose-xl">
+			<article className="prose lg:prose-xl">
 				<ReactMarkdown remarkPlugins={ [ remarkGfm ] } components={ customRenderers } linkTarget='_blank'>{post.content}</ReactMarkdown>
-			</div>
+			</article>
 		</article>
 	);
 };
