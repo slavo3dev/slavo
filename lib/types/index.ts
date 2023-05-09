@@ -43,3 +43,9 @@ export interface TitleProps
 {
     title: string
 }
+export interface cardTypes{
+	imgUrl:string,
+	title:string,
+	name:string,
+	id:string
+}
