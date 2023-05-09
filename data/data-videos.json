@@ -1,0 +1,2583 @@
+{
+    "channelOne":{
+        
+  "kind": "youtube#searchListResponse",
+  "etag": "exavlYP2U2LxS7o3KCDMBkgxCVE",
+  "nextPageToken": "CBkQAA",
+  "regionCode": "US",
+  "pageInfo": {
+    "totalResults": 198933,
+    "resultsPerPage": 25
+  },
+  "items": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "rFKSlX-oXxbAab0VIQsw_8Hz96Q",
+      "id": {
+        "kind": "youtube#channel",
+        "channelId": "UCBVCi5JbYmfG3q5MEuoWdOw"
+      },
+      "snippet": {
+        "publishedAt": "2012-02-02T20:15:39Z",
+        "channelId": "UCBVCi5JbYmfG3q5MEuoWdOw",
+        "title": "Udacity",
+        "description": "Udacity is your destination for building in-demand skills for the careers of today and tomorrow. Our curriculum is co-created with ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://yt3.ggpht.com/nFftJEiVxwRTL9OPe2bncvKgOIlYytuHImJCFFrSEmCUTbisGew0MaFoGo8zfVpDMAXEfRSjjQ=s88-c-k-c0xffffffff-no-rj-mo"
+          },
+          "medium": {
+            "url": "https://yt3.ggpht.com/nFftJEiVxwRTL9OPe2bncvKgOIlYytuHImJCFFrSEmCUTbisGew0MaFoGo8zfVpDMAXEfRSjjQ=s240-c-k-c0xffffffff-no-rj-mo"
+          },
+          "high": {
+            "url": "https://yt3.ggpht.com/nFftJEiVxwRTL9OPe2bncvKgOIlYytuHImJCFFrSEmCUTbisGew0MaFoGo8zfVpDMAXEfRSjjQ=s800-c-k-c0xffffffff-no-rj-mo"
+          }
+        },
+        "channelTitle": "Udacity",
+        "liveBroadcastContent": "upcoming",
+        "publishTime": "2012-02-02T20:15:39Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "1cUjrFPdU6OY-pZCNcI3V1Pb8Ts",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "h1nJzHyPwEU"
+      },
+      "snippet": {
+        "publishedAt": "2021-01-16T16:50:27Z",
+        "channelId": "UCj7-YVdH-juafmXgzfKk2pw",
+        "title": "Udacity Review: Is Udacity worth it in 2023? (Nanodegree)",
+        "description": "Learn full-stack development, React and more at Zero to Mastery: https://bit.ly/3t2R29a (affiliate) Use promo code FRIENDS10 for ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/h1nJzHyPwEU/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/h1nJzHyPwEU/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/h1nJzHyPwEU/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Tech Course Review",
+        "liveBroadcastContent": "none",
+        "publishTime": "2021-01-16T16:50:27Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "HnYlA8scboBKiyfHvaxFIjRLZII",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "gqpdm8zBFwA"
+      },
+      "snippet": {
+        "publishedAt": "2021-09-07T12:30:21Z",
+        "channelId": "UCCOjllUE1cOkfQt-wEQdzPA",
+        "title": "Is Udacity Nanodegree Worth It?",
+        "description": "If you're thinking about paying for Udacity Nanodegree in 2022, especially the React course, watch this video! I am sharing my ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/gqpdm8zBFwA/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/gqpdm8zBFwA/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/gqpdm8zBFwA/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "codeEV",
+        "liveBroadcastContent": "none",
+        "publishTime": "2021-09-07T12:30:21Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "GltZCbhnAIu0HbyZbdNxvl8acfE",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "njw0V4yW3PM"
+      },
+      "snippet": {
+        "publishedAt": "2021-12-12T15:29:04Z",
+        "channelId": "UCJublDh2UsiIKsAE1553miw",
+        "title": "Udacity Data Scientist Nanodegree Review",
+        "description": "Links on this page my give me a small commission from purchases made - thank you for the support!) Looking to Become a Data ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/njw0V4yW3PM/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/njw0V4yW3PM/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/njw0V4yW3PM/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Greg Hogg",
+        "liveBroadcastContent": "none",
+        "publishTime": "2021-12-12T15:29:04Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "mMpnEkFRbtW6YNaL_US7NVU62z4",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "PH4cGOIYLHk"
+      },
+      "snippet": {
+        "publishedAt": "2020-07-28T23:24:53Z",
+        "channelId": "UCv5u07SgDieTKH4YiXfZpVg",
+        "title": "Is the Machine Learning Engineer Nanodegree from Udacity worth it?",
+        "description": "GitHub: https://github.com/ollegreen/ Twitch: https://www.twitch.tv/ml_olle Cheers. Olle - 奥利. Gear: iPad: iPad Pro 11” 2018 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/PH4cGOIYLHk/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/PH4cGOIYLHk/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/PH4cGOIYLHk/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Olle Green",
+        "liveBroadcastContent": "none",
+        "publishTime": "2020-07-28T23:24:53Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "ZZJAC_mKk2TaAd_KPHY09CSZvqk",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "16UbkOCZeek"
+      },
+      "snippet": {
+        "publishedAt": "2020-08-03T16:00:00Z",
+        "channelId": "UC_CWq39fcBPCmgKYZ0yProg",
+        "title": "Are Udacity Nanodegrees Worth It? #selftaughtdev #Udacity",
+        "description": "Want To Become A Developer? Checkout The Courses Here And Get Started - https://courses.selftaught-dev.com/ Join Discord ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/16UbkOCZeek/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/16UbkOCZeek/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/16UbkOCZeek/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "SelfTaughtDev",
+        "liveBroadcastContent": "none",
+        "publishTime": "2020-08-03T16:00:00Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "plMkRKNZBg_9mIQ0AEN1bbe6Htw",
+      "id": {
+        "kind": "youtube#playlist",
+        "playlistId": "PLAwxTw4SYaPkQXg8TkVdIvYv4HfLG7SiH"
+      },
+      "snippet": {
+        "publishedAt": "2015-03-17T07:41:45Z",
+        "channelId": "UCBVCi5JbYmfG3q5MEuoWdOw",
+        "title": "Intro to Machine Learning",
+        "description": "These videos are part of an online course, Intro to Machine Learning. Check out the course here: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/ICKBWIkfeJ8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/ICKBWIkfeJ8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/ICKBWIkfeJ8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Udacity",
+        "liveBroadcastContent": "none",
+        "publishTime": "2015-03-17T07:41:45Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "dbxS4W11VSHomACLYOrWxiMr16Q",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "A4CWbNmQX-E"
+      },
+      "snippet": {
+        "publishedAt": "2016-08-08T21:46:42Z",
+        "channelId": "UCBVCi5JbYmfG3q5MEuoWdOw",
+        "title": "Udacity: Introduction",
+        "description": "Check out all of Udacity's courses at https://www.udacity.com/courses.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/A4CWbNmQX-E/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/A4CWbNmQX-E/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/A4CWbNmQX-E/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Udacity",
+        "liveBroadcastContent": "none",
+        "publishTime": "2016-08-08T21:46:42Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "Q_Nq68H2RRnCOKqOkrq4ebFgRbs",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "Mu7lB13Cu2c"
+      },
+      "snippet": {
+        "publishedAt": "2020-08-19T03:59:00Z",
+        "channelId": "UCDHJAWoXqsN6ZuFfSuJknoA",
+        "title": "Data Science Degree VS Self Teaching VS Coursera/Udemy/Udacity",
+        "description": "In this video I compare and contrast 3 different ways to getting the education needed to become a Data Scientist: Getting a ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/Mu7lB13Cu2c/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/Mu7lB13Cu2c/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/Mu7lB13Cu2c/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "DataMike",
+        "liveBroadcastContent": "none",
+        "publishTime": "2020-08-19T03:59:00Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "SQyggX5LTee3wyBWOU98WBD_sCQ",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "UweEvRBg4BY"
+      },
+      "snippet": {
+        "publishedAt": "2022-11-20T15:30:09Z",
+        "channelId": "UCHkehWk14-tolwnJ92_vKeQ",
+        "title": "Udacity Nanodegree Courses are now FREE!! 🆓 Free Certificates🏅 Limited Time Offer!! ⏰",
+        "description": "Get Udacity nanodegree programs and courses for free with Bertelsmann Next Generation Tech Booster Scholarship Program.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/UweEvRBg4BY/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/UweEvRBg4BY/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/UweEvRBg4BY/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "answersQ",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-11-20T15:30:09Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "CjRGhz9sezW95ly5gjN3ixxi2GY",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "dkH_9LgCY6I"
+      },
+      "snippet": {
+        "publishedAt": "2012-04-30T19:58:12Z",
+        "channelId": "UCBVCi5JbYmfG3q5MEuoWdOw",
+        "title": "Working at Udacity",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/dkH_9LgCY6I/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/dkH_9LgCY6I/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/dkH_9LgCY6I/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Udacity",
+        "liveBroadcastContent": "none",
+        "publishTime": "2012-04-30T19:58:12Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "0JI1HrzoUCSvWdAJxIYQ0rKSokM",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "vbC7Us1DArs"
+      },
+      "snippet": {
+        "publishedAt": "2021-07-28T09:21:58Z",
+        "channelId": "UC68KSmHePPePCjW4v57VPQg",
+        "title": "This great Udacity python course is free",
+        "description": "This is an excellent intermediate python course from Udacity. It' free, enjoy it and let me know how you get on! Here's the link: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/vbC7Us1DArs/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/vbC7Us1DArs/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/vbC7Us1DArs/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Python Programmer",
+        "liveBroadcastContent": "none",
+        "publishTime": "2021-07-28T09:21:58Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "sv4b6FyVrnQfrnZEw18l1VXdxr8",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "6cvu-Dbluv0"
+      },
+      "snippet": {
+        "publishedAt": "2022-01-27T12:58:26Z",
+        "channelId": "UCNhc4DVxorOxp-YZ6xN2Sdw",
+        "title": "How to get  FREE courses from Udacity in  2022 | Edvicer",
+        "description": "How to get FREE courses from Udacity?✨ Search for the Course you are interested in on Edvicer. Choose “Udacity” and “Free” in ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/6cvu-Dbluv0/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/6cvu-Dbluv0/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/6cvu-Dbluv0/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Edvicer",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-01-27T12:58:26Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "nrtoJMt_92Tq9HKCMWsRns6Nufc",
+      "id": {
+        "kind": "youtube#playlist",
+        "playlistId": "PLAwxTw4SYaPkL1UHlnRRZB54C1Ii42E-L"
+      },
+      "snippet": {
+        "publishedAt": "2017-03-31T22:17:45Z",
+        "channelId": "UCBVCi5JbYmfG3q5MEuoWdOw",
+        "title": "Udacity Nanodegree Programs",
+        "description": "Check out some of our Nanodegree program offerings here and at udacity.com. How will you advance your career?",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/hGnoRYtaNVQ/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/hGnoRYtaNVQ/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/hGnoRYtaNVQ/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Udacity",
+        "liveBroadcastContent": "none",
+        "publishTime": "2017-03-31T22:17:45Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "bIUqx3yp_2WY6F-uRR_7sgdBnGY",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "bIeSvCjrZ18"
+      },
+      "snippet": {
+        "publishedAt": "2022-12-12T12:59:25Z",
+        "channelId": "UCBVCi5JbYmfG3q5MEuoWdOw",
+        "title": "Introducing the refreshed Data Engineering with AWS Nanodegree program",
+        "description": "Learn more: https://www.udacity.com/course/data-engineer-nanodegree--nd027 The data engineering field is expected to ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/bIeSvCjrZ18/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/bIeSvCjrZ18/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/bIeSvCjrZ18/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Udacity",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-12-12T12:59:25Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "coMe4c5AKspfGvy_yCAcjLaYHJo",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "GcKX4iffXR8"
+      },
+      "snippet": {
+        "publishedAt": "2020-12-23T22:04:39Z",
+        "channelId": "UCBVCi5JbYmfG3q5MEuoWdOw",
+        "title": "Udacity’s Intermediate Python Nanodegree Program",
+        "description": "Introducing the Intermediate Python Nanodegree Program from Udacity! Learn more ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/GcKX4iffXR8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/GcKX4iffXR8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/GcKX4iffXR8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Udacity",
+        "liveBroadcastContent": "none",
+        "publishTime": "2020-12-23T22:04:39Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "-vfYXpE8WnQPrLfN_4vBKTISCUQ",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "FKcIJkTA3GI"
+      },
+      "snippet": {
+        "publishedAt": "2016-06-06T17:41:55Z",
+        "channelId": "UCBVCi5JbYmfG3q5MEuoWdOw",
+        "title": "Introduction to Udacity Data Analyst Nanodegree Program",
+        "description": "What do you learn as a part of Udacity's Data Analyst Nanodegree program? Check out! Enroll Now in our Data Analyst ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/FKcIJkTA3GI/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/FKcIJkTA3GI/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/FKcIJkTA3GI/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Udacity",
+        "liveBroadcastContent": "none",
+        "publishTime": "2016-06-06T17:41:55Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "MVd02SJTxISB7Hl8PyscvprtS7c",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "1WKql96ucVs"
+      },
+      "snippet": {
+        "publishedAt": "2020-03-05T20:00:00Z",
+        "channelId": "UCBVCi5JbYmfG3q5MEuoWdOw",
+        "title": "Introducing the Product Manager Nanodegree Program from Udacity",
+        "description": "Learn more about the Product Manager Nanodegree program here: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/1WKql96ucVs/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/1WKql96ucVs/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/1WKql96ucVs/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Udacity",
+        "liveBroadcastContent": "none",
+        "publishTime": "2020-03-05T20:00:00Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "cxjtoKfi7in2uvzEz3eyAZwON8U",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "lif9xsTQfmE"
+      },
+      "snippet": {
+        "publishedAt": "2020-01-23T22:08:52Z",
+        "channelId": "UCBVCi5JbYmfG3q5MEuoWdOw",
+        "title": "Introducing Udacity&#39;s Intro to Machine Learning with TensorFlow Nanodegree Program",
+        "description": "Learn more about Udacity's Intro to Machine Learning with TensorFlow Nanodegree program: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/lif9xsTQfmE/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/lif9xsTQfmE/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/lif9xsTQfmE/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Udacity",
+        "liveBroadcastContent": "none",
+        "publishTime": "2020-01-23T22:08:52Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "XFYOAmxWVTVfsbw0qQWIqtiiTUU",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "TNLya3bV-U8"
+      },
+      "snippet": {
+        "publishedAt": "2020-05-05T17:00:14Z",
+        "channelId": "UCBVCi5JbYmfG3q5MEuoWdOw",
+        "title": "Introducing the AWS Cloud Architect Nanodegree Program from Udacity",
+        "description": "Learn more: https://www.udacity.com/course/aws-cloud-architect-nanodegree--nd063 Lead your organization's cloud computing ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/TNLya3bV-U8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/TNLya3bV-U8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/TNLya3bV-U8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Udacity",
+        "liveBroadcastContent": "none",
+        "publishTime": "2020-05-05T17:00:14Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "s0XDiVL_Zwu-NhfxEGXmEV0VGJQ",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "y7fB23i2E98"
+      },
+      "snippet": {
+        "publishedAt": "2020-08-17T13:50:02Z",
+        "channelId": "UCBm0hPI-ykEloE6c8Tf15Vw",
+        "title": "UDACITY Nanodegree Free Courses | Udacity Free Courses | 100% Working Method To Learn New Skills",
+        "description": "UDACITY Nanodegree Courses For Free | Udacity Free Courses | 100% Working Method To Learn New Skills ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/y7fB23i2E98/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/y7fB23i2E98/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/y7fB23i2E98/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Tricky Man",
+        "liveBroadcastContent": "none",
+        "publishTime": "2020-08-17T13:50:02Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "4vA3033RtMKVlJHbfudX-lyCL54",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "2i9k3dgVLp0"
+      },
+      "snippet": {
+        "publishedAt": "2020-05-27T15:33:59Z",
+        "channelId": "UCBVCi5JbYmfG3q5MEuoWdOw",
+        "title": "Data Engineer Nanodegree Program from Udacity",
+        "description": "Learn More: https://www.udacity.com/course/data-engineer-nanodegree--nd027 Data Engineering is the foundation for the new ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/2i9k3dgVLp0/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/2i9k3dgVLp0/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/2i9k3dgVLp0/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Udacity",
+        "liveBroadcastContent": "none",
+        "publishTime": "2020-05-27T15:33:59Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "-Rf_ez9PMT_w6XmGm5DeMoVu1R4",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "pM8GVplxhDk"
+      },
+      "snippet": {
+        "publishedAt": "2021-10-21T00:38:42Z",
+        "channelId": "UCB88yR5AsiIfNGjsfvjCn1A",
+        "title": "Udacity  Cybersecurity Analyst Nanodegree Review",
+        "description": "To join a community and get your questions answered, about upskilling into tech - check out ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/pM8GVplxhDk/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/pM8GVplxhDk/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/pM8GVplxhDk/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nicole Enesse",
+        "liveBroadcastContent": "none",
+        "publishTime": "2021-10-21T00:38:42Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "jDeQk5xoWru9hDQ1G5GLzxc5Tzk",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "rsPuayaIZ9s"
+      },
+      "snippet": {
+        "publishedAt": "2016-04-28T04:11:47Z",
+        "channelId": "UCBVCi5JbYmfG3q5MEuoWdOw",
+        "title": "Product Design Course Introduction | Udacity",
+        "description": "Learn Product Design with Udacity and Google in our free Product Design course. http://bit.ly/Product-Design-Course Built in ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/rsPuayaIZ9s/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/rsPuayaIZ9s/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/rsPuayaIZ9s/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Udacity",
+        "liveBroadcastContent": "none",
+        "publishTime": "2016-04-28T04:11:47Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "RgHzBGvVk6PeWrl7_9eumgthMdE",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "VQ1bggRZJJQ"
+      },
+      "snippet": {
+        "publishedAt": "2015-06-29T23:16:01Z",
+        "channelId": "UCBVCi5JbYmfG3q5MEuoWdOw",
+        "title": "How Udacity Student Kelly Landed an Engineering Job at Google",
+        "description": "Kelly Marchisio was spurred by an interest in programming after taking an Intro to CS class before working in customer service at ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/VQ1bggRZJJQ/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/VQ1bggRZJJQ/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/VQ1bggRZJJQ/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Udacity",
+        "liveBroadcastContent": "none",
+        "publishTime": "2015-06-29T23:16:01Z"
+      }
+    }
+  ]
+},
+"channelTwo":{
+
+  "kind": "youtube#searchListResponse",
+  "etag": "RMnU_nCSsHPykrILnPk2E8mvHHo",
+  "nextPageToken": "CBkQAA",
+  "regionCode": "US",
+  "pageInfo": {
+    "totalResults": 1514,
+    "resultsPerPage": 25
+  },
+  "items": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "JNGWRN9AnsQ6XwDRyL2AL4fsiaA",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "8IOHjh3VQMU"
+      },
+      "snippet": {
+        "publishedAt": "2023-01-24T17:11:22Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "Webhooks Explained with a Roadtrip #shorts",
+        "description": "Watch the full course: https://www.youtube.com/watch?v=41NOoEz3Tzc.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/8IOHjh3VQMU/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/8IOHjh3VQMU/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/8IOHjh3VQMU/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-01-24T17:11:22Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "7X8Le5LRObHO9M5quU6lx7YZ4Rk",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "8ubmqUL3KR8"
+      },
+      "snippet": {
+        "publishedAt": "2023-01-31T16:22:51Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "How to Use Google Fonts #shorts",
+        "description": "Learn full stack web development: https://www.youtube.com/watch?v=nu_pCVPKzTk.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/8ubmqUL3KR8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/8ubmqUL3KR8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/8ubmqUL3KR8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-01-31T16:22:51Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "gXa6VdO0GhqAMClFXraxD9J_CYw",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "BRiNw490Eq0"
+      },
+      "snippet": {
+        "publishedAt": "2023-01-09T14:38:03Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "Google Like a Pro – All Advanced Search Operators Tutorial [2023 Tips]",
+        "description": "Learn how to become more effective at searching the web! In this video, student Seth Goldin discusses how Google works, how to ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/BRiNw490Eq0/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/BRiNw490Eq0/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/BRiNw490Eq0/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-01-09T14:38:03Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "lwlB6gSSOoPdiH7CPtri2reJfow",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "1qw5ITr3k9E"
+      },
+      "snippet": {
+        "publishedAt": "2023-03-29T14:26:46Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "Software Engineering Job Interview – Full Mock Interview",
+        "description": "Technical programming interviews are challenging, but being able to do well is what lands you a job at a top tech company.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/1qw5ITr3k9E/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/1qw5ITr3k9E/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/1qw5ITr3k9E/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-03-29T14:26:46Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "yjwOnM6rG6nJACPxGKB9zQqzz-k",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "m8Icp_Cid5o"
+      },
+      "snippet": {
+        "publishedAt": "2023-01-12T15:35:39Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "System Design for Beginners Course",
+        "description": "This course is a detailed introduction to system design for software developers and engineers. Building large-scale distributed ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/m8Icp_Cid5o/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/m8Icp_Cid5o/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/m8Icp_Cid5o/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-01-12T15:35:39Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "pAkpSrs_8O1iCAHMJI1W6S641Go",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "9FwhRztQNLg"
+      },
+      "snippet": {
+        "publishedAt": "2023-01-27T15:12:48Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "Using map() in Python #shorts",
+        "description": "Watch the full Python course: https://www.youtube.com/watch?v=eWRfhZUzrAc.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/9FwhRztQNLg/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/9FwhRztQNLg/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/9FwhRztQNLg/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-01-27T15:12:48Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "cH9X9hkPax6vR69lDhLrZgDNtvA",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "1hG0i9dQXeg"
+      },
+      "snippet": {
+        "publishedAt": "2023-02-03T16:37:12Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "Passwords in HTML #shorts",
+        "description": "Learn more about HTML with this crash course: https://www.youtube.com/watch?v=916GWv2Qs08.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/1hG0i9dQXeg/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/1hG0i9dQXeg/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/1hG0i9dQXeg/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-02-03T16:37:12Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "Lk0ALbQPLuCYJ2OG10qLfQFILaQ",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "sD468LfeVdc"
+      },
+      "snippet": {
+        "publishedAt": "2023-03-13T14:00:57Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "Data Science Job Interview – Full Mock Interview",
+        "description": "This full-length interview will show you what a data science interview is like. This is a great video for anyone currently in the ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/sD468LfeVdc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/sD468LfeVdc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/sD468LfeVdc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-03-13T14:00:57Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "hDNm1Yn6tZOqPkcSA4UWwDZxhzw",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "eWRfhZUzrAc"
+      },
+      "snippet": {
+        "publishedAt": "2022-08-09T12:54:23Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "Python for Beginners – Full Course [Programming Tutorial]",
+        "description": "Learn the Python programming language in this full course for beginners! You will learn the fundamentals of Python and code two ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/eWRfhZUzrAc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/eWRfhZUzrAc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/eWRfhZUzrAc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-08-09T12:54:23Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "DYxrEpv4NhsmbM3J8TFf6DHK8N4",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "gyMwXuJrbJQ"
+      },
+      "snippet": {
+        "publishedAt": "2022-05-26T18:59:22Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "Learn Blockchain, Solidity, and Full Stack Web3 Development with JavaScript – 32-Hour Course",
+        "description": "This course will give you a full introduction into all of the core concepts related to blockchain, smart contracts, Solidity, ERC20s, ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/gyMwXuJrbJQ/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/gyMwXuJrbJQ/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/gyMwXuJrbJQ/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-05-26T18:59:22Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "d7M53s2m8EkRTsH60Auqa5K5iR8",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "zJSY8tbf_ys"
+      },
+      "snippet": {
+        "publishedAt": "2022-08-24T13:07:36Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "Frontend Web Development Bootcamp Course (JavaScript, HTML, CSS)",
+        "description": "Learn JavaScript, HTML, and CSS in this Frontend Web Development course. In this massive course, you will go from no coding ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/zJSY8tbf_ys/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/zJSY8tbf_ys/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/zJSY8tbf_ys/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-08-24T13:07:36Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "wuJ1ZACh8ngiXYUYGpZHDXseLu4",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "i_LwzRVP7bg"
+      },
+      "snippet": {
+        "publishedAt": "2022-09-26T16:00:28Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "Machine Learning for Everybody – Full Course",
+        "description": "Learn Machine Learning in a way that is accessible to absolute beginners. You will learn the basics of Machine Learning and how ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/i_LwzRVP7bg/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/i_LwzRVP7bg/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/i_LwzRVP7bg/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-09-26T16:00:28Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "zhi8sMBM5Cenp2UvU2ggoZOvHig",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "WXsD0ZgxjRw"
+      },
+      "snippet": {
+        "publishedAt": "2023-02-06T15:53:28Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "APIs for Beginners 2023 - How to use an API (Full Course / Tutorial)",
+        "description": "What is an API? Learn all about APIs (Application Programming Interfaces) in this full tutorial for beginners. You will learn what ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/WXsD0ZgxjRw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/WXsD0ZgxjRw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/WXsD0ZgxjRw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-02-06T15:53:28Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "EKkCc5GAP6xVw36VRYEyXz6TT-0",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "PXMJ6FS7llk"
+      },
+      "snippet": {
+        "publishedAt": "2022-06-20T15:24:45Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "Automate with Python – Full Course for Beginners",
+        "description": "Learn how to automate your life with Python! You will learn how to automate boring and repetitive tasks such as creating an Excel ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/PXMJ6FS7llk/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/PXMJ6FS7llk/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/PXMJ6FS7llk/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-06-20T15:24:45Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "7nYOZTziE2QIYLGFXhJojWtYC3E",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "0n809nd4Zu4"
+      },
+      "snippet": {
+        "publishedAt": "2022-05-27T13:21:56Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "Build a Chrome Extension – Course for Beginners",
+        "description": "Learn how to create a Chrome browser extension using JavaScript and the new iteration of the web extensions platform, called ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/0n809nd4Zu4/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/0n809nd4Zu4/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/0n809nd4Zu4/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-05-27T13:21:56Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "CHuzmltkoCe3dWUcIr0gZsuFNaY",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "5fb2aPlgoys"
+      },
+      "snippet": {
+        "publishedAt": "2022-07-07T13:04:56Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "JavaScript DOM Manipulation – Full Course for Beginners",
+        "description": "Learn about JavaScript DOM manipulation in this beginner's tutorial. This is when you use JavaScript to add, remove, and modify ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/5fb2aPlgoys/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/5fb2aPlgoys/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/5fb2aPlgoys/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-07-07T13:04:56Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "LuU0uw4cukTYyXs1iKCxaBtKfB8",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "V53AHWun17s"
+      },
+      "snippet": {
+        "publishedAt": "2022-06-29T14:32:09Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "Learn Terraform with Azure by Building a Dev Environment – Full Course for Beginners",
+        "description": "This project will guide you through Terraform basics as you utilize Visual Studio Code (on Windows, Mac, or Linux!) to deploy ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/V53AHWun17s/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/V53AHWun17s/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/V53AHWun17s/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-06-29T14:32:09Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "tflbnob7uwyFupaR8SpL4Y1cjDY",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "Rs_rAxEsAvI"
+      },
+      "snippet": {
+        "publishedAt": "2022-05-12T14:22:50Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "Self-Driving Car with JavaScript Course – Neural Networks and Machine Learning",
+        "description": "Learn how to create a neural network using JavaScript with no libraries. In this course you will learn to make a self-driving car ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/Rs_rAxEsAvI/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/Rs_rAxEsAvI/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/Rs_rAxEsAvI/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-05-12T14:22:50Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "cRre4F68KmGv7Mib_xhnseeqhFM",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "7f50sQYjNRA"
+      },
+      "snippet": {
+        "publishedAt": "2022-11-30T14:08:35Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "MATLAB Crash Course for Beginners",
+        "description": "Learn the fundametnals of MATLAB in this tutorial for engineers, scientists, and students. MATLAB is a programming language ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/7f50sQYjNRA/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/7f50sQYjNRA/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/7f50sQYjNRA/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-11-30T14:08:35Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "Qc_qjAoZ5WpLVXtKDQWnA5LnnjM",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "nu_pCVPKzTk"
+      },
+      "snippet": {
+        "publishedAt": "2022-11-01T16:39:15Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "Full Stack Web Development for Beginners (Full Course on HTML, CSS, JavaScript, Node.js, MongoDB)",
+        "description": "Learn full-stack web development in this full course for beginners. First, you will learn the basics of HTML, CSS, and JavaScript.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/nu_pCVPKzTk/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/nu_pCVPKzTk/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/nu_pCVPKzTk/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-11-01T16:39:15Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "kOwCMfBHQnIPnVHj50g09X4enuw",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "BUjdnxgBgzM"
+      },
+      "snippet": {
+        "publishedAt": "2023-01-05T14:41:22Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "Music Production with FL Studio – Full Tutorial for Beginners",
+        "description": "Lean how to use FL Studio to produce music in this complete course for beginners. FL Studio is a complete software music ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/BUjdnxgBgzM/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/BUjdnxgBgzM/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/BUjdnxgBgzM/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-01-05T14:41:22Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "3yRqsWyuPELferYXVRb_j3uwmdk",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "f4idgaq2VqA"
+      },
+      "snippet": {
+        "publishedAt": "2022-09-16T13:56:37Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "Jenkins Tutorial – How to Deploy a Test Server with Docker + Linux (Full Course)",
+        "description": "Learn about Jenkins by building a CI/CD pipeline for a web application. Jenkins is an open source automation server which ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/f4idgaq2VqA/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/f4idgaq2VqA/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/f4idgaq2VqA/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-09-16T13:56:37Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "Mohu7jxDaNu6N9N_ikVQjvu7d_o",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "GFO_txvwK_c"
+      },
+      "snippet": {
+        "publishedAt": "2022-07-28T13:44:43Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "JavaScript Game Development Course for Beginners",
+        "description": "Learn to make 2D games with HTML, CSS & plain vanilla JavaScript, no frameworks and no libraries! From sprite animation to ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/GFO_txvwK_c/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/GFO_txvwK_c/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/GFO_txvwK_c/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-07-28T13:44:43Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "WDUSxHOij9iT5NWK5plpCzUvGls",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "OXGznpKZ_sA"
+      },
+      "snippet": {
+        "publishedAt": "2022-08-30T13:55:14Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "CSS Tutorial – Full Course for Beginners",
+        "description": "In this in-depth course, you will learn about all the key features of CSS. This is the most comprehensive CSS course we've ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/OXGznpKZ_sA/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/OXGznpKZ_sA/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/OXGznpKZ_sA/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-08-30T13:55:14Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "SYcBKvf66Ikq6zSh9dy5dK_txlc",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "2JYT5f2isg4"
+      },
+      "snippet": {
+        "publishedAt": "2023-01-30T15:11:51Z",
+        "channelId": "UC8butISFwT-Wl7EV0hUK0BQ",
+        "title": "Full HTTP Networking Course – Fetch and REST APIs in JavaScript",
+        "description": "Master the HTTP networking protocol by completing over 80 coding exercises and quizzes in JavaScript. Once you've learned it ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/2JYT5f2isg4/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/2JYT5f2isg4/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/2JYT5f2isg4/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "freeCodeCamp.org",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-01-30T15:11:51Z"
+      }
+    }
+  ]
+
+},
+"channelThree":{
+    
+  "kind": "youtube#searchListResponse",
+  "etag": "pYJyf57Cjlyhp1BmZ6obpAPi1jQ",
+  "nextPageToken": "CBkQAA",
+  "regionCode": "US",
+  "pageInfo": {
+    "totalResults": 619,
+    "resultsPerPage": 25
+  },
+  "items": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "_TQq_KsiwxbpKsRido2S3lI7Cdk",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "Nn-5dTtVqqk"
+      },
+      "snippet": {
+        "publishedAt": "2022-12-08T17:00:23Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "Intl.RelativeTimeFormat Is A Game Changer In JavaScript",
+        "description": "Blog Article: https://blog.webdevsimplified.com/2020-07/relative-time-format Find Me Here: My Blog: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/Nn-5dTtVqqk/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/Nn-5dTtVqqk/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/Nn-5dTtVqqk/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-12-08T17:00:23Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "5A3aXV19hBcwicxGk1EMXfzdCYo",
+      "id": {
+        "kind": "youtube#channel",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw"
+      },
+      "snippet": {
+        "publishedAt": "2018-05-24T16:26:39Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "Web Dev Simplified",
+        "description": "Web Dev Simplified is all about teaching web development skills and techniques in an efficient and practical manner. If you are ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://yt3.ggpht.com/ytc/AGIKgqMNnqfr-tuqVi_0YLkfx3-FGohChjCaNTNguHzp=s88-c-k-c0xffffffff-no-rj-mo"
+          },
+          "medium": {
+            "url": "https://yt3.ggpht.com/ytc/AGIKgqMNnqfr-tuqVi_0YLkfx3-FGohChjCaNTNguHzp=s240-c-k-c0xffffffff-no-rj-mo"
+          },
+          "high": {
+            "url": "https://yt3.ggpht.com/ytc/AGIKgqMNnqfr-tuqVi_0YLkfx3-FGohChjCaNTNguHzp=s800-c-k-c0xffffffff-no-rj-mo"
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2018-05-24T16:26:39Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "DwVzJHhwxMzqeVpu4n3CsbhAdS4",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "3w2g50NojVQ"
+      },
+      "snippet": {
+        "publishedAt": "2022-06-09T16:00:04Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "N + 1 Queries: The Easiest Way To Improve Performance",
+        "description": "Full Blog Article: https://blog.webdevsimplified.com/2020-02/n-plus-one-query Find Me Here: My Blog: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/3w2g50NojVQ/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/3w2g50NojVQ/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/3w2g50NojVQ/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-06-09T16:00:04Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "A-osBxLL9irwOM2GvYjAs1FQVbQ",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "GiyPp5G9a7s"
+      },
+      "snippet": {
+        "publishedAt": "2022-08-11T16:00:17Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "3 More Amazing NPM Utility Libraries",
+        "description": "1. Axios: https://axios-http.com 2. Yargs: http://yargs.js.org 3. Just: https://anguscroll.com/just Find Me Here: My Blog: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/GiyPp5G9a7s/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/GiyPp5G9a7s/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/GiyPp5G9a7s/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-08-11T16:00:17Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "XI9vwpKrcq0sUmtxDQKI7DOHHE8",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "Wwn1L4kPPlM"
+      },
+      "snippet": {
+        "publishedAt": "2022-10-20T16:00:31Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "This New VSCode Feature Is Amazing For Large Files",
+        "description": "Find Me Here: My Blog: https://blog.webdevsimplified.com My Courses: https://courses.webdevsimplified.com Patreon: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/Wwn1L4kPPlM/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/Wwn1L4kPPlM/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/Wwn1L4kPPlM/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-10-20T16:00:31Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "YyAFO0y9FEjTBGFQZFqB450mprc",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "IQqpnu6AhE8"
+      },
+      "snippet": {
+        "publishedAt": "2022-11-17T17:00:26Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "This New CSS Feature Makes Media Queries So Much Easier",
+        "description": "Sorry about the bad audio quality. My computer changed my mic to use my webcam mic instead of my actual microphone. Find ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/IQqpnu6AhE8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/IQqpnu6AhE8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/IQqpnu6AhE8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-11-17T17:00:26Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "15pz1mdFqgKgBh8wCXLoHflxAsg",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "r92aHr752Bg"
+      },
+      "snippet": {
+        "publishedAt": "2023-04-20T16:00:39Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "How To Create ENV Variables In React",
+        "description": "Find Me Here: My Blog: https://blog.webdevsimplified.com My Courses: https://courses.webdevsimplified.com Patreon: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/r92aHr752Bg/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/r92aHr752Bg/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/r92aHr752Bg/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-04-20T16:00:39Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "bzTlQ-2B8biK1E1FeQmKNi43FWQ",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "7xLC2R6cJ08"
+      },
+      "snippet": {
+        "publishedAt": "2023-03-02T17:00:11Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "||=, &amp;&amp;=, And ??= Are Amazing In JS",
+        "description": "Find Me Here: My Blog: https://blog.webdevsimplified.com My Courses: https://courses.webdevsimplified.com Patreon: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/7xLC2R6cJ08/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/7xLC2R6cJ08/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/7xLC2R6cJ08/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-03-02T17:00:11Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "wSoMzmgDV_zOKYqajEj6B7i5Ops",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "3G8MC7DsP4o"
+      },
+      "snippet": {
+        "publishedAt": "2022-10-27T16:00:03Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "This CSS Feature Makes Specificity Errors Disappear",
+        "description": "Full Video: https://youtu.be/Pr1PezCc4FU Blog Article: https://blog.webdevsimplified.com/2022-04/css-cascade-layers Find Me ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/3G8MC7DsP4o/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/3G8MC7DsP4o/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/3G8MC7DsP4o/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-10-27T16:00:03Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "CChd82WpuSTC2VO_vBtDfJwSzPk",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "H-FeuIKvHS4"
+      },
+      "snippet": {
+        "publishedAt": "2022-12-15T17:00:08Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "How To Easily Format Currencies In JavaScript",
+        "description": "Find Me Here: My Blog: https://blog.webdevsimplified.com My Courses: https://courses.webdevsimplified.com Patreon: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/H-FeuIKvHS4/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/H-FeuIKvHS4/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/H-FeuIKvHS4/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-12-15T17:00:08Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "lp_ee9sLYDVqywbnEJxMO0Utj90",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "xXvImYER1G8"
+      },
+      "snippet": {
+        "publishedAt": "2023-02-16T17:00:45Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "Why Email Only Auth Is More Secure",
+        "description": "Full Video: https://youtu.be/b6qHfPdv4Y8 Find Me Here: My Blog: https://blog.webdevsimplified.com My Courses: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/xXvImYER1G8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/xXvImYER1G8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/xXvImYER1G8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-02-16T17:00:45Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "BlfiIMrRWZ5q29zOC26tSNKGvcU",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "Xrgddey8jcA"
+      },
+      "snippet": {
+        "publishedAt": "2022-11-03T16:00:18Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "Stop Using Create React App",
+        "description": "Sorry about the bad audio quality. My computer changed my mic to use my webcam mic instead of my actual microphone. Find ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/Xrgddey8jcA/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/Xrgddey8jcA/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/Xrgddey8jcA/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-11-03T16:00:18Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "dYsBXReeJSYJfCVkX6GZm3d7Bfw",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "SU93HIISz3k"
+      },
+      "snippet": {
+        "publishedAt": "2022-09-08T18:38:54Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "I Can&#39;t Believe I Never Knew These Input Properties",
+        "description": "Find Me Here: My Blog: https://blog.webdevsimplified.com My Courses: https://courses.webdevsimplified.com Patreon: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/SU93HIISz3k/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/SU93HIISz3k/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/SU93HIISz3k/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-09-08T18:38:54Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "f4pEmxPpKQi3kzi0BttVM-9prjw",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "exyS6XICGIk"
+      },
+      "snippet": {
+        "publishedAt": "2022-09-29T16:00:24Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "Why Should Every Site Have An Invisible Link",
+        "description": "Full Video: https://youtu.be/VUR0I5mqq7I Find Me Here: My Blog: https://blog.webdevsimplified.com My Courses: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/exyS6XICGIk/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/exyS6XICGIk/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/exyS6XICGIk/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-09-29T16:00:24Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "XxmgFrSHVul9CN7zaWjBgaLv9ss",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "W9hSL8gt7II"
+      },
+      "snippet": {
+        "publishedAt": "2022-05-12T16:00:13Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "Stop Using The &quot;!&quot; Bang Operator In JavaScript Unless You Know This",
+        "description": "Full Blog Article: https://blog.webdevsimplified.com/2022-04/stop-using-bang-operator Find Me Here: My Blog: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/W9hSL8gt7II/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/W9hSL8gt7II/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/W9hSL8gt7II/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-05-12T16:00:13Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "U5kklaqKefGvM50JdUFF1A58ouk",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "EHod_nIuz9c"
+      },
+      "snippet": {
+        "publishedAt": "2022-08-04T16:00:17Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "1 Million Subscriber Hair Tutorial",
+        "description": "Find Me Here: My Blog: https://blog.webdevsimplified.com My Courses: https://courses.webdevsimplified.com Patreon: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/EHod_nIuz9c/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/EHod_nIuz9c/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/EHod_nIuz9c/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-08-04T16:00:17Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "AJ9yw7g84IKQ-OFXXrFfVjjckxA",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "BNaPTkadnao"
+      },
+      "snippet": {
+        "publishedAt": "2022-11-10T17:00:12Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "This Is Why React Prints All Console Logs Twice",
+        "description": "Full Video: https://youtu.be/XUwzASyHr4Q Sorry about the bad audio quality. My computer changed my mic to use my webcam ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/BNaPTkadnao/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/BNaPTkadnao/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/BNaPTkadnao/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-11-10T17:00:12Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "t0uqanNi6DigTGM_BbDifvHxstY",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "jlvwSorkdIo"
+      },
+      "snippet": {
+        "publishedAt": "2022-09-22T17:58:00Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "This Advanced Flexbox Trick Is Amazing!",
+        "description": "Full Video: https://youtu.be/1zKX71GYisE Find Me Here: My Blog: https://blog.webdevsimplified.com My Courses: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/jlvwSorkdIo/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/jlvwSorkdIo/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/jlvwSorkdIo/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-09-22T17:58:00Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "zh9obGSWomImy0MXBR5Mptv43QY",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "ccg-erZYO4k"
+      },
+      "snippet": {
+        "publishedAt": "2023-05-04T16:00:33Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "This Extension Is A TypeScript Game Changer",
+        "description": "Find Me Here: My Blog: https://blog.webdevsimplified.com My Courses: https://courses.webdevsimplified.com Patreon: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/ccg-erZYO4k/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/ccg-erZYO4k/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/ccg-erZYO4k/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-05-04T16:00:33Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "Tx6RrL13VjcriG7BDvJpAG68Fos",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "4PZeIwXx1hc"
+      },
+      "snippet": {
+        "publishedAt": "2023-01-12T17:00:03Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "Maps Are A Game Changer For JavaScript",
+        "description": "Map Video: https://youtu.be/yJDofSGTSPQ?t=558 Find Me Here: My Blog: https://blog.webdevsimplified.com My Courses: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/4PZeIwXx1hc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/4PZeIwXx1hc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/4PZeIwXx1hc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-01-12T17:00:03Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "Ev3D1Td29jONOXeSjXNRhwioHYw",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "zpEyAOkytkU"
+      },
+      "snippet": {
+        "publishedAt": "2022-06-07T16:00:35Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "Learn useImperativeHandle In 10 Minutes",
+        "description": "FREE React Hooks Course: https://courses.webdevsimplified.com/react-hooks-simplified The useImperativeHandle hook is one of ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/zpEyAOkytkU/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/zpEyAOkytkU/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/zpEyAOkytkU/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-06-07T16:00:35Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "AIhzif9zRqNWQQunY9uYzItVsbY",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "XU2MxPWbvGM"
+      },
+      "snippet": {
+        "publishedAt": "2022-06-16T16:00:31Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "The attr CSS Function Is Incredible",
+        "description": "Full Blog Article: https://blog.webdevsimplified.com/2019-10/use-data-attributes-in-css Find Me Here: My Blog: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/XU2MxPWbvGM/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/XU2MxPWbvGM/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/XU2MxPWbvGM/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-06-16T16:00:31Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "HfBAs0kf7i0hZsJuc0bpoi3xd1o",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "416MT-VmJdI"
+      },
+      "snippet": {
+        "publishedAt": "2022-09-03T16:00:06Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "CSS Transform Is Dead! Use This Instead",
+        "description": "CSS is adding lots of new features and some of the smaller quality of life features they added recently were the addition of the ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/416MT-VmJdI/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/416MT-VmJdI/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/416MT-VmJdI/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-09-03T16:00:06Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "OY2JduQbT4Vbqv1UNA-Hq3QWWOA",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "EvfRXyKa_GI"
+      },
+      "snippet": {
+        "publishedAt": "2022-07-19T16:00:18Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "Learn JavaScript Hoisting In 5 Minutes",
+        "description": "JavaScript Simplified Course: https://javascriptsimplified.com Hoisting. It is the word everyone throws around when talking about ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/EvfRXyKa_GI/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/EvfRXyKa_GI/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/EvfRXyKa_GI/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-07-19T16:00:18Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "mC2mrZzwEPVTHI5qyfXEE6KFlGk",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "4ya4wpDgy_o"
+      },
+      "snippet": {
+        "publishedAt": "2022-07-23T16:00:03Z",
+        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
+        "title": "Can I Beat The King Of CSS Again? - CSS Battle",
+        "description": "This is for all the marbles. Kevin and I are going head to head in a CSS Battle to determine who is truly the King of CSS.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/4ya4wpDgy_o/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/4ya4wpDgy_o/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/4ya4wpDgy_o/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Web Dev Simplified",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-07-23T16:00:03Z"
+      }
+    }
+  ]
+
+
+}
+
+    }
