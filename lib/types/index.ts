@@ -43,9 +43,16 @@ export interface TitleProps
 {
     title: string
 }
-export interface cardTypes{
+export type cardTypes= {
 	imgUrl:string,
+    id:object
 	title:string,
 	name:string,
-	id:string
+	
 }
+export type getVideosType = (channel:string)=>{
+    imgUrl:string,
+    title:string,
+    channelName:string,
+    id:string
+}[];
