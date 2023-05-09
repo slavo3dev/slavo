@@ -3,9 +3,9 @@ import Link from "next/link";
 
 export const Solution : FC = () =>{
 	return(
-		<div className="flex flex-col justify-center items-center h-full">
+		<div className="flex flex-col bg-white justify-center items-center h-full p-8">
 			<section className="py-20" id="how-we-work">
-				<div className="container">
+				<div className="container overflow-hidden">
 					<div className="flex flex-wrap -mx-8">
 						<div className="w-full lg:w-1/2 px-8">
 							<div className="mb-12 lg:mb-0 pb-12 lg:pb-0 border-b lg:border-b-0">
