@@ -1,15 +1,17 @@
 import { VideoType } from "./types";
 import { getVideos } from "./videos";
-import { Card } from "../components";
-
+import { VideoCard } from "../components";
+import Link from "next/link";
+import testImage from "@/public/images/post-img/getting-started-nextjs.png";
 
 export const UdacitySection=()=>{
 
+	
 
 	const UdacityVideos: VideoType[]= getVideos("channelTwo");
 
 	return (
-		<div className="overflow-x-scroll w-screen flex flex-row">
+		<div className="w-screen flex flex-row">
 			{UdacityVideos.map((
 				video:{
                     id:string,
@@ -19,19 +21,22 @@ export const UdacitySection=()=>{
                 },
 				// eslint-disable-next-line @typescript-eslint/ban-types
 				idx:{},
-			)=>{
-				return(
-					<Card
-						id={idx}
-						key={video.id}
-						imgUrl={video.imgUrl}
-						title={video.title}
-						name={video.channelName}
-					/>
-				);
-			}          
+			) => 
+				<Link key={video.id + Math.random()} href={""}>
+					<>
+						<VideoCard
+							id={idx}
+							videoURL={`/video/${video.id}`}
+							key={video.id}
+							imgUrl={video.imgUrl}
+							title={video.title}
+							name={video.channelName}
+						/></>
+
+				</Link>       
 			)}
 		</div>
+
 	);
 
 };

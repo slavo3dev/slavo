@@ -48,6 +48,7 @@ export type cardTypes= {
     id:object,
 	title:string,
 	name:string,
+    videoURL:string;
 	
 }
 export type getVideosType = (channel:string)=>{
