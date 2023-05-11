@@ -131,7 +131,10 @@ function NewFactForm({ setPorchs, setShowForm }: any) {
 
 	return (
 		<>
-			{ responseUpdate ? <h2>{responseUpdate}</h2>
+			{ responseUpdate ? 
+				<>
+					<Loader title={responseUpdate} />
+				</>
 				: (
 					<form className='fact-form bg-sky-600' onSubmit={handleSubmit}>
 						<input
