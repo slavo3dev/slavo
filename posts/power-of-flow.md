@@ -2,7 +2,7 @@
 title: "Limitless Flow: Turbocharge Learning and Break Free from Stagnation"
 date: "2023-05-11"
 author: "Slavo"
-image: "flow-system.png"
+image: "flow.png"
 excerpt: "Flow, the psychological state characterized by deep concentration and immersion in an activity..."
 isFeatured: true
 category: "Self Help"
