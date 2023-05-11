@@ -1,5 +1,5 @@
 ---
-title: "Limitless Flow"
+title: "What is Recursive functions in JavaScript"
 date: "2023-05-11"
 author: "Slavo"
 image: "r-js.png"
