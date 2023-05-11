@@ -1,11 +1,11 @@
 ---
-title: 'Proof Of Ownership with NFT!!'
-date: '2022-10-14'
-author: 'Slavo'
-image: 'proof-of-ownership-post.png'
-excerpt: 'NFTs have been around since as early as 2012...'
-isFeatured: true
-category: 'Web_3.0'
+title: "Proof Of Ownership with NFT!!"
+date: "2022-10-14"
+author: "Slavo"
+image: "proof-of-ownership-post.png"
+excerpt: "NFTs have been around since as early as 2012..."
+isFeatured: false
+category: "Web_3.0"
 ---
 
 ### History?
@@ -26,7 +26,7 @@ NFT’s record prices are being reached for NFTs linked to different underlying 
 
 - NFT stands for “non-fungible token,” It can technically contain anything digital, including drawings, animated GIFs, songs, or items in video games. Non-fungible means it is individual.
 - NFTs are cryptographic assets on a blockchain with unique identification codes and metadata that distinguish them from each other. Unlike cryptocurrencies, they cannot be traded or exchanged at equivalency.
-How do NFT’s Work?
+  How do NFT’s Work?
 
 **NFTs are digital certificates**, or “tokens” stored on decentralized ledgers popularly referred to as the blockchain. NFTs use software code, referred to as “smart contracts,” to transfer the digital certificate of ownership, ensuring proof of ownership in the process. It also uses the blockchain to record transactions. Cryptocurrency creates interchangeable (or “fungible”) tokens; NFTs create unique, noninterchangeable “tokens” with distinct identifiers.
 
@@ -44,7 +44,7 @@ How do NFT’s Work?
 - Suppose you’re Marc, a talented comedian. You upload a new comedy talk show to YouTube, and it gets 1 million plays (a viral). Unfortunately Intermediaries take most of your earnings: YouTube only pays between $2000 and $4,000 for 1M views.
 - Intermediaries own your content rights: Like many new artists, you gave up your show’s rights to the record label. Without your show’s rights, you can’t even perform it live to fans without your label’s approval
 - Intermediaries control how many fans see your content: YouTube can change its discovery algorithms or even take down your content at any moment.
-Intermediaries help you create content, reach fans, and make money. But they also capture most of the value from your content. Even the real Joe Rogan had to re-record his show to own her show.
+  Intermediaries help you create content, reach fans, and make money. But they also capture most of the value from your content. Even the real Joe Rogan had to re-record his show to own her show.
 
 ### How can NFTs help YOU?
 

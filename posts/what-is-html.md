@@ -18,7 +18,7 @@ The DOM is a tree-like structure containing all web page elements arranged hiera
 
 Once the browser has created the DOM, it uses the CSS stylesheet to apply styles to the HTML elements, determining how the web page will look. Finally, the browser executes any JavaScript code included in the web page, adding interactivity and dynamic functionality to the page.
 
-\*\* Book Recomedation: [The Now Habit](https://amzn.to/3BaeO7d)
+\*\* Book Recomedation: [HTML & CSS](https://amzn.to/3BaeO7d)
 
 **_How Pages Load_**
 
@@ -45,6 +45,8 @@ When you enter a URL in your web browser, the browser sends a request to the ser
 The DOM is a tree-like structure containing all web page elements arranged hierarchically. Each HTML tag corresponds to a node in the DOM tree, with child nodes representing nested elements.
 
 Once the browser has created the DOM, it uses the CSS stylesheet to apply styles to the HTML elements, determining how the web page will look. Finally, the browser executes any JavaScript code included in the web page, adding interactivity and dynamic functionality to the page.
+
+\*\* Book Recomedation: [HTML and CSS](https://amzn.to/3BaeO7d)
 
 **_What is HTML5?_**
 
@@ -73,7 +75,7 @@ For example, using semantic elements such as **<header>** and **<footer>** can h
 
 Similarly, the use of structured data markup, which HTML5 supports, can help search engines understand the content of a web page and display relevant information in SERPs, such as star ratings, product prices, and event dates.
 
-Why is it essential to put a proper structure in your HTML code?
+**Why is it essential to put a proper structure in your HTML code?**
 
 Proper structure in your HTML code is essential because it makes your web pages more accessible, improves the user experience, and can help improve SEO.
 
@@ -85,4 +87,4 @@ Finally, a proper structure can help improve SEO by making it easier for search 
 
 HTML5 is an essential technology for web development and SEO. It provides improved support for multimedia content and improved semantics, making it easier for search engines to understand the scope of web pages. Proper structure in your HTML code is also essential, as it improves accessibility, user experience, and SEO. By using semantic elements and structured data markup, you can create web pages that are both user-friendly and search engine-friendly.
 
-\*\* Book Recomedation: [The Now Habit](https://amzn.to/3BaeO7d)
+\*\* Book Recomedation: [HTML and CSS](https://amzn.to/3BaeO7d)
