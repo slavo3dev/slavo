@@ -1,11 +1,14 @@
 import { NextPage } from "next";
 
-import { UdacitySection } from "@/lib/helperFunctions";
+import { VideoLine } from "@/lib/helperFunctions";
 
 
 const Videos: NextPage = () => {
 
-	const udacityVideos = UdacitySection();
+	const udacityVideos = VideoLine("channelOne");
+	const freeCodeCampVideos = VideoLine("channelTwo");
+	const webDevVideos = VideoLine("channelThree");
+
 	return (
 		<div className="p-8">
 			<div>
@@ -14,10 +17,10 @@ const Videos: NextPage = () => {
 				<div className="overflow-scroll overflow-y-hidden">{udacityVideos}</div>
 			</div>
 			<div><h1 className="text-3xl  ml-6 font-bold font-family-jakarta text-black">Udacity</h1>
-				<div className="overflow-scroll overflow-y-hidden">{udacityVideos}</div>
+				<div className="overflow-scroll overflow-y-hidden">{freeCodeCampVideos}</div>
 			</div>
-			<div ><h1 className="text-3xl  ml-6 font-bold font-family-jakarta text-black">WebDev Simplifier</h1>
-				<div className="overflow-scroll overflow-y-hidden">{udacityVideos}</div>
+			<div ><h1 className="text-3xl  ml-6 font-bold font-family-jakarta text-black">WebDev Simplified</h1>
+				<div className="overflow-scroll overflow-y-hidden">{webDevVideos}</div>
 			</div>
 		</div>
 	);

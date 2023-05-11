@@ -2,17 +2,15 @@ import { VideoType } from "./types";
 import { getVideos } from "./videos";
 import { VideoCard } from "../components";
 import Link from "next/link";
-import testImage from "@/public/images/post-img/getting-started-nextjs.png";
 
-export const UdacitySection=()=>{
+export const VideoLine=(channelLine:string)=>{
 
-	
 
-	const UdacityVideos: VideoType[]= getVideos("channelTwo");
+	const LineVideos: VideoType[]= getVideos(channelLine);
 
 	return (
 		<div className="w-screen flex flex-row">
-			{UdacityVideos.map((
+			{LineVideos.map((
 				video:{
                     id:string,
                     imgUrl:string,
@@ -22,18 +20,15 @@ export const UdacitySection=()=>{
 				// eslint-disable-next-line @typescript-eslint/ban-types
 				idx:{},
 			) => 
-				<Link key={video.id + Math.random()} href={""}>
-					<>
-						<VideoCard
-							id={idx}
-							videoURL={`/video/${video.id}`}
-							key={video.id}
-							imgUrl={video.imgUrl}
-							title={video.title}
-							name={video.channelName}
-						/></>
-
-				</Link>       
+				<>
+					<VideoCard
+						id={idx}
+						videoURL={`/video/${video.id}`}
+						key={video.id}
+						imgUrl={video.imgUrl}
+						title={video.title}
+						name={video.channelName}
+					/></>     
 			)}
 		</div>
 

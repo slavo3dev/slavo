@@ -21,8 +21,6 @@ export const VideoCard : FC<cardTypes> = ({imgUrl,title,name,videoURL})=>{
 							<p>{title}</p>
 						</span><p className="text-slate-400">{name}</p>
 					</div>
-
-					
 				</div>
 			</Link>
 		</>
