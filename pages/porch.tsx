@@ -3,13 +3,13 @@ import { useState, useEffect, Key } from "react";
 import type { NextPage } from "next";
 import supabase from "../lib/supabase";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { CATEGORIES, isValidHttpUrl } from "@/lib/constants";
+import { isValidHttpUrl } from "@/lib/constants";
 import { Loader } from "@/components/ui/Loader";
 
 
 const PorchPage: NextPage = () => {
 	const [showForm, setShowForm] = useState(false);
-	const [Porchs, setPorchs] = useState([]);
+	const [porchs, setPorchs] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
     
 	useEffect(
@@ -19,12 +19,12 @@ const PorchPage: NextPage = () => {
 
 				const query = supabase.from("porch").select("*");
 
-				const { data: Porchs, error }: any = await query
+				const { data: porchs, error }: any = await query
 					.order("excellent", { ascending: false })
 					.limit(1000);
 
-				console.log("Data: ", Porchs);
-				if (!error) setPorchs(Porchs);
+				console.log("Data: ", porchs);
+				if (!error) setPorchs(porchs);
 				else alert("There was a problem getting data");
 				setIsLoading(false);
 			}
@@ -34,28 +34,27 @@ const PorchPage: NextPage = () => {
 	);
 
 	return (
-		<div className="freeSourceContainer">
+		<div className="p-10 h-screen text-slate-800">
 			<Header showForm={showForm} setShowForm={setShowForm} />
 			{/* {showForm ? (
 				<NewFactForm setPorchs={setPorchs} setShowForm={setShowForm} />
 			) : null} */}
-			{true ? (
+			{showForm ? (
 				<NewFactForm setPorchs={setPorchs} setShowForm={setShowForm} />
 			) : null}
-			<main className='main'>
-				{isLoading ? (
-					<Loader title="Please Wiat... Loading..."/>
-				) : (
-					<FactList Porchs={Porchs} setPorchs={setPorchs} />
-				)}
-			</main>
+			{isLoading ? (
+				<Loader title="Please Wiat... Loading..."/>
+			) : (
+				<FactList porchs={porchs} setPorchs={setPorchs} />
+			)}
+	
 		</div>
 	);
 };
 
 
 function Header({ showForm, setShowForm }: any) {
-	const appTitle = "Your Daily Update";
+	const appTitle = "Daily Update";
 	// const { user } = useUser();
 	
 	const user = true;
@@ -81,34 +80,54 @@ function Header({ showForm, setShowForm }: any) {
 function NewFactForm({ setPorchs, setShowForm }: any) {
 	const [text, setText] = useState("");
 	const [source, setSource] = useState("");
-	const [category, setCategory] = useState("");
 	const [isUploading, setIsUploading] = useState(false);
 	const textLength = text.length;
 
 	async function handleSubmit(e: { preventDefault: () => void; }) {
 		// 1. Prevent browser reload
 		e.preventDefault();
-		console.log( text, source, category );
-		const { user } = useUser();
+		console.log( text, source );
+		// const { user } = useUser();
+        
+		const user = {
+			email: "slavo@slavo.io"
+		};
 
 		if (text && isValidHttpUrl(source) && textLength <= 300) {
-			// 2. Upload fact to Supabase and receive the new fact object
-			setIsUploading(true);
-			const { data: newFact, error } = await supabase
-				.from("porch")
-				.insert([{ text, source, email: user?.email}])
-				.select();
-			setIsUploading(false);
+			
 
-			// 3. Add the new fact to the UI: add the fact to state
-			if (!error) setPorchs((Porchs: any) => [newFact[0], ...Porchs]);
+			const payload = {text, source, email: user?.email };
+			setIsUploading( true );
+            
+			try {
+				const response = await fetch("api/createDailyUpdate", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(payload),
+				});
 
-			// 4. Reset input fields
-			setText("");
-			setSource("");
-
-			// 5. Close the form
-			setShowForm(false);
+				if (response.ok) {
+					const responseData = await response.json();
+					console.log( "Response data:", responseData );
+                    
+					// setPorchs( ( porchs: any ) => [ porchs[ 0 ], ...porchs ] );
+                
+					setTimeout(() => {
+						setText("");
+						setSource("");
+						setIsUploading(false);
+						setShowForm(false);
+					}, 1500);
+				} else {
+					console.error("Error: ", response.status, response.statusText);
+				}
+			} catch (error) {
+				// Handle any other errors (e.g., network errors)
+				console.error("Request failed: ", error);
+			}
+            
 		}
 	}
 
@@ -129,18 +148,6 @@ function NewFactForm({ setPorchs, setShowForm }: any) {
 				onChange={(e) => setSource(e.target.value)}
 				disabled={isUploading}
 			/>
-			<select
-				value={category}
-				onChange={(e) => setCategory(e.target.value)}
-				disabled={isUploading}
-			>
-				<option value=''>Choose category:</option>
-				{CATEGORIES.map((cat: any) => (
-					<option key={cat.name} value={cat.name}>
-						{cat.name.toUpperCase()}
-					</option>
-				))}
-			</select>
 			<button className='btn btn-large' disabled={isUploading}>
         Post
 			</button>
@@ -148,28 +155,25 @@ function NewFactForm({ setPorchs, setShowForm }: any) {
 	);
 }
 
-function FactList({ Porchs, setPorchs }: any) {
+function FactList({ porchs, setPorchs }: any) {
 
 	return (
-		<section>
-			<ul className='Porchs-list'>
-				{Porchs.map((fact: { id: Key | null | undefined; }) => (
-					<Fact key={fact.id} fact={fact} setPorchs={setPorchs} />
-				))}
-			</ul>
+		<section className="grid md:grid-cols-4 gap-4 grid-cols-2">
+			{porchs.map((fact: { id: Key | null | undefined; }) => (
+				<Fact key={fact.id} fact={fact} setPorchs={setPorchs} />
+			))}
 		</section>
 	);
 }
 
 function Fact({ fact, setPorchs }: any) {
 	const [isUpdating, setIsUpdating] = useState(false);
-	const badSource =
-        fact.like + fact.exelent < fact.false;
     
 	const { user } = useUser();
     
 	const date = new Date(fact.created_at);
-	const formattedDate = `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;
+	const formattedDate = `${ date.getFullYear() }-${ ( date.getMonth() + 1 ).toString().padStart( 2, "0" ) }-${ date.getDate().toString().padStart( 2, "0" ) }`;
+    
 	const formattedTime = `${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}:${date.getSeconds().toString().padStart(2, "0")}`;
    
 	async function handleVote ( columnName: string )
@@ -185,8 +189,8 @@ function Fact({ fact, setPorchs }: any) {
 			setIsUpdating(false);
 
 			if (!error)
-				setPorchs((Porchs: any[]) =>
-					Porchs.map((f: { id: any; }) => (f.id === fact.id ? updatedFact[0] : f))
+				setPorchs((porchs: any[]) =>
+					porchs.map((f: { id: any; }) => (f.id === fact.id ? updatedFact[0] : f))
 				);
 		} else
 		{
@@ -196,27 +200,34 @@ function Fact({ fact, setPorchs }: any) {
 	}
 
 	return (
-		<li className='fact'>
-			<p>{ fact.text }</p>
-			<p>
-				<a className='source' href={fact.source} target='_blank'>(Source)</a>
-			</p>
-			<p
-				className='tag'
-				style={{ backgroundColor: "blue", padding: "0.4 rem"
-				}}
-			>
-				{ formattedDate } | {formattedTime }
-			</p>
-			<div className='vote-buttons'>
-				<button
-					onClick={() => handleVote("excellent")}
-					disabled={isUpdating}
-				>
-          🤯 👍 {fact.excellent}
+		<div className="max-w-sm rounded overflow-hidden shadow-lg bg-blue-800 p-2 hover:bg-slate-600 transition-duration: 900ms; text-slate-100">
+			<div className="px-2 py-2">
+				<p>
+					{ formattedDate } | { formattedTime }
+				</p>
+				<p>
+					<a href={`mailto:${fact.email}`} className="underline-offset-1 hover:bg-slate-900 text-sm" target='_blank'>
+						User: {fact.email}
+					</a>
+				</p>
+                --- 
+				<p className="text-slate-50 text-base">{ fact.text }</p>
+                ---
+				<div>
+					<a href={fact.source} target='_blank' className="text-sm hover:bg-slate-900">
+						Source: {fact.source}
+					</a>
+				</div>
+			</div>  
+			<div>
+				<button 
+					className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
+					onClick={() => handleVote( "excellent" ) }
+					disabled={isUpdating} >🤯 👍 { fact.excellent }
 				</button>
 			</div>
-		</li>
+		</div>
+	
 	);
 }
 
