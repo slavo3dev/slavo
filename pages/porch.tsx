@@ -83,13 +83,13 @@ function NewFactForm({ setPorchs, setShowForm }: any) {
 	async function handleSubmit(e: { preventDefault: () => void; }) {
 		// 1. Prevent browser reload
 		e.preventDefault();
-		const { user } = useUser();
+		// const { user } = useUser();
     
 		// isValidHttpUrl(source) && textLength <= 300
 
 		if (text && source) {
 			
-			const payload = {text, source, email: user?.email };
+			const payload = {text, source, email: "slavo@slavo.io" };
 			setIsUploading( true );
             
 			try {
@@ -103,14 +103,15 @@ function NewFactForm({ setPorchs, setShowForm }: any) {
 
 				if (response.ok) {
 					const responseData = await response.json();
-					setResponseUpdate(responseData.ticker);
+					setResponseUpdate(responseData.ticket);
 					// setPorchs( ( porchs: any ) => [ porchs[ 0 ], ...porchs ] );
                 
 					setTimeout(() => {
 						setText("");
 						setSource("");
 						setIsUploading(false);
-						setShowForm(false);
+						setShowForm( false );
+						setResponseUpdate("");
 					}, 1500);
 				} else {
 					console.error("Error: ", response.status, response.statusText);
