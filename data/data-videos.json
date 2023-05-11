@@ -12,34 +12,6 @@
   "items": [
     {
       "kind": "youtube#searchResult",
-      "etag": "rFKSlX-oXxbAab0VIQsw_8Hz96Q",
-      "id": {
-        "kind": "youtube#channel",
-        "channelId": "UCBVCi5JbYmfG3q5MEuoWdOw"
-      },
-      "snippet": {
-        "publishedAt": "2012-02-02T20:15:39Z",
-        "channelId": "UCBVCi5JbYmfG3q5MEuoWdOw",
-        "title": "Udacity",
-        "description": "Udacity is your destination for building in-demand skills for the careers of today and tomorrow. Our curriculum is co-created with ...",
-        "thumbnails": {
-          "default": {
-            "url": "https://yt3.ggpht.com/nFftJEiVxwRTL9OPe2bncvKgOIlYytuHImJCFFrSEmCUTbisGew0MaFoGo8zfVpDMAXEfRSjjQ=s88-c-k-c0xffffffff-no-rj-mo"
-          },
-          "medium": {
-            "url": "https://yt3.ggpht.com/nFftJEiVxwRTL9OPe2bncvKgOIlYytuHImJCFFrSEmCUTbisGew0MaFoGo8zfVpDMAXEfRSjjQ=s240-c-k-c0xffffffff-no-rj-mo"
-          },
-          "high": {
-            "url": "https://yt3.ggpht.com/nFftJEiVxwRTL9OPe2bncvKgOIlYytuHImJCFFrSEmCUTbisGew0MaFoGo8zfVpDMAXEfRSjjQ=s800-c-k-c0xffffffff-no-rj-mo"
-          }
-        },
-        "channelTitle": "Udacity",
-        "liveBroadcastContent": "upcoming",
-        "publishTime": "2012-02-02T20:15:39Z"
-      }
-    },
-    {
-      "kind": "youtube#searchResult",
       "etag": "1cUjrFPdU6OY-pZCNcI3V1Pb8Ts",
       "id": {
         "kind": "youtube#video",
@@ -1763,34 +1735,6 @@
         "channelTitle": "Web Dev Simplified",
         "liveBroadcastContent": "none",
         "publishTime": "2022-12-08T17:00:23Z"
-      }
-    },
-    {
-      "kind": "youtube#searchResult",
-      "etag": "5A3aXV19hBcwicxGk1EMXfzdCYo",
-      "id": {
-        "kind": "youtube#channel",
-        "channelId": "UCFbNIlppjAuEX4znoulh0Cw"
-      },
-      "snippet": {
-        "publishedAt": "2018-05-24T16:26:39Z",
-        "channelId": "UCFbNIlppjAuEX4znoulh0Cw",
-        "title": "Web Dev Simplified",
-        "description": "Web Dev Simplified is all about teaching web development skills and techniques in an efficient and practical manner. If you are ...",
-        "thumbnails": {
-          "default": {
-            "url": "https://yt3.ggpht.com/ytc/AGIKgqMNnqfr-tuqVi_0YLkfx3-FGohChjCaNTNguHzp=s88-c-k-c0xffffffff-no-rj-mo"
-          },
-          "medium": {
-            "url": "https://yt3.ggpht.com/ytc/AGIKgqMNnqfr-tuqVi_0YLkfx3-FGohChjCaNTNguHzp=s240-c-k-c0xffffffff-no-rj-mo"
-          },
-          "high": {
-            "url": "https://yt3.ggpht.com/ytc/AGIKgqMNnqfr-tuqVi_0YLkfx3-FGohChjCaNTNguHzp=s800-c-k-c0xffffffff-no-rj-mo"
-          }
-        },
-        "channelTitle": "Web Dev Simplified",
-        "liveBroadcastContent": "none",
-        "publishTime": "2018-05-24T16:26:39Z"
       }
     },
     {
