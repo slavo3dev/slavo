@@ -1,5 +1,5 @@
 ---
-title: "Limitless Flow: Turbocharge Learning and Break Free from Stagnation"
+title: "Exploring Recursive Functions in JavaScript"
 date: "2023-05-11"
 author: "Slavo"
 image: "flow.png"
