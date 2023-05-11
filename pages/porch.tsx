@@ -12,6 +12,7 @@ const PorchPage: NextPage = () => {
 	const [porchs, setPorchs] = useState([]);
 	const [ isLoading, setIsLoading ] = useState( false );
     
+    
 	useEffect(
 		function () {
 			async function getPorchs() {
@@ -80,16 +81,17 @@ function NewFactForm({ setPorchs, setShowForm }: any) {
 	const [ responseUpdate, setResponseUpdate ] = useState("");
 	// const textLength = text.length;
 
+	const { user } = useUser();
+    
 	async function handleSubmit(e: { preventDefault: () => void; }) {
 		// 1. Prevent browser reload
 		e.preventDefault();
-		// const { user } = useUser();
     
 		// isValidHttpUrl(source) && textLength <= 300
 
 		if (text && source) {
 			
-			const payload = {text, source, email: "slavo@slavo.io" };
+			const payload = {text, source, email: user?.email };
 			setIsUploading( true );
             
 			try {
