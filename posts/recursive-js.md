@@ -46,6 +46,8 @@ function factorial(n) {
 console.log(factorial(5)); // Output: 120
 ```
 
+\*\* Book Recomedation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
+
 **The Cons of Recursive Functions:**
 
 1. **_Stack Overflow Risks:_** Recursive functions rely heavily on the call stack, leading to stack overflow errors if the recursion depth becomes too large or the base case is improperly defined. It's crucial to carefully design recursive functions to prevent excessive memory usage and ensure termination.
@@ -59,3 +61,5 @@ Recursive functions are potent tools in JavaScript programming, offering a conci
 By leveraging recursive functions, developers can tackle various challenges, including tree traversals and combinatorial problems. They promote code readability and organization, allowing for clear expression of problem-solving logic. Nevertheless, it's essential to be mindful of the risk of stack overflows and potential performance trade-offs associated with excessive function calls and stack operations.
 
 Understanding the benefits and limitations of recursive functions empowers developers to make informed decisions and choose the most appropriate solution for their specific problem domain. By leveraging the elegance and power of recursive functions in JavaScript, developers can write efficient, maintainable code that effectively addresses complex programming tasks.
+
+\*\* Book Recomedation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
