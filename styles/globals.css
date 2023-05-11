@@ -215,7 +215,6 @@ h1 {
 .fact {
   font-size: 20px;
   line-height: 1.4;
-  background-color: #1d1e18;
   margin-bottom: 16px;
   padding: 16px 24px;
   letter-spacing: 1px;
@@ -325,7 +324,6 @@ aside {
 
 /* FORM */
 .fact-form {
-  background-color: #1d1e18;
   margin-bottom: 40px;
   padding: 16px 32px;
   display: flex;
@@ -334,20 +332,13 @@ aside {
   border-radius: 16px;
 }
 
-.fact-form input,
-.fact-form select {
+.fact-form input {
   width: 220px;
-  background-color: #6b8f71;
   border: none;
-  border-radius: 100px;
+  border-radius: 1rem;
   padding: 16px;
-  font-size: 18px;
-  color: #1d1e18;
+  font-size: 1rem;
   font-family: inherit;
-}
-
-.fact-form input::placeholder {
-  color: #1d1e18;
 }
 
 .fact-form input:first-child {
@@ -355,9 +346,7 @@ aside {
 }
 
 .fact-form span {
-  font-weight: 600;
-  font-size: 1.2rem;
-  margin-right: 1.2rem;
+  font-size: 1rem;
 }
 
 @media (max-width: 1000px) {
@@ -370,8 +359,7 @@ aside {
     align-items: stretch;
   }
 
-  .fact-form input,
-  .fact-form select {
+  .fact-form input {
     width: auto;
   }
 }

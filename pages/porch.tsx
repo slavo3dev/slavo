@@ -3,14 +3,14 @@ import { useState, useEffect, Key } from "react";
 import type { NextPage } from "next";
 import supabase from "../lib/supabase";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { isValidHttpUrl } from "@/lib/constants";
+// import { isValidHttpUrl } from "@/lib/constants";
 import { Loader } from "@/components/ui/Loader";
 
 
 const PorchPage: NextPage = () => {
 	const [showForm, setShowForm] = useState(false);
 	const [porchs, setPorchs] = useState([]);
-	const [isLoading, setIsLoading] = useState(false);
+	const [ isLoading, setIsLoading ] = useState( false );
     
 	useEffect(
 		function () {
@@ -36,9 +36,6 @@ const PorchPage: NextPage = () => {
 	return (
 		<div className="p-10 h-screen text-slate-800">
 			<Header showForm={showForm} setShowForm={setShowForm} />
-			{/* {showForm ? (
-				<NewFactForm setPorchs={setPorchs} setShowForm={setShowForm} />
-			) : null} */}
 			{showForm ? (
 				<NewFactForm setPorchs={setPorchs} setShowForm={setShowForm} />
 			) : null}
@@ -55,9 +52,8 @@ const PorchPage: NextPage = () => {
 
 function Header({ showForm, setShowForm }: any) {
 	const appTitle = "Daily Update";
-	// const { user } = useUser();
+	const { user } = useUser();
 	
-	const user = true;
 	return (
 		<header className='header'>
 			<div className='logo'>
@@ -65,10 +61,10 @@ function Header({ showForm, setShowForm }: any) {
 			</div>
 
 			<button
-				className='btn btn-large btn-open'
+				className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
 				onClick={ () =>
 				{
-					user ? setShowForm( ( show: any ) => !show ) : alert("Please log in or verify your email address");
+					user?.email_verified ? setShowForm( ( show: any ) => !show ) : alert("Please log-in or Verify Your email address");
 				} }
 			>
 				{showForm ? "Close" : "Share Your Work"}
@@ -80,22 +76,21 @@ function Header({ showForm, setShowForm }: any) {
 function NewFactForm({ setPorchs, setShowForm }: any) {
 	const [text, setText] = useState("");
 	const [source, setSource] = useState("");
-	const [isUploading, setIsUploading] = useState(false);
-	const textLength = text.length;
+	const [ isUploading, setIsUploading ] = useState( false );
+	const [ responseUpdate, setResponseUpdate ] = useState("");
+	// const textLength = text.length;
 
 	async function handleSubmit(e: { preventDefault: () => void; }) {
 		// 1. Prevent browser reload
 		e.preventDefault();
 		console.log( text, source );
-		// const { user } = useUser();
+		const { user } = useUser();
         
-		const user = {
-			email: "slavo@slavo.io"
-		};
+        
+		// isValidHttpUrl(source) && textLength <= 300
 
-		if (text && isValidHttpUrl(source) && textLength <= 300) {
+		if (text && source) {
 			
-
 			const payload = {text, source, email: user?.email };
 			setIsUploading( true );
             
@@ -111,7 +106,7 @@ function NewFactForm({ setPorchs, setShowForm }: any) {
 				if (response.ok) {
 					const responseData = await response.json();
 					console.log( "Response data:", responseData );
-                    
+					setResponseUpdate(responseData.ticker);
 					// setPorchs( ( porchs: any ) => [ porchs[ 0 ], ...porchs ] );
                 
 					setTimeout(() => {
@@ -126,32 +121,47 @@ function NewFactForm({ setPorchs, setShowForm }: any) {
 			} catch (error) {
 				// Handle any other errors (e.g., network errors)
 				console.error("Request failed: ", error);
-			}
-            
+			}    
+		}
+
+		if(!text || !source){
+			alert("Please fill up missing fields!! Thank You");
 		}
 	}
 
 	return (
-		<form className='fact-form' onSubmit={handleSubmit}>
-			<input
-				type='text'
-				placeholder='Share a fact with the world...'
-				value={text}
-				onChange={(e) => setText(e.target.value)}
-				disabled={isUploading}
-			/>
-			<span>{300 - textLength}</span>
-			<input
-				value={source}
-				type='text'
-				placeholder='Trustworthy source...'
-				onChange={(e) => setSource(e.target.value)}
-				disabled={isUploading}
-			/>
-			<button className='btn btn-large' disabled={isUploading}>
-        Post
-			</button>
-		</form>
+		<>
+			{ responseUpdate ? <h2>{responseUpdate}</h2>
+				: (
+					<form className='fact-form bg-sky-600' onSubmit={handleSubmit}>
+						<input
+							className="bg-gray-200 text-gray-700 appearance-none border-none w-full mr-3 py-1 px-2 leading-tight focus:outline-none"
+							type='text'
+							placeholder='Share your update with the world...'
+							value={text}
+							onChange={(e) => setText(e.target.value)}
+							disabled={isUploading}
+						/>
+						{/* <span className="text-gray-100">{300 - textLength}</span> */}
+						<input
+							className="bg-gray-200 text-gray-700"
+							value={source}
+							type='text'
+							placeholder='Share learning source...'
+							onChange={(e) => setSource(e.target.value)}
+							disabled={isUploading}
+						/>
+						<button className="bg-slate-100 hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-3 px-4 border border-r-2 border-blue-500 rounded shadow-md shadow-slate-300" disabled={isUploading}> Update
+						</button>
+					</form>     
+				)
+    
+    
+			}
+
+
+		</>
+		
 	);
 }
 
