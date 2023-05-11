@@ -18,7 +18,7 @@ The DOM is a tree-like structure containing all web page elements arranged hiera
 
 Once the browser has created the DOM, it uses the CSS stylesheet to apply styles to the HTML elements, determining how the web page will look. Finally, the browser executes any JavaScript code included in the web page, adding interactivity and dynamic functionality to the page.
 
-\*\* Book Recomedation: [The Now Habit](https://amzn.to/3BaeO7d)
+\*\* Book Recomedation: [HTML & CSS](https://amzn.to/3BaeO7d)
 
 **_How Pages Load_**
 
