@@ -23,7 +23,7 @@ const PorchPage: NextPage = () => {
 					.order("excellent", { ascending: false })
 					.limit(1000);
 
-				console.log("Data: ", porchs);
+
 				if (!error) setPorchs(porchs);
 				else alert("There was a problem getting data");
 				setIsLoading(false);
@@ -83,10 +83,8 @@ function NewFactForm({ setPorchs, setShowForm }: any) {
 	async function handleSubmit(e: { preventDefault: () => void; }) {
 		// 1. Prevent browser reload
 		e.preventDefault();
-		console.log( text, source );
 		const { user } = useUser();
-        
-        
+    
 		// isValidHttpUrl(source) && textLength <= 300
 
 		if (text && source) {
@@ -105,7 +103,6 @@ function NewFactForm({ setPorchs, setShowForm }: any) {
 
 				if (response.ok) {
 					const responseData = await response.json();
-					console.log( "Response data:", responseData );
 					setResponseUpdate(responseData.ticker);
 					// setPorchs( ( porchs: any ) => [ porchs[ 0 ], ...porchs ] );
                 
