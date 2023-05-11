@@ -5,7 +5,7 @@ author: "Slavo"
 image: "r-js.png"
 excerpt: "Recursive functions are a fundamental concept in computer science and programming. ..."
 isFeatured: true
-category: "Self Help"
+category: "Java Script"
 ---
 
 **_Recursive functions_** are a fundamental concept in computer science and programming. They offer an elegant and efficient way to solve complex problems by breaking them into simpler sub-problems. In JavaScript, recursive functions are powerful tools that facilitate code organization, problem-solving, and algorithm design. In this tech blog, we will explore the concept of recursive functions, discuss their advantages and disadvantages, and provide code examples to illustrate their usage.
