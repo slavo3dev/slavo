@@ -195,7 +195,7 @@ function Fact({ fact, setPorchs }: any) {
 		{
 			setIsUpdating(true);
 			const { data: updatedFact, error } = await supabase
-				.from("sources")
+				.from("porch")
 				.update({ [columnName]: fact[columnName] + 1 })
 				.eq("id", fact.id)
 				.select();
