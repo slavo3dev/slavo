@@ -106,7 +106,7 @@ function NewFactForm({ setPorchs, setShowForm }: any) {
 				if (response.ok) {
 					const responseData = await response.json();
 					setResponseUpdate(responseData.ticket);
-					// setPorchs( ( porchs: any ) => [ porchs[ 0 ], ...porchs ] );
+					setPorchs( ( porchs: any ) => [ responseData.newUpdate[ 0 ], ...porchs ] );
                 
 					setTimeout(() => {
 						setText("");
