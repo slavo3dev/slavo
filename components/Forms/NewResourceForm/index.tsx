@@ -21,8 +21,6 @@ export const NewResourceFrom: FC<NewResourceFromProps> = ( { setSources, setShow
 	async function handleSubmit(e: { preventDefault: () => void; }) {
 		// 1. Prevent browser reload
 		e.preventDefault();
-        
-		console.log( "Submit Button", isValidHttpUrl(source) );
 
 		if (text && isValidHttpUrl(source) && category && textLength <= 200) {
 			try {

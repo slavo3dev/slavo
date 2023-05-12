@@ -161,10 +161,7 @@ function NewFactForm({ setPorchs, setShowForm }: any) {
     
     
 			}
-
-
 		</>
-		
 	);
 }
 
@@ -191,20 +188,28 @@ function Fact({ fact, setPorchs }: any) {
    
 	async function handleVote ( columnName: string )
 	{
+        
 		if ( user?.email_verified )
 		{
 			setIsUpdating(true);
-			const { data: updatedFact, error } = await supabase
-				.from("porch")
-				.update({ [columnName]: fact[columnName] + 1 })
-				.eq("id", fact.id)
-				.select();
-			setIsUpdating(false);
-
-			if (!error)
+			const response: any = await fetch("api/createDailyUpdate", {
+				method: "PATCH",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(
+					{
+						id: fact.id,
+						vote: fact[ columnName ] + 1
+					} ),
+			});
+        
+			if ( response.ok )
+			{
+				const responseData = await response.json();
 				setPorchs((porchs: any[]) =>
-					porchs.map((f: { id: any; }) => (f.id === fact.id ? updatedFact[0] : f))
+					porchs.map((f: { id: any; }) => (f.id === fact.id ? responseData.newUpdate[0] : f))
 				);
+				setIsUpdating(false);
+			}
 		} else
 		{
 			alert("Please Login or Verify email address");
