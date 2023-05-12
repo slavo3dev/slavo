@@ -1,5 +1,5 @@
 ---
-title: "Exploring Recursive Functions in JavaScript"
+title: "Power of Flow"
 date: "2023-05-11"
 author: "Slavo"
 image: "flow.png"
