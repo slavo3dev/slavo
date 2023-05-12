@@ -92,7 +92,6 @@ function NewFactForm({ setFacts, setShowForm }: any) {
 	async function handleSubmit(e: { preventDefault: () => void; }) {
 		// 1. Prevent browser reload
 		e.preventDefault();
-		console.log(text, source, category);
 
 		if (text && isValidHttpUrl(source) && category && textLength <= 200) {
 			// 2. Upload fact to Supabase and receive the new fact object
