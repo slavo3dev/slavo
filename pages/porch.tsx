@@ -171,7 +171,7 @@ function NewFactForm({ setPorchs, setShowForm }: any) {
 function FactList({ porchs, setPorchs }: any) {
 
 	return (
-		<section className="grid md:grid-cols-4 gap-4 grid-cols-2">
+		<section className="grid md:grid-cols-4 gap-4 sm:grid-cols-2 grid-cols-1">
 			{porchs.map((fact: { id: Key | null | undefined; }) => (
 				<Fact key={fact.id} fact={fact} setPorchs={setPorchs} />
 			))}
