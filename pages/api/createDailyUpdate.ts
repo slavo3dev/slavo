@@ -3,7 +3,8 @@ import supabase from "../../lib/supabase";
 
 
 type Data = {
-  ticket: string
+    ticket: string;
+    newUpdate: any;
 }
 
 export default async function handler(
@@ -12,12 +13,16 @@ export default async function handler(
 )
 {
 	try {
-		await supabase
+		const { data: newUpdate, error } = await supabase
 			.from("porch")
 			.insert([req.body])
 			.select();
         
-		res.status(200).json({ ticket: "Well Done - Your Daily Update is ADDED -" });
+		res.status( 200 ).json(
+			{
+				ticket: "Well Done - Your Daily Update is ADDED -",
+				newUpdate: newUpdate
+			} );
 	} catch (error) {
 		throw new Error("Oops, Source was not created, please try again");
         
