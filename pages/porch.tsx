@@ -35,7 +35,7 @@ const PorchPage: NextPage = () => {
 	);
 
 	return (
-		<div className="p-10 h-screen text-slate-800">
+		<div className="p-10 text-slate-800">
 			<Header showForm={showForm} setShowForm={setShowForm} />
 			{showForm ? (
 				<NewFactForm setPorchs={setPorchs} setShowForm={setShowForm} />
