@@ -35,7 +35,7 @@ const PorchPage: NextPage = () => {
 	);
 
 	return (
-		<div className="p-10 h-screen text-slate-800">
+		<div className="p-10 text-slate-800">
 			<Header showForm={showForm} setShowForm={setShowForm} />
 			{showForm ? (
 				<NewFactForm setPorchs={setPorchs} setShowForm={setShowForm} />
@@ -171,7 +171,7 @@ function NewFactForm({ setPorchs, setShowForm }: any) {
 function FactList({ porchs, setPorchs }: any) {
 
 	return (
-		<section className="grid md:grid-cols-4 gap-4 grid-cols-2">
+		<section className="grid md:grid-cols-4 gap-4 sm:grid-cols-2 grid-cols-1">
 			{porchs.map((fact: { id: Key | null | undefined; }) => (
 				<Fact key={fact.id} fact={fact} setPorchs={setPorchs} />
 			))}
