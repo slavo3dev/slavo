@@ -1,6 +1,5 @@
 import { createContext } from "react";
-import { videoContextType } from "@/lib/types";
-
+import {videoContextType} from "../../types";
 const VideoContext=createContext<videoContextType>({
 	videoLine:"",
 	setVideoLine:function(videoLine:string):void{
