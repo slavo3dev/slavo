@@ -64,3 +64,8 @@ export type VideoType={
     channelName:string,
     id:string
 }
+
+export type videoContextType={
+videoLine:string;
+setVideoLine:(videoLine:string)=>void
+}
