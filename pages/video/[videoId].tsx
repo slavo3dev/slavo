@@ -1,5 +1,7 @@
+import { VideoCard } from "@/components/index";
 import { VideoContext } from "@/lib/context";
 import { getVideos } from "@/lib/videos";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 
@@ -36,6 +38,40 @@ const Video = ()=>{
 					>
 					</iframe>
 				</div>
+
+				<div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 ">
+					{channelVideos.map(
+						(
+							video: {
+                id: string
+                imgUrl: string
+                title: string
+                channelName: string
+              },
+							// eslint-disable-next-line @typescript-eslint/ban-types
+							idx: {},
+						) => {
+							return (
+								<Link
+									href={`/video/${video.id}`}
+									key={video.id + Math.random()}
+								>
+									<VideoCard
+										id={idx}
+										videoURL={`/video/${video.id}`}
+										key={video.id}
+										imgUrl={video.imgUrl}
+										title={video.title}
+										name={video.channelName}
+									/>
+								</Link>
+							);
+						},
+					)}
+				</div>
+
+
+
 			</div>
 		</>
 	);
