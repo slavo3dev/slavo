@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 
-import { VideoLine } from "@/lib/helperFunctions";
+import { VideoLine } from "@/lib/VideoHelper";
 
 
 const Videos: NextPage = () => {

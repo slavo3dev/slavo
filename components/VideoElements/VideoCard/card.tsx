@@ -1,9 +1,9 @@
 import { FC } from "react";
-import { cardTypes } from "@/lib/types";
+import { videoCardTypes } from "@/lib/types";
 
 import Link from "next/link";
 
-export const VideoCard : FC<cardTypes> = ({imgUrl,title,name,videoURL})=>{
+export const VideoCard : FC<videoCardTypes> = ({imgUrl,title,name,videoURL})=>{
 
 	return(
 		<>

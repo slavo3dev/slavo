@@ -43,7 +43,7 @@ export interface TitleProps
 {
     title: string
 }
-export type cardTypes= {
+export type videoCardTypes= {
 	imgUrl:string,
     id:object,
 	title:string,
