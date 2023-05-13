@@ -27,6 +27,7 @@ function MyApp ( { Component, pageProps }: AppProps )
 	}, [ router.events ] );
     
 	const [videoLine, setVideoLine]= useState("channelOne");
+	
 	return (<VideoContext.Provider value={{videoLine, setVideoLine}}>
 		<UserProvider>
 			<Layout>
