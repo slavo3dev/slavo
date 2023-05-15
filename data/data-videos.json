@@ -180,40 +180,7 @@
         "publishTime": "2020-08-03T16:00:00Z"
       }
     },
-    {
-      "kind": "youtube#searchResult",
-      "etag": "plMkRKNZBg_9mIQ0AEN1bbe6Htw",
-      "id": {
-        "kind": "youtube#playlist",
-        "playlistId": "PLAwxTw4SYaPkQXg8TkVdIvYv4HfLG7SiH"
-      },
-      "snippet": {
-        "publishedAt": "2015-03-17T07:41:45Z",
-        "channelId": "UCBVCi5JbYmfG3q5MEuoWdOw",
-        "title": "Intro to Machine Learning",
-        "description": "These videos are part of an online course, Intro to Machine Learning. Check out the course here: ...",
-        "thumbnails": {
-          "default": {
-            "url": "https://i.ytimg.com/vi/ICKBWIkfeJ8/default.jpg",
-            "width": 120,
-            "height": 90
-          },
-          "medium": {
-            "url": "https://i.ytimg.com/vi/ICKBWIkfeJ8/mqdefault.jpg",
-            "width": 320,
-            "height": 180
-          },
-          "high": {
-            "url": "https://i.ytimg.com/vi/ICKBWIkfeJ8/hqdefault.jpg",
-            "width": 480,
-            "height": 360
-          }
-        },
-        "channelTitle": "Udacity",
-        "liveBroadcastContent": "none",
-        "publishTime": "2015-03-17T07:41:45Z"
-      }
-    },
+    
     {
       "kind": "youtube#searchResult",
       "etag": "dbxS4W11VSHomACLYOrWxiMr16Q",
@@ -418,40 +385,7 @@
         "publishTime": "2022-01-27T12:58:26Z"
       }
     },
-    {
-      "kind": "youtube#searchResult",
-      "etag": "nrtoJMt_92Tq9HKCMWsRns6Nufc",
-      "id": {
-        "kind": "youtube#playlist",
-        "playlistId": "PLAwxTw4SYaPkL1UHlnRRZB54C1Ii42E-L"
-      },
-      "snippet": {
-        "publishedAt": "2017-03-31T22:17:45Z",
-        "channelId": "UCBVCi5JbYmfG3q5MEuoWdOw",
-        "title": "Udacity Nanodegree Programs",
-        "description": "Check out some of our Nanodegree program offerings here and at udacity.com. How will you advance your career?",
-        "thumbnails": {
-          "default": {
-            "url": "https://i.ytimg.com/vi/hGnoRYtaNVQ/default.jpg",
-            "width": 120,
-            "height": 90
-          },
-          "medium": {
-            "url": "https://i.ytimg.com/vi/hGnoRYtaNVQ/mqdefault.jpg",
-            "width": 320,
-            "height": 180
-          },
-          "high": {
-            "url": "https://i.ytimg.com/vi/hGnoRYtaNVQ/hqdefault.jpg",
-            "width": 480,
-            "height": 360
-          }
-        },
-        "channelTitle": "Udacity",
-        "liveBroadcastContent": "none",
-        "publishTime": "2017-03-31T22:17:45Z"
-      }
-    },
+   
     {
       "kind": "youtube#searchResult",
       "etag": "bIUqx3yp_2WY6F-uRR_7sgdBnGY",
