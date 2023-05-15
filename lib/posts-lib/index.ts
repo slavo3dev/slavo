@@ -9,7 +9,7 @@ export function getPostsFiles() {
 	return fs.readdirSync( postsPath );
 }
 
-export const getPostData = ( indentifier: string ) =>
+export const getPostData = ( indentifier: string ) => 
 { 
 	const postSlug = indentifier.replace(/\.md$/, "");
 	const filePath = path.join( postsPath, `${postSlug}.md` );
@@ -25,7 +25,7 @@ export const getPostData = ( indentifier: string ) =>
 	return postData;
 };
 
-export const getAllPosts = () =>
+export const getAllPosts = () => 
 {
 	const postsFiles = getPostsFiles();
     
@@ -35,9 +35,16 @@ export const getAllPosts = () =>
 };
 
 
-export const getFeaturedPosts = () =>
+export const getFeaturedPosts = () => 
 {
 	const allPosts: any[] = getAllPosts();
-    
-	return allPosts.filter((post: {isFeatured: boolean}) => post.isFeatured);
+
+	return allPosts
+		.filter( ( post: { isFeatured: boolean; } ) => post.isFeatured )
+		.sort( function ( a: { date: string; }, b: { date: string; } )
+		{
+			const dateA: any = new Date(a.date.split("-").reverse().join("-"));
+			const dateB: any = new Date(b.date.split("-").reverse().join("-"));
+			return dateB - dateA;
+		});
 };
