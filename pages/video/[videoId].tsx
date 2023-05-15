@@ -5,15 +5,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 
-
-
 const Video = ()=>{
 
-
-
-
-
-	
 	const router = useRouter();
 	const context = useContext(VideoContext);
 	const selectVideos= context.videoLine;
