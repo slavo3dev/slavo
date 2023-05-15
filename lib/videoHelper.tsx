@@ -9,12 +9,7 @@ export const VideoLine = (channelLine: string) => {
 		<div className="w-screen flex flex-row">
 			{LineVideos.map(
 				(
-					video: {
-            id: string;
-            imgUrl: string;
-            title: string;
-            channelName: string;
-          },
+					video: VideoType,
 					// eslint-disable-next-line @typescript-eslint/ban-types
 					idx: {},
 				) => (
