@@ -54,7 +54,6 @@ export const ContactForm: FC= () => {
 		return emailReg.test(email);
 	};
     
-	console.log("Terms: ", payload.terms);
 
 	return (
 		<>

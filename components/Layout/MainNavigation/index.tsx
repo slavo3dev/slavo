@@ -30,6 +30,9 @@ export const MainNavigation: FC = () => {
 						{/* <li>
 						<Link href="/about">About</Link>
 					</li> */}
+						<li>
+							<Link href="/porch">Porch</Link>
+						</li>
 						<li onClick={() => localStorage.setItem("selectedOption", "ALL")}>
 							<Link href="/blog">Blog</Link>
 						</li>
@@ -39,9 +42,11 @@ export const MainNavigation: FC = () => {
 						<li>
 							<Link href="/contact">Contact</Link>
 						</li>
+
 						<li>
 							<Link href="/videos">Videos</Link>
 						</li>
+
 						{isAuth && user?.email_verified && (
 							<li>
 								<Link href="/api/auth/logout">Logout</Link>
