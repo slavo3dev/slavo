@@ -27,7 +27,7 @@ export const HeroAI: FC = () =>
 						<div className="py-12">
 							<div className="max-w-lg lg:max-w-md mx-auto lg:mx-0 mb-8 text-center lg:text-left">
 								<h2 className="text-3xl lg:text-5xl mb-4 font-bold font-heading wow animate__animated animate__fadeIn">
-                      Committed to{" "}
+                      Mentor for{" "}
 									<span className="text-blue-500">Your</span>{" "}
                       Future & Growth
 								</h2>

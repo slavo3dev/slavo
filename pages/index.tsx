@@ -6,11 +6,11 @@ import { getFeaturedPosts } from "@/lib/posts-lib";
 const Home: NextPage = ({ posts }: any) => {
 	return (
 		<>
-			<HeroAI />
 			<Solution />
 			<Hero />
 			<FeaturedPosts posts={posts} />
 			<Growth />
+			<HeroAI />
 			<section className="py-20 bg-blue-400">
 				<Subscribe />
 			</section>
