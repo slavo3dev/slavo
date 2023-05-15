@@ -227,24 +227,27 @@ function Fact({ fact, setPorchs }: any) {
 	return (
 		<div className="max-w-sm rounded overflow-hidden shadow-lg bg-blue-800 p-2 hover:bg-slate-600 transition-duration: 900ms; text-slate-100">
 			<div className="px-2 py-2">
-				<p>
-					{ formattedDate } | { formattedTime }
-				</p>
-				<p>
-					<a href={`mailto:${fact.email}`} className="underline-offset-1 hover:bg-slate-900 text-sm" target='_blank'>
+				<div className="p-2 bg-yellow-300 text-gray-800 rounded-lg shadow-lg hover:bg-yellow-100 transition duration-300 ease-in-out text-sm">
+					<p className="text-yellow">
+                    Date: { formattedDate } <br /> Time: { formattedTime }
+					</p>
+					<p>
+						<a href={`mailto:${fact.email}`} className="underline-offset-1 hover:bg-slate-900 text-sm" target='_blank'>
 						User: {fact.email}
-					</a>
+						</a>
+					</p>
+				</div>
+				<p className="text-slate-50 text-base p-2">
+                    Learning Update: <br />
+					{ fact.text }
 				</p>
-                --- 
-				<p className="text-slate-50 text-base">{ fact.text }</p>
-                ---
-				<div>
-					<a href={fact.source} target='_blank' className="text-sm hover:bg-slate-900">
+				<div className="p-2 text-sm bg-yellow-300 text-gray-800 rounded-lg shadow-lg hover:bg-yellow-100 transition duration-300 ease-in-out">
+					<a href={fact.source} target='_blank' className="text-sm hover:bg-slate-900 whitespace-normal break-words">
 						Source: {fact.source}
 					</a>
 				</div>
 			</div>  
-			<div>
+			<div className="p-2">
 				<button 
 					className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
 					onClick={() => handleVote( "excellent" ) }
