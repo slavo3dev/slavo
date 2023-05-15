@@ -30,7 +30,7 @@ const Video = ()=>{
 				<div className=" justify-center rounded-2xl  overflow-hidden flex   outline-0  ">
 					<iframe
 						className="h-[480px]"
-						sandbox="allow-forms allow-scripts allow-pointer-lock allow-same-origin allow-top-navigation"
+						sandbox="allow-forms allow-scripts allow-presentation allow-pointer-lock allow-same-origin allow-top-navigation"
 						id="ytplayer"
 						width="80%"
 						height=""
