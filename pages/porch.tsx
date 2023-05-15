@@ -166,10 +166,17 @@ function NewFactForm({ setPorchs, setShowForm }: any) {
 }
 
 function FactList({ porchs, setPorchs }: any) {
-
+    
+	const sortPorchbyDate: [] = porchs.sort( ( a: {created_at: string}, b: {created_at: string}) =>
+	{
+		const aDate: Date = new Date( a.created_at );
+		const bDate: Date = new Date( b.created_at );
+		return bDate.getTime() - aDate.getTime();
+	} );
+    
 	return (
 		<section className="grid md:grid-cols-4 gap-4 sm:grid-cols-2 grid-cols-1">
-			{porchs.map((fact: { id: Key | null | undefined; }) => (
+			{sortPorchbyDate.map((fact: { id: Key | null | undefined; }) => (
 				<Fact key={fact.id} fact={fact} setPorchs={setPorchs} />
 			))}
 		</section>
