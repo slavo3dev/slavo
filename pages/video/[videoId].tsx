@@ -25,10 +25,11 @@ const Video = ()=>{
 		<>
 		
 
-			<div className="w-full h-screen flex-col py-16 md:py-12 overflow-sroll">
+			<div className="w-full flex-col py-16 md:py-12 overflow-sroll">
 			
-				<div className="player justify-center rounded-2xl md:h-4/6 overflow-hidden flex w-full  outline-0  ">
+				<div className=" justify-center rounded-2xl  overflow-hidden flex   outline-0  ">
 					<iframe
+						className="h-[480px]"
 						sandbox="allow-forms allow-scripts allow-pointer-lock allow-same-origin allow-top-navigation"
 						id="ytplayer"
 						width="80%"
