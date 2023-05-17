@@ -12,6 +12,9 @@ import { CategorySearch } from "./Categorysearch";
 import { HeroAI } from "./HeroAI";
 import { NewResourceFrom } from "./Forms";
 import { FreeSourcesList } from "./FreeSourcesList";
+import { VideoCard } from "./VideoElements/VideoCard/card";
 import { Growth, Solution } from "./Sections";
 
-export {Layout, Hero, FeaturedPosts, HeadBasePage, MainNavigation, BlogPosts, PostContent, PostHeader, ContactForm, Subscribe, Footer,  CategorySearch, HeroAI, NewResourceFrom, FreeSourcesList, Growth, Solution };
+
+
+export {Layout, Hero, FeaturedPosts, HeadBasePage, MainNavigation, BlogPosts, PostContent, PostHeader, ContactForm, Subscribe, Footer,  CategorySearch, HeroAI, NewResourceFrom, FreeSourcesList, VideoCard, Growth, Solution};

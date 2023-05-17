@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import * as ga from "../lib/ga";
 import "animate.css";
@@ -6,7 +6,7 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { Layout, HeadBasePage, MainNavigation, Footer } from "../components";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
-
+import {VideoContext} from "@/lib/context/index";
 function MyApp ( { Component, pageProps }: AppProps )
 {
     
@@ -27,7 +27,9 @@ function MyApp ( { Component, pageProps }: AppProps )
 		};
 	}, [ router.events ] );
     
-	return (
+	const [videoLine, setVideoLine]= useState("channelOne");
+	
+	return (<VideoContext.Provider value={{videoLine, setVideoLine}}>
 		<UserProvider>
 			<Layout>
 				<HeadBasePage
@@ -38,6 +40,7 @@ function MyApp ( { Component, pageProps }: AppProps )
 				<Footer />
 			</Layout>
 		</UserProvider>
+	</VideoContext.Provider>
 	);
 }
 

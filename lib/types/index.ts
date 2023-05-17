@@ -43,3 +43,29 @@ export interface TitleProps
 {
     title: string
 }
+export type videoCardTypes= {
+	imgUrl:string,
+    id:object,
+	title:string,
+	name:string,
+    videoURL:string;
+	
+}
+export type getVideosType = (channel:string)=>{
+    imgUrl:string,
+    title:string,
+    channelName:string,
+    id:string
+}[];
+
+export type VideoType={
+    imgUrl:string,
+    title:string,
+    channelName:string,
+    id:string
+}
+
+export type videoContextType={
+videoLine:string;
+setVideoLine:(videoLine:string)=>void
+}
