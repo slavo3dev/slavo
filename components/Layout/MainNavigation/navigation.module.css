@@ -48,10 +48,9 @@
 }
 
 .user_email {
-  border: 0.2px groove var(--color-blue-100);
+ 
   padding: 0.3rem;
-  color: #475569;
-  font-size: large;
+  
 }
 
 .header a {
@@ -93,25 +92,9 @@
     /* font-size: var(--size-4);
     transition: 0.6s; */
   }
-
-  .user_email {
-    font-size: var(--size-1) !important;
-  }
-
-  .user_email:hover {
-    font-size: var(--size-3) !important;
-  }
 }
 .header a {
   /* font-size: var(--size-3); */
-}
-
-.user_email {
-  font-size: var(--size-1) !important;
-}
-
-.user_email:hover {
-  font-size: var(--size-3) !important;
 }
 
 @media (max-width: 640px) {
