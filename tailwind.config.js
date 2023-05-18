@@ -14,7 +14,6 @@ module.exports = {
     },
   },
   variants: {
-  
     opacity: ({ after }) => after(["disabled"]),   
     display: ["group-hover"], 
   },
