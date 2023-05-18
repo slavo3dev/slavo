@@ -8,7 +8,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 export const VideoLine = (channelLine: string) => {
 
 	const { user } = useUser();
-	const isAuth = user?.email;
+	const isAuth = user?.email && user?.email_verified;
 	const LineVideos: VideoType[] = getVideos(channelLine);
 
 	return (
