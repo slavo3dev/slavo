@@ -81,6 +81,6 @@ Unlock your true potential and find your pathway to success. Don't just take a l
 
 **_Ready for the journey? Click the link below to start your metamorphosis today. Make the change. Be the change._**
 
-[Mentorship Program - Contact us for more info](https:slavo.io/contact)
+[Mentorship Program - Contact us for more info](https://www.slavo.io/contact)
 
 ---
