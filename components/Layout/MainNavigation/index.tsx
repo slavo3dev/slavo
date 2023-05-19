@@ -52,7 +52,6 @@ export const MainNavigation: FC = () => {
 								<Link href="/api/auth/logout">Logout</Link>
 							</li>
 						)}
-
 						<li>{isAuth ? (user?.email_verified ? (<span className={classes.user_email}>{user.email}</span>): (<Link href="/api/auth/login">Verify Email & Login</Link>)) : (<Link href="/api/auth/login">Login</Link>)}
 						</li>
 					</ul>

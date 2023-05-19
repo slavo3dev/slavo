@@ -4,8 +4,8 @@ import { ContactForm } from "../components";
 
 const Contact: NextPage = () => {
 	return (
-		<section className="py-20">
-			<div className="container">
+		<section className="py-20 h-screen" >
+			<div className="container ">
 				<div className="max-w-2xl mx-auto text-center">
 					<div className="max-w-md mb-8 mx-auto">
 						<span

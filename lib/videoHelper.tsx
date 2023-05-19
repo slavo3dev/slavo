@@ -1,8 +1,14 @@
 import { VideoType } from "./types";
 import { getVideos } from "./videos";
 import { VideoCard } from "../components";
+import { useUser } from "@auth0/nextjs-auth0/client";
+
+
 
 export const VideoLine = (channelLine: string) => {
+
+	const { user } = useUser();
+	const isAuth = user?.email && user?.email_verified;
 	const LineVideos: VideoType[] = getVideos(channelLine);
 
 	return (
@@ -16,7 +22,7 @@ export const VideoLine = (channelLine: string) => {
 					<>
 						<VideoCard
 							id={idx}
-							videoURL={`/video/${video.id}`}
+							videoURL={isAuth ? (`/video/${video.id}`): ((""))}
 							key={video.id}
 							imgUrl={video.imgUrl}
 							title={video.title}
