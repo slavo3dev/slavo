@@ -1,6 +1,6 @@
 ---
 title: "Lion's Mane Mushrooms for Enhanced Focus"
-date: "2023-05-19"
+date: "2023-05-23"
 author: "Slavo"
 image: "lions-mane.png"
 excerpt: "At the crossroads of artificial intelligence (AI), computational linguistics, and engineering lies the enthralling profession of a prompt engineer..."
