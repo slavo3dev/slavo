@@ -3,7 +3,7 @@ title: "Essential Skills for a Flexible Career"
 date: "2023-05-23"
 author: "Slavo"
 image: "nomad-skills.png"
-excerpt: "Learning is a lifelong process, and forming habits that foster learning can have numerous benefits...."
+excerpt: "Becoming a digital nomad software engineer is an exciting opportunity to blend your passion for coding with a flexible and adventurous lifestyle..."
 isFeatured: true
 category: "Self Help"
 ---
