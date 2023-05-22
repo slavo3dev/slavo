@@ -3,7 +3,7 @@ title: "Lion's Mane Mushrooms for Enhanced Focus"
 date: "2023-05-23"
 author: "Slavo"
 image: "lions-mane.png"
-excerpt: "At the crossroads of artificial intelligence (AI), computational linguistics, and engineering lies the enthralling profession of a prompt engineer..."
+excerpt: "Maintaining focus and mental clarity can be challenging in today's fast-paced world. Distractions abound, and staying on track with our tasks and goals can be difficult..."
 isFeatured: true
 category: "Self Help"
 ---
