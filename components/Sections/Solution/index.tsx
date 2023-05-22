@@ -20,11 +20,8 @@ export const Solution : FC = () =>{
 									className="mb-8 leading-loose text-blueGray-400 wow animate__animated animate__fadeIn"
 									data-wow-delay=".3s"
 								>
-                    Working with a team means there will be varying
-                    opinions and ideas. Even if you think your idea is
-                    best, you should listen to all ideas before
-                    pushing yours. Search for compromises, and remain
-                    respectful if your work is criticized.
+                                    Are you caught in a career rut? <br /> Enthralled by the world of technology but uncertain how to pivot? <br /> With our exclusive mentorship program, let's convert your passion into your new reality.<br />
+									<strong>Revamp. Recharge. Reinvent.<br /> Picture yourself as a successful Software Engineer - flexible work arrangements, a thriving income, the fulfillment of creating solutions that impact lives, and the pride of being part of the technology frontier. Your journey to transform your career and life starts here. Embrace the future with us today!</strong>
 								</p>
 								<Link href="/contact">
 									<a
@@ -49,14 +46,10 @@ export const Solution : FC = () =>{
 									</div>
 									<div className="px-4">
 										<h3 className="my-4 text-xl font-semibold">
-                        Project Initialization
+                        Habit & Learning Developmet
 										</h3>
 										<p className="text-blueGray-400 leading-loose">
-                        Project initiation is the first step in
-                        starting a new project. During the project
-                        initiation phase, you establish why you are
-                        doing the project and what business value it
-                        will deliver.
+                        Team up with a dedicated mentor to recognize your unique skills and interests. We'll fuel your fascination for technology, fostering a solid habit of continuous learning, which will empower you as a future software engineer and enhance your problem-solving skills and creative thinking in everyday life.
 										</p>
 									</div>
 								</li>
@@ -71,13 +64,10 @@ export const Solution : FC = () =>{
 									</div>
 									<div className="px-4">
 										<h3 className="my-4 text-xl font-semibold">
-                        Looking for Creative
+                        Plan
 										</h3>
 										<p className="text-blueGray-400 leading-loose">
-                        Being creative means taking risks and ignoring
-                        doubt and facing fears. It means breaking with
-                        routine and doing something different for the
-                        sake of doing something different.
+                        Create a personalized learning pathway toward becoming a Software Engineer. With your mentor's guidance, delve into programming languages, comprehend algorithms, and master crucial software development methodologies - all carefully aligned with your career ambitions.
 										</p>
 									</div>
 								</li>
@@ -92,12 +82,10 @@ export const Solution : FC = () =>{
 									</div>
 									<div className="px-4">
 										<h3 className="my-4 text-xl font-semibold">
-                        Market Development
+                        Act
 										</h3>
 										<p className="text-blueGray-400 leading-loose">
-                        Market development is a strategic step taken
-                        by a company to develop the existing market
-                        rather than looking for a new market.
+                        Bring your plan to life! Construct real-world projects, contribute to open-source platforms, and enrich your portfolio. As you evolve into a proficient Software Engineer, you'll also enjoy the flexibility, fulfillment, and endless opportunities this profession brings. Your mentor will offer consistent support, guidance, and feedback throughout this transformative journey.
 										</p>
 									</div>
 								</li>
