@@ -1,11 +1,11 @@
 ---
-title: 'Definitely Typed'
-date: '2022-10-16'
-author: 'Slavo'
-image: 'definitely-typed-post.png'
-excerpt: 'TypeScript allows you to use Declaration Files'
-isFeatured: true
-category: 'Type Script'
+title: "Definitely Typed"
+date: "2022-10-16"
+author: "Slavo"
+image: "definitely-typed-post.png"
+excerpt: "TypeScript allows you to use Declaration Files"
+isFeatured: false
+category: "Type Script"
 ---
 
 #### We do not use regular JavaScript syntax if you use a 3rd party libraries ( React, jQuery, Vue, Angular), and we want to include TypeSript in our codebase
@@ -26,7 +26,7 @@ category: 'Type Script'
 
 ```js
   npx create-next-app -ts
- ```  
+```
 
 #### flag --ts ( typescript ) or to existing projects create empty "tsconfig.json" file in the root folder and run your project
 
