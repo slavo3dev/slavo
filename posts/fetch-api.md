@@ -119,7 +119,7 @@ The Fetch API is a powerful tool in the JavaScript developer's toolkit, simplify
 
 \*\* Book Recomedation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
 
-Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](https://wwww.slavo.io/contact)
+Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](/contact)
 
 Here are a few additional examples that you can use to practice working with the Fetch API in JavaScript:
 
@@ -186,7 +186,7 @@ By practicing and experimenting with different scenarios, you'll gain a better u
 
 \*\* Book Recomedation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
 
-Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](https://wwww.slavo.io/contact)
+Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](/contact)
 
 Here are the same examples using async/await syntax with the Fetch API in JavaScript:
 

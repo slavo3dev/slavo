@@ -69,4 +69,4 @@ Freelance Development:
 
 \*\* Book Recomedation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
 
-[Mentorship | Consulting](https://wwww.slavo.io/contact)
+[Mentorship | Consulting](/contact)

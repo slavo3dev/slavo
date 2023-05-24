@@ -88,4 +88,4 @@ To solidify your understanding of currying, here are some practice questions:
 
 \*\* Book Recomedation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
 
-Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](https://wwww.slavo.io/contact)
+Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](/contact)
