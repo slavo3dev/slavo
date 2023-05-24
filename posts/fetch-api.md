@@ -187,3 +187,75 @@ By practicing and experimenting with different scenarios, you'll gain a better u
 \*\* Book Recomedation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
 
 Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](https://wwww.slavo.io/contact)
+
+Here are the same examples using async/await syntax with the Fetch API in JavaScript:
+
+1. Sending Data with POST Request:
+
+   ```javascript
+   const url = "https://api.example.com/posts";
+   const data = {
+     title: "My New Post",
+     content: "This is the content of my new post.",
+   };
+
+   try {
+     const response = await fetch(url, {
+       method: "POST",
+       headers: {
+         "Content-Type": "application/json",
+       },
+       body: JSON.stringify(data),
+     });
+
+     const result = await response.json();
+     console.log(result);
+   } catch (error) {
+     console.error(error);
+   }
+   ```
+
+2. Handling Errors and HTTP Status Codes:
+
+   ```javascript
+   try {
+     const response = await fetch("https://api.example.com/data");
+
+     if (!response.ok) {
+       throw new Error(`HTTP error! Status: ${response.status}`);
+     }
+
+     const data = await response.json();
+     console.log(data);
+   } catch (error) {
+     console.error(error);
+   }
+   ```
+
+3. Fetching and Displaying an Image:
+
+```javascript
+const imgContainer = document.getElementById("image-container");
+
+try {
+  const response = await fetch("https://example.com/image.jpg");
+  const blob = await response.blob();
+
+  const imageURL = URL.createObjectURL(blob);
+  const imgElement = document.createElement("img");
+  imgElement.src = imageURL;
+  imgContainer.appendChild(imgElement);
+} catch (error) {
+  console.error(error);
+}
+```
+
+In these examples, the `await` keyword is used to pause the execution until the promise is resolved or rejected. This allows for a more concise and readable code flow when working with asynchronous operations.
+
+Make sure to wrap the code using `await` within an async function. You can use `try/catch` blocks to handle any errors that may occur during the asynchronous operations.
+
+Using async/await can help simplify and streamline the handling of asynchronous operations with the Fetch API, making the code easier to read and maintain.
+
+By practicing and experimenting with different scenarios, you'll gain a better understanding of how the Fetch API works and how to utilize it effectively in your JavaScript applications.
+
+\*\* Book Recomedation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
