@@ -546,52 +546,6 @@ React Native provides the `react-native-orientation` module, allowing you to man
 By effectively handling screen orientation in your React Native OTT application, you ensure the user interface remains visually appealing, functional, and adaptable to different orientations. This enables a seamless viewing experience for users who prefer either portrait or landscape mode.
 Customizing the user interface (UI) per platform is essential to developing React Native OTT applications. Each platform (Android and iOS) has its design guidelines, user expectations, and UI conventions. Adapting your app's UI to match each platform's standards enhances the overall user experience and makes your application feel native on each platform. Here's an in-depth look at how you can customize the UI per platform in your React Native OTT application.
 
-    **1. Understand Platform Guidelines:**
-
-- **Android Material Design:** Familiarize yourself with Android's Material Design guidelines, which recommend typography, color palettes, layout, navigation patterns, and interaction behaviors.
-
-- **iOS Human Interface Guidelines:** Study Apple's Human Interface Guidelines for iOS, which cover design principles, navigation patterns, typography, iconography, and other UI elements specific to iOS.
-
-  **2. Use Platform-Specific Components:**
-
-- **React Native Platform Module:** React Native provides the `Platform` module, which allows you to write platform-specific code. You can conditionally render components or apply different styles based on the current platform.
-
-- **Platform-Specific Libraries:** Utilize platform-specific UI libraries or components that follow each platform's design patterns and guidelines. For example, Material UI for Android and React Native Elements or NativeBase for iOS.
-
-  **3. Navigation and layout:**
-
-- **Tab Navigation:** Android often uses a bottom tab navigation pattern, while iOS typically employs a top tab bar. Customize the navigation component based on the platform's expected behavior.
-
-- **Drawer Navigation:** Android commonly uses a side drawer navigation pattern, whereas iOS typically employs a bottom tab bar or stack-based navigation. Adjust the navigation structure to match each platform's conventions.
-
-- **Toolbar and Navigation Bar:** Customize the styling and placement of the toolbar or the navigation bar to adhere to the platform's design guidelines.
-
-  **4. Typography and Fonts:**
-
-- **Platform-Specific Fonts:** Utilize platform-specific fonts to match the system fonts used by each platform.
-
-- **Font Sizes and Line Heights:** Adjust font sizes, line heights, and typography styles to match the platform's recommended guidelines. For example, iOS generally uses larger fonts and more line spacing.
-
-  **5. Icons and Images:**
-
-- **Platform-Specific Icons:** Use platform-specific icon sets, such as Material Icons for Android and Apple's SF Symbols for iOS, to maintain consistency and familiarity.
-
-- **Image Assets:** Tailor image assets to match the platform's resolution, pixel density, and aspect ratio guidelines. Provide optimized image formats (e.g., WebP for Android) and sizes to ensure optimal performance.
-
-  **6. UI Interactions and Animations:**
-
-- **Platform-Specific Gestures:** Leverage platform-specific gestures, such as swipe actions or long-press interactions, to provide an intuitive and native-like user experience.
-
-- **Platform-Specific Animations:** Incorporate platform-specific animations and transitions that align with the platform's guidelines and provide a seamless UI experience.
-
-  **7. Device-Specific Considerations:**
-
-- **Notch and Display Cutouts:** Accommodate devices with notches or display cutouts by adjusting the UI layout to avoid overlapping or obstructing essential UI elements.
-
-- **Status Bar and Safe Areas:** Customize the status bar color, text style, and handling of safe areas to match each platform's conventions and ensure content is displayed correctly.
-
-  By customizing your OTT application's UI per platform, you demonstrate a commitment to delivering a native experience, increasing user engagement, and enhancing your application's overall usability and satisfaction on both Android and iOS platforms.
-
 **7. Consider Accessibility:**
 
 Accessibility is crucial to developing OTT applications to ensure that all users, including those with disabilities or impairments, can access and enjoy your content. By considering accessibility guidelines and implementing accessible features, you can make your React Native OTT application more inclusive and provide a better user experience for everyone. Here's an in-depth look at how you can consider Accessibility in your application.
