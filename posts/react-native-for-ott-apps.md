@@ -3,8 +3,8 @@ title: "Supercharge OTT Experiences with React Native"
 date: "2023-05-26"
 author: "Slavo"
 image: "ott-apps.png"
-excerpt: "Before delving into the main topic of today's discussion, it is essential first to define what OTT applications are. OTT, or "Over-the-Top.."
-isFeatured: false
+excerpt: "One of the primary benefits of React Native is its emphasis on code reusability and cross-platform compatibility"
+isFeatured: true
 category: "React Native"
 ---
 
