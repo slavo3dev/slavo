@@ -1,5 +1,5 @@
 ---
-title: "Deep Copy vs. Shallow Copy in JavaScript:"
+title: "Deep Copy vs. Shallow Copy in JavaScript"
 date: "2023-05-25"
 author: "Slavo"
 image: "clo-js.png"
