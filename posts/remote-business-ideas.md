@@ -1,13 +1,12 @@
 ---
-title: 'Remote Business Ideas'
-date: '2022-10-15'
-author: 'Slavo'
-image: 'remote-business-ideas-post.png'
-excerpt: 'Become Office Independent - Work & Travel '
-isFeatured: true
-category: 'Digital Nomad'
+title: "Remote Business Ideas"
+date: "2022-10-15"
+author: "Slavo"
+image: "remote-business-ideas-post.png"
+excerpt: "Become Office Independent - Work & Travel "
+isFeatured: false
+category: "Digital Nomad"
 ---
-
 
 ### When you think of starting a business, one thing may pop into your head: risk. Our culture is filled with stories of bootstrap businesses, business success despite early rough starts, and businesses going under despite everyone’s best efforts
 
@@ -31,7 +30,7 @@ category: 'Digital Nomad'
 
 - Estimated Income: Based on Starter Story’s reports, the revenue can range from $6000 to $400,000+/month
 - Requirements: Business management, digital marketing, and site maintenance skills
-A subscription box service is a business model that delivers a package of products periodically to customers, like Dollar Shave Club.
+  A subscription box service is a business model that delivers a package of products periodically to customers, like Dollar Shave Club.
 - These services have gained more traction in recent years. Reports reveal that 54% of online shoppers are subscribed to at least one subscription box service, usually for reasons like personalized experience and convenience.
 - A good example is Butcher Box. This subscription service delivers various kinds of meat, a grocery staple for many households. The brand uses its organic sourcing as its unique selling point to provide customers with more value when purchasing their product.
 
@@ -41,7 +40,7 @@ A subscription box service is a business model that delivers a package of produc
 - Requirements: Other than skills in web design and front-end development, it’s good to be familiar with CMSs, like WordPress
 - Selling site themes is an excellent online business idea for web designers looking to earn money on the side. As more people launch their own websites, the demand for beautiful and easy-to-use pre-made designs also increases.
 - To boost a theme’s value, consider including regular updates and priority support into the package. Alternatively, provide a custom theme service. Online businesses are usually willing to pay thousands of dollars for a one-of-a-kind design.
-  
+
 ![Picture](/images/post-img/programing-post.png)
 
 #### Develop Apps
