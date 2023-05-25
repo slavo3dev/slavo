@@ -17,13 +17,13 @@ A shallow copy is copying reference types (objects and arrays) wherein the copie
 Here's a basic example:
 
     ```javascript
-        let originalArray = [1, 2, 3, 4];
-        let shallowCopyArray = originalArray;
+    let originalArray = [1, 2, 3, 4];
+    let shallowCopyArray = originalArray;
 
-        shallowCopyArray[0] = 100;
+    shallowCopyArray[0] = 100;
 
-        console.log(originalArray); // Output: [100, 2, 3, 4]
-        console.log(shallowCopyArray); // Output: [100, 2, 3, 4]
+    console.log(originalArray); // Output: [100, 2, 3, 4]
+    console.log(shallowCopyArray); // Output: [100, 2, 3, 4]
     ```
 
 In this case, the original array was altered when we updated the `shallowCopyArray.`
@@ -44,13 +44,13 @@ A deep copy creates a new object and recursively adds copies of the values from 
 Here's an example using JSON methods to create a deep copy:
 
     ```javascript
-        let originalObj = { a: 1, b: 2 };
-        let deepCopyObj = JSON.parse(JSON.stringify(originalObj));
+    let originalObj = { a: 1, b: 2 };
+    let deepCopyObj = JSON.parse(JSON.stringify(originalObj));
 
-        deepCopyObj.a = 100;
+    deepCopyObj.a = 100;
 
-        console.log(originalObj); // Output: { a: 1, b: 2 }
-        console.log(deepCopyObj); // Output: { a: 100, b: 2 }
+    console.log(originalObj); // Output: { a: 1, b: 2 }
+    console.log(deepCopyObj); // Output: { a: 100, b: 2 }
     ```
 
 In this case, the original object is unaffected by changes made to the `deepCopyObj.`
