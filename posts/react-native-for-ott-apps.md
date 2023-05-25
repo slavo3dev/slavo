@@ -142,7 +142,7 @@ In conclusion, React Native's focus on efficient memory management, component-ba
 
 When considering developing an OTT application, the choice of the technology stack is critical. React Native, with its cross-platform compatibility, performance, rich ecosystem, hot reloading, UI focus, and scalability, stands out as an excellent choice. It enables developers to build high-quality, efficient, and scalable OTT applications, resulting in a seamless and engaging viewer experience.
 
-**_What are some best practices you follow while developing React Native applications for OTT platforms?_**
+### What are some best practices you follow while developing React Native applications for OTT platforms?
 
 Developing OTT applications with React Native involves considerations that are a bit different from conventional app development due to the nature of the content being delivered and the user interaction that goes along with it. Here are some best practices that can help ensure a successful project:
 
