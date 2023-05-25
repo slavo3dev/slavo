@@ -34,7 +34,7 @@ While the primary advantage of spaced repetition is its ability to improve memor
 - Reduced cognitive load: Spacing out your study sessions helps prevent cognitive overload, which occurs when you simultaneously try to learn too much information.
 - Greater self-confidence: As your memory retention and comprehension improve, you'll feel more confident in your ability to master new subjects, paving the way for continued success in your personal and professional life.
 
-\*\* Book Recomedation: [Limitless](https://amzn.to/41mNHR8)
+\*\* Book Recommendation: [Limitless](https://amzn.to/41mNHR8)
 
 ## **A Step-by-Step Guide to Implementing Spaced Repetition for Optimal Learning**
 
@@ -110,7 +110,7 @@ Developing a growth mindset, believing that your abilities can be improved throu
 
 Creating a habit of spaced repetition is critical to making it a sustainable part of your daily life. According to research, forming a new pattern takes an average of 66 days. By consistently practicing spaced repetition, you'll eventually establish automatic neural pathways in your brain, making the process feel more natural and effortless.
 
-\*\* Book Recomedation: [The Now Habit](https://amzn.to/41mOmC6https://amzn.to/41mOmC6)
+\*\* Book Recommendation: [The Now Habit](https://amzn.to/41mOmC6https://amzn.to/41mOmC6)
 
 **_Mindfulness and spaced repetition_**
 

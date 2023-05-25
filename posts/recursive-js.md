@@ -46,7 +46,7 @@ function factorial(n) {
 console.log(factorial(5)); // Output: 120
 ```
 
-\*\* Book Recomedation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
+\*\* Book Recommendation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
 
 **The Cons of Recursive Functions:**
 
@@ -62,6 +62,6 @@ By leveraging recursive functions, developers can tackle various challenges, inc
 
 Understanding the benefits and limitations of recursive functions empowers developers to make informed decisions and choose the most appropriate solution for their specific problem domain. By leveraging the elegance and power of recursive functions in JavaScript, developers can write efficient, maintainable code that effectively addresses complex programming tasks.
 
-\*\* Book Recomedation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
+\*\* Book Recommendation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
 
 Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](/contact)

@@ -14,7 +14,7 @@ The world of **freelancing** offers incredible opportunities for software develo
 
 - The cornerstone of any successful freelance software developer's skill set lies in their proficiency with programming languages and frameworks. Dedicate time and effort to mastering languages like JavaScript, Python, Java, Ruby, or C++, and familiarize yourself with popular frameworks. Embrace the challenge of learning new languages and technologies, and never stop pushing yourself to be a better developer. Remember, in the constantly evolving world of software development, the more adaptable and versatile you are, the more opportunities you'll attract.
 
-\*\* **Book Recomedation**: [The Pragmatic Programmer](https://www.amazon.com/Pragmatic-Programmer-Journey-Anniversary-13-September-2019/dp/B0C1J5P635/ref=sr_1_1?keywords=pragmatic+programmer&qid=1683216989&s=books&sr=1-1&_encoding=UTF8&tag=prototypene06-20&linkCode=ur2&linkId=38f5fda307406370a5486a18108f2898&camp=1789&creative=9325&node=283155)
+\*\* **Book Recommendation**: [The Pragmatic Programmer](https://www.amazon.com/Pragmatic-Programmer-Journey-Anniversary-13-September-2019/dp/B0C1J5P635/ref=sr_1_1?keywords=pragmatic+programmer&qid=1683216989&s=books&sr=1-1&_encoding=UTF8&tag=prototypene06-20&linkCode=ur2&linkId=38f5fda307406370a5486a18108f2898&camp=1789&creative=9325&node=283155)
 
 **Version Control Expertise**:
 
@@ -28,7 +28,7 @@ The world of **freelancing** offers incredible opportunities for software develo
 
 - A solid understanding of data structures and algorithms is crucial for problem-solving and optimizing code performance. This knowledge will make you a better developer and help you ace technical interviews and land high-paying freelance gigs. Embrace the challenge of mastering data structures and algorithms, and watch your career soar to new heights.
 
-\*\* **Book Recomedation**: [Grokking Algorithms](https://www.amazon.com/Grokking-Algorithms-illustrated-programmers-curious-ebook/dp/B09781V6F7/ref=sr_1_4?crid=1H2BRNUH62995&keywords=algorithms&qid=1683217339&s=books&sprefix=algortihms%2Cstripbooks%2C86&sr=1-4&_encoding=UTF8&tag=prototypene06-20&linkCode=ur2&linkId=abb9017aa863e537ed45ccab6186e5e2&camp=1789&creative=9325&node=5)
+\*\* **Book Recommendation**: [Grokking Algorithms](https://www.amazon.com/Grokking-Algorithms-illustrated-programmers-curious-ebook/dp/B09781V6F7/ref=sr_1_4?crid=1H2BRNUH62995&keywords=algorithms&qid=1683217339&s=books&sprefix=algortihms%2Cstripbooks%2C86&sr=1-4&_encoding=UTF8&tag=prototypene06-20&linkCode=ur2&linkId=abb9017aa863e537ed45ccab6186e5e2&camp=1789&creative=9325&node=5)
 
 **Web Development Wizardry**:
 

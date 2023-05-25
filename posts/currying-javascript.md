@@ -86,6 +86,6 @@ To solidify your understanding of currying, here are some practice questions:
 2. Implement a curried function to concatenate three strings together.
 3. Create a curried function to calculate the
 
-\*\* Book Recomedation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
+\*\* Book Recommendation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
 
 Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](/contact)

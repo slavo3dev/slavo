@@ -136,6 +136,6 @@ console.log(taskModule.listTasks());
 delayedLog(["Hello", "World", "!"]); // Should log 'Hello', then 'World', then '!', each one second apart
 ```
 
-\*\* Book Recomedation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
+\*\* Book Recommendation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
 
 Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](/contact)

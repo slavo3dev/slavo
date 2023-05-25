@@ -17,7 +17,7 @@ Imagine you're in a restaurant, and you want to order food. The menu is an inter
 
 An API acts as a set of rules and protocols that allows different software applications to interact and exchange information. It defines how requests can be made to access or manipulate data and how responses will be delivered. APIs enable developers to leverage existing functionalities provided by other applications, services, or platforms, saving time and effort.
 
-\*\* Book Recomedation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
+\*\* Book Recommendation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
 
 **_Why are APIs important?_**
 
@@ -93,7 +93,7 @@ The Fetch API is a built-in JavaScript interface that allows developers to reque
 
 4. Cross-Origin Requests: Cross-Origin Resource Sharing (CORS) is a security mechanism enforced by browsers to prevent unauthorized access to resources from different origins. The Fetch API automatically handles CORS by sending the appropriate headers, allowing you to fetch data from external servers or APIs seamlessly.
 
-\*\* Book Recomedation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
+\*\* Book Recommendation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
 
 How to use the Fetch API:
 To make a basic GET request using the Fetch API, you must provide the URL of the resource you want to retrieve. The `fetch()` function returns a Promise that resolves to the response object, which you can then handle accordingly.
@@ -117,7 +117,7 @@ In this example, we make a GET request to `https://api.example.com/data`. The re
 
 The Fetch API is a powerful tool in the JavaScript developer's toolkit, simplifying the process of asynchronous data retrieval from servers or APIs. With its intuitive syntax, promise support, and flexibility in handling various request and response options, the Fetch API empowers developers to build dynamic web applications that seamlessly interact with external resources. So next time you need to fetch data from a server, remember to leverage the Fetch API and unlock the potential of asynchronous data retrieval in JavaScript.
 
-\*\* Book Recomedation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
+\*\* Book Recommendation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
 
 Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](/contact)
 
@@ -184,7 +184,7 @@ Remember to replace the URLs and endpoints in these examples with appropriate on
 
 By practicing and experimenting with different scenarios, you'll gain a better understanding of how the Fetch API works and how to utilize it effectively in your JavaScript applications.
 
-\*\* Book Recomedation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
+\*\* Book Recommendation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
 
 Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](/contact)
 
@@ -258,4 +258,4 @@ Using async/await can help simplify and streamline the handling of asynchronous 
 
 By practicing and experimenting with different scenarios, you'll gain a better understanding of how the Fetch API works and how to utilize it effectively in your JavaScript applications.
 
-\*\* Book Recomedation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
+\*\* Book Recommendation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)

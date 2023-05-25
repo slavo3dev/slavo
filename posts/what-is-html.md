@@ -18,7 +18,7 @@ The DOM is a tree-like structure containing all web page elements arranged hiera
 
 Once the browser has created the DOM, it uses the CSS stylesheet to apply styles to the HTML elements, determining how the web page will look. Finally, the browser executes any JavaScript code included in the web page, adding interactivity and dynamic functionality to the page.
 
-\*\* Book Recomedation: [HTML & CSS](https://amzn.to/3BaeO7d)
+\*\* Book Recommendation: [HTML & CSS](https://amzn.to/3BaeO7d)
 
 **_How Pages Load_**
 
@@ -46,7 +46,7 @@ The DOM is a tree-like structure containing all web page elements arranged hiera
 
 Once the browser has created the DOM, it uses the CSS stylesheet to apply styles to the HTML elements, determining how the web page will look. Finally, the browser executes any JavaScript code included in the web page, adding interactivity and dynamic functionality to the page.
 
-\*\* Book Recomedation: [HTML and CSS](https://amzn.to/3BaeO7d)
+\*\* Book Recommendation: [HTML and CSS](https://amzn.to/3BaeO7d)
 
 **_What is HTML5?_**
 
@@ -87,4 +87,4 @@ Finally, a proper structure can help improve SEO by making it easier for search 
 
 HTML5 is an essential technology for web development and SEO. It provides improved support for multimedia content and improved semantics, making it easier for search engines to understand the scope of web pages. Proper structure in your HTML code is also essential, as it improves accessibility, user experience, and SEO. By using semantic elements and structured data markup, you can create web pages that are both user-friendly and search engine-friendly.
 
-\*\* Book Recomedation: [HTML and CSS](https://amzn.to/3BaeO7d)
+\*\* Book Recommendation: [HTML and CSS](https://amzn.to/3BaeO7d)
