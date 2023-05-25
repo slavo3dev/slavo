@@ -3,7 +3,7 @@ title: "Supercharge OTT Experiences with React Native"
 date: "2023-05-26"
 author: "Slavo"
 image: "ott-apps.png"
-excerpt: "Before delving into the main topic of today's discussion, it is essential first to define what OTT applications are. OTT, or "Over-the-Top," refers to content providers distributing streaming media directly to viewers over the internet"
+excerpt: "Before delving into the main topic of today's discussion, it is essential first to define what OTT applications are. OTT, or "Over-the-Top.."
 isFeatured: true
 category: "React Native"
 ---
