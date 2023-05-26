@@ -1,5 +1,5 @@
 ---
-title: "Flow in Learning: Strategies for Deep Immersion"
+title: "The Power of Deliberate Practice"
 date: "2023-05-27"
 author: "Slavo"
 image: "deliberate.png"
