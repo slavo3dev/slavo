@@ -3,7 +3,7 @@ title: "Power Of CSS"
 date: "2023-05-28"
 author: "Slavo"
 image: "css.png"
-excerpt: "Are you tired of feeling overwhelmed by the vast amount of information you need to learn, only to forget it just as quickly?"
+excerpt: "Cascading Style Sheets (CSS) has established itself as a cornerstone technology in web development."
 isFeatured: false
 category: "HTML and CSS"
 ---
