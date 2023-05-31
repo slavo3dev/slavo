@@ -24,6 +24,8 @@ Additionally, discipline in Stoicism involves striving to live according to natu
 
 Stoicism, therefore, sees discipline.
 
+\*\* [Meditations](https://amzn.to/3qhNoKr)
+
 ## How to Gain More Discipline: Stoic Principles
 
 1. **Understand What is Within Your Control**: Epictetus's dichotomy of control teaches us to discern between what is within our control and what is not. Your thoughts, beliefs, and actions are within your control. External events, other people's actions, or the past and the future are beyond it. Recognize this, and focus your energy where you have power. This focus will naturally lead to a disciplined mind, as you'll stop wasting energy on what you can't control.
@@ -39,6 +41,8 @@ Stoicism, therefore, sees discipline.
 2. **Stoic Virtues**: Stoicism revolves around four cardinal virtues: Wisdom, Courage, Justice, and Temperance (self-control). Embracing these virtues in daily life can guide your decisions and actions, strengthening your discipline over time.
 
 3. **View Challenges as Opportunities**: Stoics perceive obstacles not as setbacks but as opportunities for growth and learning. This reframing encourages persistence and discipline, as every challenge becomes a chance to practice self-control and resilience.
+
+\*\* [Meditations](https://amzn.to/3qhNoKr)
 
 ## Achieving Self-Control
 
@@ -69,3 +73,10 @@ This practice also serves to foster gratitude. By voluntarily experiencing disco
 Seneca beautifully encapsulated the essence of this practice when he wrote, "Set aside a certain number of days, during which you shall be content with the scantiest and cheapest fare, with the coarse and rough dress, saying to yourself the while: 'Is this the condition that I feared?'"
 
 That is not a call to seek out suffering unnecessarily but rather an invitation to occasionally step outside of our comfort zone to appreciate better what we have and to remind ourselves that we can endure much more than we often believe we can. By consciously and consistently practicing voluntary hardship, we can cultivate greater discipline and self-control, both central tenets of Stoic philosophy.
+
+I am personally love those books:
+\*\* [How to Think Like a Roman Emperor: The Stoic Philosophy of Marcus Aurelius](https://amzn.to/42hrh4e)
+
+\*\* [Seneca's Letters from a Stoic](https://amzn.to/3BKRzB4)
+
+\*\* [Meditations](https://amzn.to/3qhNoKr)
