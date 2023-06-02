@@ -20,9 +20,11 @@ You will encounter two kinds of paths when working with HTML: absolute and relat
 
 An absolute path is like the complete address of a location. It starts from the root element, including all necessary subdirectories, ending precisely at the file or directory you're seeking. When the exact location of a file is known and constant, we use an absolute path. An example of an absolute path in HTML might look like this:
 
-"`html
-<img src="http://www.example.com/images/image.jpg" alt="example image">
-
+```html
+<img
+  src="http://www.example.com/images/image.jpg"
+  alt="example image"
+/>
 ```
 
 In this instance, the `src` attribute gives the absolute path of the image.
@@ -31,8 +33,8 @@ In this instance, the `src` attribute gives the absolute path of the image.
 
 On the other hand, a relative path is more like giving directions from your current location to your destination. It provides the path to a file relative to the present location or directory. This is helpful when the files are in the same or within the nested directories. An example of a relative path in HTML might look like this:
 
-"`html
-<img src="images/image.jpg" alt="example image">
+```html
+<img src="images/image.jpg" alt="example image" />
 ```
 
 Here, the `src` attribute gives the relative path of the image. The browser will look for the image in the "images" directory located in the same directory as the current HTML file.
@@ -123,3 +125,7 @@ Types of paths and their correct usage are vital skills that every developer mus
 \*\* Book Recommendation: [HTML and CSS](https://amzn.to/3BaeO7d)
 
 Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](/contact)
+
+```
+
+```
