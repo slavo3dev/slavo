@@ -70,7 +70,7 @@ Internal resources are files hosted on the same server as your web page. They ar
 - Documents (PDF, DOC, etc.)
 - Any server-side scripts
 
-#### Advantages of Using Internal Resources
+## Advantages of Using Internal Resources
 
 - **Control**: You have complete control over these resources on your own server. You can modify, move, or delete these files per your requirements.
 - **Performance**: Internal resources will likely load faster as they reside on the same server. This can help improve the website's loading speed, enhancing the user experience and SEO.
