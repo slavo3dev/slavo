@@ -1,3 +1,7 @@
+export interface HeadProps  {
+    title: string;
+    canonicalPath?: string;
+}
 
 export interface HeaderProps
 {

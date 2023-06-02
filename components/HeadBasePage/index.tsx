@@ -1,20 +1,16 @@
 import { FC } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { HeadProps } from "@/lib/types";
+import { META_DESCRIPTION } from "@/lib/constants";
 
-type Props = {
-    title: string,
-    metaDescription: string, 
-    canonicalPath?: string
-}
 
-export const HeadBasePage: FC<Props> = (props) => {
+export const HeadBasePage: FC<HeadProps> = (props) => {
 	const router = useRouter();
 	const {
 		title = "Slavo Software Development Consulting",
-		metaDescription="My name is Slavo and I am an experienced software web engineer and freelance developer. The enthusiastic professional developer of web/chatbots/aws cloud who is used to fast-paced environments. Hardworking and effective as both a team leader and in an individual role",
-		canonicalPath,} = props;
-
+		canonicalPath, } = props;
+    
 	return (
 		<>
 			<Head>
@@ -33,7 +29,7 @@ export const HeadBasePage: FC<Props> = (props) => {
 
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 				<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-				<meta name="description" key="description" content={ metaDescription } />
+				<meta name="description" key="description" content={ META_DESCRIPTION } />
 				<meta name="description" content="Discover how a career change into web development can open up new opportunities. Learn web development skills, programming languages, and tools to start your journey today." />
 				<meta name="keywords" content="career change, web development, learn web development, programming, coding, frontend, backend, full stack, HTML, CSS, JavaScript, frameworks, libraries, React, React Native, ChatGPT, Mentorship, Mentor"></meta>
                 
@@ -58,7 +54,7 @@ export const HeadBasePage: FC<Props> = (props) => {
 				<meta property="og:locale" key="og:locale" content="en_EU" />
 				<meta property="og:url" key="og:url" content={`${process.env.BASE_URL}${router.asPath}`} />
 				<meta property="og:type" key="og:type" content="website" />
-				<meta property="og:description" key="og:description" content={metaDescription} />
+				<meta property="og:description" key="og:description" content={META_DESCRIPTION} />
 				<meta property="og:image" key="og:image" content={ `${ process.env.BASE_URL }/images/lion-favicon.png` } />
                 
 				

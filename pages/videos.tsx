@@ -14,8 +14,7 @@ const Videos: NextPage = () => {
 	return (
 		<>
 			<HeadBasePage
-				title={"Free Videos to help you to make a Career Change: Learn Web Development for a Bright Future"}
-				metaDescription="My name is Slavo Popovic and I am an experienced software web engineer, freelance developer and mentor. Helping companies and individuals to build there online business, optimize websites and scale. For future Digital Nomads & Freelancers" />
+				title={"Free Videos to help you to make a Career Change: Learn Web Development for a Bright Future"} />
 			<div className="p-8">
 				<div>
 					<h1 className="text-3xl  ml-6 font-bold font-family-jakarta text-black">Udacity</h1>

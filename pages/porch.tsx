@@ -228,8 +228,7 @@ function Fact({ fact, setPorchs }: any) {
 	return (
 		<>
 			<HeadBasePage
-				title={"Share your daily update and continue to Career Change: Learn Web Development for a Bright Future"}
-				metaDescription="My name is Slavo Popovic and I am an experienced software web engineer, freelance developer and mentor. Helping companies and individuals to build there online business, optimize websites and scale. For future Digital Nomads & Freelancers" />
+				title={"Share your daily update and continue to Career Change: Learn Web Development for a Bright Future"} />
 			<div className="max-w-sm rounded overflow-hidden shadow-lg bg-blue-800 p-2 hover:bg-slate-600 transition-duration: 900ms; text-slate-100">
 				<div className="px-2 py-2">
 					<div className="p-2 bg-yellow-300 text-gray-800 rounded-lg shadow-lg hover:bg-yellow-100 transition duration-300 ease-in-out text-sm">

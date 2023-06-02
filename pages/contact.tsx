@@ -5,9 +5,7 @@ import { ContactForm, HeadBasePage } from "../components";
 const Contact: NextPage = () => {
 	return (
 		<>
-			<HeadBasePage
-				title={"Contact us for a Career Change: Learn Web Development for a Bright Future"}
-				metaDescription="My name is Slavo Popovic and I am an experienced software web engineer, freelance developer and mentor. Helping companies and individuals to build there online business, optimize websites and scale. For future Digital Nomads & Freelancers" />
+			<HeadBasePage title={"Contact us for a Career Change: Learn Web Development for a Bright Future"} />
 			<section className="py-20 h-screen" >
 				<div className="container ">
 					<div className="max-w-2xl mx-auto text-center">

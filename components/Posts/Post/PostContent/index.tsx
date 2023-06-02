@@ -67,8 +67,7 @@ export const PostContent: FC<PostContentDataType> = ({ post }) =>
 	return (
 		<>
 			<HeadBasePage
-				title={`Blog Title: ${post.title} | Career Change: Learn Web Development for a Bright Future`}
-				metaDescription="My name is Slavo Popovic and I am an experienced software web engineer, freelance developer and mentor. Helping companies and individuals to build there online business, optimize websites and scale. For future Digital Nomads & Freelancers" />
+				title={`Blog Title: ${post.title} | Career Change: Learn Web Development for a Bright Future`}  />
 			<article className={classes.content}>
 				<PostHeader title={ post.title } imgSrc={ imgPath } />
 				<article className="prose lg:prose-xl">

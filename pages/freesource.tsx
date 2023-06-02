@@ -39,9 +39,7 @@ const FreeSource: NextPage = () => {
 
 	return (
 		<>
-			<HeadBasePage
-				title={"Free Sources for a Career Change: Learn Web Development for a Bright Future"}
-				metaDescription="My name is Slavo Popovic and I am an experienced software web engineer, freelance developer and mentor. Helping companies and individuals to build there online business, optimize websites and scale. For future Digital Nomads & Freelancers" />
+			<HeadBasePage title={"Free Sources for a Career Change: Learn Web Development for a Bright Future"} />
 			<div className="freeSourceContainer">
 				<Header showForm={showForm} setShowForm={setShowForm} />
 				{showForm ? (
