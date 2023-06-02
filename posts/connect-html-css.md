@@ -3,7 +3,7 @@ title: "Connecting HTML and CSS in Your Basic Web Project!!"
 date: "2023-06-03"
 author: "Slavo"
 image: "html-css.png"
-excerpt: "Are you tired of feeling overwhelmed by the vast amount of information you need to learn, only to forget it just as quickly?"
+excerpt: "As the two fundamental building blocks of a web project, HTML and CSS go hand in hand in defining the structure and look of a website. HTML..."
 isFeatured: false
 category: "HTML and CSS"
 ---
