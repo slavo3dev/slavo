@@ -46,9 +46,6 @@ In sum, objective representation encourages us to interpret our bodily sensation
 
 The practice of dispassionate judgment is a cornerstone of Stoic philosophy. It advises separating what's within our control from what's not and putting energy into what we can change: our thoughts, feelings, and behaviors. This mindset can be especially beneficial for managing panic attacks.
 
-**Understanding Panic:**
-The fear of the attack itself primarily characterizes panic attacks. Anticipatory anxiety, or fear of a future panic attack, often aggravates the panic disorder. However, the onset of panic attacks is largely beyond our control.
-
 **Applying Dispassionate Judgment:**
 Stoicism helps to shift focus from uncontrollable aspects (panic attacks) to controllable ones (our reactions to panic attacks). For instance, while preventing a panic attack may not be possible, you can control how you respond to the physical sensations it brings. Instead of spiraling into fear and worry, you can acknowledge these symptoms as temporary and harmless.
 
@@ -70,9 +67,6 @@ The Stoic practice of dispassionate judgment encourages us to focus our energy o
 ## 3. **Preparation and Visualization**
 
 Preparation and visualization, critical components of Stoic philosophy, are rooted in the concept known as 'premeditation Malorum or the premeditation of evils. This practice encourages individuals to mentally rehearse challenging situations to reduce anxiety and fear associated with such events.
-
-**Understanding Panic:**
-The fear of experiencing a panic attack, particularly in public or unfamiliar places, can lead to avoidance behaviors and limit one's life severely. Here's where visualization is crucial in managing and reducing panic attacks.
 
 **Applying Preparation and Visualization:**
 The Stoics suggest regularly visualizing challenging situations, like experiencing a panic attack, to reduce the shock and fear of the actual event. This mental rehearsal can help familiarize you with the physical sensations and psychological distress associated with a panic attack so that it's less frightening when it happens.
