@@ -119,3 +119,7 @@ After setting up your paths, it's time to validate if they lead correctly to the
 Just as there are many ways to reach a destination, there are also several ways to direct your HTML document to the correct file or resource. Understanding the
 
 Types of paths and their correct usage are vital skills that every developer must master. So the next time you're coding, remember these tips and get the path right!
+
+\*\* Book Recommendation: [HTML and CSS](https://amzn.to/3BaeO7d)
+
+Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](/contact)
