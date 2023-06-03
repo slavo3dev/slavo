@@ -34,7 +34,7 @@ The world of **freelancing** offers incredible opportunities for software develo
 
 - Web development skills are highly sought-after in the freelance market. Whether you're interested in front-end or back-end development, make it your mission to excel in HTML, CSS, JavaScript, and popular web development frameworks like React, Angular, and Node.js. The more proficient you become in web development, the more in demand you'll be as a freelance software developer.
 
-\*\* For Consultng and Mantroship feel free to contact [slavo.io](https://slavo.io)
+\*\* For Consulting and Mentorship, feel free to contact [slavo.io](https://slavo.io)
 
 **Mobile Development Mastery**:
 
@@ -73,4 +73,4 @@ The world of **freelancing** offers incredible opportunities for software develo
 
 Now, with these top 10 skills in hand, go forth and make your mark in freelance software development. Remember, the only limits that genuinely exist are the ones you impose upon yourself. Embrace your potential, and watch your freelance business soar to new heights.
 
-\*\* For Consultng and Mantroship feel free to contact [slavo.io](https://slavo.io)
+\*\* For Consulting and Mentorship, feel free to contact [slavo.io](https://slavo.io)
