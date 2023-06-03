@@ -32,9 +32,7 @@ function MyApp ( { Component, pageProps }: AppProps )
 	return (<VideoContext.Provider value={{videoLine, setVideoLine}}>
 		<UserProvider>
 			<Layout>
-				<HeadBasePage
-					title="Career Change: Learn Web Development for a Bright Future"
-					metaDescription="My name is Slavo Popovic and I am an experienced software web engineer and freelance developer. Helping companies and individuals to build there online business, optimize websites and scale. For future Digital Nomads & Freelancers" />
+				<HeadBasePage title="Career Change: Learn Web Development for a Bright Future" />
 				<MainNavigation />
 				<Component { ...pageProps } />
 				<Footer />

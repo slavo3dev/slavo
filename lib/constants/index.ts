@@ -21,3 +21,5 @@ export function isValidHttpUrl(string: string | URL) {
 	}
 	return url.protocol === "http:" || url.protocol === "https:";
 }
+
+export const META_DESCRIPTION="My name is Slavo Popovic and I am an experienced software web engineer, freelance developer and mentor. Helping companies and individuals to build there online business, optimize websites and scale. For future Digital Nomads & Freelancers / My name is Slavo Popovic and I am an experienced software web engineer, freelance developer and mentor. Helping companies and individuals to build there online business, optimize websites and scale. For future Digital Nomads & Freelancers / Master Web and Mobile Development with our comprehensive Software Engineering Mentorship program. Learn cutting-edge programming languages like Python, JavaScript, Java, Swift, and more. Gain industry insights from seasoned professionals and boost your career prospects";

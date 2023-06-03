@@ -8,12 +8,12 @@ import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { HeadBasePage } from "@/components/HeadBasePage";
 
 interface PostContentDataType
 {
     post: any
 }
-
 
 export const PostContent: FC<PostContentDataType> = ({ post }) =>
 {
@@ -65,11 +65,15 @@ export const PostContent: FC<PostContentDataType> = ({ post }) =>
 		}
 	};
 	return (
-		<article className={classes.content}>
-			<PostHeader title={ post.title } imgSrc={ imgPath } />
-			<article className="prose lg:prose-xl">
-				<ReactMarkdown remarkPlugins={ [ remarkGfm ] } components={ customRenderers } linkTarget='_blank'>{post.content}</ReactMarkdown>
+		<>
+			<HeadBasePage
+				title={`Blog Title: ${post.title} | Career Change: Learn Web Development for a Bright Future`}  />
+			<article className={classes.content}>
+				<PostHeader title={ post.title } imgSrc={ imgPath } />
+				<article className="prose lg:prose-xl">
+					<ReactMarkdown remarkPlugins={ [ remarkGfm ] } components={ customRenderers } linkTarget='_blank'>{post.content}</ReactMarkdown>
+				</article>
 			</article>
-		</article>
+		</>
 	);
 };

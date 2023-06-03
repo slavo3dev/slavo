@@ -5,6 +5,7 @@ import supabase from "../lib/supabase";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { CATEGORIES, isValidHttpUrl } from "@/lib/constants";
 import { Loader } from "@/components/ui/Loader";
+import { HeadBasePage } from "../components";
 
 
 const FreeSource: NextPage = () => {
@@ -37,22 +38,25 @@ const FreeSource: NextPage = () => {
 	);
 
 	return (
-		<div className="freeSourceContainer">
-			<Header showForm={showForm} setShowForm={setShowForm} />
-			{showForm ? (
-				<NewFactForm setFacts={setFacts} setShowForm={setShowForm} />
-			) : null}
+		<>
+			<HeadBasePage title={"Free Sources for a Career Change: Learn Web Development for a Bright Future"} />
+			<div className="freeSourceContainer">
+				<Header showForm={showForm} setShowForm={setShowForm} />
+				{showForm ? (
+					<NewFactForm setFacts={setFacts} setShowForm={setShowForm} />
+				) : null}
 
-			<main className='main'>
-				<CategoryFilter setCurrentCategory={setCurrentCategory} />
+				<main className='main'>
+					<CategoryFilter setCurrentCategory={setCurrentCategory} />
 
-				{isLoading ? (
-					<Loader title="Please Wiat... Loading..."/>
-				) : (
-					<FactList facts={facts} setFacts={setFacts} />
-				)}
-			</main>
-		</div>
+					{isLoading ? (
+						<Loader title="Please Wiat... Loading..."/>
+					) : (
+						<FactList facts={facts} setFacts={setFacts} />
+					)}
+				</main>
+			</div>
+		</>
 	);
 };
 
