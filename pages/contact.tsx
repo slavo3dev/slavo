@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import { ContactForm } from "../components";
+import TweetList from "@/components/Twitter/TweetList";
 
 
 const Contact: NextPage = () => {
@@ -7,6 +8,8 @@ const Contact: NextPage = () => {
 		<section className="py-20 h-screen" >
 			<div className="container ">
 				<div className="max-w-2xl mx-auto text-center">
+					<div><h1>This is Tweet List</h1></div>
+					<TweetList/>
 					<div className="max-w-md mb-8 mx-auto">
 						<span
 							className="inline-block py-1 px-3 text-xs font-semibold bg-blue-100 text-blue-600 rounded-xl wow animate__animatedanimated animate__fadeIn"
