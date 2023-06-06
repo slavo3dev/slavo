@@ -4,7 +4,7 @@ date: "2023-05-30"
 author: "Slavo"
 image: "stoic.png"
 excerpt: "Whether you're new to Stoicism or a seasoned practitioner, this blog aims to shed light on one of the core tenets of Stoic philosophy: discipline."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

@@ -4,7 +4,7 @@ date: "2023-05-23"
 author: "Slavo"
 image: "lions-mane.png"
 excerpt: "Maintaining focus and mental clarity can be challenging in today's fast-paced world. Distractions abound, and staying on track with our tasks and goals can be difficult..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

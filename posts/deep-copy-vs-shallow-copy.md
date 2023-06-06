@@ -4,7 +4,7 @@ date: "2023-05-25"
 author: "Slavo"
 image: "clo-js.png"
 excerpt: "Understanding the concept of copying in JavaScript is crucial for every software engineer..."
-isFeatured: true
+isFeatured: false
 category: "Java Script"
 ---
 

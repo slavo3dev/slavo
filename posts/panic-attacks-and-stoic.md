@@ -4,7 +4,7 @@ date: "2023-06-03"
 author: "Slavo"
 image: "panic.png"
 excerpt: "Panic attacks, characterized by sudden bouts of intense fear or discomfort, affect millions globally..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 
