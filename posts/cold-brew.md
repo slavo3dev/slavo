@@ -4,7 +4,7 @@ date: "2023-05-23"
 author: "Slavo"
 image: "cold-brew.png"
 excerpt: "Coffee isn't just about the taste; it's a catalyst for productivity, mental acuity, and overall wellness...."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 
