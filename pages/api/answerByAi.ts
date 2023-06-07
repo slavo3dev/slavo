@@ -34,6 +34,7 @@ export default async function handler( req: NextApiRequest, res: NextApiResponse
 	//     Do not answare to any question if is not related to HTML, CSS, JavaScript, TypeScript, REST API, FrontEnd Development, BackEnd Development, Web Development,  React, React Native, NodeJS, NESTJS`
 	// } );
     
+	// Updated version to GPT-3.5 Turbo
 	const response: any = await openAi.createChatCompletion( {
 		model: "gpt-3.5-turbo",
 		temperature: 0,
@@ -46,12 +47,11 @@ export default async function handler( req: NextApiRequest, res: NextApiResponse
 			content: `As a profesinal Mentor & Senior Software Engineer answare the question about FRONTEND   Development, also about techologies like HTML, CSS, JavaScript, React, REST API, TYPESCRIPT.
                 Please answare with examples and in depth.
                 Quesetion is: ${ question }. About this tech: ${ tech }
-                the Resposne should be formatted to HTML.
+                the Resposne should be formatted to YAML.
                 Do not answare to any question if is not related to HTML, CSS, JavaScript, TypeScript, REST API, FrontEnd Development, BackEnd Development, Web Development,  React, React Native, NodeJS, NESTJS`
 		}]
 	});
-    
-	console.log("Resposne: ", response.data.choices[0]?.message?.content);
+   
 	res.status(200).json({ answer: response.data.choices[0]?.message?.content });  
 
 }

@@ -31,8 +31,6 @@ export const OpenAI: FC = () => {
 		}
 	};
     
-	console.log("Response: ", aiRes);
-
 	const resposeAI = errMsg ? <div className="text-gray-700 text-base p-8">{errMsg}</div> : 
 		<div className="text-gray-700 text-base p-8" >
 			<ReactMarkdown remarkPlugins={ [ remarkGfm ] } components={ customRenderers } linkTarget='_blank'>{aiRes}</ReactMarkdown>
