@@ -33,6 +33,10 @@ export const MainNavigation: FC = () => {
 						<li>
 							<Link href="/porch">Porch</Link>
 						</li>
+					
+						<li>
+							<Link href="/mentor">Mentor</Link>
+						</li>
 						<li onClick={() => localStorage.setItem("selectedOption", "ALL")}>
 							<Link href="/blog">Blog</Link>
 						</li>
