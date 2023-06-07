@@ -1,13 +1,18 @@
 import axios from "axios";
 import { useState, FC } from "react";
 import { Loader } from "../ui/Loader";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { customRenderers } from "@/lib/formatText";
 
 export const OpenAI: FC = () => {
 
-	const [aiRes, setAiRes] = useState<any>();
+	const [aiRes, setAiRes] = useState<string>("");
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [ questionInput, setQuestionInput ] = useState<string>( "" );
-	const [ tech, setTech ] = useState<string>("HTML");
+	const [ tech, setTech ] = useState<string>( "HTML" );
+	const [ errMsg, setErrMsg ] = useState<string>( "" );
+    
 
 	const handleApiAI = async () =>
 	{
@@ -17,15 +22,21 @@ export const OpenAI: FC = () => {
 				questionInput,
 				tech
 			} );
-			setAiRes( res );
+			setAiRes( res.data.answer );
 			setIsLoading(false);
 		} catch ( error )
 		{
-			setAiRes("Oops... We are very sorry, something went wrong please try again ");
+			setErrMsg("We're sorry, we're currently experiencing some difficulties retrieving data.\n Please come back later or try again. \n Thank you for your patience.");
 			setIsLoading(false);
-			throw new Error("Something Went Wrong!!");
 		}
 	};
+    
+	console.log("Response: ", aiRes);
+
+	const resposeAI = errMsg ? <div className="text-gray-700 text-base p-8">{errMsg}</div> : 
+		<div className="text-gray-700 text-base p-8" >
+			<ReactMarkdown remarkPlugins={ [ remarkGfm ] } components={ customRenderers } linkTarget='_blank'>{aiRes}</ReactMarkdown>
+		</div> ; 
 
 	return (
 		<>
@@ -61,10 +72,7 @@ export const OpenAI: FC = () => {
                                 Press For Answer
 						</button>
 					</div>
-					{ isLoading ? <Loader title={"Please Wait... Answer is coming...."} /> :
-						aiRes?.data?.answer.map( ( answer: { text: string; } ) =>
-							<div key={ Math.random() } dangerouslySetInnerHTML={{__html: answer.text }} className="text-gray-700 text-base p-8" /> ) 
-					}
+					{ isLoading ? <Loader title={"Please Wait... Answer is coming...."} /> : resposeAI }
 				</div>
 			</div>
 

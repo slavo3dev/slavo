@@ -48,7 +48,7 @@ export const Subscribe: FC= () => {
 				/>
 			</div>
 			<button
-				className="w-full md:w-auto py-4 px-8 text-xs text-white text-blue-800 hover:text-white font-semibold leading-none border border-blue-300 hover:border-blue-300 bg-white hover:bg-blue-500 rounded transition duration-300 ease-in-out"
+				className="w-full md:w-auto py-4 px-8 text-xs text-blue-800 hover:text-white font-semibold leading-none border border-blue-300 hover:border-blue-300 bg-white hover:bg-blue-500 rounded transition duration-300 ease-in-out"
 				type="submit"
 				onClick={handleSubscribe}
 			>
@@ -60,24 +60,26 @@ export const Subscribe: FC= () => {
 
 	return (
 		<> 
-			<div className="text-center max-w-xl mx-auto">
-				<h2 className="mb-4 text-3xl lg:text-3xl text-white font-bold font-heading">
-					<span>Subscribe now to </span>
-					<span className="text-blue-200">Our Newsletter</span>{" "}
-					<br />
-					<span>and get the Coupon code.</span>
-				</h2>
-				<p className="mb-8 text-white">
+			<section className="py-20 bg-blue-400">
+				<div className="text-center max-w-xl mx-auto">
+					<h2 className="mb-4 text-3xl lg:text-3xl text-white font-bold font-heading">
+						<span>Subscribe now to </span>
+						<span className="text-blue-200">Our Newsletter</span>{" "}
+						<br />
+						<span>and get the Coupon code.</span>
+					</h2>
+					<p className="mb-8 text-white">
                 All your information is completely confidential
-				</p>
-				{state === "Success" ? (
-					<p className="lg:text-4xl text-blueGray-200">
-                Awesome, you have been subscribed to Slavo
 					</p>
-				) : (
-					subscribeForm
-				)}
-			</div>
+					{state === "Success" ? (
+						<p className="lg:text-4xl text-blueGray-200">
+                Awesome, you have been subscribed to Slavo
+						</p>
+					) : (
+						subscribeForm
+					)}
+				</div>
+			</section>
 			{state === "Error" &&
             alert("Oops Something went WORONG \nPlease Try Again or You are already a member !!!" )}
 		</>
