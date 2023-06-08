@@ -15,7 +15,8 @@ type Data = {
 
 export default async function handler( req: NextApiRequest, res: NextApiResponse<Data>) {
 
-	const config = new Configuration({
+	const config = new Configuration( {
+		// api key for openAI
 		apiKey: process.env.OPENAI_API_KEY
 	} );
     
