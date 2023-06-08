@@ -1,20 +1,14 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import ReactTypingEffect from "react-typing-effect";
 import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { OpenAI } from "../OpenAI";
-import styles from "./heroAI.module.css";
 
 
 export const HeroAI: FC = () =>
 {
 	const { user } = useUser();
-	const [ show, setShow ] = useState( false );
 
-	useEffect( () =>
-	{
-		setShow( true );
-	}, [] );
 
 	return (
 		<>
