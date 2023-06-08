@@ -96,7 +96,7 @@ const { user } = useUser();
               <Link className="" href={""}>SignUp</Link>
             </div> */}
             <div className="w-11/12 px-4 py-3 mb-3 text-blue-500 hover:text-blue-700 text-center font-semibold rounded-xl border border-blue-200 hover:border-blue-300 rounded">  
-{isAuth ? (user?.email_verified ? (<span className={classes.user_email}>{user.email}</span>): (<Link href="/api/auth/login">Verify Email & Login</Link>))
+{isAuth ? (user?.email_verified ? (<Link href="/api/auth/logout"><span className={classes.user_email}>{user.email}  [ Logout ]</span></Link>): (<Link href="/api/auth/login">Verify Email & Login</Link>))
  : (<Link className="" href="/api/auth/login">Login</Link>)} </div>
           </div>
 		<div className="text-center">

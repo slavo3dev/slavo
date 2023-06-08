@@ -30,31 +30,31 @@ export const MainNavigation: FC = () => {
 						{/* <li>
 						<Link href="/about">About</Link>
 					</li> */}
-						<li>
+						<li className="hover:text-blue-500 hover:bg-blue-50">
 							<Link href="/porch">Porch</Link>
 						</li>
 					
-						<li>
+						<li className="hover:text-blue-500 hover:bg-blue-50">
 							<Link href="/mentor">Mentor</Link>
 						</li>
-						<li onClick={() => localStorage.setItem("selectedOption", "ALL")}>
+						<li className="hover:text-blue-500 hover:bg-blue-50" onClick={() => localStorage.setItem("selectedOption", "ALL")}>
 							<Link href="/blog">Blog</Link>
 						</li>
 						{/* <li>
 						<Link href="/freesource">ReSource</Link>
 					</li>  */}
-						<li>
+						<li className="hover:text-blue-500 hover:bg-blue-50">
 							<Link href="/videos">Videos</Link>
 						</li>
-						<li>
+						<li className="hover:text-blue-500 hover:bg-blue-50">
 							<Link href="/contact">Contact</Link>
 						</li>
 						{isAuth && user?.email_verified && (
-							<li>
+							<li className="hover:text-blue-500 hover:bg-blue-50">
 								<Link href="/api/auth/logout">Logout</Link>
 							</li>
 						)}
-						<li>{isAuth ? (user?.email_verified ? (<span className={classes.user_email}>{user.email}</span>): (<Link href="/api/auth/login">Verify Email & Login</Link>)) : (<Link href="/api/auth/login">Login</Link>)}
+						<li className="hover:text-blue-500 hover:bg-blue-50">{isAuth ? (user?.email_verified ? (<span className={classes.user_email}>{user.email}</span>): (<Link href="/api/auth/login">Verify Email & Login</Link>)) : (<Link href="/api/auth/login">Login</Link>)}
 						</li>
 					</ul>
 				</nav>
