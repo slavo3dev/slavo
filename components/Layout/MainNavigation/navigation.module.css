@@ -97,7 +97,7 @@
   /* font-size: var(--size-3); */
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .navMenu {
     display: none;
   }
