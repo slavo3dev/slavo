@@ -41,7 +41,7 @@ export const OpenAI: FC = () => {
 			<div className="lg:flex rounded shadow-lg lg:max-w-full sm:max-w-full md:max-w-full" id="openai">
 				<div className="bg-white shadow-md shadow-sky-700 rounded px-8 pt-6 pb-8 w-full lg:max-w-full">
 					<div className="mb-7 pl-8 pr-8 flex pb-4 flex-col">
-						<label className="block text-gray-700 text-xl font-bold mb-2 lg:text-left md:text-center" >
+						<label className="block text-gray-700 lg:text-xl md:text-xl font-bold mb-2 lg:text-left md:text-center sm:text-xs" >
                             Ask Question About:<br />* Choose: [ "HTML | CSS | JavaScript | TypeScript | React | NodeJS | API" ]<br />* Suggestions, Advice & Solutions
 						</label>
 						<select
