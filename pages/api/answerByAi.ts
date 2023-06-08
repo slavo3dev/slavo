@@ -1,4 +1,3 @@
-import { OpenAI } from "@/components/OpenAI";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Configuration, OpenAIApi } from "openai";
 
@@ -36,6 +35,7 @@ export default async function handler( req: NextApiRequest, res: NextApiResponse
 	// } );
     
 	// Updated version to GPT-3.5 Turbo
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const response: any = await openAi.createChatCompletion( {
 		model: "gpt-3.5-turbo",
 		temperature: 0,
