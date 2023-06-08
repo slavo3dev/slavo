@@ -58,7 +58,7 @@ export const OpenAI: FC = () => {
 						</select>
 						<textarea
 							id="editor" rows={ 8 }
-							className="shadow appearance-none block w-full py-3 px-3 text-sm text-gray-800 bg-whitedark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400 border rounded focus:outline-none focus:shadow-outline"
+							className="shadow appearance-none block w-full py-3 px-3 text-sm text-gray-800 bg-whitedark:bg-gray-800 focus:ring-0 dark:text-bule dark:placeholder-gray-400 border rounded focus:outline-none focus:shadow-outline"
 							placeholder="Ask Question FronEnd Tech - HTML, CSS, JavaScript..."
 							required
 							value={ questionInput }
