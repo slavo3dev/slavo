@@ -12,6 +12,9 @@
     font-size:  revert; 
     font-weight: revert;
   }
+  a:hover {
+    @apply underline;
+  }
 }
 
 .fit {

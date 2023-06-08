@@ -236,7 +236,7 @@ function Fact({ fact, setPorchs }: any) {
                     Date: { formattedDate } <br /> Time: { formattedTime }
 						</p>
 						<p>
-							<a href={`mailto:${fact.email}`} className="underline-offset-1 hover:bg-slate-900 text-sm" target='_blank'>
+							<a href={`mailto:${fact.email}`} className="underline-offset-1 hover:bg-sky-100 text-sm" target='_blank'>
 						User: {fact.email}
 							</a>
 						</p>
@@ -246,7 +246,7 @@ function Fact({ fact, setPorchs }: any) {
 						{ fact.text }
 					</p>
 					<div className="p-2 text-sm bg-yellow-300 text-gray-800 rounded-lg shadow-lg hover:bg-yellow-100 transition duration-300 ease-in-out">
-						<a href={fact.source} target='_blank' className="text-sm hover:bg-slate-900 whitespace-normal break-words">
+						<a href={fact.source} target='_blank' className="text-sm hover:bg-sky-100 whitespace-normal break-words">
 						Source: {fact.source}
 						</a>
 					</div>
