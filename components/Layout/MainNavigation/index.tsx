@@ -4,11 +4,14 @@ import { Logo } from "../Logo";
 import { FC, useEffect, useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { Burger } from "./mobileView";
+import { useRouter } from "next/router";
+
 
 export const MainNavigation: FC = () => {
 	const { user } = useUser();
 	const isAuth = user?.email;
-
+	const router = useRouter();
+    
 	const [headStyle, setHeadStyle] = useState<boolean>(true);
 	useEffect(() => {
 		document.addEventListener("scroll", () => {
@@ -30,23 +33,23 @@ export const MainNavigation: FC = () => {
 						{/* <li>
 						<Link href="/about">About</Link>
 					</li> */}
-						<li className="hover:text-blue-500 hover:bg-blue-50">
+						<li className={router.pathname === "/porch" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/porch">Porch</Link>
 						</li>
 					
-						<li className="hover:text-blue-500 hover:bg-blue-50">
+						<li className={router.pathname === "/mentor" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/mentor">Mentor</Link>
 						</li>
-						<li className="hover:text-blue-500 hover:bg-blue-50" onClick={() => localStorage.setItem("selectedOption", "ALL")}>
+						<li className={router.pathname === "/blog" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"} onClick={() => localStorage.setItem("selectedOption", "ALL")}>
 							<Link href="/blog">Blog</Link>
 						</li>
 						{/* <li>
 						<Link href="/freesource">ReSource</Link>
 					</li>  */}
-						<li className="hover:text-blue-500 hover:bg-blue-50">
+						<li className={router.pathname === "/videos" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/videos">Videos</Link>
 						</li>
-						<li className="hover:text-blue-500 hover:bg-blue-50">
+						<li className={router.pathname === "/contact" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/contact">Contact</Link>
 						</li>
 						{isAuth && user?.email_verified && (

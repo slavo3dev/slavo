@@ -14,9 +14,9 @@ module.exports = {
     },
   },
   variants: {
-    opacity: ({ after }) => after(["disabled"]),   
-    display: ["group-hover"], 
+    opacity: ({ after }) => after(["disabled"]),
+    display: ["group-hover"],
+    textColor: ["active"],
   },
   plugins: [require("@tailwindcss/typography")],
 };
-
