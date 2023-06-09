@@ -10,6 +10,8 @@
     },
     "dependencies": {
         "@auth0/nextjs-auth0": "^2.2.1",
+        "@stripe/react-stripe-js": "^2.1.0",
+        "@stripe/stripe-js": "^1.54.0",
         "@supabase/supabase-js": "^2.1.1",
         "animate.css": "^4.1.1",
         "axios": "^0.27.2",
@@ -25,8 +27,9 @@
         "react-syntax-highlighter": "^15.4.4",
         "react-typing-effect": "^2.0.5",
         "react-visibility-sensor": "^5.1.1",
-        "remark-gfm": "^3.0.1",
         "react-wow": "^1.0.0",
+        "remark-gfm": "^3.0.1",
+        "stripe": "^12.9.0",
         "wow.js": "^1.2.2",
         "wowjs": "^1.1.3"
     },
