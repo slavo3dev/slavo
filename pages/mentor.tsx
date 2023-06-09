@@ -11,7 +11,6 @@ const Mentor: NextPage = () =>
 		} );
         
 		const result = await res.json();
-		console.log( "Results: ", result );
 		window.location.href = result.session.url;
 	};
     
