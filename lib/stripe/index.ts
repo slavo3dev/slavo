@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export const verifyStripe: ( { req, stripe, endpointSecret }: any ) => any = async ({ req, stripe, endpointSecret }) => {
+export const verifyStripe: any = async ({ req, stripe, endpointSecret }: any) => {
 	async function buffer(readable: any) {
 		const chunks = [];
 		for await (const chunk of readable) {
@@ -19,5 +19,3 @@ export const verifyStripe: ( { req, stripe, endpointSecret }: any ) => any = asy
 
 	return event;
 };
-
-module.exports = verifyStripe;

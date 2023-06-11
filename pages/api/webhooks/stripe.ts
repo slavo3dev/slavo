@@ -24,15 +24,16 @@ const handler = async (
 		try
 		{
 			event = await verifyStripe( { req, stripe, endpointSecret } );
-			console.log(`[ stripe.ts ] - EVENT: ${event}`);
 		} catch ( err )
 		{
 			console.log(`[ Stripe WebHook ] - Error Msg: ${err}`);
 		}
-        
+     
+		console.log("event.type: ", event.type);
+
 		switch (event.type) {
 		case "payment_intent.succeeded": {
-			res.status( 200 ).json({payment: "Successful Payment"});    
+			console.log("Successful Payment");  
 		}    
 			break;
 		default:
