@@ -4,7 +4,7 @@ date: "2023-05-25"
 author: "Slavo"
 image: "clo-js.png"
 excerpt: "Working with data from external sources is a common requirement in web development. To achieve this, JavaScript provides us with a powerful Fetch API tool."
-isFeatured: true
+isFeatured: flase
 category: "Java Script"
 ---
 
