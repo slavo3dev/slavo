@@ -13,7 +13,6 @@ export default async function handler(
 	res: NextApiResponse<PaymentData>
 )
 {
-    
 	const productItems = [ {
 		price: process.env.STRIPE_AIMENTOR_PRODUCT_PRICE_ID,
 		quantity: 1
@@ -22,15 +21,14 @@ export default async function handler(
 	const protocol = process.env.NODE_ENV === "development" ? "http://" : "https://";
 	const host = req.headers.host;
     
-	console.log( {
-		protocol, 
-		host
-	} );
+	console.log("Req: ", req.body.email);
+    
 
 	const checkoutSession = await stripe.checkout.sessions.create({
 		line_items: productItems,
 		mode: "subscription",
-		success_url: `${protocol}${host}/success`
+		success_url: `${ protocol }${ host }/success`,
+		customer_email: req.body.email
 	});
 	res.status(200).json({ session: checkoutSession });
 }

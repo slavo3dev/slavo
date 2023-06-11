@@ -23,6 +23,8 @@ export const FreeSource: FC<FreeSourceTypeProps> = ({ fact, setFacts }: any) => 
         fact.like + fact.exelent < fact.false;
     
 	const { user } = useUser();
+    
+	console.log("User: ", user);
    
 	async function handleVote ( columnName: string )
 	{
