@@ -1,38 +1,54 @@
 
-export async function  twitterAPI ():Promise<any>{
-  
-	const endpoint="https://api.twitter.com/2/tweets/search/recent";
-	const apiKey="oaEGgQXMy8HP8Cu6yUGPvQTMu";
-	// const apiKeySecret="Rvpb6vxXF9B8ifyDH5nes0tysnnUCFeZdyJ1mBZDRouXxt2Gi2";
-	const bearerToken="AAAAAAAAAAAAAAAAAAAAALC8ngEAAAAA4kHZXRdjZUXKrhBPESK48m4%2BkG8%3D6xeTaN6qf9wOaB5VVOKXcyyBSD6KmXZrJ7qIIgwu7qR7yNiswn";
+const apiKey=process.env.TWITTER_API_KEY;
+// const bearerToken=process.env.TWITTER_BEARER_TOKEN;
+const bearerToken="tnAWRA1lpYzURO42948EdcTEUM1Dw86E2vtqmIoLhinW3";
+// const apiKeySecret=process.env.TWITTER_API_KEY_SECRET;
+// const accessToken=process.env.ACCESS_TOKEN;
+// const accessTokenSecret=process.env.ACCESS_TOKEN_SECRET;
+
+const endpoint = "https://api.twitter.com/2/tweets/search/recent";
 
 
-
-	const response = await fetch(endpoint,{
-		method:"GET",
-		headers:{
-			Authorization: bearerToken,
-			ContentType: "application/json",
-			ApiKey: apiKey,
-		},
-	});
-	if(!response.ok){
-		throw new Error("Request not succesfull");
+export async function  twitterAPI():Promise<any>{
+	console.log("This is Api Key",apiKey);
+	try{
+		const response = await fetch(endpoint,{
+			method:"GET",
+			headers:{
+				"User-Agent": "v2TweetLookupJS",
+				"authorization": `Bearer ${bearerToken}`,
+			},
+		});
+		if (!response.ok) {
+			throw new Error("Baxd Request");
+		}
+		
+		const data = await response.json();
+		return data;
+		
+	} catch (error) {
+		console.log(error);
+		throw error;
 	}
-
-	const data = await response.json();
-	return data;
 }
-// 		.then(response=>{
-// 			if(!response.ok){
-// 				throw new Error("Request failed");
-// 			} return response.json;})
-// 		.then(data=>{
-// 			console.log(data);
-// 		})
-// 		.catch(error=>{
-// 			console.log(error);
-// 		})
-// 	;
 
-// }
+
+//try{
+// 	const response = await fetch(endpoint,{
+// 		method:"GET",
+// 		mode:"no-cors",
+// 		headers:{
+// 			"User-Agent": "v2RecentSearchJS",
+// 			"authorization": `Bearer ${bearerToken}`
+// 		},
+// 	});
+// 	if(!response.ok){
+// 		throw new Error("Request not succesfull");
+// 	}
+
+// 	const data = await response.json();
+// 	return data;
+// } catch (error) {
+// 	console.log(error);
+// 	throw error;
+	

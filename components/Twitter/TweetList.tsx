@@ -6,7 +6,7 @@ const TweetList: FC = ()=>{
 	const [tweets,setTweets]= useState<any[]>([]);
 
 	useEffect(()=>{
-		const getTweets= async()=>{
+		const getTweets = async()=>{
 			try{
 				const data = await twitterAPI();
 				setTweets(data);
@@ -16,15 +16,20 @@ const TweetList: FC = ()=>{
 			}
 		};
 		getTweets();
+		
+		
 	}
 	,[]);
 
 	return (
-		<div className="bg-white h-96 w-96"><iframe> {tweets.map((tweet)=>(
-			<div key={tweet.id}>{tweet.id}</div>))}</iframe>
+		<div className="bg-white rounded border border-gray-300 px-6 py-4 my-4 w-full">
+			<iframe> {tweets.map((tweet)=>(
+				<div key={tweet.id}>{tweet.id}</div>))}
+			</iframe>
 		</div>
 	);
 
 };
 
 export default TweetList;
+
