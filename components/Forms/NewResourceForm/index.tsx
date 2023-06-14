@@ -16,6 +16,7 @@ export const NewResourceFrom: FC<NewResourceFromProps> = ( { setSources, setShow
     
 	const { user } = useUser();
     
+	console.log("User: ", user);
 	const email = user?.user !== undefined ? user.user : "";
     
 	async function handleSubmit(e: { preventDefault: () => void; }) {

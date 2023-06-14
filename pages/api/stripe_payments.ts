@@ -21,9 +21,6 @@ export default async function handler(
 	const protocol = process.env.NODE_ENV === "development" ? "http://" : "https://";
 	const host = req.headers.host;
     
-	console.log("Req: ", req.body.email);
-    
-
 	const checkoutSession = await stripe.checkout.sessions.create({
 		line_items: productItems,
 		mode: "subscription",
