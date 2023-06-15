@@ -128,6 +128,4 @@ Incorporating spaced repetition into your daily life is a powerful way to create
 
 Every great achiever has had an inspiring [mentor](https://www.slavo.io/contact) guiding them along the way.
 
-Constact us - [slavo.io](https://www.slavo.io/contact)
-
 [Slavo.io Platform](https://www.slavo.io/contact) is designed to connect you with exceptional mentors who will help you tap into your full potential and achieve extraordinary results.

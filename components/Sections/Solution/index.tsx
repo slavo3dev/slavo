@@ -46,7 +46,7 @@ export const Solution : FC = () =>{
 									</div>
 									<div className="px-4">
 										<h3 className="my-4 text-xl font-semibold">
-                        Habit & Learning Developmet
+                        Habit & Learning Development
 										</h3>
 										<p className="text-blueGray-400 leading-loose">
                         Team up with a dedicated mentor to recognize your unique skills and interests. We'll fuel your fascination for technology, fostering a solid habit of continuous learning, which will empower you as a future software engineer and enhance your problem-solving skills and creative thinking in everyday life.

@@ -75,6 +75,7 @@ Seneca beautifully encapsulated the essence of this practice when he wrote, "Set
 That is not a call to seek out suffering unnecessarily but rather an invitation to occasionally step outside of our comfort zone to appreciate better what we have and to remind ourselves that we can endure much more than we often believe we can. By consciously and consistently practicing voluntary hardship, we can cultivate greater discipline and self-control, both central tenets of Stoic philosophy.
 
 I am personally love those books:
+
 \*\* [How to Think Like a Roman Emperor: The Stoic Philosophy of Marcus Aurelius](https://amzn.to/42hrh4e)
 
 \*\* [Seneca's Letters from a Stoic](https://amzn.to/3BKRzB4)
