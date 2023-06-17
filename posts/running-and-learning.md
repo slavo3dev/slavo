@@ -22,7 +22,7 @@ The protein Brain-Derived Neurotrophic Factor (BDNF) plays a pivotal role in neu
 
 Researchers at the University of California, Irvine, found that high-intensity exercise, like running, increased BDNF levels in rats. The rats who ran also performed better on memory tests than sedentary rats, indicating a direct correlation between running, increased BDNF production, and improved cognitive function.
 
-\*\* [Run Like a Pro](https://amzn.to/3NzMbHy)
+\*\* Book Recommendation: [Run Like a Pro](https://amzn.to/3NzMbHy)
 
 **_Running, Neurogenesis, and the Hippocampus_**
 
@@ -60,7 +60,7 @@ BDNF (Brain-Derived Neurotrophic Factor) is a protein that supports the survival
 
 A study published in the **\_Journal of Physiology**\_ demonstrated that running increases the levels of BDNF in the hippocampus in rats. These higher BDNF levels were associated with enhanced cognitive performance, especially in tasks involving complex learning and high memory demand.
 
-\*\* [Can't Hurt Me](https://amzn.to/3PhACG8)
+\*\* Book Recommendation: [Can't Hurt Me](https://amzn.to/3PhACG8)
 
 **_Running and Hippocampal Volume_**
 
@@ -90,7 +90,7 @@ An interesting case study comes from the business world – the Finnish company 
 
 Furthermore, a study published in the Journal of Occupational and Environmental Medicine discovered that workers who participated in regular physical activity were more resistant to the effects of work-related stress, had lower absenteeism rates, and showed better work performance.
 
-\*\* [Born to Run](hhttps://amzn.to/468OXuE)
+\*\* Book Recommendation: [Born to Run](hhttps://amzn.to/468OXuE)
 
 **_Running and Mental Health_**
 
@@ -138,6 +138,6 @@ In conclusion, running is a powerful, accessible, and natural way to boost our l
 
 Just as we train our bodies, it's equally important to exercise our minds. By integrating running into our routines, we're investing in our physical health and nurturing our brains, fostering a holistic sense of well-being and unlocking our full cognitive potential. The road to better learning might just be run around the block!
 
-\*\* [Born to Run](hhttps://amzn.to/468OXuE)
+\*\* Book Recommendation: [Born to Run](hhttps://amzn.to/468OXuE)
 
 [Slavo.io Platform](https://www.slavo.io/contact) is designed to connect you with exceptional mentors who will help you tap into your full potential and achieve extraordinary results.
