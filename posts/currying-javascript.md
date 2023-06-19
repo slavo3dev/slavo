@@ -4,7 +4,7 @@ date: "2023-05-23"
 author: "Slavo"
 image: "currying-js.png"
 excerpt: "Currying is a functional programming technique that transforms a function with multiple arguments into a series of functions, each accepting a single argument..."
-isFeatured: true
+isFeatured: false
 category: "Java Script"
 ---
 
