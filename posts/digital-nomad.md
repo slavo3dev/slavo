@@ -11,6 +11,8 @@ category: "Self Help"
 
 Becoming a digital nomad evokes a sense of adventure and a yearning for freedom, a chance to break free from the proverbial shackles of traditional work settings and societal norms. But why should you take this leap?
 
+\*\* Book Recommendation: [The 4-Hour Workweek](https://amzn.to/3NoWe13)
+
 ## Embracing Freedom and Flexibility
 
 The digital nomad lifestyle is synonymous with freedom - the liberty to work and live on your terms. You no longer have to commute daily, be tied to a desk, or deal with office politics. You get to decide your work schedule, allowing you to optimize for your peak productivity hours. Love working late at night or at the crack of dawn? As a digital nomad, that's entirely within your grasp.
@@ -79,6 +81,8 @@ This lifestyle can also simplify your financial life. As you move away from cons
 
 Becoming a digital nomad invites you to pare down your life to the essentials, promoting simplicity and intentionality. It helps you recognize that life's value doesn't lie in what you own but in the experiences you gather, the work you passionately create, and the rich tapestry of memories you weave around the globe. It's about living simply so you can live, cherishing every moment of your nomadic journey.
 
+\*\* Book Recommendation: [Be a Free Range Human](https://amzn.to/3Nl2Du6)
+
 ## Steps to Become Digital Nomad
 
 Embarking on the journey to become a digital nomad can be exhilarating but requires careful planning and preparation. Here are some detailed steps to guide you toward this adventurous lifestyle.
@@ -125,6 +129,8 @@ Start small if you need more clarification on jumping straight into the digital 
 
 Becoming a digital nomad is a significant life change, requiring preparation, dedication, and courage. But with every step you take, you're moving closer to a life of freedom, adventure, and endless possibilities. So, are you ready to leap?
 
+\*\* Book Recommendation: [The Personal MBA: Master the Art of Business](https://amzn.to/3Jphrq8)
+
 ## Some Profe
 
 When considering the digital nomadic lifestyle, finding a profession that allows for the flexibility and independence this way of life requires is crucial. Here are some occupations that lend themselves well to a location-independent lifestyle:
@@ -170,3 +176,9 @@ Many companies are now hiring remote customer service representatives. That invo
 While this profession may require more than just a good internet connection, for those with a creative eye, becoming a travel photographer or videographer can be a fulfilling profession. You can sell your work to magazines, travel websites, or stock photo sites.
 
 Each profession has its own challenges and rewards, and the most suitable one for you depends on your skills, interests, and career goals. It's worth noting that most professions require self-discipline and excellent time management skills, as you'll often be working on your schedule. With the right career, the life of a digital nomad can be an enriching and liberating experience.
+
+\*\* Book Recommendation: [The Personal MBA: Master the Art of Business](https://amzn.to/3Jphrq8)
+
+\*\* Book Recommendation: [The 4-Hour Workweek](https://amzn.to/3NoWe13)
+
+[Mentorship Program - Contact us for more info](/contact)
