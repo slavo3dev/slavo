@@ -4,7 +4,7 @@ date: "2023-06-29"
 author: "Slavo"
 image: "why-react-native.png"
 excerpt: "React is a JavaScript library for building user interfaces."
-isFeatured: false
+isFeatured: true
 category: "React Native"
 ---
 
