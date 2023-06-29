@@ -1,3 +1,23 @@
+// import TweetEmbed from "react-tweet-embed";
+
+  
+// export default function Tweets() {
+
+// 	const tweetId = "1668306825140219936";
+
+// 	return (
+// 		<div>
+// 			<h3>GeeksforGeeks - Tweet</h3>
+// 			<TweetEmbed tweetId={tweetId}
+// 				options={{theme: "dark" }}/>
+				
+// 		</div>
+// 	);
+// }
+
+
+
+
 import { twitterAPI} from "@/api/twitterApi";
 import { FC, useEffect, useState } from "react";
 

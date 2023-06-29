@@ -14,13 +14,14 @@ export async function  twitterAPI():Promise<any>{
 	try{
 		const response = await fetch(endpoint,{
 			method:"GET",
+			mode:"cors",
 			headers:{
 				"User-Agent": "v2TweetLookupJS",
 				"authorization": `Bearer ${bearerToken}`,
 			},
 		});
 		if (!response.ok) {
-			throw new Error("Baxd Request");
+			throw new Error("Bad Request");
 		}
 		
 		const data = await response.json();
