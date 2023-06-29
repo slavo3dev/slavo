@@ -239,6 +239,11 @@ function Fact({ fact, setPorchs }: any) {
     }
   }
 
+  const [showMore, setShowMore] = useState(false);
+
+  const showText = () => {
+    setShowMore(!showMore);
+  };
   return (
     <>
       <HeadBasePage
@@ -246,7 +251,7 @@ function Fact({ fact, setPorchs }: any) {
           "Share your daily update and continue to Career Change: Learn Web Development for a Bright Future"
         }
       />
-      <div className="max-w-sm h-96 relative md: static overflow-hidden  md:overflow-scroll rounded  shadow-lg bg-blue-800 hover:bg-slate-600 transition-duration: 900ms; text-slate-100">
+      <div className="max-w-sm h-96 relative md: static overflow-hidden md:overflow-scroll rounded  shadow-lg bg-blue-800 hover:bg-slate-600 transition-duration: 900ms; text-slate-100">
         <div className="p-4 ">
           <div className="p-2 bg-yellow-300 overflow-scroll text-gray-800 rounded-lg shadow-lg hover:bg-yellow-100 transition duration-300 ease-in-out text-sm">
             <p className="text-yellow">
@@ -286,8 +291,11 @@ function Fact({ fact, setPorchs }: any) {
             </button>
           </div>
         </div>
-        <div className="absolute bottom-0 opacity-50 h-12 md:hidden bg-black w-full ">
-          <p className="m-auto w-1/2 "> SHOW MORE</p>
+        <div className="absolute bottom-0 opacity-75 h-12 md:hidden bg-black w-full ">
+          <p className="m-auto w-1/2 " onClick={showText}>
+            {" "}
+            SHOW MORE
+          </p>
         </div>
       </div>
     </>
