@@ -4,7 +4,7 @@ date: "2023-05-20"
 author: "Slavo"
 image: "clo-js.png"
 excerpt: "Closure is a function with access to its scope..."
-isFeatured: true
+isFeatured: false
 category: "Java Script"
 ---
 
