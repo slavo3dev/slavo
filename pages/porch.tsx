@@ -239,11 +239,18 @@ function Fact({ fact, setPorchs }: any) {
     }
   }
 
-  const [showMore, setShowMore] = useState(true);
+  const commentText = fact.text;
 
-  const showText = () => {
-    setShowMore(!showMore);
+  const [showMore, setShowMore] = useState(false);
+
+  const displayComment = showMore
+    ? commentText
+    : commentText.slice(0, 60);
+
+  const handleMore = () => {
+    setShowMore(true);
   };
+
   return (
     <>
       <HeadBasePage
@@ -251,13 +258,7 @@ function Fact({ fact, setPorchs }: any) {
           "Share your daily update and continue to Career Change: Learn Web Development for a Bright Future"
         }
       />
-      <div
-        className={
-          showMore
-            ? "max-w-sm md:h-96 relative md: static overflow-hidden md:overflow-scroll rounded  shadow-lg bg-blue-800 hover:bg-slate-600 transition-duration: 900ms; text-slate-100"
-            : "max-w-sm h-96  relative md: static overflow-hidden md:overflow-scroll rounded  shadow-lg bg-blue-800 hover:bg-slate-600 transition-duration: 900ms; text-slate-100"
-        }
-      >
+      <div className="max-w-sm md:h-96 relative md: static overflow-hidden md:overflow-scroll rounded  shadow-lg bg-blue-800 hover:bg-slate-600 transition-duration: 900ms; text-slate-100">
         <div className="p-4">
           <div className="p-2 bg-yellow-300 overflow-scroll text-gray-800 rounded-lg shadow-lg hover:bg-yellow-100 transition duration-300 ease-in-out text-sm">
             <p className="text-yellow">
@@ -275,8 +276,12 @@ function Fact({ fact, setPorchs }: any) {
           </div>
           <p className="text-slate-50 text-base p-2">
             Learning Update: <br />
-            {fact.text}
+            {displayComment}
+            {!showMore && commentText.length > 60 && (
+              <button onClick={handleMore}>... read more</button>
+            )}
           </p>
+
           <div className="p-2 text-sm bg-yellow-300 text-gray-800 rounded-lg shadow-lg hover:bg-yellow-100 transition duration-300 ease-in-out">
             <a
               href={fact.source}
@@ -296,11 +301,6 @@ function Fact({ fact, setPorchs }: any) {
               🤯 👍 {fact.excellent}
             </button>
           </div>
-        </div>
-        <div className="absolute bottom-0 opacity-75 h-12 md:hidden bg-black w-full ">
-          <p className="m-auto w-1/2 " onClick={showText}>
-            {showMore ? <p>show more</p> : <p>show less</p>}
-          </p>
         </div>
       </div>
     </>
