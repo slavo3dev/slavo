@@ -26,6 +26,9 @@ It is important to note that the Mozart Effect is typically observed in short-te
 
 The Mozart Effect offers intriguing insights into the potential cognitive benefits of classical music, including enhanced spatial-temporal skills, improved concentration and focus, memory enhancement, and mood elevation. Incorporating classical music into daily routines, study sessions, and educational environments may complement other cognitive enhancement strategies. So, why not embrace the harmonies of the great masters and explore how classical music can unlock the potential of your brain?
 
+\*\* **Book Recommendation**: [Electric Brain](https://amzn.to/3PLjpoV)
+\*\* **_How the New Science of Brainwaves Reads Minds, Tells Us How We Learn, and Helps Us Change for the Better_**
+
 ## Practical Applications
 
 The Mozart Effect and classical music can be applied in various practical ways to harness its potential cognitive benefits and enhance brain function, focus, and learning. Here are some practical applications of incorporating classical music into daily routines and educational settings:
@@ -65,3 +68,11 @@ Gamma waves are the fastest brain waves associated with high-level cognitive pro
 It is important to note that the interaction between brain waves and classical music is a complex phenomenon that varies among individuals. The effects can also depend on personal preferences, cultural backgrounds, and prior musical exposure. Furthermore, the impact of classical music on brain waves is transient, lasting for the duration of the listening experience and its immediate aftermath.
 
 Classical music can influence brain wave activity and promote specific cognitive states. From stimulating beta waves for focused attention to inducing alpha waves for relaxation, theta waves for enhanced creativity, and gamma waves for heightened cognition, classical compositions can align with different frequency bands and impact our mental states. By understanding this interaction, we can make informed choices about the type of classical music we engage with to enhance our cognitive abilities and optimize our learning experiences.
+
+\*\* **Book Recommendation**: [Limitless](https://amzn.to/44q7u3U)
+\*\* **_Upgrade Your Brain, Learn Anything Faster, and Unlock Your Exceptional Life_**
+
+\*\* **Book Recommendation**: [Change Your Brain, Change Your Life](https://amzn.to/44rO5ja)
+\*\* **_The Breakthrough Program for Conquering Anxiety, Depression, Obsessiveness, Lack of Focus, Anger, and Memory Problems_**
+
+**_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
