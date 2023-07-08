@@ -36,3 +36,11 @@
     text-align: left;
   }
 }
+
+@media (min-width: 500px) {
+
+  .postheader h1 {
+    font-size: var(--size-8);
+    text-align: center;
+  }
+}
