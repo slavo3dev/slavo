@@ -37,10 +37,10 @@
   }
 }
 
-@media (min-width: 500px) {
+@media (max-width: 450px) {
 
   .postheader h1 {
-    font-size: var(--size-8);
+    font-size: var(--size-8) !important;
     text-align: center;
   }
 }
