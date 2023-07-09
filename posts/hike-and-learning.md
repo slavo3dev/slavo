@@ -4,7 +4,7 @@ date: "2023-07-09"
 author: "Slavo"
 image: "hike-and-learn.png"
 excerpt: "Hiking is not just about escaping the city or getting close to nature; it's a journey into the heart of the self...."
-isFeatured: false
+isFeatured: true
 category: "Self Help"
 ---
 
