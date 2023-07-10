@@ -1,9 +1,9 @@
 ---
-title: "Stride, Learn, Grow: Embrace the Hiking Life"
+title: "Stop Doing Mental Masturbation: Turning Dreams into Reality [ The Neuroscience of Action ]"
 date: "2023-07-11"
 author: "Slavo"
 image: "masturbation-mental.png"
-excerpt: "Hiking is not just about escaping the city or getting close to nature; it's a journey into the heart of the self...."
+excerpt: "The process of raising dopamine levels in your brain by telling people your goals, plans, and how you want to change, but never actually doing anything about it."
 isFeatured: true
 category: "Self Help"
 ---
