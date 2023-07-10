@@ -46,9 +46,9 @@
 }
 
 @media (max-width: 330px) {
-    
+
   .postheader h1 {
-    font-size: var(--size-4) !important;
+    font-size: var(--size-6) !important;
     text-align: center;
   }
 }
