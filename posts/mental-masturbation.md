@@ -1,5 +1,5 @@
 ---
-title: "Stop Mental Masturbation: Turning Dreams into Reality [ The Neuroscience of Action ]"
+title: "From Mental Masturbation to Motivation: Translating Dreams into Reality through the Power of Neuroscience"
 date: "2023-07-11"
 author: "Slavo"
 image: "masturbation-mental.png"
