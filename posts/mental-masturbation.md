@@ -1,5 +1,5 @@
 ---
-title: "Stop Doing Mental Masturbation: Turning Dreams into Reality [ The Neuroscience of Action ]"
+title: "Stop Mental Masturbation: Turning Dreams into Reality [ The Neuroscience of Action ]"
 date: "2023-07-11"
 author: "Slavo"
 image: "masturbation-mental.png"
