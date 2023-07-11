@@ -28,8 +28,8 @@ export const Subscribe: FC= () => {
 	};
 
 	const subscribeForm = (
-		<div className="flex flex-wrap max-w-lg mx-auto">
-			<div className="flex w-full md:w-2/3 px-3 mb-3 md:mb-0 md:mr-6 bg-blue-500 border border-blue-300 rounded">
+		<div className="flex flex-wrap max-w-lg mx-auto w-5/6 sm:w-full md:w-full">
+			<div className="flex w-full sm:w-full md:w-2/3 px-3 mb-3 md:mb-0 md:mr-6 bg-blue-500 border border-blue-300 rounded">
 				<svg
 					className="h-6 w-6 my-auto text-blue-300"
 					xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@ export const Subscribe: FC= () => {
 					<path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
 				</svg>
 				<input
-					className="w-full pl-3 py-4 text-xs text-white placeholder-white font-semibold leading-none bg-blue-500 outline-none"
+					className="w-full pl-3 py-4 before:text-xs text-white placeholder-white font-semibold leading-none bg-blue-500 outline-none"
 					type="text"
 					placeholder="Type your e-mail"
 					onChange={(e) => setEmail(e.target.value)}
@@ -48,7 +48,7 @@ export const Subscribe: FC= () => {
 				/>
 			</div>
 			<button
-				className="w-full md:w-auto py-4 px-8 text-xs text-blue-800 hover:text-white font-semibold leading-none border border-blue-300 hover:border-blue-300 bg-white hover:bg-blue-500 rounded transition duration-300 ease-in-out"
+				className="w-full sm:w-full md:w-auto py-4 px-8 text-xs text-blue-800 hover:text-white font-semibold leading-none border border-blue-300 hover:border-blue-300 bg-white hover:bg-blue-500 rounded transition duration-300 ease-in-out"
 				type="submit"
 				onClick={handleSubscribe}
 			>
@@ -60,9 +60,9 @@ export const Subscribe: FC= () => {
 
 	return (
 		<> 
-			<section className="py-20 bg-blue-400">
-				<div className="text-center max-w-xl mx-auto">
-					<h2 className="mb-4 text-3xl lg:text-3xl text-white font-bold font-heading">
+			<section className="py-10 sm:py-20 bg-blue-400">
+				<div className="text-center max-w-xl mx-auto w-5/6 sm:w-full md:w-full">
+					<h2 className="mb-4  text-base lg:text-3xl sm:text-3xl text-white font-bold font-heading">
 						<span>Subscribe now to </span>
 						<span className="text-blue-200">Our Newsletter</span>{" "}
 						<br />
