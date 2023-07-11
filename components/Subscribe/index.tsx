@@ -29,7 +29,7 @@ export const Subscribe: FC = () => {
   };
 
   const subscribeForm = (
-    <div className="flex flex-wrap max-w-lg mx-auto">
+    <div className="flex flex-col md:flex-row flex-wrap max-w-lg mx-auto">
       <div className="flex w-full mr-auto ml-auto w-2/3 px-3 mb-3 md:mb-0 md:mr-6 bg-blue-500 border border-blue-300 rounded">
         <svg
           className="h-6 w-6 my-auto text-blue-300"

@@ -48,12 +48,12 @@ export const Solution: FC = () => {
               </div>
             </div>
             <div className="w-full lg:w-1/2 px-8">
-              <ul className="space-y-12">
+              <ul className="space-y-12 p-0">
                 <li
                   className="flex flex-col md:flex-row -mx-4 wow animate__animated animate__fadeIn"
                   data-wow-delay=".3s"
                 >
-                  <div className="px-4">
+                  <div className="px-4 mr-auto">
                     <span className="flex w-16 h-16 mx-auto items-center justify-center text-2xl font-bold font-heading rounded-full bg-blue-50 text-blue-600">
                       1
                     </span>
@@ -77,7 +77,7 @@ export const Solution: FC = () => {
                   className="flex flex-col md:flex-row -mx-4 wow animate__animated animate__fadeIn"
                   data-wow-delay=".5s"
                 >
-                  <div className="px-4">
+                  <div className="px-4 mr-auto">
                     <span className="flex w-16 h-16 mx-auto items-center justify-center text-2xl font-bold font-heading rounded-full bg-blue-50 text-blue-600">
                       2
                     </span>
@@ -100,7 +100,7 @@ export const Solution: FC = () => {
                   className="flex flex-col md:flex-row -mx-4 wow animate__animated animate__fadeIn"
                   data-wow-delay=".7s"
                 >
-                  <div className="px-4">
+                  <div className="px-4 mr-auto">
                     <span className="flex w-16 h-16 mx-auto items-center justify-center text-2xl font-bold font-heading rounded-full bg-blue-50 text-blue-600">
                       3
                     </span>
