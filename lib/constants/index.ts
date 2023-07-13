@@ -12,14 +12,16 @@ export const CATEGORIES: any = [
 	{ name: "News", color: "#8b5cf6" },
 ];
 
-export function isValidHttpUrl(string: string | URL) {
-	let url;
-	try {
-		url = new URL(string);
-	} catch (_) {
-		return false;
-	}
-	return url.protocol === "http:" || url.protocol === "https:";
+export function isValidHttpUrl(urlInput: string) {
+
+	const urlPattern = new RegExp("^(https?:\\/\\/)?"+ // validate protocol
+                    "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|"+ // validate domain name
+                    "((\\d{1,3}\\.){3}\\d{1,3}))"+ // validate OR ip (v4) address
+                    "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*"+ // validate port and path
+                    "(\\?[;&a-z\\d%_.~+=-]*)?"+ // validate query string
+                    "(\\#[-a-z\\d_]*)?$", "i" ); // validate fragment locator
+    
+	return !!urlPattern.test(urlInput);
 }
 
 export const META_DESCRIPTION="My name is Slavo Popovic and I am an experienced software web engineer, freelance developer and mentor. Helping companies and individuals to build there online business, optimize websites and scale. For future Digital Nomads & Freelancers / My name is Slavo Popovic and I am an experienced software web engineer, freelance developer and mentor. Helping companies and individuals to build there online business, optimize websites and scale. For future Digital Nomads & Freelancers / Master Web and Mobile Development with our comprehensive Software Engineering Mentorship program. Learn cutting-edge programming languages like Python, JavaScript, Java, Swift, and more. Gain industry insights from seasoned professionals and boost your career prospects";

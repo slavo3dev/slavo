@@ -282,7 +282,7 @@ function Fact({ fact, setPorchs }: any) {
 
           <div className="p-2 text-sm bg-yellow-300 text-gray-800 rounded-lg shadow-lg hover:bg-yellow-100 transition duration-300 ease-in-out">
             <a
-              href={fact.source}
+              href={fact.source.includes("http") ? fact.source : `//${fact.source}`}
               target="_blank"
               className="text-sm hover:bg-sky-100 whitespace-normal break-words"
             >
