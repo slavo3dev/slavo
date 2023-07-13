@@ -4,7 +4,7 @@ import { useState, useEffect, Key } from "react";
 import type { NextPage } from "next";
 import supabase from "../lib/supabase";
 import { useUser } from "@auth0/nextjs-auth0/client";
-// import { isValidHttpUrl } from "@/lib/constants";
+import { isValidHttpUrl } from "@/lib/constants";
 import { Loader } from "@/components/ui/Loader";
 import { HeadBasePage } from "../components";
 
@@ -85,9 +85,7 @@ function NewFactForm({ setPorchs, setShowForm }: any) {
     // 1. Prevent browser reload
     e.preventDefault();
 
-    // isValidHttpUrl(source) && textLength <= 300
-
-    if (text && source) {
+    if (text && isValidHttpUrl(source)) {
       const payload = { text, source, email: user?.email };
       setIsUploading(true);
 
@@ -128,8 +126,8 @@ function NewFactForm({ setPorchs, setShowForm }: any) {
       }
     }
 
-    if (!text || !source) {
-      alert("Please fill up missing fields!! Thank You");
+    if (!text || !isValidHttpUrl(source)) {
+      alert(`The submission was unsuccessful. Please ensure all text fields are filled correctly, and your URL is valid. Double-check your entries and try again.!\n Your input: \n source: ${source}\n text: ${text}`);
     }
   }
 
@@ -154,7 +152,7 @@ function NewFactForm({ setPorchs, setShowForm }: any) {
           />
           {/* <span className="text-gray-100">{300 - textLength}</span> */}
           <input
-            className="bg-gray-200 text-gray-700"
+            className={!isValidHttpUrl(source) && source.length > 0 ? "bg-red-200 text-gray-700 border-red-800 border-2"  : "bg-gray-200 text-gray-700 "}
             value={source}
             type="text"
             placeholder="Share learning source..."
@@ -163,7 +161,7 @@ function NewFactForm({ setPorchs, setShowForm }: any) {
           />
           <button
             className="bg-slate-100 hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-3 px-4 border border-r-2 border-blue-500 rounded shadow-md shadow-slate-300"
-            disabled={isUploading}
+            disabled={isUploading }
           >
             {" "}
             Update
