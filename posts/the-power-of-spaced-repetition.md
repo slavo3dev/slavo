@@ -4,7 +4,7 @@ date: "2023-05-09"
 author: "Slavo"
 image: "space.png"
 excerpt: "Are you tired of feeling overwhelmed by the vast amount of information you need to learn, only to forget it just as quickly?"
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

@@ -4,7 +4,7 @@ date: "2023-07-11"
 author: "Slavo"
 image: "masturbation-mental.png"
 excerpt: "The process of raising dopamine levels in your brain by telling people your goals, plans, and how you want to change, but never actually doing anything about it."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

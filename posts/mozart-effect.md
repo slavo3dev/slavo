@@ -4,7 +4,7 @@ date: "2023-07-07"
 author: "Slavo"
 image: "mozart-effect.png"
 excerpt: "In recent years, the concept of the Mozart Effect has gained significant attention, suggesting that listening to classical music, particularly compositions by Wolfgang Amadeus Mozart, can enhance brain function..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

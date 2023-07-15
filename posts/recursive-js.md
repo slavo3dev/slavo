@@ -4,7 +4,7 @@ date: "2023-05-11"
 author: "Slavo"
 image: "r-js.png"
 excerpt: "Recursive functions are a fundamental concept in computer science and programming. ..."
-isFeatured: true
+isFeatured: false
 category: "Java Script"
 ---
 

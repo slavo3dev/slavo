@@ -45,3 +45,11 @@ const App = (props) => {
 #### React Native gives you unique components, which are then compiled to native code/views. For other logic, if you are sending HTTP requests, you are transforming data... all your other JavaScript code is not compiled to Native Code, but instead, it's running on a particular thread hosted by React Native. You can imagine it, like a mini javascript app running inside your app, hosted and started by React Native, which runs all your JavaScript code and then talks to the native platform. It is happening because that JavaScript Core ( Virtual Machine ) knows how to communicate to the native platform features. Your app's operating system communicates through the bridge, and React Native automatically provides that bridge and the virtual machine
 
 #### Now you understand that you have a real native app at the end. Not all your code is compiled, that would be impossible, but your views are compiled. That is most important when it comes to performance for an app because re-rendering the UI and all of that, that's typically the performance-intensive part. Therefore, it is excellent that this is compiled, and that's one of the enormous strengths of React Native
+
+\*\* **Book Recommendation**: [Version Control with Git](https://amzn.to/46xioqF)
+\*\* **_Powerful Tools and Techniques for Collaborative Software Development_**
+
+\*\* **Book Recommendation**: [Pragmatic Programmer](https://amzn.to/43h37XQ)
+\*\* **_Your journey to mastery_**
+
+**_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

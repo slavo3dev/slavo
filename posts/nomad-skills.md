@@ -69,4 +69,10 @@ Freelance Development:
 
 \*\* Book Recommendation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
 
-[Mentorship | Consulting](/contact)
+\*\* **Book Recommendation**: [Version Control with Git](https://amzn.to/46xioqF)
+\*\* **_Powerful Tools and Techniques for Collaborative Software Development_**
+
+\*\* **Book Recommendation**: [Pragmatic Programmer](https://amzn.to/43h37XQ)
+\*\* **_Your journey to mastery_**
+
+**_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

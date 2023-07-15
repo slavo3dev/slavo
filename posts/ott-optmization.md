@@ -4,7 +4,7 @@ date: "2023-06-30"
 author: "Slavo"
 image: "scale-ott.png"
 excerpt: "As the popularity of Over-the-Top (OTT) apps continues to soar, ensuring optimal frontend performance and scalability becomes imperative."
-isFeatured: true
+isFeatured: false
 category: "React Native"
 ---
 

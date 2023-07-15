@@ -4,7 +4,7 @@ date: "2023-07-12"
 author: "Slavo"
 image: "vs-code-setup.png"
 excerpt: "Visual Studio Code, commonly called VS Code, is a free, open-source, cross-platform code editor developed and maintained by Microsoft."
-isFeatured: true
+isFeatured: false
 category: "Dev Tools"
 ---
 

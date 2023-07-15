@@ -4,7 +4,7 @@ date: "2023-06-17"
 author: "Slavo"
 image: "running-and-learning.png"
 excerpt: "Science has increasingly uncovered the profound link between physical exercise, particularly running, and cognitive enhancement"
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

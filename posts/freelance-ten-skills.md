@@ -4,7 +4,7 @@ date: "2023-05-04"
 author: "Slavo"
 image: "freelance-sd-skills.png"
 excerpt: "The world of **freelancing** offers incredible opportunities for software developers to carve their unique career paths, work on diverse projects, and enjoy the freedom.."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

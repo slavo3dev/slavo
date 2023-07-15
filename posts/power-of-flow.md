@@ -4,7 +4,7 @@ date: "2023-05-11"
 author: "Slavo"
 image: "flow.png"
 excerpt: "Flow, the psychological state characterized by deep concentration and immersion in an activity..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

@@ -4,7 +4,7 @@ date: "2023-06-05"
 author: "Slavo"
 image: "imposter.png"
 excerpt: "Imposter Syndrome (IS) is an intriguing psychological phenomenon characterized by pervasive self-doubt and intellectual fraudulence..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

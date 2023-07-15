@@ -4,7 +4,7 @@ date: "2023-07-07"
 author: "Slavo"
 image: "git-version.png"
 excerpt: "Every software engineer knows that learning and mastering Git is as essential as getting a programming language. Git is a vital tool..."
-isFeatured: true
+isFeatured: false
 category: "Dev Tools"
 ---
 
