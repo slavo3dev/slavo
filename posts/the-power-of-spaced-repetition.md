@@ -128,4 +128,16 @@ Incorporating spaced repetition into your daily life is a powerful way to create
 
 Every great achiever has had an inspiring [mentor](https://www.slavo.io/contact) guiding them along the way.
 
+\*\* **Book Recommendation**:
+
+- [How to Think Like a Roman Emperor: The Stoic Philosophy of Marcus Aurelius](https://amzn.to/42hrh4e)
+- [Seneca's Letters from a Stoic](https://amzn.to/3BKRzB4)
+- [Meditations](https://amzn.to/3qhNoKr)
+- [Pragmatic Programmer](https://amzn.to/43h37XQ)
+  \*\* **_Your journey to mastery_**
+
 [Slavo.io Platform](https://www.slavo.io/contact) is designed to connect you with exceptional mentors who will help you tap into your full potential and achieve extraordinary results.
+
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+
+**_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

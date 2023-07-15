@@ -138,3 +138,7 @@ The unique processing method used for Sumatra beans, known as wet hulling or 'Gi
 In conclusion, the combination of Sumatra coffee's distinct flavor profile, low acidity, robust structure, and unique processing method makes it the top choice for cold brew. Supported by science and tradition, Sumatra coffee offers a rich, full-bodied, and less acidic cold brew experience that can't be easily replicated. If you have yet to experiment with Sumatra beans for your cold brew, a world of flavor awaits your discovery.
 
 \*\* [Starbucks Dark Roast Whole Bean Coffee](https://amzn.to/430iQeF)
+
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+
+**_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

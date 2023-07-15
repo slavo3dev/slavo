@@ -90,3 +90,7 @@ I am personally using those brands:
 \*\* [Host Defense, Lion's Mane Capsules, Promotes Mental Clarity, Focus and Memory](https://amzn.to/3BKRzB4)
 
 \*\* [Real Mushrooms Lion’s Mane Powder](https://amzn.to/3Ix3pT0)
+
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+
+**_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

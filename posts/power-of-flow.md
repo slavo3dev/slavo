@@ -87,3 +87,7 @@ We explored the neuroscience of flow and how our brains adapt and thrive during 
 **_Real-world_** examples of individuals who have successfully navigated career changes by harnessing the power of flow demonstrate the potential for growth and success when we apply neuroscience principles to our professional lives. You can navigate career transitions with greater confidence and resilience by identifying activities that induce flow, embracing lifelong learning, and cultivating a supportive network. Remember that change is a process, and with patience, persistence, and focus, you can achieve your career aspirations and reach your full potential.
 
 \*\* Book Recommendation: [Flow](https://www.amazon.com/dp/0061339202/ref=cm_sw_r_as_gl_api_gl_i_425QZ8KTCK5XYMSTBFSW?linkCode=ml2&tag=prototypene06-20)
+
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+
+**_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

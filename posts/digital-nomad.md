@@ -8,7 +8,6 @@ isFeatured: true
 category: "Self Help"
 ---
 
-
 Becoming a digital nomad evokes a sense of adventure and a yearning for freedom, a chance to break free from the proverbial shackles of traditional work settings and societal norms. But why should you take this leap?
 
 \*\* Book Recommendation: [The 4-Hour Workweek](https://amzn.to/3NoWe13)
@@ -182,3 +181,7 @@ Each profession has its own challenges and rewards, and the most suitable one fo
 \*\* Book Recommendation: [The 4-Hour Workweek](https://amzn.to/3NoWe13)
 
 [Mentorship Program - Contact us for more info](/contact)
+
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+
+**_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

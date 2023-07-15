@@ -182,4 +182,8 @@ Before explaining the system, I developed a few prerequisites, and you need to b
 
 - **Day 181-190:** Repeat/ReLearn (All topics)
 
-# Never Give Up
+## Never Give Up
+
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+
+**_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

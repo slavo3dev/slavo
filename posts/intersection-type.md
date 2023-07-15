@@ -1,13 +1,12 @@
 ---
-title: 'Intersection Type'
-date: '2022-10-16'
-author: 'Slavo'
-image: 'intersection-type-post.png'
-excerpt: 'Intersection and Union types are one of the ways in which you can compose types'
-isFeatured: false 
-category: 'Type Script'
+title: "Intersection Type"
+date: "2022-10-16"
+author: "Slavo"
+image: "intersection-type-post.png"
+excerpt: "Intersection and Union types are one of the ways in which you can compose types"
+isFeatured: false
+category: "Type Script"
 ---
-
 
 Intersection and Union types are one of the ways in which you can compose types.
 It's allow us to combine other types.
@@ -31,7 +30,7 @@ Suppose that you have two types: UserName and MemberName
     const userOne: User  = {
         name: "Slavo_3",
         privileges: ["admin"].
-        paidSubscription: new Date() | string 
+        paidSubscription: new Date() | string
 
     }
 ```
@@ -42,13 +41,15 @@ As we are doing in the example above, intersection types can be helpful when use
 You can use them with any types.
 
 ```js
+type Numeric = string | number;
+type Combinable = number | boolean;
 
-  type Numeric = string | number;
-  type Combinable = number | boolean 
-
-  type Universal = Combinable & Numeric; // type number
-
+type Universal = Combinable & Numeric; // type number
 ```
 
 - TypeScript sees that universal as type number because that is the only intersection we have in the example.
 - Intersection operator can be used with any type and then builds the intersection of these types
+
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+
+**_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

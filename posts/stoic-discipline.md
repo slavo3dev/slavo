@@ -81,3 +81,7 @@ I am personally love those books:
 \*\* [Seneca's Letters from a Stoic](https://amzn.to/3BKRzB4)
 
 \*\* [Meditations](https://amzn.to/3qhNoKr)
+
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+
+**_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

@@ -87,4 +87,6 @@ Finally, a proper structure can help improve SEO by making it easier for search 
 
 HTML5 is an essential technology for web development and SEO. It provides improved support for multimedia content and improved semantics, making it easier for search engines to understand the scope of web pages. Proper structure in your HTML code is also essential, as it improves accessibility, user experience, and SEO. By using semantic elements and structured data markup, you can create web pages that are both user-friendly and search engine-friendly.
 
-\*\* Book Recommendation: [HTML and CSS](https://amzn.to/3BaeO7d)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+
+**_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

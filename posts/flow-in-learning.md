@@ -67,3 +67,7 @@ Remember, Learning is your quest, and flow is the magic that can transform this 
 In conclusion, achieving flow can be a game-changer for your learning process. By understanding the concept and incorporating the right strategies, you can transform learning from a chore into an activity you look forward to, enhancing your productivity, creativity, and satisfaction.
 
 \*\* Book Recommendation: [Flow](https://www.amazon.com/dp/0061339202/ref=cm_sw_r_as_gl_api_gl_i_425QZ8KTCK5XYMSTBFSW?linkCode=ml2&tag=prototypene06-20)
+
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+
+**_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

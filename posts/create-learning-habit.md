@@ -60,3 +60,7 @@ In conclusion, "keep starting" is a powerful strategy for overcoming procrastina
 Following these tips and techniques from **["The Now Habit"](https://www.amazon.com/b?_encoding=UTF8&tag=prototypene06-20&linkCode=ur2&linkId=7d6a22d838d3f9eb313a39af20626c61&camp=1789&creative=9325&node=173507)** you can create a habit in 21 days and develop a more positive mindset towards work and productivity. Remember to start small, use positive affirmations, break tasks into manageable chunks, address the root causes of procrastination, and celebrate your successes.
 
 ### The Book Recommendation: [The Now Habit](https://www.amazon.com/b?_encoding=UTF8&tag=prototypene06-20&linkCode=ur2&linkId=7d6a22d838d3f9eb313a39af20626c61&camp=1789&creative=9325&node=173507)
+
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+
+**_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

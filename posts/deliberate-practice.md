@@ -142,3 +142,7 @@ Embracing deliberate practice is a journey of personal and professional growth. 
 \*\* Book Recommendation: [Peak](https://amzn.to/45rcTJv)
 
 \*\* Mentorship Program: [slavo.io](/contact)
+
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+
+**_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

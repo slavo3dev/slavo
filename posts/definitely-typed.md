@@ -37,3 +37,7 @@ category: "Type Script"
 #### TypeScript is complex, but it is worth learning & using. It's a lot of learning, especially when using some framework or library. We must be familiar with all our 3rd party library files and learn the new TS types that these 3rd party libraries provide
 
 #### The repository for high quality TypeScript type definitions, please follow - [Definitely Typed](https://definitelytyped.org/)
+
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+
+**_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

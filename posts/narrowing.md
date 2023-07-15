@@ -1,13 +1,12 @@
 ---
-title: 'Narrowing'
-date: '2022-10-15'
-author: 'Slavo'
-image: 'narrowing-post.png'
-excerpt: 'The narrowing is moving a variable from a less precise type to a more accurate type'
+title: "Narrowing"
+date: "2022-10-15"
+author: "Slavo"
+image: "narrowing-post.png"
+excerpt: "The narrowing is moving a variable from a less precise type to a more accurate type"
 isFeatured: false
-category: 'Type Script'
+category: "Type Script"
 ---
-
 
 The narrowing is moving a variable from a less precise type to a more accurate type. We can use type narrowing to avoid type errors.
 
@@ -16,25 +15,22 @@ Let's see the example:
 Imaginge that we have a function usersHandler
 
 ```js
-export function usersHandler(){
-
-  }
-
+export function usersHandler() {}
 ```
 
-Inside the function we are initilaze random & transfoormRandomToUpperCase variable.  
+Inside the function we are initilaze random & transfoormRandomToUpperCase variable.
 
 ```js
-  export function usersHandler(){
-      let random = Math.random() > 0.5 ? "nrg nomad" : [1,2]
-      let transfoormRandomToUpperCase;
-  }
+export function usersHandler() {
+  let random = Math.random() > 0.5 ? "nrg nomad" : [1, 2];
+  let transfoormRandomToUpperCase;
+}
 ```
 
 As you can see, a random variable can be a type of string or array of numbers. We are dealing here with multiple types of the variable.
 
 ```js
-    let random: string | number[] 
+let random: string | number[];
 ```
 
 Suppose we try to transform random variable to upperCase using javascript toUpperCase() function and assign the initialized value transfoormRandomToUpperCase. TypeScript will scream error.
@@ -42,19 +38,16 @@ Suppose we try to transform random variable to upperCase using javascript toUppe
 Since we don't know if we will get it here, a string or a number, we can't be sure that this will be a string, and we will be able to call here function to toUpperCase().
 
 ```js
+export default function play() {
+  let random = Math.random() > 0.5 ? "NRG NOMAD" : [1, 2];
+  let transfoormRandomToUpperCase;
 
-  export default function play(){
-
-      let random = Math.random() > 0.5 ? "NRG NOMAD" : [1,2]
-      let transfoormRandomToUpperCase; 
-
-       let transfoormRandomToUpperCase = random.toUpperCase()  // error 
-    /* error 
+  let transfoormRandomToUpperCase = random.toUpperCase(); // error
+  /* error 
        Property "toUpperCase" doesnt exit on type "nrg nomad | number[]"  
        Property "toUpperCase" doesnt exit on type "number[]" . ts(2339)
        */
-  }
-
+}
 ```
 
 So we need to do NARROWING.
@@ -62,19 +55,17 @@ So we need to do NARROWING.
 In the example below, we can narrow type specification is with a simple "Else IF statement." We can check if a variable random type is a string. We can use the "toUpperCase()" function to make a "random" string to the upper case.
 
 ```js
+export default function play() {
+  let random = Math.random() > 0.5 ? "NRG NOMAD" : [1, 2];
+  let transfoormRandomToUpperCase;
 
-  export default function play(){
+  // Narrowing
+  // typeof type guard
 
-      let random = Math.random() > 0.5 ? "NRG NOMAD" : [1,2]
-      let transfoormRandomToUpperCase;
-
-       // Narrowing
-       // typeof type guard
-
-       typeof random === "string" ? upper = random.toUpperCase() : console.log(random)
-
-  }
-
+  typeof random === "string"
+    ? (upper = random.toUpperCase())
+    : console.log(random);
+}
 ```
 
 Ways to narrow types in TypeScript
@@ -136,10 +127,10 @@ async function getRating(productId: string) {
   const rating = product.rating;
   return rating; //The return type of the function is inferred to be Promise<any>
 }
-// This means that no type checking 
+// This means that no type checking
 const rating = await getRating("1"); // type of rating is `any`
 
-// We can use a type guard function that has a type predicate to make this code more type-safe. 
+// We can use a type guard function that has a type predicate to make this code more type-safe.
 function isValidRating(
   rating: any
 ): rating is Rating {
@@ -158,3 +149,7 @@ function isValidRating(
 ```
 
 The narrowing is moving a variable from a less precise type to a more accurate type. We can use type narrowing to avoid type errors. TypeScript automatically narrows the type of a variable in conditional branches. Doing a truthly condition check will remove null and undefined from a type.
+
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+
+**_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

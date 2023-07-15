@@ -91,3 +91,7 @@ It is important to note that individual sensitivities and reactions to coffee, i
 \*\* [Cold Brew Coffee Maker](https://amzn.to/3BQ14ie)
 
 \*\* [1 Gallon Cold Brew Coffee Maker](https://amzn.to/42X0wmL)
+
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+
+**_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

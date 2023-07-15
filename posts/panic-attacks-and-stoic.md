@@ -99,3 +99,7 @@ focus on what's within our control, and mentally prepare for challenges.
 Of course, if you're suffering from panic attacks, seek professional help from a mental health expert. Stoic principles can complement your treatment, but they're not meant to replace professional medical advice. It's also essential to remember that overcoming panic attacks takes time and patience, and you can manage and ultimately overcome these challenges with the right strategies and support.
 
 **_(Disclaimer: This article provides general information and discusses health and related subjects. The information and other content in this article or any linked materials are not intended. They should not be considered or used as a substitute for medical advice, diagnosis, or treatment. If you or any other person has a medical concern, consult your health care provider or seek other professional medical treatment.)_**
+
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+
+**_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
