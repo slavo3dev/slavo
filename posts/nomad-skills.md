@@ -5,7 +5,7 @@ author: "Slavo"
 image: "nomad-skills.png"
 excerpt: "Becoming a digital nomad software engineer is an exciting opportunity to blend your passion for coding with a flexible and adventurous lifestyle..."
 isFeatured: true
-category: "Self Help"
+category: "Digital Nomad"
 ---
 
 Are you passionate about software engineering and eager to embark on a digital nomad journey? As a software engineer, you possess a highly sought-after skill set that can provide abundant opportunities to work remotely and explore the world. This blog post will explore the essential skills required to become a digital nomad software engineer and thrive in this exciting lifestyle.
