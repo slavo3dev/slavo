@@ -194,14 +194,13 @@ Even written content can be tokenized as NFTs. That opens new monetization avenu
 
 The expanding universe of NFTs underscores their versatility and the vast potential they hold across numerous sectors. As the technology and market mature, we can expect to see NFTs permeating more and more areas of our digital lives, reshaping our concepts of ownership and value in the process.
 
-\*\* **Book Recommendation**: [Blockchain Bubble or Revolution](https://amzn.to/3OfKmig)
-\*\* **_The Future of Bitcoin, Blockchains, and Cryptocurrencies_**
+\*\* **Book Recommendation**:
 
-\*\* **Book Recommendation**: [Blockchain Revolution:](https://amzn.to/456yHca)
-\*\* **_How the Technology Behind Bitcoin Is Changing Money, Business, and the World _**
+- [Blockchain Bubble or Revolution](https://amzn.to/3OfKmig) **_The Future of Bitcoin, Blockchains, and Cryptocurrencies_**
 
-\*\* **Book Recommendation**: [Blockchain Basics](https://amzn.to/45220wH)
-\*\* **_A Non-Technical Introduction in 25 Steps_**
+- [Blockchain Revolution:](https://amzn.to/456yHca) **_How the Technology Behind Bitcoin Is Changing Money, Business, and the World _**
+
+- [Blockchain Basics](https://amzn.to/45220wH) **_A Non-Technical Introduction in 25 Steps_**
 
 **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
 
