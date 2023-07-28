@@ -2,7 +2,7 @@
 title: "A Deep Dive into the New Age of Ownership"
 date: "2023-07-29"
 author: "Slavo"
-image: "proof-of-ownership-post.png"
+image: "nft-owner.png"
 excerpt: "In a whirlwind of technological progress, ownership has been reimagined with the advent of Non-Fungible Tokens (NFTs)..."
 isFeatured: true
 category: "Web_3.0"
