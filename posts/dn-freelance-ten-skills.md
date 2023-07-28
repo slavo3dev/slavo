@@ -5,7 +5,7 @@ author: "Slavo"
 image: "freelance-sd-skills.png"
 excerpt: "The world of **freelancing** offers incredible opportunities for software developers to carve their unique career paths, work on diverse projects, and enjoy the freedom.."
 isFeatured: false
-category: "Self Help"
+category: "Digital Nomad"
 ---
 
 The world of **freelancing** offers incredible opportunities for software developers to carve their unique career paths, work on diverse projects, and enjoy the freedom and flexibility that comes with being their own boss. Developing technical and soft skills that will set you apart is crucial. This blog will dive deep into the top 10 skills you need to unleash your potential as a **freelance software developer**.

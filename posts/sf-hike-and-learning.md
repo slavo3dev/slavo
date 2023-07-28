@@ -76,8 +76,6 @@ Rest periods during hiking present unique learning opportunities. These moments 
 
 In essence, hiking presents a multifaceted approach to enhancing learning. It combines the physiological benefits of exercise, the calming influence of nature, and the cognitive challenges of navigation and decision-making to create a powerful tool for cognitive enhancement. So the next time you step out on a trail, remember that each step is not just towards a physical destination but also towards cognitive expansion and learning enrichment.
 
-**_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
-
 \*\* **Book Recommendation**: [National Geographic Complete National Parks of the United States, 3rd Edition](https://amzn.to/44fSNkm)
 \*\* **_400+ Parks, Monuments, Battlefields, Historic Sites, Scenic Trails, Recreation Areas, and Seashores_**
 
