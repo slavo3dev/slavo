@@ -28,8 +28,7 @@ Critical structures in this reward system include the Ventral Tegmental Area (VT
 
 3. **Prefrontal Cortex:** This part of the brain involves decision-making, impulse control, and behavior adaptation. Dopamine release in the prefrontal cortex plays a role in experiencing pleasure and motivation.
 
-\*\* **Book Recommendation**: [Dopamine Nation](https://amzn.to/3JM0AhF)
-\*\* **_Finding Balance in the Age of Indulgence_**
+\*\* **Book Recommendation**: [Dopamine Nation](https://amzn.to/3JM0AhF) - **_Finding Balance in the Age of Indulgence_**
 
 ### Dopamine and Its Role
 
@@ -43,8 +42,7 @@ However, the brain's reward system is not just about pleasure. It also includes 
 
 The neuroscience behind "mental masturbation" lies in how our brain's reward system, driven by dopamine, reacts to the anticipation of rewards (in this case, the attainment of a goal or change). This reaction can create a sense of pleasure and achievement, even if the plan hasn't been reached. A complex interplay of neurotransmitters, neural structures, and social and environmental factors contribute to this phenomenon.
 
-\*\* **Book Recommendation**: [Dopamine Nation](https://amzn.to/3JM0AhF)
-\*\* **_Finding Balance in the Age of Indulgence_**
+\*\* **Book Recommendation**: [Dopamine Nation](https://amzn.to/3JM0AhF) - **_Finding Balance in the Age of Indulgence_**
 
 ## The Pitfalls
 
@@ -96,14 +94,13 @@ In summary, moving from discussion to action requires deliberate goal setting, c
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
 
-\*\* **Book Recommendation**: [Dopamine Nation](https://amzn.to/3JM0AhF)
-\*\* **_Finding Balance in the Age of Indulgence_**
+\*\* **Book Recommendation**:
 
-\*\* **Book Recommendation**: [Limitless](https://amzn.to/44q7u3U)
-\*\* **_Upgrade Your Brain, Learn Anything Faster, and Unlock Your Exceptional Life_**
+- [Dopamine Nation](https://amzn.to/3JM0AhF) - **_Finding Balance in the Age of Indulgence_**
 
-\*\* **Book Recommendation**: [Change Your Brain, Change Your Life](https://amzn.to/44rO5ja)
-\*\* **_The Breakthrough Program for Conquering Anxiety, Depression, Obsessiveness, Lack of Focus, Anger, and Memory Problems_**
+- [Limitless](https://amzn.to/44q7u3U) - **_Upgrade Your Brain, Learn Anything Faster, and Unlock Your Exceptional Life_**
+
+- [Change Your Brain, Change Your Life](https://amzn.to/44rO5ja) - **_The Breakthrough Program for Conquering Anxiety, Depression, Obsessiveness, Lack of Focus, Anger, and Memory Problems_**
 
 **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
 
