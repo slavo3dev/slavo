@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
-import { HeroAI } from "../components";
+import { MentorAI } from "../components";
 
 
 const Mentor: NextPage = () => {
 	return (
 		<>
-			<HeroAI />
+			<MentorAI />
 		</>   
 	);
 };

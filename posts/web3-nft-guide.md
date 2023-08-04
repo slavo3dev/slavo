@@ -63,8 +63,7 @@ When someone purchases an NFT, they gain ownership of a unique piece of data on 
 
 The real power of NFTs comes from this indelible link between the digital asset (like a piece of digital art) and its blockchain record. With NFTs, digital assets can be “tokenized” to create a digital certificate of ownership that can be bought, sold, or traded on various NFT marketplaces.
 
-\*\* **Book Recommendation**: [Blockchain Revolution:](https://amzn.to/456yHca)
-\*\* **_How the Technology Behind Bitcoin Is Changing Money, Business, and the World _**
+\*\* **Book Recommendation**: [Blockchain Revolution:](https://amzn.to/456yHca) - **_How the Technology Behind Bitcoin Is Changing Money, Business, and the World _**
 
 **Why Are NFTs Significant?**
 

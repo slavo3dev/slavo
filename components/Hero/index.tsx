@@ -1,66 +1,71 @@
 import { FC } from "react";
-import { useEffect, useState} from "react";
-import { useUser } from "@auth0/nextjs-auth0/client";
-import { NewResourceFrom } from "../Forms";
-import supabase from "@/lib/supabase";
-import { FreeSourcesList } from "../FreeSourcesList";
-import { CategoryFilter } from "../CategoryFilter";
-import { Loader } from "../ui/Loader";
-import { Title } from "../Title";
+// import { TextEffect } from "../Elements";
 
-export const Hero: FC = () => {
-	const { user } = useUser();
-	const [facts, setFacts] = useState<[]>([]);
-	const [ userEmail, setUserEmail ] = useState<string | undefined | null>("");
-	const [ userVerified, setUserVerified ] = useState<boolean | null>();
-	const [ showForm, setShowForm ] = useState<boolean>( false );
-	const [ currentCategory, setCurrentCategory ] = useState<string>( "all" );
-	const [ isLoading, setIsLoading] = useState<boolean>(false);
-    
-	useEffect(
-		function () {
-			async function getSources() {
-				setIsLoading(true);
 
-				let query = supabase.from("sources").select("*");
-				if (currentCategory !== "all")
-					query = query.eq("category", currentCategory);
-
-				const { data: facts, error }: any = await query
-					.order("like", { ascending: false })
-					.limit(1000);
-                
-				if (!error) setFacts(facts);
-				else alert("There was a problem getting data");
-				setIsLoading(false);
-			}
-			getSources();
-		},
-		[currentCategory, showForm ]
-	);
-    
-	useEffect( () => {
-		if ( user ) {
-			setUserEmail( user.email );
-			setUserVerified(user?.email_verified);
-		}
-	},[userEmail, userVerified, user]);
-    
-	const handleOnClose = () => { setShowForm( true ); };
-    
+export const Hero: FC = () =>
+{
 	return (
-		<>
-			{ showForm && <NewResourceFrom setSources={ setFacts } setShowForm={ setShowForm } /> }
-			<section className="flex flex-wrap items-center mx-auto container">
-				<Title title={"Learning Sources"} />
-				<CategoryFilter setCurrentCategory={setCurrentCategory} />
-				<div className="w-full px-3 py-9">
-					{isLoading ? <Loader title="Please Wait... Loading..." /> : <FreeSourcesList facts={ facts } setFacts={ setFacts } /> }
+		<section className="flex flex-col bg-white justify-center items-center h-full p-8">
+			<div
+				className="hidden lg:block absolute inset-0 w-1/2 ml-auto bg-blueGray-100 z-0"
+				style={{ "zIndex": "-1" }}
+			></div>
+			<div className="container">
+				<div className="flex flex-wrap items-center -mx-3">
+					<div className="w-full lg:w-1/2 px-3">
+						<div className="py-12">
+							<div className="max-w-lg lg:max-w-md mx-auto lg:mx-0 mb-8 text-center lg:text-left">
+								<h2 className="text-3xl lg:text-5xl mb-4 font-bold font-heading wow animate__animated animate__fadeIn">
+                      Committed to{" "}
+									<span className="text-blue-500">People</span>{" "}
+                      and the future
+								</h2>
+								<p className="text-blueGray-400 leading-relaxed wow animate__animated animate__fadeIn">
+                      We are{" "}
+									<strong className="text-blue-500">
+                        slavo.io
+									</strong>
+                      , a Creative{" "}
+									<span className="typewrite d-inline text-brand">
+                                        Mentorship Platform
+										{/* <TextEffect
+											text1="Mentorship Program"
+											text2="Consulting"
+										/> */}
+									</span>
+								</p>
+								<p className="text-blueGray-400 leading-relaxed wow animate__animated animate__fadeIn mt-3 text-sm">
+                      Together, we'll shape your dream career & unlock unprecedented personal and business growth. Your future is brimming with potential !!
+								</p>
+							</div>
+							<div className="text-center lg:text-left">
+								<a
+									className="tracking-wide hover-up-2 block sm:inline-block py-4 px-8 mb-4 sm:mb-0 sm:mr-3 text-xs text-white text-center font-semibold leading-none bg-blue-400 hover:bg-blue-500 rounded wow animate__animated animate__fadeIn"
+									href="#key-features"
+								>
+                      Key Features
+								</a>
+								<a
+									className="block hover-up-2 sm:inline-block py-4 px-8 text-xs text-blueGray-500 hover:text-blueGray-600 text-center font-semibold leading-none bg-white border border-blueGray-200 hover:border-blueGray-300 rounded wow animate__animated animate__fadeIn"
+									data-wow-delay=".3s"
+									href="#how-we-work"
+								>
+                      How We Work?
+								</a>
+							</div>
+						</div>
+					</div>
+					<div className="w-full lg:w-1/2 px-3 lg:bg-blueGray-10 mb-12 lg:mb-0 pb-10">
+						<div className="flex items-center justify-center">
+							<img
+								className="lg:max-w-lg"
+								src="/images/components/mantorship.svg"
+								alt="Slavo - Consulting/Metorship Platform"
+							/>
+						</div>
+					</div>
 				</div>
-			</section>
-			{userVerified && <div className="w-full flex items-center justify-center pb-5" >
-				<button className="hover:bg-blue-100 bg-blue-500 text-white hover:text-red-500 font-bold py-2 px-4 rounded w-1/2" onClick={ handleOnClose }>Add Source</button>
-			</div>}
-		</>
+			</div>
+		</section>
 	);
 };

@@ -5,7 +5,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { OpenAI } from "../OpenAI";
 
 
-export const HeroAI: FC = () =>
+export const MentorAI: FC = () =>
 {
 	const { user } = useUser();
 
