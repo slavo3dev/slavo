@@ -22,6 +22,14 @@ const Video = () => {
   const context = useContext(VideoContext);
   const selectVideos = context.videoLine;
   const channelVideos = getVideos(selectVideos);
+  console.log(channelVideos);
+  const filterVideos = channelVideos.filter((creator) => {
+    const lowerTitleText = creator.title.toLowerCase();
+    const lowerSearchInput = searchInput.toLowerCase();
+    return (
+      lowerTitleText && lowerTitleText.includes(lowerSearchInput)
+    );
+  });
 
   const url = `https://www.youtube.com/embed/${router.query.videoId}?origin=http://example.com&controls=1&rel=0&disablekb=1&modestbranding=1`;
   return (
@@ -47,7 +55,7 @@ const Video = () => {
           />
         </div>
         <div className=" grid sm:grid-cols-1 pt-16  md:grid-cols-2 lg:grid-cols-4 gap-6 ">
-          {channelVideos.map(
+          {filterVideos.map(
             (
               video: {
                 id: string;
