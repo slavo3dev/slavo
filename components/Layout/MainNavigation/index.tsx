@@ -7,11 +7,14 @@ import { Burger } from "./mobileView";
 import { useRouter } from "next/router";
 import { getUserData } from "@/lib/auth";
 
+interface USERDATA {
+    email: string
+}
 
 export const MainNavigation: FC = () => {
     
 	const [ headStyle, setHeadStyle ] = useState<boolean>( true );
-	const [ userInfo, setUserInfo ] = useState<any>( null );
+	const [ userInfo, setUserInfo ] = useState<any>();
     
 	const { user } = useUser();
 	const isAuth = user?.email || userInfo?.email;
@@ -75,7 +78,7 @@ export const MainNavigation: FC = () => {
 						)}
 						<li className="hover:text-blue-500 hover:bg-blue-50">
 							{ isAuth ?
-								( userEmail ?
+								( user?.email_verified || userInfo.email ?
 									( <span className={ classes.user_email }>{ userEmail }</span> ) :
 									( <Link href="/api/auth/login">Verify Email & Login</Link> ) )
 								: ( <Link href="/login">Login</Link> ) }
