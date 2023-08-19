@@ -1,14 +1,17 @@
-import { VideoType } from "./types";
-import { getVideos } from "./videos";
-import { VideoCard } from "../components";
+import { useContext, FC } from "react";
+import { VideoType } from "../../../lib/types";
+import { getVideos } from "../../../lib/videos";
+import { VideoCard } from "../..";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import UserInfoContext from "@/context/UserInfoContext";
 
 
 
-export const VideoLine = (channelLine: string) => {
+export const VideoLine: FC<string>  = (channelLine) => {
 
 	const { user } = useUser();
-	const isAuth = user?.email && user?.email_verified;
+	const { userInfo } = useContext(UserInfoContext);
+	const isAuth = userInfo?.email || user?.email_verified;
 	const LineVideos: VideoType[] = getVideos(channelLine);
 
 	return (

@@ -1,10 +1,10 @@
 import { VideoCard } from "@/components/index";
-import { VideoContext } from "@/lib/context";
 import { getVideos } from "@/lib/videos";
 import { NextPage } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext } from "react";
+import VideoContext from "@/context/VideoContext";
 
 const Video: NextPage = ()=>{
 
