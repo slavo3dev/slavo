@@ -1,36 +1,23 @@
+import { FC, useEffect, useState, useContext } from "react";
 import Link from "next/link";
 import classes from "./navigation.module.css";
 import { Logo } from "../Logo";
-import { FC, useEffect, useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { Burger } from "./mobileView";
 import { useRouter } from "next/router";
-import { getUserData } from "@/lib/auth";
+import UserInfoContext from "context/UserInfoContext";
 
-interface USERDATA {
-    email: string
-}
 
 export const MainNavigation: FC = () => {
     
 	const [ headStyle, setHeadStyle ] = useState<boolean>( true );
-	const [ userInfo, setUserInfo ] = useState<any>();
+	const { userInfo } = useContext(UserInfoContext);
     
 	const { user } = useUser();
 	const isAuth = user?.email || userInfo?.email;
 	const router = useRouter();
     
 	const userEmail = user?.email || userInfo?.email;
-    
-	useEffect( () => {
-		const fetchData = async () =>
-		{
-			const userData = await getUserData();
-			setUserInfo (userData);
-		};
-
-		fetchData();
-	}, [] );
     
 	useEffect(() => {
 		document.addEventListener("scroll", () => {
@@ -78,7 +65,7 @@ export const MainNavigation: FC = () => {
 						)}
 						<li className="hover:text-blue-500 hover:bg-blue-50">
 							{ isAuth ?
-								( user?.email_verified || userInfo.email ?
+								( user?.email_verified || userInfo?.email ?
 									( <span className={ classes.user_email }>{ userEmail }</span> ) :
 									( <Link href="/api/auth/login">Verify Email & Login</Link> ) )
 								: ( <Link href="/login">Login</Link> ) }
@@ -86,7 +73,7 @@ export const MainNavigation: FC = () => {
 					</ul>
 				</nav>
 			</div>
-			<Burger />
+			<Burger userInfo={ userInfo } />
 		</header>
 	);
 };

@@ -8,21 +8,12 @@ import face from "public/images/icons/facebook-blue.svg";
 import link from "public/images/icons/linkedinIcon.webp";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import classes from "./navigation.module.css";
-import { getUserData } from "@/lib/auth";
-export const Burger: FC = () => {
+
+
+export const Burger: FC<any> = ( { userInfo } ) => {
     const [ showDrop, setShowDrop ] = useState( false );
-    const [ userInfo, setUserInfo ] = useState<any>( null );
 //   const [showHome, setShowHome] = useState(false);
 //   const [showBlog, setShowBlog] = useState(false);
-    
-  useEffect( () => {
-		const fetchData = async () => {
-			const userData = await getUserData();
-			setUserInfo (userData);
-		};
-
-		fetchData();
-	}, [] );
 
     const { user } = useUser();
     const isAuth = user?.email || userInfo?.email;
@@ -107,7 +98,7 @@ export const Burger: FC = () => {
               <Link className="" href={""}>SignUp</Link>
             </div> */}
             <div className="w-11/12 px-4 py-3 mb-3 text-blue-500 hover:text-blue-700 text-center font-semibold rounded-xl border border-blue-200 hover:border-blue-300 rounded">  
-{isAuth ? (user?.email_verified || userInfo.email ? (<Link href="/api/auth/logout"><span className={classes.user_email}>{userEmail}  [ Logout ]</span></Link>): (<Link href="/api/auth/login">Verify Email & Login</Link>))
+{isAuth ? (user?.email_verified || userInfo?.email ? (<Link href="/api/auth/logout"><span className={classes.user_email}>{userEmail}  [ Logout ]</span></Link>): (<Link href="/api/auth/login">Verify Email & Login</Link>))
  : (<Link className="" href="/api/auth/login">Login</Link>)} </div>
           </div>
 		<div className="text-center">

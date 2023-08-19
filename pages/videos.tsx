@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { VideoLine } from "@/lib/videoHelper";
-import { VideoContext } from "@/lib/context";
+import VideoContext from "@/context/VideoContext";
 import { useContext } from "react";
 import { HeadBasePage } from "../components";
 
