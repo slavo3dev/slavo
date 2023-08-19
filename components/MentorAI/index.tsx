@@ -1,19 +1,20 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import ReactTypingEffect from "react-typing-effect";
 import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import UserInfoContext from "@/context/UserInfoContext";
 import { OpenAI } from "../OpenAI";
 
 
 export const MentorAI: FC = () =>
 {
 	const { user } = useUser();
-
+	const { userInfo } = useContext(UserInfoContext);
 
 	return (
 		<>
 			<section className="bg-white text-black p-6 items-center" id='aimentor'>
-				{ user?.email && user?.email_verified ?
+				{ user?.email_verified || userInfo?.email  ?
 					<OpenAI /> :
 					(
 						<div className="flex flex-wrap items-center mx-auto container">
@@ -39,9 +40,9 @@ export const MentorAI: FC = () =>
 										</h4>
 									</div>
 									<div className="text-center lg:text-left">
-										<Link href={`/api/auth/${user?.email !== undefined ? "logout" : "login"}`}>
+										<Link href={"/login"}>
 											<button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline">
-												{ user?.email !== undefined && user?.email_verified ? "Logout" : "Login" }
+												Login
 											</button>
 										</Link>
 										{/* <Link

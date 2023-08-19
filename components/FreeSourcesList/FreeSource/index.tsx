@@ -1,6 +1,7 @@
-import { FC, useState } from "react";
+import { FC, useState , useContext} from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import supabase from "@/lib/supabase";
+import UserInfoContext from "@/context/UserInfoContext";
 
 
 interface FreeSourceTypeProps
@@ -23,10 +24,11 @@ export const FreeSource: FC<FreeSourceTypeProps> = ({ fact, setFacts }: any) => 
         fact.like + fact.exelent < fact.false;
     
 	const { user } = useUser();
+	const { userInfo } = useContext(UserInfoContext);
    
 	async function handleVote ( columnName: string )
 	{
-		if ( user?.email_verified )
+		if ( userInfo?.email || user?.email_verified )
 		{
 			setIsUpdating(true);
 			const { data: updatedFact, error } = await supabase

@@ -1,17 +1,18 @@
 import { VideoCard } from "@/components/index";
-import { VideoContext } from "@/lib/context";
 import { getVideos } from "@/lib/videos";
+import { NextPage } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext } from "react";
+import VideoContext from "@/context/VideoContext";
 
-const Video = ()=>{
+const Video: NextPage = ()=>{
 
 	const router = useRouter();
 	const context = useContext(VideoContext);
 	const selectVideos= context.videoLine;
 	const channelVideos= getVideos(selectVideos);
-	console.log(channelVideos);
+
 
 	const url= `https://www.youtube.com/embed/${router.query.videoId}?origin=http://example.com&controls=1&rel=0&disablekb=1&modestbranding=1`;
 	return(

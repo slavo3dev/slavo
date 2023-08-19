@@ -1,18 +1,24 @@
+import { FC, useEffect, useState, useContext } from "react";
 import Link from "next/link";
 import classes from "./navigation.module.css";
 import { Logo } from "../Logo";
-import { FC, useEffect, useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { Burger } from "./mobileView";
 import { useRouter } from "next/router";
+import UserInfoContext from "context/UserInfoContext";
 
 
 export const MainNavigation: FC = () => {
+    
+	const [ headStyle, setHeadStyle ] = useState<boolean>( true );
+	const { userInfo } = useContext(UserInfoContext);
+    
 	const { user } = useUser();
-	const isAuth = user?.email;
+	const isAuth = user?.email || userInfo?.email;
 	const router = useRouter();
     
-	const [headStyle, setHeadStyle] = useState<boolean>(true);
+	const userEmail = user?.email || userInfo?.email;
+    
 	useEffect(() => {
 		document.addEventListener("scroll", () => {
 			const scrolled: number = window.scrollY;
@@ -22,7 +28,7 @@ export const MainNavigation: FC = () => {
 				setHeadStyle(true);
 			}
 		});
-	});
+	} );
 
 	return (
 		<header className={headStyle ? classes.header : classes.header1}>
@@ -52,17 +58,22 @@ export const MainNavigation: FC = () => {
 						<li className={router.pathname === "/contact" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/contact">Contact</Link>
 						</li>
-						{isAuth && user?.email_verified && (
+						{(userEmail || user?.email_verified) && (
 							<li className="hover:text-blue-500 hover:bg-blue-50">
-								<Link href="/api/auth/logout">Logout</Link>
+								<Link href="/auth/logout">Logout</Link>
 							</li>
 						)}
-						<li className="hover:text-blue-500 hover:bg-blue-50">{isAuth ? (user?.email_verified ? (<span className={classes.user_email}>{user.email}</span>): (<Link href="/api/auth/login">Verify Email & Login</Link>)) : (<Link href="/api/auth/login">Login</Link>)}
+						<li className="hover:text-blue-500 hover:bg-blue-50">
+							{ isAuth ?
+								( user?.email_verified || userInfo?.email ?
+									( <span className={ classes.user_email }>{ userEmail }</span> ) :
+									( <Link href="/api/auth/login">Verify Email & Login</Link> ) )
+								: ( <Link href="/login">Login</Link> ) }
 						</li>
 					</ul>
 				</nav>
 			</div>
-			<Burger />
+			<Burger userInfo={ userInfo } />
 		</header>
 	);
 };

@@ -6,12 +6,29 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { Layout, HeadBasePage, MainNavigation, Footer } from "../components";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
-import {VideoContext} from "@/lib/context/index";
-function MyApp ( { Component, pageProps }: AppProps )
-{
+import VideoContext from "context/VideoContext";
+import UserInfoContext from "context/UserInfoContext";
+import supabase from "@/lib/supabase";
+import { User } from "@supabase/supabase-js";
+
+function MyApp ( { Component, pageProps }: AppProps ) {
     
+	const [userInfo, setUserInfo] = useState<User | null>(null);
 	const router = useRouter();
-  
+    
+	useEffect( () => {
+		const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+			const currentUser = session?.user || null;
+			setUserInfo(currentUser);
+		});
+        
+		//  Unsubscribe when the component unmounts
+		return () => {
+			authListener?.subscription?.unsubscribe();
+		};
+		
+	}, [] );
+    
 	useEffect(() => {
 		const handleRouteChange = (url: string) => {
 			ga.pageview(url);
@@ -29,17 +46,23 @@ function MyApp ( { Component, pageProps }: AppProps )
     
 	const [videoLine, setVideoLine]= useState("channelOne");
 	
-	return (<VideoContext.Provider value={{videoLine, setVideoLine}}>
-		<UserProvider>
-			<Layout>
-				<HeadBasePage title="Career Change: Learn Web Development for a Bright Future" />
-				<MainNavigation />
-				<Component { ...pageProps } />
-				<Footer />
-			</Layout>
-		</UserProvider>
-	</VideoContext.Provider>
+	return (
+		<UserInfoContext.Provider value={{ userInfo, setUserInfo }}>
+			<VideoContext.Provider value={ { videoLine, setVideoLine } }>
+				<UserProvider>
+					<Layout>
+						<HeadBasePage title="Career Change: Learn Web Development for a Bright Future" />
+						<MainNavigation  />
+						<Component { ...pageProps } />
+						<Footer />
+					</Layout>
+				</UserProvider>
+			</VideoContext.Provider>
+		</UserInfoContext.Provider>
 	);
 }
 
 export default MyApp;
+
+
+

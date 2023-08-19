@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, useEffect, Key } from "react";
+import { useState, useEffect, Key, useContext } from "react";
 import type { NextPage } from "next";
 import supabase from "../lib/supabase";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import UserInfoContext from "context/UserInfoContext";
 import { CATEGORIES, isValidHttpUrl } from "@/lib/constants";
 import { Loader } from "@/components/ui/Loader";
 import { HeadBasePage } from "../components";
@@ -64,7 +65,9 @@ const FreeSource: NextPage = () => {
 function Header({ showForm, setShowForm }: any) {
 	const appTitle = "Web Dev - Free Resources";
 	const { user } = useUser();
-	
+	const { userInfo } = useContext( UserInfoContext );
+    
+	console.log("USer header: ", userInfo);
 	return (
 		<header className='header'>
 			<div className='logo'>
@@ -75,7 +78,9 @@ function Header({ showForm, setShowForm }: any) {
 				className='btn btn-large btn-open'
 				onClick={ () =>
 				{
-					user?.email_verified ? setShowForm( ( show: any ) => !show ) : alert("Please log in or verify your email address");
+					( userInfo?.email || user?.email_verified ) ?
+						setShowForm( ( show: any ) => !show ) :
+						alert( "Please log in or verify your email address" );
 				} }
 			>
 				{showForm ? "Close" : "Share Source"}
@@ -210,10 +215,11 @@ function Fact({ fact, setFacts }: any) {
         fact.like + fact.exelent < fact.false;
     
 	const { user } = useUser();
+	const { userInfo } = useContext( UserInfoContext );
    
 	async function handleVote ( columnName: string )
 	{
-		if ( user?.email_verified )
+		if ( userInfo?.email || user?.email_verified )
 		{
 			setIsUpdating(true);
 			const { data: updatedFact, error } = await supabase

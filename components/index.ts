@@ -13,9 +13,9 @@ import { CategorySearch } from "./Categorysearch";
 import { MentorAI } from "./MentorAI";
 import { NewResourceFrom } from "./Forms";
 import { FreeSourcesList } from "./FreeSourcesList";
-import { VideoCard } from "./VideoElements/VideoCard/card";
+import { VideoCard, VideoLine } from "./VideoElements";
 import { Growth, Solution } from "./Sections";
 
 
 
-export {Layout, LearningSources, FeaturedPosts, HeadBasePage, MainNavigation, BlogPosts, PostContent, PostHeader, ContactForm, Subscribe, Footer,  CategorySearch, MentorAI, NewResourceFrom, FreeSourcesList, VideoCard, Growth, Solution, Hero};
+export {Layout, LearningSources, FeaturedPosts, HeadBasePage, MainNavigation, BlogPosts, PostContent, PostHeader, ContactForm, Subscribe, Footer,  CategorySearch, MentorAI, NewResourceFrom, FreeSourcesList, VideoCard, VideoLine, Growth, Solution, Hero};
