@@ -21,8 +21,6 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 			const currentUser = session?.user || null;
 			setUserInfo(currentUser);
 		});
-
-		console.log( "Auth: ", authListener );
         
 		//  Unsubscribe when the component unmounts
 		return () => {

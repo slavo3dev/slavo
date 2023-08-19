@@ -1,9 +1,10 @@
 /* eslint-disable indent */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, useEffect, Key } from "react";
+import { useState, useEffect, Key, useContext } from "react";
 import type { NextPage } from "next";
 import supabase from "../lib/supabase";
-import { useUser } from "@auth0/nextjs-auth0/client";
+import { UserContext, useUser } from "@auth0/nextjs-auth0/client";
+import UserInfoContext from "@/context/UserInfoContext";
 import { isValidHttpUrl } from "@/lib/constants";
 import { Loader } from "@/components/ui/Loader";
 import { HeadBasePage } from "../components";
@@ -11,7 +12,8 @@ import { HeadBasePage } from "../components";
 const PorchPage: NextPage = () => {
   const [showForm, setShowForm] = useState(false);
   const [porchs, setPorchs] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [ isLoading, setIsLoading ] = useState( false );
+    
 
   useEffect(function () {
     async function getPorchs() {
@@ -50,7 +52,8 @@ const PorchPage: NextPage = () => {
 
 function Header({ showForm, setShowForm }: any) {
   const appTitle = "Daily Update";
-  const { user } = useUser();
+    const { user } = useUser();
+    const { userInfo } = useContext(UserInfoContext);
 
   return (
     <header className="header">
@@ -61,7 +64,7 @@ function Header({ showForm, setShowForm }: any) {
       <button
         className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
         onClick={() => {
-          user?.email_verified
+          user?.email_verified || userInfo?.email
             ? setShowForm((show: any) => !show)
             : alert("Please log-in or Verify Your email address");
         }}
@@ -79,14 +82,15 @@ function NewFactForm({ setPorchs, setShowForm }: any) {
   const [responseUpdate, setResponseUpdate] = useState("");
   // const textLength = text.length;
 
-  const { user } = useUser();
+    const { user } = useUser();
+    const { userInfo } = useContext(UserInfoContext);
 
   async function handleSubmit(e: { preventDefault: () => void }) {
     // 1. Prevent browser reload
     e.preventDefault();
 
     if (text && isValidHttpUrl(source)) {
-      const payload = { text, source, email: user?.email };
+      const payload = { text, source, email: user?.email || userInfo?.email };
       setIsUploading(true);
 
       try {
@@ -193,7 +197,8 @@ function FactList({ porchs, setPorchs }: any) {
 function Fact({ fact, setPorchs }: any) {
   const [isUpdating, setIsUpdating] = useState(false);
 
-  const { user } = useUser();
+    const { user } = useUser();
+    const { userInfo } = useContext(UserInfoContext);
 
   const date = new Date(fact.created_at);
   const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1)
@@ -212,7 +217,7 @@ function Fact({ fact, setPorchs }: any) {
     .padStart(2, "0")}`;
 
   async function handleVote(columnName: string) {
-    if (user?.email_verified) {
+    if (user?.email_verified || userInfo?.email) {
       setIsUpdating(true);
       const response: any = await fetch("api/createDailyUpdate", {
         method: "PATCH",
