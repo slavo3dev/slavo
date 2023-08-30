@@ -15,13 +15,6 @@ const AuthPages: NextPage = () => {
     router.push("/");
   };
 
-  const signInWithEmail: () => void = async () => {
-    await supabase.auth.signInWithPassword({
-      email: "example@email.com",
-      password: "example-password",
-    });
-    router.push("/");
-  };
   const logout: () => void = async () => {
     await supabase.auth.signOut();
     await router.push("/api/auth/logout");
