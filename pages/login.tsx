@@ -15,6 +15,8 @@ const Login: NextPage = () => {
 
   const [newUserEmail, setNewUserEmail] = useState<string>("");
   const [newUserPassword, setNewUserPassword] = useState<string>("");
+  const [userEmail, setUserEmail] = useState<string>(""); // add this to sign in
+  const [userPassword, setUserPassword] = useState<string>("");
   const [matchingPassword, setMatchingPassword] =
     useState<string>("");
   const [signUpError, setSignUpError] = useState<string>("");
@@ -50,8 +52,8 @@ const Login: NextPage = () => {
   const signInWithEmail: () => void = async () => {
     try {
       const { error } = await supabase.auth.signInWithPassword({
-        email: "example@email.com",
-        password: "example-password",
+        email: userEmail,
+        password: userPassword,
       });
       if (error) {
         console.log("Signup error:", error.message);
@@ -176,7 +178,7 @@ const Login: NextPage = () => {
                       </label>
                       <input
                         onChange={(e) => {
-                          setNewUserEmail(e.target.value);
+                          setUserEmail(e.target.value);
                         }}
                         type="email"
                         name="email"
@@ -194,7 +196,7 @@ const Login: NextPage = () => {
                       </label>
                       <input
                         onChange={(e) => {
-                          setNewUserPassword(e.target.value);
+                          setUserPassword(e.target.value);
                         }}
                         type="password"
                         name="password"
@@ -204,6 +206,10 @@ const Login: NextPage = () => {
                       />
                     </div>
                     <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        signInWithEmail();
+                      }}
                       type="submit"
                       className="w-full text-white bg-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                     >
@@ -214,19 +220,6 @@ const Login: NextPage = () => {
               </div>
             </div>
 
-            {/* <button
-              className="inline-block w-full rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-              style={{ backgroundColor: "#3b5998" }}
-              onClick={() => {
-                userInfo || user?.email
-                  ? router.push("/auth/logout")
-                  : router.push("/api/auth/login");
-              }}
-            >
-              {userInfo || user?.email
-                ? "logout"
-                : "Username & Password"}
-            </button> */}
             {userInfo || user?.email ? null : (
               <>
                 <div className="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-blue-800 after:mt-0.5 after:flex-1 after:border-t after:border-blue-800">
