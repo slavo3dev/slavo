@@ -59,8 +59,12 @@ export const FreeSource: FC<FreeSourceTypeProps> = ({ fact, setFacts }: any) => 
 						{fact.text}
 					</p>
 					<div className="font-bold text-sm mt-3">
-						<a href={fact.source} target='_blank'>
-                            URL Source
+						<a
+							href={fact.source.includes("http") ? fact.source : `//${fact.source}`}
+							target="_blank"
+							className="text-sm hover:bg-sky-100 whitespace-normal break-words"
+						>
+              Source: {fact.source}
 						</a>
 					</div>
 				</div>
