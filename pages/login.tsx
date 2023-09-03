@@ -77,18 +77,21 @@ const Login: NextPage = () => {
               alt="Phone image"
             />
           </div>
-          <div className="md:w-8/12 lg:w-5/12 lg:ml-6 ">
-            <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
-              <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+          <div className="md:w-8/12 lg:w-5/12 lg:ml-6">
+            
+			
+			
+			<div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
+              <div className="w-full bg-white rounded-bl-lg rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
                 <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                  <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                    Sign up for new account
+                  <h1 className="text-xl font-bold leading-tight tracking-tight text-blue-400 border-white border-2 border-b-gray-300 md:text-2xl ">
+                    <span className="text-blue-600">Sign up</span> for new account
                   </h1>
                   <form className="space-y-4 md:space-y-6" action="#">
                     <div>
                       <label
                         htmlFor="email"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        className="block mb-2 text-sm font-medium text-blue-400 "
                       >
                         Your email
                       </label>
@@ -99,14 +102,14 @@ const Login: NextPage = () => {
                         type="email"
                         name="email"
                         id="email"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="text-blue-600 text-xs font-semibold border-2 border-white border-b-blue-500 border-l-blue-500 sm:text-sm rounded-bl-lg block w-full p-2.5"
                         placeholder="name@company.com"
                       />
                     </div>
                     <div>
                       <label
                         htmlFor="password"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        className="block mb-2 text-sm font-medium text-blue-400 "
                       >
                         Password
                       </label>
@@ -118,13 +121,13 @@ const Login: NextPage = () => {
                         name="password"
                         id="password"
                         placeholder="••••••••"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="text-blue-800 sm:text-sm border-2 border-white border-b-blue-500 border-l-blue-500 rounded-bl-lg block w-full p-2.5"
                       />
                     </div>
                     <div>
                       <label
                         htmlFor="password"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        className="block mb-2 text-sm font-medium text-blue-400 "
                       >
                         Confirm Password
                       </label>
@@ -136,7 +139,7 @@ const Login: NextPage = () => {
                         name="password"
                         id="password"
                         placeholder="••••••••"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="text-blue-800 sm:text-sm border-2 border-white border-b-blue-500 border-l-blue-500 rounded-bl-lg block w-full p-2.5"
                       />
                     </div>
                     {signUpError}
@@ -155,24 +158,24 @@ const Login: NextPage = () => {
                         }
                       }}
                       type="submit"
-                      className="w-full text-white bg-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                      className="bg-white text-blue-700 hover:bg-blue-500 hover:text-white border-2 border-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none rounded-md px-4 py-2 text-sm font-medium"
                     >
                       Sign up
                     </button>
                   </form>
-                  <div className="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-blue-800 after:mt-0.5 after:flex-1 after:border-t after:border-blue-800">
-                    <p className="mx-4 mb-0 text-center font-semibold dark:text-blue-800">
+                  <div className="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-blue-500 after:mt-0.5 after:flex-1 after:border-t after:border-blue-500">
+                    <p className="mx-4 mb-0 text-center font-normal text-black">
                       OR
                     </p>
                   </div>
-                  <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                    Sign in to your account
+                  <h1 className="text-xl font-bold leading-tight tracking-tight text-blue-400 border-white border-2 border-b-gray-300 md:text-2xl ">
+				  <span className="text-blue-600">Sign in</span> to your account
                   </h1>
                   <form className="space-y-4 md:space-y-6" action="#">
                     <div>
                       <label
                         htmlFor="email"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        className="block mb-2 text-sm font-medium text-blue-400 "
                       >
                         Your email
                       </label>
@@ -183,14 +186,14 @@ const Login: NextPage = () => {
                         type="email"
                         name="email"
                         id="email"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="text-blue-600 text-xs font-semibold sm:text-sm border-2 border-white border-b-blue-500 border-l-blue-500 rounded-bl-lg block w-full p-2.5"
                         placeholder="name@company.com"
                       />
                     </div>
                     <div>
                       <label
                         htmlFor="password"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        className="block mb-2 text-sm font-medium text-blue-400 "
                       >
                         Password
                       </label>
@@ -202,7 +205,7 @@ const Login: NextPage = () => {
                         name="password"
                         id="password"
                         placeholder="••••••••"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="text-blue-800 sm:text-sm border-2 border-white border-b-blue-500 border-l-blue-500 rounded-bl-lg block w-full p-2.5"
                       />
                     </div>
                     <button
@@ -211,7 +214,7 @@ const Login: NextPage = () => {
                         signInWithEmail();
                       }}
                       type="submit"
-                      className="w-full text-white bg-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                      className="bg-white text-blue-700 hover:bg-blue-500 hover:text-white focus:ring-4 border-2 border-blue-700 focus:ring-blue-300 focus:outline-none rounded-md px-4 py-2 text-sm font-medium"
                     >
                       Sign in
                     </button>
@@ -222,15 +225,15 @@ const Login: NextPage = () => {
 
             {userInfo || user?.email ? null : (
               <>
-                <div className="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-blue-800 after:mt-0.5 after:flex-1 after:border-t after:border-blue-800">
-                  <p className="mx-4 mb-0 text-center font-semibold dark:text-blue-800">
-                    OR
-                  </p>
-                </div>
+                <div className="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-blue-500 after:mt-0.5 after:flex-1 after:border-t after:border-blue-500">
+                    <p className="mx-4 mb-0 text-center font-normal text-black">
+                      OR
+                    </p>
+                  </div>
 
                 <a
                   onClick={() => router.push("/auth/login")}
-                  className="mb-3 flex w-full items-center justify-center rounded bg-primary px-7 pb-2.5 pt-3 text-center text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                  className="mb-3 flex w-full items-center justify-center rounded bg-primary px-7 pb-2.5 pt-3 text-center text-sm font-medium uppercase leading-normal text-blue-400 shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
                   style={{ backgroundColor: "#171515" }}
                   href="#!"
                   role="button"
