@@ -9,7 +9,9 @@ const recoverPassword: NextPage = () => {
   const resetPassword: () => void = async () => {
     try {
       const { data, error } =
-        await supabase.auth.resetPasswordForEmail(userEmail);
+        await supabase.auth.resetPasswordForEmail(userEmail, {
+          redirectTo: "http://localhost:3000/login",
+        });
       if (error) throw error;
     } catch (err) {
       console.log("Api call not succesful", err);
