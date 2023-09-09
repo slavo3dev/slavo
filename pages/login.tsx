@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { getUserData } from "@/lib/auth";
 import supabase from "@/lib/supabase";
+import Link from "next/link";
 
 const Login: NextPage = () => {
   const router = useRouter();
@@ -78,14 +79,12 @@ const Login: NextPage = () => {
             />
           </div>
           <div className="md:w-8/12 lg:w-5/12 lg:ml-6">
-            
-			
-			
-			<div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
+            <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
               <div className="w-full bg-white rounded-bl-lg rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
                 <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                   <h1 className="text-xl font-bold leading-tight tracking-tight text-blue-400 border-white border-2 border-b-gray-300 md:text-2xl ">
-                    <span className="text-blue-600">Sign up</span> for new account
+                    <span className="text-blue-600">Sign up</span> for
+                    new account
                   </h1>
                   <form className="space-y-4 md:space-y-6" action="#">
                     <div>
@@ -169,7 +168,8 @@ const Login: NextPage = () => {
                     </p>
                   </div>
                   <h1 className="text-xl font-bold leading-tight tracking-tight text-blue-400 border-white border-2 border-b-gray-300 md:text-2xl ">
-				  <span className="text-blue-600">Sign in</span> to your account
+                    <span className="text-blue-600">Sign in</span> to
+                    your account
                   </h1>
                   <form className="space-y-4 md:space-y-6" action="#">
                     <div>
@@ -207,6 +207,7 @@ const Login: NextPage = () => {
                         placeholder="••••••••"
                         className="text-blue-800 sm:text-sm border-2 border-white border-b-blue-500 border-l-blue-500 rounded-bl-lg block w-full p-2.5"
                       />
+                      <Link href="/recover">Forgot Password</Link>
                     </div>
                     <button
                       onClick={(e) => {
@@ -226,10 +227,10 @@ const Login: NextPage = () => {
             {userInfo || user?.email ? null : (
               <>
                 <div className="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-blue-500 after:mt-0.5 after:flex-1 after:border-t after:border-blue-500">
-                    <p className="mx-4 mb-0 text-center font-normal text-black">
-                      OR
-                    </p>
-                  </div>
+                  <p className="mx-4 mb-0 text-center font-normal text-black">
+                    OR
+                  </p>
+                </div>
 
                 <a
                   onClick={() => router.push("/auth/login")}

@@ -14,7 +14,6 @@ const AuthPages: NextPage = () => {
     });
     router.push("/");
   };
-
   const logout: () => void = async () => {
     await supabase.auth.signOut();
     await router.push("/api/auth/logout");
