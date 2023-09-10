@@ -268,7 +268,8 @@ In conclusion, discipline is a blend of structured habits, motivation, accountab
 
 - [Following Through](https://amzn.to/45QaxUb) **A Revolutionary New Model for Finishing Whatever You Start**
 
-- **_Welcome to our mentorship program explicitly designed to help you overcome Imposter Syndrome and Becoming Life Long Learner._**
-  **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+**_Welcome to our mentorship program explicitly designed to help you overcome Imposter Syndrome and Becoming Life Long Learner._**
 
-  **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+
+**_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
