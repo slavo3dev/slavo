@@ -119,7 +119,7 @@ Embracing the lifelong learning journey is more than just the accumulation of kn
 
 In conclusion, lifelong learning requires a mix of mindset, discipline, and strategies. It's a journey of constant evolution, where the joy of discovery and growth becomes an integral part of one's life. Remember, every day offers a new opportunity to learn, and the world is filled with endless knowledge waiting to be explored.
 
-### The Book Recommendation
+### **The Book Recommendation**
 
 - [The Now Habit](https://amzn.to/45L3VXe) **A Strategic Program for Overcoming Procrastination and Enjoying Guilt-Free Play**
 

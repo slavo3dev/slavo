@@ -39,7 +39,7 @@ export default function Category ( props: any )
     
 	function findCategoryHandle ( category: string )
 	{
-		const fullPath = `/category/${category}`;
+		const fullPath = `/${category}`;
 		router.push(fullPath);
 	}
 
