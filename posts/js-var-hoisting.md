@@ -3,7 +3,7 @@ title: "Demystifying JavaScript: A Deep Dive into Hoisting and Vars"
 date: "2023-09-10"
 author: "Slavo"
 image: "var_const.png"
-excerpt: "Closure is a function with access to its scope..."
+excerpt: "At its core, computer science is all about data and instructions to process that data. Variables..."
 isFeatured: false
 category: "Java Script"
 ---
