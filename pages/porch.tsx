@@ -3,7 +3,7 @@
 import { useState, useEffect, Key, useContext } from "react";
 import type { NextPage } from "next";
 import supabase from "../lib/supabase";
-import { UserContext, useUser } from "@auth0/nextjs-auth0/client";
+import { useUser } from "@auth0/nextjs-auth0/client";
 import UserInfoContext from "@/context/UserInfoContext";
 import { isValidHttpUrl } from "@/lib/constants";
 import { Loader } from "@/components/ui/Loader";

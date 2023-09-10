@@ -11,15 +11,54 @@ import UserInfoContext from "context/UserInfoContext";
 import supabase from "@/lib/supabase";
 import { User } from "@supabase/supabase-js";
 
+
 function MyApp ( { Component, pageProps }: AppProps ) {
     
 	const [userInfo, setUserInfo] = useState<User | null>(null);
 	const router = useRouter();
     
 	useEffect( () => {
-		const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+        
+		// const getUserProfile = async () => {
+			
+		// 	const sessionUser = supabase.auth.user();
+            
+		// 	if ( sessionUser )
+		// 	{
+		// 		const { data: profile } = await supabase
+		// 			.from( "profile" )
+		// 			.select( "*" )
+		// 			.eq( "id", sessionUser.id )
+		// 			.single();
+                
+		// 		setUserInfo( {
+		// 			...sessionUser,
+		// 			...profile
+		// 		} );
+		// 	}
+
+		// };
+        
+        
+		const { data: authListener } = supabase.auth.onAuthStateChange(async (event, session) => {
 			const currentUser = session?.user || null;
-			setUserInfo(currentUser);
+            
+			if ( currentUser )
+			{
+				const { data: profile } = await supabase
+					.from( "profile" )
+					.select( "*" )
+					.eq( "id", currentUser.id )
+					.single();
+                
+				setUserInfo( {
+					...currentUser,
+					...profile
+				} );
+			} else
+			{
+				setUserInfo( currentUser );
+			}
 		});
         
 		//  Unsubscribe when the component unmounts
@@ -44,7 +83,9 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 		};
 	}, [ router.events ] );
     
-	const [videoLine, setVideoLine]= useState("channelOne");
+	const [ videoLine, setVideoLine ] = useState( "channelOne" );
+    
+	console.log("UserINfo: ", userInfo);
 	
 	return (
 		<UserInfoContext.Provider value={{ userInfo, setUserInfo }}>
