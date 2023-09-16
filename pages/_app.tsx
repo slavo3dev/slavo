@@ -18,28 +18,7 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 	const router = useRouter();
     
 	useEffect( () => {
-        
-		// const getUserProfile = async () => {
-			
-		// 	const sessionUser = supabase.auth.user();
             
-		// 	if ( sessionUser )
-		// 	{
-		// 		const { data: profile } = await supabase
-		// 			.from( "profile" )
-		// 			.select( "*" )
-		// 			.eq( "id", sessionUser.id )
-		// 			.single();
-                
-		// 		setUserInfo( {
-		// 			...sessionUser,
-		// 			...profile
-		// 		} );
-		// 	}
-
-		// };
-        
-        
 		const { data: authListener } = supabase.auth.onAuthStateChange(async (event, session) => {
 			const currentUser = session?.user || null;
             
