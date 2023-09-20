@@ -1,5 +1,5 @@
 ---
-title: "Empower Your Nomadic Journey: Embrace Lifelong Learning"
+title: "Embracing the Art of FrontEnd Development: A Journey of Discovery and Freedom"
 date: "2023-08-02"
 author: "Slavo"
 image: "nomad-learning.png"
