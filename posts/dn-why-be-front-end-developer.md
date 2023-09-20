@@ -1,5 +1,5 @@
 ---
-title: "At its surface, FrontEnd Development may seem like lines of code, decipherable only by those initiated into its mysteries. "
+title: "Embracing the Art of FrontEnd Development: A Journey of Discovery and Freedom"
 date: "2023-09-21"
 author: "Slavo"
 image: "front-end.png"
