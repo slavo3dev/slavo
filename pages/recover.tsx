@@ -10,16 +10,14 @@ const recoverPassword: NextPage = () => {
     try {
       const { data, error } =
         await supabase.auth.resetPasswordForEmail(userEmail, {
-          redirectTo: "http://localhost:3000/login",
+          redirectTo: "http://localhost:3000/updatePassword",
         });
+      setEmailSent(!emailSent);
       if (error) throw error;
     } catch (err) {
       console.log("Api call not succesful", err);
     }
   };
-
-  //MOVE ALL SIGN FUNCTION TO SEPARATE FILE. ADD REDIRECT ROUTE TO SUPABASE.
-  //ADD API TO update
 
   return (
     <div>
