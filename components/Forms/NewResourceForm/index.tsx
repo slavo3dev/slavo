@@ -52,7 +52,7 @@ export const NewResourceFrom: FC<NewResourceFromProps> = ( { setSources, setShow
 
 	return (
 		<>
-			<div className="fixed inset-0 bg-gray-800 bg-opacity-75 transition-opacity"></div>
+			<div className="bg-gray-800 bg-opacity-75 transition-opacity"></div>
 			<div className="flex fixed inset-0 z-10 overflow-y-auto items-center justify-center">
 				{ isUploading && <h3 style={ { color: "red", textDecoration: "underline", backgroundColor: "white", padding: "1rem" } }>Thank You so much for sharing this with the Comunity</h3> }
 				<div className="w-full max-w-lg bg-gray-300 p-9 shadow-lg shadow-gray-100 transition-all rounded-lg sm:my-8 sm:w-full sm:max-w-lg">
