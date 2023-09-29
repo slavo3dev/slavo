@@ -5,12 +5,10 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import UserInfoContext from "@/context/UserInfoContext";
 import { OpenAI } from "../OpenAI";
 
-
-export const MentorAI: FC = () =>
-{
+export const MentorAI: FC = () => {
 	const { user } = useUser();
-	const { userInfo } = useContext(UserInfoContext);
-
+	const { userInfo } = useContext( UserInfoContext );
+    
 	return (
 		<>
 			<section className="bg-white text-black p-6 items-center" id='aimentor'>
@@ -70,6 +68,14 @@ export const MentorAI: FC = () =>
 		
 		</>
        
-        
 	);
+
 };
+
+
+
+
+
+
+
+

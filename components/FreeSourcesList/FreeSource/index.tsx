@@ -25,8 +25,6 @@ export const FreeSource: FC<FreeSourceTypeProps> = ({ fact, setFacts }: any) => 
     
 	const { user } = useUser();
 	const { userInfo } = useContext( UserInfoContext );
-    
-	console.log("User Info: ", userInfo);
    
 	async function handleVote ( columnName: string )
 	{
