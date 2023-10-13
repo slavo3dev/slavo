@@ -2,7 +2,7 @@
 title: "SSR vs. CSR vs. Static Site Generation: A Deep Dive"
 date: "2023-10-14"
 author: "Slavo"
-image: "npm-yarn.png"
+image: "ssr-csr.png"
 excerpt: "Hello, tech enthusiasts! In today's digital age, the approach we choose to render web content can dramatically influence the performance, SEO, and overall user experience of our applications..."
 isFeatured: true
 category: "Dev Tools"
