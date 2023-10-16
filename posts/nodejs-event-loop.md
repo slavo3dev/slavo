@@ -3,7 +3,7 @@ title: "Unleashing the Power of Asynchronous Magic"
 date: "2023-10-17"
 author: "Slavo"
 image: "nodejs.png"
-excerpt: "In the modern web development landscape, understanding asynchronous operations is indispensable. Asynchronous JavaScript fundamentally reshapes..."
+excerpt: "Event Loop and the life cycle of a Node application..."
 isFeatured: true
 category: "nodejs"
 ---
