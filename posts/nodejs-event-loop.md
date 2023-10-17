@@ -1,5 +1,5 @@
 ---
-title: "Unleashing the Power of Asynchronous Magic"
+title: "Unleashing Node.js: Dive Deep, Code Smart, Conquer Async!"
 date: "2023-10-17"
 author: "Slavo"
 image: "nodejs.png"
