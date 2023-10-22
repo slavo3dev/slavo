@@ -56,7 +56,7 @@ export const Burger: FC<any> = ( { userInfo } ) => {
 				<Link href="/videos">Videos</Link>
             </li>
             <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
-				<Link href="/services">Services</Link>
+				<Link href="/programs">Programs</Link>
 			</li>
             <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
 				<Link href="/contact">Contact</Link>

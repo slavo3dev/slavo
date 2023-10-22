@@ -55,8 +55,8 @@ export const MainNavigation: FC = () => {
 						<li className={router.pathname === "/videos" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/videos">Videos</Link>
 						</li>
-						<li className={router.pathname === "/services" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
-							<Link href="/services">Services</Link>
+						<li className={router.pathname === "/progrmas" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
+							<Link href="/programs">Programs</Link>
 						</li>
 						<li className={router.pathname === "/contact" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/contact">Contact</Link>

@@ -7,7 +7,7 @@ import Stripe from "stripe";
 import { GetStaticProps } from "next";
 
 
-const Services: NextPage = ({ plans }: any ) => {
+const Programs: NextPage = ({ plans }: any ) => {
 
 	console.log( "Plans: ", plans );
     
@@ -27,7 +27,7 @@ const Services: NextPage = ({ plans }: any ) => {
 				<section className="flex flex-col -mt-24 pb-12 bg-white p-10 justify-center items-center pt-40 border-t-2 border-r-orange-950">
 					<div className="container">
 						<h1 className="text-2xl lg:text-5xl font-bold mb-5 wow animate__animated animate__fadeIn animated">
-              Our Services
+                        Programs
 						</h1>
 						<ul className="flex text-gray-500 text-sm lg:text-sm pb-12 wow animate__animated animate__fadeIn animated">
 							<li className="inline-flex items-center">
@@ -54,7 +54,7 @@ const Services: NextPage = ({ plans }: any ) => {
 									href="#"
 									className="hover:text-blue-500 text-gray-800"
 								>
-                  Our Services
+                  Programs
 								</a>
 								<svg
 									fill="currentColor"
@@ -71,7 +71,7 @@ const Services: NextPage = ({ plans }: any ) => {
 							<li className="inline-flex items-center text-gray-400">
 								<span>
                   Career Change / Become a Freelancer / Business
-                  Growth
+                  Growth / Digtal Nomad...
 								</span>
 							</li>
 						</ul>
@@ -454,14 +454,6 @@ const Services: NextPage = ({ plans }: any ) => {
 
 				<section className="flex flex-col bg-white justify-center items-center h-full pt-20 pb-16 xl:bg-contain bg-top bg-no-repeat">
 					<div className="container">
-						<p
-							className=" text-center max-w-sm mx-auto text-lg text-blue-400 wow animate__animated animate__fadeInDown"
-							data-wow-delay=".5s"
-						>
-              Coming Soon / All Plans are FREE
-							<br />
-              Beta Mode
-						</p>
 						<div className="text-center mb-16">
 							<h2
 								className="max-w-lg mx-auto mb-4 text-4xl font-bold font-heading wow animate__animated animate__fadeIn"
@@ -491,10 +483,10 @@ const Services: NextPage = ({ plans }: any ) => {
 										alt="Slavo_3 Web & Mobile Consulting / Mentorship"
 									/>
 									<h3 className="mb-2 text-4xl font-bold font-heading">
-                    Startup
+                                      Habit Horizons
 									</h3>
 									<span className="text-4xl text-blue-500 font-bold font-heading">
-                    $45.99
+                                     $9.99
 									</span>
 									<p className="mt-2 mb-8 text-blueGray-400">
                     per month
@@ -517,7 +509,7 @@ const Services: NextPage = ({ plans }: any ) => {
 													></path>
 												</svg>
 												<span>
-                          3 Mentoring (1:1) Sessions per Month
+                                                    Cue creation
 												</span>
 											</li>
 											<li className="flex mb-3">
@@ -535,7 +527,7 @@ const Services: NextPage = ({ plans }: any ) => {
 														d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
 													></path>
 												</svg>
-												<span>ChatBot Mentor</span>
+												<span>Mentor: Regular Check-Ins</span>
 											</li>
 											<li className="flex mb-3">
 												<svg
@@ -552,7 +544,7 @@ const Services: NextPage = ({ plans }: any ) => {
 														d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
 													></path>
 												</svg>
-												<span>Discord Access</span>
+												<span>Daily Notifications: Reminder Mechanism</span>
 											</li>
 											<li className="flex">
 												<svg
@@ -569,7 +561,7 @@ const Services: NextPage = ({ plans }: any ) => {
 														d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
 													></path>
 												</svg>
-												<span>10 Weekly Questions</span>
+												<span>Monitor Progress</span>
 											</li>
 										</ul>
 									</div>
@@ -578,7 +570,7 @@ const Services: NextPage = ({ plans }: any ) => {
 											className="block sm:inline-block py-4 px-6 mb-4 sm:mb-0 sm:mr-3 text-xs text-white text-center font-semibold leading-none bg-blue-400 hover:bg-blue-500 rounded"
 											href="#"
 										>
-                      Start Free Trial
+                      Learn More...
 										</a>
 										<a
 											className="block sm:inline-block py-4 px-6 text-xs text-blueGray-500 hover:text-blueGray-600 text-center font-semibold leading-none bg-white border border-blueGray-200 hover:border-blueGray-300 rounded"
@@ -600,10 +592,10 @@ const Services: NextPage = ({ plans }: any ) => {
 										alt="Slavo_3 Web & Mobile Consulting & Mentorship"
 									/>
 									<h3 className="mb-2 text-4xl font-bold font-heading">
-                    Agency
+                                      Digital Horizons
 									</h3>
 									<span className="text-4xl font-bold font-heading">
-                    $65.99
+                                        $99.99
 									</span>
 									<p className="mt-2 mb-8">per month</p>
 									<div className="flex flex-col items-center mb-8">
@@ -624,7 +616,7 @@ const Services: NextPage = ({ plans }: any ) => {
 													></path>
 												</svg>
 												<span>
-                          9 Mentoring (1:1) Sessions per Month
+                                                   CodeCraft: Your Digital Nomad Journey
 												</span>
 											</li>
 											<li className="flex items-center mb-3">
@@ -642,7 +634,7 @@ const Services: NextPage = ({ plans }: any ) => {
 														d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
 													></path>
 												</svg>
-												<span>ChatBot Mentor</span>
+												<span>Career Coaching</span>
 											</li>
 											<li className="flex items-center mb-3">
 												<svg
@@ -659,7 +651,7 @@ const Services: NextPage = ({ plans }: any ) => {
 														d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
 													></path>
 												</svg>
-												<span>Access to Discord & One Project</span>
+												<span>Tracking Progress</span>
 											</li>
 											<li className="flex items-center">
 												<svg
@@ -676,7 +668,7 @@ const Services: NextPage = ({ plans }: any ) => {
 														d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
 													></path>
 												</svg>
-												<span>35 Weekly Questions</span>
+												<span>Elevate Every Opportunity</span>
 											</li>
 										</ul>
 									</div>
@@ -685,7 +677,7 @@ const Services: NextPage = ({ plans }: any ) => {
 											className="block sm:inline-block py-4 px-6 mb-4 sm:mb-0 sm:mr-3 text-xs text-blue-500 font-semibold leading-none bg-white hover:bg-blueGray-50 rounded"
 											href="#"
 										>
-                      Start Free Trial
+                      Learn More...
 										</a>
 										<a
 											className="block sm:inline-block py-4 px-6 text-xs font-semibold leading-none border border-blue-400 hover:border-blue-400 rounded"
@@ -707,13 +699,13 @@ const Services: NextPage = ({ plans }: any ) => {
 										alt="Slavo_3 Web & Mobile Development Consulting & Mentorship"
 									/>
 									<h3 className="mb-2 text-4xl font-bold font-heading">
-                    Enterprise
+                                        Dedicate to Dominate
 									</h3>
 									<span className="text-4xl text-blue-500 font-bold font-heading">
-                    $85.99
+                                        $240.00
 									</span>
 									<p className="mt-2 mb-8 text-blueGray-400">
-                    per month
+                                        per month
 									</p>
 									<div className="flex flex-col items-center mb-8">
 										<ul className="text-blueGray-400">
@@ -733,7 +725,7 @@ const Services: NextPage = ({ plans }: any ) => {
 													></path>
 												</svg>
 												<span>
-                          15 Mentoring (1:1) Sessions per Month{" "}
+                                                    Recruit & Rise
 												</span>
 											</li>
 											<li className="flex mb-3">
@@ -751,7 +743,7 @@ const Services: NextPage = ({ plans }: any ) => {
 														d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
 													></path>
 												</svg>
-												<span>Access to Discord & Projects</span>
+												<span>CodeCraft: Your FrontEnd Journey</span>
 											</li>
 											<li className="flex mb-3">
 												<svg
@@ -768,7 +760,7 @@ const Services: NextPage = ({ plans }: any ) => {
 														d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
 													></path>
 												</svg>
-												<span>Freelance Setup</span>
+												<span>Career Coaching</span>
 											</li>
 											<li className="flex">
 												<svg
@@ -785,7 +777,7 @@ const Services: NextPage = ({ plans }: any ) => {
 														d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
 													></path>
 												</svg>
-												<span>Unlimited Questions</span>
+												<span>365: Your Guided Year</span>
 											</li>
 										</ul>
 									</div>
@@ -794,7 +786,7 @@ const Services: NextPage = ({ plans }: any ) => {
 											className="block sm:inline-block py-4 px-6 mb-4 sm:mb-0 sm:mr-3 text-xs text-white text-center font-semibold leading-none bg-blue-400 hover:bg-blue-500 rounded"
 											href="#"
 										>
-                      Start Free Trial
+                      Learn More...
 										</a>
 										<a
 											className="block sm:inline-block py-4 px-6 text-xs text-blueGray-500 hover:text-blueGray-600 text-center font-semibold leading-none bg-white border border-blueGray-200 hover:border-blueGray-300 rounded"
@@ -838,7 +830,7 @@ const Services: NextPage = ({ plans }: any ) => {
 	);
 };
 
-export default Services;
+export default Programs;
 
 export const getStaticProps: GetStaticProps = async () =>
 {
@@ -854,7 +846,7 @@ export const getStaticProps: GetStaticProps = async () =>
 
 	const plans = await Promise.all( prices.map(async (price) =>
 	{
-		const product = await stripe.products.retrieve( price.product);
+		const product = await stripe.products.retrieve(price.product);
 		return ( {
 			id: price.id,
 			name: product.name,
