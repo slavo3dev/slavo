@@ -34,19 +34,19 @@ This loop continually reinforces itself with repetition. The more you cycle thro
 
 The basal ganglia, an older part of the brain in evolutionary terms, plays a central role in habit formation. While habits save cognitive energy, they are also stored in a part of the brain that operates on a more automatic level.
 
-Interesting Fact: The basal ganglia are also involved in developing emotions, memories, and pattern recognition. It's why sometimes a particular scent or a song can trigger a cascade of memories and emotions. This interconnectedness can be leveraged in habit formation. For instance, coupling a learning habit with a specific song can, over time, make the act of starting to learn feel as familiar and automatic as recalling a memory from a scent or sound.
+**Interesting Fact**: The basal ganglia are also involved in developing emotions, memories, and pattern recognition. It's why sometimes a particular scent or a song can trigger a cascade of memories and emotions. This interconnectedness can be leveraged in habit formation. For instance, coupling a learning habit with a specific song can, over time, make the act of starting to learn feel as familiar and automatic as recalling a memory from a scent or sound.
 
 #### Dopamine and Habit Formation
 
 Dopamine, the 'feel good' neurotransmitter, is not just about pleasure. It's central to habit formation. When you perform an action that feels good or has a positive outcome, your brain releases dopamine. This makes you more likely to repeat the step in the future.
 
-Interesting Fact: The release of dopamine can start with just the cue, even before the reward is achieved. This anticipation can sometimes be even more compelling than the reward itself. It's why the mere thought of a rewarding experience (like eating your favorite food) can be so enticing.
+**Interesting Fact**: The release of dopamine can start with just the cue, even before the reward is achieved. This anticipation can sometimes be even more compelling than the reward itself. It's why the mere thought of a rewarding experience (like eating your favorite food) can be so enticing.
 
 #### Habit and Neural Pathways
 
 Every time you engage in a behavior, neural pathways in your brain are activated. With repetition, these pathways become more defined and stronger, making the behavior easier to initiate and continue.
 
-Interesting Fact: Think of neural pathways like trails in a forest. The more a path is used, the clearer and more established it becomes. Similarly, the more you engage in a habit, the more robust and automatic the neural pathway associated with that Habit becomes in your brain.
+**Interesting Fact**: Think of neural pathways like trails in a forest. The more a path is used, the clearer and more established it becomes. Similarly, the more you engage in a habit, the more robust and automatic the neural pathway associated with that Habit becomes in your brain.
 
 #### The Power of Habit Stacking
 
