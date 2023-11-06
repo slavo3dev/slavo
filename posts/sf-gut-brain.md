@@ -4,7 +4,7 @@ date: "2023-07-22"
 author: "Slavo"
 image: "gut-and-learn.png"
 excerpt: "In the grand scheme of human health, the gut is often overlooked..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 
@@ -78,14 +78,14 @@ While antibiotics are sometimes necessary, they should be used judiciously as th
 
 Incorporating these strategies into your lifestyle can go a long way toward supporting your gut health and, consequently, your brain health and learning abilities. A growing body of research suggests that a healthy gut might be a key contributor to a healthy mind, underscoring the importance of gut health in cognitive function and mental well-being.
 
-\*\* **Book Recommendation**: [National Geographic Complete National Parks of the United States, 3rd Edition](https://amzn.to/44fSNkm)
-\*\* **_400+ Parks, Monuments, Battlefields, Historic Sites, Scenic Trails, Recreation Areas, and Seashores_**
+\*\* **Book Recommendation**:
 
-\*\* **Book Recommendation**: [Limitless](https://amzn.to/44q7u3U)
-\*\* **_Upgrade Your Brain, Learn Anything Faster, and Unlock Your Exceptional Life_**
+- [National Geographic Complete National Parks of the United States, 3rd Edition](https://amzn.to/44fSNkm)
+  \*\* **_400+ Parks, Monuments, Battlefields, Historic Sites, Scenic Trails, Recreation Areas, and Seashores_**
 
-\*\* **Book Recommendation**: [Change Your Brain, Change Your Life](https://amzn.to/44rO5ja)
-\*\* **_The Breakthrough Program for Conquering Anxiety, Depression, Obsessiveness, Lack of Focus, Anger, and Memory Problems_**
+- [Limitless](https://amzn.to/44q7u3U) **_Upgrade Your Brain, Learn Anything Faster, and Unlock Your Exceptional Life_**
+
+- [Change Your Brain, Change Your Life](https://amzn.to/44rO5ja) **_The Breakthrough Program for Conquering Anxiety, Depression, Obsessiveness, Lack of Focus, Anger, and Memory Problems_**
 
 **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
 
