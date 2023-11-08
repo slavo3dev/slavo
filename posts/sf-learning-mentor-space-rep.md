@@ -4,7 +4,7 @@ date: "2023-09-17"
 author: "Slavo"
 image: "mentorship.png"
 excerpt: "In the intricate tapestry of human connection, mentorship stands as a golden thread, weaving generations, knowledge, and experiences together..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 
