@@ -4,7 +4,7 @@ date: "2023-07-16"
 author: "Slavo"
 image: "npm-yarn.png"
 excerpt: "If you're venturing into the programming world, you've probably encountered numerous acronyms and terminologies that might initially seem a little overwhelming."
-isFeatured: true
+isFeatured: false
 category: "Dev Tools"
 ---
 

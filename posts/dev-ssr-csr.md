@@ -4,7 +4,7 @@ date: "2023-10-14"
 author: "Slavo"
 image: "ssr-csr.png"
 excerpt: "Hello, tech enthusiasts! In today's digital age, the approach we choose to render web content can dramatically influence the performance, SEO, and overall user experience of our applications..."
-isFeatured: true
+isFeatured: false
 category: "Dev Tools"
 ---
 

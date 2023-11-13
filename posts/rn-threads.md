@@ -4,7 +4,7 @@ date: "2023-07-22"
 author: "Slavo"
 image: "threads.png"
 excerpt: "One of the primary benefits of React Native is its emphasis on code reusability and cross-platform compatibility"
-isFeatured: true
+isFeatured: false
 category: "React Native"
 ---
 

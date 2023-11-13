@@ -4,7 +4,7 @@ date: "2023-08-02"
 author: "Slavo"
 image: "nomad-learning.png"
 excerpt: "Finding time to learn daily may require sacrifices, like less leisure time or waking up an hour earlier..."
-isFeatured: true
+isFeatured: false
 category: "Digital Nomad"
 ---
 

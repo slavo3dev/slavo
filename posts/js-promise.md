@@ -4,7 +4,7 @@ date: "2023-09-16"
 author: "Slavo"
 image: "promise.png"
 excerpt: "In the modern web development landscape, understanding asynchronous operations is indispensable. Asynchronous JavaScript fundamentally reshapes..."
-isFeatured: true
+isFeatured: false
 category: "Java Script"
 ---
 
