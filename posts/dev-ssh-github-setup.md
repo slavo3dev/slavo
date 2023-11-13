@@ -1,5 +1,5 @@
 ---
-title: "Quick guide to Set Up SSH Keys & Add Them to GitHub"
+title: "A quick guide to Set Up SSH Keys & Add Them to GitHub"
 date: "2023-11-14"
 author: "Slavo"
 image: "ssh-agent.png"
