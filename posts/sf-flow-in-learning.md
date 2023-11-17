@@ -4,7 +4,7 @@ date: "2023-05-26"
 author: "Slavo"
 image: "flow-learning.png"
 excerpt: "Have you ever found yourself so deeply involved in an activity that you lose all sense of time and external distractions, achieving a state of effortless productivity and focus?"
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

@@ -4,7 +4,7 @@ date: "2023-10-31"
 author: "Slavo"
 image: "cue.png"
 excerpt: "In a world awash with distractions and information overload, the key to effective learning often rests not in the hours spent studying but in how we initiate and sustain our engagement."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 
