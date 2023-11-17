@@ -66,7 +66,7 @@ The neurological loop of habits, often referred to as the habit loop, is a conce
 
 **_The Three-Stage Model of the Habit Loop_**
 
-**The habit loop consists of three key stages:\_**
+**_The habit loop consists of three key stages:_**
 
 - **Cue:** This trigger tells your brain to initiate a behavior. It is a bit of information that predicts a reward. Cues can be anything from a visual prompt, a particular time of day, an emotional state, or a sequence of thoughts that automatically initiates the habitual behavior.
 - **Routine:** This is the behavior itself, the action you take, which can be physical, mental, or emotional. The pattern is the activity you try to make into a habitual behavior.
