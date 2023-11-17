@@ -4,7 +4,7 @@ date: "2023-06-23"
 author: "Slavo"
 image: "digital-nomad.png"
 excerpt: "Becoming a digital nomad evokes a sense of adventure and a yearning for freedom, a chance to break free from the proverbial shackles of traditional"
-isFeatured: true
+isFeatured: false
 category: "Digital Nomad"
 ---
 

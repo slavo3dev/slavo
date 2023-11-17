@@ -4,7 +4,7 @@ date: "2023-06-15"
 author: "Slavo"
 image: "dopamine.png"
 excerpt: "The human brain, an intricate web of neurons firing messages at breakneck speed, relies heavily on a range of molecules to keep everything running smoothly..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

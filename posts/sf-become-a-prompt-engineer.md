@@ -4,7 +4,7 @@ date: "2023-05-19"
 author: "Slavo"
 image: "prompt-ai.png"
 excerpt: "At the crossroads of artificial intelligence (AI), computational linguistics, and engineering lies the enthralling profession of a prompt engineer..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

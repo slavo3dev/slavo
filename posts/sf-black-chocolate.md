@@ -4,7 +4,7 @@ date: "2023-07-05"
 author: "Slavo"
 image: "dark-chocolate.png"
 excerpt: "We'll delve into the world of a favorite delicacy that most of us cherish - chocolate. But not just any chocolate"
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

@@ -4,7 +4,7 @@ date: "2023-06-07"
 author: "Slavo"
 image: "nitro.png"
 excerpt: "Nitro cold brew is more than just a visually exquisite beverage with a creamy mouthfeel; it is a testament to the intricate science behind brewing coffee..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 
