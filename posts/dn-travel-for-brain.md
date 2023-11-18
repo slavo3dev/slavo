@@ -4,7 +4,7 @@ date: "2023-07-16"
 author: "Slavo"
 image: "traveling-brain.png"
 excerpt: "While strolling down the quaint streets of New York, have you ever wondered why travel feels so exhilarating and freeing?..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 
