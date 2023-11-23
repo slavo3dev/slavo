@@ -7,9 +7,9 @@ const Home: NextPage = ({ posts }: any) => {
 	return (
 		<>
 			<Hero />
-			<LearningSources />
-			<Subscribe />
 			<FeaturedPosts posts={ posts } />
+			<Subscribe />
+			<LearningSources />
 			<Solution />
 			<Growth />
 			<Subscribe />

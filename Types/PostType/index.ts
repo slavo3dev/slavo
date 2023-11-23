@@ -1,12 +1,15 @@
 export interface PostType
 {
-    post: { 
+    post: Post
+}
+
+export interface Post {
     title: string;
     date: string;
     excerpt: string;
     image: string;
-    slug: string
-};
+    slug: string;
+    category?:string
 }
 
 

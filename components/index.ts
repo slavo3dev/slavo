@@ -15,7 +15,8 @@ import { NewResourceFrom } from "./Forms";
 import { FreeSourcesList } from "./FreeSourcesList";
 import { VideoCard, VideoLine } from "./VideoElements";
 import { Growth, Solution } from "./Sections";
+import { LinkEvents } from "./Primitives";
 
 
 
-export {Layout, LearningSources, FeaturedPosts, HeadBasePage, MainNavigation, BlogPosts, PostContent, PostHeader, ContactForm, Subscribe, Footer,  CategorySearch, MentorAI, NewResourceFrom, FreeSourcesList, VideoCard, VideoLine, Growth, Solution, Hero};
+export {Layout, LearningSources, FeaturedPosts, HeadBasePage, MainNavigation, BlogPosts, PostContent, PostHeader, ContactForm, Subscribe, Footer,  CategorySearch, MentorAI, NewResourceFrom, FreeSourcesList, VideoCard, VideoLine, Growth, Solution, Hero, LinkEvents};
