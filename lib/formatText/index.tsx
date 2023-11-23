@@ -1,11 +1,32 @@
+import { useState, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Image from "next/image";
 import classes from "./formatText.module.css";
 
 
-export const customRenderers = {
 
+export const CodeBlock = ({ className, children }: { className?: string; children: React.ReactNode }) => {
+	const [isMounted, setIsMounted] = useState(false);
+	// No need to destructure code here, directly use className and children
+	const language = className ? className.split("-")[1] : "javascript";
+
+	useEffect(() => {
+		setIsMounted(true);
+	}, []);
+
+	// Use children directly instead of code.children
+	return (
+		isMounted ? (
+			<SyntaxHighlighter style={atomDark} language={language} children={children} />
+		) : (
+			<p>Loading...</p> // This can be a placeholder or null if you prefer not to show anything
+		)
+	);
+};
+
+
+export const customRenderers =  {
 	p(paragraph: any) {
 		const { node } = paragraph;
 		if (node.children[0].tagName === "img" ) {
@@ -27,15 +48,7 @@ export const customRenderers = {
 	},
 
 	code(code: any) {
-		const { className, children } = code;
-		const language = className ? className.split("-")[1] : "js"; // className is something like language-js => We need the "js" part here
-		return (
-			<SyntaxHighlighter
-				style={atomDark}
-				language={language}
-				children={children}
-			/>
-		);
+		return <CodeBlock className={code.className} children={code.children} />;	
 	},
     
 	a ( a: any ) {
