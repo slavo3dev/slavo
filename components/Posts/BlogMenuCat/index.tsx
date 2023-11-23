@@ -1,13 +1,24 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 
 interface Props {
-    categories: string[]
+    categories: string[];
+    onSearch: ( param?: string ) => void
 }
 
-export const BlogMenuCat: FC<Props> = ({ categories }) => {
+export const BlogMenuCat: FC<Props> = ( { categories, onSearch } ) =>
+{
+	const [activeCategory, setActiveCategory] = useState<string | undefined>("all");
+
+	const handleCategoryClick = (category: string) => {
+		setActiveCategory(category); // Set the active category
+		onSearch(category); // Perform the search
+	};
+    
 	return (
 		<div className="flex flex-wrap gap-5 mt-8 test">
-			{ categories.map((category: string) => <span className="text-xs font-semibold text-indigo-600 bg-indigo-50 border border-indigo-300 rounded-full inline-flex items-center px-2.5 py-1 hover:text-red-600">{category}</span> )}
+			{ categories.map( ( category: string ) => <span key={category} onClick={() => handleCategoryClick(category)}  className={`text-xs font-semibold text-indigo-600 border border-indigo-300 rounded-full inline-flex items-center px-2.5 py-1 hover:text-red-600 ${
+				activeCategory?.toLocaleLowerCase() === category?.toLocaleLowerCase() ? "bg-blue-500 text-white" : "bg-indigo-50"
+			}`}>{category}</span> )}
 		</div>
 	);
 };

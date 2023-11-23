@@ -20,11 +20,8 @@ const blog: NextPage = ( { posts }: any ) =>
 			router.push(fullPath);
 		}
 	}
-	return (
-		<> 
-			<CategorySearch onSearch={findCategoryHandle} posts={posts} />
-			<BlogPosts posts={posts} />
-		</> );
+	return <BlogPosts posts={posts} />;
+	
 };
 
 
