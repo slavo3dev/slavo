@@ -4,7 +4,7 @@ date: "2023-06-16"
 author: "Slavo"
 image: "data-types.png"
 excerpt: "Data types play a vital role in programming languages as they define the values that can be stored and manipulated within a program. JavaScript..."
-isFeatured: true
+isFeatured: false
 category: "Java Script"
 ---
 

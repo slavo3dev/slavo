@@ -25,8 +25,9 @@
         "react-syntax-highlighter": "^15.4.4",
         "react-typing-effect": "^2.0.5",
         "react-visibility-sensor": "^5.1.1",
-        "remark-gfm": "^3.0.1",
         "react-wow": "^1.0.0",
+        "remark-gfm": "^3.0.1",
+        "uuid": "^9.0.1",
         "wow.js": "^1.2.2",
         "wowjs": "^1.1.3"
     },
