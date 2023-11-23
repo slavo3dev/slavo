@@ -14,7 +14,7 @@ export const FeaturedPostCard: FC<PostType> = ( { post } ) =>
 	} );
     
 	return (
-		<div className="group">
+		<div className="group border border-gray-100 hover:-translate-y-1 rounded-xl p-3 shadow hover:shadow-lg">
 			<a href={ `/blog/${ slug }` } title="" className="block overflow-hidden aspect-w-16 aspect-h-9 rounded-xl">
 				<img className="object-cover w-full h-full transition-all duration-200 transform group-hover:scale-110" src={`/images/post-img/${image}`} alt={title} />
 			</a>
