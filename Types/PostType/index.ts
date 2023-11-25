@@ -1,3 +1,4 @@
+
 export interface PostType
 {
     post: Post
@@ -15,6 +16,8 @@ export interface Post {
 
 export interface PostHeaderType
 {
-    title: string, 
-    imgSrc: string
+    title: string; 
+    imgSrc: string;
+    category: string;
+    data: string;
 }

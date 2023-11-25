@@ -1,17 +1,13 @@
 
 import { FC } from "react";
 import { PostType } from "@/Types/PostType";
+import { formattedDate } from "@/lib/helpers";
 
 export const FeaturedPostCard: FC<PostType> = ( { post } ) =>
 {
 
 	const { title, image, date, category, slug } = post;
     
-	const formattedDate = new Date( date ).toLocaleDateString( "en-US", {
-		day: "numeric",
-		month: "long",
-		year: "numeric"
-	} );
     
 	return (
 		<div className="group border border-gray-100 hover:-translate-y-1 rounded-xl p-3 shadow hover:shadow-lg">
@@ -23,7 +19,7 @@ export const FeaturedPostCard: FC<PostType> = ( { post } ) =>
 					<a href="#" title={title} className="">{category}</a>
 				</p>
 				<span className="text-sm font-medium text-gray-900"> • </span>
-				<p className="text-sm font-medium text-gray-900">{ formattedDate }</p>
+				<p className="text-sm font-medium text-gray-900">{ formattedDate(date) }</p>
 			</div>
 			<p className="mt-4 text-xl font-bold text-gray-900 group-hover:text-gray-600">
 				<a href={ `/blog/${ slug }` } title="" className="">{title}</a>

@@ -200,7 +200,8 @@ function Fact({ fact, setPorchs }: any) {
     const { user } = useUser();
     const { userInfo } = useContext(UserInfoContext);
 
-  const date = new Date(fact.created_at);
+    const date = new Date( fact.created_at );
+    
   const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1)
     .toString()
     .padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;
