@@ -6,7 +6,7 @@ import { formattedDate } from "@/lib/helpers";
 export const FeaturedPostCard: FC<PostType> = ( { post } ) =>
 {
 
-	const { title, image, date, category, slug } = post;
+	const { title, image, date, category = "all", slug } = post;
     
     
 	return (
@@ -16,7 +16,7 @@ export const FeaturedPostCard: FC<PostType> = ( { post } ) =>
 			</a>
 			<div className="flex items-center mt-6 space-x-2">
 				<p className="text-sm font-medium text-gray-900">
-					<a href="#" title={title} className="">{category}</a>
+					<a href={`/category/${category.toLowerCase().replace( " ", "-" )}`} title={title} className="">{category}</a>
 				</p>
 				<span className="text-sm font-medium text-gray-900"> • </span>
 				<p className="text-sm font-medium text-gray-900">{ formattedDate(date) }</p>

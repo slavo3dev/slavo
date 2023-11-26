@@ -29,7 +29,7 @@ export const PostCard: FC<PostType> = ( { post } ) =>
 						<p className="text-sm font-medium text-gray-900">{formattedDate(date)}</p>
 					</div>
 
-					<a href={ `/blog/${ slug }` } title="" className="" role="button">
+					<a href={ `/category/${ slug }` } title="" className="" role="button">
 						<svg className="w-5 h-5 text-gray-300 transition-all duration-200 group-hover:text-gray-900" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
 							<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
 							<line x1="17" y1="7" x2="7" y2="17"></line>

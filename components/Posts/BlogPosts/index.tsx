@@ -4,17 +4,11 @@ import { PostsGrid } from "./PostsGrid";
 import { PostsList } from "Types/PostsList";
 import { Loader } from "@/components/ui/Loader";
 import { BlogMenuCat } from "../BlogMenuCat";
+import { getCategories } from "@/lib/helpers";
 
 export const BlogPosts: FC<PostsList> = ( { posts } ) =>
 {
 	const [ category, setCategory ] = useState( "ALL" );
-    
-	const categories: string[] = posts
-		.map(post => post.category) // Extract categories from posts
-		.sort() // Sort the categories alphabetically
-		.filter((item, index, arr) => arr.indexOf(item) === index); // Filter out duplicates
-
-	categories.unshift( "ALL" );
     
 	const filtredPost = category.toLocaleLowerCase() === "all" ? posts : posts.filter(post => post.category.toLocaleLowerCase() === category.toLocaleLowerCase());
         
@@ -24,7 +18,7 @@ export const BlogPosts: FC<PostsList> = ( { posts } ) =>
 				<BlogTitle />
 				<div className="max-w-5xl mx-auto">
 					<div className="max-w-md mx-auto lg:flex lg:items-center lg:justify-between lg:max-w-none">
-						<BlogMenuCat categories={ categories } onSearch={(cat?: string) => { cat && setCategory(cat);}} />
+						<BlogMenuCat categories={ getCategories(posts) } onSearch={(cat?: string) => { cat && setCategory(cat);}} />
 					</div>
 				</div>
 				{ posts ? <PostsGrid posts={ filtredPost } /> : <Loader title="We are Loading Posts" /> }
