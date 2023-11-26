@@ -1,22 +1,32 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, FC } from "react";
+import { useState, useEffect, FC } from "react";
 import { CATEGORIES } from "@/lib/constants";
 import axios from "axios";
 import { isValidHttpUrl } from "@/lib/constants";
 import { NewResourceFromProps } from  "@/lib/types";
-import { useUser } from "@auth0/nextjs-auth0/client";
+import { getUserData } from "@/lib/auth";
 
 export const NewResourceFrom: FC<NewResourceFromProps> = ( { setSources, setShowForm } ) => {
 	const [text, setText] = useState("");
 	const [source, setSource] = useState("");
 	const [category, setCategory ] = useState( "" );
 	const [ isUploading, setIsUploading ] = useState( false );
+	const [ userInfo, setUserInfo ] = useState<any>(null);
+    
+	
+	useEffect( () => {
+		const fetchData = async () =>
+		{
+			const userData = await getUserData();
+			setUserInfo (userData);
+		};
+
+		fetchData();
+	}, [] );
+    
+	const { email } = userInfo;
     
 	const textLength = text.length;
-    
-	const { user } = useUser();
-    
-	const email = user?.user !== undefined ? user.user : "";
     
 	async function handleSubmit(e: { preventDefault: () => void; }) {
 		// 1. Prevent browser reload

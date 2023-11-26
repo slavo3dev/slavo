@@ -1,20 +1,17 @@
 import { FC, useContext } from "react";
 import ReactTypingEffect from "react-typing-effect";
 import Link from "next/link";
-import { useUser } from "@auth0/nextjs-auth0/client";
 import UserInfoContext from "@/context/UserInfoContext";
 import { OpenAI } from "../OpenAI";
 
 
-export const MentorAI: FC = () =>
-{
-	const { user } = useUser();
+export const MentorAI: FC = () => {
 	const { userInfo } = useContext(UserInfoContext);
 
 	return (
 		<>
 			<section className="bg-white text-black p-6 items-center" id='aimentor'>
-				{ user?.email_verified || userInfo?.email  ?
+				{ userInfo?.email  ?
 					<OpenAI /> :
 					(
 						<div className="flex flex-wrap items-center mx-auto container">

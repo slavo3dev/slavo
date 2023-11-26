@@ -4,8 +4,7 @@ import supabase from "@/lib/supabase";
 import UserInfoContext from "@/context/UserInfoContext";
 
 
-interface FreeSourceTypeProps
-{
+interface FreeSourceTypeProps {
     fact: {
         like: number,
         exelent: number, 

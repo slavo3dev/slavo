@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { useEffect, useState, useContext} from "react";
-import { useUser } from "@auth0/nextjs-auth0/client";
 import { NewResourceFrom } from "../Forms";
 import supabase from "@/lib/supabase";
 import { FreeSourcesList } from "../FreeSourcesList";
@@ -10,11 +9,8 @@ import { Title } from "../Title";
 import UserInfoContext from "@/context/UserInfoContext";
 
 export const LearningSources: FC = () => {
-	const { user } = useUser();
 	const { userInfo } = useContext( UserInfoContext );
 	const [facts, setFacts] = useState<[]>([]);
-	const [ userEmail, setUserEmail ] = useState<string | undefined | null>("");
-	const [ userVerified, setUserVerified ] = useState<boolean | null>();
 	const [ showForm, setShowForm ] = useState<boolean>( false );
 	const [ currentCategory, setCurrentCategory ] = useState<string>( "all" );
 	const [ isLoading, setIsLoading] = useState<boolean>(false);
@@ -41,13 +37,6 @@ export const LearningSources: FC = () => {
 		[currentCategory, showForm ]
 	);
     
-	useEffect( () => {
-		if ( user ) {
-			setUserEmail( user.email );
-			setUserVerified(user?.email_verified);
-		}
-	},[userEmail, userVerified, user]);
-    
 	const handleOnClose = () => { setShowForm( true ); };
     
 	return (
@@ -60,7 +49,7 @@ export const LearningSources: FC = () => {
 					{ isLoading ? <Loader title="Please Wait... Loading..." /> : <FreeSourcesList facts={ facts } setFacts={ setFacts } /> }
 				</div>
 			</section>
-			{(userInfo || userVerified )&& <div className="w-full flex items-center justify-center pb-5" >
+			{userInfo && <div className="w-full flex items-center justify-center pb-5" >
 				<button className="hover:bg-blue-100 bg-blue-500 text-white hover:text-red-500 font-bold py-2 px-4 rounded w-1/2" onClick={ handleOnClose }>Add Source</button>
 			</div>}
 		</>
