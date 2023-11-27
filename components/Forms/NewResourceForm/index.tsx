@@ -1,31 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, useEffect, FC } from "react";
+import { useState, useContext, FC } from "react";
 import { CATEGORIES } from "@/lib/constants";
 import axios from "axios";
 import { isValidHttpUrl } from "@/lib/constants";
-import { NewResourceFromProps } from  "@/lib/types";
-import { getUserData } from "@/lib/auth";
+import { NewResourceFromProps } from "@/lib/types";
+import UserInfoContext from "context/UserInfoContext";
 
 export const NewResourceFrom: FC<NewResourceFromProps> = ( { setSources, setShowForm } ) => {
 	const [text, setText] = useState("");
 	const [source, setSource] = useState("");
 	const [category, setCategory ] = useState( "" );
 	const [ isUploading, setIsUploading ] = useState( false );
-	const [ userInfo, setUserInfo ] = useState<any>(null);
-    
-	
-	useEffect( () => {
-		const fetchData = async () =>
-		{
-			const userData = await getUserData();
-			setUserInfo (userData);
-		};
 
-		fetchData();
-	}, [] );
-    
-	const { email } = userInfo;
-    
+	const { userInfo } = useContext( UserInfoContext );
+	const email = userInfo?.email || "";
 	const textLength = text.length;
     
 	async function handleSubmit(e: { preventDefault: () => void; }) {

@@ -5,7 +5,6 @@ import "animate.css";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { Layout, HeadBasePage, MainNavigation, Footer } from "../components";
-import { UserProvider } from "@auth0/nextjs-auth0/client";
 import VideoContext from "context/VideoContext";
 import UserInfoContext from "context/UserInfoContext";
 import supabase from "@/lib/supabase";
@@ -49,14 +48,12 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 	return (
 		<UserInfoContext.Provider value={{ userInfo, setUserInfo }}>
 			<VideoContext.Provider value={ { videoLine, setVideoLine } }>
-				<UserProvider>
-					<Layout>
-						<HeadBasePage title="Career Change: Learn Web Development for a Bright Future" />
-						<MainNavigation  />
-						<Component { ...pageProps } />
-						<Footer />
-					</Layout>
-				</UserProvider>
+				<Layout>
+					<HeadBasePage title="Career Change: Learn Web Development for a Bright Future" />
+					<MainNavigation  />
+					<Component { ...pageProps } />
+					<Footer />
+				</Layout>
 			</VideoContext.Provider>
 		</UserInfoContext.Provider>
 	);
