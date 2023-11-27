@@ -4,7 +4,7 @@ date: "2023-08-02"
 author: "Slavo"
 image: "code-learning.png"
 excerpt: "Programming, much like learning a musical instrument or a new language, is a skill that improves with consistent practice. In all its intricate complexity,"
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

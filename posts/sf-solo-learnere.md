@@ -4,7 +4,7 @@ date: "2023-11-06"
 author: "Slavo"
 image: "solo-learner.png"
 excerpt: "In the quest for knowledge, every learner embarks on a personal journey—a voyage that, while enriching, can often feel solitary and daunting. The path of education is not just about acquiring facts and figures..."
-isFeatured: true
+isFeatured: flase
 category: "Self Help"
 ---
 

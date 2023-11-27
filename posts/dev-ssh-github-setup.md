@@ -4,7 +4,7 @@ date: "2023-11-14"
 author: "Slavo"
 image: "ssh-agent.png"
 excerpt: "Enhance your security with SSH keys for GitHub access. This guide covers SSH key setup for Mac, Windows, and Linux users."
-isFeatured: true
+isFeatured: false
 category: "Dev Tools"
 ---
 

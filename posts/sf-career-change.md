@@ -4,7 +4,7 @@ date: "2023-05-04"
 author: "Slavo"
 image: "career.png"
 excerpt: "A career change** can be a life-altering decision that opens the door to new opportunities and personal growth..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

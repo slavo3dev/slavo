@@ -4,7 +4,7 @@ date: "2023-05-27"
 author: "Slavo"
 image: "deliberate.png"
 excerpt: "The concept of deliberate practice comes from psychologist K. Anders Ericsson, who studied the practice habits of top performers in various fields"
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 
