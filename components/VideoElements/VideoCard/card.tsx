@@ -1,12 +1,12 @@
-import { FC } from "react";
+import { FC, useContext} from "react";
 import { videoCardTypes } from "@/lib/types";
-import { useUser } from "@auth0/nextjs-auth0/client";
-
+import UserInfoContext from "context/UserInfoContext";
 import Link from "next/link";
 
 export const VideoCard: FC<videoCardTypes> = ({ imgUrl, title, name, videoURL }) => {
-	const { user } = useUser();
-	const isAuth = user?.email && user?.email_verified;
+	
+	const { userInfo } = useContext(UserInfoContext);
+	const isAuth = userInfo;
 
 	return (
 		<>

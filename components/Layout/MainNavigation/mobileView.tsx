@@ -1,12 +1,11 @@
 /* eslint-disable indent */
 import Image from "next/image";
 import Link from "next/link";
-import { FC, useState, useEffect } from "react";
+import { FC, useState } from "react";
 import insta from "public/images/icons/instagram-blue.svg";
 import twit from "public/images/icons/twitter-blue.svg";
 import face from "public/images/icons/facebook-blue.svg";
 import link from "public/images/icons/linkedinIcon.webp";
-import { useUser } from "@auth0/nextjs-auth0/client";
 import classes from "./navigation.module.css";
 
 
@@ -15,9 +14,8 @@ export const Burger: FC<any> = ( { userInfo } ) => {
 //   const [showHome, setShowHome] = useState(false);
 //   const [showBlog, setShowBlog] = useState(false);
 
-    const { user } = useUser();
-    const isAuth = user?.email || userInfo?.email;
-    const userEmail = user?.email || userInfo?.email;
+    const isAuth = userInfo?.email;
+    const userEmail = userInfo?.email;
 
 
   const handleBurger = () => {
@@ -98,7 +96,7 @@ export const Burger: FC<any> = ( { userInfo } ) => {
               <Link className="" href={""}>SignUp</Link>
             </div> */}
             <div className="w-11/12 px-4 py-3 mb-3 text-blue-500 hover:text-blue-700 text-center font-semibold rounded-xl border border-blue-200 hover:border-blue-300 rounded">  
-{isAuth ? (user?.email_verified || userInfo?.email ? (<Link href="/api/auth/logout"><span className={classes.user_email}>{userEmail}  [ Logout ]</span></Link>): (<Link href="/api/auth/login">Verify Email & Login</Link>))
+{isAuth ? (userInfo?.email ? (<Link href="/api/auth/logout"><span className={classes.user_email}>{userEmail}  [ Logout ]</span></Link>): (<Link href="/api/auth/login">Verify Email & Login</Link>))
  : (<Link className="" href="/api/auth/login">Login</Link>)} </div>
           </div>
 		<div className="text-center">
