@@ -1,5 +1,6 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 import type { NextPage } from "next";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import { SignIn, SignUp } from "@components";
@@ -7,10 +8,11 @@ import UserInfoContext from "@/context/UserInfoContext";
 
 const Login: NextPage = () =>
 {
+
+	const [ isNewAccount, setIsNewAccount ] = useState<boolean>(false);
 	const router = useRouter();
 	const { userInfo } = useContext( UserInfoContext );
 	const isAuth = userInfo?.email;
-
     
 	
 	if (isAuth) {
@@ -19,6 +21,7 @@ const Login: NextPage = () =>
 	} else {
 		console.log(false);
 	}
+    
 	return (
 		<section className="h-screen">
 			<div className="container h-full px-6 py-24">
@@ -30,26 +33,25 @@ const Login: NextPage = () =>
 							alt="Phone image"
 						/>
 					</div>
-
 					<div className="md:w-8/12 lg:w-5/12 lg:ml-6">
 						<div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
 							<div className="w-full bg-white rounded-bl-lg rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
 								<div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-									<h1 className="text-xl font-bold leading-tight tracking-tight text-blue-400 border-white border-2 border-b-gray-300 md:text-2xl ">
-										<span className="text-blue-600">Sign up</span> for
-                    new account
-									</h1>
-									<SignUp />
-									<div className="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-blue-500 after:mt-0.5 after:flex-1 after:border-t after:border-blue-500">
-										<p className="mx-4 mb-0 text-center font-normal text-black">
-                      OR
-										</p>
-									</div>
-									<h1 className="text-xl font-bold leading-tight tracking-tight text-blue-400 border-white border-2 border-b-gray-300 md:text-2xl ">
-										<span className="text-blue-600">Sign in</span> to
-                    your account
-									</h1>
-									<SignIn />
+									{ isNewAccount ? (
+										<>
+											<h1 className="text-xl font-bold leading-tight tracking-tight text-blue-400 border-white border-2 border-b-gray-300 md:text-2xl ">
+												<span className="text-blue-600">Sign up</span> for new account
+											</h1>
+											<SignUp />
+										</>) :
+										(<>
+                                        
+											<h1 className="text-xl font-bold leading-tight tracking-tight text-blue-400 border-white border-2 border-b-gray-300 md:text-2xl ">
+												<span className="text-blue-600">Sign in</span> to your account
+											</h1>
+											<SignIn />                                        
+										</> )
+									}
 								</div>
 							</div>
 						</div>
