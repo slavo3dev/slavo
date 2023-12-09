@@ -2,7 +2,11 @@ import supabase from "@/lib/supabase";
 import { useState, FC } from "react";
 import { useRouter } from "next/router";
 
-export const CreateAccount: FC = ( { signIn }: any ) =>
+interface CreateAccountProps {
+  signIn: () => void; 
+}
+
+export const CreateAccount: FC<CreateAccountProps> = ( { signIn }  ) =>
 {
 	const router = useRouter();
 	const [newUserEmail, setNewUserEmail] = useState<string>("");

@@ -2,9 +2,11 @@ import { useState, FC } from "react";
 import supabase from "@/lib/supabase";
 import router from "next/router";
 
+interface LoginProps {
+  signIn: () => void; // Assuming signIn is a function that takes no arguments and returns nothing
+}
 
-
-export const LoginForm: FC = ( { signIn }: any  ) =>
+export const LoginForm: FC<LoginProps>= ( { signIn } ) =>
 {
 
 	const [userEmail, setUserEmail] = useState<string>(""); // add this to sign in
