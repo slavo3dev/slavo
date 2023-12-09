@@ -140,16 +140,6 @@ The presence or absence of 'WWW' in domain names is a subject of much curiosity 
 
 Today's use or omission of 'WWW' in domain names is a matter of preference, branding, and practical web management rather than a technical necessity. As the Internet continues to evolve, the distinction between 'WWW' and non-WWW domains remains a part of its rich history and an example of how user experience and technological advancements shape digital practices—for website developers and owners, choosing one format for consistency and ensuring proper technical setup to support their choice.
 
-## Linking in HTML: Understanding the `<a>` Tag
-
-### The Importance of Correct Linking
-
-The `<a>` tag is used in HTML to create links. Including the correct protocol in your URLs ensures they work correctly. If a link is specified with 'https://' and your site is not configured to support HTTPS, the link will not work as intended.
-
-### Example Scenario
-
-Imagine linking to a website with `<a href="https://example.com">.` If 'example.com' does not support HTTPS, the browser might show a security warning, or the page might not load. It's important to know whether the target site supports HTTPS before linking it to your HTML code.
-
 Understanding the basics of HTTP, HTTPS, and domain naming conventions is crucial for any web developer. These elements form the backbone of web communication and influence website functionality and user experience. Always ensure your links are accurate and use HTTPS whenever possible to maintain security and trust with your users.
 
 Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](/contact)
