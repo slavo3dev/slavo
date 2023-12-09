@@ -1,8 +1,6 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 import type { NextPage } from "next";
-import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { getUserData } from "@/lib/auth";
 import { useContext } from "react";
 import { SignIn, SignUp } from "@components";
 import UserInfoContext from "@/context/UserInfoContext";
