@@ -56,11 +56,13 @@ export const MainNavigation: FC = () => {
 						<li className={router.pathname === "/contact" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/contact">Contact</Link>
 						</li>
-						{(userEmail ) ? (
-							<li className="hover:text-blue-500 hover:bg-blue-50">
+						<li className={router.pathname === "/login" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
+							{(userEmail ) ? (
+								
 								<Link href="/auth/logout">Logout</Link>
-							</li>
-						) : ( <Link href="/login">Login</Link> ) }
+								
+							) : ( <Link href="/login">Login</Link> ) }
+						</li>
 						<li className="hover:text-blue-500 hover:bg-blue-50">
 						</li>
 					</ul>
