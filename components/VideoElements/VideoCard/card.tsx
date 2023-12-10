@@ -22,7 +22,7 @@ export const VideoCard: FC<videoCardTypes> = ({ imgUrl, title, name, videoURL })
 						/>
 						{isAuth ? null : (
 							<div className="bg-black w-full h-full invisible group-hover:visible absolute top-0 left-0 opacity-75 flex items-center justify-center">
-								<span className="text-white underline"><Link href="/api/auth/login">Login to watch video</Link></span>
+								<span className="text-white underline"><Link href="/login">Login to watch video</Link></span>
 							</div>
 						)}
 					</div>

@@ -3,10 +3,11 @@ import supabase from "@/lib/supabase";
 import router from "next/router";
 
 interface LoginProps {
-  signIn: () => void; // Assuming signIn is a function that takes no arguments and returns nothing
+    signIn: () => void;
+    resetPassword: () => void; 
 }
 
-export const LoginForm: FC<LoginProps>= ( { signIn } ) =>
+export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 {
 
 	const [userEmail, setUserEmail] = useState<string>(""); // add this to sign in
@@ -62,7 +63,7 @@ export const LoginForm: FC<LoginProps>= ( { signIn } ) =>
 										<div className="flex items-center justify-between">
 											<label  className="text-base font-medium text-gray-900 font-pj"> Password </label>
 
-											<a href="#" title="" className="text-base font-medium text-gray-500 rounded font-pj hover:text-gray-900 hover:underline focus:outline-none focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"> Forgot Password? </a>
+											<a onClick={() => resetPassword()} className="text-base font-medium text-gray-500 rounded font-pj hover:text-gray-900 hover:underline focus:outline-none focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"> Forgot Password? </a>
 										</div>
 										<div className="mt-2.5">
 											<input
@@ -149,6 +150,7 @@ export const LoginForm: FC<LoginProps>= ( { signIn } ) =>
 											Login in with Github
 							</a>
 						</div>
+						{signInError}
 					</div>
 				</div>
 			</div>

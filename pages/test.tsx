@@ -3,11 +3,13 @@ import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import UserInfoContext from "@/context/UserInfoContext";
 import { CreateAccount } from "@/components/Auth/CreateAccount";
+import { ResetPassword } from "@/components/Auth/ResetPassword";
 import { LoginForm } from "@/components/Auth/Login";
 
 const Test: NextPage = () =>
 {
 	const [ isAccountCreated, setIsAccountCreated ] = useState<boolean>( true );
+	const [ isResetPassword, setIsResetPassword ] = useState<boolean>( false );
 	const router = useRouter();
 	const { userInfo } = useContext( UserInfoContext );
 	const isAuth = userInfo?.email;
@@ -19,15 +21,16 @@ const Test: NextPage = () =>
 		console.log(false);
 	}
     
-	const handlerForms = () =>
-	{
-		setIsAccountCreated(!isAccountCreated);
+	const toggleState = (setStateFunction: ( arg0: ( prevState: boolean ) => boolean ) => void) => {
+		setStateFunction((prevState: boolean) => !prevState);
 	};
+    
 	return (
-
-		isAccountCreated ? 
-			<LoginForm signIn={handlerForms} /> :
-			<CreateAccount signIn={handlerForms} />
+		!isResetPassword ? 
+			(isAccountCreated ? 
+				<LoginForm signIn={() => toggleState(setIsAccountCreated)} resetPassword={() => toggleState(setIsResetPassword)} /> :
+				<CreateAccount signIn={() => toggleState(setIsAccountCreated)} /> ) :
+			<ResetPassword resetPassword={() => toggleState(setIsResetPassword)} />
 	);
 };
 
