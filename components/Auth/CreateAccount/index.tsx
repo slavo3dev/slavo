@@ -131,7 +131,7 @@ export const CreateAccount: FC<CreateAccountProps> = ( { signIn }  ) =>
 												onChange={(e) => {
 													setMatchingPassword(e.target.value);
 												}}
-												type="text"
+												type="password"
 												name=""
 												id=""
 												placeholder="Confirm Password"

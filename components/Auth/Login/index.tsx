@@ -79,9 +79,9 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 											<input type="checkbox" name="terms" id="terms" className="w-5 h-5 text-gray-900 border-gray-300 rounded focus:ring-gray-900" />
 										</div>
 
-										<div className="ml-3 text-base">
+										{/* <div className="ml-3 text-base">
 											<label className="font-normal text-gray-900 font-pj"> Remember me </label>
-										</div>
+										</div> */}
 									</div>
 								</div>
 
