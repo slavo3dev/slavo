@@ -142,6 +142,12 @@ Today's use or omission of 'WWW' in domain names is a matter of preference, bran
 
 Understanding the basics of HTTP, HTTPS, and domain naming conventions is crucial for any web developer. These elements form the backbone of web communication and influence website functionality and user experience. Always ensure your links are accurate and use HTTPS whenever possible to maintain security and trust with your users.
 
+\*\* Book Recommendation:
+
+- [HTML and CSS **_Design and Build Websites_**](https://amzn.to/3NvUcNv)
+- [Eloquent JavaScript **_A Modern Introduction to Programming_**](https://amzn.to/44UeeZ6)
+- [Pragmatic Programmer **_ The: Your journey to mastery_**](https://amzn.to/3v8SXx4)
+
 Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](/contact)
 
 **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/SdwAYvFT)
