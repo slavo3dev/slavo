@@ -8,7 +8,7 @@ isFeatured: false
 category: "HTML and CSS"
 ---
 
-`Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence!` [Ask for help - Mentorship](/contact)
+**_Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence!_** [Ask for help - Mentorship](/contact)
 
 Welcome to the world of web development! Understanding the HTML `<canvas>` tag is crucial for creating dynamic, interactive web pages if you're starting. This article aims to demystify the `<canvas>` element, explaining its importance, appropriate use cases, and basic implementation techniques.
 
