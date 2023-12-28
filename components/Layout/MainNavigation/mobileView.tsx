@@ -95,10 +95,13 @@ export const Burger: FC<any> = ( { userInfo } ) => {
             {/* <div className="w-11/12 px-4 py-3 mb-3 text-xs text-center no-underline font-semibold rounded-xl bg-blue-400 hover:bg-blue-500 text-white rounded-xl">
               <Link className="" href={""}>SignUp</Link>
             </div> */}
-            <div className="w-11/12 px-4 py-3 mb-3 text-blue-500 hover:text-blue-700 text-center font-semibold rounded-xl border border-blue-200 hover:border-blue-300 rounded">  
-{isAuth ? (userInfo?.email ? (<Link href="/api/auth/logout"><span className={classes.user_email}>{userEmail}  [ Logout ]</span></Link>): (<Link href="/api/auth/login">Verify Email & Login</Link>))
- : (<Link className="" href="/api/auth/login">Login</Link>)} </div>
-          </div>
+                <div className="w-11/12 px-4 py-3 mb-3 text-blue-500 hover:text-blue-700 text-center font-semibold rounded-xl border border-blue-200 hover:border-blue-300 rounded">  
+                          { isAuth ?
+                              ( <Link href="/auth/logout"><span className={ classes.user_email }>{ userEmail }  [ Logout ]</span></Link> ) :
+                              ( <Link className="" href="/login">Login</Link> )
+                          }
+                </div>
+        </div>
 		<div className="text-center">
           <div>Contact us slavo@slavo.io</div>
      <div>
