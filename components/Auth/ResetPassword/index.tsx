@@ -16,13 +16,14 @@ export const ResetPassword: FC<ResetPasswordProps> = ( { resetPassword } ) =>
 	const [errorMsg, setErrorMsg ] = useState("");
 	const handlePasswordReset = async () => {
 		try {
-			const { error } = await await supabase.auth.resetPasswordForEmail(email, {
-				redirectTo: "https://slavo.io/update-password",
+			const { data, error } = await supabase.auth.resetPasswordForEmail( email, {
+				redirectTo: "http://localhost:3000/update-password"
 			});
 			if (error) throw error;
 			alert("Password reset email sent!");
 		} catch (error: any) {
-			alert( `Error: ${ error.message }` );
+			alert( `Error: ${ error.message } ${email}` );
+			console.log(`<ResetPassword Request>Error Msg: ${error.message}`);
 			setErrorMsg(error.message);
 		}
 	};
