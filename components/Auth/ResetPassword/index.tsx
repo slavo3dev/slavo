@@ -20,7 +20,7 @@ export const ResetPassword: FC<ResetPasswordProps> = ( { resetPassword } ) =>
 				redirectTo: "https://slavo.io/update-password"
 			});
 			if (error) throw error;
-			alert("Password reset email sent!");
+			alert(`Password reset email sent!\nPlease check your: ${email}`);
 		} catch (error: any) {
 			alert( `Password reset email sent\nPlease check your: ${email}` );
 			console.log(`<ResetPassword Request>Error Msg: ${error.message}`);
