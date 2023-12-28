@@ -2,6 +2,7 @@ import { FC } from "react";
 
 import supabase from "@/lib/supabase";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 import React from "react";
 
@@ -9,15 +10,20 @@ import React from "react";
 export const UpdateYourPassword: FC = () =>
 {
 
+	const router = useRouter();
 	const [newPassword, setNewPassword] = useState<string>();
 	const [matchingPassword, setMatchingPassword] = useState<string>();
 	const [passwordError, setPasswordError] = useState<string>();
 
 	const updateUserPassword = async () => {
 		try {
-			const { error } = await supabase.auth.updateUser({
+			const { data, error } = await supabase.auth.updateUser({
 				password: newPassword,
-			});
+			} );
+			
+			if ( data?.user?.email ) {
+				router.push("/");
+			}
 			if (error) throw error;
 		} catch (err) {
 			console.log(err);
@@ -101,12 +107,12 @@ export const UpdateYourPassword: FC = () =>
 													setPasswordError("Passwords Not Matching");
 												}
 											}}>
-                                    Log in
+                                    Reset Password 
 										</button>
 									</div>
 
 									<div className="text-center">
-										<p className="text-base text-gray-600">Don’t have an account? <a href="#" title="" className="font-medium text-orange-500 transition-all duration-200 hover:text-orange-600 hover:underline">Create a free account</a></p>
+										<p className="text-base text-gray-600">Don’t have an account? <a href="/login" title="" className="font-medium text-orange-500 transition-all duration-200 hover:text-orange-600 hover:underline">Create a free account</a></p>
 									</div>
 								</div>
 							</form>
