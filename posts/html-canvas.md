@@ -214,7 +214,7 @@ Certainly! Here's a range of questions that cover basic, intermediate, and advan
 
 These questions range from fundamental concepts to more sophisticated applications of the `<canvas>` element, providing a comprehensive learning path.
 
-[Ref: Canvas](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions)
+[Ref: Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
 
 \*\* Book Recommendation:
 
