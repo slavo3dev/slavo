@@ -10,7 +10,6 @@ interface ResetPasswordProps
 
 export const ResetPassword: FC<ResetPasswordProps> = ( { resetPassword } ) =>
 {
-
 	const router = useRouter();
 	const [email, setEmail] = useState("");
 	const [errorMsg, setErrorMsg ] = useState("");
@@ -25,9 +24,7 @@ export const ResetPassword: FC<ResetPasswordProps> = ( { resetPassword } ) =>
 			handlePasswordReset();
 		} catch (error: any) {
 			alert( `Password reset email sent\nPlease check your: ${ email }` );
-			resetPassword();
 			router.push("/");
-
 			console.log(`<ResetPassword Request>Error Msg: ${error.message}`);
 			setErrorMsg(error.message);
 		}
