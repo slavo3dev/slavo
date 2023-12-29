@@ -1,7 +1,6 @@
 import { FC } from "react";
 import supabase from "@/lib/supabase";
 import { useState } from "react";
-import { useRouter } from "next/router";
 
 interface ResetPasswordProps
 {
@@ -10,21 +9,17 @@ interface ResetPasswordProps
 
 export const ResetPassword: FC<ResetPasswordProps> = ( { resetPassword } ) =>
 {
-	const router = useRouter();
 	const [email, setEmail] = useState("");
 	const [errorMsg, setErrorMsg ] = useState("");
 	const handlePasswordReset = async () => {
 		try {
-			const { data, error } = await supabase.auth.resetPasswordForEmail( email, {
+			await supabase.auth.resetPasswordForEmail( email, {
 				redirectTo: "https://slavo.io/update-password"
 			});
-			if ( error ) throw error;
-			router.push("/");
 			alert(`Password reset email sent!\nPlease check your: ${email}`);
 			handlePasswordReset();
 		} catch (error: any) {
 			alert( `Password reset email sent\nPlease check your: ${ email }` );
-			router.push("/");
 			console.log(`<ResetPassword Request>Error Msg: ${error.message}`);
 			setErrorMsg(error.message);
 		}
