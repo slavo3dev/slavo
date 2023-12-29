@@ -1,5 +1,4 @@
 import { FC } from "react";
-
 import supabase from "@/lib/supabase";
 import { useState } from "react";
 
@@ -11,7 +10,6 @@ interface ResetPasswordProps
 
 export const ResetPassword: FC<ResetPasswordProps> = ( { resetPassword } ) =>
 {
-
 	const [email, setEmail] = useState("");
 	const [errorMsg, setErrorMsg ] = useState("");
 	const handlePasswordReset = async () => {
@@ -21,8 +19,10 @@ export const ResetPassword: FC<ResetPasswordProps> = ( { resetPassword } ) =>
 			});
 			if (error) throw error;
 			alert(`Password reset email sent!\nPlease check your: ${email}`);
+			handlePasswordReset();
 		} catch (error: any) {
-			alert( `Password reset email sent\nPlease check your: ${email}` );
+			alert( `Password reset email sent\nPlease check your: ${ email }` );
+			resetPassword();
 			console.log(`<ResetPassword Request>Error Msg: ${error.message}`);
 			setErrorMsg(error.message);
 		}
