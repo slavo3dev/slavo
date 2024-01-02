@@ -41,7 +41,7 @@ const PorchPage: NextPage = () => {
         />
       ) : null}
       {isLoading ? (
-        <Loader title="Please Wiat... Loading..." />
+        <Loader title="Please Wait... Loading..." />
       ) : (
         <FactList porchs={porchs} setPorchs={setPorchs} />
       )}
