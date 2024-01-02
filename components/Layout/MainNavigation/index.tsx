@@ -63,8 +63,9 @@ export const MainNavigation: FC = () => {
 								
 							) : ( <Link href="/login">Login</Link> ) }
 						</li>
-						<li className="hover:text-blue-500 hover:bg-blue-50">
-						</li>
+						{userEmail && <li className="hover:text-blue-500 hover:bg-blue-50">
+							{userEmail}
+						</li>}
 					</ul>
 				</nav>
 			</div>
