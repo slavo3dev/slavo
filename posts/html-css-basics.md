@@ -1,6 +1,6 @@
 ---
 title: "Mastering CSS: A Step-by-Step Guide to Creating a Responsive Portfolio Page"
-date: "2023-12-26"
+date: "2024-01-05"
 author: "Slavo"
 image: "css3.png"
 excerpt: "Creating a comprehensive guide for learning CSS, especially for beginners, involves breaking the topic into manageable and understandable sections..."
