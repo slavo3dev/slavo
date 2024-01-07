@@ -4,7 +4,7 @@ date: "2023-05-26"
 author: "Slavo"
 image: "flow-learning.png"
 excerpt: "Have you ever found yourself so deeply involved in an activity that you lose all sense of time and external distractions, achieving a state of effortless productivity and focus?"
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 
@@ -68,6 +68,6 @@ In conclusion, achieving flow can be a game-changer for your learning process. B
 
 \*\* Book Recommendation: - [Flow](https://amzn.to/3QKIShl) **_The Psychology of Optimal Experience (Harper Perennial Modern Classics)_**
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/SdwAYvFT)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

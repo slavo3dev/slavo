@@ -55,14 +55,16 @@ Paths in HTML can be tricky to grasp at first. The path you specify depends on w
 
 3. **Document-relative path**: This path is relative to the location of the current HTML document. If your CSS file is in the same folder as your HTML file, you will use the filename (`styles.css`). If the CSS file is in a subfolder, you'd include the subfolder's name before the filename (`subfolder/styles.css`). If the CSS file is in a folder one level up from the HTML file, you will use `../` before the filename (`../styles.css`).
 
-## In Conclusion
-
 Linking HTML and CSS files is a fundamental skill in web development.
 
-\*\* Book Recommendation: [HTML and CSS](https://amzn.to/3BaeO7d)
+\*\* Book Recommendation:
+
+- [HTML and CSS **_Design and Build Websites_**](https://amzn.to/3NvUcNv)
+- [Eloquent JavaScript **_A Modern Introduction to Programming_**](https://amzn.to/44UeeZ6)
+- [Pragmatic Programmer **_ The: Your journey to mastery_**](https://amzn.to/3v8SXx4)
 
 Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](/contact)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/SdwAYvFT)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

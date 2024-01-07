@@ -4,7 +4,7 @@ date: "2023-05-19"
 author: "Slavo"
 image: "prompt-ai.png"
 excerpt: "At the crossroads of artificial intelligence (AI), computational linguistics, and engineering lies the enthralling profession of a prompt engineer..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 
@@ -85,6 +85,6 @@ Unlock your true potential and find your pathway to success. Don't just take a l
 
 ---
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/SdwAYvFT)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

@@ -4,7 +4,7 @@ date: "2023-10-14"
 author: "Slavo"
 image: "ssr-csr.png"
 excerpt: "Hello, tech enthusiasts! In today's digital age, the approach we choose to render web content can dramatically influence the performance, SEO, and overall user experience of our applications..."
-isFeatured: true
+isFeatured: false
 category: "Dev Tools"
 ---
 
@@ -153,6 +153,6 @@ Keep innovating, and until next time, happy coding!
 
 - [Clean Architecture](https://amzn.to/3FhINMC) **_A Craftsman's Guide to Software Structure and Design_**
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/SdwAYvFT)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

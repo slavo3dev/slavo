@@ -4,7 +4,7 @@ date: "2023-06-07"
 author: "Slavo"
 image: "nitro.png"
 excerpt: "Nitro cold brew is more than just a visually exquisite beverage with a creamy mouthfeel; it is a testament to the intricate science behind brewing coffee..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 
@@ -92,6 +92,6 @@ It is important to note that individual sensitivities and reactions to coffee, i
 
 \*\* [1 Gallon Cold Brew Coffee Maker](https://amzn.to/42X0wmL)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/SdwAYvFT)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

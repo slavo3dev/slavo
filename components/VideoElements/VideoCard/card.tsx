@@ -1,12 +1,12 @@
-import { FC } from "react";
+import { FC, useContext} from "react";
 import { videoCardTypes } from "@/lib/types";
-import { useUser } from "@auth0/nextjs-auth0/client";
-
+import UserInfoContext from "context/UserInfoContext";
 import Link from "next/link";
 
 export const VideoCard: FC<videoCardTypes> = ({ imgUrl, title, name, videoURL }) => {
-	const { user } = useUser();
-	const isAuth = user?.email && user?.email_verified;
+	
+	const { userInfo } = useContext(UserInfoContext);
+	const isAuth = userInfo;
 
 	return (
 		<>
@@ -22,7 +22,7 @@ export const VideoCard: FC<videoCardTypes> = ({ imgUrl, title, name, videoURL })
 						/>
 						{isAuth ? null : (
 							<div className="bg-black w-full h-full invisible group-hover:visible absolute top-0 left-0 opacity-75 flex items-center justify-center">
-								<span className="text-white underline"><Link href="/api/auth/login">Login to watch video</Link></span>
+								<span className="text-white underline"><Link href="/login">Login to watch video</Link></span>
 							</div>
 						)}
 					</div>

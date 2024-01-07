@@ -4,7 +4,7 @@ date: "2023-08-02"
 author: "Slavo"
 image: "nomad-learning.png"
 excerpt: "Finding time to learn daily may require sacrifices, like less leisure time or waking up an hour earlier..."
-isFeatured: true
+isFeatured: false
 category: "Digital Nomad"
 ---
 
@@ -104,4 +104,4 @@ Committing to continuous learning requires sacrifice, but the gains outweigh the
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/SdwAYvFT)

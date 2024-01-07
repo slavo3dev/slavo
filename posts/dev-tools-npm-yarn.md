@@ -4,7 +4,7 @@ date: "2023-07-16"
 author: "Slavo"
 image: "npm-yarn.png"
 excerpt: "If you're venturing into the programming world, you've probably encountered numerous acronyms and terminologies that might initially seem a little overwhelming."
-isFeatured: true
+isFeatured: false
 category: "Dev Tools"
 ---
 
@@ -303,6 +303,6 @@ These are the steps to install NPM and Yarn but always refer to the official doc
 \*\* **Book Recommendation**: [Pragmatic Programmer](https://amzn.to/43h37XQ)
 \*\* **_Your journey to mastery_**
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/SdwAYvFT)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

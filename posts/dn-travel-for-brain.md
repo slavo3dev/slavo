@@ -4,7 +4,7 @@ date: "2023-07-16"
 author: "Slavo"
 image: "traveling-brain.png"
 excerpt: "While strolling down the quaint streets of New York, have you ever wondered why travel feels so exhilarating and freeing?..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 
@@ -174,6 +174,6 @@ In the words of Saint Augustine, "The world is a book, and those who do not trav
 - [Pragmatic Programmer](https://amzn.to/43h37XQ)
   \*\* **_Your journey to mastery_**
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/SdwAYvFT)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

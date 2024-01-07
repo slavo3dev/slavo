@@ -2,7 +2,6 @@
 import { useState, useEffect, Key, useContext } from "react";
 import type { NextPage } from "next";
 import supabase from "../lib/supabase";
-import { useUser } from "@auth0/nextjs-auth0/client";
 import UserInfoContext from "context/UserInfoContext";
 import { CATEGORIES, isValidHttpUrl } from "@/lib/constants";
 import { Loader } from "@/components/ui/Loader";
@@ -64,10 +63,8 @@ const FreeSource: NextPage = () => {
 
 function Header({ showForm, setShowForm }: any) {
 	const appTitle = "Web Dev - Free Resources";
-	const { user } = useUser();
 	const { userInfo } = useContext( UserInfoContext );
     
-	console.log("USer header: ", userInfo);
 	return (
 		<header className='header'>
 			<div className='logo'>
@@ -78,7 +75,7 @@ function Header({ showForm, setShowForm }: any) {
 				className='btn btn-large btn-open'
 				onClick={ () =>
 				{
-					( userInfo?.email || user?.email_verified ) ?
+					userInfo?.email ?
 						setShowForm( ( show: any ) => !show ) :
 						alert( "Please log in or verify your email address" );
 				} }
@@ -214,12 +211,11 @@ function Fact({ fact, setFacts }: any) {
 	const badSource =
         fact.like + fact.exelent < fact.false;
     
-	const { user } = useUser();
 	const { userInfo } = useContext( UserInfoContext );
    
 	async function handleVote ( columnName: string )
 	{
-		if ( userInfo?.email || user?.email_verified )
+		if ( userInfo?.email )
 		{
 			setIsUpdating(true);
 			const { data: updatedFact, error } = await supabase

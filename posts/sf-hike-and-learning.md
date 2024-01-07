@@ -4,7 +4,7 @@ date: "2023-07-09"
 author: "Slavo"
 image: "hike-and-learn.png"
 excerpt: "Hiking is not just about escaping the city or getting close to nature; it's a journey into the heart of the self...."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 
@@ -85,6 +85,6 @@ In essence, hiking presents a multifaceted approach to enhancing learning. It co
 \*\* **Book Recommendation**: [Change Your Brain, Change Your Life](https://amzn.to/44rO5ja)
 \*\* **_The Breakthrough Program for Conquering Anxiety, Depression, Obsessiveness, Lack of Focus, Anger, and Memory Problems_**
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/SdwAYvFT)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

@@ -4,7 +4,7 @@ date: "2023-08-02"
 author: "Slavo"
 image: "code-learning.png"
 excerpt: "Programming, much like learning a musical instrument or a new language, is a skill that improves with consistent practice. In all its intricate complexity,"
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 
@@ -132,4 +132,4 @@ As you embrace the vacation spirit, remember that the path to coding mastery is 
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/SdwAYvFT)

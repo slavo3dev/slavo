@@ -2,7 +2,6 @@ import { FC, useEffect, useState, useContext } from "react";
 import Link from "next/link";
 import classes from "./navigation.module.css";
 import { Logo } from "../Logo";
-import { useUser } from "@auth0/nextjs-auth0/client";
 import { Burger } from "./mobileView";
 import { useRouter } from "next/router";
 import UserInfoContext from "context/UserInfoContext";
@@ -13,11 +12,10 @@ export const MainNavigation: FC = () => {
 	const [ headStyle, setHeadStyle ] = useState<boolean>( true );
 	const { userInfo } = useContext(UserInfoContext);
     
-	const { user } = useUser();
-	const isAuth = user?.email || userInfo?.email;
+	const isAuth = userInfo?.email;
 	const router = useRouter();
     
-	const userEmail = user?.email || userInfo?.email;
+	const userEmail = userInfo?.email;
     
 	useEffect(() => {
 		document.addEventListener("scroll", () => {
@@ -61,18 +59,16 @@ export const MainNavigation: FC = () => {
 						<li className={router.pathname === "/contact" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/contact">Contact</Link>
 						</li>
-						{(userEmail || user?.email_verified) && (
-							<li className="hover:text-blue-500 hover:bg-blue-50">
+						<li className={router.pathname === "/login" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
+							{(userEmail ) ? (
+								
 								<Link href="/auth/logout">Logout</Link>
-							</li>
-						)}
-						<li className="hover:text-blue-500 hover:bg-blue-50">
-							{ isAuth ?
-								( user?.email_verified || userInfo?.email ?
-									( <span className={ classes.user_email }>{ userEmail }</span> ) :
-									( <Link href="/api/auth/login">Verify Email & Login</Link> ) )
-								: ( <Link href="/login">Login</Link> ) }
+								
+							) : ( <Link href="/login">Login</Link> ) }
 						</li>
+						{userEmail && <li className="hover:text-blue-500 hover:bg-blue-50">
+							{userEmail}
+						</li>}
 					</ul>
 				</nav>
 			</div>

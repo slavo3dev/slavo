@@ -4,7 +4,7 @@ date: "2023-06-23"
 author: "Slavo"
 image: "digital-nomad.png"
 excerpt: "Becoming a digital nomad evokes a sense of adventure and a yearning for freedom, a chance to break free from the proverbial shackles of traditional"
-isFeatured: true
+isFeatured: false
 category: "Digital Nomad"
 ---
 
@@ -182,6 +182,6 @@ Each profession has its own challenges and rewards, and the most suitable one fo
 
 [Mentorship Program - Contact us for more info](/contact)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/aN9Pgzz2)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/SdwAYvFT)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
