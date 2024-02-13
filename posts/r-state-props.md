@@ -1,9 +1,9 @@
 ---
-title: "Mastering React Fundamentals: A Beginner's Comprehensive Guide"
+title: "Mastering State & Props: Strategies to Overcome Prop Drilling and Enhance State Management in React"
 date: "2024-02-14"
 author: "Slavo"
 image: "react-state-props.png"
-excerpt: "React has revolutionized the way we think about web development. Since its inception by Facebook in 2013..."
+excerpt: "React, a popular JavaScript library for building user interfaces provides a robust framework for managing data through state and props..."
 isFeatured: true
 category: "React"
 ---
