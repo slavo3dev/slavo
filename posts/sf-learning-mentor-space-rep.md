@@ -1,5 +1,5 @@
 ---
-title: "Harmonizing Mentorship & Spaced Repetition: "
+title: "Harmonizing Mentorship & Spaced Repetition"
 date: "2023-09-17"
 author: "Slavo"
 image: "mentorship.png"

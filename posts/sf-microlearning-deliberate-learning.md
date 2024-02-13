@@ -1,5 +1,5 @@
 ---
-title: "Harmonizing Mentorship & Spaced Repetition: "
+title: "Small Steps, Big Gains: How Microlearning and Deliberate Practice Can Change Your Life "
 date: "2024-02-14"
 author: "Slavo"
 image: "microlearning.png"
