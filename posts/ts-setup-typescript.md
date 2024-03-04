@@ -1,5 +1,5 @@
 ---
-title: "Setting Up TypeScript: The Ultimate Beginner's Guide""
+title: "Setting Up TypeScript: The Ultimate Beginner's Guide"
 date: "2024-03-04"
 author: "Slavo"
 image: "typescript-setup.png"
