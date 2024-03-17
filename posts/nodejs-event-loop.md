@@ -4,8 +4,8 @@ date: "2023-10-17"
 author: "Slavo"
 image: "nodejs.png"
 excerpt: "Event Loop and the life cycle of a Node application..."
-isFeatured: true
-category: "nodejs"
+isFeatured: false
+category: "NodeJS"
 ---
 
 Node.js has revolutionized how we think about and write server-side applications. The underlying secret behind its outstanding performance is its non-blocking, event-driven architecture. At the core of this architecture lies the Node.js Event Loop and the life cycle of a Node application. This post will unravel the magic behind it and delve deep into how Node handles asynchronous operations.
