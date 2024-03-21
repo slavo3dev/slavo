@@ -100,6 +100,6 @@ Of course, if you're suffering from panic attacks, seek professional help from a
 
 **_(Disclaimer: This article provides general information and discusses health and related subjects. The information and other content in this article or any linked materials are not intended. They should not be considered or used as a substitute for medical advice, diagnosis, or treatment. If you or any other person has a medical concern, consult your health care provider or seek other professional medical treatment.)_**
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/SdwAYvFT)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

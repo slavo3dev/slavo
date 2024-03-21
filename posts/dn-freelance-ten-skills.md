@@ -73,6 +73,6 @@ The world of **freelancing** offers incredible opportunities for software develo
 
 Now, with these top 10 skills in hand, go forth and make your mark in freelance software development. Remember, the only limits that genuinely exist are the ones you impose upon yourself. Embrace your potential, and watch your freelance business soar to new heights.
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/SdwAYvFT)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
