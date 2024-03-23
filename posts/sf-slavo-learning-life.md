@@ -53,7 +53,9 @@ The initial days were the most challenging, yet they were also the most illumina
 
 ### The Role of Public Accountability
 
-Choosing to learn in a public space, such as my local Starbucks, added an invaluable layer of accountability. The familiar faces of baristas and fellow patrons became unwitting partners in my journey; their recognition and nods of encouragement were a daily reminder of my commitment. This public aspect of my learning routine motivated me to maintain consistency and served as a testament to the power of community support, even from strangers.
+Choosing to learn in a public space, such as my local Starbucks, added an invaluable layer of accountability to my journey. The familiar faces of baristas and fellow patrons became unwitting partners in my pursuit of knowledge; their recognition and nods of encouragement were a daily reminder of my commitment. This public aspect of my learning routine motivated me to maintain consistency and served as a testament to the power of community support, even from strangers.
+
+Expanding on this foundation of accountability, I also took to Twitter to share my learning journey with a broader audience. Posting about my daily progress, challenges, and breakthroughs, I found a virtual community of supporters and fellow learners. This act of sharing kept me committed and amplified the sense of accountability. Each tweet became a pledge of perseverance, a public declaration of my dedication to learning. The encouragement and feedback I received from this online community became a source of motivation, pushing me to continue even on days when the challenge seemed insurmountable. The physical presence of my Starbucks community and my virtual followers on Twitter created a robust network of accountability that was instrumental in my success.
 
 ### Overcoming Obstacles and Embracing Growth
 
@@ -152,7 +154,7 @@ Embrace the challenge, no matter how daunting it may seem. Commit to small, cons
 - [Meditations](https://amzn.to/3qhNoKr)
 
 - [Pragmatic Programmer](https://amzn.to/43h37XQ)
-  
+
 **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
