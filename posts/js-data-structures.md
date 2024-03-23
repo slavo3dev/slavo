@@ -3,7 +3,7 @@ title: "Data Structures: A Beginner's Guide to Arrays and Objects"
 date: "2024-03-24"
 author: "Slavo"
 image: "arraysobjects.png"
-excerpt: "Suppose you're diving into the world of JavaScript and feeling a bit overwhelmed by terms like "data structures," "arrays," and "objects."
+excerpt: "Suppose you're diving into the world of JavaScript and feeling a bit overwhelmed by terms like data structures, arrays and objects."
 isFeatured: false
 category: "Java Script"
 ---
