@@ -1,6 +1,6 @@
 ---
 title: "Journey to Freedom: Visiting All 51 States as a Hybrid Digital Nomad Software Engineer"
-date: "2023-03-28"
+date: "2024-03-29"
 author: "Slavo"
 image: "dn-digital-nomad.png"
 excerpt: "Amidst the thrilling narrative of embracing a hybrid digital nomad lifestyle and exploring all 51 states, an intriguing revelation unfolds..."
