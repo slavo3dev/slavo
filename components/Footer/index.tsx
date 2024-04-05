@@ -81,7 +81,7 @@ export const Footer:FC = () => {
 								/>
 							</a>
 							<a  className="inline-block px-2"
-								href="https://www.instagram.com/slavo_3/"
+								href="https://www.instagram.com/foonomad/"
 								target="_blank"
 							>
 								<img

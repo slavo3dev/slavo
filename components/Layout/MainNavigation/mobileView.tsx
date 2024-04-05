@@ -105,7 +105,7 @@ export const Burger: FC<any> = ( { userInfo } ) => {
 		<div className="text-center">
           <div>Contact us slavo@slavo.io</div>
      <div>
-          <a href={"https://www.instagram.com/slavo_3/"} target="_blank" rel="noopener noreferrer">
+          <a href={"https://www.instagram.com/foonomad/"} target="_blank" rel="noopener noreferrer">
              <Image width={50} height={50} src={insta} /></a>
           <a href={"https://twitter.com/slavo3dev"} target="_blank" rel="noopener noreferrer">
               <Image width={50} height={50} src={twit} />
