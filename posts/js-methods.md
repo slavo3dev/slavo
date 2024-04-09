@@ -327,6 +327,117 @@ While `map` is elegant and concise for transforming arrays, it's important to re
 
 The `map` method is a cornerstone of functional programming in JavaScript, offering a powerful, expressive, and elegant way to transform arrays. Its non-mutating characteristic ensures that the original data remains unchanged, promoting immutability principles. By returning a new array of transformed elements, `map` facilitates the creation of pure functions and supports the chainability of array methods. Understanding and effectively utilizing `map` can greatly enhance your JavaScript programming, enabling you to write cleaner, more efficient, and more readable code.
 
+Creating exercises is a great way to deepen your understanding of JavaScript and its array methods. Here are ten exercises that cover `map`, `forEach`, `reduce`, and general JavaScript methods. These exercises range from beginner to intermediate level and are designed to challenge your understanding of these methods and how they can be applied to solve various problems.
+
+### 1. Doubling Values
+
+**Exercise**: Use the `map` method to double each value in an array.
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+// Your code here
+```
+
+### 2. Total Characters
+
+**Exercise**: Use the `reduce` method to calculate the total number of characters in an array of strings.
+
+```javascript
+const words = ["JavaScript", "is", "awesome"];
+// Your code here
+```
+
+### 3. Log All Values
+
+**Exercise**: Use the `forEach` method to log every value in an array to the console.
+
+```javascript
+const values = [10, 20, 30, 40, 50];
+// Your code here
+```
+
+### 4. Create a New Array of Objects
+
+**Exercise**: Use the `map` method to transform an array of numbers into an array of objects that contain the original number and its square.
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+// Your code here
+```
+
+### 5. Find the Sum
+
+**Exercise**: Use the `reduce` method to find the sum of all the numbers in an array.
+
+```javascript
+const numbers = [5, 10, 15, 20, 25];
+// Your code here
+```
+
+### 6. Creating a Dictionary
+
+**Exercise**: Given an array of strings, use the `reduce` method to create an object that maps each string to its length.
+
+```javascript
+const fruits = ["apple", "banana", "cherry"];
+// Your code here
+```
+
+### 7. Filter and Map
+
+**Exercise**: First, use the `filter` method to filter out all odd numbers from an array, then use `map` to double each of the remaining numbers.
+
+```javascript
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// Your code here
+```
+
+### 8. Nested Object Extraction
+
+**Exercise**: Use any combination of JavaScript methods to extract the names of all students with a score greater than 80.
+
+```javascript
+const students = [
+  { name: "Alice", score: 88 },
+  { name: "Bob", score: 77 },
+  { name: "Charlie", score: 95 },
+  { name: "David", score: 79 },
+  { name: "Ella", score: 91 },
+];
+// Your code here
+```
+
+### 9. Convert Array to Object
+
+**Exercise**: Use the `reduce` method to convert an array of arrays into an object, where each element is a key-value pair.
+
+```javascript
+const keyValuePairs = [
+  ["key1", "value1"],
+  ["key2", "value2"],
+  ["key3", "value3"],
+];
+// Your code here
+```
+
+### 10. Implement a Polyfill for `map`
+
+**Exercise**: Implement your own version of the `map` method called `myMap` without using the built-in `map` method. It should behave exactly like the original `map` method.
+
+```javascript
+Array.prototype.myMap = function (callback) {
+  // Your code here
+};
+
+const numbers = [1, 2, 3, 4, 5];
+const doubled = numbers.myMap((num) => num * 2);
+console.log(doubled); // Should log: [2, 4, 6, 8, 10]
+```
+
+These exercises are designed to test and improve your understanding of JavaScript's `map`, `forEach`, and `reduce` methods, as well as general method usage. They range from simple tasks to more complex challenges that combine multiple methods to achieve a goal.
+
+## _Happy coding!_
+
 \*\* Book Recommendation: [Eloquent JavaScript](https://amzn.to/44UeeZ6)
 
 Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](/contact)
