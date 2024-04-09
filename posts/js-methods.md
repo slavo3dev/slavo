@@ -1,6 +1,6 @@
 ---
 title: "A Deep Dive into Essential Methods"
-date: "2023-04-11"
+date: "2024-04-11"
 author: "Slavo"
 image: "js-methods.png"
 excerpt: "As JavaScript continues to reign as one of the most popular and versatile programming languages in the world, its array methods—map, reduce, forEach, and others"
