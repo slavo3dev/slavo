@@ -5,7 +5,7 @@ author: "Slavo"
 image: "webdeveloper.png"
 excerpt: "Outline a roadmap for web developers looking to move from part-time freelancing to a full-time career."
 isFeatured: true
-category: "Self Help"
+category: "Digital Nomad"
 ---
 
 Embarking on a journey from a side hustle to a full-time career in freelance web development is paved with opportunities and challenges. Here is a structured roadmap to help web developers navigate this transition effectively.

@@ -24,12 +24,12 @@ export const Solution : FC = () =>{
 									<strong>Revamp. Recharge. Reinvent.<br /> Picture yourself as a successful Software Engineer - flexible work arrangements, a thriving income, the fulfillment of creating solutions that impact lives, and the pride of being part of the technology frontier. Your journey to transform your career and life starts here. Embrace the future with us today!</strong>
 								</p>
 								<Link href="/contact">
-									<a
+									<span
 										className="inline-block text-xs py-4 px-8 text-white font-semibold leading-none bg-blue-400 hover:bg-blue-500 rounded hover-up-2 wow animate__animated animate__fadeIn"
 										data-wow-delay=".5s"
 									>
                       Contact
-									</a>
+									</span>
 								</Link>
 							</div>
 						</div>
