@@ -53,11 +53,13 @@ function Header({ showForm, setShowForm }: any) {
   const appTitle = "Daily Update";
     const { userInfo } = useContext(UserInfoContext);
 
+
+
   return (
     <header className="header">
-      <div className="logo">
-        <h1>{appTitle}</h1>
-      </div>
+        <div className="logo">
+           <h2>Consistently conquer</h2>
+         </div>
 
       <button
         className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
@@ -67,7 +69,7 @@ function Header({ showForm, setShowForm }: any) {
             : alert("Please log-in or Verify Your email address");
         }}
       >
-        {showForm ? "Close" : "Share Your Work"}
+        {showForm ? "Close" : "Post Your Progress"}
       </button>
     </header>
   );
@@ -183,10 +185,23 @@ function FactList({ porchs, setPorchs }: any) {
   );
 
   return (
-    <section className="grid md:grid-cols-4 gap-4 sm:grid-cols-2 grid-cols-1">
-      {sortPorchbyDate.map((fact: { id: Key | null | undefined }) => (
-        <Fact key={fact.id} fact={fact} setPorchs={setPorchs} />
-      ))}
+    //   <section className="py-12 bg-white sm:py-16 lg:py-20">
+        <section className="py-1 sm:py-1 lg:py-1 border-y-4">
+          <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+              <div className="max-w- mx-auto overflow-hidden bg-gray-100 rounded-xl">
+                <div className="px-4 py-5 sm:p-6">
+                    <div>
+                        <p className="text-lg font-bold text-gray-900">Daily Highlights</p>
+                        <p className="mt-1 text-sm font-medium text-gray-500">Growth and Learning News</p>
+                      </div>
+                      <div className="mt-6 space-y-3">
+                           {sortPorchbyDate.map((fact: { id: Key | null | undefined }) => (
+                            <Fact key={fact.id} fact={fact} setPorchs={setPorchs} />
+                            ))}
+                      </div>   
+                </div>
+              </div>  
+        </div>
     </section>
   );
 }
@@ -245,12 +260,12 @@ function Fact({ fact, setPorchs }: any) {
 
   const displayComment = showMore
     ? commentText
-    : commentText.slice(0, 60);
+    : commentText.slice(0, 90);
 
   const handleMore = () => {
     setShowMore(true);
   };
-
+    
   return (
     <>
       <HeadBasePage
@@ -258,37 +273,47 @@ function Fact({ fact, setPorchs }: any) {
           "Share your daily update and continue to Career Change: Learn Web Development for a Bright Future"
         }
       />
-      <div className="max-w-sm md:h-96 relative md: static overflow-hidden md:overflow-scroll rounded  shadow-lg bg-blue-800 hover:bg-slate-600 transition-duration: 900ms; text-slate-100">
-        <div className="p-4">
-          <div className="p-2 bg-yellow-300 overflow-scroll text-gray-800 rounded-lg shadow-lg hover:bg-yellow-100 transition duration-300 ease-in-out text-sm">
-            <p className="text-yellow">
-              Date: {formattedDate} <br /> Time: {formattedTime}
-            </p>
-            <p>
-              <a
-                href={`mailto:${fact.email}`}
-                className="underline-offset-1 hover:bg-sky-100 text-sm"
-                target="_blank"
-              >
-                User: {fact.email}
-              </a>
-            </p>
-          </div>
-          <p className="text-slate-50 text-base p-2">
-            Learning Update: <br />
+          <div className="flex flex-col overflow-hidden transition-all duration-200 transform bg-white shadow group rounded-xl hover:shadow-lg hover:-translate-y-1 hover:bg-sky-100">
+              
+          <div className="flex-1 py-5 px-2 sm:p-6">
+          <p className="px-1 text-base">
+            <b>Daily Update</b> [
+            <span className="text-sm font-medium text-gray-900">{ formattedDate }</span>
+            <span className="text-sm font-medium text-gray-900"> | </span>
+            <span className="text-sm font-medium text-gray-900">{ formattedTime }</span> ] :
+            <br /><br />
             {displayComment}
-            {!showMore && commentText.length > 60 && (
+            {!showMore && commentText.length > 90 && (
               <button onClick={handleMore}>... read more</button>
             )}
-          </p>
+            </p>
+            <div className="py-5 px-2 mt-auto border-gray-100 sm:px-1">
+				<div className="flex items-center justify-between">
+					<div className="flex items-center space-x-2">
+						<a href={`mailto:${fact.email}`} title={ fact.email}>
+							<p className="text-sm font-medium text-gray-900">
+                                <b>User Email:</b> { fact.email }
+							</p>
+						</a>
+					</div>
 
-          <div className="p-2 text-sm bg-yellow-300 text-gray-800 rounded-lg shadow-lg hover:bg-yellow-100 transition duration-300 ease-in-out">
+					<a href={fact.source.includes("http") ? fact.source : `//${fact.source}`} title="" className="" role="button" target="_blank">
+						<svg className="w-5 h-5 text-blue-300 transition-all duration-200 group-hover:text-gray-900" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+							<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+							<line x1="17" y1="7" x2="7" y2="17"></line>
+							<polyline points="8 7 17 7 17 16"></polyline>
+						</svg>
+					</a>
+				</div>
+			</div>
+
+          <div className="p-1 text-sm text-gray-800 rounded-lg shadow-lg hover:bg-yellow-100 transition duration-300 ease-in-out">
             <a
               href={fact.source.includes("http") ? fact.source : `//${fact.source}`}
               target="_blank"
               className="text-sm hover:bg-sky-100 whitespace-normal break-words"
             >
-              Source: {fact.source}
+             <b>Source:</b> {fact.source}
             </a>
           </div>
 

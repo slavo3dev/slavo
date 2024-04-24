@@ -5,7 +5,7 @@ author: "Slavo"
 image: "webdeveloper.png"
 excerpt: "Outline a roadmap for web developers looking to move from part-time freelancing to a full-time career."
 isFeatured: true
-category: "Self Help"
+category: "Digital Nomad"
 ---
 
 Embarking on a journey from a side hustle to a full-time career in freelance web development is paved with opportunities and challenges. Here is a structured roadmap to help web developers navigate this transition effectively.
@@ -434,6 +434,6 @@ Scaling a freelance web development business is a challenging but rewarding proc
 - [Deep Work](https://amzn.to/3G9VwBs) **_Rules for Focused Success in a Distracted_**
 - [Atomic Habits](https://amzn.to/46tHp4t) **_An Easy & Proven Way to Build Good Habits & Break Bad Ones_**
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/SdwAYvFT)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

@@ -74,6 +74,6 @@ As you embark on this exciting new chapter in your life, remember the words of A
 
 Embrace your potential, take the first step, and watch your career change journey unfold into the life you've always envisioned.
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/SdwAYvFT)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

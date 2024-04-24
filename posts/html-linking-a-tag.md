@@ -14,7 +14,7 @@ Welcome to the world of web development, where understanding the nuances of HTML
 
 In the realm of HTML (Hypertext Markup Language), the `<a>` tag holds a place of paramount importance. Known as the anchor tag, it serves as the primary means for creating hyperlinks, which are the essence of navigation on the internet. Understanding the `<a>` tag is essential for anyone delving into web development, as it is the key to linking users to different resources, pages, and locations both within and outside a given website.
 
-Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](/contact) or [Skills Of Change - Discord](https://discord.gg/SdwAYvFT)
+Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](/contact) or [Skills Of Change - Discord](https://discord.gg/M7keEuaw)
 
 #### Definition and Function
 
@@ -230,6 +230,6 @@ These questions cover a range of topics related to the `<a>` tag, including its 
 
 Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](/contact)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/SdwAYvFT)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

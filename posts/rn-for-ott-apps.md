@@ -694,6 +694,6 @@ Adhering to these best practices ensures that your OTT application is performant
 
 **React Native** is an excellent choice for developing OTT (Over-The-Top) applications due to its numerous advantages and features. It offers code reusability and cross-platform compatibility, allowing developers to write once and deploy on multiple platforms, significantly reducing development time and effort. The framework provides native-like performance, leveraging native components and optimizing bridge communication to deliver smooth animations and responsive user interfaces. Additionally, React Native benefits from a rich ecosystem and a vibrant community, offering a wide range of libraries, tools, and resources to enhance developer productivity. With React Native, developers can create high-quality OTT apps that provide a seamless and engaging user experience across multiple platforms, making it a preferred choice for OTT application development.
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/SdwAYvFT)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

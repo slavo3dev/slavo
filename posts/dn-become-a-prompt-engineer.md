@@ -5,7 +5,7 @@ author: "Slavo"
 image: "prompt-ai.png"
 excerpt: "At the crossroads of artificial intelligence (AI), computational linguistics, and engineering lies the enthralling profession of a prompt engineer..."
 isFeatured: false
-category: "Self Help"
+category: "Digital Nomad"
 ---
 
 We live in a rapidly evolving world where the only constant is change. The 21st century has given birth to creative professions that didn't exist a few decades ago. One such dynamic, burgeoning career gaining momentum is the role of a Prompt Engineer—a fascinating blend of engineering, AI, and linguistic expertise. Are you yearning for a career change that's fulfilling, flexible, and future-proof? If yes, let's dive deep into the captivating world of prompt engineering.
@@ -85,6 +85,6 @@ Unlock your true potential and find your pathway to success. Don't just take a l
 
 ---
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/SdwAYvFT)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
