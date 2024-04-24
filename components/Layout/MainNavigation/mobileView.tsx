@@ -106,15 +106,15 @@ export const Burger: FC<any> = ( { userInfo } ) => {
           <div>Contact us slavo@slavo.io</div>
      <div>
           <a href={"https://www.instagram.com/slavo_3/"} target="_blank" rel="noopener noreferrer">
-             <Image width={50} height={50} src={insta} /></a>
+             <Image width={50} height={50} src={insta} alt="Instagram Logo" /></a>
           <a href={"https://twitter.com/slavo3dev"} target="_blank" rel="noopener noreferrer">
-              <Image width={50} height={50} src={twit} />
+              <Image width={50} height={50} src={twit} alt="Twitter Logo" />
           </a>
           <a href={"https://facebook.com/slavo.io"} target="_blank" rel="noopener noreferrer">
-            <Image width={50} height={50} src={face} />
+            <Image width={50} height={50} src={face} alt="Facebook Logo"/>
           </a>
           <a href={"https://www.linkedin.com/in/slavopopovic/"} target="_blank" rel="noopener noreferrer">
-            <Image width={50} height={50} src={link} />
+            <Image width={50} height={50} src={link} alt="Linkedin Logo" />
           </a>
           </div>
 		</div>
