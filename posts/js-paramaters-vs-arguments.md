@@ -3,7 +3,7 @@ title: "Parameters vs Arguments in JavaScript"
 date: "2024-04-27"
 author: "Slavo"
 image: "js-params.png"
-excerpt: "In JavaScript, "parameters" and "arguments" are often used interchangeably, but they refer to two distinct concepts in the context of functions..."
+excerpt: "In JavaScript, parameters and arguments are often used interchangeably, but they refer to two distinct concepts in the context of functions..."
 isFeatured: false
 category: "Java Script"
 ---
