@@ -6,11 +6,10 @@ type Props = {
 };
 
 
-export const Layout: FC<Props> = (props) => {
+export const Layout: FC<Props> = ( { children } ) => {
 	return (
 		<div className="container-main">
-			{props.children}
+			{children}
 		</div>
 	);
 };
-
