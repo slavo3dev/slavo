@@ -17,9 +17,7 @@ const PorchPage: NextPage = () => {
   useEffect(function () {
     async function getPorchs() {
       setIsLoading(true);
-
       const query = supabase.from("porch").select("*");
-
       const { data: porchs, error }: any = await query
         .order("excellent", { ascending: false })
         .limit(1000);
@@ -29,32 +27,32 @@ const PorchPage: NextPage = () => {
       setIsLoading(false);
     }
     getPorchs();
-  }, []);
-
-  return (
-    <div className="p-10 text-slate-800">
-      <Header showForm={showForm} setShowForm={setShowForm} />
-      {showForm ? (
-        <NewFactForm
-          setPorchs={setPorchs}
-          setShowForm={setShowForm}
-        />
-      ) : null}
-      {isLoading ? (
-        <Loader title="Please Wait... Loading..." />
-      ) : (
-        <FactList porchs={porchs} setPorchs={setPorchs} />
-      )}
-    </div>
+    }, []);
+    
+    return (
+      <>
+        <HeadBasePage title={"Share your daily update and continue to Career Change: Learn Web Development for a Bright Future"} />
+        <div className="p-10 text-slate-800">
+            <Header showForm={showForm} setShowForm={setShowForm} />
+            {showForm ? (
+                <NewFactForm
+                setPorchs={setPorchs}
+                setShowForm={setShowForm}
+                />
+            ) : null}
+            {isLoading ? (
+                <Loader title="Please Wait... Loading..." />
+            ) : (
+                <FactList porchs={porchs} setPorchs={setPorchs} />
+            )}
+        </div>
+    </>
+ 
   );
 };
 
 function Header({ showForm, setShowForm }: any) {
-  const appTitle = "Daily Update";
-    const { userInfo } = useContext(UserInfoContext);
-
-
-
+  const { userInfo } = useContext(UserInfoContext);
   return (
     <header className="header">
         <div className="logo">
@@ -175,17 +173,19 @@ function NewFactForm({ setPorchs, setShowForm }: any) {
   );
 }
 
-function FactList({ porchs, setPorchs }: any) {
-  const sortPorchbyDate: [] = porchs.sort(
-    (a: { created_at: string }, b: { created_at: string }) => {
-      const aDate: Date = new Date(a.created_at);
-      const bDate: Date = new Date(b.created_at);
-      return bDate.getTime() - aDate.getTime();
-    },
-  );
-
+function FactList ( { porchs, setPorchs }: any ) {
+  const { userInfo } = useContext(UserInfoContext);
+  
+    const sortPorchbyDate: [] = porchs.sort(
+        (a: { created_at: string }, b: { created_at: string }) => {
+        const aDate: Date = new Date(a.created_at);
+        const bDate: Date = new Date(b.created_at);
+        return bDate.getTime() - aDate.getTime();
+        },
+    );
+    
+  const learningDays = porchs.filter( ( porch: { email: string; } ) => porch.email === userInfo?.email ).length;
   return (
-    //   <section className="py-12 bg-white sm:py-16 lg:py-20">
         <section className="py-1 sm:py-1 lg:py-1 border-y-4">
           <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
               <div className="max-w- mx-auto overflow-hidden bg-gray-100 rounded-xl">
@@ -193,6 +193,7 @@ function FactList({ porchs, setPorchs }: any) {
                     <div>
                         <p className="text-lg font-bold text-gray-900">Daily Highlights</p>
                         <p className="mt-1 text-sm font-medium text-gray-500">Growth and Learning News</p>
+                        { userInfo?.email ?  <p className="mt-5 text-lg font-medium text-gray-800">You have been learning for <b>{learningDays}</b> days!</p> : null }
                       </div>
                       <div className="mt-6 space-y-3">
                            {sortPorchbyDate.map((fact: { id: Key | null | undefined }) => (
@@ -268,11 +269,6 @@ function Fact({ fact, setPorchs }: any) {
     
   return (
     <>
-      <HeadBasePage
-        title={
-          "Share your daily update and continue to Career Change: Learn Web Development for a Bright Future"
-        }
-      />
           <div className="flex flex-col overflow-hidden transition-all duration-200 transform bg-white shadow group rounded-xl hover:shadow-lg hover:-translate-y-1 hover:bg-sky-100">
               
           <div className="flex-1 py-5 px-2 sm:p-6">
