@@ -18,5 +18,6 @@ import { Growth, Solution } from "./Sections";
 import { LinkEvents } from "./Primitives";
 import { SignUp } from "./Auth/SingUp";
 import { SignIn } from "./Auth/SignIn";
+import { PorchList, PorchHeader, PorchForm } from "./PorchElements";
 
-export {Layout, LearningSources, FeaturedPosts, HeadBasePage, MainNavigation, BlogPosts, PostContent, PostHeader, ContactForm, Subscribe, Footer,  CategorySearch, MentorAI, NewResourceFrom, FreeSourcesList, VideoCard, VideoLine, Growth, Solution, Hero, LinkEvents, SignIn, SignUp};
+export {Layout, LearningSources, FeaturedPosts, HeadBasePage, MainNavigation, BlogPosts, PostContent, PostHeader, ContactForm, Subscribe, Footer,  CategorySearch, MentorAI, NewResourceFrom, FreeSourcesList, VideoCard, VideoLine, Growth, Solution, Hero, LinkEvents, SignIn, SignUp, PorchList, PorchHeader, PorchForm };
