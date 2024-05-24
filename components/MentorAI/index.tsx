@@ -5,6 +5,7 @@ import UserInfoContext from "@/context/UserInfoContext";
 import { OpenAI } from "../OpenAI";
 
 
+
 export const MentorAI: FC = () => {
 	const { userInfo } = useContext(UserInfoContext);
 
@@ -67,6 +68,14 @@ export const MentorAI: FC = () => {
 		
 		</>
        
-        
 	);
+
 };
+
+
+
+
+
+
+
+
