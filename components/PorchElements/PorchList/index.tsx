@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useMemo } from "react";
 import UserInfoContext from "@/context/UserInfoContext";
 import { PorchDailyUpdate } from "../PorchDailyUpdate"; 
 import { PorchType } from "@/Types/PorchTypes";
-
+import supabase from "@/lib/supabase";
 
 interface PorchListProps {
   porchs: PorchType[];
@@ -13,34 +13,47 @@ export const PorchList: React.FC<PorchListProps> = ({ porchs, setPorchs }) => {
 	const { userInfo } = useContext(UserInfoContext);
 	const [filtered, setFiltered] = useState<boolean>(false);
 	const [dailyUpdates, setDailyUpdates] = useState<PorchType[]>(porchs);
-	const [ buttonTitle, setButtonTitle ] = useState<string>( "Track Your Daily Updates" );
-    
-	useEffect( () => {
-		setDailyUpdates( porchs );  
-	}, [ porchs ] );
+	const [buttonTitle, setButtonTitle] = useState<string>("Track Your Daily Updates");
+	const [learningDays, setLearningDays] = useState<number>(0);
 
-	const sortPorchbyDate = dailyUpdates.sort(
-		(a: PorchType, b: PorchType) => {
-			const aDate: Date = new Date(a.created_at);
-			const bDate: Date = new Date(b.created_at);
-			return bDate.getTime() - aDate.getTime();
-		},
-	);
+	useEffect(() => {
+		setDailyUpdates(porchs);
+	}, [porchs]);
 
-	const filteringUpdatesPerUser = dailyUpdates.filter((porch: PorchType) => porch.email === userInfo?.email);
-	const learningDays = filteringUpdatesPerUser.length;
+	const sortPorchbyDate = useMemo(() => {
+		return dailyUpdates.slice().sort((a, b) => {
+			return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+		});
+	}, [dailyUpdates]);
+
+	const filteringUpdatesPerUser = useMemo(() => {
+		return dailyUpdates.filter((porch) => porch.email === userInfo?.email);
+	}, [dailyUpdates, userInfo?.email]);
+
+	useEffect(() => {
+		const fetchLearningDays = async () => {
+			if (userInfo?.email) {
+				const { count, error } = await supabase
+					.from("porch")
+					.select("*", { count: "exact" })
+					.eq("email", userInfo.email);
+
+				if (error) {
+					console.error("Error fetching learning days from Supabase:", error);
+				} else {
+					setLearningDays(count || 0);
+				}
+			}
+		};
+		fetchLearningDays();
+	}, [userInfo?.email]);
 
 	const handleFiltering = () => {
-		if (filtered) {
-			setDailyUpdates(porchs);
-			setButtonTitle("All Daily Updates");
-		} else {
-			setDailyUpdates(filteringUpdatesPerUser);
-			setButtonTitle("Track Your Daily Updates");
-		}
+		setDailyUpdates(filtered ? porchs : filteringUpdatesPerUser);
+		setButtonTitle(filtered ? "All Daily Updates" : "Track Your Daily Updates");
 		setFiltered(!filtered);
 	};
-    
+
 	return (
 		<section className="py-1 sm:py-1 lg:py-1 border-y-4">
 			<div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -64,8 +77,8 @@ export const PorchList: React.FC<PorchListProps> = ({ porchs, setPorchs }) => {
 							) : null}
 						</div>
 						<div className="mt-6 space-y-3">
-							{sortPorchbyDate.map((porch: PorchType) => (
-								<PorchDailyUpdate key={porch.id + Math.random()} porch={porch} setPorchs={setPorchs} />
+							{sortPorchbyDate.map((porch) => (
+								<PorchDailyUpdate key={porch.id} porch={porch} setPorchs={setPorchs} />
 							))}
 						</div>
 					</div>
