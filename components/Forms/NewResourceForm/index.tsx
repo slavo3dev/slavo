@@ -34,7 +34,7 @@ export const NewResourceFrom: FC<NewResourceFromProps> = ( { setSources, setShow
 					setCategory( "" );
 					setIsUploading(false);
 					setShowForm(false);
-				}, 1500);
+				}, 500);
 				
 	
 			} catch (error) {

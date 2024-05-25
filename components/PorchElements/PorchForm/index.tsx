@@ -37,8 +37,7 @@ export const PorchForm: React.FC<PorchFormProps> = ({ setPorchs, setShowForm }) 
 				if (response.ok) {
 					const responseData = await response.json();
 					setResponseUpdate( responseData.ticket );
-                    
-					console.log("PorchFormProps", responseData.newUpdate[0]);  
+        
 					setPorchs((porchs: PorchType[]) => [responseData.newUpdate[0], ...porchs]);
 
 					setTimeout(() => {

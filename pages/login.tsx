@@ -15,7 +15,6 @@ const Test: NextPage = () =>
 	const isAuth = userInfo?.email;
     
 	if (isAuth) {
-		console.log("This is true");
 		router.push("/");
 	} else {
 		console.log(false);
