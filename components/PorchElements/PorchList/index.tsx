@@ -65,7 +65,7 @@ export const PorchList: React.FC<PorchListProps> = ({ porchs, setPorchs }) => {
 						</div>
 						<div className="mt-6 space-y-3">
 							{sortPorchbyDate.map((porch: PorchType) => (
-								<PorchDailyUpdate key={porch.id} porch={porch} setPorchs={setPorchs} />
+								<PorchDailyUpdate key={porch.id + Math.random()} porch={porch} setPorchs={setPorchs} />
 							))}
 						</div>
 					</div>

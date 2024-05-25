@@ -12,7 +12,6 @@ export const MainNavigation: FC = () => {
 	const [ headStyle, setHeadStyle ] = useState<boolean>( true );
 	const { userInfo } = useContext(UserInfoContext);
     
-	const isAuth = userInfo?.email;
 	const router = useRouter();
     
 	const userEmail = userInfo?.email;
