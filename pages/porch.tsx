@@ -22,12 +22,14 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 		try {
 			const { data: newPorchs, error } = await supabase
 				.from("porch")
-				.select("*")
-				.order("excellent", { ascending: false })
-				.range(page * 100, (page + 1) * 100 - 1);
-
+				.select( "*" )
+				.limit(100)
+				.order("created_at", { ascending: false }) 
+				.range( page * 100, ( page + 1 ) * 100 - 1 );
+            
 			if (error) {
-				console.error("Error fetching data from Supabase:", error);
+				console.error( "Error fetching data from Supabase:", error );
+                
 			} else if (newPorchs && Array.isArray(newPorchs)) {
 				setPorchs((prevPorchs: any) => [...prevPorchs, ...newPorchs]);
 				setPage((prevPage) => prevPage + 1);
