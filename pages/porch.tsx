@@ -70,7 +70,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	const { data: porchs, error } = await supabase
 		.from("porch")
 		.select("*")
-		.order("excellent", { ascending: false })
+		.order("created_at", { ascending: false })
 		.limit(100);
 
 	if (error) {
