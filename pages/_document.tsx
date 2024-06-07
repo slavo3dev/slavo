@@ -9,6 +9,11 @@ export default class MyDocument extends Document {
 		return (
 			<Html lang="en">
 				<Head>
+					<link rel="manifest" href="/manifest.json" />
+					<meta name="theme-color" content="#EDEDED" />
+					<link rel="apple-touch-icon" href="/icons/s3-mini-logo.png" />
+					<meta name="apple-mobile-web-app-capable" content="yes" />
+					<meta name="mobile-web-app-capable" content="yes" />
 					<link rel="icon" href="/prototypenext.svg" />
 					<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
 					<link
