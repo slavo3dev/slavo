@@ -9,7 +9,8 @@
         "lint": "next lint"
     },
     "dependencies": {
-        "@supabase/supabase-js": "^2.1.1",
+        "@supabase/ssr": "^0.3.0",
+        "@supabase/supabase-js": "^2.42.7",
         "animate.css": "^4.1.1",
         "axios": "^0.27.2",
         "graphql": "^16.6.0",

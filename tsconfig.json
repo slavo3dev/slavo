@@ -40,15 +40,24 @@
             ],
             "@/Types/*": [
                 "Types/*"
-            ]
+            ],
+            "@app/components": [
+                "app/components"
+            ],
         },
+        "plugins": [
+            {
+                "name": "next"
+            }
+        ]
     },
     "include": [
         "next-env.d.ts",
         "**/*.ts",
         "**/*.tsx",
         "pages/index.jsx",
-        "."
+        ".",
+        ".next/types/**/*.ts"
     ],
     "exclude": [
         "node_modules"
