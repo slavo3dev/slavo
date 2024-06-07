@@ -38,3 +38,7 @@ logs
 next-env.d.ts
 
 ExtensionOutput
+
+public/sw.js
+public/workbox-*.js
+

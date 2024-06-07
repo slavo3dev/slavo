@@ -4,12 +4,12 @@
     "description": "Mentorship and Develop Learning Habits",
     "icons": [
         {
-            "src": "/icons/s3-mini-logo.png",
+            "src": "/images/icons/s3-mini-logo.png",
             "type": "image/png",
             "sizes": "192x192"
         },
         {
-            "src": "/icons/s3-500-logo.png",
+            "src": "/images/icons/s3-500-logo.png",
             "type": "image/png",
             "sizes": "512x512"
         }

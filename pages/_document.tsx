@@ -11,7 +11,7 @@ export default class MyDocument extends Document {
 				<Head>
 					<link rel="manifest" href="/manifest.json" />
 					<meta name="theme-color" content="#EDEDED" />
-					<link rel="apple-touch-icon" href="/icons/s3-mini-logo.png" />
+					<link rel="apple-touch-icon" href="/public/images/icons/s3-mini-logo.png" />
 					<meta name="apple-mobile-web-app-capable" content="yes" />
 					<meta name="mobile-web-app-capable" content="yes" />
 					<link rel="icon" href="/prototypenext.svg" />
