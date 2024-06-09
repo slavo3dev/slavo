@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import * as ga from "../lib/ga";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "animate.css";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
@@ -14,6 +15,8 @@ function MyApp ( { Component, pageProps }: AppProps ) {
     
 	const [userInfo, setUserInfo] = useState<User | null>(null);
 	const router = useRouter();
+    
+	const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || ""; 
     
 	useEffect( () => {
 		const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
@@ -54,6 +57,7 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 					<Component { ...pageProps } />
 					<Footer />
 				</Layout>
+				<GoogleAnalytics gaId={GA_TRACKING_ID} />
 			</VideoContext.Provider>
 		</UserInfoContext.Provider>
 	);

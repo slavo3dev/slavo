@@ -3,6 +3,7 @@ import UserInfoContext from "@/context/UserInfoContext";
 import { isValidHttpUrl } from "@/lib/constants";
 import { Loader } from "@/components/ui/Loader";
 import { PorchType } from "@/Types/PorchTypes";
+import { trackEvent } from "@/lib/ga";
 
 
 interface PorchFormProps {
@@ -39,7 +40,12 @@ export const PorchForm: React.FC<PorchFormProps> = ({ setPorchs, setShowForm }) 
 					setResponseUpdate( responseData.ticket );
         
 					setPorchs((porchs: PorchType[]) => [responseData.newUpdate[0], ...porchs]);
-
+					trackEvent( {
+						action: "click",
+						category: "button",
+						label: "new-porch-update-button",
+						value: 1,
+					} );
 					setTimeout(() => {
 						setText("");
 						setSource("");
