@@ -198,7 +198,7 @@ Props are passed to a child component by adding attributes to the JSX tag of the
 
 **Example of Passing Props:**
 
-```jsx
+```js
 import React from "react";
 import Greeting from "./Greeting";
 
@@ -224,7 +224,7 @@ Props are accessed using the `props` object in the child component. In functiona
 
 **Functional Component Example:**
 
-```jsx
+```js
 import React from "react";
 
 const Greeting = (props) => {
@@ -241,7 +241,7 @@ export default Greeting;
 
 **Class Component Example:**
 
-```jsx
+```js
 import React, { Component } from "react";
 
 class Greeting extends Component {
@@ -266,7 +266,7 @@ You can define default props for a component used if no corresponding props are 
 
 **Example of Default Props:**
 
-```jsx
+```js
 import React from "react";
 
 const Greeting = (props) => {
@@ -294,7 +294,7 @@ To improve the reliability and maintainability of your code, you can use `prop-t
 
 **Example of Using Prop Types:**
 
-```jsx
+```js
 import React from "react";
 import PropTypes from "prop-types";
 
@@ -331,7 +331,7 @@ Props play a vital role in making React components reusable and composable. They
 
 **Example: Reusing a Button Component with Different Props:**
 
-```jsx
+```js
 import React from "react";
 
 const Button = (props) => {
@@ -360,7 +360,7 @@ export default Button;
 
 **Using the Button Component:**
 
-```jsx
+```js
 import React from "react";
 import Button from "./Button";
 
@@ -398,7 +398,7 @@ Imagine you have two components that must display the same temperature, one in C
 
 **TemperatureInput Component:**
 
-```jsx
+```js
 import React from "react";
 
 const TemperatureInput = ({
@@ -428,7 +428,7 @@ export default TemperatureInput;
 
 **TemperatureConverter Component:**
 
-```jsx
+```js
 import React, { useState } from "react";
 import TemperatureInput from "./TemperatureInput";
 
@@ -466,7 +466,7 @@ The Context API allows you to share data across the component tree without manua
 
 **Creating a Context:**
 
-```jsx
+```js
 import React, { createContext, useContext, useState } from "react";
 
 const ThemeContext = createContext();
@@ -486,7 +486,7 @@ export { ThemeProvider, ThemeContext };
 
 **Using the Context in a Component:**
 
-```jsx
+```js
 import React, { useContext } from "react";
 import { ThemeContext } from "./ThemeProvider";
 
@@ -510,7 +510,7 @@ export default ThemedComponent;
 
 **Wrapping Your App with the Provider:**
 
-```jsx
+```js
 import React from "react";
 import ReactDOM from "react-dom";
 import { ThemeProvider } from "./ThemeProvider";
@@ -533,7 +533,7 @@ Custom hooks are a powerful way to reuse stateful logic across multiple componen
 
 **Creating a Custom Hook:**
 
-```jsx
+```js
 import { useState, useEffect } from "react";
 
 const useFetch = (url) => {
@@ -559,7 +559,7 @@ export default useFetch;
 
 **Using the Custom Hook:**
 
-```jsx
+```js
 import React from "react";
 import useFetch from "./useFetch";
 
@@ -607,7 +607,7 @@ As your application grows, performance optimization becomes crucial to ensure a 
    - `useCallback` memoizes a function, preventing it from being recreated on every render.
    - `useMemo` memoizes a value, preventing expensive calculations from running on every render.
 
-   ```jsx
+   ```js
    import React, { useState, useCallback, useMemo } from "react";
 
    const ExpensiveCalculation = ({ num }) => {
@@ -628,7 +628,7 @@ As your application grows, performance optimization becomes crucial to ensure a 
 
    - Lazy loading components can improve the initial load time by splitting your code into smaller chunks and loading them on demand.
 
-   ```jsx
+   ```js
    import React, { Suspense } from "react";
 
    const LazyComponent = React.lazy(() => import("./LazyComponent"));
@@ -646,8 +646,6 @@ As your application grows, performance optimization becomes crucial to ensure a 
    - Inline functions and objects can cause unnecessary re-renders because they are recreated on every render. Use `useCallback` and `useMemo` to memoize them.
 
 Mastering these advanced topics can help you build more complex, efficient, and maintainable React applications. Lifting state up, using the Context API, creating custom hooks, and optimizing performance are essential skills for taking your React development to the next level. Keep experimenting with these concepts and integrating them into your projects to become a proficient React developer.
-
-- [React Key Concepts](https://amzn.to/43XOCJM)
 
 - [Mentorship & Consulting - Contact us for more info](/contact)
 
