@@ -1,9 +1,9 @@
 ---
-title: "Understanding JSX and TSX: The Building Blocks of Modern React Development"
+title: "JSX"
 date: "2024-02-29"
 author: "Slavo"
 image: "r-react-state-props.png"
-excerpt: "React, a popular JavaScript library for building user interfaces, introduces the concepts of "state" and "props" as fundamental principles for managing data within components..."
+excerpt: "JSx..."
 isFeatured: false
 category: "React"
 ---
