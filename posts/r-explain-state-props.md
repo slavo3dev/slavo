@@ -3,7 +3,7 @@ title: "Understanding React State and Props: A Comprehensive Guide"
 date: "2024-02-29"
 author: "Slavo"
 image: "r-react-state-props.png"
-excerpt: "React, a popular JavaScript library for building user interfaces, introduces the concepts of "state" and "props" as fundamental principles for managing data within components..."
+excerpt: "React, a popular JavaScript library for building user interfaces provides a robust framework for managing data through state and props..."
 isFeatured: false
 category: "React"
 ---
