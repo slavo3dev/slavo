@@ -1,6 +1,6 @@
 ---
 title: "Understanding React State and Props: A Comprehensive Guide"
-date: "2024-02-29"
+date: "2024-06-29"
 author: "Slavo"
 image: "r-react-state-props.png"
 excerpt: "React, a popular JavaScript library for building user interfaces provides a robust framework for managing data through state and props..."
