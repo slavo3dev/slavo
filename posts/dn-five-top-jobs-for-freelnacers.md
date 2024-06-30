@@ -4,7 +4,7 @@ date: "2024-03-29"
 author: "Slavo"
 image: "dn-digital-nomad.png"
 excerpt: "Amidst the thrilling narrative of embracing a hybrid digital nomad lifestyle and exploring all 51 states, an intriguing revelation unfolds..."
-isFeatured: true
+isFeatured: false
 category: "Digital Nomad"
 ---
 

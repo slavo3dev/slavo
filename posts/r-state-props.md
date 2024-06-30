@@ -4,7 +4,7 @@ date: "2024-02-14"
 author: "Slavo"
 image: "react-state-props.png"
 excerpt: "React, a popular JavaScript library for building user interfaces provides a robust framework for managing data through state and props..."
-isFeatured: true
+isFeatured: false
 category: "React"
 ---
 

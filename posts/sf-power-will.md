@@ -4,7 +4,7 @@ date: "2023-11-28"
 author: "Slavo"
 image: "will-power.png"
 excerpt: "The term 'willpower' might evoke the image of a stern figure resisting temptation, but in scientific terms, it's much more than mere resistance..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

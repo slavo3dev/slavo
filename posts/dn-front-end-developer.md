@@ -4,7 +4,7 @@ date: "2023-12-04"
 author: "Slavo"
 image: "frontenddev.png"
 excerpt: "In the dynamic and ever-evolving landscape of web development, the role of a front-end developer emerges as a critical component in shaping how we interact with the digital world"
-isFeatured: true
+isFeatured: false
 category: "Digital Nomad"
 ---
 

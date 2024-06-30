@@ -4,7 +4,7 @@ date: "2024-02-14"
 author: "Slavo"
 image: "learning-tech.png"
 excerpt: "Not all learning strategies are created equal in the quest for knowledge and skill acquisition..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

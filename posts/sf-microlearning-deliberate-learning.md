@@ -4,7 +4,7 @@ date: "2024-02-14"
 author: "Slavo"
 image: "microlearning.png"
 excerpt: "In our fast-paced world, traditional learning methods are often found to be too time-consuming and less engaging for learners...."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

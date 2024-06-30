@@ -4,7 +4,7 @@ date: "2024-02-14"
 author: "Slavo"
 image: "react.png"
 excerpt: "React has revolutionized the way we think about web development. Since its inception by Facebook in 2013..."
-isFeatured: true
+isFeatured: false
 category: "React"
 ---
 

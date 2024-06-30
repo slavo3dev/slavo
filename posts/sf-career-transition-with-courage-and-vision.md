@@ -4,7 +4,7 @@ date: "2023-11-28"
 author: "Slavo"
 image: "midlife.png"
 excerpt: "A career change is a journey of transformation. It's a passage that leads you to a new professional identity and offers growth and self-discovery.."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

@@ -4,7 +4,7 @@ date: "2023-11-21"
 author: "Slavo"
 image: "learnandwork.png"
 excerpt: "Unlock your potential with innovative strategies designed for ambitious professionals eager to enhance their skills through self-study—without sacrificing job performance."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

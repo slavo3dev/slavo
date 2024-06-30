@@ -4,7 +4,7 @@ date: "2024-05-08"
 author: "Slavo"
 image: "sf-sunset.png"
 excerpt: "The quiet moments of sunrise and the peaceful glow of sunset impact our mental and physical health, creativity, and overall productivity..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

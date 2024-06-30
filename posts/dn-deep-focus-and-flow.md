@@ -5,7 +5,7 @@ date: "2024-04-29"
 author: "Slavo"
 image: "dn-deep-focus.png"
 excerpt: "Deep focus and flow are like secret weapons in today's world, where constant notifications and digital noise often disrupt our concentration..."
-isFeatured: true
+isFeatured: false
 category: "Digital Nomad"
 ---
 

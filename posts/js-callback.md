@@ -4,7 +4,7 @@ date: "2023-11-17"
 author: "Slavo"
 image: "callback.png"
 excerpt: "Callbacks are the bread and butter of efficient JavaScript programming, which is critical in enhancing user experience through seamless asynchronous operations..."
-isFeatured: true
+isFeatured: false
 category: "Java Script"
 ---
 

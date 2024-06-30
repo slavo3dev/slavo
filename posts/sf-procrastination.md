@@ -4,7 +4,7 @@ date: "2024-02-22"
 author: "Slavo"
 image: "sf-procrastination.png"
 excerpt: "Procrastination, the act of delaying or postponing tasks, is a common challenge that affects many people..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

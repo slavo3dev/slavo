@@ -4,7 +4,7 @@ date: "2023-09-10"
 author: "Slavo"
 image: "learner.png"
 excerpt: "The concept of education traditionally ends after formal schooling – be it high school, college, or advanced degrees..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 
