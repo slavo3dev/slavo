@@ -11,6 +11,9 @@ export const HeadBasePage: FC<HeadProps> = (props) => {
 		title = "Slavo Software Development Consulting",
 		canonicalPath, } = props;
     
+	// <meta name="description" key="description" content={ META_DESCRIPTION } />
+	// <meta property="og:description" key="og:description" content={META_DESCRIPTION} />
+    
 	return (
 		<>
 			<Head>
