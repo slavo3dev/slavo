@@ -44,7 +44,7 @@ Host *
 
 ### Install Git for Windows
 
-- Download Git from [git-scm.com](git-scm.com).
+- Download Git from [git-scm.com](https://git-scm.com/downloads).
 - During installation, make sure to select Git Bash and the option to "Use Git from the Windows Command Prompt".
 
 ### **Generate a New SSH Key**
