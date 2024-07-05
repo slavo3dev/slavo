@@ -3,11 +3,11 @@ import { formattedDate } from "@/lib/helpers";
 import { PostHeaderType } from "Types/PostType";
 import { HeadBasePage } from "@/components/HeadBasePage";
 
-export const PostHeader: FC<PostHeaderType> = ({ title, category, data}) =>
+export const PostHeader: FC<PostHeaderType> = ({ title, category, data, excerpt}) =>
 {   
 	return (
 		<>
-			<HeadBasePage title={title} />
+			<HeadBasePage title={ title } description={excerpt} />
 			<header className="max-w-xl mx-auto text-center">
 				<nav className="flex items-center justify-center">
 					<div className="flex items-center space-x-2">

@@ -44,7 +44,7 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 
 	return (
 		<>
-			<HeadBasePage title="Share your daily update and continue to Career Change: Learn Web Development for a Bright Future" />
+			<HeadBasePage title={ "Share Your Daily Learning Journey - Career Change in Web Development" } description={"Join our community to share your daily learning updates and track your progress in web development. Engage with others on the same career change journey, get support, and stay motivated. Start your path to a bright future with Slavo.io!"} />
 			<div className="p-10 text-slate-800">
 				<PorchHeader showForm={showForm} setShowForm={setShowForm} />
 				{showForm ? (

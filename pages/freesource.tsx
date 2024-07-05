@@ -39,7 +39,7 @@ const FreeSource: NextPage = () => {
 
 	return (
 		<>
-			<HeadBasePage title={"Free Sources for a Career Change: Learn Web Development for a Bright Future"} />
+			<HeadBasePage title={"Free Learning Resources for Career Change - Share & Discover Web Development"} description={"Explore and share free resources for learning web development. Join our community to access tutorials, guides, and tools for a successful career change in tech. Start your journey today with Slavo.io!"} />
 			<div className="freeSourceContainer">
 				<Header showForm={showForm} setShowForm={setShowForm} />
 				{showForm ? (

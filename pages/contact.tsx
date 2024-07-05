@@ -5,7 +5,7 @@ import { ContactForm, HeadBasePage } from "../components";
 const Contact: NextPage = () => {
 	return (
 		<>
-			<HeadBasePage title={"Contact us for a Career Change"} />
+			<HeadBasePage title={"Contact Us for Expert Career Change Guidance - Slavo.io Mentorship"} description="Discover how a career change into web development can open up new opportunities. Learn web development skills, programming languages, and tools to start your journey today." />
 			<section className="py-20 h-screen" >
 				<div className="container ">
 					<div className="max-w-2xl mx-auto text-center">

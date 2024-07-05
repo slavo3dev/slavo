@@ -9,6 +9,7 @@ export const HeadBasePage: FC<HeadProps> = (props) => {
 	const router = useRouter();
 	const {
 		title = "Slavo Software Development Consulting",
+		description = META_DESCRIPTION,
 		canonicalPath,
 	} = props;
 
@@ -30,12 +31,12 @@ export const HeadBasePage: FC<HeadProps> = (props) => {
 				<Script>new WOW().init();</Script>
 
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
-				<meta name="description" content={META_DESCRIPTION} />
+				<meta name="description" content={description} />
 				<meta name="keywords" content="career change, web development, learn web development, programming, coding, frontend, backend, full stack, HTML, CSS, JavaScript, frameworks, libraries, React, React Native, ChatGPT, Mentorship, Mentor" />
 
 				{/* Open Graph Meta Tags */}
 				<meta property="og:title" content="Career Change: Learn Web Development for a Bright Future" />
-				<meta property="og:description" content={META_DESCRIPTION} />
+				<meta property="og:description" content={description} />
 				<meta property="og:image" content="https://www.slavo.io/images/components/team.svg" />
 				<meta property="og:url" content="https://slavo.io" />
 				<meta property="og:type" content="website" />
@@ -44,7 +45,7 @@ export const HeadBasePage: FC<HeadProps> = (props) => {
 				{/* Twitter Meta Tags */}
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:title" content="Career Change: Learn Web Development for a Bright Future" />
-				<meta name="twitter:description" content={META_DESCRIPTION} />
+				<meta name="twitter:description" content={description} />
 				<meta name="twitter:image" content="https://www.slavo.io/_next/image?url=%2Fimages%2Fpost-img%2Fremote-business-ideas-post.png&w=1080&q=75" />
 				<meta name="twitter:site" content="@slavo3dev" />
 				<meta name="twitter:creator" content="@slavo3dev" />

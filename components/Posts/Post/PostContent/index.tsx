@@ -14,7 +14,8 @@ interface PostContentDataType {
         title: string;
         category: string;
         date: string;
-        content: string
+        content: string;
+        excerpt: string;
     }
 }
 
@@ -23,10 +24,10 @@ export const PostContent: FC<PostContentDataType> = ({ post }) => {
     
 	return (
 		<>
-			<HeadBasePage title={`Blog Title: ${post.title} | Career Change: Learn Web Development for a Bright Future`}  />
+			<HeadBasePage title={ `Blog Title: ${ post.title } | Career Change: Learn Web for a Bright Future` } description={post.excerpt} />
 			<article className={ "py-12 bg-white sm:py-16 lg:py-20" }>
 				<div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-					<PostHeader title={ post.title } imgSrc={ imgPath } category={ post.category } data={ post.date } />
+					<PostHeader title={ post.title } imgSrc={ imgPath } category={ post.category } data={ post.date } excerpt={post.excerpt} />
 					<PostImage title={ post.title } imgSrc={ imgPath } />
 					<div className="grid grid-cols-1 mt-8 sm:mt-12 lg:mt-16 lg:grid-cols-12 lg:gap-x-12 gap-y-8">
 						<div className="lg:col-span-2 lg:self-start lg:sticky lg:top-24 lg:order-last">
