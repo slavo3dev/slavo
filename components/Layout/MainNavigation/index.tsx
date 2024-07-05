@@ -46,9 +46,9 @@ export const MainNavigation: FC = () => {
 						<li className={router.pathname === "/blog" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"} onClick={() => localStorage.setItem("selectedOption", "ALL")}>
 							<Link href="/blog">Blog</Link>
 						</li>
-						{/* <li>
-						<Link href="/freesource">ReSource</Link>
-					</li>  */}
+						<li>
+							<Link href="/free-resources">Free Resources</Link>
+						</li> 
 						<li className={router.pathname === "/videos" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/videos">Videos</Link>
 						</li>
