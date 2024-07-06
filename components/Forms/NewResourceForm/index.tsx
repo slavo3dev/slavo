@@ -24,7 +24,7 @@ export const NewResourceFrom: FC<NewResourceFromProps> = ( { setSources, setShow
 			try {
 				setIsUploading(true);
 				await axios.post( "api/createSource", {
-					text, source, category: category.toUpperCase(), email
+					text, source, category: category, email
 				} );
 				setSources( ( sources: any ) => [ sources[ 0 ], ...sources ] );
                 
