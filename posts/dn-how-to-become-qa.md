@@ -4,8 +4,8 @@ date: "2024-07-09"
 author: "Slavo"
 image: "dn-qa-developer.png"
 excerpt: "Are you considering a career switch to Quality Assurance (QA) as a manual tester or engineer? If so, you're in the right place"
-isFeatured: false
-category: "true"
+isFeatured: true
+category: "Digital Nomad"
 ---
 
 Are you considering a career switch to Quality Assurance (QA) as a manual tester or engineer? If so, you're in the right place. This blog post will guide you through the steps to become a QA professional, why this career is a great choice, what you need to learn, the benefits of working remotely, how to progress in your career, and a detailed learning roadmap. Let's dive in!
