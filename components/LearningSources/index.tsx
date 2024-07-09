@@ -20,15 +20,16 @@ export const LearningSources: FC<LearningSourcesProps> = ( { sources }: any ) =>
 	const [ currentCategory, setCurrentCategory ] = useState<string>( "all" );
 
 	useEffect(() => {
-		console.log("Your New Source is added to the list");
-	}, [sources, facts]);
+		console.log( "Your New Source is added to the list" );
+	}, [facts]);
 
 	const filteredFacts = useMemo(() => {
 		if (currentCategory === "all") {
-			return sources;
+			return facts;
 		}
-		return facts.filter((sources: any )=> sources.category === currentCategory);
-	}, [currentCategory, sources]);
+        
+		return facts.filter((facts: any )=> facts.category === currentCategory);
+	}, [currentCategory, facts]);
     
 	const handleOnClose = () => { setShowForm( true ); };
     

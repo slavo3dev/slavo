@@ -23,23 +23,24 @@ export const NewResourceFrom: FC<NewResourceFromProps> = ( { setSources, setShow
 		if (text && isValidHttpUrl(source) && category && textLength <= 200) {
 			try {
 				setIsUploading(true);
-				await axios.post( "api/createSource", {
-					text, source, category: category, email
-				} );
-				setSources( ( sources: any ) => [ sources[ 0 ], ...sources ] );
-                
-				setTimeout(() => {
-					setText("");
-					setSource("");
-					setCategory( "" );
-					setIsUploading(false);
-					setShowForm(false);
-				}, 500);
+				const response = await axios.post("api/createSource", {
+					text,
+					source,
+					category,
+					email
+				});
+				const newSource = response.data.data; 
+				setSources((sources: any) => [newSource, ...sources]); 
+
+				setText("");
+				setSource("");
+				setCategory("");
+				setIsUploading(false);
+				setShowForm(false);
 				
 	
 			} catch (error) {
 				throw new Error("Something Went Wrong Message was not saved!!!");
-            
 			}
 
 		}
