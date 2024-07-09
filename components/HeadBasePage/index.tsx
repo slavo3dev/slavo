@@ -12,7 +12,8 @@ export const HeadBasePage: FC<HeadProps> = (props) => {
 		description = META_DESCRIPTION,
 		canonicalPath,
 	} = props;
-
+    
+	
 	return (
 		<>
 			<Head>
@@ -41,9 +42,10 @@ export const HeadBasePage: FC<HeadProps> = (props) => {
 				<meta property="og:url" content="https://slavo.io" />
 				<meta property="og:type" content="website" />
 				<meta property="og:locale" content="en_EU" />
+				<meta property="og:site_name" content="Slavo Software Development Consulting & Mentorship - Learn & Create Digital Products" />  
 
 				{/* Twitter Meta Tags */}
-				<meta name="twitter:card" content="summary_large_image" />
+				<meta name="twitter:card" content="https://www.slavo.io/_next/image?url=%2Fimages%2Fpost-img%2Fremote-business-ideas-post.png&w=1080&q=75" />
 				<meta name="twitter:title" content="Career Change: Learn Web Development for a Bright Future" />
 				<meta name="twitter:description" content={description} />
 				<meta name="twitter:image" content="https://www.slavo.io/_next/image?url=%2Fimages%2Fpost-img%2Fremote-business-ideas-post.png&w=1080&q=75" />
@@ -52,8 +54,8 @@ export const HeadBasePage: FC<HeadProps> = (props) => {
 
 				<meta name="title" content={title} />
 				<meta property="og:title" content={title} />
-				<meta property="og:url" content={`${process.env.BASE_URL}${router.asPath}`} />
-				<meta property="og:image" content={`${process.env.BASE_URL}/images/lion-favicon.png`} />
+				<meta property="og:url" content={`${process.env.NEXT_PUBLIC_BASE_URL}${router.asPath}`} />
+				<meta property="og:image" content={`${process.env.NEXT_PUBLIC_BASE_URL}/images/lion-favicon.jpeg`} />
         
 				<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet" />
 				<link rel="icon" type="image/x-icon" href="/images/lion-favicon.jpeg" />
