@@ -10,6 +10,7 @@ import VideoContext from "context/VideoContext";
 import UserInfoContext from "context/UserInfoContext";
 import supabase from "@/lib/supabase";
 import { User } from "@supabase/supabase-js";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function MyApp ( { Component, pageProps }: AppProps ) {
     
@@ -55,6 +56,7 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 					<HeadBasePage title="Career Change: Learn Web Development for a Bright Future" />
 					<MainNavigation  />
 					<Component { ...pageProps } />
+					<SpeedInsights route={router.pathname} />
 					<Footer />
 				</Layout>
 				<GoogleAnalytics gaId={GA_TRACKING_ID} />
