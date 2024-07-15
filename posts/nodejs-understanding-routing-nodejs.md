@@ -1,5 +1,5 @@
 ---
-title: "Routing Requests in Node.js"
+title: "Mastering Routing Requests in Node.js: A Comprehensive Guide"
 date: "2024-07-16"
 author: "Slavo"
 image: "nodejs-routing.png"
