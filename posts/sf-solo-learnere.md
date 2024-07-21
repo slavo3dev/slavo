@@ -104,6 +104,6 @@ Let us then step forward with a renewed commitment to not only advance our knowl
 
 - [Change Your Brain, Change Your Life](https://amzn.to/44rO5ja) **_The Breakthrough Program for Conquering Anxiety, Depression, Obsessiveness, Lack of Focus, Anger, and Memory Problems_**
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/KXVHbAeb)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

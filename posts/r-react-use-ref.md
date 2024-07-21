@@ -12,7 +12,7 @@ In the React ecosystem, hooks have revolutionized how developers manage state an
 
 - [React Key Concepts](https://amzn.to/43XOCJM)
 - [Mentorship & Consulting - Contact us for more info](/contact)
-- **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
+- **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/KXVHbAeb)
 
 ### What is `useRef`?
 
@@ -579,6 +579,6 @@ The `useRef` hook is a powerful tool for persisting values between renders witho
 
 [Mentorship & Consulting - Contact us for more info](/contact)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/KXVHbAeb)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

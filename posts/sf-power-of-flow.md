@@ -88,6 +88,6 @@ We explored the neuroscience of flow and how our brains adapt and thrive during 
 
 \*\* Book Recommendation: [Flow](https://www.amazon.com/dp/0061339202/ref=cm_sw_r_as_gl_api_gl_i_425QZ8KTCK5XYMSTBFSW?linkCode=ml2&tag=prototypene06-20)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/KXVHbAeb)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
