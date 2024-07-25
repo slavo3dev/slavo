@@ -3,7 +3,7 @@ title: "Understanding Object Types in TypeScript: A Comprehensive Guide"
 date: "2024-07-26"
 author: "Slavo"
 image: "ts-typescript-types.png"
-excerpt: "TypeScript provides two main ways to define object types: using interfaces and using type aliases. Both approaches have strengths and are often used interchangeably..."
+excerpt: "TypeScript provides two main ways to define object types: using interfaces and using type aliases..."
 isFeatured: false
 category: "Type Script"
 ---
