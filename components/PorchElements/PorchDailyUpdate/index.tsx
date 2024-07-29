@@ -1,5 +1,7 @@
 import React, { useState, useContext } from "react";
 import UserInfoContext from "@/context/UserInfoContext";
+import { BiLike } from "react-icons/bi";
+
 
 
 interface PorchType {
@@ -22,7 +24,7 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
 	const { userInfo } = useContext(UserInfoContext);
 
 	const date = new Date(porch.created_at);
-	const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;
+	const formattedDate = `${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}-${date.getFullYear()}`;
 	const formattedTime = `${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}:${date.getSeconds().toString().padStart(2, "0")}`;
 
 	const handleVote = async (columnName: string) => {
@@ -60,57 +62,52 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
 
 	return (
 		<div className="flex flex-col overflow-hidden transition-all duration-200 transform bg-white shadow group rounded-xl hover:shadow-lg hover:-translate-y-1 hover:bg-sky-100">
-			<div className="flex-1 py-5 px-2 sm:p-6">
-				<p className="px-1 text-base">
-					<b>Daily Update</b> [
-					<span className="text-sm font-medium text-gray-900">{formattedDate}</span>
-					<span className="text-sm font-medium text-gray-900"> | </span>
-					<span className="text-sm font-medium text-gray-900">{formattedTime}</span> ] :
-					<br /><br />
-					{displayComment}
-					{!showMore && commentText.length > 90 && (
-						<button onClick={handleMore}>... read more</button>
-					)}
+			<div className="flex-1 py-3 px-4 sm:p-6">
+				<p className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-blue-500 to-blue-800">
+					<b>Daily Update</b>
 				</p>
-				<div className="py-5 px-2 mt-auto border-gray-100 sm:px-1">
-					<div className="flex items-center justify-between">
-						<div className="flex items-center space-x-2">
+				<div className="flex flex-col mt-2 border-4 border-gray-200 rounded-xl bg-gray-200">
 							<a href={`mailto:${porch.email}`} title={porch.email}>
-								<p className="text-sm font-medium text-gray-900">
-									<b>User Email:</b> {porch.email}
+								<p className="pl-2 text-sm font-medium text-gray-900">
+									<b>User Email: </b><span className="whitespace-normal hover:underline">{porch.email}</span>
 								</p>
 							</a>
-						</div>
-
-						<a href={porch.source.includes("http") ? porch.source : `//${porch.source}`} title="" className="" role="button" target="_blank">
-							<svg className="w-5 h-5 text-blue-300 transition-all duration-200 group-hover:text-gray-900" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-								<line x1="17" y1="7" x2="7" y2="17"></line>
-								<polyline points="8 7 17 7 17 16"></polyline>
-							</svg>
-						</a>
-					</div>
-				</div>
-
-				<div className="p-1 text-sm text-gray-800 rounded-lg shadow-lg hover:bg-yellow-100 transition duration-300 ease-in-out">
 					<a
 						href={porch.source.includes("http") ? porch.source : `//${porch.source}`}
 						target="_blank"
-						className="text-sm hover:bg-sky-100 whitespace-normal break-words"
-					>
-						<b>Source:</b> {porch.source}
+						className="pl-2 text-gray-900 text-sm font-medium"
+						>
+						<b>Source: </b><span className="whitespace-normal hover:underline">{porch.source}</span>
 					</a>
-				</div>
 
+				</div>
+				<div className="py-8 px-2 mt-auto border-gray-100 sm:px-1">
+					<div className="flex items-center justify-between">
+						<div className="flex items-center space-x-2">
+								<p className="pl-1 text-base font-medium text-gray-900">
+										{displayComment}
+										{!showMore && commentText.length > 90 && (
+										<button onClick={handleMore}>... read more</button>
+										)}
+								</p>
+						</div>
+					</div>
+				</div>
 				<div className="p-2">
+					<p className="text-sm pl-1">
+						<b>Likes: </b> {porch.excellent}
+					</p>
 					<button
-						className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
+						className="flex items-center gap-4 bg-gradient-to-br from-blue-700 via-blue-600 to-blue-900 rounded-xl px-8 py-1 text-md font-extrabold text-white hover:opacity-75"
 						onClick={() => handleVote("excellent")}
 						disabled={isUpdating}
 					>
-            🤯 👍 {porch.excellent}
+             <BiLike /> 
 					</button>
 				</div>
+				<p className="pl-2 text-sm">
+					{formattedDate}  
+				</p>
 			</div>
 		</div>
 	);
