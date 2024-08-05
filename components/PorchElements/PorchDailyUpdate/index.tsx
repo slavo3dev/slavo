@@ -67,29 +67,38 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
 					<b>Daily Update</b>
 				</p>
 				<div className="flex flex-col mt-2 border-4 border-gray-200 rounded-xl bg-gray-200">
-							<a href={`mailto:${porch.email}`} title={porch.email}>
-								<p className="pl-2 text-sm font-medium text-gray-900">
-									<b>User Email: </b><span className="whitespace-normal hover:underline">{porch.email}</span>
-								</p>
-							</a>
+					<a href={`mailto:${porch.email}`} title={porch.email}>
+						<p className="pl-2 text-sm font-medium text-gray-900">
+							<b>User Email: </b>
+							<span className="whitespace-normal hover:underline">
+								{porch.email}
+							</span>
+						</p>
+					</a>
 					<a
-						href={porch.source.includes("http") ? porch.source : `//${porch.source}`}
+						href={
+							porch.source.includes("http")
+								? porch.source
+								: `//${porch.source}`
+						}
 						target="_blank"
 						className="pl-2 text-gray-900 text-sm font-medium"
-						>
-						<b>Source: </b><span className="whitespace-normal hover:underline">{porch.source}</span>
+					>
+						<b>Source: </b>
+						<span className="whitespace-normal hover:underline">
+							{porch.source}
+						</span>
 					</a>
-
 				</div>
 				<div className="py-8 px-2 mt-auto border-gray-100 sm:px-1">
 					<div className="flex items-center justify-between">
 						<div className="flex items-center space-x-2">
-								<p className="pl-1 text-base font-medium text-gray-900">
-										{displayComment}
-										{!showMore && commentText.length > 90 && (
-										<button onClick={handleMore}>... read more</button>
-										)}
-								</p>
+							<p className="pl-1 text-base font-medium text-gray-900">
+								{displayComment}
+								{!showMore && commentText.length > 90 && (
+									<button onClick={handleMore}>... read more</button>
+								)}
+							</p>
 						</div>
 					</div>
 				</div>
@@ -102,12 +111,10 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
 						onClick={() => handleVote("excellent")}
 						disabled={isUpdating}
 					>
-             <BiLike /> 
+						<BiLike />
 					</button>
 				</div>
-				<p className="pl-2 text-sm">
-					{formattedDate}  
-				</p>
+				<p className="pl-2 text-sm">{formattedDate}</p>
 			</div>
 		</div>
 	);
