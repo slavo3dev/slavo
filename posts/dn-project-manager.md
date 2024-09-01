@@ -17,7 +17,7 @@ Changing careers can be a daunting but exciting journey. One rewarding path to c
 - [Limitless Expanded Edition](https://amzn.to/3xN5p7E)**Upgrade Your Brain, Learn Anything Faster, and Unlock Your Exceptional Lif**
 - [Pragmatic Programmer](https://amzn.to/43h37XQ) **_Your journey to mastery_**
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/KXVHbAeb)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/9zvxqj4w)
 
 ## Why Project Management?
 
@@ -369,6 +369,6 @@ Leap and transform your career into a leadership, growth, and success journey. T
 - [Limitless Expanded Edition](https://amzn.to/3xN5p7E)**Upgrade Your Brain, Learn Anything Faster, and Unlock Your Exceptional Lif**
 - [Pragmatic Programmer](https://amzn.to/43h37XQ) **_Your journey to mastery_**
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/KXVHbAeb)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/9zvxqj4w)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

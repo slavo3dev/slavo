@@ -10,7 +10,7 @@ category: "HTML and CSS"
 
 One of the first things you'll learn is HTML (HyperText Markup Language), the backbone of any web page. Understanding the structure of an HTML document is crucial as it lays the foundation for more advanced web technologies like CSS (Cascading Style Sheets) and JavaScript. In this blog post, we'll explore the basic structure of an HTML document, which is essential for new developers learning to code.
 
-Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](/contact) or [Skills Of Change - Discord](https://discord.gg/KXVHbAeb)
+Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](/contact) or [Skills Of Change - Discord](https://discord.gg/9zvxqj4w)
 
 ## The Basic Structure of an HTML Document
 
@@ -150,6 +150,6 @@ Understanding the structure of an HTML document is like learning the ABCs of web
 
 Remember, if you get stuck, don't be afraid to look up solutions or ask for help. The key to learning programming is persistence! [Ask for help - Mentorship](/contact)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/KXVHbAeb)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/9zvxqj4w)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

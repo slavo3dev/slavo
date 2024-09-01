@@ -112,6 +112,6 @@ In conclusion, dopamine, the 'feel-good' neurotransmitter, is not just about fee
 
 [Mentorship Program - Contact us for more info](/contact)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/KXVHbAeb)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/9zvxqj4w)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

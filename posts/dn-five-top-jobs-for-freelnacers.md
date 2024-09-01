@@ -68,4 +68,4 @@ To those contemplating this path, remember that the journey of a thousand miles 
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/KXVHbAeb)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/9zvxqj4w)

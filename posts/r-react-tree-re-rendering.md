@@ -12,7 +12,7 @@ React is a popular JavaScript library for building user interfaces, primarily fo
 
 - [React Key Concepts](https://amzn.to/43XOCJM)
 - [Mentorship & Consulting - Contact us for more info](/contact)
-  **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/KXVHbAeb)
+  **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/9zvxqj4w)
 
 ### Understanding React Components
 
@@ -477,6 +477,6 @@ The component tree is a fundamental concept in React that underpins how the libr
 
 [Mentorship & Consulting - Contact us for more info](/contact)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/KXVHbAeb)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/9zvxqj4w)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

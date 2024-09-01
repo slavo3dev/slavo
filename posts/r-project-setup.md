@@ -22,7 +22,7 @@ Creating a well-structured React project is essential for maintainability, scala
 
 [Mentorship & Consulting - Contact us for more info](/contact)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/KXVHbAeb)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/9zvxqj4w)
 
 ### Why Structure Matters
 
@@ -535,6 +535,6 @@ Setting up ESLint and Prettier in your React project is critical to maintaining 
 
 [Mentorship & Consulting - Contact us for more info](/contact)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/KXVHbAeb)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/9zvxqj4w)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
