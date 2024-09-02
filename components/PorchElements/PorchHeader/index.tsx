@@ -12,7 +12,7 @@ export const PorchHeader: React.FC<PorchHeaderProps> = ({ showForm, setShowForm 
 	return (
 		<header className="header flex flex-col w-full">
 			<div className="w-full flex justify-center mb-6 text-xl md:text-2xl lg:text-3xl ">
-				<h2 className="font-impact text-center">BE<br></br>CONSISTENT.</h2>
+				<h2 className="font-impact text-center">BE CONSISTENT</h2>
 			</div>
 
 			<button
