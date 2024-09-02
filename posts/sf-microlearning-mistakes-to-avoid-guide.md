@@ -3,7 +3,7 @@ title: "Top Microlearning Mistakes to Avoid: A Complete Guide to Overcoming Comm
 date: "2024-09-03"
 author: "Slavo"
 image: "sf-micro-learning-mistakes.png"
-excerpt: "Enter microlearning—a revolutionary approach that breaks down learning into manageable...."
+excerpt: "Microlearning has become a popular approach to education, especially in our fast-paced digital world...."
 isFeatured: true
 category: "Self Help"
 ---
