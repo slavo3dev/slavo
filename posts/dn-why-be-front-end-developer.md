@@ -4,7 +4,7 @@ date: "2023-09-21"
 author: "Slavo"
 image: "front-end.png"
 excerpt: "At its surface, FrontEnd Development may seem like lines of code, decipherable only by those initiated into its mysteries..."
-isFeatured: false
+isFeatured: true
 category: "Digital Nomad"
 ---
 

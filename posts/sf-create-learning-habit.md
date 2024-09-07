@@ -4,7 +4,7 @@ date: "2023-04-28"
 author: "Slavo"
 image: "learning-habit.png"
 excerpt: "Learning is a lifelong process, and forming habits that foster learning can have numerous benefits...."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

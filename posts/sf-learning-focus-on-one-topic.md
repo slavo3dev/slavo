@@ -4,7 +4,7 @@ date: "2024-01-06"
 author: "Slavo"
 image: "focus-one.png"
 excerpt: "In the ever-evolving landscape of technology, mastering new skills is pivotal for professional growth. This is particularly true for disciplines..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

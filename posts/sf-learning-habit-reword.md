@@ -4,7 +4,7 @@ date: "2023-11-17"
 author: "Slavo"
 image: "positivelearner.png"
 excerpt: "Positive reinforcement is rooted in behavioral psychology and is a core principle of operant conditioning."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

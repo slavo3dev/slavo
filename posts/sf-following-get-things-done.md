@@ -4,7 +4,7 @@ date: "2024-03-23"
 author: "Slavo"
 image: "sf-follow-till-the-end.png"
 excerpt: "In productivity, 'Following Through' resonates with many aspirations and frustrations. It's about the crucial step between setting and achieving a goal..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

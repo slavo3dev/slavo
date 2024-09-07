@@ -4,7 +4,7 @@ date: "2023-02-20"
 author: "Slavo"
 image: "learning-system.png"
 excerpt: "Best Learning System/Method to learn FrontEnd Software Development...."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

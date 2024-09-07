@@ -4,7 +4,7 @@ date: "2023-10-31"
 author: "Slavo"
 image: "state_managment.png"
 excerpt: "In the vibrant world of mobile application development, React Native has emerged as a game-changer, allowing developers to write cross-platform applications with a single codebase"
-isFeatured: true
+isFeatured: false
 category: "React Native"
 ---
 

@@ -4,7 +4,7 @@ date: "2024-06-29"
 author: "Slavo"
 image: "sf-digital-marketer.png"
 excerpt: "In today's fast-paced and ever-evolving world, the ability to learn new skills and adapt to changing career landscapes...."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 
