@@ -1,6 +1,5 @@
 ---
-title: "
-How Travel Helped Me Find Deep Focus and Get into the Flow"
+title: "How Travel Helped Me Find Deep Focus and Get into the Flow"
 date: "2024-04-29"
 author: "Slavo"
 image: "dn-deep-focus.png"
