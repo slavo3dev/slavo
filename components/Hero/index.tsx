@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Image from "next/image";
 // import { TextEffect } from "../Elements";
 
 
@@ -57,10 +58,13 @@ export const Hero: FC = () =>
 					</div>
 					<div className="w-full lg:w-1/2 px-3 lg:bg-blueGray-10 mb-12 lg:mb-0 pb-10">
 						<div className="flex items-center justify-center">
-							<img
+							<Image
 								className="lg:max-w-lg"
 								src="/images/components/mantorship.svg"
-								alt="Slavo - Consulting/Metorship Platform"
+								alt="Slavo - Consulting/Mentorship Platform"
+								width={500} 
+								height={300} 
+								priority={true} 
 							/>
 						</div>
 					</div>
