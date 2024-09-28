@@ -5,7 +5,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import "animate.css";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { Layout, HeadBasePage, MainNavigation, Footer } from "../components";
+import { Layout, HeadBasePage, MainNavigation, Footer, Preloader } from "../components";
 import VideoContext from "context/VideoContext";
 import UserInfoContext from "context/UserInfoContext";
 import supabase from "@/lib/supabase";
@@ -16,6 +16,13 @@ function MyApp ( { Component, pageProps }: AppProps ) {
     
 	const [userInfo, setUserInfo] = useState<User | null>(null);
 	const router = useRouter();
+	const [loading, setLoading] = useState(false);
+	useEffect(() => {
+		setLoading(true);
+		setTimeout(() => {
+			setLoading(false);
+		}, 2000);
+	}, []);
     
 	const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || ""; 
     
@@ -47,10 +54,10 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 		};
 	}, [ router.events ] );
     
-	const [videoLine, setVideoLine]= useState("channelOne");
-	
-	return (
-		<UserInfoContext.Provider value={{ userInfo, setUserInfo }}>
+	const [ videoLine, setVideoLine ] = useState( "channelOne" );
+     
+	const App =(
+		<UserInfoContext.Provider value={ { userInfo, setUserInfo } }>
 			<VideoContext.Provider value={ { videoLine, setVideoLine } }>
 				<Layout>
 					<HeadBasePage title="Career Change: Learn Web Development for a Bright Future" />
@@ -63,6 +70,10 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 			</VideoContext.Provider>
 		</UserInfoContext.Provider>
 	);
+    
+	const AppLoaded = !loading ? App : <Preloader />;
+	
+	return  AppLoaded;
 }
 
 export default MyApp;
