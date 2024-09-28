@@ -16,7 +16,8 @@ function MyApp ( { Component, pageProps }: AppProps ) {
     
 	const [userInfo, setUserInfo] = useState<User | null>(null);
 	const router = useRouter();
-	const [loading, setLoading] = useState(false);
+	const [ loading, setLoading ] = useState( true );
+    
 	useEffect(() => {
 		setLoading(true);
 		setTimeout(() => {
