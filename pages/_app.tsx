@@ -22,7 +22,7 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 		setLoading(true);
 		setTimeout(() => {
 			setLoading(false);
-		}, 2000);
+		}, 700);
 	}, []);
     
 	const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || ""; 
