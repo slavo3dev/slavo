@@ -42,6 +42,6 @@ const isGood: boolean = true;
 const isLazy: string = false;
 ```
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/9zvxqj4w)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

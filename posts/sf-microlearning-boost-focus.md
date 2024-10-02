@@ -9,7 +9,7 @@ category: "Self Help"
 ---
 
 - **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
-- **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/9zvxqj4w)
+- **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
 
 In the fast-paced world of self-education, distractions are everywhere. Emails, notifications, and everyday tasks can quickly derail our learning sessions, making it challenging to stay focused. This is where Microlearning is a method that helps self-learners break down information into manageable chunks, leading to improved focus, productivity, and learning efficiency.
 In this post, we’ll explore how Microlearning can enhance your focus and productivity and provide actionable self-education hacks to help you integrate this method into your learning routine.
@@ -247,7 +247,7 @@ With Microlearning, self-learners can stay flexible, maintain momentum, and achi
 - [The Road To Excellence: The Acquisition of Expert Performance in the Arts and Sciences, Sports, and Games](https://amzn.to/3OGIm3n)
 - [Outliers: The Story of Success](https://amzn.to/49evFFj)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/9zvxqj4w)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
 
 **_Welcome to our mentorship program explicitly designed to help you overcome Imposter Syndrome._**
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

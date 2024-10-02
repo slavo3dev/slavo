@@ -300,7 +300,7 @@ To truly benefit from Microlearning, creating a culture that values and encourag
 Implementing microlearning strategies effectively requires a thoughtful combination of clear objectives, engaging content, the right technology, and a supportive learning culture. By focusing on these areas, you can create powerful learning experiences that help bridge the gap between theory and practice, ensuring learners have the knowledge and the confidence to apply what they’ve learned in real-world situations. Embracing these strategies will help you develop a more dynamic, responsive, and practical approach to education and professional development in the modern era.
 
 - **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
-- **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/9zvxqj4w)
+- **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
 
 \*\* **Book Recommendation**:
 
@@ -309,7 +309,7 @@ Implementing microlearning strategies effectively requires a thoughtful combinat
 - [The Road To Excellence: The Acquisition of Expert Performance in the Arts and Sciences, Sports, and Games](https://amzn.to/3OGIm3n)
 - [Outliers: The Story of Success](https://amzn.to/49evFFj)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/9zvxqj4w)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
 
 **_Welcome to our mentorship program explicitly designed to help you overcome Imposter Syndrome._**
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

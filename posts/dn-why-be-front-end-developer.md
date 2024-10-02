@@ -193,7 +193,7 @@ Every journey has its share of highs and lows. When the coding gets tough and bu
 
 - Embarking on your FrontEnd Development journey with a mentor is like setting sail with an experienced navigator. Platforms like [slavo.io](https://www.slavo.io) are fantastic knowledge repositories, but a mentor ensures you harness this knowledge efficiently. They don't just illuminate the path; they walk beside you, ensuring you reach your destination faster and wiser. So, as you dive into FrontEnd Development, find a mentor and unlock a partnership bound to propel you towards unparalleled success.
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/9zvxqj4w)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
 

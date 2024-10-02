@@ -297,7 +297,7 @@ Microlearning is an adaptable and effective way to practice and master new skill
 By using the right tools and strategies, you can make learning an enjoyable and natural part of your day, enhancing your skills without sacrificing large blocks of time. Embrace microlearning today and see how it can transform your education and skill development approach!
 
 - **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
-- **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/9zvxqj4w)
+- **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
 
 \*\* **Book Recommendation**:
 
@@ -306,7 +306,7 @@ By using the right tools and strategies, you can make learning an enjoyable and 
 - [The Road To Excellence: The Acquisition of Expert Performance in the Arts and Sciences, Sports, and Games](https://amzn.to/3OGIm3n)
 - [Outliers: The Story of Success](https://amzn.to/49evFFj)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/9zvxqj4w)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
 
 **_Welcome to our mentorship program explicitly designed to help you overcome Imposter Syndrome._**
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

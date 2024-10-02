@@ -155,6 +155,6 @@ Embrace the challenge, no matter how daunting it may seem. Commit to small, cons
 
 - [Pragmatic Programmer](https://amzn.to/43h37XQ)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/9zvxqj4w)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
