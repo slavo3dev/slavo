@@ -2,7 +2,7 @@
 title: "Understanding JavaScript Strict Mode: A Guide for Engineers"
 date: "2024-10-02"
 author: "Slavo"
-image: "var_const.png"
+image: "js-strict-mode.png"
 excerpt: "At its core, computer science is all about data and instructions to process that data. Variables..."
 isFeatured: false
 category: "Java Script"
