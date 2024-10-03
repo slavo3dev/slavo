@@ -60,7 +60,7 @@ export const Hero: FC = () =>
 						<div className="flex items-center justify-center">
 							<Image
 								className="lg:max-w-lg"
-								src="/images/components/mantorship.svg"
+								src="/images/components/team.svg"
 								alt="Slavo - Consulting/Mentorship Platform"
 								width={500} 
 								height={300} 
