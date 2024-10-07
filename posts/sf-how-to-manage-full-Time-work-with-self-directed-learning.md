@@ -4,7 +4,7 @@ date: "2023-11-21"
 author: "Slavo"
 image: "learnandwork.png"
 excerpt: "Unlock your potential with innovative strategies designed for ambitious professionals eager to enhance their skills through self-study—without sacrificing job performance."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 
@@ -551,6 +551,6 @@ Integrating self-directed Learning into professional life is not just a practica
 - [Deep Work](https://amzn.to/3G9VwBs) **_Rules for Focused Success in a Distracted_**
 - [Atomic Habits](https://amzn.to/46tHp4t) **_An Easy & Proven Way to Build Good Habits & Break Bad Ones_**
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

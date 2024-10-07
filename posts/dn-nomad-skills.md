@@ -4,7 +4,7 @@ date: "2023-05-23"
 author: "Slavo"
 image: "nomad-skills.png"
 excerpt: "Becoming a digital nomad software engineer is an exciting opportunity to blend your passion for coding with a flexible and adventurous lifestyle..."
-isFeatured: true
+isFeatured: false
 category: "Digital Nomad"
 ---
 
@@ -77,4 +77,4 @@ Freelance Development:
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)

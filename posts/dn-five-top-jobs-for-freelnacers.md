@@ -4,7 +4,7 @@ date: "2024-03-29"
 author: "Slavo"
 image: "dn-digital-nomad.png"
 excerpt: "Amidst the thrilling narrative of embracing a hybrid digital nomad lifestyle and exploring all 51 states, an intriguing revelation unfolds..."
-isFeatured: true
+isFeatured: false
 category: "Digital Nomad"
 ---
 
@@ -68,4 +68,4 @@ To those contemplating this path, remember that the journey of a thousand miles 
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)

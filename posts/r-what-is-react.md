@@ -4,7 +4,7 @@ date: "2024-02-14"
 author: "Slavo"
 image: "react.png"
 excerpt: "React has revolutionized the way we think about web development. Since its inception by Facebook in 2013..."
-isFeatured: true
+isFeatured: false
 category: "React"
 ---
 
@@ -228,6 +228,6 @@ By working through these projects and iteratively improving your application, yo
 
 [Mentorship & Consulting - Contact us for more info](/contact)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

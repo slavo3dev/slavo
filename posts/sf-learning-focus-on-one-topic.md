@@ -4,7 +4,7 @@ date: "2024-01-06"
 author: "Slavo"
 image: "focus-one.png"
 excerpt: "In the ever-evolving landscape of technology, mastering new skills is pivotal for professional growth. This is particularly true for disciplines..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 
@@ -80,6 +80,6 @@ The journey of learning, particularly in technology, demands a strategic approac
 
 - [Change Your Brain, Change Your Life](https://amzn.to/44rO5ja) **_The Breakthrough Program for Conquering Anxiety, Depression, Obsessiveness, Lack of Focus, Anger, and Memory Problems_**
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

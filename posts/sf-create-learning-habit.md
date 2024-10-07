@@ -4,7 +4,7 @@ date: "2023-04-28"
 author: "Slavo"
 image: "learning-habit.png"
 excerpt: "Learning is a lifelong process, and forming habits that foster learning can have numerous benefits...."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 
@@ -61,6 +61,6 @@ Following these tips and techniques from **["The Now Habit"](https://www.amazon.
 
 ### The Book Recommendation: [The Now Habit](https://www.amazon.com/b?_encoding=UTF8&tag=prototypene06-20&linkCode=ur2&linkId=7d6a22d838d3f9eb313a39af20626c61&camp=1789&creative=9325&node=173507)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

@@ -118,7 +118,7 @@ So, let us enter this mentorship journey not just as a duty but a privilege. Let
 - [Change Your Brain, Change Your Life](https://amzn.to/44rO5ja) **_The Breakthrough Program for Conquering Anxiety, Depression, Obsessiveness, Lack of Focus, Anger, and Memory Problems_**
 - [Peak](https://amzn.to/45rcTJv)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
 
 **_Welcome to our mentorship program explicitly designed to help you overcome Imposter Syndrome._**
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

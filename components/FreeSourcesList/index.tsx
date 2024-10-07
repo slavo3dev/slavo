@@ -15,7 +15,7 @@ export const FreeSourcesList: FC<FreeSourcesListProps> = ({ facts, setFacts }) =
         No Content for this category yet! Create the first one ✌️
 			</p>
 		);
-
+    
 	return (
 		<>
 			<section className="grid md:grid-cols-4 gap-4 grid-cols-2">

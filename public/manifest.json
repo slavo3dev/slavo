@@ -1,0 +1,21 @@
+{
+    "name": "slavo.io",
+    "short_name": "App",
+    "description": "Mentorship and Develop Learning Habits",
+    "icons": [
+        {
+            "src": "/images/icons/s3-mini-logo.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/images/icons/s3-500-logo.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#EDEDED",
+    "background_color": "#EDEDED"
+}

@@ -14,7 +14,8 @@ interface PostContentDataType {
         title: string;
         category: string;
         date: string;
-        content: string
+        content: string;
+        excerpt: string;
     }
 }
 
@@ -23,10 +24,10 @@ export const PostContent: FC<PostContentDataType> = ({ post }) => {
     
 	return (
 		<>
-			<HeadBasePage title={`Blog Title: ${post.title} | Career Change: Learn Web Development for a Bright Future`}  />
+			<HeadBasePage title={ `Blog Title: ${ post.title } | Career Change: Learn Web for a Bright Future` } description={post.excerpt} />
 			<article className={ "py-12 bg-white sm:py-16 lg:py-20" }>
 				<div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-					<PostHeader title={ post.title } imgSrc={ imgPath } category={ post.category } data={ post.date } />
+					<PostHeader title={ post.title } imgSrc={ imgPath } category={ post.category } data={ post.date } excerpt={post.excerpt} />
 					<PostImage title={ post.title } imgSrc={ imgPath } />
 					<div className="grid grid-cols-1 mt-8 sm:mt-12 lg:mt-16 lg:grid-cols-12 lg:gap-x-12 gap-y-8">
 						<div className="lg:col-span-2 lg:self-start lg:sticky lg:top-24 lg:order-last">
@@ -61,7 +62,7 @@ export const PostContent: FC<PostContentDataType> = ({ post }) => {
 								</a>
 							
 							
-								<a href="https://discord.gg/53crYJQA" target="_blank" title="slavo discord" className="inline-flex items-center justify-center w-10 h-10 text-gray-900 transition-all duration-200 border border-gray-200 rounded-full hover:bg-gray-900 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
+								<a href="https://discord.gg/T5eF5zDf" target="_blank" title="slavo discord" className="inline-flex items-center justify-center w-10 h-10 text-gray-900 transition-all duration-200 border border-gray-200 rounded-full hover:bg-gray-900 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
 									<span className="sr-only"> Discord </span>
 									<svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
 										<path

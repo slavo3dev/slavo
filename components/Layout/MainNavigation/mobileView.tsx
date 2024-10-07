@@ -41,12 +41,39 @@ export const Burger: FC<any> = ( { userInfo } ) => {
       <div className={showDrop ? "visible " : "hidden"}>
         <div className="fixed flex-col h-5/6 overflow-scroll top-20 bg-white left-0 z-40 mt-2 w-full rounded border-[.5px] border-light px-5 py-5 transition-all">
           <ul onClick={handleBurger} className="overflow-y-scroll mr-auto w-full flex list-none flex-col ">
+<<<<<<< HEAD
             <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
 				<Link href="/porch">Porch</Link>
 			</li>
+=======
+            {/* <li className="w-11/12 text-sm text-gray-500 rounded-xl">
+              <span onClick={handleMenu} className="relative block hover:text-blue-500 hover:bg-blue-50 w-full p-4 rounded-xl">
+                <p>Home</p>
+                <div className="absolute right-2 bottom-1">
+                  {!showHome ? (<p className="text-md h-8 w-8 text-center ">+</p>)
+                  : (<p className="absolute right-1 bottom-0.5 text-md h-8 w-8 text-center ">-</p>)}
+                </div>
+              </span>
+              <ul className={ showHome ? "flex-col visible" : "invisible absolute"}>
+                <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Home 1</li>
+                <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Home 2</li>
+                <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Home 3</li>
+                <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Home 4</li>
+              </ul>
+            </li> */}
+            {/* <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">About Us</li>
+            <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Services</li>
+            <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Portfolio</li>
+            <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Pricing</li>
+            <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Team</li> */}
+>>>>>>> main
             <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
-				<Link href="/mentor">Mentor</Link>
+				<Link href="/porch">Porch</Link>
+            </li>
+            <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
+				<Link href="/free-resources">Free Resources</Link>
 			</li>
+<<<<<<< HEAD
             <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
                 <Link href="/blog">Blog</Link>
             </li>
@@ -56,6 +83,31 @@ export const Burger: FC<any> = ( { userInfo } ) => {
             <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
 				<Link href="/programs">Programs</Link>
 			</li>
+=======
+            {/* <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
+				<Link href="/mentor">Mentor</Link>
+			</li> */}
+            <li className="w-11/12 text-sm text-gray-500 rounded-xl">
+               <span /*onClick={handleBlog}*/ className="relative block hover:text-blue-500 hover:bg-blue-50 w-full p-4 rounded-xl"> 
+                              <Link href="/blog">Blog</Link>
+                              
+				{/* <div className="absolute right-2 bottom-1">
+                  {!showBlog ? ( <p className="text-md h-8 w-8 text-center ">+</p>)
+				: (<p className="absolute right-1 bottom-0.5 text-md h-8 w-8 text-center ">-</p>)}
+                </div> */}
+              </span>
+              {/* <ul className={showBlog ? "flex-col visible" : "invisible absolute"}>
+                <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Blog 1</li>
+                <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Blog 2</li>
+                <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Blog 3</li>
+                <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Blog 4</li>
+              </ul> */}
+            </li>
+			{/* <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Faqs</li> */}
+            {/* <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
+				<Link href="/videos">Videos</Link>
+			</li> */}
+>>>>>>> main
             <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
 				<Link href="/contact">Contact</Link>
 			</li>

@@ -4,7 +4,7 @@ date: "2023-02-20"
 author: "Slavo"
 image: "learning-system.png"
 excerpt: "Best Learning System/Method to learn FrontEnd Software Development...."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 
@@ -184,6 +184,6 @@ Before explaining the system, I developed a few prerequisites, and you need to b
 
 ## Never Give Up
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

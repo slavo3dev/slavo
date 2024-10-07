@@ -4,7 +4,7 @@ date: "2023-07-29"
 author: "Slavo"
 image: "nft-owner.png"
 excerpt: "In a whirlwind of technological progress, ownership has been reimagined with the advent of Non-Fungible Tokens (NFTs)..."
-isFeatured: true
+isFeatured: false
 category: "Web_3.0"
 ---
 
@@ -201,6 +201,6 @@ The expanding universe of NFTs underscores their versatility and the vast potent
 
 - [Blockchain Basics](https://amzn.to/45220wH) **_A Non-Technical Introduction in 25 Steps_**
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

@@ -4,7 +4,7 @@ date: "2024-02-14"
 author: "Slavo"
 image: "microlearning.png"
 excerpt: "In our fast-paced world, traditional learning methods are often found to be too time-consuming and less engaging for learners...."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 
@@ -187,7 +187,7 @@ Becoming an exceptional lifelong learner is more than just accumulating knowledg
 - [The Road To Excellence: The Acquisition of Expert Performance in the Arts and Sciences, Sports, and Games](https://amzn.to/3OGIm3n)
 - [Outliers: The Story of Success](https://amzn.to/49evFFj)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
 
 **_Welcome to our mentorship program explicitly designed to help you overcome Imposter Syndrome._**
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

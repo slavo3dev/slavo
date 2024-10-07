@@ -68,6 +68,6 @@ In conclusion, achieving flow can be a game-changer for your learning process. B
 
 \*\* Book Recommendation: - [Flow](https://amzn.to/3QKIShl) **_The Psychology of Optimal Experience (Harper Perennial Modern Classics)_**
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

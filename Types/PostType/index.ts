@@ -20,4 +20,5 @@ export interface PostHeaderType
     imgSrc: string;
     category: string;
     data: string;
+    excerpt: string;
 }

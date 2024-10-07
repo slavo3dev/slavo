@@ -303,6 +303,6 @@ These are the steps to install NPM and Yarn but always refer to the official doc
 \*\* **Book Recommendation**: [Pragmatic Programmer](https://amzn.to/43h37XQ)
 \*\* **_Your journey to mastery_**
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

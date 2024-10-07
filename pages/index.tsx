@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextPage } from "next";
-import {LearningSources,FeaturedPosts,Subscribe,Growth,Solution, Hero} from "@components";
+import { FeaturedPosts, Subscribe, Growth, Solution, Hero } from "@components";
 import { getFeaturedPosts } from "@/lib/posts-lib";
 
 const Home: NextPage = ({ posts }: any) => {
 	return (
 		<>
 			<Hero />
-			<FeaturedPosts posts={ posts } />
 			<Subscribe />
-			<LearningSources />
+			<FeaturedPosts posts={ posts } />
+			{/* <LearningSources /> */}
 			<Solution />
 			<Growth />
 			<Subscribe />

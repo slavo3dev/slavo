@@ -4,7 +4,7 @@ date: "2024-02-14"
 author: "Slavo"
 image: "react-state-props.png"
 excerpt: "React, a popular JavaScript library for building user interfaces provides a robust framework for managing data through state and props..."
-isFeatured: true
+isFeatured: false
 category: "React"
 ---
 
@@ -268,6 +268,6 @@ Choosing the right state management tool depends on your project's specific need
 
 [Mentorship & Consulting - Contact us for more info](/contact)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/M7keEuaw)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

@@ -1,41 +1,35 @@
-import { FC } from "react";
-import { useEffect, useState, useContext} from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { FC, useMemo, useEffect } from "react";
+import { useState, useContext} from "react";
 import { NewResourceFrom } from "../Forms";
-import supabase from "@/lib/supabase";
 import { FreeSourcesList } from "../FreeSourcesList";
 import { CategoryFilter } from "../CategoryFilter";
-import { Loader } from "../ui/Loader";
 import { Title } from "../Title";
 import UserInfoContext from "@/context/UserInfoContext";
+import { Source } from "@/Types/FreeReSources";
 
-export const LearningSources: FC = () => {
+
+type LearningSourcesProps = {
+  sources: Source[];
+};
+
+export const LearningSources: FC<LearningSourcesProps> = ( { sources }: any ) => {
 	const { userInfo } = useContext( UserInfoContext );
-	const [facts, setFacts] = useState<[]>([]);
+	const [facts, setFacts] = useState<Source[]>(sources);
 	const [ showForm, setShowForm ] = useState<boolean>( false );
 	const [ currentCategory, setCurrentCategory ] = useState<string>( "all" );
-	const [ isLoading, setIsLoading] = useState<boolean>(false);
-    
-	useEffect(
-		function () {
-			async function getSources() {
-				setIsLoading(true);
 
-				let query = supabase.from("sources").select("*");
-				if (currentCategory !== "all")
-					query = query.eq("category", currentCategory);
+	useEffect(() => {
+		console.log( "Your New Source is added to the list" );
+	}, [facts]);
 
-				const { data: facts, error }: any = await query
-					.order("like", { ascending: false })
-					.limit(1000);
-                
-				if (!error) setFacts(facts);
-				else alert("There was a problem getting data");
-				setIsLoading(false);
-			}
-			getSources();
-		},
-		[currentCategory, showForm ]
-	);
+	const filteredFacts = useMemo(() => {
+		if (currentCategory === "all") {
+			return facts;
+		}
+        
+		return facts.filter((facts: any )=> facts.category === currentCategory);
+	}, [currentCategory, facts]);
     
 	const handleOnClose = () => { setShowForm( true ); };
     
@@ -46,7 +40,7 @@ export const LearningSources: FC = () => {
 				<Title title={"Learning Sources"} />
 				<CategoryFilter setCurrentCategory={setCurrentCategory} />
 				<div className="w-full px-3 py-9">
-					{ isLoading ? <Loader title="Please Wait... Loading..." /> : <FreeSourcesList facts={ facts } setFacts={ setFacts } /> }
+					<FreeSourcesList facts={ filteredFacts } setFacts={ setFacts } /> 
 				</div>
 			</section>
 			{userInfo && <div className="w-full flex items-center justify-center pb-5" >
