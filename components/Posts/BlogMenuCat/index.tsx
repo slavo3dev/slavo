@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 
 interface Props {
     categories: string[];
@@ -7,7 +7,24 @@ interface Props {
 
 export const BlogMenuCat: FC<Props> = ( { categories, onSearch } ) =>
 {
-	const [activeCategory, setActiveCategory] = useState<string | undefined>("all");
+	const [activeCategory, setActiveCategory] = useState<string>("");
+
+	/* stay on selected category after page reload */
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			const storedValue = localStorage.getItem("activeCategory");
+			if (storedValue) {
+				setActiveCategory(storedValue);
+			}
+		}
+	}, []);
+
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			localStorage.setItem("activeCategory", activeCategory);
+		}
+	}, [activeCategory]);
+
 
 	const handleCategoryClick = (category: string) => {
 		setActiveCategory(category); // Set the active category
@@ -17,7 +34,7 @@ export const BlogMenuCat: FC<Props> = ( { categories, onSearch } ) =>
 	return (
 		<div className="flex flex-wrap gap-5 mt-8 justify-center">
 			{ categories.map( ( category: string ) => <span key={category} onClick={() => handleCategoryClick(category)}  className={`text-xs font-semibold text-indigo-600 border border-indigo-300 rounded-full inline-flex items-center px-2.5 py-1 hover:text-red-600 ${
-				activeCategory?.toLocaleLowerCase() === category?.toLocaleLowerCase() ? "bg-blue-500 text-white" : "bg-indigo-50"
+				activeCategory.toLocaleLowerCase() === category.toLocaleLowerCase() ? "bg-blue-500 text-white" : "bg-indigo-50"
 			}`}>{category}</span> )}
 		</div>
 	);
