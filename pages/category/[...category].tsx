@@ -48,9 +48,9 @@ export default function Category ( props: any )
 	
 	return (
 		<>
-			<CategorySearch onSearch={findCategoryHandle} posts={props.posts} />
+			<CategorySearch onSearch={findCategoryHandle} posts={props.posts} /> 
 			<h1 style={ { textAlign: "center", padding: "10px" } }>{ slugId.toUpperCase().replace( "-", " " ) }</h1>
-			<BlogPosts posts={ categoryPosts } />
+			<BlogPosts posts={ categoryPosts } />	
 		</>
 	);
 }

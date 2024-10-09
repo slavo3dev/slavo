@@ -17,7 +17,10 @@ export const CategorySearch: FC<Props> = ( { onSearch, posts }: Props ) =>
 	const categories: [ string ] = posts.map( ( post: any ) => post.category ).sort().filter( ( item: string, index: number, arr: [] ) => { return !index || item != arr[ index - 1 ]; } );
 	categories.unshift("ALL");
     
+	console.log("Select Option: ", selectedOption)
+
 	useEffect(() => {
+		console.log("Select Option [useEffect I: ]: ", selectedOption)
 		if (typeof window !== "undefined") {
 			const storedValue = localStorage.getItem("selectedOption");
 			if (storedValue) {
@@ -28,6 +31,7 @@ export const CategorySearch: FC<Props> = ( { onSearch, posts }: Props ) =>
 
 	useEffect(() => {
 		if (typeof window !== "undefined") {
+			console.log("[Select Option] UseEffect II: ", selectedOption)
 			localStorage.setItem("selectedOption", selectedOption);
 		}
 	}, [selectedOption]);

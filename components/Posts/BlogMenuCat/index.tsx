@@ -14,6 +14,7 @@ export const BlogMenuCat: FC<Props> = ( { categories, onSearch } ) =>
 		onSearch(category); // Perform the search
 	};
     
+	console.log("Select Option [Blog Cat Menu: ]: ")
 	return (
 		<div className="flex flex-wrap gap-5 mt-8 justify-center">
 			{ categories.map( ( category: string ) => <span key={category} onClick={() => handleCategoryClick(category)}  className={`text-xs font-semibold text-indigo-600 border border-indigo-300 rounded-full inline-flex items-center px-2.5 py-1 hover:text-red-600 ${
