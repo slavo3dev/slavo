@@ -1,5 +1,7 @@
+import { CounterUp } from "./CounterUp";
 import { Growth } from "./Growth";
 import { Solution } from "./Solution";
 
 
-export { Growth, Solution };
+
+export { Growth, Solution, CounterUp };

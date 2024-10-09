@@ -2,12 +2,12 @@ import { FC, useEffect, useState, useContext } from "react";
 import Link from "next/link";
 import classes from "./navigation.module.css";
 import { Logo } from "../Logo";
-import { Burger } from "./mobileView";
+import { Burger } from "./mobileView"; 
 import { useRouter } from "next/router";
 import UserInfoContext from "context/UserInfoContext";
 
 
-export const MainNavigation: FC = () => {
+export const MainNavigation: FC  = () => {
     
 	const [ headStyle, setHeadStyle ] = useState<boolean>( true );
 	const { userInfo } = useContext(UserInfoContext);
@@ -45,12 +45,15 @@ export const MainNavigation: FC = () => {
 						{/* <li className={router.pathname === "/mentor" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/mentor">Mentor</Link>
 						</li> */}
-						<li className={router.pathname === "/blog" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"} onClick={() => localStorage.setItem("selectedOption", "ALL")}>
+						<li className={router.pathname === "/blog" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"} onClick={() => localStorage.setItem("selectedOption", "React")}>
 							<Link href="/blog">Blog</Link>
 						</li>
 						{/* <li className={router.pathname === "/videos" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/videos">Videos</Link>
 						</li> */}
+						<li className={router.pathname === "/programs" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
+							<Link href="/programs">Programs</Link>
+						</li>
 						<li className={router.pathname === "/contact" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/contact">Contact</Link>
 						</li>

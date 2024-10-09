@@ -14,7 +14,7 @@ import { MentorAI } from "./MentorAI";
 import { NewResourceFrom } from "./Forms";
 import { FreeSourcesList } from "./FreeSourcesList";
 import { VideoCard, VideoLine } from "./VideoElements";
-import { Growth, Solution } from "./Sections";
+import { Growth, Solution, CounterUp } from "./Sections";
 import { LinkEvents } from "./Primitives";
 import { SignUp } from "./Auth/SingUp";
 import { SignIn } from "./Auth/SignIn";

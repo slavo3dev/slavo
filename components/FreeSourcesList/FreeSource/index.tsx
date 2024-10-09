@@ -18,8 +18,7 @@ interface FreeSourceTypeProps {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const FreeSource: FC<FreeSourceTypeProps> = ({ fact, setFacts }: any) => {
 	const [isUpdating, setIsUpdating] = useState(false);
-	const badSource =
-        fact.like + fact.exelent < fact.false;
+	const badSource = fact.like + fact.exelent < fact.false;
     
 	const { userInfo } = useContext(UserInfoContext);
    

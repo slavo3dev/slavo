@@ -4,7 +4,7 @@ date: "2023-06-07"
 author: "Slavo"
 image: "mentor.png"
 excerpt: "The Key to Unlocking Potential in Modern Learning and Career Development..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

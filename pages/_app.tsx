@@ -12,6 +12,7 @@ import supabase from "@/lib/supabase";
 import { User } from "@supabase/supabase-js";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
+
 function MyApp ( { Component, pageProps }: AppProps ) {
     
 	const [userInfo, setUserInfo] = useState<User | null>(null);
@@ -28,9 +29,26 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 	const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || ""; 
     
 	useEffect( () => {
-		const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+            
+		const { data: authListener } = supabase.auth.onAuthStateChange(async (event, session) => {
 			const currentUser = session?.user || null;
-			setUserInfo(currentUser);
+            
+			if ( currentUser )
+			{
+				const { data: profile } = await supabase
+					.from( "profile" )
+					.select( "*" )
+					.eq( "id", currentUser.id )
+					.single();
+                
+				setUserInfo( {
+					...currentUser,
+					...profile
+				} );
+			} else
+			{
+				setUserInfo( currentUser );
+			}
 		});
         
 		//  Unsubscribe when the component unmounts
