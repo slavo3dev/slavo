@@ -113,7 +113,7 @@ export const SignUp: FC = () => {
                 if (matchingPassword == newUserPassword) {
                   signUpWithEmail();
                 } else {
-                  setSignUpError("Passwords Not Matching");
+                  setSignUpError("Passwords do not match.");
                 }
               }}
               type="submit"
