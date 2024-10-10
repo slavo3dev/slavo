@@ -39,6 +39,7 @@ export const CategorySearch: FC<Props> = ( { onSearch, posts }: Props ) =>
 		event.target.value === "ALL" && localStorage.setItem("selectedOption", "ALL");
 		event.target.value === "ALL" ? router.push( "/blog" ) : onSearch(categorySlug);	
 	}
+	console.log(` Selected option is: ${selectedOption}`); 
     
 	return (
 		<form className={classes.form}>
