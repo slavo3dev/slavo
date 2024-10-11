@@ -5,8 +5,8 @@ import { useRouter } from "next/router";
 import { useLocalStorage } from "@/lib/hooks/useLocalStorage";
 
 interface Props {
-    onSearch: ( param?: any ) => void,
-    posts: any
+  onSearch: (param?: any) => void;
+  posts: any;
 }
 
 export const CategorySearch: FC<Props> = ( { onSearch, posts }: Props ) =>
@@ -22,7 +22,6 @@ export const CategorySearch: FC<Props> = ( { onSearch, posts }: Props ) =>
 
 	function submitHandler(event: any) {
 		event.preventDefault();
-		console.log("hERE WILL NEED TO SEE IF EVENT CHANGE", event.target.value);
 		setSelectedOption( event.target.value );
 		
 		const categorySlug = event.target.value.toLowerCase().replace( " ", "-" );
