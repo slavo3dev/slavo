@@ -16,7 +16,7 @@ export const PostHeader: FC<PostHeaderType> = ({ title, category, data, excerpt}
 							<svg className="w-5 h-5 text-gray-900 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
 								<path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
 							</svg>
-							<a href={`/category/${category.toLowerCase().replace(" ", "-")}`} target="_blank" title={category} className="ml-2 text-base font-medium text-gray-900"> Category </a>
+							<a href={`/category/${category.toLowerCase().replace(" ", "-")}`} target="_blank" title={category} className="ml-2 text-base font-medium text-gray-900"> {category} </a>
 						</div>
 						<div className="flex items-center">
 							<svg className="w-5 h-5 text-gray-900 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
