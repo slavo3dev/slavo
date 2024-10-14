@@ -59,7 +59,7 @@ export const FreeSource: FC<FreeSourceTypeProps> = ({ fact, setFacts }: any) => 
 						<a
 							href={fact.source.includes("http") ? fact.source : `//${fact.source}`}
 							target="_blank"
-							className="text-sm font-medium text-gray-900 border border-indigo-600"
+							className="text-sm font-medium text-gray-900 break-all"
 						>
               Source: {fact.source.length > 60 ? fact.source.slice(0, 60) + "..." : fact.source}
 						</a>
@@ -83,6 +83,12 @@ export const FreeSource: FC<FreeSourceTypeProps> = ({ fact, setFacts }: any) => 
 						onClick={() => handleVote("false")} disabled={isUpdating} >
                         ⛔️ {fact.false}
 					</button>
+					<button
+						className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2" onClick={() => handleVote("comment")} disabled={isUpdating}>
+                        💬 {fact.comment}
+					</button>
+
+					
 				</div>
 			</div>
 		</>
