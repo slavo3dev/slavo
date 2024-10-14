@@ -14,15 +14,18 @@ export const CategorySearch: FC<Props> = ( { onSearch, posts }: Props ) =>
 	const router = useRouter();
     
 	const [ selectedOption, setSelectedOption ] = useState("");
+	const [ selectedCategory, setSelectedCategory] = useState("")
     
 	const categories: [string] = posts.map( ( post: any ) => post.category ).sort().filter( ( item: string, index: number, arr: [] ) => { return !index || item != arr[ index - 1 ]; } );
 	categories.unshift("ALL");
 
 	useLocalStorage({ value: selectedOption, setValue: setSelectedOption, key: "selectedOption" });
+	useLocalStorage({ value: selectedCategory, setValue: setSelectedCategory, key: "selectedCategory"});
 
 	function submitHandler(event: any) {
 		event.preventDefault();
 		setSelectedOption( event.target.value );
+		setSelectedCategory( event.target.value ); 
 		
 		const categorySlug = event.target.value.toLowerCase().replace( " ", "-" );
 		
