@@ -1,6 +1,7 @@
 import { FC, useState , useContext} from "react";
 import supabase from "@/lib/supabase";
 import UserInfoContext from "@/context/UserInfoContext";
+import { Comments } from "@/components/Comments";
 
 
 interface FreeSourceTypeProps {
@@ -87,10 +88,11 @@ export const FreeSource: FC<FreeSourceTypeProps> = ({ fact, setFacts }: any) => 
 						className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2" onClick={() => handleVote("comment")} disabled={isUpdating}>
                         💬 {fact.comment}
 					</button>
-
+					
 					
 				</div>
 			</div>
+			<Comments />
 		</>
 	);
 };
