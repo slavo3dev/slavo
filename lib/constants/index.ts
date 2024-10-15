@@ -1,5 +1,6 @@
 
 export const CATEGORIES: any = [
+	{ name: "all", color: "" },
 	{ name: "FrontEnd", color: "#3b82f6" },
 	{ name: "JavaScript", color: "#cccc00" },
 	{ name: "TypeScript", color: "#007acc" },
