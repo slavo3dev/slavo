@@ -3,18 +3,10 @@ import PorchUserDataForm from '../PorchUserDataForm';
 
 const WeeklyGoalForm = () => {
     const [close, setClose] = useState<boolean>(false)
-    const [weeklyGoal, setWeeklyGoal] = useState<number>(1)
-    
-    // !!!
-    // Need to figure out how to set the state above to render stored goal as well
-    // maybe in another component we decouple this file
-    // going to move on and continue for now,; in flow
-    useEffect(() => {
+    const [weeklyGoal, setWeeklyGoal] = useState<number>(() => {
         const storedGoal = localStorage.getItem('weeklyGoal');
-        if (storedGoal) {
-            setWeeklyGoal(Number(storedGoal));
-        };
-    }, []);
+        return storedGoal ? Number(storedGoal) : 1
+    })
 
     useEffect(() => {
         localStorage.setItem('weeklyGoal', String(weeklyGoal));
@@ -34,6 +26,7 @@ const WeeklyGoalForm = () => {
             <PorchUserDataForm />
         )
     }
+
 
     return (
         <form className='border-2 p-4 m-2 flex flex-col overflow-hidden bg-white rounded-xl'>

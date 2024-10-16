@@ -17,6 +17,10 @@ const PorchUserDataForm= () => {
     const [weeklyGoal, setWeeklyGoal] = useState<number>(1);
     const [currentStreak, setCurrentStreak] = useState<number>(0);
     const [longestStreak, setLongestStreak] = useState<number>(0);
+    const [weeklyLearningDays, setWeeklyLearningDays] = useState<number>(0);
+    const [goalTrack, setGoalTrack] = useState()
+
+
 
     const { userInfo } = useContext(UserInfoContext)
 
@@ -27,7 +31,7 @@ const PorchUserDataForm= () => {
         };
     }, []);
 
-
+    // grabbing the post created at time by user eamil in ascending order
     useEffect(() => {
         const fetchConsecutiveLearningDays = async () => {
             if (userInfo?.email) {
@@ -44,7 +48,8 @@ const PorchUserDataForm= () => {
                     let currentStreak = 0;
                     let longestStreak = 0;
                     let lastDate: Date | null = null;
-
+                    
+                    // for each created at entry per user in porch what is the difference in days between the last post and the ucrrent post 
                     data.forEach((entry: {created_at: string}) => {
                         const currentDate = new Date(entry.created_at);
 
@@ -72,9 +77,45 @@ const PorchUserDataForm= () => {
         };
         fetchConsecutiveLearningDays();
     }, [userInfo?.email])
+
+    useEffect(() => {
+        const fetchWeeklyLearningDays = async () => {
+            if (userInfo?.email) {
+                const { data, error } = await supabase
+                    .from("porch")
+                    .select("created_at")
+                    .eq("email", userInfo.email)
+                    .order("created_at", {ascending: true});
+                
+                if (error) {
+                    console.log("Error fetching consecutive learning days", error)
+                } else {
+                    console.log(data)
+
+                    const currentWeekLearningDays = new Set<string>();
+                    const today = new Date();
+                    const currentDayOfWeek = today.getDay();
+                    const startOfWeek = new Date(today);
+                    startOfWeek.setDate(today.getDate() - currentDayOfWeek);
+                    
+                    
+                    // for each created at entry per user in porch what is the the total amount of entries for a the current given week
+                    data.forEach((entry: {created_at: string}) => {
+                        const learningDate = new Date(entry.created_at);
+                        if (learningDate >= startOfWeek && learningDate <= today) {
+                            currentWeekLearningDays.add(learningDate.toDateString());
+                        }
+
+                    });
+                    setWeeklyLearningDays(currentWeekLearningDays.size)
+                }
+            }
+        };
+        fetchWeeklyLearningDays();
+    }, [userInfo?.email])
+
     // !!!
     // WEEKLY LEARNING GOALS 
-        // need to update weekly learning days when edit goal is changed or when user submits daily update
         // need to create functionality for off/track button 
             // when goal is completed turn green -> Good Job (or something)
             // when goal is halfway turn yellow -> almost there / on track
@@ -82,7 +123,10 @@ const PorchUserDataForm= () => {
     // HEATMAP
         // need to implement and create heatmap 
             // need to use user data 
-                // update the day they submitted the update with the corresponding day in heatmap 
+                // update the day they submitted the update with the corresponding day in heatmap
+                
+
+
     if (showUpdateGoals) {
         return (
            <div>
@@ -98,12 +142,36 @@ const PorchUserDataForm= () => {
                     <h5 className='flex'>Weekly Learning Goals </h5>
                     <a onClick={() => setShowUpdateGoals(true)}><p className='text-sm font-normal flex hover:underline'>Edit Goal ➡️</p></a>
                 </div>
-                <p className='font-bold text-4xl mt-4 flex justify-center'>0/{weeklyGoal}</p>
+                <p className='font-bold text-4xl mt-4 flex justify-center'>{weeklyLearningDays} / {weeklyGoal}</p>
                 <p className='font-bold flex justify-center'>days</p>
                 <div className='flex justify-center'>
-                    <p className='text-sm text-center border rounded-full px-2 bg-red-300 w-fit mt-2'>Off Track</p>
+                       { weeklyLearningDays === weeklyGoal ? (
+                            <p className='text-sm text-center border rounded-full px-2 py-1 w-fit mt-2 bg-green-400'>
+                                Nice! 🚀
+                            </p>
+                       ) : weeklyLearningDays >= Math.floor(weeklyGoal / 2) ? (
+                            <p className='text-sm text-center border rounded-full px-2 py-1 w-fit mt-2 bg-yellow-400'>
+                                On Track
+                            </p> 
+                       ) : (
+                            <p className='text-sm text-center border rounded-full px-2 py-1 w-fit mt-2 bg-red-400'>
+                                Off Track
+                            </p>
+                       )
+                       }
                 </div>
-                <p className='flex justify-center text-xs mt-2'>To hit your goal this week, learn<span className='font-bold pl-1'>{weeklyGoal} times!</span></p>
+                { weeklyLearningDays === weeklyGoal ? (
+                          <p className='flex justify-center text-xs mt-2'>
+                            You hit your goal this week, 
+                            <span className='font-bold pl-1'> keep the momentum going!</span>
+                          </p>
+                    ) : (
+                        <p className='flex justify-center text-xs mt-2'>
+                            To hit your goal this week, learn
+                            <span className='font-bold pl-1'>{weeklyGoal} times!</span>
+                         </p>
+                    )
+                }
             </div>
             <div className='border-2 p-4 m-2 flex flex-col overflow-hidden bg-white shadow-lg group rounded-xl'>
                 <h5>🔥 Current Streak</h5>
@@ -115,13 +183,8 @@ const PorchUserDataForm= () => {
                 </div>
             </div>
             <div className='border-2 p-4 m-2 flex flex-col overflow-hidden  bg-white shadow-lg group rounded-xl'>
-                <h5 className='mb-4'>Heatmap</h5>
-                <Image
-                src='/images/components/winter.png'
-                alt='fake heatmap'
-                width={400}
-                height={200}
-                />
+                <h5 className='mb-4'>Learning Charts</h5>
+                
             </div>
         </div>
     );
