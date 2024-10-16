@@ -1,12 +1,17 @@
 "use client";
 
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent, useContext } from "react";
+import UserInfoContext from "context/UserInfoContext";
 
 export const Comments = () => {
   const [comment, setComment] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [showComments, setShowComments] = useState<boolean>(false);
   const [commentsList, setCommentsList] = useState<string[]>([]);
+
+  const { userInfo } = useContext(UserInfoContext);
+  const userEmail = userInfo?.email;
+
 
   const countWords = (text: string): number => {
     return text.trim().split(/\s+/).filter(Boolean).length;
@@ -35,29 +40,34 @@ export const Comments = () => {
   };
 
   const toggleComments = () => {
-    setShowComments((prev) => !prev);
+    setShowComments(!showComments);
   };
 
   return (
-    <div className="flex justify-center pt-10">
-      <div>
-        <h3 className="text-lg font-bold text-gray-900">Comments</h3>
+    
+      <>
+        
         <button
           onClick={toggleComments}
-          className="mt-4 py-2 px-4 text-sm text-white font-semibold bg-blue-400 hover:bg-blue-500 rounded"
+          className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
         >
-          {showComments ? "Hide Comments" : "Show Comments"}
+          {showComments ? "Hide Comments" : "💬"}
         </button>
         {showComments && (
           <>
-            <form onSubmit={onSubmit} className="mt-8 flex gap-8">
-              <p>login</p>
+            {userEmail && (
+            <p className="text-sm text-gray-600">
+              Logged in as: <span className="font-bold">{userEmail}</span>
+            </p>
+          )}
+            <form onSubmit={onSubmit} className="mt-8 flex flex-col gap-2">
+              
               <textarea
                 value={comment}
                 onChange={onChange}
                 placeholder="Add a comment"
-                className="p-2 border focus:border-gray-700 w-full outline-none resize-none"
-                rows={4}
+                className="p-2 border focus:border-gray-700 w-full outline-none resize-none overflow-hidden"
+                rows={1}
               />
               <button className="py-4 px-8 text-sm text-white font-semibold leading-none bg-blue-400 hover:bg-blue-500 rounded">
                 Submit
@@ -67,16 +77,19 @@ export const Comments = () => {
             <div className="mt-4">
               <h4 className="font-bold">Comments:</h4>
               <ul>
-                {commentsList.map((c, index) => (
+                {commentsList.length === 0 ? (
+                  <p>No comments yet. Be the first to comment!</p>
+                ) :
+                (commentsList.map((c, index) => (
                   <li key={index} className="mt-2 p-2 border-b">
                     {c}
-                  </li>
+                  </li>)
                 ))}
               </ul>
             </div>
           </>
         )}
-      </div>
-    </div>
+      </>
+    
   );
 };

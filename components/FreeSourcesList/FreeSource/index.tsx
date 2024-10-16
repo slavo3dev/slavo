@@ -80,13 +80,9 @@ export const FreeSource: FC<FreeSourceTypeProps> = ({ fact, setFacts }: any) => 
                         🤯 {fact.exelent}
 					</button>
 					<button
-						className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
+						className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
 						onClick={() => handleVote("false")} disabled={isUpdating} >
                         ⛔️ {fact.false}
-					</button>
-					<button
-						className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-                        💬 
 					</button>
 					<Comments />
 				</div>
