@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext} from 'react';
-import Image from 'next/image';
+import CalendarHeatmap from 'react-calendar-heatmap';
+import 'react-calendar-heatmap/dist/styles.css'
 import WeeklyGoalForm from '../PorchWeeklyGoalForm';
 import UserInfoContext from '@/context/UserInfoContext';
 import supabase from '@/lib/supabase';
@@ -18,7 +19,7 @@ const PorchUserDataForm= () => {
     const [currentStreak, setCurrentStreak] = useState<number>(0);
     const [longestStreak, setLongestStreak] = useState<number>(0);
     const [weeklyLearningDays, setWeeklyLearningDays] = useState<number>(0);
-    const [goalTrack, setGoalTrack] = useState()
+    const [learningDates, setLearningDates] = useState<{date: string; count: number}[]>([]);
 
 
 
@@ -78,6 +79,7 @@ const PorchUserDataForm= () => {
         fetchConsecutiveLearningDays();
     }, [userInfo?.email])
 
+    // grabbing posts by created-at time by user in ascending order 
     useEffect(() => {
         const fetchWeeklyLearningDays = async () => {
             if (userInfo?.email) {
@@ -92,16 +94,18 @@ const PorchUserDataForm= () => {
                 } else {
                     console.log(data)
 
-                    const currentWeekLearningDays = new Set<string>();
-                    const today = new Date();
-                    const currentDayOfWeek = today.getDay();
-                    const startOfWeek = new Date(today);
-                    startOfWeek.setDate(today.getDate() - currentDayOfWeek);
+                    const currentWeekLearningDays = new Set<string>(); // using set only concerned with unique values
+                    const today = new Date(); 
+                    const currentDayOfWeek = today.getDay(); // 0-7 ; 0 = sunday ... 
+                    const startOfWeek = new Date(today); 
+                    startOfWeek.setDate(today.getDate() - currentDayOfWeek); // subtracting current day of week from current day to get day of start of week
                     
                     
-                    // for each created at entry per user in porch what is the the total amount of entries for a the current given week
+                    // for each created-at entry per user in porch what is the the total amount of entries for the current given week
                     data.forEach((entry: {created_at: string}) => {
                         const learningDate = new Date(entry.created_at);
+
+                        // check to see if learning date is within the current week
                         if (learningDate >= startOfWeek && learningDate <= today) {
                             currentWeekLearningDays.add(learningDate.toDateString());
                         }
@@ -112,19 +116,36 @@ const PorchUserDataForm= () => {
             }
         };
         fetchWeeklyLearningDays();
-    }, [userInfo?.email])
+    }, [userInfo?.email]);
+
+
+	useEffect(() => {
+		const fetchLearningDates = async () => {
+			if (userInfo?.email) {
+				const { data, error } = await supabase
+					.from("porch")
+					.select("created_at")
+					.eq("email", userInfo.email);
+
+				if (error) {
+					console.error("Error fetching learning days from Supabase:", error);
+				} else {
+                    const formattedDate = data.map((entry: {created_at: string}) => ({
+                        date: new Date(entry.created_at).toISOString().split('T')[0],
+                        count: 1
+                    }))
+					setLearningDates(formattedDate);
+				}
+			}
+		};
+		fetchLearningDates();
+	}, [userInfo?.email]);
 
     // !!!
-    // WEEKLY LEARNING GOALS 
-        // need to create functionality for off/track button 
-            // when goal is completed turn green -> Good Job (or something)
-            // when goal is halfway turn yellow -> almost there / on track
-            // otherwise less than halfway towards goal still offtrack
-    // HEATMAP
-        // need to implement and create heatmap 
-            // need to use user data 
-                // update the day they submitted the update with the corresponding day in heatmap
-                
+    // CHARTS
+        // need to implement chart
+                // have data neccesary to build chart (fetchLearningDates());
+
 
 
     if (showUpdateGoals) {
@@ -184,7 +205,10 @@ const PorchUserDataForm= () => {
             </div>
             <div className='border-2 p-4 m-2 flex flex-col overflow-hidden  bg-white shadow-lg group rounded-xl'>
                 <h5 className='mb-4'>Learning Charts</h5>
-                
+
+                {/* Need to use the learning dates array 
+                of objects to render charts here */}
+
             </div>
         </div>
     );
