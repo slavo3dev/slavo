@@ -84,10 +84,7 @@ export const FreeSource: FC<FreeSourceTypeProps> = ({ fact, setFacts }: any) => 
 						onClick={() => handleVote("false")} disabled={isUpdating} >
                         ⛔️ {fact.false}
 					</button>
-					
-						<Comments />
-				
-					
+					<Comments/>
 				</div>
 			</div>
 		</>
