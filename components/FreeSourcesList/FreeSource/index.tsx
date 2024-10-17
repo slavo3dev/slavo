@@ -50,7 +50,7 @@ export const FreeSource: FC<FreeSourceTypeProps> = ({ fact, setFacts }: any) => 
 	return (
 		<>
 			{badSource ? <span className='badsource'>[ ⛔️ BAD SOURCE ]</span> : null}
-			<div className="flex flex-col overflow-hidden transition-all duration-200 transform bg-white border border-gray-100 shadow group rounded-xl hover:shadow-lg hover:-translate-y-1">
+			<div className="flex flex-col transition-all duration-200 transform bg-white border border-gray-100 shadow group rounded-xl hover:shadow-lg hover:-translate-y-1">
 				<div className="px-4 py-5">
 					<div className="text-lg font-bold text-gray-900">{fact.category}</div>
 					<p className="mt-3 text-sm font-normal leading-6 text-gray-500 line-clamp-3">
@@ -84,7 +84,10 @@ export const FreeSource: FC<FreeSourceTypeProps> = ({ fact, setFacts }: any) => 
 						onClick={() => handleVote("false")} disabled={isUpdating} >
                         ⛔️ {fact.false}
 					</button>
-					<Comments />
+					
+						<Comments />
+				
+					
 				</div>
 			</div>
 		</>

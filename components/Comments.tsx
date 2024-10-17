@@ -8,6 +8,7 @@ export const Comments = () => {
   const [error, setError] = useState<string>("");
   const [showComments, setShowComments] = useState<boolean>(false);
   const [commentsList, setCommentsList] = useState<string[]>([]);
+  const [successMessage, setSuccessMessage] = useState<string>("");
 
   const { userInfo } = useContext(UserInfoContext);
   const userEmail = userInfo?.email;
@@ -37,6 +38,8 @@ export const Comments = () => {
     }
     setCommentsList([...commentsList, comment]); // Add comment to the list
     setComment(""); // Clear the input after submission
+    setSuccessMessage("Comment submitted successfully!"); // Confirmation message
+    setError(""); // Clear any previous errors
   };
 
   const toggleComments = () => {
@@ -45,22 +48,22 @@ export const Comments = () => {
 
   return (
     
-      <>
+      <div className="flex flex-col z-50">
         
         <button
           onClick={toggleComments}
-          className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
+          className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700"
         >
-          {showComments ? "Hide Comments" : "💬"}
+          {showComments ? "Hide Comments" : "Show Comments"}
         </button>
         {showComments && (
-          <>
+          <div className="absolute top-10 left-0 w-full bg-white shadow-lg z-10">
             {userEmail && (
             <p className="text-sm text-gray-600">
               Logged in as: <span className="font-bold">{userEmail}</span>
             </p>
           )}
-            <form onSubmit={onSubmit} className="mt-8 flex flex-col gap-2">
+            <form onSubmit={onSubmit} className="mt-2 flex flex-col gap-2">
               
               <textarea
                 value={comment}
@@ -74,9 +77,10 @@ export const Comments = () => {
               </button>
             </form>
             {error && <p className="text-red-500 mt-2">{error}</p>}
-            <div className="mt-4">
+            {successMessage && <p className="text-green-500 mt-2">{successMessage}</p>}
+            <div className="mt-2 text-black">
               <h4 className="font-bold">Comments:</h4>
-              <ul>
+              <ul className="list-none">
                 {commentsList.length === 0 ? (
                   <p>No comments yet. Be the first to comment!</p>
                 ) :
@@ -87,9 +91,9 @@ export const Comments = () => {
                 ))}
               </ul>
             </div>
-          </>
+          </div>
         )}
-      </>
+      </div>
     
   );
 };
