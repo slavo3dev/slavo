@@ -148,6 +148,12 @@ const PorchUserDataForm= () => {
                 // Going to have to pass that prop through calendar into a marked date function, 
                 // with a marked date state. To render dates that have learned as shadowed or colored. 
 
+    // State Machine
+        // where to keep state 
+        // learn about state machine 
+        // learn abotu redux / contact
+        // refactor code to make database pulls more efficient
+
 
 
     if (showUpdateGoals) {
