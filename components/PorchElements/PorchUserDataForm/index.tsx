@@ -1,9 +1,8 @@
 import { useState, useEffect, useContext} from 'react';
-import CalendarHeatmap from 'react-calendar-heatmap';
-import 'react-calendar-heatmap/dist/styles.css'
 import WeeklyGoalForm from '../PorchWeeklyGoalForm';
 import UserInfoContext from '@/context/UserInfoContext';
 import supabase from '@/lib/supabase';
+import Calendar from './Calendar';
 
 //!!!
 // General 
@@ -145,6 +144,9 @@ const PorchUserDataForm= () => {
     // CHARTS
         // need to implement chart
                 // have data neccesary to build chart (fetchLearningDates());
+                // going to need to give calendar a prop to pass fetchLearningDates() in;
+                // Going to have to pass that prop through calendar into a marked date function, 
+                // with a marked date state. To render dates that have learned as shadowed or colored. 
 
 
 
@@ -208,7 +210,7 @@ const PorchUserDataForm= () => {
 
                 {/* Need to use the learning dates array 
                 of objects to render charts here */}
-
+                <Calendar />
             </div>
         </div>
     );
