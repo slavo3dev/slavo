@@ -41,7 +41,7 @@ export const Comments = () => {
       setError("Comment cannot exceed 96 words.");
     } else {
       setComment(commentValue);
-      setError(""); // Clear any previous errors
+      setError(""); 
     }
   };
 
@@ -61,9 +61,9 @@ export const Comments = () => {
     const newComment: Comment = { email: userEmail || "Anonymous", text: comment };
 
     if (userEmail) {
-      setCommentsList([...commentsList, newComment]); // Add comment with email
-      setComment(""); // Clear the input after submission
-      setSuccessMessage("Comment submitted successfully!"); // Confirmation message
+      setCommentsList([...commentsList, newComment]); 
+      setComment(""); 
+      setSuccessMessage("Comment submitted successfully!"); 
     } else {
       setError("You must be logged in to comment.");
     }
@@ -86,16 +86,9 @@ export const Comments = () => {
 
         {showComments && (
         <>
-          {/* Backdrop overlay */}
-          <div
-            className="fixed inset-0 bg-black bg-opacity-50 z-40"
-            onClick={toggleComments} // Clicking outside the modal closes it
-          ></div>
-
-          {/* Popup Modal */}
           <div className="fixed inset-0 flex justify-center items-center z-50">
             <div className="bg-white w-full max-w-lg p-8 rounded-lg shadow-lg relative max-h-[300px] overflow-y-auto">
-              {/* Close button */}
+              
               <button
                 onClick={toggleComments}
                 className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
