@@ -3,11 +3,16 @@
 import { useState, ChangeEvent, FormEvent, useContext, useEffect } from "react";
 import UserInfoContext from "context/UserInfoContext";
 
+interface Comment {
+  email: string;
+  text: string;
+}
+
 export const Comments = () => {
   const [comment, setComment] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [showComments, setShowComments] = useState<boolean>(false);
-  const [commentsList, setCommentsList] = useState<string[]>([]);
+  const [commentsList, setCommentsList] = useState<Comment[]>([]);
   const [successMessage, setSuccessMessage] = useState<string>("");
 
   const { userInfo } = useContext(UserInfoContext);
@@ -52,10 +57,16 @@ export const Comments = () => {
       setError("Comment cannot exceed 96 words.");
       return;
     }
-    setCommentsList([...commentsList, comment]); // Add comment to the list
-    setComment(""); // Clear the input after submission
-    setSuccessMessage("Comment submitted successfully!"); // Confirmation message
-    setError(""); // Clear any previous errors
+
+    const newComment: Comment = { email: userEmail || "Anonymous", text: comment };
+
+    if (userEmail) {
+      setCommentsList([...commentsList, newComment]); // Add comment with email
+      setComment(""); // Clear the input after submission
+      setSuccessMessage("Comment submitted successfully!"); // Confirmation message
+    } else {
+      setError("You must be logged in to comment.");
+    }
   };
 
   const toggleComments = () => {
@@ -92,11 +103,11 @@ export const Comments = () => {
                 ✕
               </button>
 
-              {userEmail && (
+              {/*userEmail && (
                 <p className="text-sm text-gray-600">
                   Logged in as: <span className="font-bold">{userEmail}</span>
                 </p>
-              )}
+              )*/}
               <form onSubmit={onSubmit} className="mt-2 flex flex-col gap-2">
                 <textarea
                   value={comment}
@@ -112,13 +123,13 @@ export const Comments = () => {
               {error && <p className="text-red-500 mt-2">{error}</p>}
               {successMessage && <p className="text-green-500 mt-2">{successMessage}</p>}
               <div className="mt-2 text-black">
-                <h4 className="font-bold">Comments:</h4>
+                <p className="font-bold">Comments:</p>
                   {commentsList.length === 0 ? (
                     <p>No comments yet. Be the first to comment!</p>
                   ) : (
                     commentsList.map((c, index) => (
-                      <p key={index} className="mt-2 p-2 border-b">
-                        {c}
+                      <p key={index} className="p-2 border-b max-w-full break-words text-sm">
+                        <span className="text-blue-400">{c.email}:</span> <span className="block overflow-wrap break-word font-normal text-gray-500">{c.text}</span>
                       </p>
                     ))
                   )}
