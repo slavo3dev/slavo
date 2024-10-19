@@ -1,7 +1,6 @@
-"use client";
-
 import { useState, ChangeEvent, FormEvent, useContext, useEffect } from "react";
 import UserInfoContext from "context/UserInfoContext";
+import { CommentsError } from "@/lib/err/err";
 
 interface Comment {
   email: string;
@@ -36,9 +35,9 @@ export const Comments = () => {
     const wordCount = countWords(commentValue);
 
     if (!commentValue) {
-      setError("Please add a comment first.");
+      setError(CommentsError.onSubmitError);
     } else if (wordCount > 96) {
-      setError("Comment cannot exceed 96 words.");
+      setError(CommentsError.wordLimitError);
     } else {
       setComment(commentValue);
       setError(""); 
@@ -49,12 +48,12 @@ export const Comments = () => {
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!comment.trim()) {
-      setError("Please add a comment first.");
+      setError(CommentsError.onSubmitError);
       return;
     }
 
     if (countWords(comment) > 96) {
-      setError("Comment cannot exceed 96 words.");
+      setError(CommentsError.wordLimitError);
       return;
     }
 
@@ -65,7 +64,7 @@ export const Comments = () => {
       setComment(""); 
       setSuccessMessage("Comment submitted successfully!"); 
     } else {
-      setError("You must be logged in to comment.");
+      setError(CommentsError.notLoggedInError);
     }
   };
 
