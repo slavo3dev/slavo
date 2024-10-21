@@ -61,7 +61,7 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
 	};
 
 	return (
-		<div className="flex flex-col overflow-hidden transition-all duration-200 transform bg-white shadow group rounded-xl hover:shadow-lg hover:-translate-y-1 hover:bg-sky-100">
+		<div className="flex flex-col overflow-hidden transition-all duration-200 transform bg-white shadow group rounded-xl hover:shadow-lg hover:-translate-y-1 hover:bg-sky-100 ">
 			<div className="flex-1 py-3 px-4 sm:p-6">
 				<p className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-blue-500 to-blue-800">
 					<b>Daily Update</b>

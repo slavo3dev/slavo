@@ -1,5 +1,10 @@
 import React, { useContext } from "react";
 import UserInfoContext from "@/context/UserInfoContext";
+import PorchUserButton from "../PorchInteractivity";
+import { MdOutlineTrendingUp } from "react-icons/md";
+import { IoMdClose } from "react-icons/io";
+import { GoArrowLeft } from "react-icons/go";
+
 
 interface PorchHeaderProps {
   showForm: boolean;
@@ -10,21 +15,25 @@ export const PorchHeader: React.FC<PorchHeaderProps> = ({ showForm, setShowForm 
 	const { userInfo } = useContext(UserInfoContext);
 
 	return (
-		<header className="header flex flex-col w-full">
-			<div className="w-full flex justify-center mb-6 text-xl md:text-2xl lg:text-3xl ">
-				<h2 className="font-impact text-center">BE CONSISTENT</h2>
+		<header className="flex flex-col mt-1">
+			<div className="flex flex-row items-center">
+				<button
+					className="group flex h-[1.65rem] w-[1.65rem] border mb-6 ml-0.5 border-black rounded-full justify-center items-center"
+					onClick={() => {
+						(userInfo?.email)
+							? setShowForm((show) => !show)
+							: alert("Please log-in or Verify Your email address");
+					}}
+				>
+					<span className="flex text-black font-bold ">{showForm ? <IoMdClose/> : <MdOutlineTrendingUp/>} </span>
+				</button>
+				<p className="pl-2 pb-6"><GoArrowLeft /></p>
+				<p className="pl-2 pb-6 text-xs">Post your <span className="font-bold text-blue-700">progress!</span></p>
 			</div>
-
-			<button
-				className="px-1 py-1 bg-gradient-to-br from-blue-700 via-blue-500 to-blue-800 text-white w-full sm:w-1/2 rounded-full transition h-8 hover:opacity-75"
-				onClick={() => {
-					(userInfo?.email)
-						? setShowForm((show) => !show)
-						: alert("Please log-in or Verify Your email address");
-				}}
-			>
-				<span className="block bg-blue-50 hover:opacity-75 text-black font-bold rounded-full">{showForm ? "Close" : "Post Your Progress"} </span>
-			</button>
+			<div className="w-full flex flex-col justify-center mb-6">
+				<h5 className="font-extralight text-center text-lg italic">"Success isn't always about greatness. It's about consistency. Consistent hard work leads to success. Greatness will come."</h5>
+				<p className="text-center font-bold"><span className="italic font-extralight">-</span> Dwayne Johnson</p>
+			</div>
 		</header>
 	);
 };
