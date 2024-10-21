@@ -2,6 +2,8 @@ import { useState, FC } from "react";
 import supabase from "@/lib/supabase";
 import router from "next/router";
 import { ErrorAlertMsg } from "@/components/Alerts";
+import { REALTIME_POSTGRES_CHANGES_LISTEN_EVENT } from "@supabase/supabase-js";
+import { NoUndefinedVariablesRule } from "graphql";
 interface LoginProps {
     signIn: () => void;
     resetPassword: () => void; 
@@ -23,7 +25,7 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 			if (error) {
 				setSigninError(error.message);
 			} else {
-				const redirectUrl = window.location.hostname === 'localhost' ? 'http://localhost:3000' : '/';
+				const redirectUrl: string = window.location.hostname === 'localhost' ? process.env.LOCAL_HOSTE_URL || "" : '/'
                 router.push(redirectUrl);
 				//router.push("/");
 			}
