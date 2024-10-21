@@ -174,7 +174,7 @@ const PorchUserDataForm= () => {
                 <p className='font-bold text-4xl mt-4 flex justify-center'>{weeklyLearningDays} / {weeklyGoal}</p>
                 <p className='font-bold flex justify-center'>days</p>
                 <div className='flex justify-center'>
-                       { weeklyLearningDays === weeklyGoal ? (
+                       { weeklyLearningDays >= weeklyGoal ? (
                             <p className='text-sm text-center border rounded-full px-2 py-1 w-fit mt-2 bg-green-400'>
                                 Nice! 🚀
                             </p>
@@ -216,10 +216,13 @@ const PorchUserDataForm= () => {
 
                 {/* Need to use the learning dates array 
                 of objects to render charts here */}
-                <Calendar />
+                <Calendar learningDates = {learningDates} />
             </div>
         </div>
     );
 }
 
 export default PorchUserDataForm;
+ 
+// Need to delete package-lock.json 
+// reinstall yarn install again

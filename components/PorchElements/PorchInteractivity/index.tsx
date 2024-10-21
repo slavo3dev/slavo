@@ -22,7 +22,7 @@ const PorchUserButton : FC<PorchUserButtonProps> = ( { showUserForm, setShowUser
                         
                      }}
                 >
-                    <span>{showUserForm ? <IoIosCloseCircleOutline className='h-8 w-8'/> : <CiCirclePlus className='h-8 w-8'/>}</span>
+                    <span className=''>{showUserForm ? <IoIosCloseCircleOutline className='h-8 w-8'/> : <CiCirclePlus className='h-8 w-8'/>}</span>
                 </button>
         </div>
     );

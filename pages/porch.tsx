@@ -7,6 +7,8 @@ import { HeadBasePage, PorchList, PorchHeader, PorchForm } from "@components";
 import { PorchType } from "@/Types/PorchTypes";
 import PorchUserButton from "@/components/PorchElements/PorchInteractivity";
 import PorchUserDataForm from "@/components/PorchElements/PorchUserDataForm";
+import { GoArrowLeft } from "react-icons/go";
+
 
 interface PorchPageProps {
   initialPorchs: PorchType[];
@@ -25,9 +27,6 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
     const [dragging, setDragging] = useState<boolean>(false);
     const [offset, setOffset] = useState({x: 0, y: 0})
 
-	const loadUserData = async () => {
-		
-	}
 
 
 
@@ -83,7 +82,27 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 		<>
 			<HeadBasePage title={ "Share Your Daily Learning Journey - Career Change in Web Development" } description={"Join our community to share your daily learning updates and track your progress in web development. Engage with others on the same career change journey, get support, and stay motivated. Start your path to a bright future with Slavo.io!"} />
 			<div className="p-10 text-slate-800">
-				<PorchUserButton showUserForm={showUserForm} setShowUserForm={setShowUserForm}/>
+				<div className="flex flex-col">
+					<div className="flex flex-row items-center">
+						<PorchUserButton showUserForm={showUserForm} setShowUserForm={setShowUserForm}/>
+						<p className="pl-2 pb-2"><GoArrowLeft /></p>
+						<p className="pl-2 pb-2 text-xs">Check your <span className="font-bold text-blue-700">stats</span> and update your <span className="font-bold text-blue-700">goals!</span></p>
+					</div>
+					<div className="">
+						<PorchHeader showForm={showForm} setShowForm={setShowForm} />
+						<div
+							style={{
+								display: "flex",
+								justifyContent: 'center',
+								marginBottom: '20px'
+							}}
+						> 
+							{showForm ? (
+								<PorchForm setPorchs={setPorchs} setShowForm={setShowForm} />
+							) : null}
+						</div>
+					</div>
+				</div>
 				<div
 					style={{
 						position: 'absolute',
@@ -99,10 +118,6 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 				>
 					{showUserForm ? (<PorchUserDataForm />) : null}
 				</div>
-				<PorchHeader showForm={showForm} setShowForm={setShowForm} />
-				{showForm ? (
-					<PorchForm setPorchs={setPorchs} setShowForm={setShowForm} />
-				) : null}
 				<InfiniteScroll
 					dataLength={porchList.length}
 					next={loadMorePorchs}
