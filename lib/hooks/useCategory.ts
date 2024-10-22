@@ -1,19 +1,21 @@
 import { useState, useEffect } from 'react';
 
-export const useCategory = (categories: string[], initialCategory?: string) => {
+export const useCategory = (categories: string[], selectedCategoryKey: string, initialCategory?: string) => {
     const [activeCategory, setActiveCategory] = useState(initialCategory || categories[0]);
 
     useEffect(() => {
-        const storedCategory = localStorage.getItem('selectedCategory');
+        if (!localStorage.getItem(selectedCategoryKey)) {
+            localStorage.setItem(selectedCategoryKey, initialCategory || categories[0])
+        }
+        const storedCategory = localStorage.getItem(selectedCategoryKey);
         if (storedCategory) {
             setActiveCategory(storedCategory);
         }
-    }, []);
+    }, [selectedCategoryKey, categories, initialCategory]);
 
     const handleCategoryClick = (category: string) => {
         setActiveCategory(category);
-        localStorage.setItem('selectedOption', category);
-        localStorage.setItem('selectedCategory', category);
+        localStorage.setItem(selectedCategoryKey, category);
     };
 
     const isActive = (category: string) => {
@@ -26,4 +28,6 @@ export const useCategory = (categories: string[], initialCategory?: string) => {
         isActive,
     };
 };
+
+
 

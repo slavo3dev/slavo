@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FC } from "react";
 import classes from "./category-search.module.css";
 import { useRouter } from "next/router";
-import { useLocalStorage } from "@/lib/hooks/useLocalStorage";
+import { useCategory } from "@/lib/hooks/useCategory";
 
 interface Props {
   onSearch: (param?: any) => void;
@@ -13,23 +13,24 @@ export const CategorySearch: FC<Props> = ( { onSearch, posts }: Props ) =>
 {
 	const router = useRouter();
     
-	const [ selectedOption, setSelectedOption ] = useState("");
-	const [ selectedCategory, setSelectedCategory] = useState("")
-    
 	const categories: [string] = posts.map( ( post: any ) => post.category ).sort().filter( ( item: string, index: number, arr: [] ) => { return !index || item != arr[ index - 1 ]; } );
 	categories.unshift("ALL");
 
-	useLocalStorage({ value: selectedOption, setValue: setSelectedOption, key: "selectedOption" });
-	useLocalStorage({ value: selectedCategory, setValue: setSelectedCategory, key: "selectedCategory"});
+	const { activeCategory, handleCategoryClick } = useCategory(categories, "selectedCategory");
+	const [selectedOption, setSelectedOption] = useState(activeCategory); 
+
+	useEffect(() => { 
+		setSelectedOption(activeCategory);
+	  }, [activeCategory]);
 
 	function submitHandler(event: any) {
-		event.preventDefault();
-		setSelectedOption( event.target.value );
-		setSelectedCategory( event.target.value ); 
+		const category = event.target.value; 
+		setSelectedOption(category);
+		handleCategoryClick(category);
 		
-		const categorySlug = event.target.value.toLowerCase().replace( " ", "-" );
+		const categorySlug = category.toLowerCase().replace(" ", "-"); 
 		
-		event.target.value === "ALL" ? router.push( "/blog" ) : onSearch(categorySlug);	
+		category === "ALL" ? router.push( "/blog" ) : onSearch(categorySlug);	
 	}
     
 	return (
