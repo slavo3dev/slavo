@@ -41,6 +41,7 @@
         "@types/gtag.js": "^0.0.11",
         "@types/node": "18.7.16",
         "@types/react": "18.0.18",
+        "@types/react-calendar-heatmap": "^1.6.7",
         "@types/react-dom": "18.0.6",
         "@types/react-syntax-highlighter": "^13.5.2",
         "@types/react-typing-effect": "^2.0.3",
