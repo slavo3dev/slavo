@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FC } from "react";
 import classes from "./category-search.module.css";
 import { useRouter } from "next/router";
-import { useCategory } from "@/lib/hooks/useCategory";
+import { useCategoryHook } from "@/lib/hooks/useCategoryHook";
 
 interface Props {
   onSearch: (param?: any) => void;
@@ -16,7 +16,7 @@ export const CategorySearch: FC<Props> = ( { onSearch, posts }: Props ) =>
 	const categories: [string] = posts.map( ( post: any ) => post.category ).sort().filter( ( item: string, index: number, arr: [] ) => { return !index || item != arr[ index - 1 ]; } );
 	categories.unshift("ALL");
 
-	const { activeCategory, handleCategoryClick } = useCategory(categories, "selectedCategory");
+	const { activeCategory, handleCategoryClick } = useCategoryHook(categories, "selectedCategory");
 	const [selectedOption, setSelectedOption] = useState(activeCategory); 
 
 	useEffect(() => { 

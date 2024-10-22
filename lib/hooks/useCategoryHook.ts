@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export const useCategory = (categories: string[], selectedCategoryKey: string, initialCategory?: string) => {
+export const useCategoryHook = (categories: string[], selectedCategoryKey: string, initialCategory?: string) => {
     const [activeCategory, setActiveCategory] = useState(initialCategory || categories[0]);
 
     useEffect(() => {
