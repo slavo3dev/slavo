@@ -1,11 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import axios from "axios";
+import { SubscribeModal } from "../Popup";
 
 export const Subscribe: FC= () => {
 	const [email, setEmail] = useState<any>("");
 	const [state, setState] = useState<any>("idle");
+	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	// const [errorMsg, setErrorMsg] = useState<any>(null);
+
+	useEffect (() => {
+		const isSubsribeShown = localStorage.getItem("subscribeShown"); 
+
+		if(!isSubsribeShown) {
+			localStorage.setItem("subscribeShown", "true"); 
+			setIsModalOpen(true); 
+		}
+	}, []);
 
 	const handleSubscribe = async (e: any) => {
 		e.preventDefault();
@@ -13,10 +24,6 @@ export const Subscribe: FC= () => {
 		try {
 			await axios.post("/api/subscribe", { email });
 			setState("Success");
-			setTimeout(() => {
-				setState("idle");
-			}, 900);
-
 			setEmail("");
 		} catch (e: any) {
 			// setErrorMsg(e.response.data.detail);
@@ -28,6 +35,7 @@ export const Subscribe: FC= () => {
 	};
 
 	const subscribeForm = (
+		
 		<div className="flex flex-wrap max-w-lg mx-auto w-5/6 sm:w-full md:w-full">
 			<div className="flex w-full sm:w-full md:w-2/3 px-3 mb-3 md:mb-0 md:mr-6 bg-blue-500 border border-blue-300 rounded">
 				<svg
@@ -60,7 +68,13 @@ export const Subscribe: FC= () => {
 
 	return (
 		<> 
+		<SubscribeModal isOpen={isModalOpen}>
 			<section className="py-10 sm:py-20 bg-blue-400">
+				<button 
+					className="md:w-auto py-4 px-3 text-m text-blue-800 hover:text-white font-semibold leading-none border border-blue-300 hover:border-blue-300 bg-white hover:bg-blue-500 rounded transition duration-300 ease-in-out"
+					onClick={() => setIsModalOpen(false)}>
+						X
+				</button>
 				<div className="text-center max-w-xl mx-auto w-5/6 sm:w-full md:w-full">
 					<h2 className="mb-4  text-base lg:text-3xl sm:text-3xl text-white font-bold font-heading">
 						<span>Subscribe now to </span>
@@ -82,6 +96,7 @@ export const Subscribe: FC= () => {
 			</section>
 			{state === "Error" &&
             alert("Oops Something went WORONG \nPlease Try Again or You are already a member !!!" )}
+			</SubscribeModal>
 		</>
 	);
 };
