@@ -70,11 +70,13 @@ export const Subscribe: FC= () => {
 		<> 
 		<SubscribeModal isOpen={isModalOpen}>
 			<section className="py-10 sm:py-20 bg-blue-400">
+				<div className="flex justify-end pr-10">
 				<button 
 					className="md:w-auto py-4 px-3 text-m text-blue-800 hover:text-white font-semibold leading-none border border-blue-300 hover:border-blue-300 bg-white hover:bg-blue-500 rounded transition duration-300 ease-in-out"
 					onClick={() => setIsModalOpen(false)}>
 						X
 				</button>
+				</div>
 				<div className="text-center max-w-xl mx-auto w-5/6 sm:w-full md:w-full">
 					<h2 className="mb-4  text-base lg:text-3xl sm:text-3xl text-white font-bold font-heading">
 						<span>Subscribe now to </span>
