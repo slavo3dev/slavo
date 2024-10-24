@@ -2,8 +2,8 @@ import { FC } from "react";
 import Head from "next/head";
 import Script from "next/script";
 import { useRouter } from "next/router";
-import { HeadProps } from "@/lib/types";
-import { META_DESCRIPTION } from "@/lib/constants";
+import { HeadProps } from "lib/types";
+import { META_DESCRIPTION } from "lib/constants";
 
 export const HeadBasePage: FC<HeadProps> = (props) => {
 	const router = useRouter();

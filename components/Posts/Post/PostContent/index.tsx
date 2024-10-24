@@ -5,7 +5,7 @@ import { PostHeader } from "../PostHeader";
 import { PostImage } from "../PostImage";
 import ReactMarkdown from "react-markdown";
 import { HeadBasePage } from "@/components/HeadBasePage";
-import { customRenderers } from "@/lib/formatText";
+import { customRenderers } from "lib/formatText";
 
 
 interface PostContentDataType {

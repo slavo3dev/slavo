@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { formattedDate } from "@/lib/helpers";
+import { formattedDate } from "lib/helpers";
 import { PostHeaderType } from "Types/PostType";
 import { HeadBasePage } from "@/components/HeadBasePage";
 

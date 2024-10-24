@@ -1,5 +1,5 @@
 import { useState, FC } from "react";
-import supabase from "@/lib/supabase";
+import supabase from "lib/supabase";
 import router from "next/router";
 import { ErrorAlertMsg } from "@/components/Alerts";
 import { REALTIME_POSTGRES_CHANGES_LISTEN_EVENT } from "@supabase/supabase-js";

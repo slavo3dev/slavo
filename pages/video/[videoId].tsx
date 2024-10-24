@@ -1,5 +1,5 @@
 import { VideoCard } from "@/components/index";
-import { getVideos } from "@/lib/videos";
+import { getVideos } from "lib/videos";
 import { NextPage } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";

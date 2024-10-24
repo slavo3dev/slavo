@@ -1,5 +1,5 @@
 import { FC, useState , useContext} from "react";
-import supabase from "@/lib/supabase";
+import supabase from "lib/supabase";
 import UserInfoContext from "@/context/UserInfoContext";
 import { Comments } from "@/components/Comments";
 

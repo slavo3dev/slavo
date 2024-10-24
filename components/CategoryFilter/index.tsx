@@ -3,6 +3,7 @@ import { CATEGORIES } from "@/lib/constants";
 import { useLocalStorage } from "@/lib/hooks/useLocalStorage";
 
 
+
 export const CategoryFilter: FC<any> = ({ setCurrentCategory }) => {
 
 	const [selectedResCat, setSelectedResCat] = useState<string>("");

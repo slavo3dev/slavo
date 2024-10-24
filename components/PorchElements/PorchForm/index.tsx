@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import UserInfoContext from "@/context/UserInfoContext";
-import { isValidHttpUrl } from "@/lib/constants";
+import { isValidHttpUrl } from "lib/constants";
 import { Loader } from "@/components/ui/Loader";
 import { PorchType } from "@/Types/PorchTypes";
-import { trackEvent } from "@/lib/ga";
+import { trackEvent } from "lib/ga";
 
 
 interface PorchFormProps {

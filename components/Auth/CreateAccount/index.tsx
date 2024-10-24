@@ -1,4 +1,4 @@
-import supabase from "@/lib/supabase";
+import supabase from "lib/supabase";
 import { useState, FC } from "react";
 import { useRouter } from "next/router";
 

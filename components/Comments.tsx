@@ -1,6 +1,6 @@
 import { useState, ChangeEvent, FormEvent, useContext, useEffect } from "react";
 import UserInfoContext from "context/UserInfoContext";
-import { CommentsError } from "@/lib/err/err";
+import { CommentsError } from "lib/err/err";
 
 interface Comment {
   email: string;
@@ -16,6 +16,7 @@ export const Comments = () => {
 
   const { userInfo } = useContext(UserInfoContext);
   const userEmail = userInfo?.email;
+  
 
   useEffect(() => {
     if (successMessage) {

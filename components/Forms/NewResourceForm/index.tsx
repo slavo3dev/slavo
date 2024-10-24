@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useContext, FC } from "react";
-import { CATEGORIES } from "@/lib/constants";
+import { CATEGORIES } from "lib/constants";
 import axios from "axios";
-import { isValidHttpUrl } from "@/lib/constants";
-import { NewResourceFromProps } from "@/lib/types";
+import { isValidHttpUrl } from "lib/constants";
+import { NewResourceFromProps } from "lib/types";
 import UserInfoContext from "context/UserInfoContext";
 
 export const NewResourceFrom: FC<NewResourceFromProps> = ( { setSources, setShowForm } ) => {
