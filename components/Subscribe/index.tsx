@@ -13,12 +13,11 @@ export const Subscribe: FC= () => {
 		const subscribeModal = localStorage.getItem("subscribeOpen"); 
 
 		if(!subscribeModal) {
-			localStorage.setItem("subscribeOpen", "true"); 
 			setIsModalOpen(true); 
 		}
 	}, []);
 
-	const closeSubscribe = (e: any) => {
+	const closeSubscribe = () => {
 		localStorage.setItem("subscribeOpen", "false"); 
 		setIsModalOpen(false); 
 	}
@@ -45,7 +44,7 @@ export const Subscribe: FC= () => {
 
 	const subscribeForm = (
 		
-		<div className="flex flex-wrap max-w-lg mx-auto w-5/6 sm:w-full md:w-full">
+		<div className="flex flex-wrap p-3">
 			<div className="flex w-full sm:w-full md:w-2/3 px-3 mb-3 md:mb-0 md:mr-6 bg-blue-500 border border-blue-300 rounded">
 				<svg
 					className="h-6 w-6 my-auto text-blue-300"
@@ -79,9 +78,9 @@ export const Subscribe: FC= () => {
 		<> 
 		<Modal isOpen={isModalOpen}>
 			<section className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-400 rounded-lg shadow-lg max-w-md w-full z-50">
-				<div className="flex justify-end pr-10">
+			<div className="flex justify-end pr-2">
 				<button 
-					className="text-white"
+					className="text-white text-xl"
 					onClick={closeSubscribe}>
 						X
 				</button>
