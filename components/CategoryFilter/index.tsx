@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { CATEGORIES } from "@/lib/constants";
+import { CATEGORIES } from "lib/constants";
 
 
 export const CategoryFilter: FC<any> = ({ setCurrentCategory }) => {

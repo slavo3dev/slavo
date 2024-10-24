@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import supabase from "@/lib/supabase";
+import supabase from "lib/supabase";
 
 const AuthPages: NextPage = () =>
 {

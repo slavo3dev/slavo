@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { PostType } from "../../../../Types/PostType";
-import { formattedDate } from "@/lib/helpers";
+import { formattedDate } from "lib/helpers";
 
 export const PostCard: FC<PostType> = ({ post }) => {
   const { title, image, date, excerpt, slug, category } = post;

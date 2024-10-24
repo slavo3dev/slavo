@@ -1,5 +1,5 @@
 import { GetStaticProps, NextPage } from "next";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import supabase from "../lib/supabase";
 import { Loader } from "@/components/ui/Loader";
@@ -17,6 +17,7 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 	const [porchList, setPorchs] = useState<PorchType[]>(initialPorchs);
 	const [page, setPage] = useState(1);
 	const [hasMore, setHasMore] = useState(initialPorchs.length === 100);
+	const [comments, setComments] = useState<[]>([]);
 
 	const loadMorePorchs = useCallback(async () => {
 		try {
@@ -41,6 +42,8 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 			console.log("ALL Loaded");
 		}
 	}, [page]);
+
+
 
 	return (
 		<>

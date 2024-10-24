@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { TitleProps } from "@/lib/types";
+import { TitleProps } from "lib/types";
 
 export const Title: FC<TitleProps> = ( { title } ) =>
 {

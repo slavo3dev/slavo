@@ -4,7 +4,7 @@ import { PostsGrid } from "./PostsGrid";
 import { PostsList } from "Types/PostsList";
 import { Loader } from "@/components/ui/Loader";
 import { BlogMenuCat } from "../BlogMenuCat";
-import { getCategories } from "@/lib/helpers";
+import { getCategories } from "lib/helpers";
 
 export const BlogPosts: FC<PostsList> = ({ posts }) => {
   const [category, setCategory] = useState("ALL");

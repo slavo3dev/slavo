@@ -2,7 +2,8 @@
 import type { NextPage, GetServerSideProps } from "next";
 import { HeadBasePage, LearningSources } from "../components";
 import { Source } from "@/Types/FreeReSources";
-import supabase from "@/lib/supabase";
+import supabase from "lib/supabase";
+import Delete from "@/components/delete";
 
 
 type FreeSourceProps = {
@@ -17,6 +18,7 @@ const FreeSource: NextPage<FreeSourceProps> = ( { sources }: any ) => {
 				title="Free Learning Resources for Career Change - Share & Discover Web Development"
 				description="Discover free learning resources for a career change. Share and find web development tutorials, guides, and tools to boost your skills and advance your career."
 			/>
+			<Delete />
 			<LearningSources sources={sources} />
 		</>
 	);

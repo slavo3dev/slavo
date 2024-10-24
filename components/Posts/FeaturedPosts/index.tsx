@@ -4,7 +4,7 @@ import { PostsList } from "Types/PostsList";
 import {FeaturedTitle} from "./FeaturedTitile";
 import { LinkEvents } from "@components";
 import { BlogMenuCat } from "../BlogMenuCat";
-import { getCategories } from "@/lib/helpers";
+import { getCategories } from "lib/helpers";
 
 export const FeaturedPosts: FC<PostsList> = ({ posts }) =>
 {
