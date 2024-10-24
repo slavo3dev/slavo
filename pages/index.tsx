@@ -5,14 +5,13 @@ import { getFeaturedPosts } from "@/lib/posts-lib";
 
 const Home: NextPage = ({ posts }: any) => {
 	return (
-		<>
+		<>	
+			<Subscribe/>
 			<Hero />
-			<Subscribe />
 			<FeaturedPosts posts={ posts } />
 			{/* <LearningSources /> */}
 			<Solution />
 			<Growth />
-			<Subscribe />
 		</>
 	);
 };

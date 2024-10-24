@@ -1,11 +1,11 @@
 import { FC } from "react";
 
-interface SubscribeModalProps {
+interface ModalProps {
     isOpen: boolean; 
     children: any; 
 }
 
-export const SubscribeModal : FC<SubscribeModalProps> = ({ isOpen, children }) => { 
+export const Modal : FC<ModalProps> = ({ isOpen, children }) => { 
     
     if (!isOpen) { 
         return null; 

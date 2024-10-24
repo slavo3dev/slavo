@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { FC, useState, useEffect } from "react";
 import axios from "axios";
-import { SubscribeModal } from "../Popup";
+import { Modal } from "../Modal";
 
 export const Subscribe: FC= () => {
 	const [email, setEmail] = useState<any>("");
@@ -10,13 +10,18 @@ export const Subscribe: FC= () => {
 	// const [errorMsg, setErrorMsg] = useState<any>(null);
 
 	useEffect (() => {
-		const isSubsribeShown = localStorage.getItem("subscribeShown"); 
+		const subscribeModal = localStorage.getItem("subscribeOpen"); 
 
-		if(!isSubsribeShown) {
-			localStorage.setItem("subscribeShown", "true"); 
+		if(!subscribeModal) {
+			localStorage.setItem("subscribeOpen", "true"); 
 			setIsModalOpen(true); 
 		}
 	}, []);
+
+	const closeSubscribe = (e: any) => {
+		localStorage.setItem("subscribeOpen", "false"); 
+		setIsModalOpen(false); 
+	}
 
 	const handleSubscribe = async (e: any) => {
 		e.preventDefault();
@@ -25,6 +30,10 @@ export const Subscribe: FC= () => {
 			await axios.post("/api/subscribe", { email });
 			setState("Success");
 			setEmail("");
+			setTimeout(() => {
+				setState("idle");
+				setIsModalOpen(false)
+			}, 4000);
 		} catch (e: any) {
 			// setErrorMsg(e.response.data.detail);
 			setState("Error");
@@ -68,12 +77,12 @@ export const Subscribe: FC= () => {
 
 	return (
 		<> 
-		<SubscribeModal isOpen={isModalOpen}>
-			<section className="py-10 sm:py-20 bg-blue-400">
+		<Modal isOpen={isModalOpen}>
+			<section className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-400 rounded-lg shadow-lg max-w-md w-full z-50">
 				<div className="flex justify-end pr-10">
 				<button 
-					className="md:w-auto py-4 px-3 text-m text-blue-800 hover:text-white font-semibold leading-none border border-blue-300 hover:border-blue-300 bg-white hover:bg-blue-500 rounded transition duration-300 ease-in-out"
-					onClick={() => setIsModalOpen(false)}>
+					className="text-white"
+					onClick={closeSubscribe}>
 						X
 				</button>
 				</div>
@@ -98,7 +107,7 @@ export const Subscribe: FC= () => {
 			</section>
 			{state === "Error" &&
             alert("Oops Something went WORONG \nPlease Try Again or You are already a member !!!" )}
-			</SubscribeModal>
+			</Modal>
 		</>
 	);
 };
