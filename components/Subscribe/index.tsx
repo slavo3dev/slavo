@@ -14,6 +14,8 @@ export const Subscribe: FC<{ setBlur: (isBlurred: boolean) => void }> = ({ setBl
 	const [errorMsg, setErrorMsg] = useState<string>("");
 
 	useEffect (() => {
+		
+		localStorage.removeItem("subscribeOpen");
 		const subscribeModal = localStorage.getItem("subscribeOpen"); 
 
 		if(!subscribeModal && !isAuth) {
@@ -90,8 +92,7 @@ export const Subscribe: FC<{ setBlur: (isBlurred: boolean) => void }> = ({ setBl
 
 	return (
 		<> 
-		<Modal isOpen={isModalOpen}>
-			<section className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-400 rounded-lg shadow-lg max-w-xl w-full z-50">
+		<Modal isOpen={isModalOpen} className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-400 rounded-lg shadow-lg max-w-xl w-full z-50">
 			<div className="flex justify-end pr-2">
 				<button 
 					className="text-white text-xl pt-2 pr-2"
@@ -117,10 +118,9 @@ export const Subscribe: FC<{ setBlur: (isBlurred: boolean) => void }> = ({ setBl
 						subscribeForm
 					)}
 				</div>
-			</section>
 			{state === "Error" &&
             alert("Oops Something went WRONG \nPlease Try Again or You are already a member !!!" )}
-			</Modal>
+		</Modal>
 		</>
 	);
 };
