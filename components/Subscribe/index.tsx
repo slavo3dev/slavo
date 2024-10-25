@@ -1,25 +1,30 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Modal } from "../Modal";
+import UserInfoContext from "@/context/UserInfoContext";
 
-export const Subscribe: FC= () => {
+export const Subscribe: FC<{ setBlur: (isBlurred: boolean) => void }> = ({ setBlur }) => {
 	const [email, setEmail] = useState<any>("");
 	const [state, setState] = useState<any>("idle");
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+	const { userInfo } = useContext(UserInfoContext);
+	const isAuth = userInfo?.email;
 	// const [errorMsg, setErrorMsg] = useState<any>(null);
 
 	useEffect (() => {
 		const subscribeModal = localStorage.getItem("subscribeOpen"); 
 
-		if(!subscribeModal) {
+		if(!subscribeModal && !isAuth) {
 			setIsModalOpen(true); 
+			setBlur(true); 
 		}
-	}, []);
+	}, [isAuth]);
 
 	const closeSubscribe = () => {
 		localStorage.setItem("subscribeOpen", "false"); 
 		setIsModalOpen(false); 
+		setBlur(false);
 	}
 
 	const handleSubscribe = async (e: any) => {
@@ -31,7 +36,7 @@ export const Subscribe: FC= () => {
 			setEmail("");
 			setTimeout(() => {
 				setState("idle");
-				setIsModalOpen(false)
+				closeSubscribe(); 
 			}, 4000);
 		} catch (e: any) {
 			// setErrorMsg(e.response.data.detail);
