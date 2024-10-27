@@ -18,6 +18,7 @@ interface FreeSourceTypeProps {
 }
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const FreeSource: FC<FreeSourceTypeProps> = ({ fact, setFacts }: any) => {
+	console.log("Fact object:", fact); 
 	const [isUpdating, setIsUpdating] = useState(false);
 	const badSource =
         fact.like + fact.exelent < fact.false;
@@ -84,7 +85,7 @@ export const FreeSource: FC<FreeSourceTypeProps> = ({ fact, setFacts }: any) => 
 						onClick={() => handleVote("false")} disabled={isUpdating} >
                         ⛔️ {fact.false}
 					</button>
-					<Comments/>
+					<Comments sourceId={fact.id}/>
 				</div>
 			</div>
 		</>

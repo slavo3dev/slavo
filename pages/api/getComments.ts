@@ -3,11 +3,12 @@ import supabase from "lib/supabase";
 
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+    
     try {
         const { data, error } = await supabase
             .from('comments')
             .select('*');
-
+            
             console.log("Data from supabase", data);
             console.log("Error related to supabase", error)
             
