@@ -12,19 +12,15 @@ type FreeSourceProps = {
 };
 
 const FreeSource: NextPage<FreeSourceProps> = ( { sources }: any ) => {
-    
-	const [isBlurred, setIsBlurred] = useState<boolean>(false); 
+
 
 	return (
 		<>
-			<Subscribe setBlur={setIsBlurred}/>
-			<div className={`transition-all ${isBlurred ? 'blurred' : ''}`}>	
-					<HeadBasePage
-					title="Free Learning Resources for Career Change - Share & Discover Web Development"
-					description="Discover free learning resources for a career change. Share and find web development tutorials, guides, and tools to boost your skills and advance your career."
-					/>
-				<LearningSources sources={sources} />
-			</div>
+			<HeadBasePage
+				title="Free Learning Resources for Career Change - Share & Discover Web Development"
+				description="Discover free learning resources for a career change. Share and find web development tutorials, guides, and tools to boost your skills and advance your career."
+			/>
+			<LearningSources sources={sources} />
 		</>
 	);
 };

@@ -8,7 +8,6 @@ import { PorchType } from "@/Types/PorchTypes";
 import PorchUserButton from "@/components/PorchElements/PorchInteractivity";
 import PorchUserDataForm from "@/components/PorchElements/PorchUserDataForm";
 import { GoArrowLeft } from "react-icons/go";
-import { Subscribe } from "@components";
 
 
 interface PorchPageProps {
@@ -27,8 +26,6 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 	const [position, setPosition] = useState({x: 211, y: 196})
     const [dragging, setDragging] = useState<boolean>(false);
     const [offset, setOffset] = useState({x: 0, y: 0})
-
-	const [isBlurred, setIsBlurred] = useState<boolean>(false); 
 
 
 
@@ -83,9 +80,7 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 
 	return (
 		<>
-			<Subscribe setBlur={setIsBlurred}/>
-			<div className={`transition-all ${isBlurred ? 'blurred' : ''}`}>	
-				<HeadBasePage title={ "Share Your Daily Learning Journey - Career Change in Web Development" } description={"Join our community to share your daily learning updates and track your progress in web development. Engage with others on the same career change journey, get support, and stay motivated. Start your path to a bright future with Slavo.io!"} />
+			<HeadBasePage title={ "Share Your Daily Learning Journey - Career Change in Web Development" } description={"Join our community to share your daily learning updates and track your progress in web development. Engage with others on the same career change journey, get support, and stay motivated. Start your path to a bright future with Slavo.io!"} />
 				<div className="p-10 text-slate-800">
 					<div className="flex flex-col">
 						<div className="flex flex-row items-center">
@@ -133,7 +128,6 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 						<PorchList porchs={porchList} setPorchs={setPorchs} />
 					</InfiniteScroll>
 				</div>
-			</div>
 		</>
 	);
 };

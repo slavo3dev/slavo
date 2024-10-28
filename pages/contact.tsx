@@ -1,17 +1,13 @@
 import type { NextPage } from "next";
 import { useState } from "react";
 import { ContactForm, HeadBasePage } from "../components";
-import { Subscribe } from "../components";
 
 
 const Contact: NextPage = () => {
 
-	const [isBlurred, setIsBlurred] = useState<boolean>(false);
 
 	return (
 		<>
-			<Subscribe setBlur={setIsBlurred}/>
-			<div className={`transition-all ${isBlurred ? 'blurred' : ''}`}>	
 				<HeadBasePage title={"Contact Us for Expert Career Change Guidance - Slavo.io Mentorship"} description="Discover how a career change into web development can open up new opportunities. Learn web development skills, programming languages, and tools to start your journey today." />
 				<section className="py-20 h-screen" >
 					<div className="container ">
@@ -36,7 +32,6 @@ const Contact: NextPage = () => {
 						</div>
 					</div>
 				</section>
-			</div>
 		</>
 	);
 };

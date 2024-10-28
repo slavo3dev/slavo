@@ -4,6 +4,7 @@ import axios from "axios";
 import { Modal } from "../Modal";
 import UserInfoContext from "@/context/UserInfoContext";
 import { validateEmail } from "@/lib/helpers/validateEmail";
+import { SubscribeButton } from "./subscribeButton";
 
 export const Subscribe: FC<{ setBlur: (isBlurred: boolean) => void }> = ({ setBlur }) => {
 	const [email, setEmail] = useState<string>("");
@@ -15,7 +16,6 @@ export const Subscribe: FC<{ setBlur: (isBlurred: boolean) => void }> = ({ setBl
 
 	useEffect (() => {
 		
-		localStorage.removeItem("subscribeOpen");
 		const subscribeModal = localStorage.getItem("subscribeOpen"); 
 
 		if(!subscribeModal && !isAuth) {
@@ -92,6 +92,7 @@ export const Subscribe: FC<{ setBlur: (isBlurred: boolean) => void }> = ({ setBl
 
 	return (
 		<> 
+		<SubscribeButton setIsModalOpen={setIsModalOpen} setBlur={setBlur}/>
 		<Modal isOpen={isModalOpen} className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-400 rounded-lg shadow-lg max-w-xl w-full z-50">
 			<div className="flex justify-end pr-2">
 				<button 

@@ -8,14 +8,9 @@ import { Subscribe } from "@/components/index";
 
 const blog: NextPage = ( { posts }: any ) => {
 
-	const [isBlurred, setIsBlurred] = useState<boolean>(false);
-
 	return (
 		<>
-			<Subscribe setBlur={setIsBlurred}/>
-			<div className={`transition-all ${isBlurred ? 'blurred' : ''}`}>	
-				<BlogPosts posts={posts} />
-			</div>
+			<BlogPosts posts={posts} />
 		</>
 	);
 };
