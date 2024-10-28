@@ -6,7 +6,7 @@ import UserInfoContext from "@/context/UserInfoContext";
 import { validateEmail } from "@/lib/helpers/validateEmail";
 import { SubscribeButton } from "./subscribeButton";
 
-export const Subscribe: FC<{ setBlur: (isBlurred: boolean) => void }> = ({ setBlur }) => {
+export const Subscribe: FC = () => {
 	const [email, setEmail] = useState<string>("");
 	const [state, setState] = useState<any>("idle");
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -14,20 +14,20 @@ export const Subscribe: FC<{ setBlur: (isBlurred: boolean) => void }> = ({ setBl
 	const isAuth = userInfo?.email;
 	const [errorMsg, setErrorMsg] = useState<string>("");
 
+
+	type SubscribeModal = boolean | null ; 
 	useEffect (() => {
 		
-		const subscribeModal = localStorage.getItem("subscribeOpen"); 
+		const subscribeModal: SubscribeModal = JSON.parse(localStorage.getItem("subscribeOpen") as string); 
 
 		if(!subscribeModal && !isAuth) {
 			setIsModalOpen(true); 
-			setBlur(true); 
 		}
 	}, [isAuth]);
 
 	const closeSubscribe = () => {
-		localStorage.setItem("subscribeOpen", "false"); 
+		localStorage.setItem("subscribeOpen", JSON.stringify(false)); 
 		setIsModalOpen(false); 
-		setBlur(false);
 	}
 
 	const handleSubscribe = async (e: any) => {
@@ -92,7 +92,7 @@ export const Subscribe: FC<{ setBlur: (isBlurred: boolean) => void }> = ({ setBl
 
 	return (
 		<> 
-		<SubscribeButton setIsModalOpen={setIsModalOpen} setBlur={setBlur}/>
+		<SubscribeButton setIsModalOpen={setIsModalOpen}/>
 		<Modal isOpen={isModalOpen} className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-400 rounded-lg shadow-lg max-w-xl w-full z-50">
 			<div className="flex justify-end pr-2">
 				<button 

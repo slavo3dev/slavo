@@ -16,7 +16,6 @@ export const MainNavigation: FC = () => {
 	const router = useRouter();
     
 	const userEmail = userInfo?.email;
-	const [isBlurred, setIsBlurred] = useState<boolean>(false); 
     
 	useEffect(() => {
 		document.addEventListener("scroll", () => {
@@ -67,7 +66,7 @@ export const MainNavigation: FC = () => {
 							{userEmail}
 						</li>}
 						<li>
-							<Subscribe setBlur={setIsBlurred} />
+							<Subscribe />
 						</li>
 					</ul>
 				</nav>

@@ -2,14 +2,12 @@ import { FC } from "react";
 
 interface SubscribeButtonProps {
   setIsModalOpen: (isOpen: boolean) => void;
-  setBlur: (isBlurred: boolean) => void;
 }
 
-export const SubscribeButton: FC<SubscribeButtonProps> = ({ setIsModalOpen, setBlur }) => {
+export const SubscribeButton: FC<SubscribeButtonProps> = ({ setIsModalOpen }) => {
   const handleClick = () => {
-    localStorage.setItem("subscribeOpen", "true");
+    localStorage.setItem("subscribeOpen",JSON.stringify(true));
     setIsModalOpen(true);
-    setBlur(true);
   };
 
   return (

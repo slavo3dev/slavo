@@ -9,21 +9,20 @@ const Home: NextPage = ({ posts }: any) => {
 	const [isBlurred, setIsBlurred] = useState<boolean>(false); 
  
 	useEffect(() => {
-		const subscribeOpen = localStorage.getItem("subscribeOpen") === "true";
+		const subscribeOpen = localStorage.getItem("subscribeOpen") === "true"; //make this boolean 
 		setIsBlurred(subscribeOpen);
-		debugger
 	}, []);
 	
 
 	return (
 		<>
-		<div className={`transition-all ${isBlurred ? 'blurred' : ''}`}>	
+		<div className={`${isBlurred ? 'blurred' : ''}`}>	
 			<Hero />
 			<FeaturedPosts posts={ posts } />
 			{/* <LearningSources /> */}
 			<Solution />
 			<Growth />		
-			</div>
+		</div>
 		</>
 	);
 };
