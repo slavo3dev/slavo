@@ -34,31 +34,17 @@ export const Comments = ({sourceId}: CommentsProps) => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        let response = await fetch(`api/getComments?sourceId=${sourceId}`);
-        let data = await response.json()
-        setPostComments(data)
-        console.log("Fetched comments for sourceId:", sourceId, data);
-        
-       // Check if the response is null or empty array and set accordingly
-      if (data === null || (Array.isArray(data) && data.length === 0)) {
-        setPostComments([]);  // Set to empty array if no comments
-      } else if (Array.isArray(data)) {
-        setPostComments(data);
-      } else {
-        console.error("Unexpected data format:", data);
-        setPostComments([]); // Set to empty array if unexpected format
+        const response = await fetch(`/api/getComments?sourceId=${sourceId}`);
+        const data = await response.json();
+        setPostComments(data); // `data` will be an empty array if no comments found
+      } catch (error) {
+        console.error("Error fetching comments:", error);
+        setError(CommentsError.fetchError);
       }
-
-
-      } catch(error) {
-        console.error("Error fetching comments: ", error)
-      }
-      
-    }
-    
+    };
+  
     fetchComments();
-
-  },[sourceId])
+  }, [sourceId]);
 
   useEffect(() => {
     if (successMessage) {
