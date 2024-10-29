@@ -1,17 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextPage } from "next";
-import { useState } from "react";
-import { BlogPosts } from "@/components/index";
+import { BlogPosts, BlurWrapper } from "@/components/index";
 import { getAllPosts } from "@/lib/posts-lib";
-import { Subscribe } from "@/components/index";
+
 
 
 const blog: NextPage = ( { posts }: any ) => {
 
 	return (
-		<>
+		<BlurWrapper>
 			<BlogPosts posts={posts} />
-		</>
+		</BlurWrapper>
 	);
 };
 

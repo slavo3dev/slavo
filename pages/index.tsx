@@ -1,31 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, useEffect } from "react";
 import type { NextPage } from "next";
-import { FeaturedPosts, Subscribe, Growth, Solution, Hero } from "@components";
+import { FeaturedPosts, Growth, Solution, Hero, BlurWrapper } from "@components";
 import { getFeaturedPosts } from "@/lib/posts-lib";
 
 const Home: NextPage = ({ posts }: any) => {
 
-	const [isBlurred, setIsBlurred] = useState<boolean>(false); 
- 
-	useEffect(() => {
-		const subscribeOpen = localStorage.getItem("subscribeOpen") === "true"; //make this boolean 
-		setIsBlurred(subscribeOpen);
-	}, []);
 	
 
 	return (
-		<>
-		<div className={`${isBlurred ? 'blurred' : ''}`}>	
+		<BlurWrapper>
 			<Hero />
 			<FeaturedPosts posts={ posts } />
 			{/* <LearningSources /> */}
 			<Solution />
 			<Growth />		
-		</div>
-		</>
-	);
-};
+		</BlurWrapper>
+)};
 
 export function getStaticProps() {
 	const featuredPost = getFeaturedPosts();

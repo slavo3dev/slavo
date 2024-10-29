@@ -20,5 +20,6 @@ import { SignUp } from "./Auth/SingUp";
 import { SignIn } from "./Auth/SignIn";
 import { PorchList, PorchHeader, PorchForm } from "./PorchElements";
 import { Preloader } from "./Elements";
+import { BlurWrapper } from "./BlurrWrapper";
 
-export {Layout, LearningSources, FeaturedPosts, HeadBasePage, MainNavigation, BlogPosts, PostContent, PostHeader, ContactForm, Subscribe, Footer,  CategorySearch, MentorAI, NewResourceFrom, FreeSourcesList, VideoCard, VideoLine, Growth, Solution, Hero, LinkEvents, SignIn, SignUp, PorchList, PorchHeader, PorchForm, Preloader };
+export {Layout, LearningSources, FeaturedPosts, HeadBasePage, MainNavigation, BlogPosts, PostContent, PostHeader, ContactForm, Subscribe, Footer,  CategorySearch, MentorAI, NewResourceFrom, FreeSourcesList, VideoCard, VideoLine, Growth, Solution, Hero, LinkEvents, SignIn, SignUp, PorchList, PorchHeader, PorchForm, Preloader, BlurWrapper };

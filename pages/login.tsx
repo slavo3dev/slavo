@@ -5,6 +5,7 @@ import UserInfoContext from "@/context/UserInfoContext";
 import { CreateAccount } from "@/components/Auth/CreateAccount";
 import { ResetPassword } from "@/components/Auth/ResetPassword";
 import { LoginForm } from "@/components/Auth/Login";
+import { BlurWrapper } from "../components";
 
 const Test: NextPage = () =>
 {
@@ -25,13 +26,25 @@ const Test: NextPage = () =>
 	};
     
 	return (
-		!isResetPassword ? 
-			(isAccountCreated ? 
-				<LoginForm signIn={() => toggleState(setIsAccountCreated)} resetPassword={() => toggleState(setIsResetPassword)} /> :
-				<CreateAccount signIn={() => toggleState(setIsAccountCreated)} /> ) :
-			<ResetPassword resetPassword={() => toggleState(setIsResetPassword)} />
-	);
-};
-
+			<BlurWrapper>
+				{!isResetPassword ? (
+					isAccountCreated ? (
+						<LoginForm 
+							signIn={() => toggleState(setIsAccountCreated)} 
+							resetPassword={() => toggleState(setIsResetPassword)} 
+						/>
+					) : (
+						<CreateAccount 
+							signIn={() => toggleState(setIsAccountCreated)} 
+						/>
+					)
+				) : (
+					<ResetPassword 
+						resetPassword={() => toggleState(setIsResetPassword)} 
+					/>
+				)}
+			</BlurWrapper>
+		);
+	};
 
 export default Test;

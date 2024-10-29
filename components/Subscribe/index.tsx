@@ -15,11 +15,24 @@ export const Subscribe: FC = () => {
 	const [errorMsg, setErrorMsg] = useState<string>("");
 
 
-	type SubscribeModal = boolean | null ; 
-	useEffect (() => {
-		
-		const subscribeModal: SubscribeModal = JSON.parse(localStorage.getItem("subscribeOpen") as string); 
+	type SubscribeModal = boolean | null;
 
+	useEffect(() => {
+		if (!localStorage.getItem("subscribeOpen")) {
+			localStorage.setItem("subscribeOpen", JSON.stringify(true)); 
+			setIsModalOpen(true); 
+		}
+	}, []);
+
+	useEffect(() => {
+		if (localStorage.getItem("subscribeOpen")) {
+			localStorage.setItem("subscribeOpen", JSON.stringify(true)); 
+			setIsModalOpen(true); 
+		}
+	}, []);
+
+	useEffect (() => {
+		const subscribeModal: SubscribeModal = JSON.parse(localStorage.getItem("subscribeOpen") as string); 
 		if(!subscribeModal && !isAuth) {
 			setIsModalOpen(true); 
 		}

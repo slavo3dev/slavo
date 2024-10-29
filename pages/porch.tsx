@@ -1,9 +1,9 @@
 import { GetStaticProps, NextPage } from "next";
-import { useState, useCallback, SetStateAction, MouseEvent } from "react";
+import { useState, useCallback, MouseEvent } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import supabase from "../lib/supabase";
 import { Loader } from "@/components/ui/Loader";
-import { HeadBasePage, PorchList, PorchHeader, PorchForm } from "@components";
+import { HeadBasePage, PorchList, PorchHeader, PorchForm, BlurWrapper } from "@components";
 import { PorchType } from "@/Types/PorchTypes";
 import PorchUserButton from "@/components/PorchElements/PorchInteractivity";
 import PorchUserDataForm from "@/components/PorchElements/PorchUserDataForm";
@@ -79,7 +79,7 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
     };
 
 	return (
-		<>
+		<BlurWrapper>
 			<HeadBasePage title={ "Share Your Daily Learning Journey - Career Change in Web Development" } description={"Join our community to share your daily learning updates and track your progress in web development. Engage with others on the same career change journey, get support, and stay motivated. Start your path to a bright future with Slavo.io!"} />
 				<div className="p-10 text-slate-800">
 					<div className="flex flex-col">
@@ -128,7 +128,7 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 						<PorchList porchs={porchList} setPorchs={setPorchs} />
 					</InfiniteScroll>
 				</div>
-		</>
+		</BlurWrapper>
 	);
 };
 
