@@ -118,7 +118,7 @@ export const Subscribe: FC = () => {
                 All your information is completely confidential
 					</p>
 					{state === "Success" ? (
-						<p className="lg:text-4xl text-white">
+						<p className="lg:text-4xl text-white pb-8">
                 Awesome, you have been subscribed to Slavo
 						</p>
 					) : (
