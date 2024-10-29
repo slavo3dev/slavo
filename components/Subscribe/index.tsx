@@ -18,14 +18,7 @@ export const Subscribe: FC = () => {
 	type SubscribeModal = boolean | null;
 
 	useEffect(() => {
-		if (!localStorage.getItem("subscribeOpen")) {
-			localStorage.setItem("subscribeOpen", JSON.stringify(true)); 
-			setIsModalOpen(true); 
-		}
-	}, []);
-
-	useEffect(() => {
-		if (localStorage.getItem("subscribeOpen")) {
+		if (!localStorage.getItem("subscribeOpen") || localStorage.getItem("subscribeOpen")) {
 			localStorage.setItem("subscribeOpen", JSON.stringify(true)); 
 			setIsModalOpen(true); 
 		}
