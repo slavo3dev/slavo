@@ -52,7 +52,7 @@ export const Comments = () => {
       setError(CommentsError.onSubmitError);
       return;
     }
-
+    
     if (countWords(comment) > 96) {
       setError(CommentsError.wordLimitError);
       return;
