@@ -8,11 +8,11 @@ interface Comment {
 }
 
 interface PropsComments {
-  id: string;
-  created_at: string;
+  id?: string;
+  created_at?: string;
   message: string;
   userInfo: string;
-  sourceId: number;
+  sourceId?: number;
 }
 
 interface CommentsProps {
@@ -74,7 +74,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
   };
 
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!comment.trim()) {
       setError(CommentsError.onSubmitError);
@@ -86,10 +86,22 @@ export const Comments = ({sourceId}: CommentsProps) => {
       return;
     }
 
-    const newComment: Comment = { email: userEmail || "Anonymous", text: comment };
+    const newComment: PropsComments = { userInfo: userEmail || "Anonymous", message: comment }; //is this good object?
+
+    try {
+      await fetch('/api/postComments', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...newComment, sourceId })
+      })
+    } catch (error) {
+      console.error("Error fetching comments:", error);
+      setError(CommentsError.fetchError);
+    }
+
 
     if (userEmail) {
-      setCommentsList([...commentsList, newComment]); 
+      setPostComments([...postComments, newComment]); 
       setComment(""); 
       setSuccessMessage("Comment submitted successfully!"); 
     } else {
