@@ -24,7 +24,6 @@ export const Comments = ({sourceId}: CommentsProps) => {
   const [comment, setComment] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [showComments, setShowComments] = useState<boolean>(false);
-  const [commentsList, setCommentsList] = useState<Comment[]>([]);
   const [successMessage, setSuccessMessage] = useState<string>("");
   const [postComments, setPostComments] = useState<PropsComments[]>([]);
 
@@ -36,7 +35,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
       try {
         const response = await fetch(`/api/getComments?sourceId=${sourceId}`);
         const data = await response.json();
-        setPostComments(data); // `data` will be an empty array if no comments found
+        setPostComments(data); 
       } catch (error) {
         console.error("Error fetching comments:", error);
         setError(CommentsError.fetchError);
@@ -86,7 +85,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
       return;
     }
 
-    const newComment: PropsComments = { userInfo: userEmail || "Anonymous", message: comment }; //is this good object?
+    const newComment: PropsComments = { userInfo: userEmail || "Anonymous", message: comment };
 
     try {
       await fetch('/api/postComments', {
@@ -116,7 +115,6 @@ export const Comments = ({sourceId}: CommentsProps) => {
   return (
     
       <div className="flex flex-col z-50">
-      
         <button
           onClick={toggleComments}
           className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700"
@@ -136,11 +134,6 @@ export const Comments = ({sourceId}: CommentsProps) => {
                 ✕
               </button>
 
-              {/*userEmail && (
-                <p className="text-sm text-gray-600">
-                  Logged in as: <span className="font-bold">{userEmail}</span>
-                </p>
-              )*/}
               <form onSubmit={onSubmit} className="mt-2 flex flex-col gap-2">
                 <textarea
                   value={comment}
@@ -153,26 +146,17 @@ export const Comments = ({sourceId}: CommentsProps) => {
                   Submit
                 </button>
               </form>
+
               {error && <p className="text-red-500 mt-2">{error}</p>}
               {successMessage && <p className="text-green-500 mt-2">{successMessage}</p>}
               <div className="mt-2 text-black">
                 <p className="font-bold">Comments:</p>
-                  {/*commentsList.length === 0 ? (
-                    <p>No comments yet. Be the first to comment!</p>
-                  ) : (
-                    commentsList.map((c, index) => (
-                      <p key={index} className="p-2 border-b max-w-full break-words text-sm">
-                        <span className="text-blue-400">{c.email}:</span> <span className="block overflow-wrap break-word font-normal text-gray-500">{c.text}</span>
-                      </p>
-                    ))
-                  )*/}
-                    
-                    {postComments.length === 0 ? (<p> No comments found.</p>) : (postComments.map((postComment) => (
+                  {postComments.length === 0 ? (<p> No comments found.</p>) : (postComments.map((postComment) => (
                     <p key={postComment.id} className="p-2 border-b max-w-full break-words text-sm">
                       <span className="text-blue-400">{postComment.userInfo}</span>
                       <span className="block overflow-wrap break-word font-normal text-gray-500">{postComment.message}</span>
                     </p>
-                    )))}
+                  )))}
               </div>
             </div>
           </div>
