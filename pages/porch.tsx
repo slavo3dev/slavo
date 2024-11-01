@@ -1,5 +1,5 @@
 import { GetStaticProps, NextPage } from "next";
-import { useState, useCallback, SetStateAction, MouseEvent } from "react";
+import { useState, useCallback, MouseEvent } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import supabase from "../lib/supabase";
 import { Loader } from "@/components/ui/Loader";
@@ -83,53 +83,53 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 	return (
 		<>
 			<HeadBasePage title={ "Share Your Daily Learning Journey - Career Change in Web Development" } description={"Join our community to share your daily learning updates and track your progress in web development. Engage with others on the same career change journey, get support, and stay motivated. Start your path to a bright future with Slavo.io!"} />
-			<div className="p-10 text-slate-800">
-				<div className="flex flex-col">
-					<div className="flex flex-row items-center">
-						<PorchUserButton showUserForm={showUserForm} setShowUserForm={setShowUserForm}/>
-						<p className="pl-2 pb-2"><GoArrowLeft /></p>
-						<p className="pl-2 pb-2 text-xs">Check your <span className="font-bold text-blue-700">stats</span> and update your <span className="font-bold text-blue-700">goals!</span></p>
-					</div>
-					<div className="">
-						<PorchHeader showForm={showForm} setShowForm={setShowForm} />
-						<div
-							style={{
-								display: "flex",
-								justifyContent: 'center',
-								marginBottom: '20px'
-							}}
-						> 
-							{showForm ? (
-								<PorchForm setPorchs={setPorchs} setShowForm={setShowForm} />
-							) : null}
+				<div className="p-10 text-slate-800">
+					<div className="flex flex-col">
+						<div className="flex flex-row items-center">
+							<PorchUserButton showUserForm={showUserForm} setShowUserForm={setShowUserForm}/>
+							<p className="pl-2 pb-2"><GoArrowLeft /></p>
+							<p className="pl-2 pb-2 text-xs">Check your <span className="font-bold text-blue-700">stats</span> and update your <span className="font-bold text-blue-700">goals!</span></p>
+						</div>
+						<div className="">
+							<PorchHeader showForm={showForm} setShowForm={setShowForm} />
+							<div
+								style={{
+									display: "flex",
+									justifyContent: 'center',
+									marginBottom: '20px'
+								}}
+							> 
+								{showForm ? (
+									<PorchForm setPorchs={setPorchs} setShowForm={setShowForm} />
+								) : null}
+							</div>
 						</div>
 					</div>
+					<div
+						style={{
+							position: 'absolute',
+							left: `${position.x}px`,
+							top: `${position.y}px`,
+							cursor: dragging ? 'grabbing' :'grab',
+							transition: dragging ? 'none' : '0.2 ease-out',
+							zIndex: 50
+						}}
+						onMouseDown={handleMouseDown}
+						onMouseMove={handleMouseMove}
+						onMouseUp={handleMouseUp} 
+					>
+						{showUserForm ? (<PorchUserDataForm />) : null}
+					</div>
+					<InfiniteScroll
+						dataLength={porchList.length}
+						next={loadMorePorchs}
+						hasMore={hasMore}
+						loader={<Loader title="Loading more updates..." />}
+						endMessage={<p style={{ textAlign: "center" }}>Yay! You have seen it all</p>}
+					>
+						<PorchList porchs={porchList} setPorchs={setPorchs} />
+					</InfiniteScroll>
 				</div>
-				<div
-					style={{
-						position: 'absolute',
-						left: `${position.x}px`,
-						top: `${position.y}px`,
-						cursor: dragging ? 'grabbing' :'grab',
-						transition: dragging ? 'none' : '0.2 ease-out',
-						zIndex: 50
-					}}
-					onMouseDown={handleMouseDown}
-					onMouseMove={handleMouseMove}
-					onMouseUp={handleMouseUp} 
-				>
-					{showUserForm ? (<PorchUserDataForm />) : null}
-				</div>
-				<InfiniteScroll
-					dataLength={porchList.length}
-					next={loadMorePorchs}
-					hasMore={hasMore}
-					loader={<Loader title="Loading more updates..." />}
-					endMessage={<p style={{ textAlign: "center" }}>Yay! You have seen it all</p>}
-				>
-					<PorchList porchs={porchList} setPorchs={setPorchs} />
-				</InfiniteScroll>
-			</div>
 		</>
 	);
 };

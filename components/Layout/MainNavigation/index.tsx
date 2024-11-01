@@ -5,6 +5,7 @@ import { Logo } from "../Logo";
 import { Burger } from "./mobileView";
 import { useRouter } from "next/router";
 import UserInfoContext from "context/UserInfoContext";
+import { Subscribe } from "@/components/Subscribe";
 
 
 export const MainNavigation: FC = () => {
@@ -64,6 +65,9 @@ export const MainNavigation: FC = () => {
 						{userEmail && <li className="hover:text-blue-500 hover:bg-blue-50">
 							{userEmail}
 						</li>}
+						<li>
+							<Subscribe />
+						</li>
 					</ul>
 				</nav>
 			</div>

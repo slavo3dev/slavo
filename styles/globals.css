@@ -155,6 +155,13 @@ button {
   margin-right: 0.6rem;
 }
 
+/* Blurred effect when Subscribe Form opened */
+.blurred {
+  filter: blur(5px); 
+  transition: filter 0.3s ease; 
+}
+
+
 /* MAIN LAYOUT */
 #root {
   max-width: 1500px;
