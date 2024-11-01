@@ -1,6 +1,6 @@
 import { BlogPosts, CategorySearch } from "@/components/index";
 import { useRouter } from "next/router";
-import { getAllPosts } from "@/lib/posts-lib";
+import { getAllPosts } from "lib/posts-lib";
 
 
 

@@ -8,7 +8,7 @@ import type { AppProps } from "next/app";
 import { Layout, HeadBasePage, MainNavigation, Footer, Preloader } from "../components";
 import VideoContext from "context/VideoContext";
 import UserInfoContext from "context/UserInfoContext";
-import supabase from "@/lib/supabase";
+import supabase from "lib/supabase";
 import { User } from "@supabase/supabase-js";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 

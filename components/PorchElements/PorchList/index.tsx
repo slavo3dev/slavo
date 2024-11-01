@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, useMemo } from "react";
 import UserInfoContext from "@/context/UserInfoContext";
 import { PorchDailyUpdate } from "../PorchDailyUpdate"; 
 import { PorchType } from "@/Types/PorchTypes";
-import supabase from "@/lib/supabase";
+import supabase from "lib/supabase";
 
 interface PorchListProps {
   porchs: PorchType[];

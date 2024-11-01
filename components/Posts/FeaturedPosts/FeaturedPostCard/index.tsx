@@ -1,7 +1,7 @@
 
 import { FC } from "react";
 import { PostType } from "@/Types/PostType";
-import { formattedDate } from "@/lib/helpers";
+import { formattedDate } from "lib/helpers";
 
 export const FeaturedPostCard: FC<PostType> = ( { post } ) =>
 {
