@@ -22,6 +22,7 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 	const [porchList, setPorchs] = useState<PorchType[]>(initialPorchs);
 	const [page, setPage] = useState(1);
 	const [hasMore, setHasMore] = useState(initialPorchs.length === 100);
+	const [comments, setComments] = useState<[]>([]);
 
 	const [position, setPosition] = useState({x: 211, y: 196})
     const [dragging, setDragging] = useState<boolean>(false);
@@ -53,6 +54,7 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 			console.log("ALL Loaded");
 		}
 	}, [page]);
+
 
 
 

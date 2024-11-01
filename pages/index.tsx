@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextPage } from "next";
-import { FeaturedPosts, Growth, Solution, Hero } from "@components";
-import { getFeaturedPosts } from "@/lib/posts-lib";
+import { FeaturedPosts, Subscribe, Growth, Solution, Hero } from "@components";
+import { getFeaturedPosts } from "lib/posts-lib";
 
 const Home: NextPage = ({ posts }: any) => {
 

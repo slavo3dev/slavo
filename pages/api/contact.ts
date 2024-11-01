@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextApiRequest, NextApiResponse } from "next";
-import supabase from "@/lib/supabase";
+import supabase from "lib/supabase";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const { subject, department, name, email, message } = req.body;

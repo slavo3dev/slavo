@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { videoContextType } from "@/lib/types";
+import { videoContextType } from "lib/types";
 
 
 const VideoContext = createContext<videoContextType>({

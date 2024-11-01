@@ -3,7 +3,7 @@ import { useState, FC } from "react";
 import { Loader } from "../ui/Loader";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { customRenderers } from "@/lib/formatText";
+import { customRenderers } from "lib/formatText";
 
 export const OpenAI: FC = () => {
 

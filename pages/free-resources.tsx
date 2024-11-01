@@ -2,7 +2,7 @@
 import type { NextPage, GetServerSideProps } from "next";
 import { HeadBasePage, LearningSources } from "../components";
 import { Source } from "@/Types/FreeReSources";
-import supabase from "@/lib/supabase";
+import supabase from "lib/supabase";
 
 
 type FreeSourceProps = {

@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextPage } from "next";
-import { BlogPosts} from "@/components/index";
-import { getAllPosts } from "@/lib/posts-lib";
+import { BlogPosts } from "@/components/index";
+import { getAllPosts } from "lib/posts-lib";
+
 
 
 

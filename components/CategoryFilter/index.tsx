@@ -3,6 +3,7 @@ import { CATEGORIES } from "@/lib/constants";
 import { useCategoryHook } from "@/lib/hooks/useCategoryHook";
 import { CategoryTags } from "@/lib/helpers/categoryTags";
 
+
 export const CategoryFilter: FC<any> = ({ setCurrentCategory }) => {
 
     const { activeCategory, handleCategoryClick, isActive } = useCategoryHook(

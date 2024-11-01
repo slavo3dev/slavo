@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import supabase from "@/lib/supabase";
+import supabase from "lib/supabase";
 import { useState, FC } from "react";
 
 export const SignUp: FC = () => {
