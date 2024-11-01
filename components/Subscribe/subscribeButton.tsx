@@ -13,7 +13,7 @@ export const SubscribeButton: FC<SubscribeButtonProps> = ({ setIsModalOpen, clas
 
   return (
         <button
-        className="py-1 px-2 text-white bg-blue-400 rounded hover:bg-blue-700 transition md:py-2 md:px-4"
+        className="py-2 px-4 mr-5 text-white text-xs bg-blue-400 rounded hover:bg-blue-700 transition md:py-2 md:px-5 md:text-sm"
         onClick={handleClick}
         >
         Subscribe Now
