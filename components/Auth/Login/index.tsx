@@ -23,7 +23,8 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 			if (error) {
 				setSigninError(error.message);
 			} else {
-				router.push("/");
+				//router.push("/");
+				const redirectUrl = window.location.hostname === 'localhost' ? 'http://localhost:3000' : '/';
 			}
 		} catch (error) {
 			console.log(error);

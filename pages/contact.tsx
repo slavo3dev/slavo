@@ -1,12 +1,12 @@
 import type { NextPage } from "next";
-import { ContactForm, HeadBasePage, BlurWrapper } from "../components";
+import { ContactForm, HeadBasePage } from "../components";
 
 
 const Contact: NextPage = () => {
 
 
 	return (
-		<BlurWrapper>
+		<>
 			<HeadBasePage title={"Contact Us for Expert Career Change Guidance - Slavo.io Mentorship"} description="Discover how a career change into web development can open up new opportunities. Learn web development skills, programming languages, and tools to start your journey today." />
 			<section className="py-20 h-screen" >
 				<div className="container ">
@@ -31,7 +31,7 @@ const Contact: NextPage = () => {
 					</div>
 				</div>
 			</section>
-		</BlurWrapper>
+		</>
 	);
 };
 

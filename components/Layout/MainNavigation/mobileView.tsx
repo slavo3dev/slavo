@@ -8,7 +8,6 @@ import face from "public/images/icons/facebook-blue.svg";
 import link from "public/images/icons/linkedinIcon.webp";
 import classes from "./navigation.module.css";
 import { Subscribe } from "@/components/Subscribe";
-import { BlurWrapper } from "@/components/BlurrWrapper";
 
 
 export const Burger: FC<any> = ( { userInfo } ) => {

@@ -6,6 +6,7 @@ import UserInfoContext from "@/context/UserInfoContext";
 import { validateEmail } from "@/lib/helpers/validateEmail";
 import { SubscribeButton } from "./subscribeButton";
 
+
 export const Subscribe: FC = () => {
 	const [email, setEmail] = useState<string>("");
 	const [state, setState] = useState<any>("idle");
@@ -14,22 +15,15 @@ export const Subscribe: FC = () => {
 	const isAuth = userInfo?.email;
 	const [errorMsg, setErrorMsg] = useState<string>("");
 
-
-	type SubscribeModal = boolean | null;
-
 	useEffect(() => {
-		if (!localStorage.getItem("subscribeOpen") || localStorage.getItem("subscribeOpen")) {
-			localStorage.setItem("subscribeOpen", JSON.stringify(true)); 
-			setIsModalOpen(true); 
-		}
-	}, []);
-
-	useEffect (() => {
-		const subscribeModal: SubscribeModal = JSON.parse(localStorage.getItem("subscribeOpen") as string); 
-		if(!subscribeModal && !isAuth) {
-			setIsModalOpen(true); 
+		const subscribeOpen = JSON.parse(localStorage.getItem("subscribeOpen") as string);
+		
+		if (subscribeOpen === null || subscribeOpen === false || !isAuth) {
+			localStorage.setItem("subscribeOpen", JSON.stringify(true));
+			setIsModalOpen(true);
 		}
 	}, [isAuth]);
+	
 
 	const closeSubscribe = () => {
 		localStorage.setItem("subscribeOpen", JSON.stringify(false)); 
@@ -56,6 +50,7 @@ export const Subscribe: FC = () => {
 			}, 4000);
 		} catch (e: any) {
 			//setErrorMsg(e.response.data.detail);
+			console.error("Error:", e)
 			if (validateEmail(email)) {
 			setState("Error");
 			setTimeout(() => {

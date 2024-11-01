@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextPage } from "next";
-import { BlogPosts, BlurWrapper } from "@/components/index";
+import { BlogPosts} from "@/components/index";
 import { getAllPosts } from "@/lib/posts-lib";
 
 
@@ -8,9 +8,7 @@ import { getAllPosts } from "@/lib/posts-lib";
 const blog: NextPage = ( { posts }: any ) => {
 
 	return (
-		<BlurWrapper>
-			<BlogPosts posts={posts} />
-		</BlurWrapper>
+		<BlogPosts posts={posts} />
 	);
 };
 
