@@ -7,6 +7,7 @@ import twit from "public/images/icons/twitter-blue.svg";
 import face from "public/images/icons/facebook-blue.svg";
 import link from "public/images/icons/linkedinIcon.webp";
 import classes from "./navigation.module.css";
+import { Subscribe } from "@/components/Subscribe";
 
 
 export const Burger: FC<any> = ( { userInfo } ) => {
@@ -31,6 +32,10 @@ export const Burger: FC<any> = ( { userInfo } ) => {
 //   };
 
   return (
+    <>
+    <div className="md:hidden mt-2 mr-8">
+      <Subscribe />
+    </div>
     <div className="md:hidden flex-row overflow-show">
       <button onClick={handleBurger} className=" z-50 right-4 items-center py-2 px-3 mt-4 mr-4 text-blue-500 hover:text-blue-700 rounded border border-blue-200 hover:border-blue-300">
         <svg className="fill-current h-4 w-4" viewBox="0 0 20 20"xmlns="http://www.w3.org/2000/svg">
@@ -124,5 +129,6 @@ export const Burger: FC<any> = ( { userInfo } ) => {
         </div>
       </div>
     </div>
+    </>
   );
 };

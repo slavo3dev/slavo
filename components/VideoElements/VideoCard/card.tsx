@@ -1,5 +1,5 @@
 import { FC, useContext} from "react";
-import { videoCardTypes } from "@/lib/types";
+import { videoCardTypes } from "lib/types";
 import UserInfoContext from "context/UserInfoContext";
 import Link from "next/link";
 

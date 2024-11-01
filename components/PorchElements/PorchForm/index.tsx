@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import UserInfoContext from "@/context/UserInfoContext";
-import { isValidHttpUrl } from "@/lib/constants";
+import { isValidHttpUrl } from "lib/constants";
 import { Loader } from "@/components/ui/Loader";
 import { PorchType } from "@/Types/PorchTypes";
-import { trackEvent } from "@/lib/ga";
+import { trackEvent } from "lib/ga";
 
 
 interface PorchFormProps {
@@ -66,38 +66,45 @@ export const PorchForm: React.FC<PorchFormProps> = ({ setPorchs, setShowForm }) 
 		}
 	}
 
+	// !!!
+	// Fix styles for Porch Form
 	return (
 		<>
 			{responseUpdate ? (
 				<Loader title={responseUpdate} />
 			) : (
-				<form className="fact-form bg-sky-600" onSubmit={handleSubmit}>
-					<input
-						className="bg-gray-200 text-gray-700 appearance-none border-none w-full mr-3 py-1 px-2 leading-tight focus:outline-none"
-						type="text"
-						placeholder="Share your update with the world..."
-						value={text}
-						onChange={(e) => setText(e.target.value)}
-						disabled={isUploading}
-					/>
-					<input
-						className={
-							!isValidHttpUrl(source) && source.length > 0
-								? "bg-red-200 text-gray-700 border-red-800 border-2"
-								: "bg-gray-200 text-gray-700"
-						}
-						value={source}
-						type="text"
-						placeholder="Share learning source..."
-						onChange={(e) => setSource(e.target.value)}
-						disabled={isUploading}
-					/>
-					<button
-						className="bg-slate-100 hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-3 px-4 border border-r-2 border-blue-500 rounded shadow-md shadow-slate-300"
-						disabled={isUploading}
-					>
-            Update
-					</button>
+				<form className="border rounded-lg w-[400px] h-fit p-8 flex flex-col justify-between bg-blue-100" onSubmit={handleSubmit}>
+					<div className="flex flex-col">
+						<h5 className="mb-4">Progress Update</h5>
+						<input
+							className="bg-white border mb-4 py-1 px-2 rounded-xl text-gray-700 focus:outline-none placeholder:text-sm"
+							type="text"
+							placeholder="Share your update with the world..."
+							value={text}
+							onChange={(e) => setText(e.target.value)}
+							disabled={isUploading}
+						/>
+						<input
+							className={
+								!isValidHttpUrl(source) && source.length > 0
+									? "bg-red-200 text-gray-700 focus:outline-none mb-4 py-1 px-2 rounded-xl border"
+									: "bg-white border mb-8 py-1 px-2 rounded-xl text-gray-700 focus:outline-none placeholder:text-sm"
+							}
+							value={source}
+							type="text"
+							placeholder="Share your learning source"
+							onChange={(e) => setSource(e.target.value)}
+							disabled={isUploading}
+						/>
+					</div>
+					<div className="flex flex-col">
+						<button
+							className="bg-blue-50 border border-blue-700 rounded-lg hover:bg-opacity-50"
+							disabled={isUploading}
+						>
+				Update
+						</button>
+					</div>
 				</form>
 			)}
 		</>

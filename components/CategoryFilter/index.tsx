@@ -1,27 +1,25 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { CATEGORIES } from "@/lib/constants";
+import { useCategoryHook } from "@/lib/hooks/useCategoryHook";
+import { CategoryTags } from "@/lib/helpers/categoryTags";
 
 
 export const CategoryFilter: FC<any> = ({ setCurrentCategory }) => {
-	return (
-		<aside>
-			<ul className="flex w-full">
-				<button
-					className="hover:bg-blue-100 bg-blue-500 text-white font-bold py-2 px-4 mt-3 rounded m-3"
-					onClick={() => setCurrentCategory("all")}
-				>
-            All
-				</button>
-				{CATEGORIES.map((cat: any) => (
-					<button
-						key={cat.name}
-						className="hover:bg-blue-100 bg-blue-500 text-white font-bold py-2 px-4 mt-3 rounded m-3"
-						onClick={() => setCurrentCategory(cat.name)}
-					>
-						{cat.name}
-					</button>
-				))}
-			</ul>
-		</aside>
-	);
-};
+
+    const { activeCategory, handleCategoryClick, isActive } = useCategoryHook(
+        CATEGORIES.map((cat : any) => cat.name),
+        "selectedResCat"
+    );
+
+    useEffect(() => {
+        setCurrentCategory(activeCategory);
+    }, [activeCategory, setCurrentCategory]);
+
+    return (
+       <CategoryTags
+            categories={CATEGORIES}
+            handleCategoryClick={handleCategoryClick}
+            isActive={isActive}
+       />
+    );
+}

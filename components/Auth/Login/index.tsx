@@ -1,7 +1,9 @@
 import { useState, FC } from "react";
-import supabase from "@/lib/supabase";
+import supabase from "lib/supabase";
 import router from "next/router";
 import { ErrorAlertMsg } from "@/components/Alerts";
+import { REALTIME_POSTGRES_CHANGES_LISTEN_EVENT } from "@supabase/supabase-js";
+import { NoUndefinedVariablesRule } from "graphql";
 interface LoginProps {
     signIn: () => void;
     resetPassword: () => void; 
@@ -22,7 +24,7 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 			const { error } = signInPromise;
 			if (error) {
 				setSigninError(error.message);
-			} else {
+            } else {
 				router.push("/");
 			}
 		} catch (error) {
@@ -39,7 +41,6 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 						<div className="absolute -inset-2">
 							<div className="w-full h-full mx-auto rounded-3xl opacity-30 blur-lg filter"></div>
 						</div>
-
 						<div className="relative overflow-hidden bg-white shadow-xl rounded-xl">
 							<div className="px-4 py-6 sm:px-8">
 								<div className="flex items-center justify-between">

@@ -5,6 +5,7 @@ import { Logo } from "../Logo";
 import { Burger } from "./mobileView";
 import { useRouter } from "next/router";
 import UserInfoContext from "context/UserInfoContext";
+import { Subscribe } from "@/components/Subscribe";
 
 
 export const MainNavigation: FC = () => {
@@ -39,13 +40,13 @@ export const MainNavigation: FC = () => {
 						<li className={router.pathname === "/porch" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/porch">Porch</Link>
 						</li>
-						<li>
+						<li className={router.pathname === "/free-resources" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"} onClick={() => localStorage.getItem("selectedResCat")}>
 							<Link href="/free-resources">Free Resources</Link>
 						</li> 
 						{/* <li className={router.pathname === "/mentor" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/mentor">Mentor</Link>
 						</li> */}
-						<li className={router.pathname === "/blog" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"} onClick={() => localStorage.setItem("selectedOption", "ALL")}>
+						<li className={router.pathname === "/blog" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"} onClick={() => localStorage.getItem("selectedOption")}>
 							<Link href="/blog">Blog</Link>
 						</li>
 						{/* <li className={router.pathname === "/videos" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
@@ -64,6 +65,9 @@ export const MainNavigation: FC = () => {
 						{userEmail && <li className="hover:text-blue-500 hover:bg-blue-50">
 							{userEmail}
 						</li>}
+						<li>
+							<Subscribe />
+						</li>
 					</ul>
 				</nav>
 			</div>

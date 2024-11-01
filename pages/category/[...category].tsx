@@ -1,6 +1,6 @@
 import { BlogPosts, CategorySearch } from "@/components/index";
 import { useRouter } from "next/router";
-import { getAllPosts } from "@/lib/posts-lib";
+import { getAllPosts } from "lib/posts-lib";
 
 
 
@@ -44,7 +44,6 @@ export default function Category ( props: any )
 	}
 
 	const categoryPosts = props.posts.filter( ( blog: any ) => blog.category.toLowerCase().replace( " ", "-" ) === slugId && blog );
-    
 	
 	return (
 		<>

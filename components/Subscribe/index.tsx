@@ -1,36 +1,71 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FC, useState } from "react";
+import { FC, useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { Modal } from "../Modal";
+import UserInfoContext from "@/context/UserInfoContext";
+import { validateEmail } from "@/lib/helpers/validateEmail";
+import { ModalButton } from "../Modal/modalButton";
 
-export const Subscribe: FC= () => {
-	const [email, setEmail] = useState<any>("");
+
+export const Subscribe: FC = () => {
+	const [email, setEmail] = useState<string>("");
 	const [state, setState] = useState<any>("idle");
-	// const [errorMsg, setErrorMsg] = useState<any>(null);
+	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+	const { userInfo } = useContext(UserInfoContext);
+	const isAuth = userInfo?.email;
+	const [errorMsg, setErrorMsg] = useState<string>("");
+
+	useEffect(() => {
+		const subscribeOpen = JSON.parse(localStorage.getItem("subscribeOpen") as string);
+		
+		if (isAuth) {
+			return;
+		}
+		if (subscribeOpen === null || subscribeOpen === false) {
+			localStorage.setItem("subscribeOpen", JSON.stringify(true));
+			setIsModalOpen(true);
+		}
+	}, [isAuth]);
+	
+
+	const closeSubscribe = () => {
+		localStorage.setItem("subscribeOpen", JSON.stringify(false)); 
+		setIsModalOpen(false); 
+	}
 
 	const handleSubscribe = async (e: any) => {
 		e.preventDefault();
+
+		if (!validateEmail(email)){
+			setErrorMsg("Please enter a valid email address.")
+		} else {
+			setErrorMsg(""); 
+		}
+
 		setState("Loading");
 		try {
 			await axios.post("/api/subscribe", { email });
 			setState("Success");
+			setEmail("");
 			setTimeout(() => {
 				setState("idle");
-			}, 900);
-
-			setEmail("");
+				closeSubscribe(); 
+			}, 4000);
 		} catch (e: any) {
-			// setErrorMsg(e.response.data.detail);
+			//setErrorMsg(e.response.data.detail);
+			console.error("Error:", e)
+			if (validateEmail(email)) {
 			setState("Error");
 			setTimeout(() => {
 				setState("idle");
 			}, 900);
-		}
+		}}
 	};
 
 	const subscribeForm = (
-		<div className="flex flex-wrap max-w-lg mx-auto w-5/6 sm:w-full md:w-full">
-			<div className="flex w-full sm:w-full md:w-2/3 px-3 mb-3 md:mb-0 md:mr-6 bg-blue-500 border border-blue-300 rounded">
-				<svg
+		
+		<div className="flex flex-wrap p-6 justify-center">
+			<div className={`flex w-full sm:w-full md:w-2/3 px-3 mb-3 md:mb-0 md:mr-6 bg-blue-500 border ${errorMsg ? 'border-red-500' : 'border-blue-300'} rounded`}>				<svg
 					className="h-6 w-6 my-auto text-blue-300"
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 20 20"
@@ -41,7 +76,7 @@ export const Subscribe: FC= () => {
 				</svg>
 				<input
 					className="w-full pl-3 py-4 before:text-xs text-white placeholder-white font-semibold leading-none bg-blue-500 outline-none"
-					type="text"
+					type="email"
 					placeholder="Type your e-mail"
 					onChange={(e) => setEmail(e.target.value)}
 					value={email}
@@ -55,33 +90,49 @@ export const Subscribe: FC= () => {
 				{" "}
         Sign Up{" "}
 			</button>
+			{errorMsg && <p className="text-red-500 pt-5 text-xl">{errorMsg}</p>}
 		</div>
 	);
 
 	return (
 		<> 
-			<section className="py-10 sm:py-20 bg-blue-400">
+			<ModalButton 
+				setIsModalOpen={setIsModalOpen} 
+				localStorageKey="subscribeOpen" 
+				storageValue={isModalOpen}
+				className="py-2 px-4 mr-5 text-white text-xs bg-blue-400 rounded hover:bg-blue-700 transition md:py-2 md:px-5 md:text-sm"
+			/>
+			{isModalOpen && (
+				<div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm z-40" />
+			)}
+			<Modal isOpen={isModalOpen} className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-400 rounded-lg shadow-lg max-w-xl w-full z-50">
+				<div className="flex justify-end pr-2">
+					<button 
+						className="text-white text-xl pt-2 pr-2"
+						onClick={closeSubscribe}>
+						X
+					</button>
+				</div>
 				<div className="text-center max-w-xl mx-auto w-5/6 sm:w-full md:w-full">
-					<h2 className="mb-4  text-base lg:text-3xl sm:text-3xl text-white font-bold font-heading">
+					<h2 className="mb-4 mt-4 text-base lg:text-3xl sm:text-3xl text-white font-bold font-heading">
 						<span>Subscribe now to </span>
 						<span className="text-blue-200">Our Newsletter</span>{" "}
 						<br />
 						<span>and get the Coupon code.</span>
 					</h2>
 					<p className="mb-8 text-white">
-                All your information is completely confidential
+						All your information is completely confidential
 					</p>
 					{state === "Success" ? (
-						<p className="lg:text-4xl text-blueGray-200">
-                Awesome, you have been subscribed to Slavo
+						<p className="lg:text-4xl text-white pb-8">
+							Awesome, you have been subscribed to Slavo
 						</p>
 					) : (
 						subscribeForm
 					)}
 				</div>
-			</section>
-			{state === "Error" &&
-            alert("Oops Something went WORONG \nPlease Try Again or You are already a member !!!" )}
+				{state === "Error" && alert("Oops Something went WRONG \nPlease Try Again or You are already a member !!!")}
+			</Modal>
 		</>
 	);
 };

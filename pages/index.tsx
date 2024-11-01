@@ -1,21 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextPage } from "next";
 import { FeaturedPosts, Subscribe, Growth, Solution, Hero } from "@components";
-import { getFeaturedPosts } from "@/lib/posts-lib";
+import { getFeaturedPosts } from "lib/posts-lib";
 
 const Home: NextPage = ({ posts }: any) => {
+
+	
+
 	return (
 		<>
 			<Hero />
-			<Subscribe />
 			<FeaturedPosts posts={ posts } />
 			{/* <LearningSources /> */}
 			<Solution />
-			<Growth />
-			<Subscribe />
+			<Growth />		
 		</>
-	);
-};
+)};
 
 export function getStaticProps() {
 	const featuredPost = getFeaturedPosts();
