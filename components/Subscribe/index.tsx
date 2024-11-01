@@ -4,7 +4,7 @@ import axios from "axios";
 import { Modal } from "../Modal";
 import UserInfoContext from "@/context/UserInfoContext";
 import { validateEmail } from "@/lib/helpers/validateEmail";
-import { SubscribeButton } from "./subscribeButton";
+import { ModalButton } from "../Modal/modalButton";
 
 
 export const Subscribe: FC = () => {
@@ -96,7 +96,12 @@ export const Subscribe: FC = () => {
 
 	return (
 		<> 
-			<SubscribeButton setIsModalOpen={setIsModalOpen}/>
+			<ModalButton 
+				setIsModalOpen={setIsModalOpen} 
+				localStorageKey="subscribeOpen" 
+				storageValue={isModalOpen}
+				className="py-2 px-4 mr-5 text-white text-xs bg-blue-400 rounded hover:bg-blue-700 transition md:py-2 md:px-5 md:text-sm"
+			/>
 			{isModalOpen && (
 				<div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm z-40" />
 			)}
