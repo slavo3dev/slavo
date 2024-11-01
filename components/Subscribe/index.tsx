@@ -96,14 +96,17 @@ export const Subscribe: FC = () => {
 
 	return (
 		<> 
-		<SubscribeButton setIsModalOpen={setIsModalOpen}/>
-		<Modal isOpen={isModalOpen} className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-400 rounded-lg shadow-lg max-w-xl w-full z-50">
-			<div className="flex justify-end pr-2">
-				<button 
-					className="text-white text-xl pt-2 pr-2"
-					onClick={closeSubscribe}>
+			<SubscribeButton setIsModalOpen={setIsModalOpen}/>
+			{isModalOpen && (
+				<div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm z-40" />
+			)}
+			<Modal isOpen={isModalOpen} className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-400 rounded-lg shadow-lg max-w-xl w-full z-50">
+				<div className="flex justify-end pr-2">
+					<button 
+						className="text-white text-xl pt-2 pr-2"
+						onClick={closeSubscribe}>
 						X
-				</button>
+					</button>
 				</div>
 				<div className="text-center max-w-xl mx-auto w-5/6 sm:w-full md:w-full">
 					<h2 className="mb-4 mt-4 text-base lg:text-3xl sm:text-3xl text-white font-bold font-heading">
@@ -113,19 +116,18 @@ export const Subscribe: FC = () => {
 						<span>and get the Coupon code.</span>
 					</h2>
 					<p className="mb-8 text-white">
-                All your information is completely confidential
+						All your information is completely confidential
 					</p>
 					{state === "Success" ? (
 						<p className="lg:text-4xl text-white pb-8">
-                Awesome, you have been subscribed to Slavo
+							Awesome, you have been subscribed to Slavo
 						</p>
 					) : (
 						subscribeForm
 					)}
 				</div>
-			{state === "Error" &&
-            alert("Oops Something went WRONG \nPlease Try Again or You are already a member !!!" )}
-		</Modal>
+				{state === "Error" && alert("Oops Something went WRONG \nPlease Try Again or You are already a member !!!")}
+			</Modal>
 		</>
 	);
 };

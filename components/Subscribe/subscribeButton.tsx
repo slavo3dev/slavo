@@ -2,10 +2,9 @@ import { FC } from "react";
 
 interface SubscribeButtonProps {
   setIsModalOpen: (isOpen: boolean) => void;
-  className?: string;
 }
 
-export const SubscribeButton: FC<SubscribeButtonProps> = ({ setIsModalOpen, className }) => {
+export const SubscribeButton: FC<SubscribeButtonProps> = ({ setIsModalOpen }) => {
   const handleClick = () => {
     localStorage.setItem("subscribeOpen",JSON.stringify(true));
     setIsModalOpen(true);
