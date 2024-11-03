@@ -25,9 +25,9 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 			if (error) {
 				setSigninError(error.message);
 			} else {
-				const redirectUrl: string = window.location.hostname === 'localhost' ? process.env.LOCAL_HOSTE_URL || "" : '/'
-                router.push(redirectUrl);
-				//router.push("/");
+				const redirectUrl: string = process.env.NODE_ENV === 'development' ? process.env.LOCAL_HOST_URL || "" : '/';
+				router.push(redirectUrl);
+
 			}
 		} catch (error) {
 			console.log(error);
