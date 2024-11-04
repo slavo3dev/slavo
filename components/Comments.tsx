@@ -19,6 +19,10 @@ interface CommentsProps {
   sourceId: number; 
 }
 
+interface EditCommentProps {
+  id: number;
+  message: string;
+}
 
 export const Comments = ({sourceId}: CommentsProps) => {
   const [comment, setComment] = useState<string>("");
@@ -26,6 +30,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
   const [showComments, setShowComments] = useState<boolean>(false);
   const [successMessage, setSuccessMessage] = useState<string>("");
   const [postComments, setPostComments] = useState<PropsComments[]>([]);
+  const [editComment, setEditComment] = useState<EditCommentProps | null>(null);
 
   const { userInfo } = useContext(UserInfoContext);
   const userEmail = userInfo?.email;
@@ -72,6 +77,13 @@ export const Comments = ({sourceId}: CommentsProps) => {
     }
   };
 
+  const onChangeEditComment = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    if(editComment) {
+      setEditComment({...editComment, message: event.target.value})
+    }
+
+  }
+
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -111,6 +123,26 @@ export const Comments = ({sourceId}: CommentsProps) => {
   const toggleComments = () => {
     setShowComments(!showComments);
   };
+
+  /*const handleEdit = async (commentId: number) => {
+    if (editComment) {
+      try {
+        await fetch(`/api/editComment/${commentId}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: editComment.message })
+        });
+        // Update postComments state after editing
+        setPostComments((prev) => 
+          prev.map((c) => (c.id === commentId ? { ...c, message: editComment.message } : c))
+        );
+        setEditComment(null); // Reset edit state
+      } catch (error) {
+        console.error("Error editing comment:", error);
+        setError(CommentsError.fetchError);
+      }
+    }
+  };*/
 
   return (
     
@@ -155,6 +187,40 @@ export const Comments = ({sourceId}: CommentsProps) => {
                     <p key={postComment.id} className="p-2 border-b max-w-full break-words text-sm">
                       <span className="text-blue-400">{postComment.userInfo}</span>
                       <span className="block overflow-wrap break-word font-normal text-gray-500">{postComment.message}</span>
+                      <div className="flex items-center gap-2 justify-between">
+                      {/*editComment && postComment.id === editComment.id ? (
+                        <input
+                          type="text"
+                          value={editComment.message}
+                          onChange={onChangeEditComment}
+                          className="pb-1 border-b w-full"
+                        />
+                      ) : (
+                        <p className="font-light">{postComment.message}</p>
+                      )}
+                      {editComment?.id === postComment.id ? (
+                        <div className="flex gap-2">
+                          <button type="button" className="text-green-500">
+                            Confirm
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => handleEdit(postComment.id)}
+                            className="text-gray-500"
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => setEditComment({ id: postComment.id, message: postComment.message })}
+                          className="text-green-500"
+                        >
+                          Edit
+                        </button>
+                      )*/}
+                      </div>
                     </p>
                   )))}
               </div>
