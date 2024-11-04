@@ -4,10 +4,12 @@ import { BlogPosts } from "@/components/index";
 import { getAllPosts } from "lib/posts-lib";
 
 
+
 const blog: NextPage = ( { posts }: any ) => {
 
-	return <BlogPosts posts={posts} />;
-	
+	return (
+		<BlogPosts posts={posts} />
+	);
 };
 
 

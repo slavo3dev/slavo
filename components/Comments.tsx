@@ -7,16 +7,46 @@ interface Comment {
   text: string;
 }
 
-export const Comments = () => {
+interface PropsComments {
+  id?: string;
+  created_at?: string;
+  message: string;
+  userInfo: string;
+  sourceId?: number;
+}
+
+interface CommentsProps {
+  sourceId: number; 
+}
+
+
+export const Comments = ({sourceId}: CommentsProps) => {
   const [comment, setComment] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [showComments, setShowComments] = useState<boolean>(false);
-  const [commentsList, setCommentsList] = useState<Comment[]>([]);
   const [successMessage, setSuccessMessage] = useState<string>("");
+  const [postComments, setPostComments] = useState<PropsComments[]>([]);
+
 
   const { userInfo } = useContext(UserInfoContext);
   const userEmail = userInfo?.email;
   
+
+  useEffect(() => {
+    const fetchComments = async () => {
+      try {
+        const response = await fetch(`/api/getComments?sourceId=${sourceId}`);
+        const data = await response.json();
+        setPostComments(data); 
+      } catch (error) {
+        console.error("Error fetching comments:", error);
+        setError(CommentsError.fetchError);
+      }
+    };
+  
+    fetchComments();
+  }, [sourceId]);
+
 
   useEffect(() => {
     if (successMessage) {
@@ -46,22 +76,38 @@ export const Comments = () => {
   };
 
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+
     event.preventDefault();
     if (!comment.trim()) {
       setError(CommentsError.onSubmitError);
       return;
     }
 
+    
     if (countWords(comment) > 96) {
       setError(CommentsError.wordLimitError);
       return;
     }
 
-    const newComment: Comment = { email: userEmail || "Anonymous", text: comment };
+
+    const newComment: PropsComments = { userInfo: userEmail || "Anonymous", message: comment };
+
+    try {
+      await fetch('/api/postComments', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...newComment, sourceId })
+      })
+    } catch (error) {
+      console.error("Error fetching comments:", error);
+      setError(CommentsError.fetchError);
+    }
+
 
     if (userEmail) {
-      setCommentsList([...commentsList, newComment]); 
+      setPostComments([...postComments, newComment]); 
       setComment(""); 
       setSuccessMessage("Comment submitted successfully!"); 
     } else {
@@ -76,7 +122,6 @@ export const Comments = () => {
   return (
     
       <div className="flex flex-col z-50">
-        
         <button
           onClick={toggleComments}
           className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700"
@@ -95,12 +140,6 @@ export const Comments = () => {
               >
                 ✕
               </button>
-
-              {/*userEmail && (
-                <p className="text-sm text-gray-600">
-                  Logged in as: <span className="font-bold">{userEmail}</span>
-                </p>
-              )*/}
               <form onSubmit={onSubmit} className="mt-2 flex flex-col gap-2">
                 <textarea
                   value={comment}
@@ -117,15 +156,12 @@ export const Comments = () => {
               {successMessage && <p className="text-green-500 mt-2">{successMessage}</p>}
               <div className="mt-2 text-black">
                 <p className="font-bold">Comments:</p>
-                  {commentsList.length === 0 ? (
-                    <p>No comments yet. Be the first to comment!</p>
-                  ) : (
-                    commentsList.map((c, index) => (
-                      <p key={index} className="p-2 border-b max-w-full break-words text-sm">
-                        <span className="text-blue-400">{c.email}:</span> <span className="block overflow-wrap break-word font-normal text-gray-500">{c.text}</span>
-                      </p>
-                    ))
-                  )}
+                  {postComments.length === 0 ? (<p> No comments found.</p>) : (postComments.map((postComment) => (
+                    <p key={postComment.id} className="p-2 border-b max-w-full break-words text-sm">
+                      <span className="text-blue-400">{postComment.userInfo}</span>
+                      <span className="block overflow-wrap break-word font-normal text-gray-500">{postComment.message}</span>
+                    </p>
+                  )))}
               </div>
             </div>
           </div>

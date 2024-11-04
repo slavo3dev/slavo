@@ -25,13 +25,25 @@ const Test: NextPage = () =>
 	};
     
 	return (
-		!isResetPassword ? 
-			(isAccountCreated ? 
-				<LoginForm signIn={() => toggleState(setIsAccountCreated)} resetPassword={() => toggleState(setIsResetPassword)} /> :
-				<CreateAccount signIn={() => toggleState(setIsAccountCreated)} /> ) :
-			<ResetPassword resetPassword={() => toggleState(setIsResetPassword)} />
-	);
-};
-
+			<>
+				{!isResetPassword ? (
+					isAccountCreated ? (
+						<LoginForm 
+							signIn={() => toggleState(setIsAccountCreated)} 
+							resetPassword={() => toggleState(setIsResetPassword)} 
+						/>
+					) : (
+						<CreateAccount 
+							signIn={() => toggleState(setIsAccountCreated)} 
+						/>
+					)
+				) : (
+					<ResetPassword 
+						resetPassword={() => toggleState(setIsResetPassword)} 
+					/>
+				)}
+			</>
+		);
+	};
 
 export default Test;
