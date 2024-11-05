@@ -17,7 +17,7 @@ const Videos: NextPage = () => {
 
 	return (
 		<>
-			{isAuth && (
+			{isAuth ? (
 			<>
 			<HeadBasePage
 				title={ "Free Web Development Videos - Learn Coding & Programming" }
@@ -46,10 +46,9 @@ const Videos: NextPage = () => {
 					</div>
 				</div>
 			</div>
-			</>
-			)};
-		{!isAuth && (
-  			<div className="text-center p-10 min-h-[82vh]">
+			</>) 
+			:
+			(<div className="text-center p-10 min-h-[82vh]">
     			<h1 className="text-2xl font-bold text-gray-800">Access Restricted</h1>
     			<p className="text-lg text-gray-600 mt-2">
      			 	Please <Link href="/login" className="text-blue-600 underline">log in</Link> to access our library of free web development videos.

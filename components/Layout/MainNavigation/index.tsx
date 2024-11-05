@@ -56,7 +56,7 @@ export const MainNavigation: FC = () => {
 							<Link href="/contact">Contact</Link>
 						</li>
 						<li className={router.pathname === "/login" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
-							{(userEmail ) ? (
+							{(userEmail) ? (
 								
 								<Link href="/auth/logout">Logout</Link>
 								
