@@ -20,7 +20,7 @@ interface CommentsProps {
 }
 
 interface EditCommentProps {
-  id: number;
+  id: string;
   message: string;
 }
 
@@ -30,7 +30,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
   const [showComments, setShowComments] = useState<boolean>(false);
   const [successMessage, setSuccessMessage] = useState<string>("");
   const [postComments, setPostComments] = useState<PropsComments[]>([]);
-  const [editComment, setEditComment] = useState<EditCommentProps | null>(null);
+  const [editComment, setEditComment] = useState<EditCommentProps>({id: "", message: ""});
 
   const { userInfo } = useContext(UserInfoContext);
   const userEmail = userInfo?.email;
@@ -77,12 +77,15 @@ export const Comments = ({sourceId}: CommentsProps) => {
     }
   };
 
-  const onChangeEditComment = (event: ChangeEvent<HTMLTextAreaElement>) => {
+  const onChangeEditComment = (event: ChangeEvent<HTMLInputElement>) => {
     if(editComment) {
       setEditComment({...editComment, message: event.target.value})
     }
-
   }
+
+  /*const confirmEdit = () => {
+    window.alert("Confirm edit comment");
+  };*/
 
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -124,7 +127,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
     setShowComments(!showComments);
   };
 
-  /*const handleEdit = async (commentId: number) => {
+  const confirmEdit = async (commentId: number) => {
     if (editComment) {
       try {
         await fetch(`/api/editComment/${commentId}`, {
@@ -134,15 +137,27 @@ export const Comments = ({sourceId}: CommentsProps) => {
         });
         // Update postComments state after editing
         setPostComments((prev) => 
-          prev.map((c) => (c.id === commentId ? { ...c, message: editComment.message } : c))
+          prev.map((c) => ({ ...c, message: editComment.message }))
         );
-        setEditComment(null); // Reset edit state
+        setEditComment(""); // Reset edit state
       } catch (error) {
         console.error("Error editing comment:", error);
         setError(CommentsError.fetchError);
       }
     }
-  };*/
+  };
+
+  {/*const confirmDelete = async (commentId: number) => {
+    try {
+      await fetch(`/api/editComment/${commentId}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: editComment.message })
+      });
+    } catch (error) {
+      console.error("Error deleting comment:", error);
+      setError(CommentsError.fetchError);
+  }*/}
 
   return (
     
@@ -186,9 +201,9 @@ export const Comments = ({sourceId}: CommentsProps) => {
                   {postComments.length === 0 ? (<p> No comments found.</p>) : (postComments.map((postComment) => (
                     <p key={postComment.id} className="p-2 border-b max-w-full break-words text-sm">
                       <span className="text-blue-400">{postComment.userInfo}</span>
-                      <span className="block overflow-wrap break-word font-normal text-gray-500">{postComment.message}</span>
+                      {/*<span className="block overflow-wrap break-word font-normal text-gray-500">{postComment.message}</span>*/}
                       <div className="flex items-center gap-2 justify-between">
-                      {/*editComment && postComment.id === editComment.id ? (
+                      {postComment.id === editComment.id ? (
                         <input
                           type="text"
                           value={editComment.message}
@@ -196,16 +211,17 @@ export const Comments = ({sourceId}: CommentsProps) => {
                           className="pb-1 border-b w-full"
                         />
                       ) : (
-                        <p className="font-light">{postComment.message}</p>
+                        <p className="block overflow-wrap break-word font-normal text-gray-500">{postComment.message}</p>
                       )}
-                      {editComment?.id === postComment.id ? (
+                      {editComment.id === postComment.id ? (
                         <div className="flex gap-2">
-                          <button type="button" className="text-green-500">
+                          <button type="button" onClick={confirmEdit} className={`${editComment.message === postComment.message ? `text-gray-300` : `text-green-500`}`}
+                          disabled={editComment.message === postComment.message}>
                             Confirm
                           </button>
                           <button
                             type="button"
-                            onClick={() => handleEdit(postComment.id)}
+                            onClick={() => setEditComment({ id: "", message: "" })}
                             className="text-gray-500"
                           >
                             Cancel
@@ -219,7 +235,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
                         >
                           Edit
                         </button>
-                      )*/}
+                      )}
                       </div>
                     </p>
                   )))}
