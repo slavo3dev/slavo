@@ -3,12 +3,13 @@ import UserInfoContext from "context/UserInfoContext";
 import { CommentsError } from "lib/err/err";
 
 interface Comment {
-  email: string;
-  text: string;
+  id: string;
+  userInfo: string;
+  message: string;
 }
 
 interface PropsComments {
-  id?: string;
+  id: string;
   created_at?: string;
   message: string;
   userInfo: string;
@@ -29,7 +30,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
   const [error, setError] = useState<string>("");
   const [showComments, setShowComments] = useState<boolean>(false);
   const [successMessage, setSuccessMessage] = useState<string>("");
-  const [postComments, setPostComments] = useState<PropsComments[]>([]);
+  const [postComments, setPostComments] = useState<(PropsComments)[]>([]);
   const [editComment, setEditComment] = useState<EditCommentProps>({id: "", message: ""});
 
   const { userInfo } = useContext(UserInfoContext);
@@ -100,7 +101,12 @@ export const Comments = ({sourceId}: CommentsProps) => {
       return;
     }
 
-    const newComment: PropsComments = { userInfo: userEmail || "Anonymous", message: comment };
+    const newComment: PropsComments = {
+      id: crypto.randomUUID(), // Generating a unique ID
+      userInfo: userEmail || "Anonymous",
+      message: comment,
+      sourceId,
+    };
 
     try {
       await fetch('/api/postComments', {
@@ -127,7 +133,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
     setShowComments(!showComments);
   };
 
-  const confirmEdit = async (commentId: number) => {
+  const confirmEdit = async (commentId: string) => {
     if (editComment) {
       try {
         await fetch(`/api/editComment/${commentId}`, {
@@ -136,10 +142,10 @@ export const Comments = ({sourceId}: CommentsProps) => {
           body: JSON.stringify({ message: editComment.message })
         });
         // Update postComments state after editing
-        setPostComments((prev) => 
-          prev.map((c) => ({ ...c, message: editComment.message }))
+        setPostComments((prev) =>
+          prev.map((c) => (c.id === commentId ? { ...c, message: editComment.message } : c))
         );
-        setEditComment(""); // Reset edit state
+        setEditComment({ id: "", message: "" }); // Reset edit state
       } catch (error) {
         console.error("Error editing comment:", error);
         setError(CommentsError.fetchError);
@@ -149,7 +155,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
 
   {/*const confirmDelete = async (commentId: number) => {
     try {
-      await fetch(`/api/editComment/${commentId}`, {
+      await fetch(`/api/deleteComment/${commentId}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: editComment.message })
@@ -215,7 +221,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
                       )}
                       {editComment.id === postComment.id ? (
                         <div className="flex gap-2">
-                          <button type="button" onClick={confirmEdit} className={`${editComment.message === postComment.message ? `text-gray-300` : `text-green-500`}`}
+                          <button type="button" onClick={() => confirmEdit(postComment.id)} className={`${editComment.message === postComment.message ? `text-gray-300` : `text-green-500`}`}
                           disabled={editComment.message === postComment.message}>
                             Confirm
                           </button>
