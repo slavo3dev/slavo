@@ -1,7 +1,11 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState, FC } from 'react';
 import PorchUserDataForm from '../PorchUserDataForm';
 
-const WeeklyGoalForm = () => {
+interface WeeklyGoalFormProps { 
+    daysLeft: number; 
+}
+
+const WeeklyGoalForm: FC<WeeklyGoalFormProps> = ({daysLeft}) => {
     const [close, setClose] = useState<boolean>(false)
     const [weeklyGoal, setWeeklyGoal] = useState<number>(() => {
         const storedGoal = localStorage.getItem('weeklyGoal');
@@ -35,7 +39,7 @@ const WeeklyGoalForm = () => {
             <label htmlFor="weekly-goal" className='font-semibold text-sm mb-2'>New Goal</label>
             <div className='flex flex-row'>
                 <select name="weekly-goal" id="weekly-goal" className='border rounded p-2 w-fit' value={weeklyGoal} onChange={handleNewGoal}>
-                    {Array.from({length: 7}, (_, i) => (
+                    {Array.from({length: daysLeft}, (_, i) => (
                         <option key={i + 1} value={i + 1}>
                             {i + 1}
                         </option>
