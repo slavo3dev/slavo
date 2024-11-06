@@ -23,24 +23,14 @@ const PorchUserDataForm= () => {
 
 
     const { userInfo } = useContext(UserInfoContext)
+  
 
-    const daysLeftInWeek = () => {
-        const today = new Date (); 
-        const currentDay = today.getDay(); 
-        const daysLeft = 7 - currentDay;
-        return daysLeft;
-    }
 
     useEffect(() => {
-
-        const goalDaysLeft = daysLeftInWeek(); 
         const storedGoal = localStorage.getItem('weeklyGoal');
         if (storedGoal) {
-            const goal = Number(storedGoal); 
-            setWeeklyGoal(Math.min(goal, goalDaysLeft))
-        } else {
-            setWeeklyGoal(goalDaysLeft); 
-        }
+            setWeeklyGoal(Number(storedGoal))
+        };
     }, []);
 
     // grabbing the post created at time by user eamil in ascending order
@@ -164,9 +154,7 @@ const PorchUserDataForm= () => {
     if (showUpdateGoals) {
         return (
            <div>
-               <WeeklyGoalForm
-                    daysLeft={daysLeftInWeek()}
-                />
+               <WeeklyGoalForm />
            </div> 
         )
     }
@@ -181,18 +169,14 @@ const PorchUserDataForm= () => {
                 <p className='font-bold text-4xl mt-4 flex justify-center'>{weeklyLearningDays} / {weeklyGoal}</p>
                 <p className='font-bold flex justify-center'>days</p>
                 <div className='flex justify-center'>
-                       { weeklyLearningDays >= weeklyGoal ? (
+                { weeklyLearningDays >= weeklyGoal ? (
                             <p className='text-sm text-center border rounded-full px-2 py-1 w-fit mt-2 bg-green-400'>
                                 Nice! 🚀
                             </p>
                        ) : weeklyLearningDays >= Math.floor(weeklyGoal / 2) ? (
                             <p className='text-sm text-center border rounded-full px-2 py-1 w-fit mt-2 bg-yellow-400'>
-                                Halfway there
+                                On Track
                             </p> 
-                       ) : daysLeftInWeek() >= weeklyGoal - weeklyLearningDays ? (
-                        <p className='text-sm text-center border rounded-full px-2 py-1 w-fit mt-2 bg-green-400'>
-                            On Track
-                        </p>
                        ) : (
                             <p className='text-sm text-center border rounded-full px-2 py-1 w-fit mt-2 bg-red-400'>
                                 Off Track
