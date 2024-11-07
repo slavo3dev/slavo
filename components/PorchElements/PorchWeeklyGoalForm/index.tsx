@@ -1,29 +1,34 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState, FC} from 'react';
 import PorchUserDataForm from '../PorchUserDataForm';
 
-const WeeklyGoalForm = () => {
+interface WeeklyGoalFormProps { 
+    weeklyGoal: number;
+    onUpdateGoals: (newGoal: number) => void;
+
+}
+const WeeklyGoalForm: FC<WeeklyGoalFormProps> = ({ weeklyGoal, onUpdateGoals }) => {
     const [close, setClose] = useState<boolean>(false)
-    const [weeklyGoal, setWeeklyGoal] = useState<number>(() => {
-        const storedGoal = localStorage.getItem('weeklyGoal');
-        return storedGoal ? Number(storedGoal) : 1
-    })
+    const [newGoal, setNewGoal] = useState<number>(weeklyGoal); 
 
     useEffect(() => {
-        localStorage.setItem('weeklyGoal', String(weeklyGoal));
-    }, [weeklyGoal])
+        localStorage.setItem('weeklyGoal', String(newGoal));
+    }, [newGoal])
 
     const committed = () => {
         setClose(true);
-        console.log('Selected Weekly Goal:', weeklyGoal);
+        console.log('Selected Weekly Goal:', newGoal);
+        onUpdateGoals(newGoal); 
     }
 
     const handleNewGoal = (e: ChangeEvent<HTMLSelectElement>) => {
-        setWeeklyGoal(Number(e.target.value));
+        setNewGoal(Number(e.target.value));
     }
 
     if (close) {
         return (
+            <>
             <PorchUserDataForm />
+            </>
         )
     }
 
@@ -34,7 +39,7 @@ const WeeklyGoalForm = () => {
             <div className='border mb-6'></div>
             <label htmlFor="weekly-goal" className='font-semibold text-sm mb-2'>New Goal</label>
             <div className='flex flex-row'>
-                <select name="weekly-goal" id="weekly-goal" className='border rounded p-2 w-fit' value={weeklyGoal} onChange={handleNewGoal}>
+                <select name="weekly-goal" id="weekly-goal" className='border rounded p-2 w-fit' value={newGoal} onChange={handleNewGoal}>
                     {Array.from({length: 7}, (_, i) => (
                         <option key={i + 1} value={i + 1}>
                             {i + 1}

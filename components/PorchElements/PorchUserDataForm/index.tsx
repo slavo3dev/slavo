@@ -15,6 +15,7 @@ import Calendar from './Calendar';
 const PorchUserDataForm= () => {
     const [showUpdateGoals, setShowUpdateGoals] = useState<boolean>(false);
     const [weeklyGoal, setWeeklyGoal] = useState<number>(1);
+    const [nextWeekGoal, setNextWeekGoal] = useState<number | null>(null); 
     const [currentStreak, setCurrentStreak] = useState<number>(0);
     const [longestStreak, setLongestStreak] = useState<number>(0);
     const [weeklyLearningDays, setWeeklyLearningDays] = useState<number>(0);
@@ -29,9 +30,38 @@ const PorchUserDataForm= () => {
     useEffect(() => {
         const storedGoal = localStorage.getItem('weeklyGoal');
         if (storedGoal) {
-            setWeeklyGoal(Number(storedGoal))
-        };
+            setWeeklyGoal(Number(storedGoal));
+        }
+    
+        const storedNextWeekGoal = localStorage.getItem('nextWeeklyGoal'); 
+        if (storedNextWeekGoal) {
+            setNextWeekGoal(Number(storedNextWeekGoal));
+        }
     }, []);
+
+
+
+    // handling week transition
+    useEffect(() => {
+        const today = new Date(); 
+        const currentWeekDay = today.getDay(); 
+
+        const lastUpdate = localStorage.getItem('lastUpdate'); 
+        const lastUpdatedDate = lastUpdate? new Date(lastUpdate) : null; 
+
+        if (currentWeekDay === 0 && lastUpdatedDate) {
+            // Update the weekly goal with the next week's goal
+            setWeeklyGoal(nextWeekGoal || 1);  // Use next week's goal, or default to 1
+            localStorage.setItem('weeklyGoal', String(weeklyGoal));  // Store the updated current goal in localStorage
+            setNextWeekGoal(null);  // Reset next week's goal
+            localStorage.setItem('nextWeeklyGoal', '');  // Clear next week's goal in localStorage
+
+            // Update the 'lastUpdated' timestamp
+            localStorage.setItem('lastUpdated', today.toISOString());
+        }
+    }, [nextWeekGoal, weeklyGoal]);
+
+
 
     // grabbing the post created at time by user eamil in ascending order
     useEffect(() => {
@@ -142,6 +172,11 @@ const PorchUserDataForm= () => {
 		fetchLearningDates();
 	}, [userInfo?.email]);
 
+    const handleGoalUpdate = (newGoal: number) => {
+        setNextWeekGoal(newGoal); 
+        localStorage.setItem('nextWeeklyGoal', String(newGoal)); 
+    }
+
     // !!!
     // State Machine
         // where to keep state 
@@ -150,11 +185,10 @@ const PorchUserDataForm= () => {
         // refactor code to make database pulls more efficient
 
 
-
     if (showUpdateGoals) {
         return (
            <div>
-               <WeeklyGoalForm />
+               <WeeklyGoalForm  weeklyGoal={weeklyGoal} onUpdateGoals={handleGoalUpdate}/>
            </div> 
         )
     }
