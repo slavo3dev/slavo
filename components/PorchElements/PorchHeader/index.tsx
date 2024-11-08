@@ -12,7 +12,7 @@ interface PorchHeaderProps {
 }
 
 export const PorchHeader: React.FC<PorchHeaderProps> = ({ showForm, setShowForm }) => {
-	const { userInfo} = useContext(UserInfoContext);
+	const { userInfo } = useContext(UserInfoContext);
 
 	return (
 		<header className="flex flex-col mt-1">

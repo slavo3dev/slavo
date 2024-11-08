@@ -20,15 +20,12 @@ export const PorchList: React.FC<PorchListProps> = ({ porchs, setPorchs }) => {
 		setDailyUpdates(porchs);
 	}, [porchs]);
 
-	const sortPorchbyDate = useMemo(() => {
-		return dailyUpdates.slice().sort((a, b) => {
-			return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
-		});
-	}, [dailyUpdates]);
-
 	const filteringUpdatesPerUser = useMemo(() => {
-		return dailyUpdates.filter((porch) => porch.email === userInfo?.email);
-	}, [dailyUpdates, userInfo?.email]);
+		const updates = filtered 
+			? dailyUpdates.filter((porch) => porch.email === userInfo?.email)
+			: dailyUpdates; 
+			return updates.slice().sort((a,b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+	}, [dailyUpdates, userInfo?.email, filtered]);
 
 	useEffect(() => {
 		const fetchLearningDays = async () => {
@@ -49,10 +46,14 @@ export const PorchList: React.FC<PorchListProps> = ({ porchs, setPorchs }) => {
 	}, [userInfo?.email]);
 
 	const handleFiltering = () => {
-		setDailyUpdates(filtered ? porchs : filteringUpdatesPerUser);
-		setButtonTitle(filtered ? "All Daily Updates" : "Track Your Daily Updates");
-		setFiltered(!filtered);
-	};
+		setFiltered((prevState) => {
+		  const newFiltered = !prevState;
+		  setButtonTitle(
+			newFiltered ? "All Daily Updates" : "Track Your Daily Updates"
+		  );
+		  return newFiltered;
+		});
+	  };
 
 	return (
 		<section className="py-1 sm:py-1 lg:py-1 border-y-4">
@@ -77,9 +78,13 @@ export const PorchList: React.FC<PorchListProps> = ({ porchs, setPorchs }) => {
 							) : null}
 						</div>
 						<div className="mt-6 space-y-3">
-							{sortPorchbyDate.map((porch) => (
-								<PorchDailyUpdate key={porch.id + Math.random()} porch={porch} setPorchs={setPorchs} />
-							))}
+						{filteringUpdatesPerUser.map((porch) => (
+                			<PorchDailyUpdate
+                 				key={porch.id + Math.random()}
+                  				porch={porch}
+                  				setPorchs={setPorchs}
+                			/>
+              			))}
 						</div>
 					</div>
 				</div>
