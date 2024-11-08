@@ -155,15 +155,25 @@ export const Comments = ({sourceId}: CommentsProps) => {
 
   {/*const confirmDelete = async (commentId: number) => {
     try {
-      await fetch(`/api/deleteComment/${commentId}`, {
+      const response = await fetch(`/api/deleteComment/${commentId}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: editComment.message })
+        
       });
+
+          if (!response.ok) {
+        throw new Error("Failed to delete comment.");
+      }
+
+      setPostComments((prev) =>
+        prev.filter((c) => c.id !== commentId)
+      );
+
     } catch (error) {
       console.error("Error deleting comment:", error);
       setError(CommentsError.fetchError);
-  }*/}
+  }
+}*/}
 
   return (
     
@@ -220,6 +230,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
                         <p className="block overflow-wrap break-word font-normal text-gray-500">{postComment.message}</p>
                       )}
                       {editComment.id === postComment.id ? (
+                        
                         <div className="flex gap-2">
                           <button type="button" onClick={() => confirmEdit(postComment.id)} className={`${editComment.message === postComment.message ? `text-gray-300` : `text-green-500`}`}
                           disabled={editComment.message === postComment.message}>
@@ -233,7 +244,9 @@ export const Comments = ({sourceId}: CommentsProps) => {
                             Cancel
                           </button>
                         </div>
+                        
                       ) : (
+                        <div className="flex gap-2">
                         <button
                           type="button"
                           onClick={() => setEditComment({ id: postComment.id, message: postComment.message })}
@@ -241,6 +254,10 @@ export const Comments = ({sourceId}: CommentsProps) => {
                         >
                           Edit
                         </button>
+                        {/*<button type="button" onClick={() => confirmDelete(postComment.id)}className="text-gray-700">
+                        Delete
+                        </button>*/}
+                        </div>
                       )}
                       </div>
                     </p>
@@ -252,4 +269,5 @@ export const Comments = ({sourceId}: CommentsProps) => {
       )}
     </div>
   );
-};
+}
+
