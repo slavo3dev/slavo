@@ -22,7 +22,7 @@ const LoginModal: FC<LoginModalProps> = ({ isOpen, onClose, className }) => {
 
     return (
         <Modal isOpen={isOpen} className="bg-white rounded-md">
-            <button onClick={onClose} className="mt-2 ml-2 text-black text-2xl pl-2">
+            <button onClick={onClose} className="mt-2 text-black text-2xl pl-2">
                 <IoIosCloseCircleOutline />
             </button>
 

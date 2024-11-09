@@ -47,7 +47,7 @@ const PorchUserButton : FC<PorchUserButtonProps> = ( { showUserForm, setShowUser
       {showLoginPopup && (
         <>
           <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40"></div>
-          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50  rounded-lg shadow-lg max-w-xl w-full p-6">
+          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 rounded-lg  max-w-xl w-full p-6">
             <LoginModal isOpen={showLoginPopup} onClose={closeLoginPopup} />
           </div>
         </>
