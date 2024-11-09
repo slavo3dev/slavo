@@ -9,7 +9,11 @@ const WeeklyGoalForm = () => {
   });
 
   useEffect(() => {
-    localStorage.setItem("weeklyGoal", String(weeklyGoal));
+    try {
+      localStorage.setItem("weeklyGoal", String(weeklyGoal));
+    } catch (e) {
+      console.warn("Failed to save to localStorage:", e);
+    }
   }, [weeklyGoal]);
 
   const committed = () => {
@@ -26,7 +30,10 @@ const WeeklyGoalForm = () => {
   }
 
   return (
-    <form className="border-2 p-4 m-2 flex flex-col overflow-hidden bg-white rounded-xl">
+    <form
+      className="border-2 p-4 m-2 flex flex-col bg-white rounded-xl"
+      style={{ overflow: "hidden" }}
+    >
       <h4 className="mb-2">Set your goal</h4>
       <div className="border mb-6"></div>
       <label
@@ -53,12 +60,14 @@ const WeeklyGoalForm = () => {
       </div>
       <div className="mt-8 flex flex-row justify-between space-x-20">
         <button
+          type="button"
           onClick={() => setClose(true)}
           className="border border-black text-sm rounded-full px-2 py-1 hover:bg-gray-100"
         >
           Close
         </button>
         <button
+          type="button"
           onClick={committed}
           className="border bg-blue-200 text-sm rounded-full px-2 py-1 hover:bg-opacity-75"
         >

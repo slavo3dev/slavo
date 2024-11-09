@@ -145,13 +145,22 @@ const PorchUserDataForm = ({ setShowUserForm }: any) => {
     );
   }
 
+  const containerStyle = {
+    overflow: "hidden",
+    transform: "translateZ(0)", // Trigger hardware acceleration
+    willChange: "transform", // Optimize for potential changes
+  };
+
   return (
-    <div className="relative h-fit w-fit bg-blue-100 p-2 flex flex-col rounded-md">
+    <div
+      className="relative h-fit w-fit bg-blue-100 p-2 flex flex-col rounded-md"
+      style={containerStyle}
+    >
       <button
         className="absolute top-1 left-1 text-red-500 hover:text-red-700 text-3xl font-bold"
         style={{
-          top: "-1rem",
-          left: "-0.3rem",
+          top: "-0.7rem",
+          left: "-0.1rem",
           fontWeight: 900,
         }}
         onClick={() => setShowUserForm(false)}

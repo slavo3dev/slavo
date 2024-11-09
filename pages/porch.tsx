@@ -1,5 +1,5 @@
 import { GetStaticProps, NextPage } from "next";
-import { useState, useCallback, MouseEvent } from "react";
+import { useState, useCallback, MouseEvent, useRef } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import supabase from "../lib/supabase";
 import { Loader } from "@/components/ui/Loader";
@@ -31,6 +31,7 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
   const [position, setPosition] = useState({ x: 211, y: 196 });
   const [dragging, setDragging] = useState<boolean>(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const animationFrameRef = useRef<number | null>(null);
 
   const loadMorePorchs = useCallback(async () => {
     try {
@@ -64,16 +65,25 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
   };
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (dragging) {
+    if (!dragging) return;
+
+    if (animationFrameRef.current) {
+      cancelAnimationFrame(animationFrameRef.current);
+    }
+
+    animationFrameRef.current = requestAnimationFrame(() => {
       setPosition({
         x: e.clientX - offset.x,
         y: e.clientY - offset.y,
       });
-    }
+    });
   };
 
   const handleMouseUp = () => {
     setDragging(false);
+    if (animationFrameRef.current) {
+      cancelAnimationFrame(animationFrameRef.current);
+    }
   };
 
   return (
