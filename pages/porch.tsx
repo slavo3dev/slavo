@@ -96,7 +96,7 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
           "Join our community to share your daily learning updates and track your progress in web development. Engage with others on the same career change journey, get support, and stay motivated. Start your path to a bright future with Slavo.io!"
         }
       />
-      <div className="p-10 text-slate-800">
+      <div className="p-1 sm:p-1 md:p-6 lg:p-10 text-slate-800">
         <div className="flex flex-col">
           <div className="flex flex-row items-center">
             <PorchUserButton
