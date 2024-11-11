@@ -68,7 +68,7 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
 				</p>
 				<div className="flex flex-col mt-2 border-4 border-gray-200 rounded-xl bg-gray-200">
 					<a href={`mailto:${porch.email}`} title={porch.email}>
-						<p className="pl-2 text-sm font-medium text-gray-900">
+						<p className="pl-2 text-sm font-medium text-gray-900 break-all">
 							<b>User Email: </b>
 							<span className="whitespace-normal hover:underline">
 								{porch.email}
@@ -82,7 +82,7 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
 								: `//${porch.source}`
 						}
 						target="_blank"
-						className="pl-2 text-gray-900 text-sm font-medium"
+						className="pl-2 text-gray-900 text-sm font-medium break-all"
 					>
 						<b>Source: </b>
 						<span className="whitespace-normal hover:underline">
