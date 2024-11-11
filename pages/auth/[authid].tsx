@@ -8,9 +8,14 @@ const AuthPages: NextPage = () =>
 	const router = useRouter();
     
 	const login: () => void = async () => {
+
+		//const redirectUrl: string = window.location.hostname === 'localhost' ? process.env.NEXT_PUBLIC_LOCAL_HOST_URL || "" : '/'
+        
 		await supabase.auth.signInWithOAuth({
-			provider: "github"
+			provider: "github",
+			//options: { redirectTo: redirectUrl, }, // Explicit redirect URL
 		});
+		//router.push(redirectUrl);
 		router.push("/");
 	};
     
