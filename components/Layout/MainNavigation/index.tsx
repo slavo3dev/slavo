@@ -68,7 +68,7 @@ export const MainNavigation: FC = () => {
 								
 								<Link href="/auth/logout">Logout</Link>
 								
-							) : ( <span onClick={toggleLoginModal}className="font-montserrat font-semibold cursor-pointer text-lg hover:text-blue-500 hover:bg-blue-50 rounded-md">Login</span> // Trigger the modal on click 
+							) : ( <span onClick={toggleLoginModal}className="font-montserrat font-semibold cursor-pointer text-lg hover:text-blue-500 hover:bg-blue-50 rounded-md">Login</span> 
 							)}
 						</li>
 						{userEmail && <li className="hover:text-blue-500 hover:bg-blue-50">

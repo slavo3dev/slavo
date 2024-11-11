@@ -49,8 +49,8 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
 				setIsUpdating(false);
 			}
 		} else {
-			setIsUpdating(false);  // Ensure update process completes even if the modal is triggered
-			toggleLoginModal(); // Open the login modal
+			setIsUpdating(false);  
+			toggleLoginModal(); 
 		}
 	};
 
