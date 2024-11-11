@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import UserInfoContext from "@/context/UserInfoContext";
 import { BiLike } from "react-icons/bi";
-
+import LoginModal from "@/components/Auth/LoginPopup";
 
 
 interface PorchType {
@@ -22,6 +22,8 @@ interface PorchDailyUpdateProps {
 export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPorchs }) => {
 	const [isUpdating, setIsUpdating] = useState<boolean>(false);
 	const { userInfo } = useContext(UserInfoContext);
+	const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
+	const toggleLoginModal = () => setShowLoginModal((prev) => !prev);
 
 	const date = new Date(porch.created_at);
 	const formattedDate = `${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}-${date.getFullYear()}`;
@@ -47,7 +49,8 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
 				setIsUpdating(false);
 			}
 		} else {
-			alert("Please Login or Verify email address");
+			setIsUpdating(false);  // Ensure update process completes even if the modal is triggered
+			toggleLoginModal(); // Open the login modal
 		}
 	};
 
@@ -61,6 +64,7 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
 	};
 
 	return (
+		<>
 		<div className="flex flex-col overflow-hidden transition-all duration-200 transform bg-white shadow group rounded-xl hover:shadow-lg hover:-translate-y-1 hover:bg-sky-100 ">
 			<div className="flex-1 py-3 px-4 sm:p-6">
 				<p className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-blue-500 to-blue-800">
@@ -116,6 +120,15 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
 				</div>
 				<p className="pl-2 text-sm">{formattedDate}</p>
 			</div>
-		</div>
-	);
+    	</div>
+		{showLoginModal && (
+				<>
+        		<div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40"></div>
+				<div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 rounded-lg  max-w-xl w-full p-6">
+          			<LoginModal isOpen={showLoginModal} onClose={toggleLoginModal} />
+        		</div>
+				</>
+     		)}
+		</>
+  );
 };

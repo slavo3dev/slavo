@@ -11,7 +11,7 @@ interface LoginModalProps {
     className? : string;
 }
 
-const LoginModal: FC<LoginModalProps> = ({ isOpen, onClose, className }) => {
+export const LoginModal: FC<LoginModalProps> = ({ isOpen, onClose, className }) => {
     const [isAccountCreated, setIsAccountCreated] = useState(true);
     const [isResetPassword, setIsResetPassword] = useState(false);
     
