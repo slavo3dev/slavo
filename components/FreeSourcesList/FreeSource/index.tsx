@@ -2,6 +2,7 @@ import { FC, useState, useContext } from "react";
 import supabase from "lib/supabase";
 import UserInfoContext from "@/context/UserInfoContext";
 import { Comments } from "@/components/Comments";
+import { CardLayout } from "@/components/Layout/CardsLayout";
 
 interface FreeSourceTypeProps {
   fact: {
@@ -48,60 +49,24 @@ export const FreeSource: FC<FreeSourceTypeProps> = ({
   }
 
   return (
-    <>
-      {badSource ? (
-        <span className="badsource">[ ⛔️ BAD SOURCE ]</span>
-      ) : null}
-      <div className="flex flex-col transition-all duration-200 transform bg-white border border-gray-100 shadow group rounded-xl hover:shadow-lg hover:-translate-y-1">
-        <div className="px-4 py-5">
-          <div className="text-lg font-bold text-gray-900">
-            {fact.category}
+    <CardLayout
+      title={fact.category}
+      porch={{
+        source: fact.source,
+      }}
+      displayComment={fact.text.slice(0, 90)}
+      showMore={false}
+      commentText=""
+      handleMore={() => {}}
+      handleVote={handleVote}
+      isUpdating={isUpdating}
+      extraContent={
+        <>
+          <div className="px-9 py-5">
+            <Comments sourceId={fact.id} />
           </div>
-          <p className="mt-3 text-sm font-normal leading-6 text-gray-500 line-clamp-3">
-            {fact.text}
-          </p>
-          <div className="font-bold text-sm mt-3">
-            <a
-              href={
-                fact.source.includes("http")
-                  ? fact.source
-                  : `//${fact.source}`
-              }
-              target="_blank"
-              className="text-sm font-medium text-gray-900 break-all"
-            >
-              Source:{" "}
-              {fact.source.length > 60
-                ? fact.source.slice(0, 60) + "..."
-                : fact.source}
-            </a>
-          </div>
-        </div>
-        <div className="px-4 py-5">
-          <button
-            className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
-            onClick={() => handleVote("like")}
-            disabled={isUpdating}
-          >
-            👍 {fact.like}
-          </button>
-          <button
-            className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
-            onClick={() => handleVote("exelent")}
-            disabled={isUpdating}
-          >
-            🤯 {fact.exelent}
-          </button>
-          <button
-            className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-            onClick={() => handleVote("false")}
-            disabled={isUpdating}
-          >
-            ⛔️ {fact.false}
-          </button>
-          <Comments sourceId={fact.id} />
-        </div>
-      </div>
-    </>
+        </>
+      }
+    />
   );
 };
