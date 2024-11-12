@@ -16,7 +16,7 @@ interface CardLayoutProps {
   handleVote: (type: string) => void;
   isUpdating: boolean;
   formattedDate?: string;
-  extraContent?: React.ReactNode;  // Optional prop for additional content
+  extraContent?: React.ReactNode;
 }
 
 export const CardLayout: FC<CardLayoutProps> = ({
@@ -39,7 +39,6 @@ export const CardLayout: FC<CardLayoutProps> = ({
         </b>
         
         <div className="flex flex-col mt-2 border-4 border-gray-200 rounded-xl bg-gray-200">
-          {/* Conditionally render the email section */}
           {porch.email && (
             <a href={`mailto:${porch.email}`} title={porch.email}>
               <p className="pl-2 text-sm font-medium text-gray-900">
@@ -48,8 +47,6 @@ export const CardLayout: FC<CardLayoutProps> = ({
               </p>
             </a>
           )}
-          
-          {/* Render the source link */}
           <a
             href={porch.source.includes("http") ? porch.source : `//${porch.source}`}
             target="_blank"
