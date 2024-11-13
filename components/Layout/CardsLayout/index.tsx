@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { BiLike } from 'react-icons/bi';
 
 interface CardLayoutProps {
-  title: string;
+  title: string | number;
   porch: {
     text?: string;
     email?: string;
@@ -38,7 +38,7 @@ export const CardLayout: FC<CardLayoutProps> = ({
           {title}
         </b>
         
-        <div className="flex flex-col mt-2 border-4 border-gray-200 rounded-xl bg-gray-200">
+        <div className="flex flex-col mt-2 mt-4 mr-8 border-4 border-gray-200 rounded-xl bg-gray-200 break-all">
           {porch.email && (
             <a href={`mailto:${porch.email}`} title={porch.email}>
               <p className="pl-2 text-sm font-medium text-gray-900">
@@ -72,7 +72,7 @@ export const CardLayout: FC<CardLayoutProps> = ({
         </div>
 
         <div className="p-2">
-          <p className="text-sm pl-1">
+          <p className="text-sm text-black pl-1">
             <b>Likes: </b> {porch.excellent}
           </p>
           <button
@@ -85,7 +85,7 @@ export const CardLayout: FC<CardLayoutProps> = ({
           <p className="pl-2 pt-2 text-sm">{formattedDate}</p>
         </div>
 
-        {extraContent && <div className="px-4 py-5">{extraContent}</div>}
+        {extraContent && <div className="py-5">{extraContent}</div>}
       </div>
     </div>
   );
