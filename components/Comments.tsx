@@ -33,6 +33,57 @@ export const Comments = ({sourceId}: CommentsProps) => {
   const [postComments, setPostComments] = useState<(PropsComments)[]>([]);
   const [editComment, setEditComment] = useState<EditCommentProps>({id: "", message: ""});
 
+
+  type Data = {
+    id: number;
+    name: string;
+    age: number;
+  };
+
+  // this is for testing only................................................................
+  const [data, setData] = useState<Data[]>([]);
+  const [newName, setNewName] = useState('');
+  const [newAge, setNewAge] = useState<number | ''>('');
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const response = await fetch('/api/dummyData');
+    const result = await response.json();
+    setData(result);
+  };
+  
+  const updateData = async (id: number) => {
+    const response = await fetch(`/api/dummyData?id=${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name: newName, age: newAge }),
+    });
+
+    if (response.ok) {
+      const updatedItem = await response.json();
+      setData((prev) =>
+        prev.map((item) => (item.id === id ? updatedItem : item))
+      );
+    }
+  };
+
+  const deleteData = async (id: number) => {
+    const response = await fetch(`/api/dummyData?id=${id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      setData((prev) => prev.filter((item) => item.id !== id));
+    }
+  };
+
+//..................................................................
+
   const { userInfo } = useContext(UserInfoContext);
   const userEmail = userInfo?.email;
   
@@ -176,7 +227,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
 }*/}
 
   return (
-    
+      <>
       <div className="flex flex-col z-50">
         <button
           onClick={toggleComments}
@@ -268,6 +319,32 @@ export const Comments = ({sourceId}: CommentsProps) => {
         </>
       )}
     </div>
+
+    <div>
+      <h1>Dummy Data</h1>
+      <ul>
+        {data.map((item) => (
+          <li key={item.id}>
+            {item.name}, Age: {item.age}
+            <button onClick={() => deleteData(item.id)}>Delete</button>
+            <input
+              type="text"
+              placeholder="New name"
+              value={newName}
+              onChange={(e) => setNewName(e.target.value)}
+            />
+            <input
+              type="number"
+              placeholder="New age"
+              value={newAge}
+              onChange={(e) => setNewAge(e.target.value ? Number(e.target.value) : '')}
+            />
+            <button onClick={() => updateData(item.id)}>Update</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+    </>
   );
 }
 
