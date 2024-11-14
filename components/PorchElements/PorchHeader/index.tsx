@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import UserInfoContext from "@/context/UserInfoContext";
 import PorchUserButton from "../PorchInteractivity";
 import { MdOutlineTrendingUp } from "react-icons/md";

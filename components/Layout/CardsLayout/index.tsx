@@ -1,4 +1,4 @@
-import { FC } from 'react'; 
+import { FC,ReactNode} from 'react'; 
 import { BiLike } from 'react-icons/bi';
 
 interface CardLayoutProps {
@@ -16,7 +16,7 @@ interface CardLayoutProps {
   handleVote: (type: string) => void;
   isUpdating: boolean;
   formattedDate?: string;
-  extraContent?: React.ReactNode;
+  extraContent?: ReactNode;
 }
 
 export const CardLayout: FC<CardLayoutProps> = ({

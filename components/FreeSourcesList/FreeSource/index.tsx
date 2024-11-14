@@ -5,26 +5,28 @@ import { Comments } from "@/components/Comments";
 import { CardLayout } from "@/components/Layout/CardsLayout";
 import LoginModal from "@/components/Auth/LoginPopup";
 
-interface FreeSourceTypeProps {
-  fact: {
-    like: number;
-    exelent: number;
-    id: number;
-    false: number;
-    text: string;
-    source: string;
-    [key: string]: number | string; 
-  };
-  setFacts: React.Dispatch<React.SetStateAction<any[]>>;
+interface Fact {
+  id: number;
+  like: number;
+  exelent: number;
+  false: number;
+  text: string;
+  source: string;
+  category?: string;  
 }
+interface FreeSourceProps {
+  fact: Fact;  
+  setFacts: React.Dispatch<React.SetStateAction<Fact[]>>;  
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const FreeSource: FC<FreeSourceTypeProps> = ({ fact, setFacts }) => {
+export const FreeSource: FC<FreeSourceProps> = ({ fact, setFacts }) => {
   const [isUpdating, setIsUpdating] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
   const { userInfo } = useContext(UserInfoContext);
   const toggleLoginModal = () => setShowLoginModal((prev) => !prev);
 
-  async function handleVote(columnName: string) {
+  async function handleVote(columnName: keyof Fact) {
     if (userInfo?.email) {
       setIsUpdating(true);
 
@@ -35,12 +37,10 @@ export const FreeSource: FC<FreeSourceTypeProps> = ({ fact, setFacts }) => {
         .select();
       setIsUpdating(false);
 
-      if (!error)
-        setFacts((facts: any[]) =>
-          facts.map((f: { id: any }) =>
-            f.id === fact.id ? updatedFact[0] : f,
-          ),
-        );
+      if (!error && updatedFact && updatedFact.length > 0)
+        setFacts((prevFacts) =>
+          prevFacts.map((f) => (f.id === fact.id ? (updatedFact[0] as Fact) : f))
+    );
     } else {
       toggleLoginModal();
     }
@@ -48,7 +48,7 @@ export const FreeSource: FC<FreeSourceTypeProps> = ({ fact, setFacts }) => {
   return (
     <>
     <CardLayout
-        title={fact.category}
+       title={fact.category || "Unknown Category"}
         porch={{
           source: fact.source,
           excellent: fact.exelent,

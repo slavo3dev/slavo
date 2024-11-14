@@ -1,10 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FC } from "react";
+import { FC, SetStateAction, Dispatch } from "react";
 import { FreeSource } from "./FreeSource";
 
+interface Fact {
+  id: number;
+  like: number;
+  exelent: number;
+  false: number;
+  text: string;
+  source: string;
+  category?: string;  
+}
 interface FreeSourcesListProps {
-  facts: any[];
-  setFacts: any; 
+  facts: Fact[];
+  setFacts: Dispatch<SetStateAction<Fact[]>>; 
 }
 
 export const FreeSourcesList: FC<FreeSourcesListProps> = ({
