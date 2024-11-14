@@ -87,6 +87,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
   const { userInfo } = useContext(UserInfoContext);
   const userEmail = userInfo?.email;
   
+  // GET comment section
   useEffect(() => {
     const fetchComments = async () => {
       try {
@@ -138,8 +139,10 @@ export const Comments = ({sourceId}: CommentsProps) => {
   /*const confirmEdit = () => {
     window.alert("Confirm edit comment");
   };*/
+ //.....................................................................................
 
 
+  //POST comment section
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!comment.trim()) {
@@ -184,17 +187,18 @@ export const Comments = ({sourceId}: CommentsProps) => {
     setShowComments(!showComments);
   };
 
-  const confirmEdit = async (commentId: string) => {
+  //PATCH comments section
+  const confirmEdit = async (id: string) => {
     if (editComment) {
       try {
-        await fetch(`/api/editComment/${commentId}`, {
-          method: "PUT",
+        await fetch(`/api/editComments?id=${id}`, {
+          method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ message: editComment.message })
         });
         // Update postComments state after editing
         setPostComments((prev) =>
-          prev.map((c) => (c.id === commentId ? { ...c, message: editComment.message } : c))
+          prev.map((c) => (c.id === id ? { ...c, message: editComment.message } : c))
         );
         setEditComment({ id: "", message: "" }); // Reset edit state
       } catch (error) {
@@ -204,9 +208,9 @@ export const Comments = ({sourceId}: CommentsProps) => {
     }
   };
 
-  {/*const confirmDelete = async (commentId: number) => {
+  {/*const confirmDelete = async (id: number) => {
     try {
-      const response = await fetch(`/api/deleteComment/${commentId}`, {
+      const response = await fetch(`/api/deleteComments?id=${id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         
@@ -217,7 +221,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
       }
 
       setPostComments((prev) =>
-        prev.filter((c) => c.id !== commentId)
+        prev.filter((c) => c.id !== id)
       );
 
     } catch (error) {

@@ -3,5 +3,7 @@
         "Djokovic",
         "Djokovic's",
         "Novak"
-    ]
+    ],
+    "editor.tabSize": 10,
+    "files.autoSave": "onFocusChange"
 }
