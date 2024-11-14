@@ -208,7 +208,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
     }
   };
 
-  {/*const confirmDelete = async (id: number) => {
+  const confirmDelete = async (id: string | number) => {
     try {
       const response = await fetch(`/api/deleteComments?id=${id}`, {
         method: "DELETE",
@@ -228,7 +228,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
       console.error("Error deleting comment:", error);
       setError(CommentsError.fetchError);
   }
-}*/}
+}
 
   return (
       <>
@@ -309,9 +309,9 @@ export const Comments = ({sourceId}: CommentsProps) => {
                         >
                           Edit
                         </button>
-                        {/*<button type="button" onClick={() => confirmDelete(postComment.id)}className="text-gray-700">
+                        <button type="button" onClick={() => confirmDelete(postComment.id)} className="text-gray-700">
                         Delete
-                        </button>*/}
+                        </button>
                         </div>
                       )}
                       </div>
