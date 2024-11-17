@@ -1,4 +1,4 @@
-import { FC, useState, useContext } from "react";
+import { FC, useState, useContext, useEffect } from "react";
 import supabase from "lib/supabase";
 import UserInfoContext from "@/context/UserInfoContext";
 import { Comments } from "@/components/Comments";
@@ -24,8 +24,17 @@ export const FreeSource: FC<FreeSourceProps> = ({ fact, setFacts }) => {
   const [isUpdating, setIsUpdating] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
   const { userInfo } = useContext(UserInfoContext);
-  const toggleLoginModal = () => setShowLoginModal((prev) => !prev);
 
+  useEffect(() => {
+    console.log("User Info Updated:", userInfo);
+    if (userInfo?.email && showLoginModal) {
+      console.log("Closing Modal after Login");
+      setShowLoginModal(false); 
+    }
+  }, [userInfo]);
+
+  const toggleLoginModal = () => setShowLoginModal((prev) => !prev);
+  
   async function handleVote(columnName: keyof Fact) {
     if (userInfo?.email) {
       setIsUpdating(true);
