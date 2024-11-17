@@ -74,3 +74,13 @@ export type videoContextType={
 videoLine:string;
 setVideoLine:(videoLine:string)=>void
 }
+
+export interface DropDownMenuProps { 
+    label: string; 
+    items: { itemLabel: string; onClick: () => void}[];
+}
+
+export interface BlogDropDownProps { 
+    categories: string[]; 
+    onSearch: (param: string) => void; 
+}
