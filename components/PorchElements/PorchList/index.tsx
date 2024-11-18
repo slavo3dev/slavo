@@ -57,10 +57,10 @@ export const PorchList: React.FC<PorchListProps> = ({ porchs, setPorchs }) => {
 
 	return (
 		<section className="py-1 sm:py-1 lg:py-1 border-y-4">
-			<div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+			<div className=" mx-auto max-w-7xl sm:px-6 lg:px-8">
 				<div className="max-w- mx-auto overflow-hidden bg-gray-100 rounded-xl">
-					<div className="px-4 py-5 sm:p-6">
-						<div>
+					<div className="py-5 sm:p-6">
+						<div className="ml-2">
 							<p className="text-lg font-bold text-gray-900">Daily Highlights</p>
 							<p className="mt-1 text-sm font-medium text-gray-500">Growth and Learning News</p>
 							{userInfo?.email ? (
