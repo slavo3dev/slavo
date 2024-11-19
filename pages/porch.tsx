@@ -59,6 +59,7 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 
 
     const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
+		if ((e.target as HTMLElement).tagName === 'SELECT') return;
         setDragging( true )
         setOffset({
             x: e.clientX - position.x,
