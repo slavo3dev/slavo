@@ -121,7 +121,7 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 						onMouseMove={handleMouseMove}
 						onMouseUp={handleMouseUp} 
 					>
-						{showUserForm ? (<PorchUserDataForm />) : null}
+						{showUserForm ? (<PorchUserDataForm setShowUserForm={setShowUserForm}/>) : null}
 					</div>
 					<InfiniteScroll
 						dataLength={porchList.length}

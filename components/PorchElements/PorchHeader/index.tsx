@@ -4,6 +4,7 @@ import PorchUserButton from "../PorchInteractivity";
 import { MdOutlineTrendingUp } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
 import { GoArrowLeft } from "react-icons/go";
+import { Quotes } from "@/components/Quotes";
 
 
 interface PorchHeaderProps {
@@ -31,8 +32,7 @@ export const PorchHeader: React.FC<PorchHeaderProps> = ({ showForm, setShowForm 
 				<p className="pl-2 pb-6 text-xs">Post your <span className="font-bold text-blue-700">progress!</span></p>
 			</div>
 			<div className="w-full flex flex-col justify-center mb-6">
-				<h5 className="font-extralight text-center text-lg italic">"Success isn't always about greatness. It's about consistency. Consistent hard work leads to success. Greatness will come."</h5>
-				<p className="text-center font-bold"><span className="italic font-extralight">-</span> Dwayne Johnson</p>
+				<Quotes />
 			</div>
 		</header>
 	);
