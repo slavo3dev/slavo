@@ -1,10 +1,10 @@
-import { useState, FC } from "react";
+import { useRef, FC } from "react";
 import supabase from "lib/supabase";
 import router from "next/router";
 
 export const SignIn: FC = () => {
-	const [userEmail, setUserEmail] = useState<string>(""); // add this to sign in
-	const [userPassword, setUserPassword] = useState<string>("");
+	const userEmailRef = useRef<HTMLInputElement>(null);
+	const userPasswordRef = useRef<HTMLInputElement>(null);
 	const [signInError, setSigninError] = useState<string>("");
 	const signInWithEmail = async () => {
 		try {
