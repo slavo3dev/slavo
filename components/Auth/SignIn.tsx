@@ -1,33 +1,28 @@
-import { useRef, FC } from "react";
+import { useState, FC } from "react";
 import supabase from "lib/supabase";
 import router from "next/router";
-import { routeModule } from "next/dist/build/templates/app-page";
 
 export const SignIn: FC = () => {
-	const userEmailRef = useRef<HTMLInputElement>(null);
-	const userPasswordRef = useRef<HTMLInputElement>(null);
-	const signInErrorRef = useRef<HTMLDivElement>(null);
-
+	const [userEmail, setUserEmail] = useState<string>(""); // add this to sign in
+	const [userPassword, setUserPassword] = useState<string>("");
+	const [signInError, setSigninError] = useState<string>("");
 	const signInWithEmail = async () => {
-		try { 
-			const email = userEmailRef.current?.value || ""; 
-			const password = userPasswordRef.current?.value || ""; 
-
-			const { error } = await supabase.auth.signInWithPassword({
-				email,
-				password
+		try {
+			const signInPromise = await supabase.auth.signInWithPassword({
+				email: userEmail,
+				password: userPassword,
 			});
-			if (error) { 
-				if (signInErrorRef.current) {
-					signInErrorRef.current.textContent = error.message;
-				} else  {
-					router.push("/"); 
-				}
+			const { error } = signInPromise;
+			if (error) {
+				setSigninError(error.message);
+			} else {
+				router.push("/");
 			}
 		} catch (error) {
-			console.error(error); 
+			console.log(error);
 		}
-	}
+	};
+
 	return (
 		<form className="space-y-4 md:space-y-6" action="#">
 			<div>
@@ -38,7 +33,9 @@ export const SignIn: FC = () => {
           Your email
 				</label>
 				<input
-					ref={userEmailRef}
+					onChange={(e) => {
+						setUserEmail(e.target.value);
+					}}
 					type="email"
 					name="email"
 					id="email"
@@ -54,17 +51,16 @@ export const SignIn: FC = () => {
           Password
 				</label>
 				<input
-					ref={userPasswordRef}
+					onChange={(e) => {
+						setUserPassword(e.target.value);
+					}}
 					type="password"
 					name="password"
 					id="password"
 					placeholder="••••••••"
 					className="text-blue-800 sm:text-sm border-2 border-white border-b-blue-500 border-l-blue-500 rounded-bl-lg block w-full p-2.5"
 				/>
-				<div
-					ref={signInErrorRef}
-					className="text-red-600 text-sm mt-2"
-				></div>
+				{signInError}
 			</div>
 
 			<button
