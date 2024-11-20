@@ -28,7 +28,7 @@ export const MainNavigation: FC = () => {
 
 
     const blogMenuItems = [
-		{ label: "Category 1", href: "/blog/category1" }, // looking for logic to show Categories from blog Page in droDown menu
+		{ label: "Category 1", href: "/blog/category1" }, // looking for logic to show Categories from
 		{ label: "Category 2", href: "/blog/category2" },
 		{ label: "Category 3", href: "/blog/category3" },
 	];
