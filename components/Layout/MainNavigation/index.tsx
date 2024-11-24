@@ -6,9 +6,14 @@ import { Burger } from "./mobileView";
 import { useRouter } from "next/router";
 import UserInfoContext from "context/UserInfoContext";
 import { Subscribe } from "@/components/Subscribe";
+import { DropDown } from "@/components/DropDownMenu";
 
 
-export const MainNavigation: FC = () => {
+interface MainNavigationProps {
+    categories: { label: string; slug: string }[]; // Type for categories
+}
+
+export const MainNavigation: FC<MainNavigationProps> = ({categories}) => {
     
 	const [ headStyle, setHeadStyle ] = useState<boolean>( true );
 	const { userInfo } = useContext(UserInfoContext);
@@ -46,8 +51,8 @@ export const MainNavigation: FC = () => {
 						{/* <li className={router.pathname === "/mentor" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/mentor">Mentor</Link>
 						</li> */}
-						<li className={router.pathname === "/blog" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"} onClick={() => localStorage.getItem("selectedOption")}>
-							<Link href="/blog">Blog</Link>
+						<li>
+							<DropDown label="Blog" items={categories}/>
 						</li>
 						{/* <li className={router.pathname === "/videos" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/videos">Videos</Link>

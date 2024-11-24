@@ -17,6 +17,7 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 	const [userInfo, setUserInfo] = useState<User | null>(null);
 	const router = useRouter();
 	const [ loading, setLoading ] = useState( true );
+	const {categories} = pageProps; 
     
 	useEffect(() => {
 		setLoading(true);
@@ -62,7 +63,7 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 			<VideoContext.Provider value={ { videoLine, setVideoLine } }>
 				<Layout>
 					<HeadBasePage title="Career Change: Learn Web Development for a Bright Future" />
-					<MainNavigation  />
+					<MainNavigation categories={categories} />
 					<Component { ...pageProps } />
 					<SpeedInsights route={router.pathname} />
 					<Footer />
@@ -78,6 +79,3 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 }
 
 export default MyApp;
-
-
-

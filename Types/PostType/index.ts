@@ -8,9 +8,8 @@ export interface Post {
     title: string;
     date: string;
     excerpt: string;
-    image: string;
     slug: string;
-    category?:string
+    category:string
 }
 
 
