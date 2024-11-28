@@ -1,5 +1,6 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import Image from "next/image";
+/* NEEDS OPTIMIZING  */
 
 export const Preloader: FC = () =>
 {

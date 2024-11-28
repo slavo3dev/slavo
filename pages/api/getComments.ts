@@ -21,3 +21,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   // Return an empty array if data is null
   res.status(200).json(data ?? []);
 }
+

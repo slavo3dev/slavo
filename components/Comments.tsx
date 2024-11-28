@@ -27,9 +27,11 @@ export const Comments = ({sourceId}: CommentsProps) => {
   const [successMessage, setSuccessMessage] = useState<string>("");
   const [postComments, setPostComments] = useState<PropsComments[]>([]);
 
+
   const { userInfo } = useContext(UserInfoContext);
   const userEmail = userInfo?.email;
   
+
   useEffect(() => {
     const fetchComments = async () => {
       try {
@@ -44,6 +46,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
   
     fetchComments();
   }, [sourceId]);
+
 
   useEffect(() => {
     if (successMessage) {
@@ -73,17 +76,21 @@ export const Comments = ({sourceId}: CommentsProps) => {
   };
 
 
+
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+
     event.preventDefault();
     if (!comment.trim()) {
       setError(CommentsError.onSubmitError);
       return;
     }
+
     
     if (countWords(comment) > 96) {
       setError(CommentsError.wordLimitError);
       return;
     }
+
 
     const newComment: PropsComments = { userInfo: userEmail || "Anonymous", message: comment };
 
@@ -133,7 +140,6 @@ export const Comments = ({sourceId}: CommentsProps) => {
               >
                 ✕
               </button>
-
               {userEmail && (<form onSubmit={onSubmit} className="mt-2 flex flex-col gap-2">
                 <textarea
                   value={comment}
@@ -146,7 +152,6 @@ export const Comments = ({sourceId}: CommentsProps) => {
                   Submit
                 </button>
               </form>)}
-
               {error && <p className="text-red-500 mt-2">{error}</p>}
               {successMessage && <p className="text-green-500 mt-2">{successMessage}</p>}
               <div className="mt-2 text-black">
