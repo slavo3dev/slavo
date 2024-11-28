@@ -23,10 +23,6 @@ export const ErrorAlertMsg: FC<ErrorAlertMsgProps> = ( { title } ) =>
 
 								<div className="flex-1 ml-3">
 									<p className="text-sm font-bold text-red-700">{title}</p>
-									<ul className="pl-4 mt-2 space-y-1 text-sm font-medium text-red-600 list-disc list-outside">
-										<li>{title}</li>
-										<li>{title}</li>
-									</ul>
 								</div>
 							</div>
 						</div>
