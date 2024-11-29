@@ -6,9 +6,15 @@ import { Burger } from "./mobileView";
 import { useRouter } from "next/router";
 import UserInfoContext from "context/UserInfoContext";
 import { Subscribe } from "@/components/Subscribe";
+import { BlogDropDown } from "@/components/Posts/BlogDropDown";
 
+interface MainNavigationProps {
+	categories: string[]; // Expect an array of category strings
+  }
 
-export const MainNavigation: FC = () => {
+export const MainNavigation: FC<MainNavigationProps> = ({ categories = [] }) => {
+
+	console.log("Categories in MainNavigation:", categories);
     
 	const [ headStyle, setHeadStyle ] = useState<boolean>( true );
 	const { userInfo } = useContext(UserInfoContext);
@@ -16,6 +22,7 @@ export const MainNavigation: FC = () => {
 	const router = useRouter();
     
 	const userEmail = userInfo?.email;
+	
     
 	useEffect(() => {
 		document.addEventListener("scroll", () => {
@@ -27,6 +34,8 @@ export const MainNavigation: FC = () => {
 			}
 		});
 	} );
+	console.log("Categories in MainNavigation:", categories); // Log categories in MainNavigation
+
 
 	return (
 		<header className={headStyle ? classes.header : classes.header1}>
@@ -46,8 +55,8 @@ export const MainNavigation: FC = () => {
 						{/* <li className={router.pathname === "/mentor" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/mentor">Mentor</Link>
 						</li> */}
-						<li className={router.pathname === "/blog" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"} onClick={() => localStorage.getItem("selectedOption")}>
-							<Link href="/blog">Blog</Link>
+						<li>
+						<BlogDropDown categories={categories} onSearch={(category) => console.log("Category selected:", category)} />
 						</li>
 						{/* <li className={router.pathname === "/videos" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/videos">Videos</Link>

@@ -4,6 +4,8 @@ import { useCategoryHook } from '@/lib/hooks/useCategoryHook'
 import { CatProps } from "../BlogMenuCat"
 
 export const BlogDropDown: FC<CatProps> = ({ categories, onSearch }) => {
+
+    console.log("Categories in BlogDropDown:", categories);
     const { activeCategory, handleCategoryClick } = useCategoryHook(categories, "selectedCategory");
 
     // Handler to manage category selection and trigger onSearch
@@ -14,7 +16,7 @@ export const BlogDropDown: FC<CatProps> = ({ categories, onSearch }) => {
 
     return (
         <DropDown
-            label={activeCategory || "Select Category"} // Show the active category or a default label
+            label="Blog" // Show the active category or a default label
             items={categories}
             // Use the handleItemClick to manage the dropdown item click logic
             onItemClick={handleItemClick}

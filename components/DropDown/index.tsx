@@ -7,9 +7,14 @@ interface DropDownProps {
 }
 
 export const DropDown: FC<DropDownProps> = ({ label, items, onItemClick }) => {
-
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
+
+    // Log the dropdown visibility
+    console.log("Dropdown is open:", isOpen);
+
+    // Log the items passed to the dropdown
+    console.log("Items in dropdown:", items);  // Check if items are passed properly
 
     // Close the dropdown when clicking outside
     useEffect(() => {
@@ -27,10 +32,15 @@ export const DropDown: FC<DropDownProps> = ({ label, items, onItemClick }) => {
         };
     }, []);
 
+    const handleClick = (item: string) => {
+        console.log("Item clicked:", item);  // Log item when clicked
+        onItemClick(item);  // Call the onItemClick handler passed from parent
+    };
+
     return (
         <div ref={dropdownRef} style={{ position: 'relative', display: 'inline-block' }}>
             <button
-                onClick={() => setIsOpen((prev) => !prev)}
+                onClick={() => setIsOpen((prev) => !prev)} // Toggle dropdown visibility
                 aria-haspopup="true"
                 aria-expanded={isOpen}
             >
@@ -50,17 +60,17 @@ export const DropDown: FC<DropDownProps> = ({ label, items, onItemClick }) => {
                         zIndex: 10,
                     }}
                 >
-                    {items.map((item) => (
+                    {items.map((item, index) => (
                         <li
-                            key={item}
+                            key={index}
                             style={{
                                 padding: '8px 16px',
                                 cursor: 'pointer',
                                 borderBottom: '1px solid #ddd',
                             }}
-                            onClick={() => {
-                                onItemClick(item); // Trigger the click handler
-                                setIsOpen(false); // Close dropdown
+                            onClick={(e) => {
+                                console.log("Item clicked event triggered"); // Log when the click event is triggered
+                                handleClick(item); // Trigger the handleClick function
                             }}
                         >
                             {item}
