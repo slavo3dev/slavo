@@ -1,4 +1,4 @@
-import { useState, FC } from "react";
+import { useState, useRef, FC } from "react";
 import supabase from "lib/supabase";
 import router from "next/router";
 import { ErrorAlertMsg } from "@/components/Alerts";
@@ -12,20 +12,24 @@ interface LoginProps {
 export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 {
 
-	const [userEmail, setUserEmail] = useState<string>(""); // add this to sign in
-	const [userPassword, setUserPassword] = useState<string>("");
+	const userEmailRef = useRef<HTMLInputElement>(null); 
+	const userPasswordRef = useRef<HTMLInputElement>(null);
 	const [signInError, setSigninError] = useState<string>("");
+
 	const signInWithEmail = async () => {
 		try {
-			const signInPromise = await supabase.auth.signInWithPassword({
-				email: userEmail,
-				password: userPassword,
+			const email = userEmailRef.current?.value || "";
+			const password = userPasswordRef.current?.value || "";
+	  
+			const { error } = await supabase.auth.signInWithPassword({
+			  email,
+			  password,
 			});
-			const { error } = signInPromise;
+			
 			if (error) {
 				setSigninError(error.message);
 			} else {
-				const redirectUrl: string = window.location.hostname === 'localhost' ? process.env.LOCAL_HOSTE_URL || "" : '/'
+				const redirectUrl: string = window.location.hostname === 'localhost' ? process.env.NEXT_PUBLIC_LOCAL_HOST_URL || "" : '/'
                 router.push(redirectUrl);
 				//router.push("/");
 			}
@@ -50,9 +54,7 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 											<label  className="text-base font-medium text-gray-900 font-pj"> Email </label>
 											<div className="mt-2.5">
 												<input
-													onChange={(e) => {
-														setUserEmail(e.target.value);
-													}}
+													ref={userEmailRef}
 													type="email" name="" id="" placeholder="Email address" className="block w-full px-4 py-4 text-gray-900 placeholder-gray-600 bg-white border border-gray-400 rounded-xl focus:border-gray-900 focus:ring-gray-900 caret-gray-900" />
 											</div>
 										</div>
@@ -65,9 +67,7 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 											</div>
 											<div className="mt-2.5">
 												<input
-													onChange={(e) => {
-														setUserPassword(e.target.value);
-													}}
+													ref={userPasswordRef}
 													type="password" name="" id="" placeholder="Password (min. 8 character)" className="block w-full px-4 py-4 text-gray-900 placeholder-gray-600 bg-white border border-gray-400 rounded-xl focus:border-gray-900 focus:ring-gray-900 caret-gray-900" />
 											</div>
 										</div>
