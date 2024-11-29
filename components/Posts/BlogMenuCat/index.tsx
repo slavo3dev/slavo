@@ -9,6 +9,7 @@ interface Props {
 
 export const BlogMenuCat: FC<Props> = ({ categories, onSearch }) => {
     const { activeCategory, handleCategoryClick, isActive } = useCategoryHook(categories, "selectedCategory");
+    
 
     useEffect(() => {
         if (activeCategory) {

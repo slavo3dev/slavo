@@ -5,6 +5,13 @@ import matter from "gray-matter";
 
 const postsPath = path.join( process.cwd(), "posts" );
 
+type Post = {
+	category: string;
+	slug: string;
+	content: string;
+	// any other fields you have in the front matter (e.g., title, date, etc.)
+  };
+
 export function getPostsFiles() {
 	return fs.readdirSync( postsPath );
 }
@@ -16,14 +23,15 @@ export const getPostData = ( indentifier: string ) =>
 	const fileContent = fs.readFileSync( filePath, "utf-8" );
 	const { data, content } = matter( fileContent );
 
-	const postData = {
+	const postData: Post = {
 		slug: postSlug,
-		...data,
-		content
+		content,
+		category: data.category || "Uncategorized", // Provide a default value if category is missing
+		// Add other fields from front matter if necessary
+	  };
+	
+	  return postData;
 	};
-
-	return postData;
-};
 
 export const getAllPosts = () => 
 {
