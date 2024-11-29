@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import Link from "next/link";
 
 interface DropdownMenuProps {
-    label: string;
+    label: string[];
     items: { label: string; href: string }[];
 }
 

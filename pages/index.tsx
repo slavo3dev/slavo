@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextPage } from "next";
-import { FeaturedPosts, Subscribe, Growth, Solution, Hero } from "@components";
+import { FeaturedPosts, Growth, Solution, Hero } from "@components";
 import { getFeaturedPosts } from "lib/posts-lib";
+import { MainNavigation } from "@components";
 
 const Home: NextPage = ({ posts }: any) => {
 
@@ -11,6 +12,7 @@ const Home: NextPage = ({ posts }: any) => {
 		<>
 			<Hero />
 			<FeaturedPosts posts={ posts } />
+			<MainNavigation categories = {posts.categories} /> 
 			{/* <LearningSources /> */}
 			<Solution />
 			<Growth />		

@@ -6,13 +6,29 @@ import { Burger } from "./mobileView";
 import { useRouter } from "next/router";
 import UserInfoContext from "context/UserInfoContext";
 import { Subscribe } from "@/components/Subscribe";
-import { DropdownMenu } from "@/components/DropDownMenu";
+import { BlogDropDown } from "@/components/Posts/BlogDropDown";
+import { getAllPosts } from "@/lib/posts-lib";
 
-export const MainNavigation: FC = () => {
+
+type Post = {
+	category: string;
+	// ... other properties
+  };
+
+  interface MainNavigationProps { 
+	categories: string[]
+  }
+
+export const MainNavigation: FC<MainNavigationProps> = ({categories}) => {
     
 	const [ headStyle, setHeadStyle ] = useState<boolean>( true );
 	const { userInfo } = useContext(UserInfoContext);
+	const [category, setCategory] = useState<string[]>([])
     
+	useEffect(() => {
+		console.log(getAllPosts()); 
+	})
+
 	const router = useRouter();
     
 	const userEmail = userInfo?.email;
@@ -26,12 +42,6 @@ export const MainNavigation: FC = () => {
 		return () => document.removeEventListener("scroll", onScroll);
 	}, []);
 
-
-    const blogMenuItems = [
-		{ label: "Category 1", href: "/blog/category1" }, // looking for logic to show Categories from
-		{ label: "Category 2", href: "/blog/category2" },
-		{ label: "Category 3", href: "/blog/category3" },
-	];
 
 	return (
 		<header className={headStyle ? classes.header : classes.header1}>
@@ -52,7 +62,7 @@ export const MainNavigation: FC = () => {
 							<Link href="/mentor">Mentor</Link>
 						</li> */}
 						<li>
-                            <DropdownMenu label="Blog" items={blogMenuItems} />
+							<BlogDropDown categories={categories} onSearch={(category) => console.log("Category Selected:", category)} />
 						</li>
 						{/* <li className={router.pathname === "/videos" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/videos">Videos</Link>
