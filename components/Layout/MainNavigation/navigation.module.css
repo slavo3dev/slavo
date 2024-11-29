@@ -51,14 +51,13 @@
   
 }
 
-.header {
+.header{
   font-size: large;
   text-decoration: none;
   line-height: large;
   font-weight: 600;
   font-family: "Montserrat", sans-serif;
 }
-
 
 .header1 ul {
 
@@ -73,7 +72,7 @@
   margin: 0 var(--size-4);
   color: #475569;
 }
-.header1 a {
+.header1{
   font-size: large;
   text-decoration: none;
   line-height: large;
