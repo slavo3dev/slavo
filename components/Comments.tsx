@@ -30,7 +30,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
 
   const { userInfo } = useContext(UserInfoContext);
   const userEmail = userInfo?.email;
-  
+  console.log("hello")
 
   useEffect(() => {
     const fetchComments = async () => {
