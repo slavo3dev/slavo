@@ -25,7 +25,7 @@ export const getPostData = ( indentifier: string ) =>
 	return postData;
 };
 
-export const getAllPosts = () => 
+export const getAllPosts = () : any => 
 {
 	const postsFiles = getPostsFiles();
     
