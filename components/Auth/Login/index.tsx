@@ -40,14 +40,7 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 	
 	return (
 		<>
-			{ signInError && <ErrorAlertMsg title={signInError} /> }
-			<section className="py-12 bg-gray-50 sm:py-16 lg:py-20">
-				<div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-					<div className="relative max-w-md mx-auto lg:max-w-lg">
-						<div className="absolute -inset-2">
-							<div className="w-full h-full mx-auto rounded-3xl opacity-30 blur-lg filter"></div>
-						</div>
-						<div className="relative overflow-hidden bg-white shadow-xl rounded-xl">
+			{ signInError && <ErrorAlertMsg title={signInError} /> }			
 							<div className="px-4 py-6 sm:px-8">
 								<div className="flex items-center justify-between">
 									<h1 className="text-xl font-bold text-gray-900 font-pj">Sign in</h1>
@@ -155,10 +148,6 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 											Login in with Github
 								</a>
 							</div>
-						</div>
-					</div>
-				</div>
-			</section>
 		</>
 	);
 };
