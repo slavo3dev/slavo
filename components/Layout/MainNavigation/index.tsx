@@ -38,7 +38,8 @@ export const MainNavigation: FC<MainNavigationProps> = ({categories}) => {
 		if (category === "ALL") {
 		  router.push("/blog"); // Navigate to Blog page for "ALL"
 		} else {
-		  router.push(`/blog/${category.toLowerCase()}`); // Navigate to category-specific page
+			const fullPath = `/category/${category}`;
+			router.push(fullPath);
 		}
 	  };
 
