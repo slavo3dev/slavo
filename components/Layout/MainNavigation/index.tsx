@@ -34,9 +34,9 @@ export const MainNavigation: FC<MainNavigationProps> = ({categories}) => {
 	} );
 
 	const onSearchCat = (category: string) => {
-		setSelectedCategory(category); // Update selected category
+		setSelectedCategory(category);
 		if (category === "ALL") {
-		  router.push("/blog"); // Navigate to Blog page for "ALL"
+		  router.push("/blog"); 
 		} else {
 			const fullPath = `/category/${category}`;
 			router.push(fullPath);

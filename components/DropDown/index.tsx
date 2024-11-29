@@ -30,7 +30,7 @@ export const DropDown: FC<DropDownProps> = ({ label, items, onItemClick }) => {
     };
 
     return (
-        <div ref={dropdownRef} style={{ position: 'relative', display: 'inline-block' }}>
+        <div ref={dropdownRef} className="relative inline-block">
             <button
                 onClick={() => setIsOpen((prev) => !prev)} 
                 aria-haspopup="true"
@@ -43,15 +43,9 @@ export const DropDown: FC<DropDownProps> = ({ label, items, onItemClick }) => {
                     {items.map((item, index) => (
                         <li
                             key={index}
-                            style={{
-                                display: 'block',  // Ensure the list items stack in a column
-                                padding: '8px 16px',
-                                cursor: 'pointer',
-                                borderBottom: '1px solid #ddd',
-                                backgroundColor: '#fff',
-                            }}
+                            className="block px-4 py-2 cursor-pointer border-b border-gray-200 hover:bg-gray-100 last:border-none"
                             onClick={() => {
-                                handleClick(item); // Trigger the handleClick function
+                                handleClick(item); 
                                 setIsOpen(false);
                             }}
                         >
