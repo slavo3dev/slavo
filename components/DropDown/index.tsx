@@ -10,12 +10,6 @@ export const DropDown: FC<DropDownProps> = ({ label, items, onItemClick }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
-    // Log the dropdown visibility
-    console.log("Dropdown is open:", isOpen);
-
-    // Log the items passed to the dropdown
-    console.log("Items in dropdown:", items);  // Check if items are passed properly
-
     // Close the dropdown when clicking outside
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -33,7 +27,6 @@ export const DropDown: FC<DropDownProps> = ({ label, items, onItemClick }) => {
     }, []);
 
     const handleClick = (item: string) => {
-        console.log("Item clicked:", item);  // Log item when clicked
         onItemClick(item);  // Call the onItemClick handler passed from parent
     };
 
@@ -55,22 +48,25 @@ export const DropDown: FC<DropDownProps> = ({ label, items, onItemClick }) => {
                         background: 'white',
                         boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
                         listStyle: 'none',
-                        padding: 0,
-                        margin: 0,
+                        padding: '0',
+                        margin: '0',
                         zIndex: 10,
+                        width: '200px', // Optional: set a fixed width to control the column size
                     }}
                 >
                     {items.map((item, index) => (
                         <li
                             key={index}
                             style={{
+                                display: 'block',  // Ensure the list items stack in a column
                                 padding: '8px 16px',
                                 cursor: 'pointer',
                                 borderBottom: '1px solid #ddd',
+                                backgroundColor: '#fff',
                             }}
-                            onClick={(e) => {
-                                console.log("Item clicked event triggered"); // Log when the click event is triggered
+                            onClick={() => {
                                 handleClick(item); // Trigger the handleClick function
+                                setIsOpen(false);
                             }}
                         >
                             {item}

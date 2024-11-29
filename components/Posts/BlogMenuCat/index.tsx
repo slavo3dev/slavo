@@ -4,7 +4,7 @@ import { CategoryTags } from "@/lib/helpers/categoryTags";
 
 export interface CatProps {
     categories: string[];
-    onSearch: ( param?: string ) => void
+    onSearch: ( param: string ) => void
 }
 
 export const BlogMenuCat: FC<CatProps> = ({ categories, onSearch }) => {

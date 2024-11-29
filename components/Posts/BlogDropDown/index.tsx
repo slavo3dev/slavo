@@ -5,7 +5,7 @@ import { CatProps } from "../BlogMenuCat"
 
 export const BlogDropDown: FC<CatProps> = ({ categories, onSearch }) => {
 
-    console.log("Categories in BlogDropDown:", categories);
+
     const { activeCategory, handleCategoryClick } = useCategoryHook(categories, "selectedCategory");
 
     // Handler to manage category selection and trigger onSearch

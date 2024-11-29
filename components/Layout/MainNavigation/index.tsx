@@ -9,15 +9,13 @@ import { Subscribe } from "@/components/Subscribe";
 import { BlogDropDown } from "@/components/Posts/BlogDropDown";
 
 interface MainNavigationProps {
-	categories: string[]; // Expect an array of category strings
+	categories: string[];
   }
-
-export const MainNavigation: FC<MainNavigationProps> = ({ categories = [] }) => {
-
-	console.log("Categories in MainNavigation:", categories);
+export const MainNavigation: FC<MainNavigationProps> = ({categories}) => {
     
 	const [ headStyle, setHeadStyle ] = useState<boolean>( true );
 	const { userInfo } = useContext(UserInfoContext);
+	const [selectedCategory, setSelectedCategory] = useState("ALL");
     
 	const router = useRouter();
     
@@ -34,8 +32,15 @@ export const MainNavigation: FC<MainNavigationProps> = ({ categories = [] }) => 
 			}
 		});
 	} );
-	console.log("Categories in MainNavigation:", categories); // Log categories in MainNavigation
 
+	const onSearchCat = (category: string) => {
+		setSelectedCategory(category); // Update selected category
+		if (category === "ALL") {
+		  router.push("/blog"); // Navigate to Blog page for "ALL"
+		} else {
+		  router.push(`/blog/${category.toLowerCase()}`); // Navigate to category-specific page
+		}
+	  };
 
 	return (
 		<header className={headStyle ? classes.header : classes.header1}>
@@ -55,8 +60,8 @@ export const MainNavigation: FC<MainNavigationProps> = ({ categories = [] }) => 
 						{/* <li className={router.pathname === "/mentor" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/mentor">Mentor</Link>
 						</li> */}
-						<li>
-						<BlogDropDown categories={categories} onSearch={(category) => console.log("Category selected:", category)} />
+						<li className={router.pathname === "/blog" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
+							<BlogDropDown categories={categories} onSearch={onSearchCat}/>
 						</li>
 						{/* <li className={router.pathname === "/videos" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/videos">Videos</Link>
