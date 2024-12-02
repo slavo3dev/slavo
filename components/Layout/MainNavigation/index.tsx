@@ -6,12 +6,10 @@ import { Burger } from "./mobileView";
 import { useRouter } from "next/router";
 import UserInfoContext from "context/UserInfoContext";
 import { Subscribe } from "@/components/Subscribe";
+import { NavigationProps } from "@/Types/Navigation";
 import { BlogDropDown } from "@/components/Posts/BlogDropDown";
 
-interface MainNavigationProps {
-	categories: string[];
-  }
-export const MainNavigation: FC<MainNavigationProps> = ({categories}) => {
+export const MainNavigation: FC<NavigationProps> = ({categories}) => {
     
 	const [ headStyle, setHeadStyle ] = useState<boolean>( true );
 	const { userInfo } = useContext(UserInfoContext);
@@ -86,7 +84,7 @@ export const MainNavigation: FC<MainNavigationProps> = ({categories}) => {
 					</ul>
 				</nav>
 			</div>
-			<Burger userInfo={ userInfo } />
+			<Burger userInfo={ userInfo } categories={categories} />
 		</header>
 	);
 };
