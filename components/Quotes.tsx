@@ -44,9 +44,9 @@ export const QuoteFetcher = () => {
   return (
     <div className="w-full flex flex-col justify-center mb-6">
       {loading ? (
-        <p>Loading...</p> /* Show loading message while fetching */
+        <p>Loading...</p> 
       ) : error ? (
-        <p className="text-center text-red-500">{error}</p>  /* Show error if any */
+        <p className="text-center text-red-500">{error}</p>  
       ) : (
         <div className="text-center">
           <h5 className="font-extralight text-lg italic">{`"${currentQuote}"`}</h5>
