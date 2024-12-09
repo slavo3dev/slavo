@@ -1,44 +1,58 @@
 import { useState, useEffect } from "react";
 
-const quotes = [
-  { id: 1,
-    text: "Success isn't always about greatness. It's about consistency. Consistent hard work leads to success. Greatness will come.",
-    author: "Dwayne Johnson",
-  },
-  {
-    id: 2,
-    text: "Opportunities don't happen, you create them.",
-    author: "Chris Grosser",
-  },
-  {
-    id: 3,
-    text: "Don't watch the clock; do what it does. Keep going.",
-    author: "Sam Levenson",
-  },
-  {
-    id: 4,
-    text: "Success usually comes to those who are too busy to be looking for it.",
-    author: "Henry David Thoreau",
-  },
-];
+export const QuoteFetcher = () => {
+  const [currentQuote, setCurrentQuote] = useState<string | null>(null); 
+  const [author, setAuthor] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);  
 
-export const Quotes = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const getQuote = async () => {
+    try {
+      const response = await fetch("/api/get-quotes");
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch quote");
+      }
+
+      const data = await response.json();
+
+      if (data && data.quote && data.author) {
+        setCurrentQuote(data.quote);
+        setAuthor(data.author);
+        setError(null);
+      } else {
+        setError("No quote found");
+      }
+    } catch (error) {
+      setError(`Error fetching quote: ${(error as Error).message}`);
+      console.error("Error fetching quote:", error);
+    } finally {
+      setLoading(false);  
+    }
+  };
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % quotes.length);
-    }, 7000);
+    getQuote();
 
-    return () => clearInterval(intervalId);
-  }, []);
+    const interval = setInterval(() => {
+      getQuote(); 
+    }, 6000); 
 
-  const currentQuote = quotes[currentIndex];
+    return () => clearInterval(interval);
+  }, []); 
 
   return (
-    <div key={currentQuote.id} className="w-full flex flex-col justify-center mb-6">
-      <h5 className="font-extralight text-center text-lg italic">{currentQuote.text}</h5>
-      <p className="text-center font-bold italic">{currentQuote.author}</p>
+    <div className="w-full flex flex-col justify-center mb-6">
+      {loading ? (
+        <p>Loading...</p> 
+      ) : error ? (
+        <p className="text-center text-red-500">{error}</p>  
+      ) : (
+        <div className="text-center">
+          <h5 className="font-extralight text-lg italic">{`"${currentQuote}"`}</h5>
+          <p className="text-sm">- {author}</p>
+        </div>
+      )}
     </div>
   );
 };
