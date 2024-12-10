@@ -117,7 +117,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
       <div className="flex flex-col z-50">
         <button
           onClick={toggleComments}
-          className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700"
+          className="inline-block bg-gray-200 rounded-full px-2 py-1 text-sm font-semibold text-gray-700 max-w-xs"
         >
           {showComments ? "Hide Comments" : "Show Comments"}
         </button>

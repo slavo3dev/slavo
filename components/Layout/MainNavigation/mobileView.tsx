@@ -1,23 +1,25 @@
 /* eslint-disable indent */
 import Image from "next/image";
 import Link from "next/link";
-import { FC, useState } from "react";
+import { FC, useState, useEffect, useContext} from "react";
 import insta from "public/images/icons/instagram-blue.svg";
 import twit from "public/images/icons/twitter-blue.svg";
 import face from "public/images/icons/facebook-blue.svg";
 import link from "public/images/icons/linkedinIcon.webp";
 import classes from "./navigation.module.css";
 import { Subscribe } from "@/components/Subscribe";
-
+import LoginModal from "@/components/Auth/LoginPopup";
+import { useRouter } from "next/router";
 
 export const Burger: FC<any> = ( { userInfo } ) => {
     const [ showDrop, setShowDrop ] = useState( false );
+    const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
 //   const [showHome, setShowHome] = useState(false);
 //   const [showBlog, setShowBlog] = useState(false);
-
+const toggleLoginModal = () => setShowLoginModal((prev) => !prev);
     const isAuth = userInfo?.email;
     const userEmail = userInfo?.email;
-
+    const router = useRouter();
 
   const handleBurger = () => {
     setShowDrop(!showDrop);
@@ -30,6 +32,12 @@ export const Burger: FC<any> = ( { userInfo } ) => {
 //   const handleBlog = () => {
 //     setShowBlog(!showBlog);
 //   };
+useEffect(() => {
+  if (userEmail) {
+    setShowLoginModal(false);
+  }
+  }, [userEmail]);
+
 
   return (
     <>
@@ -103,13 +111,23 @@ export const Burger: FC<any> = ( { userInfo } ) => {
             {/* <div className="w-11/12 px-4 py-3 mb-3 text-xs text-center no-underline font-semibold rounded-xl bg-blue-400 hover:bg-blue-500 text-white rounded-xl">
               <Link className="" href={""}>SignUp</Link>
             </div> */}
-                <div className="w-11/12 px-4 py-3 mb-3 text-blue-500 hover:text-blue-700 text-center font-semibold rounded-xl border border-blue-200 hover:border-blue-300 rounded">  
-                          { isAuth ?
-                              ( <Link href="/auth/logout"><span className={ classes.user_email }>{ userEmail }  [ Logout ]</span></Link> ) :
-                              ( <Link className="" href="/login">Login</Link> )
-                          }
-                </div>
+                <div className="w-11/12 px-4 py-3 mb-3 text-blue-500 hover:text-blue-700 text-center font-semibold rounded-xl border border-blue-200 hover:border-blue-300 rounded">
+							{(userEmail ) ? (
+								
+								<Link href="/auth/logout">Logout</Link>
+								
+							) : ( <span onClick={toggleLoginModal}className="font-montserrat font-semibold cursor-pointer text-lg hover:text-blue-500 hover:bg-blue-50 rounded-md">Login</span> 
+							)}
+						</div>
         </div>
+        {showLoginModal && (
+				<>
+        		<div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40"></div>
+				<div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 rounded-lg  max-w-xl w-full p-6">
+          			<LoginModal isOpen={showLoginModal} onClose={toggleLoginModal} />
+        		</div>
+				</>
+     		)}
 		<div className="text-center">
           <div>Contact us slavo@slavo.io</div>
      <div>
