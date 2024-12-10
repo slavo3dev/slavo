@@ -5,7 +5,6 @@ import { getAllPosts } from "lib/posts-lib";
 
 
 
-
 const blog: NextPage = ( { posts }: any ) => {
 
 	return (

@@ -18,8 +18,10 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 	const router = useRouter();
 	const [ loading, setLoading ] = useState( true );
     
+	// This is doing it on every refresh. Is that intentional if not could 
+	// be an optimization 
 	useEffect(() => {
-		setLoading(true);
+		setLoading(true); // <= 
 		setTimeout(() => {
 			setLoading(false);
 		}, 700);
@@ -71,7 +73,7 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 			</VideoContext.Provider>
 		</UserInfoContext.Provider>
 	);
-    
+    /* Check this logic and see if can be optimized */
 	const AppLoaded = !loading ? App : <Preloader />;
 	
 	return  AppLoaded;
