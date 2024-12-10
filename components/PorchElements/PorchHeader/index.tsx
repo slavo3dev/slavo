@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import UserInfoContext from "@/context/UserInfoContext";
-import PorchUserButton from "../PorchInteractivity";
 import { MdOutlineTrendingUp } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
 import { GoArrowLeft } from "react-icons/go";
 import { Quotes } from "@/components/Quotes";
+
 
 
 interface PorchHeaderProps {
