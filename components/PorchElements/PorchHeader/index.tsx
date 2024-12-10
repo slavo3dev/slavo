@@ -3,9 +3,9 @@ import UserInfoContext from "@/context/UserInfoContext";
 import PorchUserButton from "../PorchInteractivity";
 import { MdOutlineTrendingUp } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
-import { GoArrowLeft } from "react-icons/go"; 
 import LoginModal from "@/components/Auth/LoginPopup";
-import { Quotes } from "@/components/Quotes";
+import { GoArrowLeft } from "react-icons/go";
+import { QuoteFetcher } from "@/components/Quotes";
 
 interface PorchHeaderProps {
   showForm: boolean;
@@ -55,7 +55,7 @@ export const PorchHeader: React.FC<PorchHeaderProps> = ({ showForm, setShowForm 
 			<p className="pl-2 pb-6 text-xs">Post your <span className="font-bold text-blue-700">progress!</span></p>
 			</div>
 			<div className="w-full flex flex-col justify-center mb-6">
-				<Quotes />
+				<QuoteFetcher />
 			</div>
 		</header>
 	);
