@@ -4,7 +4,6 @@ import supabase from '@/lib/supabase';
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const { message, userInfo, sourceId, commentId } = req.body;
 
-    // POST: Add a new comment
     if (req.method === 'POST') {
         if (!message || message.trim().length === 0) {
             return res.status(422).json({ message: 'Invalid Comment Submission, message is required' });
@@ -34,7 +33,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
     }
 
-    // PUT: Edit an existing comment
     if (req.method === 'PUT') {
         if (!commentId || !message) {
             return res.status(400).json({ message: 'Comment ID and message are required to update' });
@@ -59,7 +57,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
     }
 
-    // DELETE: Delete a comment
     if (req.method === 'DELETE') {
         if (!commentId) {
             return res.status(400).json({ message: 'Comment ID is required to delete' });
