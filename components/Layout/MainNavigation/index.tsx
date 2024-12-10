@@ -6,27 +6,42 @@ import { Burger } from "./mobileView";
 import { useRouter } from "next/router";
 import UserInfoContext from "context/UserInfoContext";
 import { Subscribe } from "@/components/Subscribe";
+import { BlogDropDown } from "@/components/Posts/BlogDropDown";
+import { getAllPosts } from "@/lib/posts-lib";
 
 
-export const MainNavigation: FC = () => {
+type Post = {
+	category: string;
+	// ... other properties
+  };
+
+  interface MainNavigationProps { 
+	categories: string[]
+  }
+
+export const MainNavigation: FC<MainNavigationProps> = ({categories}) => {
     
 	const [ headStyle, setHeadStyle ] = useState<boolean>( true );
 	const { userInfo } = useContext(UserInfoContext);
+	const [category, setCategory] = useState<string[]>([])
     
+	useEffect(() => {
+		console.log(getAllPosts()); 
+	})
+
 	const router = useRouter();
     
 	const userEmail = userInfo?.email;
     
 	useEffect(() => {
-		document.addEventListener("scroll", () => {
+		const onScroll = () => {
 			const scrolled: number = window.scrollY;
-			if (scrolled > 50) {
-				setHeadStyle(false);
-			} else {
-				setHeadStyle(true);
-			}
-		});
-	} );
+			setHeadStyle(scrolled <= 50);
+		};
+		document.addEventListener("scroll", onScroll);
+		return () => document.removeEventListener("scroll", onScroll);
+	}, []);
+
 
 	return (
 		<header className={headStyle ? classes.header : classes.header1}>
@@ -46,8 +61,8 @@ export const MainNavigation: FC = () => {
 						{/* <li className={router.pathname === "/mentor" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/mentor">Mentor</Link>
 						</li> */}
-						<li className={router.pathname === "/blog" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"} onClick={() => localStorage.getItem("selectedOption")}>
-							<Link href="/blog">Blog</Link>
+						<li>
+							<BlogDropDown categories={categories} onSearch={(category) => console.log("Category Selected:", category)} />
 						</li>
 						{/* <li className={router.pathname === "/videos" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/videos">Videos</Link>
