@@ -1,67 +1,86 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import supabase from '@/lib/supabase';
 
-/* Update, Get, Delete, Post */
-// Check to see if you can use switch and case for all the requests and responses
-// const httpMethods = [Post, Put, Patch, Get, Delete];
-// See what is cleaner separate files or one file with different cases
-// Make it more readable
-// Should I combine apis? 
-// What is best api practices?
-/* 
-No, its better to have multiple files, with each file representening a different API
-//  Better scalability and organization
-//  enable more granular updates reducing risk of affected other endpoints when changes made to a single endpoint
-//  Improve readability, can help in debugging by narrowing the focus of each file 
-//  Reusability is more encouraged as it is easier to reuse parts of code across different endpoints 
-Mainly best for scale as project evovles 
-Otherwise, can use either or, but best practices is to create a separate file per API route
- */
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+    const { message, userInfo, sourceId, commentId } = req.body;
 
+    // POST: Add a new comment
+    if (req.method === 'POST') {
+        if (!message || message.trim().length === 0) {
+            return res.status(422).json({ message: 'Invalid Comment Submission, message is required' });
+        }
 
-// need to check if it is sending data 
-const handler = async ( req: NextApiRequest, res: NextApiResponse) => {
-    const { message, userInfo, sourceId } = req.body;
+        const storeCommentData = {
+            message: message.trim(),
+            userInfo: userInfo || 'Anonymous',
+            sourceId,
+        };
 
-    
-    if (req.method === `POST`) {
-        if (!message || message.length < 0) {
-            res.status(422).json({message: 'Invalid Comment Submission, missing one or two items'});
-            return;
+        try {
+            const { data, error } = await supabase
+                .from('comments')
+                .insert([storeCommentData])
+                .select('id, message, userInfo, sourceId');
+
+            if (error) {
+                console.error('Supabase Insert Error:', error);
+                return res.status(500).json({ message: 'Failed to store the comment in the database.' });
+            }
+
+            return res.status(201).json({ message: 'Success! Comment stored', payload: data[0] });
+        } catch (error) {
+            console.error('Unexpected Error:', error);
+            return res.status(500).json({ message: 'Oops! Something went wrong. Storing the comment failed...' });
         }
     }
 
-    const storeCommentData = {
-        message: message.trim(),
-        userInfo: userInfo.trim(),
-        sourceId: sourceId
-    }
-
-    try {
-        const {data, error} = await supabase
-            .from('comments')
-            .insert([storeCommentData])
-            .select()
-        if (error) {
-            console.error('Supabase Insert Error:', error);
-            return res.status(500).json({
-                message: 'Failed to store the comment in the database.',
-                error: error.message,
-            });
+    // PUT: Edit an existing comment
+    if (req.method === 'PUT') {
+        if (!commentId || !message) {
+            return res.status(400).json({ message: 'Comment ID and message are required to update' });
         }
 
-        const savedComment = data[0] || 'Not correct storage call';
+        try {
+            const { data, error } = await supabase
+                .from('comments')
+                .update({ message: message.trim() })
+                .eq('id', commentId)
+                .select();
 
-        return res.status(202).json({
-                message: 'success! comment stored', 
-                payload: savedComment,
-            });
-    } catch (error) {
-        console.error('Error', error)
-        res.status(500).json({
-            message: 'Oops something is wrong. Storing the comment failed...'
-        });
+            if (error) {
+                console.error('Supabase Update Error:', error);
+                return res.status(500).json({ message: 'Failed to update the comment.' });
+            }
+
+            return res.status(200).json({ message: 'Comment updated successfully', payload: data[0] });
+        } catch (error) {
+            console.error('Error', error);
+            return res.status(500).json({ message: 'Error updating the comment.' });
+        }
     }
-};   
+
+    // DELETE: Delete a comment
+    if (req.method === 'DELETE') {
+        if (!commentId) {
+            return res.status(400).json({ message: 'Comment ID is required to delete' });
+        }
+
+        try {
+            const { error } = await supabase.from('comments').delete().eq('id', commentId);
+
+            if (error) {
+                console.error('Supabase Delete Error:', error);
+                return res.status(500).json({ message: 'Failed to delete the comment.' });
+            }
+
+            return res.status(200).json({ message: 'Comment deleted successfully' });
+        } catch (error) {
+            console.error('Error', error);
+            return res.status(500).json({ message: 'Error deleting the comment.' });
+        }
+    }
+
+    return res.status(405).json({ message: 'Method Not Allowed' });
+};
 
 export default handler;
