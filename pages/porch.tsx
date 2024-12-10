@@ -14,8 +14,6 @@ interface PorchPageProps {
   initialPorchs: PorchType[];
 }
 
-
-
 const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 	const [ showForm, setShowForm ] = useState( false );
 	const [ showUserForm, setShowUserForm ] = useState( false );
