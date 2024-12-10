@@ -14,8 +14,6 @@ interface PorchPageProps {
   initialPorchs: PorchType[];
 }
 
-
-
 const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 	const [ showForm, setShowForm ] = useState( false );
 	const [ showUserForm, setShowUserForm ] = useState( false );
@@ -122,7 +120,7 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 						onMouseMove={handleMouseMove}
 						onMouseUp={handleMouseUp} 
 					>
-						{showUserForm ? (<PorchUserDataForm setShowUserForm={setShowUserForm}/>) : null}
+					{showUserForm ? (<PorchUserDataForm setShowUserForm={setShowUserForm}/>) : null}
 					</div>
 					<InfiniteScroll
 						dataLength={porchList.length}
