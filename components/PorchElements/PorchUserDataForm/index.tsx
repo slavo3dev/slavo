@@ -3,6 +3,7 @@ import WeeklyGoalForm from '../PorchWeeklyGoalForm';
 import UserInfoContext from '@/context/UserInfoContext';
 import supabase from '@/lib/supabase';
 import Calendar from './Calendar';
+import { IoIosCloseCircleOutline } from "react-icons/io";
 
 //!!!
 // General 
@@ -11,17 +12,13 @@ import Calendar from './Calendar';
         // tablet
         // computer
 
-
-const PorchUserDataForm= () => {
+const PorchUserDataForm= ({setShowUserForm}: any) => {
     const [showUpdateGoals, setShowUpdateGoals] = useState<boolean>(false);
     const [weeklyGoal, setWeeklyGoal] = useState<number>(1);
     const [currentStreak, setCurrentStreak] = useState<number>(0);
     const [longestStreak, setLongestStreak] = useState<number>(0);
     const [weeklyLearningDays, setWeeklyLearningDays] = useState<number>(0);
     const [learningDates, setLearningDates] = useState<{date: string; count: number}[]>([]);
-
-
-
     const { userInfo } = useContext(UserInfoContext)
 
     useEffect(() => {
@@ -159,6 +156,9 @@ const PorchUserDataForm= () => {
 
     return (
         <div className='h-fit w-fit bg-blue-100 p-2 flex flex-col rounded-md'>
+            <button className="ml-auto pr-2" onClick={() => setShowUserForm(false)}>
+                <IoIosCloseCircleOutline className='h-8 w-8'/>
+            </button>
             <div className='border-2 p-4 m-2 flex flex-col overflow-hidden bg-white shadow-lg group rounded-xl'>
                 <div className='flex flex-row justify-between align-baseline space-x-20'>
                     <h5 className='flex'>Weekly Learning Goals </h5>
@@ -217,5 +217,3 @@ const PorchUserDataForm= () => {
 
 export default PorchUserDataForm;
  
-// Need to delete package-lock.json 
-// reinstall yarn install again

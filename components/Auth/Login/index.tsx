@@ -1,27 +1,31 @@
-import { useState, FC } from "react";
+import { useState, useRef, FC } from "react";
 import supabase from "lib/supabase";
 import router from "next/router";
 import { ErrorAlertMsg } from "@/components/Alerts";
 import { REALTIME_POSTGRES_CHANGES_LISTEN_EVENT } from "@supabase/supabase-js";
 import { NoUndefinedVariablesRule } from "graphql";
 interface LoginProps {
-    signIn: () => void;
+    signIn: () => void
     resetPassword: () => void; 
 }
 
 export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 {
 
-	const [userEmail, setUserEmail] = useState<string>(""); // add this to sign in
-	const [userPassword, setUserPassword] = useState<string>("");
+	const userEmailRef = useRef<HTMLInputElement>(null); 
+	const userPasswordRef = useRef<HTMLInputElement>(null);
 	const [signInError, setSigninError] = useState<string>("");
+
 	const signInWithEmail = async () => {
 		try {
-			const signInPromise = await supabase.auth.signInWithPassword({
-				email: userEmail,
-				password: userPassword,
+			const email = userEmailRef.current?.value || "";
+			const password = userPasswordRef.current?.value || "";
+	  
+			const { error } = await supabase.auth.signInWithPassword({
+			  email,
+			  password,
 			});
-			const { error } = signInPromise;
+			
 			if (error) {
 				setSigninError(error.message);
 			} else {
@@ -36,14 +40,7 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 	
 	return (
 		<>
-			{ signInError && <ErrorAlertMsg title={signInError} /> }
-			<section className="py-12 bg-gray-50 sm:py-16 lg:py-20">
-				<div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-					<div className="relative max-w-md mx-auto lg:max-w-lg">
-						<div className="absolute -inset-2">
-							<div className="w-full h-full mx-auto rounded-3xl opacity-30 blur-lg filter"></div>
-						</div>
-						<div className="relative overflow-hidden bg-white shadow-xl rounded-xl">
+			{ signInError && <ErrorAlertMsg title={signInError} /> }			
 							<div className="px-4 py-6 sm:px-8">
 								<div className="flex items-center justify-between">
 									<h1 className="text-xl font-bold text-gray-900 font-pj">Sign in</h1>
@@ -57,9 +54,7 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 											<label  className="text-base font-medium text-gray-900 font-pj"> Email </label>
 											<div className="mt-2.5">
 												<input
-													onChange={(e) => {
-														setUserEmail(e.target.value);
-													}}
+													ref={userEmailRef}
 													type="email" name="" id="" placeholder="Email address" className="block w-full px-4 py-4 text-gray-900 placeholder-gray-600 bg-white border border-gray-400 rounded-xl focus:border-gray-900 focus:ring-gray-900 caret-gray-900" />
 											</div>
 										</div>
@@ -72,9 +67,7 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 											</div>
 											<div className="mt-2.5">
 												<input
-													onChange={(e) => {
-														setUserPassword(e.target.value);
-													}}
+													ref={userPasswordRef}
 													type="password" name="" id="" placeholder="Password (min. 8 character)" className="block w-full px-4 py-4 text-gray-900 placeholder-gray-600 bg-white border border-gray-400 rounded-xl focus:border-gray-900 focus:ring-gray-900 caret-gray-900" />
 											</div>
 										</div>
@@ -155,10 +148,6 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 											Login in with Github
 								</a>
 							</div>
-						</div>
-					</div>
-				</div>
-			</section>
 		</>
 	);
 };
