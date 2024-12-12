@@ -7,14 +7,19 @@ import { useRouter } from "next/router";
 import UserInfoContext from "context/UserInfoContext";
 import { Subscribe } from "@/components/Subscribe";
 import LoginModal from "@/components/Auth/LoginPopup";
+import { NavigationProps } from "@/Types/Navigation";
+import { BlogDropDown } from "@/components/Posts/BlogDropDown";
 
-export const MainNavigation: FC = () => {
+export const MainNavigation: FC<NavigationProps> = ({categories}) => {
     
 	const [ headStyle, setHeadStyle ] = useState<boolean>( true );
 	const { userInfo } = useContext(UserInfoContext);
+	const [selectedCategory, setSelectedCategory] = useState("ALL");
 	const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
+
 	const router = useRouter();
 	const userEmail = userInfo?.email;
+
 
 	const toggleLoginModal = () => setShowLoginModal((prev) => !prev);
     
@@ -36,6 +41,16 @@ export const MainNavigation: FC = () => {
 		}
 	  }, [userEmail]);
 
+	const onSearchCat = (category: string) => {
+		setSelectedCategory(category);
+		if (category === "ALL") {
+		  router.push("/blog"); 
+		} else {
+			const fullPath = `/category/${category}`;
+			router.push(fullPath);
+		}
+	  };
+
 	return (
 		<header className={headStyle ? classes.header : classes.header1}>
 			<Logo />
@@ -54,8 +69,8 @@ export const MainNavigation: FC = () => {
 						{/* <li className={router.pathname === "/mentor" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/mentor">Mentor</Link>
 						</li> */}
-						<li className={router.pathname === "/blog" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"} onClick={() => localStorage.getItem("selectedOption")}>
-							<Link href="/blog">Blog</Link>
+						<li className={router.pathname === "/blog" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
+							<BlogDropDown categories={categories} onSearch={onSearchCat}/>
 						</li>
 						{/* <li className={router.pathname === "/videos" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/videos">Videos</Link>
@@ -80,7 +95,7 @@ export const MainNavigation: FC = () => {
 					</ul>
 				</nav>
 			</div>
-			<Burger userInfo={ userInfo } />
+			<Burger userInfo={ userInfo } categories={categories} />
 			{showLoginModal && (
 				<>
         		<div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40"></div>
