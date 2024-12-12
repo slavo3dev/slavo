@@ -1,6 +1,5 @@
 import { useContext, useState, useEffect } from "react";
 import UserInfoContext from "@/context/UserInfoContext";
-import PorchUserButton from "../PorchInteractivity";
 import { MdOutlineTrendingUp } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
 import LoginModal from "@/components/Auth/LoginPopup";

@@ -133,7 +133,6 @@ export const Comments = ({sourceId}: CommentsProps) => {
               >
                 ✕
               </button>
-
               {userEmail && (<form onSubmit={onSubmit} className="mt-2 flex flex-col gap-2">
                 <textarea
                   value={comment}
@@ -146,7 +145,6 @@ export const Comments = ({sourceId}: CommentsProps) => {
                   Submit
                 </button>
               </form>)}
-
               {error && <p className="text-red-500 mt-2">{error}</p>}
               {successMessage && <p className="text-green-500 mt-2">{successMessage}</p>}
               <div className="mt-2 text-black">
