@@ -113,8 +113,8 @@ export const Comments = ({sourceId}: CommentsProps) => {
   const handleEditComment = async (commentId: string, newMessage: string) => {
     const commentToEdit = postComments.find((comment) => comment.id === commentId);
 
-    if (commentToEdit?.userInfo !== userEmail) {  // CHECK IF USER CAN EDIT ONLY HIS COMMENT
-      setError("You can only edit your own comments.");  // ERROR MESSAGE IF USER IS NOT THE COMMENT OWNER
+    if (commentToEdit?.userInfo !== userEmail) { 
+      setError("You can only edit your own comments."); 
       return;
     }
     const updatedComments = postComments.map((comment) =>
@@ -144,8 +144,8 @@ export const Comments = ({sourceId}: CommentsProps) => {
   const handleDeleteComment = async (commentId: string) => {
     const commentToDelete = postComments.find((comment) => comment.id === commentId);
 
-    if (commentToDelete?.userInfo !== userEmail) {  // CHECK IF USER CAN DELETE ONLY HIS COMMENT
-      setError("You can only delete your own comments.");  // ERROR MESSAGE IF USER IS NOT THE COMMENT OWNER
+    if (commentToDelete?.userInfo !== userEmail) {  
+      setError("You can only delete your own comments."); 
       return;
     }
     const updatedComments = postComments.filter((comment) => comment.id !== commentId);
@@ -169,14 +169,13 @@ export const Comments = ({sourceId}: CommentsProps) => {
   };
 
   return (
+
     <div className="flex flex-col z-50">
       <button
         onClick={toggleComments}
-        className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700"
-      >
+        className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
         {showComments ? "Hide Comments" : "Show Comments"}
       </button>
-
       {showComments && (
         <div className="mt-4">
           <form onSubmit={onSubmit} className="flex flex-col gap-3">
@@ -185,19 +184,16 @@ export const Comments = ({sourceId}: CommentsProps) => {
               value={comment}
               onChange={onChange}
               className="p-3 border"
-              rows={4}
-            />
+              rows={4}/>
             {error && <p className="text-red-500 text-sm">{error}</p>}
             <button
               type="submit"
               disabled={error !== ""}
-              className="py-2 px-4 rounded bg-blue-500 text-white disabled:bg-gray-300"
-            >
+              className="py-2 px-4 rounded bg-blue-500 text-white disabled:bg-gray-300">
               Post Comment
             </button>
           </form>
           {successMessage && <p className="text-green-500">{successMessage}</p>}
-
           <div className="mt-6">
             {postComments.map((comment) => {
               const commentId = comment.id || ""; 
@@ -212,14 +208,12 @@ export const Comments = ({sourceId}: CommentsProps) => {
                       <>
                         <button
                           onClick={() => handleEditComment(commentId, prompt("Edit comment:", comment.message) || comment.message)}
-                          className="text-blue-500"
-                        >
+                          className="text-blue-500">
                           Edit
                         </button>
                         <button
                           onClick={() => handleDeleteComment(commentId)}
-                          className="text-red-500"
-                        >
+                          className="text-red-500">
                           Delete
                         </button>
                       </>
@@ -232,5 +226,6 @@ export const Comments = ({sourceId}: CommentsProps) => {
         </div>
       )}
     </div>
+
   );
 };
