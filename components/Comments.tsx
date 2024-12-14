@@ -169,7 +169,6 @@ export const Comments = ({sourceId}: CommentsProps) => {
   };
 
   return (
-
     <div className="flex flex-col z-50">
       <button
         onClick={toggleComments}
@@ -222,6 +221,49 @@ export const Comments = ({sourceId}: CommentsProps) => {
                 </div>
               );
             })}
+      <div className="flex flex-col z-50">
+        <button
+          onClick={toggleComments}
+          className="inline-block bg-gray-200 rounded-full px-2 py-1 text-sm font-semibold text-gray-700 max-w-xs"
+        >
+          {showComments ? "Hide Comments" : "Show Comments"}
+        </button>
+
+        {showComments && (
+        <>
+          <div className="fixed inset-0 flex justify-center items-center z-50">
+            <div className="bg-white w-full max-w-lg p-8 rounded-lg shadow-lg relative max-h-[300px] overflow-y-auto">
+              
+              <button
+                onClick={toggleComments}
+                className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+              >
+                ✕
+              </button>
+              {userEmail && (<form onSubmit={onSubmit} className="mt-2 flex flex-col gap-2">
+                <textarea
+                  value={comment}
+                  onChange={onChange}
+                  placeholder="Add a comment"
+                  className="p-2 border focus:border-gray-700 w-full outline-none resize-none overflow-hidden"
+                  rows={1}
+                />
+                <button className="py-2 px-4 text-sm text-white font-semibold bg-blue-400 hover:bg-blue-500 rounded">
+                  Submit
+                </button>
+              </form>)}
+              {error && <p className="text-red-500 mt-2">{error}</p>}
+              {successMessage && <p className="text-green-500 mt-2">{successMessage}</p>}
+              <div className="mt-2 text-black">
+                <p className="font-bold">Comments:</p>
+                  {postComments.length === 0 ? (<p> No comments found.</p>) : (postComments.map((postComment) => (
+                    <p key={postComment.id} className="p-2 border-b max-w-full break-words text-sm">
+                      <span className="text-blue-400">{postComment.userInfo}</span>
+                      <span className="block overflow-wrap break-word font-normal text-gray-500">{postComment.message}</span>
+                    </p>
+                  )))}
+              </div>
+            </div>
           </div>
         </div>
       )}

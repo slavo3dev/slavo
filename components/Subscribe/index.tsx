@@ -100,7 +100,7 @@ export const Subscribe: FC = () => {
 				setIsModalOpen={setIsModalOpen} 
 				localStorageKey="subscribeOpen" 
 				storageValue={isModalOpen}
-				className="py-2 px-4 mr-5 text-white text-xs bg-blue-400 rounded hover:bg-blue-700 transition md:py-2 md:px-5 md:text-sm"
+				className="px-2 py-2 mt-1 text-white text-xs bg-blue-400 rounded hover:bg-blue-500 transition ml-6 md:ml-0 md:py-2 md:px-5 md:text-sm"
 			/>
 			{isModalOpen && (
 				<div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm z-40" />
