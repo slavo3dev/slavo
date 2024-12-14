@@ -1,8 +1,6 @@
 import { useState, ChangeEvent, FormEvent, useContext, useEffect } from "react";
 import UserInfoContext from "context/UserInfoContext";
 import { CommentsError } from "lib/err/err";
-import EditComment from "./editComment";
-import DeleteComment from "./deleteComment";
 
 interface Comment {
   id?: string;
@@ -15,7 +13,8 @@ interface CommentsProps {
   sourceId: number; 
 }
 
-export const Comments = ({ sourceId }: CommentsProps) => {
+
+export const Comments = ({sourceId}: CommentsProps) => {
   const [comment, setComment] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [showComments, setShowComments] = useState<boolean>(false);
@@ -24,19 +23,19 @@ export const Comments = ({ sourceId }: CommentsProps) => {
 
   const { userInfo } = useContext(UserInfoContext);
   const userEmail = userInfo?.email;
-
+  
   useEffect(() => {
     const fetchComments = async () => {
       try {
         const response = await fetch(`/api/getComments?sourceId=${sourceId}`);
         const data = await response.json();
-        setPostComments(data);
+        setPostComments(data); 
       } catch (error) {
         console.error("Error fetching comments:", error);
         setError(CommentsError.fetchError);
       }
     };
-
+  
     fetchComments();
   }, [sourceId]);
 
@@ -67,6 +66,7 @@ export const Comments = ({ sourceId }: CommentsProps) => {
     }
   };
 
+
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!comment.trim()) {
@@ -85,9 +85,8 @@ export const Comments = ({ sourceId }: CommentsProps) => {
       const response = await fetch('/api/postComments', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: comment, userInfo: userEmail, sourceId })
-      });
-
+        body: JSON.stringify({  message: comment, userInfo: userEmail, sourceId })
+      })
       const data = await response.json();
       if (response.ok) {
         setPostComments([...postComments, data.payload]);
@@ -110,18 +109,63 @@ export const Comments = ({ sourceId }: CommentsProps) => {
     setShowComments(!showComments);
   };
 
-  const handleEditComment = (commentId: string, newMessage: string) => {
-    setPostComments((prevComments) =>
-      prevComments.map((comment) =>
-        comment.id === commentId ? { ...comment, message: newMessage } : comment
-      )
+  
+  const handleEditComment = async (commentId: string, newMessage: string) => {
+    const commentToEdit = postComments.find((comment) => comment.id === commentId);
+
+    if (commentToEdit?.userInfo !== userEmail) {  // CHECK IF USER CAN EDIT ONLY HIS COMMENT
+      setError("You can only edit your own comments.");  // ERROR MESSAGE IF USER IS NOT THE COMMENT OWNER
+      return;
+    }
+    const updatedComments = postComments.map((comment) =>
+      comment.id === commentId ? { ...comment, message: newMessage } : comment
     );
-    setSuccessMessage("Comment updated successfully!");
+    setPostComments(updatedComments);
+
+    try {
+      const response = await fetch(`/api/postComments?id=${commentId}`, { 
+        method: "PUT", 
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: newMessage }) 
+      });
+
+      if (response.ok) {
+        setSuccessMessage("Comment updated successfully!");
+      } else {
+        setError(CommentsError.fetchError);
+      }
+    } catch (error) {
+      console.error("Error updating comment:", error);
+      setError(CommentsError.fetchError);
+    }
   };
 
-  const handleDeleteComment = (commentId: string) => {
-    setPostComments((prevComments) => prevComments.filter((comment) => comment.id !== commentId));
-    setSuccessMessage("Comment deleted successfully!");
+  
+  const handleDeleteComment = async (commentId: string) => {
+    const commentToDelete = postComments.find((comment) => comment.id === commentId);
+
+    if (commentToDelete?.userInfo !== userEmail) {  // CHECK IF USER CAN DELETE ONLY HIS COMMENT
+      setError("You can only delete your own comments.");  // ERROR MESSAGE IF USER IS NOT THE COMMENT OWNER
+      return;
+    }
+    const updatedComments = postComments.filter((comment) => comment.id !== commentId);
+    setPostComments(updatedComments);
+
+    try {
+      const response = await fetch(`/api/postComments?id=${commentId}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" }
+      });
+
+      if (response.ok) {
+        setSuccessMessage("Comment deleted successfully!");
+      } else {
+        setError(CommentsError.fetchError);
+      }
+    } catch (error) {
+      console.error("Error deleting comment:", error);
+      setError(CommentsError.fetchError);
+    }
   };
 
   return (
@@ -155,29 +199,35 @@ export const Comments = ({ sourceId }: CommentsProps) => {
           {successMessage && <p className="text-green-500">{successMessage}</p>}
 
           <div className="mt-6">
-            {postComments.map((comment) => (
-              <div key={comment.id} className="flex flex-col mt-4">
-                <div>
-                  <strong>{comment.userInfo}</strong>
+            {postComments.map((comment) => {
+              const commentId = comment.id || ""; 
+              return (
+                <div key={commentId} className="flex flex-col mt-4">
+                  <div>
+                    <strong>{comment.userInfo}</strong>
+                  </div>
+                  <div>{comment.message}</div>
+                  <div className="flex gap-4 mt-2">
+                    {commentId && (
+                      <>
+                        <button
+                          onClick={() => handleEditComment(commentId, prompt("Edit comment:", comment.message) || comment.message)}
+                          className="text-blue-500"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => handleDeleteComment(commentId)}
+                          className="text-red-500"
+                        >
+                          Delete
+                        </button>
+                      </>
+                    )}
+                  </div>
                 </div>
-                <div>{comment.message}</div>
-                <div className="flex gap-4 mt-2">
-                  {comment.id && (
-                    <EditComment
-                      commentId={comment.id}
-                      initialText={comment.message}
-                      onSave={handleEditComment}
-                    />
-                  )}
-                  {comment.id && (
-                    <DeleteComment
-                      commentId={comment.id}
-                      onDelete={handleDeleteComment}
-                    />
-                  )}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       )}
