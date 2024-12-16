@@ -6,7 +6,6 @@ import { CategoryFilter } from "../CategoryFilter";
 import { Title } from "../Title";
 import UserInfoContext from "@/context/UserInfoContext";
 
-
 interface Source {
   id: number;
   like: number;
@@ -48,14 +47,14 @@ export const LearningSources: FC<LearningSourcesProps> = ({
   };
 
   return (
-    <div className="py-12 sm:py-16 lg:py-20">
+    <div className="py-12 bg-gray-50 sm:py-16 lg:py-20">
       {showForm && (
         <NewResourceFrom
           setSources={setFacts}
           setShowForm={setShowForm}
         />
       )}
-      <section className="px-4 mx-auto sm:px-6 lg:px-8  overflow-hidden">
+      <section className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl overflow-hidden">
         <Title title={"Learning Sources"} />
         <CategoryFilter setCurrentCategory={setCurrentCategory} />
         <div>

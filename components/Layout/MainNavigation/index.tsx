@@ -10,6 +10,7 @@ import LoginModal from "@/components/Auth/LoginPopup";
 import { NavigationProps } from "@/Types/Navigation";
 import { BlogDropDown } from "@/components/Posts/BlogDropDown";
 
+
 export const MainNavigation: FC<NavigationProps> = ({categories}) => {
     
 	const [ headStyle, setHeadStyle ] = useState<boolean>( true );

@@ -86,5 +86,4 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
      		)}
 		</>
   );
-
 };
