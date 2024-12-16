@@ -17,6 +17,7 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 	const [userInfo, setUserInfo] = useState<User | null>(null);
 	const router = useRouter();
 	const [ loading, setLoading ] = useState( true );
+	const [categories, setCategories] = useState<string[]>([]);
     
 	useEffect(() => {
 		setLoading(true);
@@ -56,18 +57,33 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 	}, [ router.events ] );
     
 	const [ videoLine, setVideoLine ] = useState( "channelOne" );
+
+	useEffect(() => {
+		const fetchCategories = async () => {
+		  try {
+			const response = await fetch("/api/categories");
+			if (!response.ok) throw new Error("Failed to fetch categories");
+			const data = await response.json();
+			setCategories(data);
+		  } catch (error) {
+			console.error("Error fetching categories:", error);
+		  }
+		};
+	  
+		fetchCategories();
+	  }, []);
      
 	const App =(
 		<UserInfoContext.Provider value={ { userInfo, setUserInfo } }>
 			<VideoContext.Provider value={ { videoLine, setVideoLine } }>
-				<Layout>
-					<HeadBasePage title="Career Change: Learn Web Development for a Bright Future" />
-					<MainNavigation  />
-					<Component { ...pageProps } />
-					<SpeedInsights route={router.pathname} />
-					<Footer />
-				</Layout>
-				<GoogleAnalytics gaId={GA_TRACKING_ID} />
+					<Layout>
+						<HeadBasePage title="Career Change: Learn Web Development for a Bright Future" />
+						<MainNavigation categories={categories}/>
+						<Component { ...pageProps } />
+						<SpeedInsights route={router.pathname} />
+						<Footer />
+					</Layout>
+					<GoogleAnalytics gaId={GA_TRACKING_ID} />
 			</VideoContext.Provider>
 		</UserInfoContext.Provider>
 	);

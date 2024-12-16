@@ -12,7 +12,6 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
         // tablet
         // computer
 
-
 const PorchUserDataForm= ({setShowUserForm}: any) => {
     const [showUpdateGoals, setShowUpdateGoals] = useState<boolean>(false);
     const [weeklyGoal, setWeeklyGoal] = useState<number>(1);
@@ -20,9 +19,6 @@ const PorchUserDataForm= ({setShowUserForm}: any) => {
     const [longestStreak, setLongestStreak] = useState<number>(0);
     const [weeklyLearningDays, setWeeklyLearningDays] = useState<number>(0);
     const [learningDates, setLearningDates] = useState<{date: string; count: number}[]>([]);
-
-
-
     const { userInfo } = useContext(UserInfoContext)
 
     useEffect(() => {
@@ -221,5 +217,3 @@ const PorchUserDataForm= ({setShowUserForm}: any) => {
 
 export default PorchUserDataForm;
  
-// Need to delete package-lock.json 
-// reinstall yarn install again
