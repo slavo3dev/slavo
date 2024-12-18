@@ -14,8 +14,6 @@ interface PorchPageProps {
   initialPorchs: PorchType[];
 }
 
-
-
 const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 	const [ showForm, setShowForm ] = useState( false );
 	const [ showUserForm, setShowUserForm ] = useState( false );
@@ -59,6 +57,7 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 
 
     const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
+		if ((e.target as HTMLElement).tagName === 'SELECT') return;
         setDragging( true )
         setOffset({
             x: e.clientX - position.x,
@@ -83,7 +82,10 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 	return (
 		<>
 			<HeadBasePage title={ "Share Your Daily Learning Journey - Career Change in Web Development" } description={"Join our community to share your daily learning updates and track your progress in web development. Engage with others on the same career change journey, get support, and stay motivated. Start your path to a bright future with Slavo.io!"} />
-				<div className="p-10 text-slate-800">
+			<div className="p-10 text-slate-800 relative">
+			{showForm && (
+					<div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm z-40" />
+				)}
 					<div className="flex flex-col">
 						<div className="flex flex-row items-center">
 							<PorchUserButton showUserForm={showUserForm} setShowUserForm={setShowUserForm}/>
@@ -118,7 +120,7 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 						onMouseMove={handleMouseMove}
 						onMouseUp={handleMouseUp} 
 					>
-						{showUserForm ? (<PorchUserDataForm />) : null}
+					{showUserForm ? (<PorchUserDataForm setShowUserForm={setShowUserForm}/>) : null}
 					</div>
 					<InfiniteScroll
 						dataLength={porchList.length}

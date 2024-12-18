@@ -117,7 +117,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
       <div className="flex flex-col z-50">
         <button
           onClick={toggleComments}
-          className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700"
+          className="inline-block bg-gray-200 rounded-full px-2 py-1 text-sm font-semibold text-gray-700 max-w-xs"
         >
           {showComments ? "Hide Comments" : "Show Comments"}
         </button>
@@ -133,8 +133,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
               >
                 ✕
               </button>
-
-              <form onSubmit={onSubmit} className="mt-2 flex flex-col gap-2">
+              {userEmail && (<form onSubmit={onSubmit} className="mt-2 flex flex-col gap-2">
                 <textarea
                   value={comment}
                   onChange={onChange}
@@ -145,8 +144,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
                 <button className="py-2 px-4 text-sm text-white font-semibold bg-blue-400 hover:bg-blue-500 rounded">
                   Submit
                 </button>
-              </form>
-
+              </form>)}
               {error && <p className="text-red-500 mt-2">{error}</p>}
               {successMessage && <p className="text-green-500 mt-2">{successMessage}</p>}
               <div className="mt-2 text-black">

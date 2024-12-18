@@ -8,7 +8,7 @@ interface CategoryTagsProps {
 
 export const CategoryTags: FC<CategoryTagsProps> = ({ categories, handleCategoryClick, isActive }) => {
     return (
-        <div className="flex flex-wrap gap-5 mt-8 justify-center cursor-pointer">
+        <div className="flex flex-wrap gap-5 mt-8 justify-center cursor-pointer mb-6">
             {categories.map((category: string | { name: string}) => {
                 const categoryName = typeof category === "string" ? category : category.name; 
                 return (

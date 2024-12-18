@@ -73,11 +73,17 @@ export const PorchForm: React.FC<PorchFormProps> = ({ setPorchs, setShowForm }) 
 			{responseUpdate ? (
 				<Loader title={responseUpdate} />
 			) : (
-				<form className="border rounded-lg w-[400px] h-fit p-8 flex flex-col justify-between bg-blue-100" onSubmit={handleSubmit}>
-					<div className="flex flex-col">
-						<h5 className="mb-4">Progress Update</h5>
+				<div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
+					<div className="relative bg-gray-300 rounded-lg w-full max-w-lg p-9 shadow-lg shadow-gray-100 transition-all">
+					<button onClick={() => setShowForm(false)} 
+							className="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+							&times;
+						</button>
+					<form className="flex flex-col" onSubmit={handleSubmit}>
+						<div className="flex flex-col">
+						<h5 className="mb-4 text-xl font-semibold text-gray-700">Progress Update</h5>
 						<input
-							className="bg-white border mb-4 py-1 px-2 rounded-xl text-gray-700 focus:outline-none placeholder:text-sm"
+							className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white placeholder:text-sm"
 							type="text"
 							placeholder="Share your update with the world..."
 							value={text}
@@ -87,8 +93,8 @@ export const PorchForm: React.FC<PorchFormProps> = ({ setPorchs, setShowForm }) 
 						<input
 							className={
 								!isValidHttpUrl(source) && source.length > 0
-									? "bg-red-200 text-gray-700 focus:outline-none mb-4 py-1 px-2 rounded-xl border"
-									: "bg-white border mb-8 py-1 px-2 rounded-xl text-gray-700 focus:outline-none placeholder:text-sm"
+									? "appearance-none block w-full bg-red-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none"
+									: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white placeholder:text-sm"
 							}
 							value={source}
 							type="text"
@@ -97,15 +103,16 @@ export const PorchForm: React.FC<PorchFormProps> = ({ setPorchs, setShowForm }) 
 							disabled={isUploading}
 						/>
 					</div>
-					<div className="flex flex-col">
-						<button
-							className="bg-blue-50 border border-blue-700 rounded-lg hover:bg-opacity-50"
-							disabled={isUploading}
-						>
-				Update
-						</button>
-					</div>
+					<div className="flex items-center justify-center">
+				  <button
+					className="bg-gray-500 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded w-1/3"
+					disabled={isUploading}>
+					Update
+				  </button>
+				</div>
 				</form>
+				</div>
+			</div>	
 			)}
 		</>
 	);

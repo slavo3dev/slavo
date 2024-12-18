@@ -2,12 +2,13 @@ import { useCategoryHook } from "@/lib/hooks/useCategoryHook";
 import { FC, useEffect } from "react";
 import { CategoryTags } from "@/lib/helpers/categoryTags";
 
-interface Props {
+export interface CatProps {
     categories: string[];
-    onSearch: ( param?: string ) => void
+    onSearch: ( param: string ) => void
 }
 
-export const BlogMenuCat: FC<Props> = ({ categories, onSearch }) => {
+
+export const BlogMenuCat: FC<CatProps> = ({ categories, onSearch }) => {
     const { activeCategory, handleCategoryClick, isActive } = useCategoryHook(categories, "selectedCategory");
 
     useEffect(() => {

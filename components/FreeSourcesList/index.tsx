@@ -1,10 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FC } from "react";
+import { FC, SetStateAction, Dispatch } from "react";
 import { FreeSource } from "./FreeSource";
 
+interface Fact {
+  id: number;
+  like: number;
+  exelent: number;
+  false: number;
+  text: string;
+  source: string;
+  category?: string;  
+}
 interface FreeSourcesListProps {
-  facts: any[];
-  setFacts: any;
+  facts: Fact[];
+  setFacts: Dispatch<SetStateAction<Fact[]>>; 
 }
 
 export const FreeSourcesList: FC<FreeSourcesListProps> = ({
@@ -18,16 +27,26 @@ export const FreeSourcesList: FC<FreeSourcesListProps> = ({
       </p>
     );
 
-  return (
-    <>
-      <section className="grid grid-cols-1 gap-6 px-8 mt-12 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:px-0 overflow-hidden">
-        {facts.map((fact) => (
-          <FreeSource key={fact.id} fact={fact} setFacts={setFacts} />
-        ))}
+    return (
+      <section className="py-1 sm:py-1 lg:py-1 border-y-4">
+        <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ">
+          <div className="max-w- mx-auto overflow-hidden bg-gray-100 rounded-xl">
+            <div className="py-5 sm:p-6">
+              <div className="mt-6 space-y-3">
+                {facts.map((fact) => (
+                  <FreeSource key={fact.id} fact={fact} setFacts={setFacts} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+          <p className="mt-5 text-lg font-medium text-gray-800 text-center">
+            There are {facts.length} sources. Add your own source!
+          </p>
+        </div>
       </section>
-      <p style={{ color: "#1d1e18" }}>
-        There are {facts.length} source. Add your own source!
-      </p>
-    </>
-  );
-};
+    );
+    
+  };
+
