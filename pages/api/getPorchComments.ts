@@ -9,9 +9,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   const { data, error } = await supabase
-    .from('comments')
+    .from('porch-comments') 
     .select('*')
-    .eq('sourceId', Number(sourceId)); 
+    .eq('sourceId', sourceId); 
 
   if (error) {
     console.error("Supabase error:", error);

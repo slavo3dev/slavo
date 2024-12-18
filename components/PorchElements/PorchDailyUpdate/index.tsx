@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import UserInfoContext from "@/context/UserInfoContext";
 import LoginModal from "@/components/Auth/LoginPopup";
 import { CardLayout } from "@/components/Layout/CardsLayout";
-
+import { PorchComments } from "@/components/porchComments";
 
 interface PorchType {
   id: string;
@@ -75,7 +75,14 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
         	handleVote={handleVote}
         	isUpdating={isUpdating}
         	formattedDate={formattedDate}
+      
+			extraContent={
+				<div className="py-5">
+				  <PorchComments sourceId={porch.new_id} />
+				</div>
+			  }
       />
+	  
 		{showLoginModal && (
 				<>
         		<div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40"></div>
