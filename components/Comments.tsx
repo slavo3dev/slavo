@@ -20,6 +20,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
   const [showComments, setShowComments] = useState<boolean>(false);
   const [successMessage, setSuccessMessage] = useState<string>("");
   const [postComments, setPostComments] = useState<Comment[]>([]);
+  const [errorShown, setErrorShown] = useState<boolean>(false);
 
   const { userInfo } = useContext(UserInfoContext);
   const userEmail = userInfo?.email;
@@ -107,20 +108,26 @@ export const Comments = ({sourceId}: CommentsProps) => {
 
   const toggleComments = () => {
     setShowComments(!showComments);
+    setError("");
+    setErrorShown(false);
   };
 
-  
   const handleEditComment = async (commentId: string, newMessage: string) => {
     const commentToEdit = postComments.find((comment) => comment.id === commentId);
 
     if (commentToEdit?.userInfo !== userEmail) { 
-      setError("You can only edit your own comments."); 
+      if (!errorShown) { 
+        setError("You can only edit your own comments.");
+        setErrorShown(true); 
+      }
       return;
     }
+
     const updatedComments = postComments.map((comment) =>
       comment.id === commentId ? { ...comment, message: newMessage } : comment
     );
     setPostComments(updatedComments);
+;
 
     try {
       const response = await fetch(`/api/postComments?id=${commentId}`, { 
@@ -145,12 +152,15 @@ export const Comments = ({sourceId}: CommentsProps) => {
     const commentToDelete = postComments.find((comment) => comment.id === commentId);
 
     if (commentToDelete?.userInfo !== userEmail) {  
-      setError("You can only delete your own comments."); 
+      if (!errorShown) { 
+        setError("You can only delete your own comments.");
+        setErrorShown(true); 
+      }
       return;
     }
     const updatedComments = postComments.filter((comment) => comment.id !== commentId);
     setPostComments(updatedComments);
-
+    
     try {
       const response = await fetch(`/api/postComments?id=${commentId}`, {
         method: "DELETE",

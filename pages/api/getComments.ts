@@ -11,13 +11,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const { data, error } = await supabase
     .from('comments')
     .select('*')
-    .eq('sourceId', Number(sourceId)); // Ensure correct data type
+    .eq('sourceId', Number(sourceId)); 
 
   if (error) {
     console.error("Supabase error:", error);
     return res.status(500).json({ error: "Failed to fetch comments" });
   }
 
-  // Return an empty array if data is null
   res.status(200).json(data ?? []);
 }

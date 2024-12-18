@@ -19,7 +19,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     try {
       const { data, error } = await supabase
-        .from('porch-comments') // Use 'porch-comments' table
+        .from('porch-comments') 
         .insert([storeCommentData])
         .select();
       if (error) {
@@ -50,7 +50,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     try {
       const { data, error } = await supabase
-        .from('porch-comments') // Use 'porch-comments' table
+        .from('porch-comments') 
         .update({ message: message.trim() })
         .eq('id', id)
         .select();
@@ -76,7 +76,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     try {
       const { error } = await supabase
-        .from('porch-comments') // Use 'porch-comments' table
+        .from('porch-comments') 
         .delete()
         .eq('id', id);
 

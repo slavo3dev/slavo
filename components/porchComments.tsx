@@ -10,7 +10,7 @@ interface Comment {
 }
 
 interface PorchCommentsProps {
-  sourceId: number; 
+  sourceId: number;
 }
 
 export const PorchComments = ({ sourceId }: PorchCommentsProps) => {
@@ -38,6 +38,12 @@ export const PorchComments = ({ sourceId }: PorchCommentsProps) => {
 
     fetchComments();
   }, [sourceId]);
+
+  useEffect(() => {
+    if (showComments) {
+      setError("");
+    }
+  }, [showComments]);
 
   useEffect(() => {
     if (successMessage) {
@@ -105,7 +111,7 @@ export const PorchComments = ({ sourceId }: PorchCommentsProps) => {
   };
 
   const toggleComments = () => {
-    setShowComments((prev) => !prev);
+    setShowComments(!showComments);
   };
 
   const handleEditComment = async (commentId: string, newMessage: string) => {
