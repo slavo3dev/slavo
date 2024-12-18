@@ -7,6 +7,7 @@ export interface CatProps {
     onSearch: ( param: string ) => void
 }
 
+
 export const BlogMenuCat: FC<CatProps> = ({ categories, onSearch }) => {
     const { activeCategory, handleCategoryClick, isActive } = useCategoryHook(categories, "selectedCategory");
 
