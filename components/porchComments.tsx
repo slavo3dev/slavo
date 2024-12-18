@@ -9,36 +9,41 @@ interface Comment {
   sourceId: number;
 }
 
-interface CommentsProps {
-  sourceId: number; 
+interface PorchCommentsProps {
+  sourceId: number;
 }
 
-
-export const Comments = ({sourceId}: CommentsProps) => {
+export const PorchComments = ({ sourceId }: PorchCommentsProps) => {
   const [comment, setComment] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [showComments, setShowComments] = useState<boolean>(false);
   const [successMessage, setSuccessMessage] = useState<string>("");
   const [postComments, setPostComments] = useState<Comment[]>([]);
-  const [errorShown, setErrorShown] = useState<boolean>(false);
 
   const { userInfo } = useContext(UserInfoContext);
   const userEmail = userInfo?.email;
-  
+
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await fetch(`/api/getComments?sourceId=${sourceId}`);
+        const response = await fetch(`/api/getPorchComments?sourceId=${sourceId}`);
+        if (!response.ok) throw new Error("Failed to fetch comments.");
         const data = await response.json();
-        setPostComments(data); 
+        setPostComments(data);
       } catch (error) {
         console.error("Error fetching comments:", error);
         setError(CommentsError.fetchError);
       }
     };
-  
+
     fetchComments();
   }, [sourceId]);
+
+  useEffect(() => {
+    if (showComments) {
+      setError("");
+    }
+  }, [showComments]);
 
   useEffect(() => {
     if (successMessage) {
@@ -67,9 +72,9 @@ export const Comments = ({sourceId}: CommentsProps) => {
     }
   };
 
-
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     if (!comment.trim()) {
       setError(CommentsError.onSubmitError);
       return;
@@ -83,19 +88,18 @@ export const Comments = ({sourceId}: CommentsProps) => {
     const newComment: Comment = { userInfo: userEmail || "Anonymous", message: comment, sourceId };
 
     try {
-      const response = await fetch('/api/postComments', {
+      const response = await fetch('/api/postPorchComments', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({  message: comment, userInfo: userEmail, sourceId })
-      })
+        body: JSON.stringify({ message: comment, userInfo: userEmail, sourceId })
+      });
+
+      if (!response.ok) throw new Error("Failed to post comment.");
+
       const data = await response.json();
-      if (response.ok) {
-        setPostComments([...postComments, data.payload]);
-        setComment(""); 
-        setSuccessMessage("Comment submitted successfully!");
-      } else {
-        setError(CommentsError.fetchError);
-      }
+      setPostComments((prevComments) => [...prevComments, data.payload]);
+      setComment(""); 
+      setSuccessMessage("Comment submitted successfully!");
     } catch (error) {
       console.error("Error posting comment:", error);
       setError(CommentsError.fetchError);
@@ -108,18 +112,13 @@ export const Comments = ({sourceId}: CommentsProps) => {
 
   const toggleComments = () => {
     setShowComments(!showComments);
-    setError("");
-    setErrorShown(false);
   };
 
   const handleEditComment = async (commentId: string, newMessage: string) => {
     const commentToEdit = postComments.find((comment) => comment.id === commentId);
 
-    if (commentToEdit?.userInfo !== userEmail) { 
-      if (!errorShown) { 
-        setError("You can only edit your own comments.");
-        setErrorShown(true); 
-      }
+    if (commentToEdit?.userInfo !== userEmail) {
+      setError("You can only edit your own comments.");
       return;
     }
 
@@ -127,51 +126,41 @@ export const Comments = ({sourceId}: CommentsProps) => {
       comment.id === commentId ? { ...comment, message: newMessage } : comment
     );
     setPostComments(updatedComments);
-;
 
     try {
-      const response = await fetch(`/api/postComments?id=${commentId}`, { 
+      const response = await fetch(`/api/postPorchComments?id=${commentId}`, { 
         method: "PUT", 
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: newMessage }) 
       });
 
-      if (response.ok) {
-        setSuccessMessage("Comment updated successfully!");
-      } else {
-        setError(CommentsError.fetchError);
-      }
+      if (!response.ok) throw new Error("Failed to update comment.");
+      setSuccessMessage("Comment updated successfully!");
     } catch (error) {
       console.error("Error updating comment:", error);
       setError(CommentsError.fetchError);
     }
   };
 
-  
   const handleDeleteComment = async (commentId: string) => {
     const commentToDelete = postComments.find((comment) => comment.id === commentId);
 
-    if (commentToDelete?.userInfo !== userEmail) {  
-      if (!errorShown) { 
-        setError("You can only delete your own comments.");
-        setErrorShown(true); 
-      }
+    if (commentToDelete?.userInfo !== userEmail) {
+      setError("You can only delete your own comments.");
       return;
     }
+
     const updatedComments = postComments.filter((comment) => comment.id !== commentId);
     setPostComments(updatedComments);
-    
+
     try {
-      const response = await fetch(`/api/postComments?id=${commentId}`, {
+      const response = await fetch(`/api/postPorchComments?id=${commentId}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" }
       });
 
-      if (response.ok) {
-        setSuccessMessage("Comment deleted successfully!");
-      } else {
-        setError(CommentsError.fetchError);
-      }
+      if (!response.ok) throw new Error("Failed to delete comment.");
+      setSuccessMessage("Comment deleted successfully!");
     } catch (error) {
       console.error("Error deleting comment:", error);
       setError(CommentsError.fetchError);
@@ -185,6 +174,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
         className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
         {showComments ? "Hide Comments" : "Show Comments"}
       </button>
+
       {showComments && (
         <div className="mt-4">
           <form onSubmit={onSubmit} className="flex flex-col gap-3">
@@ -193,7 +183,8 @@ export const Comments = ({sourceId}: CommentsProps) => {
               value={comment}
               onChange={onChange}
               className="p-3 border"
-              rows={4}/>
+              rows={4}
+            />
             {error && <p className="text-red-500 text-sm">{error}</p>}
             <button
               type="submit"
@@ -202,10 +193,12 @@ export const Comments = ({sourceId}: CommentsProps) => {
               Post Comment
             </button>
           </form>
+
           {successMessage && <p className="text-green-500">{successMessage}</p>}
+
           <div className="mt-6">
             {postComments.map((comment) => {
-              const commentId = comment.id || ""; 
+              const commentId = comment.id || "";
               return (
                 <div key={commentId} className="flex flex-col mt-4">
                   <div>
@@ -235,6 +228,5 @@ export const Comments = ({sourceId}: CommentsProps) => {
         </div>
       )}
     </div>
-
   );
 };
