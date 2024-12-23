@@ -4,6 +4,7 @@ import router from "next/router";
 import { ErrorAlertMsg } from "@/components/Alerts";
 import { REALTIME_POSTGRES_CHANGES_LISTEN_EVENT } from "@supabase/supabase-js";
 import { NoUndefinedVariablesRule } from "graphql";
+
 interface LoginProps {
     signIn: () => void
     resetPassword: () => void; 
@@ -21,7 +22,7 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 			const email = userEmailRef.current?.value || "";
 			const password = userPasswordRef.current?.value || "";
 	  
-			const { error } = await supabase.auth.signInWithPassword({
+			const { data, error } = await supabase.auth.signInWithPassword({
 			  email,
 			  password,
 			});
@@ -29,7 +30,7 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 			if (error) {
 				setSigninError(error.message);
 			} else {
-				const redirectUrl: string = window.location.hostname === 'localhost' ? process.env.NEXT_PUBLIC_LOCAL_HOST_URL || "" : '/'
+				const redirectUrl = process.env.NEXT_PUBLIC_LOCAL_HOST_URL || '/'
                 router.push(redirectUrl);
 				//router.push("/");
 			}
@@ -37,6 +38,23 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 			console.log(error);
 		}
 	};
+
+	const signInWithGitHub = async () => {
+        try {
+            const redirectUrl = process.env.NEXT_PUBLIC_LOCAL_HOST_URL || 'http://localhost:3000';
+            const { error } = await supabase.auth.signInWithOAuth({
+                provider: 'github', 
+                options: {
+                    redirectTo: redirectUrl, 
+                },
+            });
+            if (error) {
+                setSigninError(error.message);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
 	
 	return (
 		<>
@@ -44,10 +62,8 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 							<div className="px-4 py-6 sm:px-8">
 								<div className="flex items-center justify-between">
 									<h1 className="text-xl font-bold text-gray-900 font-pj">Sign in</h1>
-
 									<p className="text-base font-normal text-gray-900 font-pj">Don’t have an account? <a onClick={() => signIn()} title="" className="font-bold rounded hover:underline focus:outline-none focus:ring-1 focus:ring-gray-900 focus:ring-offset-2">Join now</a></p>
 								</div>
-
 								<form action="#" method="POST" className="mt-12">
 									<div className="space-y-4">
 										<div>
@@ -144,7 +160,7 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
                             hover:bg-gray-200
                             focus:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200
                             font-pj"
-									role="button" onClick={() => router.push("/auth/login")}>
+									role="button"onClick={signInWithGitHub}>
 											Login in with Github
 								</a>
 							</div>
