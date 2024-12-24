@@ -41,7 +41,7 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 
 	const signInWithGitHub = async () => {
         try {
-            const redirectUrl = process.env.NEXT_PUBLIC_LOCAL_HOST_URL || 'http://localhost:3000';
+            const redirectUrl = process.env.NEXT_PUBLIC_LOCAL_HOST_URL;
             const { error } = await supabase.auth.signInWithOAuth({
                 provider: 'github', 
                 options: {
