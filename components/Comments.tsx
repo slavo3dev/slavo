@@ -226,7 +226,6 @@ export const Comments = ({sourceId}: CommentsProps) => {
                     __html: DOMPurify.sanitize(comment.message),
                   }}
                 />
-                <div>{comment.message}</div>
                 <div className="flex gap-4 mt-2">
                   <button
                     onClick={() => handleEditComment(comment)}

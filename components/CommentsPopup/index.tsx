@@ -1,8 +1,8 @@
-import React, { useState, useEffect, FormEvent } from "react";
+import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 
-
+// Dynamically import ReactQuill
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const toolbarOptions = [
@@ -15,9 +15,9 @@ const toolbarOptions = [
 ];
 
 interface CommentsPopupProps {
-  comment: string;
+  comment: string; // Expect HTML content
   onClose: () => void;
-  onSave: (updatedComment: string) => void; 
+  onSave: (updatedComment: string) => void; // Save HTML content
 }
 
 const CommentsPopup: React.FC<CommentsPopupProps> = ({
@@ -25,7 +25,7 @@ const CommentsPopup: React.FC<CommentsPopupProps> = ({
   onClose,
   onSave,
 }) => {
-  const [updatedComment, setUpdatedComment] = useState<string>(comment);
+  const [updatedComment, setUpdatedComment] = useState<string>(comment); // Initialize with HTML content
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
   useEffect(() => {
@@ -33,12 +33,12 @@ const CommentsPopup: React.FC<CommentsPopupProps> = ({
   }, []);
 
   const handleChange = (content: string) => {
-    setUpdatedComment(content); 
+    setUpdatedComment(content); // Always update with HTML content
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onSave(updatedComment); 
+    onSave(updatedComment.trim()); // Save trimmed HTML content
     onClose();
   };
 
@@ -69,16 +69,21 @@ const CommentsPopup: React.FC<CommentsPopupProps> = ({
             <button
               type="button"
               onClick={handleCancel}
-              className="py-2 px-4 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition duration-200"          
-            >Cancel</button>
+              className="py-2 px-4 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition duration-200"
+            >
+              Cancel
+            </button>
             <button
-              type="button"
-              onClick={handleCancel}
-              className="py-2 px-4 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition duration-200"          
-            >Save</button>
-        </div>  
-    </form> 
+              type="submit"
+              className="py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-200"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-</div>
-)}
+  );
+};
+
 export default CommentsPopup;
