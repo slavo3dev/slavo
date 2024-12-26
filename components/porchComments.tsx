@@ -3,6 +3,7 @@ import UserInfoContext from "context/UserInfoContext";
 import { CommentsError } from "lib/err/err";
 import CommentsPopup
  from "./CommentsPopup";
+
 interface Comment {
   id?: string;
   userInfo: string;
@@ -21,7 +22,6 @@ export const PorchComments = ({ sourceId }: PorchCommentsProps) => {
   const [successMessage, setSuccessMessage] = useState<string>("");
   const [postComments, setPostComments] = useState<Comment[]>([]);
   const [editingComment, setEditingComment] = useState<Comment | null>(null);
-
   const { userInfo } = useContext(UserInfoContext);
   const userEmail = userInfo?.email;
 
@@ -182,6 +182,7 @@ export const PorchComments = ({ sourceId }: PorchCommentsProps) => {
       >
         {showComments ? "Hide Comments" : "Show Comments"}
       </button>
+
       {showComments && (
         <div className="mt-4">
           <form onSubmit={onSubmit} className="flex flex-col gap-3">
@@ -238,3 +239,4 @@ export const PorchComments = ({ sourceId }: PorchCommentsProps) => {
     </div>
   );
 };
+

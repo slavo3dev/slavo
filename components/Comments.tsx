@@ -22,9 +22,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
   const [successMessage, setSuccessMessage] = useState<string>("");
   const [postComments, setPostComments] = useState<Comment[]>([]);
   const [errorShown, setErrorShown] = useState<boolean>(false);
-
   const [editingComment, setEditingComment] = useState<Comment | null>(null);
-
   const { userInfo } = useContext(UserInfoContext);
   const userEmail = userInfo?.email;
   
@@ -248,5 +246,6 @@ export const Comments = ({sourceId}: CommentsProps) => {
         />
       )}
     </div>
+
   );
 };

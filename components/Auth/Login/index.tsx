@@ -21,7 +21,6 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 		try {
 			const email = userEmailRef.current?.value || "";
 			const password = userPasswordRef.current?.value || "";
-	  
 			const { data, error } = await supabase.auth.signInWithPassword({
 			  email,
 			  password,
@@ -32,7 +31,6 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
 			} else {
 				const redirectUrl = process.env.NEXT_PUBLIC_LOCAL_HOST_URL || '/'
                 router.push(redirectUrl);
-				//router.push("/");
 			}
 		} catch (error) {
 			console.log(error);
