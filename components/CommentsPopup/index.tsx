@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 
-// Dynamically import ReactQuill
+
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const toolbarOptions = [
@@ -15,9 +15,9 @@ const toolbarOptions = [
 ];
 
 interface CommentsPopupProps {
-  comment: string; // Expect HTML content
+  comment: string; 
   onClose: () => void;
-  onSave: (updatedComment: string) => void; // Save HTML content
+  onSave: (updatedComment: string) => void; 
 }
 
 const CommentsPopup: React.FC<CommentsPopupProps> = ({
@@ -25,7 +25,7 @@ const CommentsPopup: React.FC<CommentsPopupProps> = ({
   onClose,
   onSave,
 }) => {
-  const [updatedComment, setUpdatedComment] = useState<string>(comment); // Initialize with HTML content
+  const [updatedComment, setUpdatedComment] = useState<string>(comment); 
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
   useEffect(() => {
@@ -33,12 +33,12 @@ const CommentsPopup: React.FC<CommentsPopupProps> = ({
   }, []);
 
   const handleChange = (content: string) => {
-    setUpdatedComment(content); // Always update with HTML content
+    setUpdatedComment(content); 
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onSave(updatedComment.trim()); // Save trimmed HTML content
+    onSave(updatedComment.trim()); 
     onClose();
   };
 
