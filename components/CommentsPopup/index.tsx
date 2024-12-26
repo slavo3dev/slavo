@@ -11,7 +11,6 @@ const toolbarOptions = [
   [{ align: [] }],
   ["link", "blockquote", "code-block"],
   [{ color: [] }, { background: [] }],
-  ["image"],
 ];
 
 interface CommentsPopupProps {
