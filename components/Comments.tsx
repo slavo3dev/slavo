@@ -4,6 +4,7 @@ import { CommentsError } from "lib/err/err";
 import CommentsPopup from "./CommentsPopup";
 import DOMPurify from "dompurify";
 
+
 interface Comment {
   id?: string;
   userInfo: string;
@@ -225,6 +226,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
                     __html: DOMPurify.sanitize(comment.message),
                   }}
                 />
+                <div>{comment.message}</div>
                 <div className="flex gap-4 mt-2">
                   <button
                     onClick={() => handleEditComment(comment)}

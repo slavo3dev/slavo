@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FormEvent } from "react";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 
@@ -70,20 +70,7 @@ const CommentsPopup: React.FC<CommentsPopupProps> = ({
               type="button"
               onClick={handleCancel}
               className="py-2 px-4 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition duration-200"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className="py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-200"
-            >
-              Save
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
-};
-
+              
+  onSave: (updatedComment: string) => void;
+}
 export default CommentsPopup;
