@@ -100,3 +100,16 @@
     display: none;
   }
 }
+@media (max-width: 1024px) and (min-width: 500px) {
+  .navMenu ul {
+    display: none;
+  }
+  .burger-menu, .subscribe-button {
+    display: block;
+  }
+}
+@media (max-width: 500px) {
+  .burger-menu, .subscribe-button {
+    display: block;
+  }
+}

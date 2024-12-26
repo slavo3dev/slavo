@@ -1,6 +1,7 @@
 import { useState, ChangeEvent, FormEvent, useContext, useEffect } from "react";
 import UserInfoContext from "context/UserInfoContext";
 import { CommentsError } from "lib/err/err";
+import CommentsPopup from "./CommentsPopup";
 
 interface Comment {
   id?: string;
@@ -21,7 +22,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
   const [successMessage, setSuccessMessage] = useState<string>("");
   const [postComments, setPostComments] = useState<Comment[]>([]);
   const [errorShown, setErrorShown] = useState<boolean>(false);
-
+  const [editingComment, setEditingComment] = useState<Comment | null>(null);
   const { userInfo } = useContext(UserInfoContext);
   const userEmail = userInfo?.email;
   
@@ -112,59 +113,63 @@ export const Comments = ({sourceId}: CommentsProps) => {
     setErrorShown(false);
   };
 
-  const handleEditComment = async (commentId: string, newMessage: string) => {
-    const commentToEdit = postComments.find((comment) => comment.id === commentId);
-
-    if (commentToEdit?.userInfo !== userEmail) { 
-      if (!errorShown) { 
+  const handleEditComment = (comment: Comment) => {
+    if (comment.userInfo !== userEmail) {
+      if (!errorShown) {
         setError("You can only edit your own comments.");
-        setErrorShown(true); 
+        setErrorShown(true);
       }
       return;
     }
+    setEditingComment(comment);
+  };
 
-    const updatedComments = postComments.map((comment) =>
-      comment.id === commentId ? { ...comment, message: newMessage } : comment
-    );
-    setPostComments(updatedComments);
-;
+  // Added logic for saving the updated comment
+  const saveEditedComment = async (updatedMessage: string) => {
+    if (editingComment) {
+      const updatedComments = postComments.map((comment) =>
+        comment.id === editingComment.id ? { ...comment, message: updatedMessage } : comment
+      );
+      setPostComments(updatedComments);
 
-    try {
-      const response = await fetch(`/api/postComments?id=${commentId}`, { 
-        method: "PUT", 
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: newMessage }) 
-      });
+      try {
+        const response = await fetch(`/api/postComments?id=${editingComment.id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: updatedMessage }),
+        });
 
-      if (response.ok) {
-        setSuccessMessage("Comment updated successfully!");
-      } else {
+        if (response.ok) {
+          setSuccessMessage("Comment updated successfully!");
+        } else {
+          setError(CommentsError.fetchError);
+        }
+      } catch (error) {
+        console.error("Error updating comment:", error);
         setError(CommentsError.fetchError);
       }
-    } catch (error) {
-      console.error("Error updating comment:", error);
-      setError(CommentsError.fetchError);
+
+      setEditingComment(null);
     }
   };
 
-  
   const handleDeleteComment = async (commentId: string) => {
     const commentToDelete = postComments.find((comment) => comment.id === commentId);
 
-    if (commentToDelete?.userInfo !== userEmail) {  
-      if (!errorShown) { 
+    if (commentToDelete?.userInfo !== userEmail) {
+      if (!errorShown) {
         setError("You can only delete your own comments.");
-        setErrorShown(true); 
+        setErrorShown(true);
       }
       return;
     }
     const updatedComments = postComments.filter((comment) => comment.id !== commentId);
     setPostComments(updatedComments);
-    
+
     try {
       const response = await fetch(`/api/postComments?id=${commentId}`, {
         method: "DELETE",
-        headers: { "Content-Type": "application/json" }
+        headers: { "Content-Type": "application/json" },
       });
 
       if (response.ok) {
@@ -178,11 +183,13 @@ export const Comments = ({sourceId}: CommentsProps) => {
     }
   };
 
+
   return (
     <div className="flex flex-col z-50">
       <button
         onClick={toggleComments}
-        className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
+        className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700"
+      >
         {showComments ? "Hide Comments" : "Show Comments"}
       </button>
       {showComments && (
@@ -193,46 +200,50 @@ export const Comments = ({sourceId}: CommentsProps) => {
               value={comment}
               onChange={onChange}
               className="p-3 border"
-              rows={4}/>
+              rows={4}
+            />
             {error && <p className="text-red-500 text-sm">{error}</p>}
             <button
               type="submit"
               disabled={error !== ""}
-              className="py-2 px-4 rounded bg-blue-500 text-white disabled:bg-gray-300">
+              className="py-2 px-4 rounded bg-blue-500 text-white disabled:bg-gray-300"
+            >
               Post Comment
             </button>
           </form>
           {successMessage && <p className="text-green-500">{successMessage}</p>}
           <div className="mt-6">
-            {postComments.map((comment) => {
-              const commentId = comment.id || ""; 
-              return (
-                <div key={commentId} className="flex flex-col mt-4">
-                  <div>
-                    <strong>{comment.userInfo}</strong>
-                  </div>
-                  <div>{comment.message}</div>
-                  <div className="flex gap-4 mt-2">
-                    {commentId && (
-                      <>
-                        <button
-                          onClick={() => handleEditComment(commentId, prompt("Edit comment:", comment.message) || comment.message)}
-                          className="text-blue-500">
-                          Edit
-                        </button>
-                        <button
-                          onClick={() => handleDeleteComment(commentId)}
-                          className="text-red-500">
-                          Delete
-                        </button>
-                      </>
-                    )}
-                  </div>
+            {postComments.map((comment) => (
+              <div key={comment.id || ""} className="flex flex-col mt-4">
+                <div>
+                  <strong>{comment.userInfo}</strong>
                 </div>
-              );
-            })}
+                <div>{comment.message}</div>
+                <div className="flex gap-4 mt-2">
+                  <button
+                    onClick={() => handleEditComment(comment)}
+                    className="text-blue-500"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleDeleteComment(comment.id || "")}
+                    className="text-red-500"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
+      )}
+      {editingComment && (
+        <CommentsPopup
+          comment={editingComment.message}
+          onClose={() => setEditingComment(null)}
+          onSave={saveEditedComment}
+        />
       )}
     </div>
 

@@ -75,7 +75,6 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
         	handleVote={handleVote}
         	isUpdating={isUpdating}
         	formattedDate={formattedDate}
-      
 			extraContent={
 				<div className="py-5">
 				  <PorchComments sourceId={porch.new_id} />
