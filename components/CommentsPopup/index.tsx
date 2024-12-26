@@ -69,8 +69,16 @@ const CommentsPopup: React.FC<CommentsPopupProps> = ({
             <button
               type="button"
               onClick={handleCancel}
-              className="py-2 px-4 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition duration-200"
-              
-  onSave: (updatedComment: string) => void;
-}
+              className="py-2 px-4 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition duration-200"          
+            >Cancel</button>
+            <button
+              type="button"
+              onClick={handleCancel}
+              className="py-2 px-4 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition duration-200"          
+            >Save</button>
+        </div>  
+    </form> 
+    </div>
+</div>
+)}
 export default CommentsPopup;
