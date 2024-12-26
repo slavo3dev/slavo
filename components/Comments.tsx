@@ -2,6 +2,7 @@ import { useState, ChangeEvent, FormEvent, useContext, useEffect } from "react";
 import UserInfoContext from "context/UserInfoContext";
 import { CommentsError } from "lib/err/err";
 import CommentsPopup from "./CommentsPopup";
+import DOMPurify from "dompurify";
 
 interface Comment {
   id?: string;
@@ -62,7 +63,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
 
     if (!commentValue) {
       setError(CommentsError.onSubmitError);
-    } else if (wordCount > 96) {
+    } else if (wordCount > 250) {
       setError(CommentsError.wordLimitError);
     } else {
       setComment(commentValue);
@@ -78,7 +79,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
       return;
     }
     
-    if (countWords(comment) > 96) {
+    if (countWords(comment) > 250) {
       setError(CommentsError.wordLimitError);
       return;
     }
@@ -126,7 +127,6 @@ export const Comments = ({sourceId}: CommentsProps) => {
     setEditingComment(comment);
   };
 
-  // Added logic for saving the updated comment
   const saveEditedComment = async (updatedMessage: string) => {
     if (editingComment) {
       const updatedComments = postComments.map((comment) =>
@@ -220,7 +220,11 @@ export const Comments = ({sourceId}: CommentsProps) => {
                 <div>
                   <strong>{comment.userInfo}</strong>
                 </div>
-                <div>{comment.message}</div>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(comment.message),
+                  }}
+                />
                 <div className="flex gap-4 mt-2">
                   <button
                     onClick={() => handleEditComment(comment)}
