@@ -19,7 +19,7 @@ export default async function handler(
 			const { data, error } = await supabase
 				.from("porch")
 				.update({ "excellent": req.body.vote })
-				.eq("id", req.body.id)
+				.eq("new_id", req.body.id)
 				.select();
             
 			res.status( 200 ).json({

@@ -35,7 +35,7 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
 				method: "PATCH",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({
-					id: porch.id,
+					id: porch.new_id,
 					vote: porch[columnName] + 1,
 				}),
 			});
@@ -43,7 +43,7 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
 			if (response.ok) {
 				const responseData = await response.json();
 				setPorchs((porchs) =>
-					porchs.map((f) => (f.id === porch.id ? responseData.newUpdate[0] : f))
+					porchs.map((f) => (f.new_id === porch.new_id ? responseData.newUpdate[0] : f))
 				);
 				setIsUpdating(false);
 			}
@@ -71,10 +71,9 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
         	commentText={porch.text}
         	showMore={showMore}
         	handleMore={handleMore}
-        	handleVote={() => handleVote("exelent")}
+        	handleVote={handleVote}
         	isUpdating={isUpdating}
         	formattedDate={formattedDate}
-      
 			extraContent={
 				<div className="py-5">
 				  <PorchComments sourceId={porch.new_id} />

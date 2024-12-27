@@ -1,6 +1,7 @@
 import { useState, ChangeEvent, FormEvent, useContext, useEffect } from "react";
 import UserInfoContext from "context/UserInfoContext";
 import { CommentsError } from "lib/err/err";
+import CommentsPopup from "./CommentsPopup";
 
 interface Comment {
   id?: string;
@@ -19,7 +20,7 @@ export const PorchComments = ({ sourceId }: PorchCommentsProps) => {
   const [showComments, setShowComments] = useState<boolean>(false);
   const [successMessage, setSuccessMessage] = useState<string>("");
   const [postComments, setPostComments] = useState<Comment[]>([]);
-
+  const [editingComment, setEditingComment] = useState<Comment | null>(null);
   const { userInfo } = useContext(UserInfoContext);
   const userEmail = userInfo?.email;
 
@@ -114,31 +115,36 @@ export const PorchComments = ({ sourceId }: PorchCommentsProps) => {
     setShowComments(!showComments);
   };
 
-  const handleEditComment = async (commentId: string, newMessage: string) => {
-    const commentToEdit = postComments.find((comment) => comment.id === commentId);
-
-    if (commentToEdit?.userInfo !== userEmail) {
+  const handleEditComment = (comment: Comment) => {
+    if (comment.userInfo !== userEmail) {
       setError("You can only edit your own comments.");
       return;
     }
+    setEditingComment(comment); 
+  };
 
-    const updatedComments = postComments.map((comment) =>
-      comment.id === commentId ? { ...comment, message: newMessage } : comment
-    );
-    setPostComments(updatedComments);
+  const saveEditedComment = async (updatedMessage: string) => {
+    if (editingComment) {
+      const updatedComments = postComments.map((comment) =>
+        comment.id === editingComment.id ? { ...comment, message: updatedMessage } : comment
+      );
+      setPostComments(updatedComments);
 
-    try {
-      const response = await fetch(`/api/postPorchComments?id=${commentId}`, { 
-        method: "PUT", 
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: newMessage }) 
-      });
+      try {
+        const response = await fetch(`/api/postPorchComments?id=${editingComment.id}`, {
+          method: "PUT", 
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: updatedMessage })
+        });
 
-      if (!response.ok) throw new Error("Failed to update comment.");
-      setSuccessMessage("Comment updated successfully!");
-    } catch (error) {
-      console.error("Error updating comment:", error);
-      setError(CommentsError.fetchError);
+        if (!response.ok) throw new Error("Failed to update comment.");
+        setSuccessMessage("Comment updated successfully!");
+      } catch (error) {
+        console.error("Error updating comment:", error);
+        setError(CommentsError.fetchError);
+      }
+
+      setEditingComment(null);
     }
   };
 
@@ -171,7 +177,8 @@ export const PorchComments = ({ sourceId }: PorchCommentsProps) => {
     <div className="flex flex-col z-50">
       <button
         onClick={toggleComments}
-        className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
+        className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700"
+      >
         {showComments ? "Hide Comments" : "Show Comments"}
       </button>
 
@@ -189,44 +196,46 @@ export const PorchComments = ({ sourceId }: PorchCommentsProps) => {
             <button
               type="submit"
               disabled={error !== ""}
-              className="py-2 px-4 rounded bg-blue-500 text-white disabled:bg-gray-300">
+              className="py-2 px-4 rounded bg-blue-500 text-white disabled:bg-gray-300"
+            >
               Post Comment
             </button>
           </form>
-
           {successMessage && <p className="text-green-500">{successMessage}</p>}
-
           <div className="mt-6">
-            {postComments.map((comment) => {
-              const commentId = comment.id || "";
-              return (
-                <div key={commentId} className="flex flex-col mt-4">
-                  <div>
-                    <strong>{comment.userInfo}</strong>
-                  </div>
-                  <div>{comment.message}</div>
-                  <div className="flex gap-4 mt-2">
-                    {commentId && (
-                      <>
-                        <button
-                          onClick={() => handleEditComment(commentId, prompt("Edit comment:", comment.message) || comment.message)}
-                          className="text-blue-500">
-                          Edit
-                        </button>
-                        <button
-                          onClick={() => handleDeleteComment(commentId)}
-                          className="text-red-500">
-                          Delete
-                        </button>
-                      </>
-                    )}
-                  </div>
+            {postComments.map((comment) => (
+              <div key={comment.id || ""} className="flex flex-col mt-4">
+                <div>
+                  <strong>{comment.userInfo}</strong>
                 </div>
-              );
-            })}
+                <div>{comment.message}</div>
+                <div className="flex gap-4 mt-2">
+                  <button
+                    onClick={() => handleEditComment(comment)}
+                    className="text-blue-500"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleDeleteComment(comment.id || "")}
+                    className="text-red-500"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
+      )}
+      {editingComment && (
+        <CommentsPopup
+          comment={editingComment.message}
+          onClose={() => setEditingComment(null)}  // Close the popup
+          onSave={saveEditedComment}  // Save the updated comment
+        />
       )}
     </div>
   );
 };
+
