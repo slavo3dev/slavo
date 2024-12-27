@@ -31,7 +31,15 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
 
 	const handleVote = async (columnName: string) => {
 		if (userInfo?.email) {
+			const userVoteKey = `voted_${userInfo.email}_${porch.new_id}`;
+			const hasVoted = localStorage.getItem(userVoteKey);
+	  
+			if (hasVoted) {
+			  alert("You've already voted for this Daily Update.");
+			  return;
+			}
 			setIsUpdating(true);
+
 			const response = await fetch("/api/createDailyUpdate", {
 				method: "PATCH",
 				headers: { "Content-Type": "application/json" },
@@ -46,6 +54,7 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
 				setPorchs((porchs) =>
 					porchs.map((f) => (f.new_id === porch.new_id ? responseData.newUpdate[0] : f))
 				);
+				localStorage.setItem(userVoteKey, "true");
 				setIsUpdating(false);
 			}
 		} else {
@@ -62,6 +71,8 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
 	const handleMore = () => {
 		setShowMore(true);
 	};
+	const userVoteKey = `voted_${userInfo?.email}_${porch.new_id}`;
+	const isVoteDisabled = localStorage.getItem(userVoteKey) !== null;
 
 	return (
 		<>
@@ -75,13 +86,13 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
         	handleVote={handleVote}
         	isUpdating={isUpdating}
         	formattedDate={formattedDate}
+			isVoteDisabled={isVoteDisabled} 
 			extraContent={
 				<div className="py-5">
 				  <PorchComments sourceId={porch.new_id} />
 				</div>
 			  }
       />
-	  
 		{showLoginModal && (
 				<>
         		<div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40"></div>

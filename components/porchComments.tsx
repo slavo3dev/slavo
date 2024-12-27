@@ -232,8 +232,8 @@ export const PorchComments = ({ sourceId }: PorchCommentsProps) => {
       {editingComment && (
         <CommentsPopup
           comment={editingComment.message}
-          onClose={() => setEditingComment(null)}  // Close the popup
-          onSave={saveEditedComment}  // Save the updated comment
+          onClose={() => setEditingComment(null)}  
+          onSave={saveEditedComment} 
         />
       )}
     </div>
