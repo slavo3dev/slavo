@@ -108,6 +108,7 @@
     display: block;
   }
 }
+
 @media (max-width: 500px) {
   .burger-menu, .subscribe-button {
     display: block;

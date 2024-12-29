@@ -17,6 +17,7 @@ interface CardLayoutProps {
   isUpdating: boolean;
   formattedDate?: string;
   extraContent?: ReactNode;
+  isVoteDisabled: boolean;
 }
 
 export const CardLayout: FC<CardLayoutProps> = ({
@@ -30,6 +31,7 @@ export const CardLayout: FC<CardLayoutProps> = ({
   isUpdating,
   formattedDate,
   extraContent,
+  isVoteDisabled,
 }) => {
   return (
     <div className="flex flex-col overflow-hidden transition-all duration-200 transform bg-white shadow group rounded-xl hover:shadow-lg hover:-translate-y-1 hover:bg-sky-100">
@@ -78,7 +80,7 @@ export const CardLayout: FC<CardLayoutProps> = ({
           <button
             className="flex items-center gap-4 bg-gradient-to-br from-blue-700 via-blue-600 to-blue-900 rounded-xl px-8 py-1 text-md font-extrabold text-white hover:opacity-75"
             onClick={() => handleVote("excellent")}
-            disabled={isUpdating}
+            disabled={isVoteDisabled}
           >
             <BiLike />
           </button>

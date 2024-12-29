@@ -19,24 +19,64 @@ interface FreeSourceProps {
   setFacts: React.Dispatch<React.SetStateAction<Fact[]>>;  
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const FreeSource: FC<FreeSourceProps> = ({ fact, setFacts }) => {
   const [isUpdating, setIsUpdating] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
   const { userInfo } = useContext(UserInfoContext);
+  const [isVoteDisabled, setIsVoteDisabled] = useState(false);
 
   useEffect(() => {
-    console.log("User Info Updated:", userInfo);
+    const checkIfVoted = async () => {
+      if (userInfo?.email) {
+        const voted = await hasVoted();
+        setIsVoteDisabled(voted);
+      }
+    };
+
+    checkIfVoted();
+
     if (userInfo?.email && showLoginModal) {
-      console.log("Closing Modal after Login");
-      setShowLoginModal(false); 
+      setShowLoginModal(false);
     }
-  }, [userInfo]);
+  }, [userInfo, showLoginModal, fact.id]);    
 
   const toggleLoginModal = () => setShowLoginModal((prev) => !prev);
+
+  const hasVoted = async (): Promise<boolean> => {
+    if (!userInfo?.email) return false;
+
+    const localVoteStatus = localStorage.getItem(`voted_fact_${fact.id}`);
+    if (localVoteStatus === "true") {
+      return true;
+    }
+    const { data, error } = await supabase
+      .from("votes")
+      .select("*")
+      .eq("userEmail", userInfo.email)
+      .eq("factId", fact.id)
+      .single();
+
+    if (error) {
+      console.error("Error checking vote:", error);
+      return false;
+    }
+
+    if (data) {
+      localStorage.setItem(`voted_fact_${fact.id}`, "true");
+      return true;
+    }
+
+    return false; 
+  };
   
   async function handleVote(columnName: keyof Fact) {
     if (userInfo?.email) {
+      const voted = await hasVoted();
+
+      if (voted) {
+        return;
+      }
+
       setIsUpdating(true);
 
       const { data: updatedFact, error } = await supabase
@@ -44,20 +84,30 @@ export const FreeSource: FC<FreeSourceProps> = ({ fact, setFacts }) => {
         .update({ [columnName]: (fact[columnName] as number) + 1 })
         .eq("id", fact.id)
         .select();
-      setIsUpdating(false);
 
       if (!error && updatedFact && updatedFact.length > 0)
         setFacts((prevFacts) =>
           prevFacts.map((f) => (f.id === fact.id ? (updatedFact[0] as Fact) : f))
     );
-    } else {
+    await supabase.from("votes").upsert([
+      {
+        userEmail: userInfo.email,
+        factId: fact.id,
+      },
+    ]);
+
+    setIsVoteDisabled(true);
+    localStorage.setItem(`voted_fact_${fact.id}`, "true");
+
+  setIsUpdating(false);
+   } else {
       toggleLoginModal();
     }
   }
   return (
     <>
-    <CardLayout
-       title={fact.category || "Unknown Category"}
+      <CardLayout
+        title={fact.category || "Unknown Category"}
         porch={{
           source: fact.source,
           excellent: fact.exelent,
@@ -65,22 +115,23 @@ export const FreeSource: FC<FreeSourceProps> = ({ fact, setFacts }) => {
         displayComment={fact.text.slice(0, 90)}
         commentText={fact.text}
         showMore={false}
-        handleVote={() => handleVote("exelent")} 
+        handleVote={() => handleVote("exelent")}
         isUpdating={isUpdating}
+        isVoteDisabled={isVoteDisabled} 
         extraContent={
-          <div className="py-5">
-            <Comments sourceId={fact.id} />
-          </div>
-        }
+            <div className="py-5">
+              <Comments sourceId={fact.id} />
+            </div>
+          }
       />
-    {showLoginModal && (
-      <>
-        <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40"></div>
-        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 rounded-lg max-w-xl w-full p-6">
-          <LoginModal isOpen={showLoginModal} onClose={toggleLoginModal} />
-        </div>
-      </>
-    )}
+      {showLoginModal && (
+        <>
+          <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40"></div>
+          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 rounded-lg max-w-xl w-full p-6">
+            <LoginModal isOpen={showLoginModal} onClose={toggleLoginModal} />
+          </div>
+        </>
+      )}
     </>
   );
 };
