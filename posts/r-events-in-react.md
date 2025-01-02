@@ -12,7 +12,7 @@ React, a popular JavaScript library for building user interfaces offers a seamle
 
 - [React Key Concepts](https://amzn.to/43XOCJM)
 - [Mentorship & Consulting - Contact us for more info](/contact)
-- **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
+- **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/A75tvDvZ)
 
 ## What are React Events?
 
@@ -695,6 +695,6 @@ As you continue to develop with React, you'll discover more patterns and techniq
 
 [Mentorship & Consulting - Contact us for more info](/contact)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/A75tvDvZ)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

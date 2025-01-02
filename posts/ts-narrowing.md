@@ -150,6 +150,6 @@ function isValidRating(
 
 The narrowing is moving a variable from a less precise type to a more accurate type. We can use type narrowing to avoid type errors. TypeScript automatically narrows the type of a variable in conditional branches. Doing a truthly condition check will remove null and undefined from a type.
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/A75tvDvZ)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

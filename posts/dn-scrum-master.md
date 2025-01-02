@@ -16,7 +16,7 @@ Change is inevitable and a powerful catalyst for personal and professional devel
 
 In this post, we'll delve into the world of Scrum Masters. We'll explore what the role entails, how to acquire the necessary skills, the many benefits this career offers, and the thrilling potential of working from anywhere in the world. Whether you're looking to break free from your current rut or simply seeking a new adventure, becoming a Scrum Master might be the change you need to transform your life and career. Let's get started on this exciting journey!
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/A75tvDvZ)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
 
@@ -384,6 +384,6 @@ The benefits of being a remote Scrum Master are multifaceted, enhancing both pro
 - [Limitless Expanded Edition](https://amzn.to/3xN5p7E)**Upgrade Your Brain, Learn Anything Faster, and Unlock Your Exceptional Lif**
 - [Pragmatic Programmer](https://amzn.to/43h37XQ) **_Your journey to mastery_**
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/A75tvDvZ)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

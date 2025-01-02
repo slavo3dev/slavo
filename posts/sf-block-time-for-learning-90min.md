@@ -122,7 +122,8 @@ Relegating learning to the bottom of our priority lists is easy in our hyperconn
 Ninety minutes isn’t arbitrary—it aligns with how our bodies and brains naturally function. By capitalizing on ultradian rhythms, you can unlock deeper focus, better information retention, and enhanced productivity without succumbing to mental fatigue. Pair these science-backed time blocks with strategic breaks, and you’ll experience a newfound efficiency and sense of accomplishment that transforms your learning and day-to-day performance.
 
 - **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
-- **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
+- **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/A75tvDvZ)
+
 
 \*\* **Book Recommendation**:
 
@@ -131,7 +132,8 @@ Ninety minutes isn’t arbitrary—it aligns with how our bodies and brains natu
 - [The Road To Excellence: The Acquisition of Expert Performance in the Arts and Sciences, Sports, and Games](https://amzn.to/3OGIm3n)
 - [Outliers: The Story of Success](https://amzn.to/49evFFj)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/A75tvDvZ)
+
 
 **_Welcome to our mentorship program explicitly designed to help you overcome Imposter Syndrome._**
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

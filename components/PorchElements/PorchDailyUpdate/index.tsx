@@ -27,7 +27,7 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
 
 	const date = new Date(porch.created_at);
 	const formattedDate = `${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}-${date.getFullYear()}`;
-	
+
 	const handleVote = async (columnName: string) => {
 		if (userInfo?.email) {
 			setIsUpdating(true);

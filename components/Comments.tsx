@@ -22,6 +22,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
   const [showComments, setShowComments] = useState<boolean>(false);
   const [successMessage, setSuccessMessage] = useState<string>("");
   const [postComments, setPostComments] = useState<Comment[]>([]);
+  const [errorShown, setErrorShown] = useState<boolean>(false);
   const [editingComment, setEditingComment] = useState<Comment | null>(null);
   const { userInfo } = useContext(UserInfoContext);
   const userEmail = userInfo?.email;
@@ -114,6 +115,78 @@ export const Comments = ({sourceId}: CommentsProps) => {
 
   const toggleComments = () => {
     setShowComments(!showComments);
+    setError("");
+    setErrorShown(false);
+  };
+
+  const handleEditComment = (comment: Comment) => {
+    if (comment.userInfo !== userEmail) {
+      if (!errorShown) {
+        setError("You can only edit your own comments.");
+        setErrorShown(true);
+      }
+      return;
+    }
+    setEditingComment(comment);
+  };
+
+  // Added logic for saving the updated comment
+  const saveEditedComment = async (updatedMessage: string) => {
+    if (editingComment) {
+      const updatedComments = postComments.map((comment) =>
+        comment.id === editingComment.id ? { ...comment, message: updatedMessage } : comment
+      );
+      setPostComments(updatedComments);
+
+      try {
+        const response = await fetch(`/api/postComments?id=${editingComment.id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: updatedMessage }),
+        });
+
+        if (response.ok) {
+          setSuccessMessage("Comment updated successfully!");
+        } else {
+          setError(CommentsError.fetchError);
+        }
+      } catch (error) {
+        console.error("Error updating comment:", error);
+        setError(CommentsError.fetchError);
+      }
+
+      setEditingComment(null);
+    }
+  };
+
+  const handleDeleteComment = async (commentId: string) => {
+    const commentToDelete = postComments.find((comment) => comment.id === commentId);
+
+    if (commentToDelete?.userInfo !== userEmail) {
+      if (!errorShown) {
+        setError("You can only delete your own comments.");
+        setErrorShown(true);
+      }
+      return;
+    }
+    const updatedComments = postComments.filter((comment) => comment.id !== commentId);
+    setPostComments(updatedComments);
+
+    try {
+      const response = await fetch(`/api/postComments?id=${commentId}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (response.ok) {
+        setSuccessMessage("Comment deleted successfully!");
+      } else {
+        setError(CommentsError.fetchError);
+      }
+    } catch (error) {
+      console.error("Error deleting comment:", error);
+      setError(CommentsError.fetchError);
+    }
   };
 
   const handleEditComment = (comment: Comment) => {
@@ -209,6 +282,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
                 <div>
                   <strong>{comment.userInfo}</strong>
                 </div>
+                <div>{comment.message}</div>
                 <div
                   dangerouslySetInnerHTML={{
                     __html: DOMPurify.sanitize(comment.message),
