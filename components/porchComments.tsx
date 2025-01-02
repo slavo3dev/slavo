@@ -1,7 +1,7 @@
 import { useState, ChangeEvent, FormEvent, useContext, useEffect } from "react";
 import UserInfoContext from "context/UserInfoContext";
 import { CommentsError } from "lib/err/err";
-import CommentsPopup from "./CommentsPopup";
+import DOMPurify from "dompurify";
 
 interface Comment {
   id?: string;
@@ -208,7 +208,11 @@ export const PorchComments = ({ sourceId }: PorchCommentsProps) => {
                 <div>
                   <strong>{comment.userInfo}</strong>
                 </div>
-                <div>{comment.message}</div>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(comment.message),
+                  }}
+                />
                 <div className="flex gap-4 mt-2">
                   <button
                     onClick={() => handleEditComment(comment)}
