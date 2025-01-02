@@ -184,6 +184,6 @@ Before explaining the system, I developed a few prerequisites, and you need to b
 
 ## Never Give Up
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/T5eF5zDf)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/A75tvDvZ)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
