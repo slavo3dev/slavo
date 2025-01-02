@@ -124,6 +124,7 @@ Ninety minutes isn’t arbitrary—it aligns with how our bodies and brains natu
 - **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
 - **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/A75tvDvZ)
 
+
 \*\* **Book Recommendation**:
 
 - [Limitless](https://amzn.to/44q7u3U) **_Upgrade Your Brain, Learn Anything Faster, and Unlock Your Exceptional Life_**
@@ -132,6 +133,7 @@ Ninety minutes isn’t arbitrary—it aligns with how our bodies and brains natu
 - [Outliers: The Story of Success](https://amzn.to/49evFFj)
 
 **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/A75tvDvZ)
+
 
 **_Welcome to our mentorship program explicitly designed to help you overcome Imposter Syndrome._**
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

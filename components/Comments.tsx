@@ -2,6 +2,8 @@ import { useState, ChangeEvent, FormEvent, useContext, useEffect } from "react";
 import UserInfoContext from "context/UserInfoContext";
 import { CommentsError } from "lib/err/err";
 import CommentsPopup from "./CommentsPopup";
+import DOMPurify from "dompurify";
+
 
 interface Comment {
   id?: string;
@@ -30,6 +32,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
     const fetchComments = async () => {
       try {
         const response = await fetch(`/api/getComments?sourceId=${sourceId}`);
+        if (!response.ok) throw new Error("Failed to fetch comments.");
         const data = await response.json();
         setPostComments(data); 
       } catch (error) {
@@ -40,6 +43,12 @@ export const Comments = ({sourceId}: CommentsProps) => {
   
     fetchComments();
   }, [sourceId]);
+
+  useEffect(() => {
+    if (showComments) {
+      setError("");
+    }
+  }, [showComments]);
 
   useEffect(() => {
     if (successMessage) {
@@ -60,7 +69,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
 
     if (!commentValue) {
       setError(CommentsError.onSubmitError);
-    } else if (wordCount > 96) {
+    } else if (wordCount > 250) {
       setError(CommentsError.wordLimitError);
     } else {
       setComment(commentValue);
@@ -76,7 +85,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
       return;
     }
     
-    if (countWords(comment) > 96) {
+    if (countWords(comment) > 250) {
       setError(CommentsError.wordLimitError);
       return;
     }
@@ -88,15 +97,12 @@ export const Comments = ({sourceId}: CommentsProps) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({  message: comment, userInfo: userEmail, sourceId })
-      })
+      });
+      if (!response.ok) throw new Error("Failed to post comment.");
       const data = await response.json();
-      if (response.ok) {
-        setPostComments([...postComments, data.payload]);
-        setComment(""); 
-        setSuccessMessage("Comment submitted successfully!");
-      } else {
-        setError(CommentsError.fetchError);
-      }
+      setPostComments((prevComments) => [...prevComments, data.payload]);
+      setComment(""); 
+      setSuccessMessage("Comment submitted successfully!");
     } catch (error) {
       console.error("Error posting comment:", error);
       setError(CommentsError.fetchError);
@@ -183,6 +189,65 @@ export const Comments = ({sourceId}: CommentsProps) => {
     }
   };
 
+  const handleEditComment = (comment: Comment) => {
+    if (comment.userInfo !== userEmail) {
+      setError("You can only edit your own comments.");
+      return;
+    }
+    setEditingComment(comment); 
+  };
+
+  const saveEditedComment = async (updatedMessage: string) => {
+    if (editingComment) {
+      const updatedComments = postComments.map((comment) =>
+        comment.id === editingComment.id ? { ...comment, message: updatedMessage } : comment
+      );
+      setPostComments(updatedComments);
+
+      try {
+        const response = await fetch(`/api/postComments?id=${editingComment.id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: updatedMessage }),
+        });
+
+        if (!response.ok) throw new Error("Failed to update comment.");
+        setSuccessMessage("Comment updated successfully!");
+      } catch (error) {
+        console.error("Error updating comment:", error);
+        setError(CommentsError.fetchError);
+      }
+
+      setEditingComment(null);
+    }
+  };
+
+  const handleDeleteComment = async (commentId: string) => {
+    const commentToDelete = postComments.find((comment) => comment.id === commentId);
+
+    if (commentToDelete?.userInfo !== userEmail) {
+      setError("You can only delete your own comments.");
+      return;
+    }
+
+    const updatedComments = postComments.filter((comment) => comment.id !== commentId);
+    setPostComments(updatedComments);
+
+    try {
+      const response = await fetch(`/api/postComments?id=${commentId}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!response.ok) throw new Error("Failed to delete comment.");
+      setSuccessMessage("Comment deleted successfully!");
+    } catch (error) {
+      console.error("Error deleting comment:", error);
+      setError(CommentsError.fetchError);
+    }
+  };
+
+
   return (
     <div className="flex flex-col z-50">
       <button
@@ -217,7 +282,11 @@ export const Comments = ({sourceId}: CommentsProps) => {
                 <div>
                   <strong>{comment.userInfo}</strong>
                 </div>
-                <div>{comment.message}</div>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(comment.message),
+                  }}
+                />
                 <div className="flex gap-4 mt-2">
                   <button
                     onClick={() => handleEditComment(comment)}
