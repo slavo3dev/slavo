@@ -28,7 +28,7 @@ export const BlogDropDown: FC<CatProps> = ({ categories, onSearch }) => {
         <DropDown
             label="Blog" 
             items={categories}
-            onItemClick={handleItemClick}
+            handleClick={handleItemClick}
         />
     );
 };
