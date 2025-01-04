@@ -189,65 +189,6 @@ export const Comments = ({sourceId}: CommentsProps) => {
     }
   };
 
-  const handleEditComment = (comment: Comment) => {
-    if (comment.userInfo !== userEmail) {
-      setError("You can only edit your own comments.");
-      return;
-    }
-    setEditingComment(comment); 
-  };
-
-  const saveEditedComment = async (updatedMessage: string) => {
-    if (editingComment) {
-      const updatedComments = postComments.map((comment) =>
-        comment.id === editingComment.id ? { ...comment, message: updatedMessage } : comment
-      );
-      setPostComments(updatedComments);
-
-      try {
-        const response = await fetch(`/api/postComments?id=${editingComment.id}`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: updatedMessage }),
-        });
-
-        if (!response.ok) throw new Error("Failed to update comment.");
-        setSuccessMessage("Comment updated successfully!");
-      } catch (error) {
-        console.error("Error updating comment:", error);
-        setError(CommentsError.fetchError);
-      }
-
-      setEditingComment(null);
-    }
-  };
-
-  const handleDeleteComment = async (commentId: string) => {
-    const commentToDelete = postComments.find((comment) => comment.id === commentId);
-
-    if (commentToDelete?.userInfo !== userEmail) {
-      setError("You can only delete your own comments.");
-      return;
-    }
-
-    const updatedComments = postComments.filter((comment) => comment.id !== commentId);
-    setPostComments(updatedComments);
-
-    try {
-      const response = await fetch(`/api/postComments?id=${commentId}`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-      });
-
-      if (!response.ok) throw new Error("Failed to delete comment.");
-      setSuccessMessage("Comment deleted successfully!");
-    } catch (error) {
-      console.error("Error deleting comment:", error);
-      setError(CommentsError.fetchError);
-    }
-  };
-
-
   return (
     <div className="flex flex-col z-50">
       <button
@@ -282,7 +223,6 @@ export const Comments = ({sourceId}: CommentsProps) => {
                 <div>
                   <strong>{comment.userInfo}</strong>
                 </div>
-                <div>{comment.message}</div>
                 <div
                   dangerouslySetInnerHTML={{
                     __html: DOMPurify.sanitize(comment.message),
