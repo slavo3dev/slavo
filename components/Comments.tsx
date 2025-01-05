@@ -22,6 +22,7 @@ export const Comments = ({sourceId}: CommentsProps) => {
   const [showComments, setShowComments] = useState<boolean>(false);
   const [successMessage, setSuccessMessage] = useState<string>("");
   const [postComments, setPostComments] = useState<Comment[]>([]);
+  const [errorShown, setErrorShown] = useState<boolean>(false);
   const [editingComment, setEditingComment] = useState<Comment | null>(null);
   const { userInfo } = useContext(UserInfoContext);
   const userEmail = userInfo?.email;
@@ -114,16 +115,22 @@ export const Comments = ({sourceId}: CommentsProps) => {
 
   const toggleComments = () => {
     setShowComments(!showComments);
+    setError("");
+    setErrorShown(false);
   };
 
   const handleEditComment = (comment: Comment) => {
     if (comment.userInfo !== userEmail) {
-      setError("You can only edit your own comments.");
+      if (!errorShown) {
+        setError("You can only edit your own comments.");
+        setErrorShown(true);
+      }
       return;
     }
-    setEditingComment(comment); 
+    setEditingComment(comment);
   };
 
+  // Added logic for saving the updated comment
   const saveEditedComment = async (updatedMessage: string) => {
     if (editingComment) {
       const updatedComments = postComments.map((comment) =>
@@ -138,8 +145,11 @@ export const Comments = ({sourceId}: CommentsProps) => {
           body: JSON.stringify({ message: updatedMessage }),
         });
 
-        if (!response.ok) throw new Error("Failed to update comment.");
-        setSuccessMessage("Comment updated successfully!");
+        if (response.ok) {
+          setSuccessMessage("Comment updated successfully!");
+        } else {
+          setError(CommentsError.fetchError);
+        }
       } catch (error) {
         console.error("Error updating comment:", error);
         setError(CommentsError.fetchError);
@@ -153,10 +163,12 @@ export const Comments = ({sourceId}: CommentsProps) => {
     const commentToDelete = postComments.find((comment) => comment.id === commentId);
 
     if (commentToDelete?.userInfo !== userEmail) {
-      setError("You can only delete your own comments.");
+      if (!errorShown) {
+        setError("You can only delete your own comments.");
+        setErrorShown(true);
+      }
       return;
     }
-
     const updatedComments = postComments.filter((comment) => comment.id !== commentId);
     setPostComments(updatedComments);
 
@@ -166,14 +178,16 @@ export const Comments = ({sourceId}: CommentsProps) => {
         headers: { "Content-Type": "application/json" },
       });
 
-      if (!response.ok) throw new Error("Failed to delete comment.");
-      setSuccessMessage("Comment deleted successfully!");
+      if (response.ok) {
+        setSuccessMessage("Comment deleted successfully!");
+      } else {
+        setError(CommentsError.fetchError);
+      }
     } catch (error) {
       console.error("Error deleting comment:", error);
       setError(CommentsError.fetchError);
     }
   };
-
 
   return (
     <div className="flex flex-col z-50">
