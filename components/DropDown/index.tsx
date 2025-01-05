@@ -24,6 +24,7 @@ export const DropDown: FC<DropDownProps> = ({ label, items, handleClick }) => {
                 {label}
             </button>
             {(isOpen || dropdownRef.current?.matches(':hover')) && (
+
               <ul className="absolute left-0 mt-2 bg-white shadow-xl w-48 z-50 flex flex-col rounded-lg border border-gray-300">
                     {items.map((item, index) => (
                         <li

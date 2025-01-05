@@ -13,6 +13,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       const { quote, author } = quotes[randomIndex];
 
       res.status(200).json({ quote, author });
+      
     } else {
       res.status(400).json({ error: 'No quotes found in the response data' });
     }
