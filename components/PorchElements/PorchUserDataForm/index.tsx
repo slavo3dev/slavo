@@ -14,6 +14,41 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
         // computer
 
 
+    const updateActivityForUser = async (email: string, weekStart: string) => {
+        // Fetch posts from porch for the user in the given week
+        const { data: porch, error: fetchError } = await supabase
+            .from('porch')
+            .select('created_at')
+            .eq('email', email)
+            .gte('created_at', weekStart)
+            .lte('created_at', new Date(weekStart).setDate(new Date(weekStart).getDate() + 6));
+    
+        if (fetchError) {
+            console.error('Error fetching posts:', fetchError.message);
+            return;
+        }
+    
+        // Count posts meeting the criteria
+        //const countablePosts = posts.filter((post) => criteria(post.content)).length;
+    
+        // Upsert into user_activity table
+        const { error: upsertError } = await supabase
+            .from('user_activity')
+            .upsert(
+                {
+                    user_email: email,
+                    week_start: weekStart,
+                },
+                { onConflict: 'user_email,week_start' } // Update if already exists
+            );
+    
+        if (upsertError) {
+            console.error('Error updating user activity:', upsertError.message);
+        }
+    };     
+
+
+
 const PorchUserDataForm= ({setShowUserForm}: any) => {
     const [showUpdateGoals, setShowUpdateGoals] = useState<boolean>(false);
     const [weeklyGoal, setWeeklyGoal] = useState<number>(1);
@@ -23,12 +58,12 @@ const PorchUserDataForm= ({setShowUserForm}: any) => {
     const [learningDates, setLearningDates] = useState<{date: string; count: number}[]>([]);
     const { userInfo } = useContext(UserInfoContext)
 
-    useEffect(() => {
-        const storedGoal = localStorage.getItem('weeklyGoal');
-        if (storedGoal) {
-            setWeeklyGoal(Number(storedGoal));
-        };
-    }, []);
+    // useEffect(() => {
+    //     const storedGoal = localStorage.getItem('weeklyGoal');
+    //     if (storedGoal) {
+    //         setWeeklyGoal(Number(storedGoal));
+    //     };
+    // }, []);
 
     // grabbing the post created at time by user eamil in ascending order
     useEffect(() => {
