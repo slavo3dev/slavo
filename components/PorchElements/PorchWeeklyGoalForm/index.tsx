@@ -1,21 +1,23 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState, useContext } from 'react';
 import PorchUserDataForm from '../PorchUserDataForm';
 import supabase from '@/lib/supabase'; // Adjust the import based on your project setup
+import UserInfoContext from '@/context/UserInfoContext';
 
-const WeeklyGoalForm = ({setShowUserForm}: any) => {
+const WeeklyGoalForm = ({setShowUserForm}: { setShowUserForm: (value: boolean) => void }) => {
     const [close, setClose] = useState<boolean>(false);
     const [weeklyGoal, setWeeklyGoal] = useState<number>(1); // Default to 1
     const [loading, setLoading] = useState<boolean>(true); // Track loading state
-    const userEmail = "user@example.com"; // Replace with logic to get the logged-in user's email
-
+    const { userInfo } = useContext(UserInfoContext)
+    
     // Fetch the current weekly goal from Supabase
     useEffect(() => {
         const fetchWeeklyGoal = async () => {
-            try {
+            if (userInfo?.email) {
+              try {
                 const { data, error } = await supabase
                     .from('user_activity')
                     .select('weekly_goal')
-                    .eq('email', userEmail)
+                    .eq('user_email', userInfo.email)
                     .single();
 
                 if (error) {
@@ -31,21 +33,23 @@ const WeeklyGoalForm = ({setShowUserForm}: any) => {
             } finally {
                 setLoading(false);
             }
+            }
+         
         };
 
         fetchWeeklyGoal();
-    }, [userEmail]);
+    }, [userInfo?.email]);
 
     // Update weekly goal in Supabase
     const handleNewGoal = async (e: ChangeEvent<HTMLSelectElement>) => {
         const newGoal = Number(e.target.value);
         setWeeklyGoal(newGoal);
-
-        try {
+        if (userInfo?.email) {
+             try {
             const { error } = await supabase
                 .from('user_activity')
                 .update({ weekly_goal: newGoal })
-                .eq('email', userEmail);
+                .eq('user_email', userInfo.email);
 
             if (error) {
                 console.error("Error updating weekly goal:", error);
@@ -53,6 +57,8 @@ const WeeklyGoalForm = ({setShowUserForm}: any) => {
         } catch (err) {
             console.error("Error during update:", err);
         }
+        }
+       
     };
 
     const committed = () => {
