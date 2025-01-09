@@ -13,43 +13,7 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
         // tablet
         // computer
 
-
-    const updateActivityForUser = async (email: string, weekStart: string) => {
-        // Fetch posts from porch for the user in the given week
-        const { data: porch, error: fetchError } = await supabase
-            .from('porch')
-            .select('created_at')
-            .eq('email', email)
-            .gte('created_at', weekStart)
-            .lte('created_at', new Date(weekStart).setDate(new Date(weekStart).getDate() + 6));
-    
-        if (fetchError) {
-            console.error('Error fetching posts:', fetchError.message);
-            return;
-        }
-    
-        // Count posts meeting the criteria
-        //const countablePosts = posts.filter((post) => criteria(post.content)).length;
-    
-        // Upsert into user_activity table
-        const { error: upsertError } = await supabase
-            .from('user_activity')
-            .upsert(
-                {
-                    user_email: email,
-                    week_start: weekStart,
-                },
-                { onConflict: 'user_email,week_start' } // Update if already exists
-            );
-    
-        if (upsertError) {
-            console.error('Error updating user activity:', upsertError.message);
-        }
-    };     
-
-
-
-const PorchUserDataForm= ({setShowUserForm}: any) => {
+const PorchUserDataForm= ({setShowUserForm}: { setShowUserForm: (value: boolean) => void }) => {
     const [showUpdateGoals, setShowUpdateGoals] = useState<boolean>(false);
     const [weeklyGoal, setWeeklyGoal] = useState<number>(1);
     const [currentStreak, setCurrentStreak] = useState<number>(0);
@@ -58,12 +22,58 @@ const PorchUserDataForm= ({setShowUserForm}: any) => {
     const [learningDates, setLearningDates] = useState<{date: string; count: number}[]>([]);
     const { userInfo } = useContext(UserInfoContext)
 
-    // useEffect(() => {
-    //     const storedGoal = localStorage.getItem('weeklyGoal');
-    //     if (storedGoal) {
-    //         setWeeklyGoal(Number(storedGoal));
-    //     };
-    // }, []);
+    useEffect(() => {
+        const fetchUserActivity = async () => {
+            if (userInfo?.email) {
+                const { data, error } = await supabase
+                    .from('user_activity')
+                    .select('weekly_goal, current_streak, longest_streak, weekly_learning_days')
+                    .eq('email', userInfo.email)
+                    .single();
+    
+                if (error) {
+                    console.error('Error fetching user activity:', error);
+                } else if (data) {
+                    setWeeklyGoal(data.weekly_goal || 1);
+                    setCurrentStreak(data.current_streak || 0);
+                    setLongestStreak(data.longest_streak || 0);
+                    setWeeklyLearningDays(data.weekly_learning_days || 0);
+                }
+            }
+        };
+        fetchUserActivity();
+    }, [userInfo?.email]);
+
+
+    const updateUserActivity = async (updatedData: Partial<Record<string, any>>) => {
+        if (userInfo?.email) {
+            const { error } = await supabase
+                .from('user_activity')
+                .upsert({
+                    email: userInfo.email,
+                    ...updatedData,
+                    updated_at: new Date().toISOString(),
+                });
+    
+            if (error) {
+                console.error('Error updating user activity:', error);
+            }
+        }
+    };
+
+    useEffect(() => {
+        updateUserActivity({ currentStreak, longestStreak });
+    }, [currentStreak, longestStreak]);
+    
+    useEffect(() => {
+        updateUserActivity({ weeklyGoal });
+    }, [weeklyGoal]);
+    
+    useEffect(() => {
+        updateUserActivity({ weeklyLearningDays });
+    }, [weeklyLearningDays]);
+    
+    
 
     // grabbing the post created at time by user eamil in ascending order
     useEffect(() => {
