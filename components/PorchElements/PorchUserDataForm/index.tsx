@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext,useMemo } from 'react';
 import WeeklyGoalForm from '../PorchWeeklyGoalForm';
 import UserInfoContext from '@/context/UserInfoContext';
 import supabase from '@/lib/supabase';
@@ -12,52 +12,62 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
     const [longestStreak, setLongestStreak] = useState<number>(0);
     const [weeklyLearningDays, setWeeklyLearningDays] = useState<number>(0);
     const [learningDates, setLearningDates] = useState<{ date: string; count: number }[]>([]);
+    const [isUpdating, setIsUpdating] = useState(false);
     const { userInfo } = useContext(UserInfoContext);
 
-    // Function to fetch user activity and set initial state
-    const fetchUserActivity = async () => {
-        if (userInfo?.email) {
-            const { data, error } = await supabase
+
+      // Fetch user activity and learning data
+      const fetchUserAndLearningData = async () => {
+        if (!userInfo?.email) return;
+    
+        try {
+            const { data: userActivityData, error: activityError } = await supabase
                 .from('user_activity')
                 .select('weekly_goal, current_streak, longest_streak, weekly_learning_days')
                 .eq('user_email', userInfo.email)
-                .single();
-
-            if (error) {
-                console.error('Error fetching user activity:', error);
-            } else if (data) {
-                setWeeklyGoal(data.weekly_goal || 1);
-                setCurrentStreak(data.current_streak || 0);
-                setLongestStreak(data.longest_streak || 0);
-                setWeeklyLearningDays(data.weekly_learning_days || 0);
+                .single(); // Ensure only one row is returned
+    
+            if (activityError) {
+                console.error('Error fetching user activity:', activityError);
+                return;
             }
-        }
-    };
-
-    // Function to fetch learning data and calculate streaks and weekly learning days
-    const fetchLearningData = async () => {
-        if (userInfo?.email) {
-            const { data, error } = await supabase
+    
+            if (userActivityData) {
+                setWeeklyGoal(userActivityData.weekly_goal || 1);
+                setCurrentStreak(userActivityData.current_streak || 0);
+                setLongestStreak(userActivityData.longest_streak || 0);
+                setWeeklyLearningDays(userActivityData.weekly_learning_days || 0);
+            }
+    
+            // Fetch learning data (this can still return multiple rows)
+            const { data: learningData, error: learningError } = await supabase
                 .from('porch')
                 .select('created_at')
                 .eq('email', userInfo.email)
                 .order('created_at', { ascending: true });
-
-            if (error) {
-                console.error('Error fetching learning data:', error);
+    
+            if (learningError) {
+                console.error('Error fetching learning data:', learningError);
                 return;
             }
+    
+            if (learningData) {
+                console.log(learningData)
 
-            calculateStreaks(data);
-            calculateWeeklyLearningDays(data);
-            setLearningDates(
-                data.map((entry: { created_at: string }) => ({
-                    date: new Date(entry.created_at).toISOString().split('T')[0],
-                    count: 1,
-                }))
-            );
+                calculateStreaks(learningData);
+                calculateWeeklyLearningDays(learningData);
+                setLearningDates(
+                    learningData.map(entry => ({
+                        date: new Date(entry.created_at).toISOString().split('T')[0],
+                        count: 1,
+                    })) // this returns [{data: yyyy-mm-dd, count: 1},{...}]
+                );
+            }
+        } catch (error) {
+            console.error('Error:', error);
         }
     };
+    
 
     // Calculate current streak and longest streak
     const calculateStreaks = (data: { created_at: string }[]) => {
@@ -82,6 +92,29 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
         setCurrentStreak(currentStreak);
         setLongestStreak(longestStreak);
     };
+    // Steps:
+    // First Entry (2025-01-01):
+    
+    // differenceInDays = 0 (first entry).
+    // currentStreak = 1.
+    // longestStreak = 1.
+    // Second Entry (2025-01-02):
+    
+    // differenceInDays = 1 (consecutive day).
+    // currentStreak = 2.
+    // longestStreak = 2.
+    // Third Entry (2025-01-04):
+    
+    // differenceInDays = 2 (gap of more than one day).
+    // currentStreak = 1 (reset).
+    // longestStreak = 2 (unchanged).
+    // Fourth Entry (2025-01-05):
+    
+    // differenceInDays = 1 (consecutive day).
+    // currentStreak = 2.
+    // longestStreak = 2 (unchanged).
+
+
 
     // Calculate weekly learning days
     const calculateWeeklyLearningDays = (data: { created_at: string }[]) => {
@@ -104,33 +137,78 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
 
     // Update user activity in the database
     const updateUserActivity = async (updatedData: Partial<Record<string, any>>) => {
-        if (userInfo?.email) {
-            const { error } = await supabase
-                .from('user_activity')
-                .upsert({
-                    user_email: userInfo.email,
-                    ...updatedData,
-                    updated_at: new Date().toISOString(),
-                });
-
-            if (error) {
-                console.error('Error updating user activity:', error);
+        try {
+            if (userInfo?.email) {
+                // First, check if the user already has an entry
+                const { data: existingData, error: fetchError } = await supabase
+                    .from('user_activity')
+                    .select('*')
+                    .eq('user_email', userInfo.email)
+                    .single();  // Expecting only one row
+    
+                if (fetchError) {
+                    console.error('Error fetching user activity:', fetchError);
+                    return;
+                }
+    
+                if (existingData) {
+                    // If the user already has an entry, update it
+                    const { error } = await supabase
+                        .from('user_activity')
+                        .upsert({
+                            ...updatedData,  // Update with the new data
+                        })
+                        .eq('user_email', userInfo.email);
+    
+                    if (error) {
+                        console.error('Error updating user activity:', error);
+                    } else {
+                        console.log('User activity updated successfully:', updatedData);
+                    }
+                } else {
+                    // If no entry exists, insert a new one
+                    const { error } = await supabase
+                        .from('user_activity')
+                        .insert({
+                            user_email: userInfo.email,
+                            ...updatedData,
+                        });
+    
+                    if (error) {
+                        console.error('Error inserting user activity:', error);
+                    } else {
+                        console.log('User activity inserted successfully:', updatedData);
+                    }
+                }
+            } else {
+                console.warn('No user email provided for update.');
             }
+        } catch (err) {
+            console.error('Unexpected error in updateUserActivity:', err);
         }
     };
+    
+    
+    
 
-    // Combine all updates into one effect
+    // Debounce updates to user activity
     useEffect(() => {
-        if (userInfo?.email) {
-            updateUserActivity({ currentStreak, longestStreak, weeklyGoal, weeklyLearningDays });
+        if (!isUpdating) {
+            setIsUpdating(true);
+            updateUserActivity({ currentStreak, longestStreak, weeklyGoal, weeklyLearningDays }).finally(() => {
+                setIsUpdating(false);
+            });
         }
-    }, [currentStreak, longestStreak, weeklyGoal, weeklyLearningDays, userInfo?.email]);
+    }, [currentStreak, longestStreak, weeklyGoal, weeklyLearningDays]);
 
-    // Fetch user activity and learning data on mount or when user changes
+ 
+    // Fetch data on mount or when user changes
     useEffect(() => {
-        fetchUserActivity();
-        fetchLearningData();
+        fetchUserAndLearningData();
     }, [userInfo?.email]);
+
+    // Memoize learning dates
+    const memoizedLearningDates = useMemo(() => learningDates, [learningDates]);
 
     if (showUpdateGoals) {
         return (
@@ -191,7 +269,7 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
             </div>
             <div className='border-2 p-4 m-2 flex flex-col overflow-hidden  bg-white shadow-lg group rounded-xl'>
                 <h5 className='mb-4'>Learning Charts</h5>
-                <Calendar learningDates={learningDates} />
+                <Calendar learningDates={memoizedLearningDates} />
             </div>
         </div>
     );
