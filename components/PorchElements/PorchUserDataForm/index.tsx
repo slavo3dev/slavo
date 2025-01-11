@@ -73,13 +73,28 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
     const calculateStreaks = (data: { created_at: string }[]) => {
         let currentStreak = 0;
         let longestStreak = 0;
-        let lastDate: Date | null = data.length > 0 ? new Date(data[0].created_at) : null;
+        let lastDate: Date | null = null;
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
 
-        data.forEach((entry: { created_at: string }, index) => {
+        // Sort data by date in ascending order
+        const sortedData = [...data].sort((a, b) => 
+            new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+        );
+
+        sortedData.forEach((entry) => {
             const currentDate = new Date(entry.created_at);
-            const differenceInDays = lastDate ? (currentDate.getTime() - lastDate.getTime()) / (1000 * 3600 * 24) : 0;
+            currentDate.setHours(0, 0, 0, 0);
 
-            if (differenceInDays === 1 || index === 0) {
+            if (!lastDate) {
+                currentStreak = 1;
+                lastDate = currentDate;
+                return;
+            }
+
+            const differenceInDays = Math.floor((currentDate.getTime() - lastDate.getTime()) / (1000 * 3600 * 24));
+
+            if (differenceInDays === 1) {
                 currentStreak += 1;
             } else if (differenceInDays > 1) {
                 currentStreak = 1;
@@ -88,6 +103,12 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
             lastDate = currentDate;
             longestStreak = Math.max(longestStreak, currentStreak);
         });
+        if (lastDate) {
+            const differenceToToday = Math.floor((today.getTime() - (lastDate as Date).getTime()) / (1000 * 3600 * 24));
+            if (differenceToToday > 1) {
+                currentStreak = 0;
+            }
+        }
 
         setCurrentStreak(currentStreak);
         setLongestStreak(longestStreak);
@@ -137,56 +158,48 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
 
     // Update user activity in the database
     const updateUserActivity = async (updatedData: Partial<Record<string, any>>) => {
+        if (!userInfo?.email) {
+            console.warn('No user email provided for update.');
+            return;
+        }
+
         try {
-            if (userInfo?.email) {
-                // First, check if the user already has an entry
-                const { data: existingData, error: fetchError } = await supabase
+            // First check if the record exists
+            const { data: existingData } = await supabase
+                .from('user_activity')
+                .select()
+                .eq('user_email', userInfo.email);
+
+            if (existingData && existingData.length > 0) {
+                // Update existing record
+                const { data, error } = await supabase
                     .from('user_activity')
-                    .select('*')
-                    .eq('user_email', userInfo.email)
-                    .single();  // Expecting only one row
-    
-                if (fetchError) {
-                    console.error('Error fetching user activity:', fetchError);
-                    return;
-                }
-    
-                if (existingData) {
-                    // If the user already has an entry, update it
-                    const { error } = await supabase
-                        .from('user_activity')
-                        .upsert({
-                            ...updatedData,  // Update with the new data
-                        })
-                        .eq('user_email', userInfo.email);
-    
-                    if (error) {
-                        console.error('Error updating user activity:', error);
-                    } else {
-                        console.log('User activity updated successfully:', updatedData);
-                    }
-                } else {
-                    // If no entry exists, insert a new one
-                    const { error } = await supabase
-                        .from('user_activity')
-                        .insert({
-                            user_email: userInfo.email,
-                            ...updatedData,
-                        });
-    
-                    if (error) {
-                        console.error('Error inserting user activity:', error);
-                    } else {
-                        console.log('User activity inserted successfully:', updatedData);
-                    }
-                }
+                    .update({
+                        current_streak: updatedData.currentStreak,
+                        longest_streak: updatedData.longestStreak,
+                        weekly_goal: updatedData.weeklyGoal,
+                        weekly_learning_days: updatedData.weeklyLearningDays
+                    })
+                    .eq('user_email', userInfo.email);
+                if (error) throw error;
             } else {
-                console.warn('No user email provided for update.');
+                // Insert new record
+                const { data, error } = await supabase
+                    .from('user_activity')
+                    .insert({
+                        user_email: userInfo.email,
+                        current_streak: updatedData.currentStreak,
+                        longest_streak: updatedData.longestStreak,
+                        weekly_goal: updatedData.weeklyGoal,
+                        weekly_learning_days: updatedData.weeklyLearningDays
+                    });
+                if (error) throw error;
             }
         } catch (err) {
-            console.error('Unexpected error in updateUserActivity:', err);
+            console.error('Error updating user activity:', err);
         }
     };
+    
     
     
     
