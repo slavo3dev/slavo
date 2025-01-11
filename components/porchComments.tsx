@@ -1,8 +1,8 @@
 import { useState, ChangeEvent, FormEvent, useContext, useEffect } from "react";
 import UserInfoContext from "context/UserInfoContext";
 import { CommentsError } from "lib/err/err";
-import CommentsPopup from "./CommentsPopup";
 import DOMPurify from "dompurify";
+import CommentsPopup from "./CommentsPopup";
 
 interface Comment {
   id?: string;
