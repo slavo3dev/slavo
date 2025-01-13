@@ -52,7 +52,6 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
             }
     
             if (learningData) {
-                console.log(learningData)
 
                 calculateStreaks(learningData);
                 calculateWeeklyLearningDays(learningData);
