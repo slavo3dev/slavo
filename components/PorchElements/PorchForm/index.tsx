@@ -98,7 +98,7 @@ export const PorchForm: React.FC<PorchFormProps> = ({ setPorchs, setShowForm }) 
 							}
 							value={source}
 							type="text"
-							placeholder="Share your learning source"
+							placeholder="Provide your learning resource URL..."
 							onChange={(e) => setSource(e.target.value)}
 							disabled={isUploading}
 						/>
