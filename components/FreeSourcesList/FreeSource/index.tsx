@@ -7,9 +7,7 @@ import LoginModal from "@/components/Auth/LoginPopup";
 
 interface Fact {
   id: number;
-  like: number;
-  exelent: number;
-  false: number;
+  likes: string[];
   text: string;
   source: string;
   category?: string;  
@@ -45,15 +43,10 @@ export const FreeSource: FC<FreeSourceProps> = ({ fact, setFacts }) => {
   const hasVoted = async (): Promise<boolean> => {
     if (!userInfo?.email) return false;
 
-    const localVoteStatus = localStorage.getItem(`voted_fact_${fact.id}`);
-    if (localVoteStatus === "true") {
-      return true;
-    }
     const { data, error } = await supabase
-      .from("votes")
-      .select("*")
-      .eq("userEmail", userInfo.email)
-      .eq("factId", fact.id)
+      .from("sources")
+      .select("likes")
+      .eq("id", fact.id)
       .single();
 
     if (error) {
@@ -61,47 +54,37 @@ export const FreeSource: FC<FreeSourceProps> = ({ fact, setFacts }) => {
       return false;
     }
 
-    if (data) {
-      localStorage.setItem(`voted_fact_${fact.id}`, "true");
-      return true;
-    }
-
-    return false; 
+    return data?.likes?.includes(userInfo.email) || false;
   };
-  
-  async function handleVote(columnName: keyof Fact) {
+
+  async function handleVote() {
     if (userInfo?.email) {
       const voted = await hasVoted();
 
       if (voted) {
-        return;
+        return;  
       }
 
       setIsUpdating(true);
 
       const { data: updatedFact, error } = await supabase
         .from("sources")
-        .update({ [columnName]: (fact[columnName] as number) + 1 })
+        .update({
+          likes: [...fact.likes, userInfo.email], 
+        })
         .eq("id", fact.id)
         .select();
 
-      if (!error && updatedFact && updatedFact.length > 0)
+      if (!error && updatedFact && updatedFact.length > 0) {
         setFacts((prevFacts) =>
           prevFacts.map((f) => (f.id === fact.id ? (updatedFact[0] as Fact) : f))
-    );
-    await supabase.from("votes").upsert([
-      {
-        userEmail: userInfo.email,
-        factId: fact.id,
-      },
-    ]);
+        );
+      }
 
-    setIsVoteDisabled(true);
-    localStorage.setItem(`voted_fact_${fact.id}`, "true");
-
-  setIsUpdating(false);
-   } else {
-      toggleLoginModal();
+      setIsVoteDisabled(true);
+      setIsUpdating(false);
+    } else {
+      toggleLoginModal(); 
     }
   }
   return (
@@ -110,12 +93,12 @@ export const FreeSource: FC<FreeSourceProps> = ({ fact, setFacts }) => {
         title={fact.category || "Unknown Category"}
         porch={{
           source: fact.source,
-          excellent: fact.exelent,
+          likes: fact.likes,
         }}
         displayComment={fact.text.slice(0, 90)}
         commentText={fact.text}
         showMore={false}
-        handleVote={() => handleVote("exelent")}
+        handleVote={handleVote}
         isUpdating={isUpdating}
         isVoteDisabled={isVoteDisabled} 
         extraContent={

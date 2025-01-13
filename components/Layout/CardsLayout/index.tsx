@@ -7,7 +7,7 @@ interface CardLayoutProps {
     text?: string;
     email?: string;
     source: string;
-    excellent?: number;
+    likes: string[];
   };
   displayComment: string;
   commentText: string;
@@ -75,7 +75,7 @@ export const CardLayout: FC<CardLayoutProps> = ({
 
         <div className="p-2">
           <p className="text-sm text-black pl-1">
-            <b>Likes: </b> {porch.excellent}
+            <b>Likes: </b> {porch.likes.length}
           </p>
           <button
             className="flex items-center gap-4 bg-gradient-to-br from-blue-700 via-blue-600 to-blue-900 rounded-xl px-8 py-1 text-md font-extrabold text-white hover:opacity-75"

@@ -8,11 +8,11 @@ interface Comment {
   id?: string;
   userInfo: string;
   message: string;
-  sourceId: number;
+  sourceId: number | string;
 }
 
 interface PorchCommentsProps {
-  sourceId: number;
+  sourceId: number | string;
 }
 
 export const PorchComments = ({ sourceId }: PorchCommentsProps) => {
