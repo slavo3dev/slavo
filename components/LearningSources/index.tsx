@@ -8,12 +8,10 @@ import UserInfoContext from "@/context/UserInfoContext";
 
 interface Source {
   id: number;
-  like: number;
-  exelent: number;
-  false: number;
+  likes: string[];
   text: string;
   source: string;
-  category?: string;
+  category?: string; 
 }
 type LearningSourcesProps = {
   sources: Source[];

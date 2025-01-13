@@ -1,5 +1,6 @@
 export interface PorchType {
-  id: string;
+  new_id: string;
+  likes:string[];
   created_at: string;
   email: string;
   text: string;
