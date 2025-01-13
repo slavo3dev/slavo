@@ -12,12 +12,14 @@ const toolbarOptions = [
   ["link", "blockquote", "code-block"],
   [{ color: [] }, { background: [] }],
 ];
+
 interface CommentsPopupProps {
   comment: string;
   onClose: () => void;
   onSave: (updatedComment: string) => void;
 }
 
+ 
 const CommentsPopup: React.FC<CommentsPopupProps> = ({
   comment,
   onClose,
