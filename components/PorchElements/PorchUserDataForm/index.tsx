@@ -27,10 +27,10 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
                 .eq('user_email', userInfo.email)
                 .single(); // Ensure only one row is returned
     
+           
             if (activityError) {
                 console.error('Error fetching user activity:', activityError);
-                return;
-            }
+        }
     
             if (userActivityData) {
                 setWeeklyGoal(userActivityData.weekly_goal || 1);
@@ -70,6 +70,13 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
 
     // Calculate current streak and longest streak
     const calculateStreaks = (data: { created_at: string }[]) => {
+
+        if (data.length === 0) {
+            setCurrentStreak(0);
+            setLongestStreak(0);
+            return;
+        }
+
         let currentStreak = 0;
         let longestStreak = 0;
         let lastDate: Date | null = null;
