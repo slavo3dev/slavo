@@ -44,24 +44,45 @@ const WeeklyGoalForm = ({setShowUserForm}: { setShowUserForm: (value: boolean) =
     const handleNewGoal = async (e: ChangeEvent<HTMLSelectElement>) => {
         const newGoal = Number(e.target.value);
         setWeeklyGoal(newGoal);
-        if (userInfo?.email) {
-             try {
-            const { error } = await supabase
-                .from('user_activity')
-                .update({ weekly_goal: newGoal })
-                .eq('user_email', userInfo.email);
+        
+        if (!userInfo?.email) return;
 
-            if (error) {
-                console.error("Error updating weekly goal:", error);
+        try {
+            // First check if the user record exists
+            const { data: existingRecord } = await supabase
+                .from('user_activity')
+                .select('id')
+                .eq('user_email', userInfo.email)
+                .single();
+
+            if (existingRecord) {
+                // Update existing record
+                const { error: updateError } = await supabase
+                    .from('user_activity')
+                    .update({ weekly_goal: newGoal })
+                    .eq('user_email', userInfo.email);
+
+                if (updateError) throw updateError;
+            } else {
+                // Create new record
+                const { error: insertError } = await supabase
+                    .from('user_activity')
+                    .insert([{ 
+                        user_email: userInfo.email, 
+                        weekly_goal: newGoal 
+                    }]);
+
+                if (insertError) throw insertError;
             }
         } catch (err) {
-            console.error("Error during update:", err);
+            console.error("Error updating weekly goal:", err);
+            // Optionally add user feedback here
+            // setError("Failed to update weekly goal");
         }
-        }
-       
     };
 
-    const committed = () => {
+    const committed = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault(); // Prevent form submission
         setClose(true);
         console.log('Selected Weekly Goal:', weeklyGoal);
     };
@@ -75,7 +96,10 @@ const WeeklyGoalForm = ({setShowUserForm}: { setShowUserForm: (value: boolean) =
     }
 
     return (
-        <form className="border-2 p-4 m-2 flex flex-col overflow-hidden bg-white rounded-xl">
+        <form 
+            className="border-2 p-4 m-2 flex flex-col overflow-hidden bg-white rounded-xl"
+            onSubmit={(e) => e.preventDefault()}
+        >
             <h4 className="mb-2">Set your goal</h4>
             <div className="border mb-6"></div>
             <label htmlFor="weekly-goal" className="font-semibold text-sm mb-2">New Goal</label>
@@ -97,12 +121,14 @@ const WeeklyGoalForm = ({setShowUserForm}: { setShowUserForm: (value: boolean) =
             </div>
             <div className="mt-8 flex flex-row justify-between space-x-20">
                 <button
+                    type="button" // Explicitly set button type
                     onClick={() => setClose(true)}
                     className="border border-black text-sm rounded-full px-2 py-1 hover:bg-gray-100"
                 >
                     Close
                 </button>
                 <button
+                    type="submit" // Make this the submit button
                     onClick={committed}
                     className="border bg-blue-200 text-sm rounded-full px-2 py-1 hover:bg-opacity-75"
                 >

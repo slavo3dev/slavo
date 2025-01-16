@@ -15,62 +15,68 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
     const [isUpdating, setIsUpdating] = useState(false);
     const { userInfo } = useContext(UserInfoContext);
 
-
       // Fetch user activity and learning data
       const fetchUserAndLearningData = async () => {
-        if (!userInfo?.email) return;
-    
+        if (!userInfo?.email) {
+            console.warn('No user email available');
+            return;
+        }
+
         try {
+            // Fetch user activity data
             const { data: userActivityData, error: activityError } = await supabase
                 .from('user_activity')
-                .select('weekly_goal, current_streak, longest_streak, weekly_learning_days')
+                .select('weekly_goal, longest_streak')
                 .eq('user_email', userInfo.email)
-                .single(); // Ensure only one row is returned
-    
-           
+                .single();
+
             if (activityError) {
                 console.error('Error fetching user activity:', activityError);
-        }
-    
-            if (userActivityData) {
-                setWeeklyGoal(userActivityData.weekly_goal || 1);
-                setCurrentStreak(userActivityData.current_streak || 0);
-                setLongestStreak(userActivityData.longest_streak || 0);
-                setWeeklyLearningDays(userActivityData.weekly_learning_days || 0);
+                return;
             }
-    
-            // Fetch learning data (this can still return multiple rows)
+
+            // Only set weekly_goal if userActivityData exists and has a weekly_goal value
+            if (userActivityData?.weekly_goal) {
+                setWeeklyGoal(userActivityData.weekly_goal);
+            }
+            setLongestStreak(userActivityData?.longest_streak ?? 0);
+
+            // Fetch learning data
             const { data: learningData, error: learningError } = await supabase
                 .from('porch')
                 .select('created_at')
                 .eq('email', userInfo.email)
                 .order('created_at', { ascending: true });
-    
+
             if (learningError) {
                 console.error('Error fetching learning data:', learningError);
                 return;
             }
-    
-            if (learningData) {
 
+            if (learningData && learningData.length > 0) {
                 calculateStreaks(learningData);
                 calculateWeeklyLearningDays(learningData);
                 setLearningDates(
                     learningData.map(entry => ({
+                        // Ensure consistent date format by using UTC
                         date: new Date(entry.created_at).toISOString().split('T')[0],
                         count: 1,
-                    })) // this returns [{data: yyyy-mm-dd, count: 1},{...}]
+                    }))
                 );
+            } else {
+                // Reset states if no learning data exists
+                setCurrentStreak(0);
+                setWeeklyLearningDays(0);
+                setLearningDates([]);
             }
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Unexpected error in fetchUserAndLearningData:', error);
         }
     };
     
 
     // Calculate current streak and longest streak
     const calculateStreaks = (data: { created_at: string }[]) => {
-
         if (data.length === 0) {
             setCurrentStreak(0);
             setLongestStreak(0);
@@ -83,22 +89,26 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
         const today = new Date();
         today.setHours(0, 0, 0, 0);
 
-        // Sort data by date in ascending order
-        const sortedData = [...data].sort((a, b) => 
-            new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
-        );
+        // Get unique dates and sort them
+        const uniqueDates = Array.from(new Set(data.map(entry => {
+            const date = new Date(entry.created_at);
+            date.setHours(0, 0, 0, 0);
+            return date.toISOString().split('T')[0];
+        }))).sort();
 
-        sortedData.forEach((entry) => {
-            const currentDate = new Date(entry.created_at);
-            currentDate.setHours(0, 0, 0, 0);
+        // Convert back to Date objects with explicit typing
+        const sortedUniqueDates: Date[] = uniqueDates.map(date => new Date(date));
 
+        sortedUniqueDates.forEach((currentDate: Date) => {
             if (!lastDate) {
                 currentStreak = 1;
                 lastDate = currentDate;
                 return;
             }
 
-            const differenceInDays = Math.floor((currentDate.getTime() - lastDate.getTime()) / (1000 * 3600 * 24));
+            const differenceInDays = Math.floor(
+                (currentDate.getTime() - (lastDate as Date).getTime()) / (1000 * 3600 * 24)
+            );
 
             if (differenceInDays === 1) {
                 currentStreak += 1;
@@ -109,7 +119,9 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
             lastDate = currentDate;
             longestStreak = Math.max(longestStreak, currentStreak);
         });
-        if (lastDate) {
+
+        // Check if the streak is still active (last activity was today or yesterday)
+        if (lastDate !== null) {
             const differenceToToday = Math.floor((today.getTime() - (lastDate as Date).getTime()) / (1000 * 3600 * 24));
             if (differenceToToday > 1) {
                 currentStreak = 0;
@@ -147,8 +159,15 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
     const calculateWeeklyLearningDays = (data: { created_at: string }[]) => {
         const today = new Date();
         const currentDayOfWeek = today.getDay();
+        // Calculate days to subtract to get to Monday (0 = Sunday, 1 = Monday, etc.)
+        const daysToSubtract = currentDayOfWeek === 0 ? 6 : currentDayOfWeek - 1;
+        
         const startOfWeek = new Date(today);
-        startOfWeek.setDate(today.getDate() - currentDayOfWeek);
+        startOfWeek.setDate(today.getDate() - daysToSubtract);
+        startOfWeek.setHours(0, 0, 0, 0);
+
+        // Set today to end of day to include all of today's entries
+        today.setHours(23, 59, 59, 999);
 
         const currentWeekLearningDays = new Set<string>();
 
@@ -170,55 +189,55 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
         }
 
         try {
-            // First check if the record exists
-            const { data: existingData } = await supabase
-                .from('user_activity')
-                .select()
-                .eq('user_email', userInfo.email);
+            console.log('Updating with data:', updatedData); // Debug log
 
-            if (existingData && existingData.length > 0) {
-                // Update existing record
-                const { data, error } = await supabase
-                    .from('user_activity')
-                    .update({
-                        current_streak: updatedData.currentStreak,
-                        longest_streak: updatedData.longestStreak,
-                        weekly_goal: updatedData.weeklyGoal,
-                        weekly_learning_days: updatedData.weeklyLearningDays
-                    })
-                    .eq('user_email', userInfo.email);
-                if (error) throw error;
-            } else {
-                // Insert new record
-                const { data, error } = await supabase
-                    .from('user_activity')
-                    .insert({
-                        user_email: userInfo.email,
-                        current_streak: updatedData.currentStreak,
-                        longest_streak: updatedData.longestStreak,
-                        weekly_goal: updatedData.weeklyGoal,
-                        weekly_learning_days: updatedData.weeklyLearningDays
-                    });
-                if (error) throw error;
-            }
+            const dataToUpsert = {
+                user_email: userInfo.email,
+                longest_streak: updatedData.longestStreak,
+                weekly_goal: updatedData.weeklyGoal
+            };
+
+            console.log('Upserting data:', dataToUpsert); // Debug log
+
+            const { data, error } = await supabase
+                .from('user_activity')
+                .upsert(dataToUpsert, {
+                    onConflict: 'user_email',
+                    ignoreDuplicates: false
+                })
+                .select();
+
+            if (error) throw error;
+            console.log('Update response:', data); // Debug log
         } catch (err) {
             console.error('Error updating user activity:', err);
+            throw err;
         }
     };
     
     
-    
-    
 
     // Debounce updates to user activity
-    useEffect(() => {
-        if (!isUpdating) {
-            setIsUpdating(true);
-            updateUserActivity({ currentStreak, longestStreak, weeklyGoal, weeklyLearningDays }).finally(() => {
-                setIsUpdating(false);
-            });
-        }
-    }, [currentStreak, longestStreak, weeklyGoal, weeklyLearningDays]);
+    // useEffect(() => {
+    //     if (!isUpdating && userInfo?.email) {
+    //         setIsUpdating(true);
+    //         const dataToUpdate = {
+    //             longestStreak,
+    //             weeklyGoal: weeklyGoal // Ensure this is the correct value
+    //         };
+    //         console.log('Triggering update with:', dataToUpdate); // Debug log
+    //         updateUserActivity(dataToUpdate)
+    //             .then(() => {
+    //                 console.log('Update completed successfully');
+    //             })
+    //             .catch((error) => {
+    //                 console.error('Update failed:', error);
+    //             })
+    //             .finally(() => {
+    //                 setIsUpdating(false);
+    //             });
+    //     }
+    // }, [longestStreak, weeklyGoal, userInfo?.email]);
 
  
     // Fetch data on mount or when user changes
@@ -275,7 +294,7 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
                 )}
             </div>
             <div className='border-2 p-4 m-2 flex flex-col overflow-hidden bg-white shadow-lg group rounded-xl'>
-                <h5>🔥 Current Streak</h5>
+                <h5>Current Streak</h5>
                 <p className='font-bold text-2xl mt-4'>
                     {currentStreak}
                     <span className='font-normal text-sm uppercase pl-2 text-slate-800'>days</span>
