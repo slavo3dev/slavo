@@ -44,14 +44,16 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
       return;
     }
 
-    if (hasVoted) {
-      return;
-    }
-
     setIsUpdating(true);
 
     try {
-      const updatedLikes = [...porch.likes, userInfo.email];
+      let updatedLikes = [...porch.likes];
+
+    if (hasVoted) {
+        updatedLikes = updatedLikes.filter((email) => email !== userInfo.email); // Remove the user's email (unlike)
+      } else {
+        updatedLikes.push(userInfo.email); // Add the user's email (like)
+      }
 
       const { error } = await supabase
         .from("porch")
@@ -71,7 +73,7 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
         )
       );
 
-      setHasVoted(true);
+      setHasVoted(!hasVoted);
       setIsUpdating(false);
     } catch (err) {
       console.error("Unexpected error:", err);
@@ -82,12 +84,8 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
 
   const commentText = porch.text;
   const [showMore, setShowMore] = useState<boolean>(false);
-
   const displayComment = showMore ? commentText : commentText.slice(0, 90);
-
   const handleMore = () => setShowMore(true);
-
-  const likesCount = porch.likes.length || 0;
 
 	return (
 		<>
@@ -101,7 +99,8 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
         	handleVote={handleVote}
         	isUpdating={isUpdating}
         	formattedDate={formattedDate}
-          isVoteDisabled={hasVoted}
+          isVoteDisabled={false}
+          hasVoted={hasVoted}
 			extraContent={
 				<div className="py-5">
 				  <PorchComments sourceId={porch.new_id} />

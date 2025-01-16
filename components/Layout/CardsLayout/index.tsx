@@ -1,23 +1,20 @@
 import { FC,ReactNode} from 'react'; 
 import { BiLike } from 'react-icons/bi';
+import { AiFillHeart } from "react-icons/ai";
 
 interface CardLayoutProps {
-  title: string | number;
-  porch: {
-    text?: string;
-    email?: string;
-    source: string;
-    likes: string[];
-  };
+  title: string;
+  porch: any;
   displayComment: string;
   commentText: string;
-  showMore?: boolean;
-  handleMore?: () => void;
-  handleVote: (type: string) => void;
+  showMore: boolean;
+  handleMore: () => void;
+  handleVote: () => void;
   isUpdating: boolean;
-  formattedDate?: string;
-  extraContent?: ReactNode;
+  formattedDate: string;
   isVoteDisabled: boolean;
+  hasVoted: boolean;
+  extraContent: React.ReactNode;
 }
 
 export const CardLayout: FC<CardLayoutProps> = ({
@@ -32,14 +29,19 @@ export const CardLayout: FC<CardLayoutProps> = ({
   formattedDate,
   extraContent,
   isVoteDisabled,
+  hasVoted
 }) => {
+const buttonClasses = `flex items-center justify-center rounded-xl px-8 py-1 text-md font-extrabold text-white transition-all duration-300 ${
+    hasVoted ? "bg-red-600 hover:bg-red-700" : "bg-blue-700 hover:bg-blue-800"
+  }`;
+
   return (
     <div className="flex flex-col overflow-hidden transition-all duration-200 transform bg-white shadow group rounded-xl hover:shadow-lg hover:-translate-y-1 hover:bg-sky-100">
       <div className="flex-1 py-3 px-4 sm:p-6">
         <b className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-blue-500 to-blue-800">
           {title}
         </b>
-        
+
         <div className="flex flex-col mt-2 mt-4 mr-8 border-4 border-gray-200 rounded-xl bg-gray-200 break-all">
           {porch.email && (
             <a href={`mailto:${porch.email}`} title={porch.email}>
@@ -72,23 +74,27 @@ export const CardLayout: FC<CardLayoutProps> = ({
             </div>
           </div>
         </div>
+      <div className="p-2">
+        <p className="text-sm text-black">
+          <b>Likes: </b> {porch.likes.length}
+        </p>
+      <div className="flex justify-start">
+        <button
+          onClick={handleVote}
+          disabled={isUpdating}
+          className="text-4xl flex items-center justify-center transition-all duration-300 mt-1 relative left-2"
+        >
+        {isUpdating ? ("...") : hasVoted ? (<AiFillHeart className="text-red-600" />) : (<BiLike className="text-blue-500" />)}
+        </button>
+  </div>
+</div>
 
-        <div className="p-2">
-          <p className="text-sm text-black pl-1">
-            <b>Likes: </b> {porch.likes.length}
-          </p>
-          <button
-            className="flex items-center gap-4 bg-gradient-to-br from-blue-700 via-blue-600 to-blue-900 rounded-xl px-8 py-1 text-md font-extrabold text-white hover:opacity-75"
-            onClick={() => handleVote("excellent")}
-            disabled={isVoteDisabled}
-          >
-            <BiLike />
-          </button>
-          <p className="pl-2 pt-2 text-sm">{formattedDate}</p>
-        </div>
 
-        {extraContent && <div className="py-5">{extraContent}</div>}
+
       </div>
+
+      {extraContent}
     </div>
   );
 };
+
