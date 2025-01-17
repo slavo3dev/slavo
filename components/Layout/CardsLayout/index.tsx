@@ -1,5 +1,5 @@
-import { FC,ReactNode} from 'react'; 
-import { BiLike } from 'react-icons/bi';
+import { FC, ReactNode } from "react";
+import { BiLike } from "react-icons/bi";
 import { AiFillHeart } from "react-icons/ai";
 import { GiCheckMark } from "react-icons/gi";
 interface CardLayoutProps {
@@ -29,10 +29,12 @@ export const CardLayout: FC<CardLayoutProps> = ({
   formattedDate,
   extraContent,
   isVoteDisabled,
-  hasVoted
+  hasVoted,
 }) => {
-const buttonClasses = `flex items-center justify-center rounded-xl px-8 py-1 text-md font-extrabold text-white transition-all duration-300 ${
-    hasVoted ? "bg-red-600 hover:bg-red-700" : "bg-blue-700 hover:bg-blue-800"
+  const buttonClasses = `flex items-center justify-center rounded-xl px-8 py-1 text-md font-extrabold text-white transition-all duration-300 ${
+    hasVoted
+      ? "bg-red-600 hover:bg-red-700"
+      : "bg-blue-700 hover:bg-blue-800"
   }`;
 
   return (
@@ -47,18 +49,26 @@ const buttonClasses = `flex items-center justify-center rounded-xl px-8 py-1 tex
             <a href={`mailto:${porch.email}`} title={porch.email}>
               <p className="pl-2 text-sm font-medium text-gray-900">
                 <b>User Email: </b>
-                <span className="whitespace-normal hover:underline">{porch.email}</span>
+                <span className="whitespace-normal hover:underline">
+                  {porch.email}
+                </span>
               </p>
             </a>
           )}
           <a
-            href={porch.source.includes("http") ? porch.source : `//${porch.source}`}
+            href={
+              porch.source.includes("http")
+                ? porch.source
+                : `//${porch.source}`
+            }
             target="_blank"
             rel="noopener noreferrer"
             className="pl-2 text-gray-900 text-sm font-medium"
           >
             <b>Source: </b>
-            <span className="whitespace-normal hover:underline">{porch.source}</span>
+            <span className="whitespace-normal hover:underline">
+              {porch.source}
+            </span>
           </a>
         </div>
 
@@ -74,30 +84,30 @@ const buttonClasses = `flex items-center justify-center rounded-xl px-8 py-1 tex
             </div>
           </div>
         </div>
-      <div className="p-2">
-        <p className="text-sm text-black">
-          <b>Likes: </b> {porch.likes.length}
-        </p>
-      <div className="flex justify-start">
-        <button
-          onClick={handleVote}
-          disabled={isUpdating}
-          className="text-4xl flex items-center justify-center transition-all duration-300 mt-1"
-        >
-          <div className="flex items-center justify-center w-10 h-10"
-          >
-            {isUpdating ? (<span className="text-sm font-semibold"></span>) : hasVoted ? (<AiFillHeart className="text-red-400 w-5 h-5 transform scale-125 hover:scale-150 hover:rotate-12 transition-transform duration-300" />) : (<GiCheckMark className="text-blue-500 w-5 h-5 transform scale-125 hover:scale-150 hover:rotate-12 transition-transform duration-300" />)}
+        <div className="p-2">
+          <p className="text-sm text-black">
+            <b>Likes: </b> {porch.likes.length}
+          </p>
+          <div className="flex justify-start">
+            <button
+              onClick={handleVote}
+              disabled={isUpdating}
+              className="text-4xl flex items-center justify-center transition-all duration-300 mt-1"
+            >
+              <div className="flex items-center justify-center w-10 h-10">
+                {isUpdating ? (
+                  <span className="text-sm font-semibold"></span>
+                ) : hasVoted ? (
+                  <AiFillHeart className="text-red-400 w-5 h-5 transform scale-125 hover:scale-150 hover:rotate-12 transition-transform duration-300" />
+                ) : (
+                  <GiCheckMark className="text-blue-500 w-5 h-5 transform scale-125 hover:scale-150 hover:rotate-12 transition-transform duration-300" />
+                )}
+              </div>
+            </button>
           </div>
-        </button>
-  </div>
-</div>
-
-
-
+        </div>
       </div>
-
       {extraContent}
     </div>
   );
 };
-
