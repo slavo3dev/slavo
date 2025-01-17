@@ -13,7 +13,6 @@ const toolbarOptions = [
   [{ color: [] }, { background: [] }],
 ];
 
-
 interface CommentsPopupProps {
   comment: string;
   onClose: () => void;

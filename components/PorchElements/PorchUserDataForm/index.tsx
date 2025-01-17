@@ -1,205 +1,255 @@
-import { useState, useEffect, useContext} from 'react';
+import { useState, useEffect, useContext,useMemo } from 'react';
 import WeeklyGoalForm from '../PorchWeeklyGoalForm';
 import UserInfoContext from '@/context/UserInfoContext';
 import supabase from '@/lib/supabase';
 import Calendar from './Calendar';
-import { IoIosCloseCircleOutline } from "react-icons/io";
+import { IoIosCloseCircleOutline } from 'react-icons/io';
 
-
-//!!!
-// General 
-    // need to update styles depending on screen size 
-        // phone 
-        // tablet
-        // computer
-
-
-const PorchUserDataForm= ({setShowUserForm}: any) => {
+const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boolean) => void }) => {
     const [showUpdateGoals, setShowUpdateGoals] = useState<boolean>(false);
     const [weeklyGoal, setWeeklyGoal] = useState<number>(1);
     const [currentStreak, setCurrentStreak] = useState<number>(0);
     const [longestStreak, setLongestStreak] = useState<number>(0);
     const [weeklyLearningDays, setWeeklyLearningDays] = useState<number>(0);
-    const [learningDates, setLearningDates] = useState<{date: string; count: number}[]>([]);
-    const { userInfo } = useContext(UserInfoContext)
+    const [learningDates, setLearningDates] = useState<{ date: string; count: number }[]>([]);
+    const { userInfo } = useContext(UserInfoContext);
 
-    useEffect(() => {
-        const storedGoal = localStorage.getItem('weeklyGoal');
-        if (storedGoal) {
-            setWeeklyGoal(Number(storedGoal));
-        };
-    }, []);
+      // Fetch user activity and learning data
+      const fetchUserAndLearningData = async () => {
+        if (!userInfo?.email) {
+            console.warn('No user email available');
+            return;
+        }
 
-    // grabbing the post created at time by user eamil in ascending order
-    useEffect(() => {
-        const fetchConsecutiveLearningDays = async () => {
-            if (userInfo?.email) {
-                const { data, error } = await supabase
-                    .from("porch")
-                    .select("created_at")
-                    .eq("email", userInfo.email)
-                    .order("created_at", {ascending: true});
-                
-                if (error) {
-                    console.log("Error fetching consecutive learning days", error)
-                } else {
-                    console.log(data)
-                    let currentStreak = 0;
-                    let longestStreak = 0;
-                    let lastDate: Date | null = null;
-                    
-                    // for each created at entry per user in porch what is the difference in days between the last post and the ucrrent post 
-                    data.forEach((entry: {created_at: string}) => {
-                        const currentDate = new Date(entry.created_at);
+        try {
+            // Fetch user activity data
+            const { data: userActivityData, error: activityError } = await supabase
+                .from('user_activity')
+                .select('weekly_goal, longest_streak')
+                .eq('user_email', userInfo.email)
+                .single();
 
-                        if (lastDate) {
-                            let differenceInDays = (currentDate.getTime() - lastDate.getTime()) / (1000 * 3600 * 24);
-
-                            if (differenceInDays === 1) {
-                                currentStreak += 1
-
-                            } else if (differenceInDays > 1) {
-                                currentStreak = 1
-                            }
-                        } else {
-                            currentStreak = 1;
-                        }
-
-                        lastDate = currentDate;
-                        longestStreak = Math.max(longestStreak, currentStreak)
-
-                    });
-                    setCurrentStreak(currentStreak);
-                    setLongestStreak(longestStreak);
-                }
+            if (activityError) {
+                console.error('Error fetching user activity:', activityError);
+                return;
             }
-        };
-        fetchConsecutiveLearningDays();
-    }, [userInfo?.email])
 
-    // grabbing posts by created-at time by user in ascending order 
-    useEffect(() => {
-        const fetchWeeklyLearningDays = async () => {
-            if (userInfo?.email) {
-                const { data, error } = await supabase
-                    .from("porch")
-                    .select("created_at")
-                    .eq("email", userInfo.email)
-                    .order("created_at", {ascending: true});
-                
-                if (error) {
-                    console.log("Error fetching consecutive learning days", error)
-                } else {
-                    console.log(data)
-
-                    const currentWeekLearningDays = new Set<string>(); // using set only concerned with unique values
-                    const today = new Date(); 
-                    const currentDayOfWeek = today.getDay(); // 0-7 ; 0 = sunday ... 
-                    const startOfWeek = new Date(today); 
-                    startOfWeek.setDate(today.getDate() - currentDayOfWeek); // subtracting current day of week from current day to get day of start of week
-                    
-                    
-                    // for each created-at entry per user in porch what is the the total amount of entries for the current given week
-                    data.forEach((entry: {created_at: string}) => {
-                        const learningDate = new Date(entry.created_at);
-
-                        // check to see if learning date is within the current week
-                        if (learningDate >= startOfWeek && learningDate <= today) {
-                            currentWeekLearningDays.add(learningDate.toDateString());
-                        }
-
-                    });
-                    setWeeklyLearningDays(currentWeekLearningDays.size)
-                }
+            // Only set weekly_goal if userActivityData exists and has a weekly_goal value
+            if (userActivityData?.weekly_goal) {
+                setWeeklyGoal(userActivityData.weekly_goal);
             }
-        };
-        fetchWeeklyLearningDays();
+            setLongestStreak(userActivityData?.longest_streak ?? 0);
+
+            // Fetch learning data
+            const { data: learningData, error: learningError } = await supabase
+                .from('porch')
+                .select('created_at')
+                .eq('email', userInfo.email)
+                .order('created_at', { ascending: true });
+
+            if (learningError) {
+                console.error('Error fetching learning data:', learningError);
+                return;
+            }
+
+            if (learningData && learningData.length > 0) {
+                calculateStreaks(learningData);
+                calculateWeeklyLearningDays(learningData);
+                setLearningDates(
+                    learningData.map(entry => ({
+                        // Ensure consistent date format by using UTC
+                        date: new Date(entry.created_at).toISOString().split('T')[0],
+                        count: 1,
+                    }))
+                );
+            } else {
+                // Reset states if no learning data exists
+                setCurrentStreak(0);
+                setWeeklyLearningDays(0);
+                setLearningDates([]);
+            }
+        } catch (error) {
+            console.error('Unexpected error in fetchUserAndLearningData:', error);
+        }
+    };
+    
+
+    // Calculate current streak and longest streak
+    const calculateStreaks = (data: { created_at: string }[]) => {
+        if (data.length === 0) {
+            setCurrentStreak(0);
+            setLongestStreak(0);
+            return;
+        }
+
+        let currentStreak = 0;
+        let longestStreak = 0;
+        let lastDate: Date | null = null;
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        // Get unique dates and sort them
+        const uniqueDates = Array.from(new Set(data.map(entry => {
+            const date = new Date(entry.created_at);
+            date.setHours(0, 0, 0, 0);
+            return date.toISOString().split('T')[0];
+        }))).sort();
+
+        // Convert back to Date objects with explicit typing
+        const sortedUniqueDates: Date[] = uniqueDates.map(date => new Date(date));
+
+        sortedUniqueDates.forEach((currentDate: Date) => {
+            if (!lastDate) {
+                currentStreak = 1;
+                lastDate = currentDate;
+                return;
+            }
+
+            const differenceInDays = Math.floor(
+                (currentDate.getTime() - (lastDate as Date).getTime()) / (1000 * 3600 * 24)
+            );
+
+            if (differenceInDays === 1) {
+                currentStreak += 1;
+            } else if (differenceInDays > 1) {
+                currentStreak = 1;
+            }
+
+            lastDate = currentDate;
+            longestStreak = Math.max(longestStreak, currentStreak);
+        });
+
+        // Check if the streak is still active (last activity was today or yesterday)
+        if (lastDate !== null) {
+            const differenceToToday = Math.floor((today.getTime() - (lastDate as Date).getTime()) / (1000 * 3600 * 24));
+            if (differenceToToday > 1) {
+                currentStreak = 0;
+            }
+        }
+
+        setCurrentStreak(currentStreak);
+        setLongestStreak(longestStreak);
+    };
+    
+    // Calculate weekly learning days
+    const calculateWeeklyLearningDays = (data: { created_at: string }[]) => {
+        const today = new Date();
+        const currentDayOfWeek = today.getDay();
+        // Calculate days to subtract to get to Monday (0 = Sunday, 1 = Monday, etc.)
+        const daysToSubtract = currentDayOfWeek === 0 ? 6 : currentDayOfWeek - 1;
+        
+        const startOfWeek = new Date(today);
+        startOfWeek.setDate(today.getDate() - daysToSubtract);
+        startOfWeek.setHours(0, 0, 0, 0);
+
+        // Set today to end of day to include all of today's entries
+        today.setHours(23, 59, 59, 999);
+
+        const currentWeekLearningDays = new Set<string>();
+
+        data.forEach((entry: { created_at: string }) => {
+            const learningDate = new Date(entry.created_at);
+            if (learningDate >= startOfWeek && learningDate <= today) {
+                currentWeekLearningDays.add(learningDate.toDateString());
+            }
+        });
+
+        setWeeklyLearningDays(currentWeekLearningDays.size);
+    };
+
+    // Update user activity in the database
+    const updateUserActivity = async (updatedData: Partial<Record<string, any>>) => {
+        if (!userInfo?.email) {
+            console.warn('No user email provided for update.');
+            return;
+        }
+
+        try {
+            console.log('Updating with data:', updatedData); // Debug log
+
+            const dataToUpsert = {
+                user_email: userInfo.email,
+                longest_streak: updatedData.longestStreak,
+                weekly_goal: updatedData.weeklyGoal
+            };
+
+            console.log('Upserting data:', dataToUpsert); // Debug log
+
+            const { data, error } = await supabase
+                .from('user_activity')
+                .upsert(dataToUpsert, {
+                    onConflict: 'user_email',
+                    ignoreDuplicates: false
+                })
+                .select();
+
+            if (error) throw error;
+            console.log('Update response:', data); // Debug log
+        } catch (err) {
+            console.error('Error updating user activity:', err);
+            throw err;
+        }
+    };
+    
+    // Fetch data on mount or when user changes
+    useEffect(() => {
+        fetchUserAndLearningData();
     }, [userInfo?.email]);
 
-
-	useEffect(() => {
-		const fetchLearningDates = async () => {
-			if (userInfo?.email) {
-				const { data, error } = await supabase
-					.from("porch")
-					.select("created_at")
-					.eq("email", userInfo.email);
-
-				if (error) {
-					console.error("Error fetching learning days from Supabase:", error);
-				} else {
-                    const formattedDate = data.map((entry: {created_at: string}) => ({
-                        date: new Date(entry.created_at).toISOString().split('T')[0],
-                        count: 1
-                    }))
-					setLearningDates(formattedDate);
-				}
-			}
-		};
-		fetchLearningDates();
-	}, [userInfo?.email]);
-
-    // !!!
-    // State Machine
-        // where to keep state 
-        // learn about state machine 
-        // learn abotu redux / contact
-        // refactor code to make database pulls more efficient
-
-
+    // Memoize learning dates
+    const memoizedLearningDates = useMemo(() => learningDates, [learningDates]);
 
     if (showUpdateGoals) {
         return (
            <div>
-               <WeeklyGoalForm />
+               <WeeklyGoalForm setShowUserForm={setShowUserForm}/>
            </div> 
         )
     }
 
     return (
         <div className='h-fit w-fit bg-blue-100 p-2 flex flex-col rounded-md'>
-            <button className="ml-auto pr-2" onClick={() => setShowUserForm(false)}>
-                <IoIosCloseCircleOutline className='h-8 w-8'/>
+            <button className='ml-auto pr-2' onClick={() => setShowUserForm(false)}>
+                <IoIosCloseCircleOutline className='h-8 w-8' />
             </button>
             <div className='border-2 p-4 m-2 flex flex-col overflow-hidden bg-white shadow-lg group rounded-xl'>
                 <div className='flex flex-row justify-between align-baseline space-x-20'>
                     <h5 className='flex'>Weekly Learning Goals </h5>
-                    <a onClick={() => setShowUpdateGoals(true)}><p className='text-sm font-normal flex hover:underline'>Edit Goal ➡️</p></a>
+                    <a onClick={() => setShowUpdateGoals(true)}>
+                        <p className='text-sm font-normal flex hover:underline'>Edit Goal ➡️</p>
+                    </a>
                 </div>
-                <p className='font-bold text-4xl mt-4 flex justify-center'>{weeklyLearningDays} / {weeklyGoal}</p>
+                <p className='font-bold text-4xl mt-4 flex justify-center'>
+                    {weeklyLearningDays} / {weeklyGoal}
+                </p>
                 <p className='font-bold flex justify-center'>days</p>
                 <div className='flex justify-center'>
-                       { weeklyLearningDays >= weeklyGoal ? (
-                            <p className='text-sm text-center border rounded-full px-2 py-1 w-fit mt-2 bg-green-400'>
-                                Nice! 🚀
-                            </p>
-                       ) : weeklyLearningDays >= Math.floor(weeklyGoal / 2) ? (
-                            <p className='text-sm text-center border rounded-full px-2 py-1 w-fit mt-2 bg-yellow-400'>
-                                On Track
-                            </p> 
-                       ) : (
-                            <p className='text-sm text-center border rounded-full px-2 py-1 w-fit mt-2 bg-red-400'>
-                                Off Track
-                            </p>
-                       )
-                       }
-                </div>
-                { weeklyLearningDays === weeklyGoal ? (
-                          <p className='flex justify-center text-xs mt-2'>
-                            You hit your goal this week, 
-                            <span className='font-bold pl-1'> keep the momentum going!</span>
-                          </p>
+                    {weeklyLearningDays >= weeklyGoal ? (
+                        <p className='text-sm text-center border rounded-full px-2 py-1 w-fit mt-2 bg-green-400'>Nice! 🚀</p>
+                    ) : weeklyLearningDays >= Math.floor(weeklyGoal / 2) ? (
+                        <p className='text-sm text-center border rounded-full px-2 py-1 w-fit mt-2 bg-yellow-400'>On Track</p>
                     ) : (
-                        <p className='flex justify-center text-xs mt-2'>
-                            To hit your goal this week, learn
-                            <span className='font-bold pl-1'>{weeklyGoal} times!</span>
-                         </p>
-                    )
-                }
+                        <p className='text-sm text-center border rounded-full px-2 py-1 w-fit mt-2 bg-red-400'>Off Track</p>
+                    )}
+                </div>
+                {weeklyLearningDays === weeklyGoal ? (
+                    <p className='flex justify-center text-xs mt-2'>
+                        You hit your goal this week,
+                        <span className='font-bold pl-1'> keep the momentum going!</span>
+                    </p>
+                ) : (
+                    <p className='flex justify-center text-xs mt-2'>
+                        To hit your goal this week, learn
+                        <span className='font-bold pl-1'>{weeklyGoal} times!</span>
+                    </p>
+                )}
             </div>
             <div className='border-2 p-4 m-2 flex flex-col overflow-hidden bg-white shadow-lg group rounded-xl'>
-                <h5>🔥 Current Streak</h5>
-                <p className='font-bold text-2xl mt-4'>{currentStreak}<span className='font-normal text-sm uppercase pl-2 text-slate-800'>days</span></p>
+                <h5>Current Streak</h5>
+                <p className='font-bold text-2xl mt-4'>
+                    {currentStreak}
+                    <span className='font-normal text-sm uppercase pl-2 text-slate-800'>days</span>
+                </p>
                 <div className='border mt-3 mb-1'></div>
                 <div className='flex flex-row justify-between mb-2'>
                     <h4 className=''>✅ Longest Streak</h4>
@@ -208,14 +258,10 @@ const PorchUserDataForm= ({setShowUserForm}: any) => {
             </div>
             <div className='border-2 p-4 m-2 flex flex-col overflow-hidden  bg-white shadow-lg group rounded-xl'>
                 <h5 className='mb-4'>Learning Charts</h5>
-
-                {/* Need to use the learning dates array 
-                of objects to render charts here */}
-                <Calendar learningDates = {learningDates} />
+                <Calendar learningDates={memoizedLearningDates} />
             </div>
         </div>
     );
-}
+};
 
 export default PorchUserDataForm;
- 

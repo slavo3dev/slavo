@@ -4,12 +4,10 @@ import { FreeSource } from "./FreeSource";
 
 interface Fact {
   id: number;
-  like: number;
-  exelent: number;
-  false: number;
+  likes: string[];
   text: string;
   source: string;
-  category?: string;  
+  category?: string; 
 }
 interface FreeSourcesListProps {
   facts: Fact[];
