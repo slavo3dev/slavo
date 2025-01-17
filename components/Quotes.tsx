@@ -36,7 +36,7 @@ export const QuoteFetcher = () => {
 
     const interval = setInterval(() => {
       getQuote(); 
-    }, 6000); 
+    }, 900000); 
 
     return () => clearInterval(interval);
   }, []); 
