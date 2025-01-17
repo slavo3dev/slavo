@@ -1,7 +1,7 @@
 import { FC,ReactNode} from 'react'; 
 import { BiLike } from 'react-icons/bi';
 import { AiFillHeart } from "react-icons/ai";
-
+import { GiCheckMark } from "react-icons/gi";
 interface CardLayoutProps {
   title: string;
   porch: any;
@@ -82,9 +82,12 @@ const buttonClasses = `flex items-center justify-center rounded-xl px-8 py-1 tex
         <button
           onClick={handleVote}
           disabled={isUpdating}
-          className="text-4xl flex items-center justify-center transition-all duration-300 mt-1 relative left-2"
+          className="text-4xl flex items-center justify-center transition-all duration-300 mt-1"
         >
-        {isUpdating ? ("...") : hasVoted ? (<AiFillHeart className="text-red-600" />) : (<BiLike className="text-blue-500" />)}
+          <div className="flex items-center justify-center w-10 h-10"
+          >
+            {isUpdating ? (<span className="text-sm font-semibold"></span>) : hasVoted ? (<AiFillHeart className="text-red-400 w-5 h-5 transform scale-125 hover:scale-150 hover:rotate-12 transition-transform duration-300" />) : (<GiCheckMark className="text-blue-500 w-5 h-5 transform scale-125 hover:scale-150 hover:rotate-12 transition-transform duration-300" />)}
+          </div>
         </button>
   </div>
 </div>
