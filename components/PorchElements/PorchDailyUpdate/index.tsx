@@ -35,6 +35,7 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
     }
   }, [userInfo, porch.likes]);
 
+
 	const date = new Date(porch.created_at);
 	const formattedDate = `${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}-${date.getFullYear()}`;
 
@@ -101,6 +102,7 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
         	formattedDate={formattedDate}
           isVoteDisabled={false}
           hasVoted={hasVoted}
+
 			extraContent={
 				<div className="py-5">
 				  <PorchComments sourceId={porch.new_id} />
@@ -119,3 +121,4 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
 		</>
   );
 };
+

@@ -103,6 +103,7 @@ export const FreeSource: FC<FreeSourceProps> = ({ fact, setFacts }) => {
           </div>
         }
       />
+      
       {showLoginModal && (
         <>
           <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40"></div>
