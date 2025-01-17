@@ -12,7 +12,6 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
     const [longestStreak, setLongestStreak] = useState<number>(0);
     const [weeklyLearningDays, setWeeklyLearningDays] = useState<number>(0);
     const [learningDates, setLearningDates] = useState<{ date: string; count: number }[]>([]);
-    const [isUpdating, setIsUpdating] = useState(false);
     const { userInfo } = useContext(UserInfoContext);
 
       // Fetch user activity and learning data
@@ -131,30 +130,7 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
         setCurrentStreak(currentStreak);
         setLongestStreak(longestStreak);
     };
-    // Steps:
-    // First Entry (2025-01-01):
     
-    // differenceInDays = 0 (first entry).
-    // currentStreak = 1.
-    // longestStreak = 1.
-    // Second Entry (2025-01-02):
-    
-    // differenceInDays = 1 (consecutive day).
-    // currentStreak = 2.
-    // longestStreak = 2.
-    // Third Entry (2025-01-04):
-    
-    // differenceInDays = 2 (gap of more than one day).
-    // currentStreak = 1 (reset).
-    // longestStreak = 2 (unchanged).
-    // Fourth Entry (2025-01-05):
-    
-    // differenceInDays = 1 (consecutive day).
-    // currentStreak = 2.
-    // longestStreak = 2 (unchanged).
-
-
-
     // Calculate weekly learning days
     const calculateWeeklyLearningDays = (data: { created_at: string }[]) => {
         const today = new Date();
@@ -215,31 +191,6 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
         }
     };
     
-    
-
-    // Debounce updates to user activity
-    // useEffect(() => {
-    //     if (!isUpdating && userInfo?.email) {
-    //         setIsUpdating(true);
-    //         const dataToUpdate = {
-    //             longestStreak,
-    //             weeklyGoal: weeklyGoal // Ensure this is the correct value
-    //         };
-    //         console.log('Triggering update with:', dataToUpdate); // Debug log
-    //         updateUserActivity(dataToUpdate)
-    //             .then(() => {
-    //                 console.log('Update completed successfully');
-    //             })
-    //             .catch((error) => {
-    //                 console.error('Update failed:', error);
-    //             })
-    //             .finally(() => {
-    //                 setIsUpdating(false);
-    //             });
-    //     }
-    // }, [longestStreak, weeklyGoal, userInfo?.email]);
-
- 
     // Fetch data on mount or when user changes
     useEffect(() => {
         fetchUserAndLearningData();
