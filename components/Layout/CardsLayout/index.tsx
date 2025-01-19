@@ -70,6 +70,10 @@ export const CardLayout: FC<CardLayoutProps> = ({
               {porch.source}
             </span>
           </a>
+          <p className="pl-2 text-sm font-medium text-gray-900">
+            <b>Date: </b>
+            <span className="whitespace-normal">{formattedDate}</span>
+          </p>      
         </div>
 
         <div className="py-8 px-2 mt-auto border-gray-100 sm:px-1">
