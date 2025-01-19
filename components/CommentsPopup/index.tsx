@@ -18,7 +18,7 @@ interface CommentsPopupProps {
   onClose: () => void;
   onSave: (updatedComment: string) => void;
 }
- 
+
 const CommentsPopup: React.FC<CommentsPopupProps> = ({
   comment,
   onClose,
