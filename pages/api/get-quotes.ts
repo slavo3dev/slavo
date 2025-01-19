@@ -11,7 +11,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (Array.isArray(quotes) && quotes.length > 0) {
       const randomIndex = Math.floor(Math.random() * quotes.length);
       const { quote, author } = quotes[randomIndex];
-
       res.status(200).json({ quote, author });
     } else {
       res.status(400).json({ error: 'No quotes found in the response data' });
