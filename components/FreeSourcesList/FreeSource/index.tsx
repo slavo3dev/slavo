@@ -3,7 +3,6 @@ import supabase from "lib/supabase";
 import UserInfoContext from "@/context/UserInfoContext";
 import { Comments } from "@/components/Comments";
 import { CardLayout } from "@/components/Layout/CardsLayout";
-import LoginModal from "@/components/Auth/LoginPopup";
 
 interface Fact {
   id: number;
@@ -20,9 +19,9 @@ interface FreeSourceProps {
 
 export const FreeSource: FC<FreeSourceProps> = ({ fact, setFacts }) => {
   const [isUpdating, setIsUpdating] = useState(false);
-  const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
   const { userInfo } = useContext(UserInfoContext);
   const [hasVoted, setHasVoted] = useState<boolean>(false);
+
 
   useEffect(() => {
     if (userInfo?.email) {
@@ -31,13 +30,8 @@ export const FreeSource: FC<FreeSourceProps> = ({ fact, setFacts }) => {
     }
   }, [userInfo, fact.likes]);
 
-  const toggleLoginModal = () => setShowLoginModal((prev) => !prev);
-
   const handleVote = async () => {
-    if (!userInfo?.email) {
-      toggleLoginModal();
-      return;
-    }
+    if (!userInfo?.email) return; 
 
     setIsUpdating(true);
 
@@ -45,9 +39,9 @@ export const FreeSource: FC<FreeSourceProps> = ({ fact, setFacts }) => {
       let updatedLikes = [...fact.likes];
 
       if (hasVoted) {
-        updatedLikes = updatedLikes.filter((email) => email !== userInfo.email); // Unlike
+        updatedLikes = updatedLikes.filter((email) => email !== userInfo.email); 
       } else {
-        updatedLikes.push(userInfo.email); // Like
+        updatedLikes.push(userInfo.email); 
       }
 
       const { error } = await supabase
@@ -67,10 +61,10 @@ export const FreeSource: FC<FreeSourceProps> = ({ fact, setFacts }) => {
       );
 
       setHasVoted(!hasVoted);
-      setIsUpdating(false);
     } catch (err) {
       console.error("Unexpected error:", err);
       alert("An unexpected error occurred. Please try again.");
+    } finally {
       setIsUpdating(false);
     }
   };
@@ -81,36 +75,28 @@ export const FreeSource: FC<FreeSourceProps> = ({ fact, setFacts }) => {
   const handleMore = () => setShowMore(true);
 
   return (
-    <>
-      <CardLayout
-        title={fact.category || "Unknown Category"}
-        porch={{
-          source: fact.source,
-          likes: fact.likes,
-        }}
-        displayComment={displayComment}
-        commentText={fact.text}
-        showMore={showMore}
-        handleVote={handleVote}
-        isUpdating={isUpdating}
-        handleMore={() => {}}
-        formattedDate={new Date().toLocaleDateString()}
-        isVoteDisabled={false}
-        hasVoted={hasVoted}
-        extraContent={
-          <div className="py-5">
-            <Comments sourceId={fact.id} />
-          </div>
-        }
-      />
-      {showLoginModal && (
-        <>
-          <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40"></div>
-          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 rounded-lg max-w-xl w-full p-6">
-            <LoginModal isOpen={showLoginModal} onClose={toggleLoginModal} />
-          </div>
-        </>
-      )}
-    </>
-  );
+  <CardLayout
+    title={fact.category || "Unknown Category"}
+    porch={{
+      source: fact.source,
+      likes: fact.likes,
+    }}
+    displayComment={displayComment}
+    commentText={fact.text}
+    showMore={showMore}
+    handleVote={handleVote}
+    isUpdating={isUpdating}
+    handleMore={handleMore}
+    formattedDate={undefined}
+    isVoteDisabled={!userInfo?.email} 
+    hasVoted={hasVoted}
+    isLoggedIn={!!userInfo?.email} 
+    extraContent={
+      <div className="py-5">
+        <Comments sourceId={fact.id} />
+      </div>
+    }
+  />
+);
+
 };
