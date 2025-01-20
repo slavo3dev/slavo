@@ -40,6 +40,15 @@ const WeeklyGoalForm = ({setShowUserForm}: { setShowUserForm: (value: boolean) =
         fetchWeeklyGoal();
     }, [userInfo?.email]);
 
+    // Updated function to use Monday as start of week
+    const getRemainingDaysInWeek = (): number => {
+        const today = new Date();
+        let dayOfWeek = today.getDay(); // 0 (Sunday) to 6 (Saturday)
+        // Convert to Monday-based week (1-7, where Monday is 1 and Sunday is 7)
+        dayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek;
+        return 8 - dayOfWeek; // Remaining days including today
+    };
+
     // Update weekly goal in Supabase
     const handleNewGoal = async (e: ChangeEvent<HTMLSelectElement>) => {
         const newGoal = Number(e.target.value);
@@ -111,7 +120,7 @@ const WeeklyGoalForm = ({setShowUserForm}: { setShowUserForm: (value: boolean) =
                     value={weeklyGoal}
                     onChange={handleNewGoal}
                 >
-                    {Array.from({ length: 7 }, (_, i) => (
+                    {Array.from({ length: getRemainingDaysInWeek() }, (_, i) => (
                         <option key={i + 1} value={i + 1}>
                             {i + 1}
                         </option>
