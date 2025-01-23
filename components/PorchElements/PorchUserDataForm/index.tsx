@@ -14,25 +14,21 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
     const [learningDates, setLearningDates] = useState<{ date: string; count: number }[]>([]);
     const { userInfo } = useContext(UserInfoContext);
 
-      // Fetch user activity and learning data
-      const fetchUserAndLearningData = async () => {
+    // Fetch user activity and learning data
+    const fetchUserAndLearningData = async () => {
         if (!userInfo?.email) {
             console.warn('No user email available');
             return;
         }
 
         try {
-            // Fetch user activity data
-            const { data: userActivityData, error: activityError } = await supabase
-                .from('user_activity')
-                .select('weekly_goal, longest_streak')
-                .eq('user_email', userInfo.email)
-                .single();
-
-            if (activityError) {
-                console.error('Error fetching user activity:', activityError);
-                return;
+            const response = await fetch(`/api/getUserActivity?email=${encodeURIComponent(userInfo.email)}`);
+            
+            if (!response.ok) {
+                throw new Error('Failed to fetch user activity');
             }
+
+            const { userActivityData, learningData } = await response.json();
 
             // Only set weekly_goal if userActivityData exists and has a weekly_goal value
             if (userActivityData?.weekly_goal) {
@@ -40,24 +36,11 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
             }
             setLongestStreak(userActivityData?.longest_streak ?? 0);
 
-            // Fetch learning data
-            const { data: learningData, error: learningError } = await supabase
-                .from('porch')
-                .select('created_at')
-                .eq('email', userInfo.email)
-                .order('created_at', { ascending: true });
-
-            if (learningError) {
-                console.error('Error fetching learning data:', learningError);
-                return;
-            }
-
             if (learningData && learningData.length > 0) {
                 calculateStreaks(learningData);
                 calculateWeeklyLearningDays(learningData);
                 setLearningDates(
-                    learningData.map(entry => ({
-                        // Ensure consistent date format by using UTC
+                    learningData.map((entry: { created_at: string }) => ({
                         date: new Date(entry.created_at).toISOString().split('T')[0],
                         count: 1,
                     }))
@@ -69,10 +52,9 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
                 setLearningDates([]);
             }
         } catch (error) {
-            console.error('Unexpected error in fetchUserAndLearningData:', error);
+            console.error('Error fetching user data:', error);
         }
     };
-    
 
     // Calculate current streak and longest streak
     const calculateStreaks = (data: { created_at: string }[]) => {
@@ -158,36 +140,39 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
     };
 
     // Update user activity in the database
-    const updateUserActivity = async (updatedData: Partial<Record<string, any>>) => {
+    const updateUserActivity = async () => {
         if (!userInfo?.email) {
-            console.warn('No user email provided for update.');
+            console.warn('No user email available');
             return;
         }
 
+        if (currentStreak > longestStreak) {
+            setLongestStreak(currentStreak);
+        }
+
         try {
-            console.log('Updating with data:', updatedData); // Debug log
+            const response = await fetch('/api/updateUserActivity', {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: userInfo.email,
+                    weekly_goal: weeklyGoal,
+                    longest_streak: longestStreak,
+                }),
+            });
 
-            const dataToUpsert = {
-                user_email: userInfo.email,
-                longest_streak: updatedData.longestStreak,
-                weekly_goal: updatedData.weeklyGoal
-            };
+            if (!response.ok) {
+                throw new Error('Failed to update user activity');
+            }
 
-            console.log('Upserting data:', dataToUpsert); // Debug log
-
-            const { data, error } = await supabase
-                .from('user_activity')
-                .upsert(dataToUpsert, {
-                    onConflict: 'user_email',
-                    ignoreDuplicates: false
-                })
-                .select();
-
-            if (error) throw error;
-            console.log('Update response:', data); // Debug log
-        } catch (err) {
-            console.error('Error updating user activity:', err);
-            throw err;
+            const data = await response.json();
+            
+            setShowUserForm(false);
+        } catch (error) {
+            console.error('Error updating user activity:', error);
+            
         }
     };
     

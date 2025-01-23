@@ -14,19 +14,21 @@ const WeeklyGoalForm = ({setShowUserForm}: { setShowUserForm: (value: boolean) =
         const fetchWeeklyGoal = async () => {
             if (userInfo?.email) {
               try {
-                const { data, error } = await supabase
-                    .from('user_activity')
-                    .select('weekly_goal')
-                    .eq('user_email', userInfo.email)
-                    .single();
 
-                if (error) {
-                    console.error("Error fetching weekly goal:", error);
-                    return;
+                const response = await fetch(`/api/getUserActivity?email=${encodeURIComponent(userInfo.email)}`);
+                const { userActivityData } = await response.json();
+                // const { data, error } = await supabase
+                //     .from('user_activity')
+                //     .select('weekly_goal')
+                //     .eq('user_email', userInfo.email)
+                //     .single();
+
+                if (userActivityData?.weekly_goal) {
+                    setWeeklyGoal(userActivityData.weekly_goal);
                 }
 
-                if (data?.weekly_goal) {
-                    setWeeklyGoal(data.weekly_goal);
+                if (userActivityData?.weekly_goal) {
+                    setWeeklyGoal(userActivityData.weekly_goal);
                 }
             } catch (err) {
                 console.error("Error during fetch:", err);
@@ -49,20 +51,30 @@ const WeeklyGoalForm = ({setShowUserForm}: { setShowUserForm: (value: boolean) =
 
         try {
             // First check if the user record exists
-            const { data: existingRecord } = await supabase
-                .from('user_activity')
-                .select('id')
-                .eq('user_email', userInfo.email)
-                .single();
+            const response = await fetch(`/api/getUserActivity?email=${encodeURIComponent(userInfo.email)}`);
+            const { userActivityData } = await response.json();
+            // const { data: existingRecord } = await supabase
+            //     .from('user_activity')
+            //     .select('id')
+            //     .eq('user_email', userInfo.email)
+            //     .single();
 
-            if (existingRecord) {
+            if (userActivityData) {
                 // Update existing record
-                const { error: updateError } = await supabase
-                    .from('user_activity')
-                    .update({ weekly_goal: newGoal })
-                    .eq('user_email', userInfo.email);
-
-                if (updateError) throw updateError;
+                const response = await fetch('/api/updateUserActivity', {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: userInfo.email,
+                        weekly_goal: newGoal,
+                    }),
+                }); 
+                // const { error: updateError } = await supabase
+                //     .from('user_activity')
+                //     .update({ weekly_goal: newGoal })
+                if (!response.ok) throw new Error('Failed to update weekly goal');
             } else {
                 // Create new record
                 const { error: insertError } = await supabase
