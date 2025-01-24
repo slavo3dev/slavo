@@ -71,7 +71,7 @@ export const MainNavigation: FC<NavigationProps> = ({categories}) => {
 							<Link href="/mentor">Mentor</Link>
 						</li> */}
 						<li className={router.pathname === "/blog" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
-							<BlogDropDown categories={categories} onSearch={onSearchCat}/>
+							<BlogDropDown categories={categories} onSearch={onSearchCat} selectedCategory="" setActiveCategory={() =>{}}/>
 						</li>
 						{/* <li className={router.pathname === "/videos" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/videos">Videos</Link>
