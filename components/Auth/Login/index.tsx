@@ -53,6 +53,23 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
             console.log(error);
         }
     };
+
+		const signInWithGoogle = async () => {
+			try {
+					const redirectUrl = process.env.NEXT_PUBLIC_LOCAL_HOST_URL;
+					const { error } = await supabase.auth.signInWithOAuth({
+							provider: 'google', 
+							options: {
+									redirectTo: redirectUrl, 
+							},
+					});
+					if (error) {
+							setSigninError(error.message);
+					}
+			} catch (error) {
+					console.log(error);
+			}
+	};
 	
 	return (
 		<>
@@ -160,6 +177,32 @@ export const LoginForm: FC<LoginProps>= ( { signIn, resetPassword} ) =>
                             font-pj"
 									role="button"onClick={signInWithGitHub}>
 											Login in with Github
+								</a>
+
+								<a
+									href="#"
+									title=""
+									className="
+                            flex
+                            items-center
+                            justify-center
+                            w-full
+                            px-8
+                            py-4
+                            mt-8
+                            text-base
+                            font-bold
+                            text-gray-900
+                            transition-all
+                            duration-200
+                            bg-gray-100
+                            border border-transparent
+                            rounded-xl
+                            hover:bg-gray-200
+                            focus:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200
+                            font-pj"
+									role="button"onClick={signInWithGoogle}>
+											Login in with Google
 								</a>
 							</div>
 		</>
