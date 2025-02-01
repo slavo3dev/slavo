@@ -14,14 +14,8 @@ const WeeklyGoalForm = ({setShowUserForm}: { setShowUserForm: (value: boolean) =
         const fetchWeeklyGoal = async () => {
             if (userInfo?.email) {
               try {
-
                 const response = await fetch(`/api/getUserActivity?email=${encodeURIComponent(userInfo.email)}`);
                 const { userActivityData } = await response.json();
-                // const { data, error } = await supabase
-                //     .from('user_activity')
-                //     .select('weekly_goal')
-                //     .eq('user_email', userInfo.email)
-                //     .single();
 
                 if (userActivityData?.weekly_goal) {
                     setWeeklyGoal(userActivityData.weekly_goal);
@@ -53,11 +47,6 @@ const WeeklyGoalForm = ({setShowUserForm}: { setShowUserForm: (value: boolean) =
             // First check if the user record exists
             const response = await fetch(`/api/getUserActivity?email=${encodeURIComponent(userInfo.email)}`);
             const { userActivityData } = await response.json();
-            // const { data: existingRecord } = await supabase
-            //     .from('user_activity')
-            //     .select('id')
-            //     .eq('user_email', userInfo.email)
-            //     .single();
 
             if (userActivityData) {
                 // Update existing record
@@ -71,9 +60,7 @@ const WeeklyGoalForm = ({setShowUserForm}: { setShowUserForm: (value: boolean) =
                         weekly_goal: newGoal,
                     }),
                 }); 
-                // const { error: updateError } = await supabase
-                //     .from('user_activity')
-                //     .update({ weekly_goal: newGoal })
+           
                 if (!response.ok) throw new Error('Failed to update weekly goal');
             } else {
                 // Create new record
@@ -88,8 +75,6 @@ const WeeklyGoalForm = ({setShowUserForm}: { setShowUserForm: (value: boolean) =
             }
         } catch (err) {
             console.error("Error updating weekly goal:", err);
-            // Optionally add user feedback here
-            // setError("Failed to update weekly goal");
         }
     };
 

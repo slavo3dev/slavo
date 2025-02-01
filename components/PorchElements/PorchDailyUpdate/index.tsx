@@ -1,16 +1,18 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import UserInfoContext from "@/context/UserInfoContext";
 import LoginModal from "@/components/Auth/LoginPopup";
 import { CardLayout } from "@/components/Layout/CardsLayout";
 import { PorchComments } from "@/components/porchComments";
+import supabase from "@/lib/supabase";
 
 interface PorchType {
-  id: string;
+  new_id: string;
   created_at: string;
   email: string;
   text: string;
   source: string;
   excellent: number;
+  likes: string[];
   [key: string]: any; 
 }
 
@@ -24,43 +26,66 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
 	const { userInfo } = useContext(UserInfoContext);
 	const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
 	const toggleLoginModal = () => setShowLoginModal((prev) => !prev);
+  const [hasVoted, setHasVoted] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (userInfo?.email) {
+      const userHasVoted = porch.likes.includes(userInfo.email);
+      setHasVoted(userHasVoted);
+    }
+  }, [userInfo, porch.likes]);
 
 	const date = new Date(porch.created_at);
 	const formattedDate = `${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}-${date.getFullYear()}`;
 
-	const handleVote = async (columnName: string) => {
-		if (userInfo?.email) {
-			setIsUpdating(true);
-			const response = await fetch("/api/createDailyUpdate", {
-				method: "PATCH",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({
-					id: porch.new_id,
-					vote: porch[columnName] + 1,
-				}),
-			});
+	const handleVote = async () => {
+		if (!userInfo?.email) {
+      toggleLoginModal();
+      return;
+    }
 
-			if (response.ok) {
-				const responseData = await response.json();
-				setPorchs((porchs) =>
-					porchs.map((f) => (f.new_id === porch.new_id ? responseData.newUpdate[0] : f))
-				);
-				setIsUpdating(false);
-			}
-		} else {
-			setIsUpdating(false);  
-			toggleLoginModal(); 
-		}
-	};
+    setIsUpdating(true);
 
-	const commentText = porch.text;
-	const [showMore, setShowMore] = useState<boolean>(false);
+    try {
+      let updatedLikes = [...porch.likes];
 
-	const displayComment = showMore ? commentText : commentText.slice(0, 90);
+    if (hasVoted) {
+        updatedLikes = updatedLikes.filter((email) => email !== userInfo.email); // Remove the user's email (unlike)
+      } else {
+        updatedLikes.push(userInfo.email); // Add the user's email (like)
+      }
 
-	const handleMore = () => {
-		setShowMore(true);
-	};
+      const { error } = await supabase
+        .from("porch")
+        .update({ likes: updatedLikes })
+        .eq("new_id", porch.new_id);
+
+      if (error) {
+        console.error("Error updating likes:", error);
+        alert("Failed to update likes. Please try again.");
+        setIsUpdating(false);
+        return;
+      }
+
+      setPorchs((porchs) =>
+        porchs.map((p) =>
+          p.new_id === porch.new_id ? { ...p, likes: updatedLikes } : p
+        )
+      );
+
+      setHasVoted(!hasVoted);
+      setIsUpdating(false);
+    } catch (err) {
+      console.error("Unexpected error:", err);
+      alert("An unexpected error occurred. Please try again.");
+      setIsUpdating(false);
+    }
+  };
+
+  const commentText = porch.text;
+  const [showMore, setShowMore] = useState<boolean>(false);
+  const displayComment = showMore ? commentText : commentText.slice(0, 90);
+  const handleMore = () => setShowMore(true);
 
 	return (
 		<>
@@ -74,6 +99,8 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({ porch, setPo
         	handleVote={handleVote}
         	isUpdating={isUpdating}
         	formattedDate={formattedDate}
+          isVoteDisabled={false}
+          hasVoted={hasVoted}
 			extraContent={
 				<div className="py-5">
 				  <PorchComments sourceId={porch.new_id} />
