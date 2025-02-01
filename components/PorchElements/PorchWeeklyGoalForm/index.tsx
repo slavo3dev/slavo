@@ -14,19 +14,15 @@ const WeeklyGoalForm = ({setShowUserForm}: { setShowUserForm: (value: boolean) =
         const fetchWeeklyGoal = async () => {
             if (userInfo?.email) {
               try {
-                const { data, error } = await supabase
-                    .from('user_activity')
-                    .select('weekly_goal')
-                    .eq('user_email', userInfo.email)
-                    .single();
+                const response = await fetch(`/api/getUserActivity?email=${encodeURIComponent(userInfo.email)}`);
+                const { userActivityData } = await response.json();
 
-                if (error) {
-                    console.error("Error fetching weekly goal:", error);
-                    return;
+                if (userActivityData?.weekly_goal) {
+                    setWeeklyGoal(userActivityData.weekly_goal);
                 }
 
-                if (data?.weekly_goal) {
-                    setWeeklyGoal(data.weekly_goal);
+                if (userActivityData?.weekly_goal) {
+                    setWeeklyGoal(userActivityData.weekly_goal);
                 }
             } catch (err) {
                 console.error("Error during fetch:", err);
@@ -40,6 +36,15 @@ const WeeklyGoalForm = ({setShowUserForm}: { setShowUserForm: (value: boolean) =
         fetchWeeklyGoal();
     }, [userInfo?.email]);
 
+    // Updated function to use Monday as start of week
+    const getRemainingDaysInWeek = (): number => {
+        const today = new Date();
+        let dayOfWeek = today.getDay(); // 0 (Sunday) to 6 (Saturday)
+        // Convert to Monday-based week (1-7, where Monday is 1 and Sunday is 7)
+        dayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek;
+        return 8 - dayOfWeek; // Remaining days including today
+    };
+
     // Update weekly goal in Supabase
     const handleNewGoal = async (e: ChangeEvent<HTMLSelectElement>) => {
         const newGoal = Number(e.target.value);
@@ -49,20 +54,24 @@ const WeeklyGoalForm = ({setShowUserForm}: { setShowUserForm: (value: boolean) =
 
         try {
             // First check if the user record exists
-            const { data: existingRecord } = await supabase
-                .from('user_activity')
-                .select('id')
-                .eq('user_email', userInfo.email)
-                .single();
+            const response = await fetch(`/api/getUserActivity?email=${encodeURIComponent(userInfo.email)}`);
+            const { userActivityData } = await response.json();
 
-            if (existingRecord) {
+            if (userActivityData) {
                 // Update existing record
-                const { error: updateError } = await supabase
-                    .from('user_activity')
-                    .update({ weekly_goal: newGoal })
-                    .eq('user_email', userInfo.email);
+                const response = await fetch('/api/updateUserActivity', {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: userInfo.email,
+                        weekly_goal: newGoal,
+                    }),
+                }); 
+           
+                if (!response.ok) throw new Error('Failed to update weekly goal');
 
-                if (updateError) throw updateError;
             } else {
                 // Create new record
                 const { error: insertError } = await supabase
@@ -76,8 +85,6 @@ const WeeklyGoalForm = ({setShowUserForm}: { setShowUserForm: (value: boolean) =
             }
         } catch (err) {
             console.error("Error updating weekly goal:", err);
-            // Optionally add user feedback here
-            // setError("Failed to update weekly goal");
         }
     };
 
@@ -111,7 +118,8 @@ const WeeklyGoalForm = ({setShowUserForm}: { setShowUserForm: (value: boolean) =
                     value={weeklyGoal}
                     onChange={handleNewGoal}
                 >
-                    {Array.from({ length: 7 }, (_, i) => (
+                    {Array.from({ length: getRemainingDaysInWeek() }, (_, i) => (
+
                         <option key={i + 1} value={i + 1}>
                             {i + 1}
                         </option>
