@@ -118,46 +118,25 @@ const Calendar: FC<CalendarProps> = ({ learningDates }) => {
     const currentMonth = today.getMonth();
     const currentYear = today.getFullYear();
     const currentDay = today.getDate();
-    
-    // Get the current day of week (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
-    const currentDayOfWeek = today.getDay();
-    
-    // Adjust to get Monday as start of week (0 = Monday, ..., 6 = Sunday)
-    const mondayAdjustedDay = currentDayOfWeek === 0 ? 6 : currentDayOfWeek - 1;
-    
-    // Calculate the date of Monday for the current week
-    const mondayDate = currentDay - mondayAdjustedDay;
-    
+
+
     return calendarDates.map((week, weekIndex) => (
         <tr key={weekIndex}>
             {week.map((day, dayIndex) => {
-                const isToday = day === currentDay && selectedMonth === currentMonth && selectedYear === currentYear;
-                
-                // Check if the day is in current week (Monday to Sunday)
-                const isCurrentWeek = day !== 0 && 
-                    selectedMonth === currentMonth && 
-                    selectedYear === currentYear &&
-                    day >= mondayDate && 
-                    day < mondayDate + 7;
 
-                const learningDate = learningDates.find((ld) => 
-                    Number(ld.date.split("-")[2]) === day && 
-                    Number(ld.date.split("-")[1]) === selectedMonth + 1 && 
-                    Number(ld.date.split("-")[0]) === selectedYear
-                );
+                const isToday = day === currentDay && selectedMonth === currentMonth && selectedYear === currentYear;
+
+                const learningDate = learningDates.find((ld) => Number(ld.date.split("-")[2]) === day && Number(ld.date.split("-")[1]) === selectedMonth + 1 && Number(ld.date.split("-")[0]) === selectedYear)
                 
                 const className = day === 0
-                    ? 'empty'
-                    : isToday
-                    ? 'text-center bg-blue-100 pl-2 pr-2 rounded-full'
-                    : learningDate
-                    ? learningDate.count === 1
-                        ? 'text-center bg-green-300 pl-2 pr-2 rounded-full'
-                        : 'text-center bg-white'
-                    : isCurrentWeek
-                    ? 'text-center bg-red-100'
-                    : 'text-center bg-white';
-
+                ? 'empty'
+                : isToday
+                ? 'text-center bg-blue-100 pl-2 pr-2 rounded-full'
+                : learningDate
+                ? learningDate.count === 1
+                    ? 'text-center bg-green-300 pl-2 pr-2 rounded-full'
+                    : 'text-center bg-white'
+                : 'text-center bg-white'
                 return (
                     <td key={dayIndex} className={className}>
                         {day !== 0 ? day : ''}
