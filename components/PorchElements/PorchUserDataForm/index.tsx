@@ -14,8 +14,10 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
     const [learningDates, setLearningDates] = useState<{ date: string; count: number }[]>([]);
     const { userInfo } = useContext(UserInfoContext);
 
+
     // Fetch user activity and learning data
     const fetchUserAndLearningData = async () => {
+
         if (!userInfo?.email) {
             console.warn('No user email available');
             return;
@@ -180,6 +182,7 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
     useEffect(() => {
         fetchUserAndLearningData();
     }, [userInfo?.email]);
+
 
     // Memoize learning dates
     const memoizedLearningDates = useMemo(() => learningDates, [learningDates]);
