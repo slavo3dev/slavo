@@ -15,20 +15,39 @@ export const BlogPosts: FC<PostsList> = ({ posts }) => {
     setCategory("ALL"); 
   };
 
-const filtredPost = posts.filter((post) => {
-  const categoryMatch =
-    category.toLocaleLowerCase() === "all" ||
-    post.category.toLocaleLowerCase() === category.toLocaleLowerCase();
-  const searchMatch = 
-    post.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || 
-    post.category.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()); 
-  return categoryMatch && searchMatch;
-});
-
-
   const handleSearchFocus = () => {
     setCategory("ALL");
   };
+
+  const countOccurrences = (text: string, term: string) => {
+    if (!term) return 0;
+    const regex = new RegExp(term, "gi");
+    const matches = text.match(regex);
+    return matches ? matches.length : 0;
+  };
+
+  const filteredPosts = posts.filter((post) => {
+    const categoryMatch =
+      category.toLocaleLowerCase() === "all" ||
+      post.category.toLocaleLowerCase() === category.toLocaleLowerCase();
+    const searchMatch =
+      post.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) ||
+      post.category.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) ||
+      post.content.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
+    return categoryMatch && searchMatch;
+  });
+
+  const sortedPosts = filteredPosts.sort((a, b) => {
+    const aOccurrences =
+      countOccurrences(a.title, searchTerm) +
+      countOccurrences(a.category, searchTerm) +
+      countOccurrences(a.content, searchTerm);
+    const bOccurrences =
+      countOccurrences(b.title, searchTerm) +
+      countOccurrences(b.category, searchTerm) +
+      countOccurrences(b.content, searchTerm);
+    return bOccurrences - aOccurrences; 
+  });
 
   return (
     <section className="py-12 bg-gray-50 sm:py-16 lg:py-20">
@@ -41,7 +60,7 @@ const filtredPost = posts.filter((post) => {
               value={searchTerm}
               onChange={handleSearchChange}
               onFocus={handleSearchFocus} 
-              placeholder="Search by category..."
+              placeholder="Search by title,category or text..."
               className="search-input w-full lg:w-auto px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
             />
           </div>
@@ -57,7 +76,7 @@ const filtredPost = posts.filter((post) => {
           </div>
         </div>
         {posts ? (
-          <PostsGrid posts={filtredPost} />
+          <PostsGrid posts={sortedPosts} />
         ) : (
           <Loader title="We are Loading Posts" />
         )}
