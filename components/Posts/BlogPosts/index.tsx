@@ -15,15 +15,16 @@ export const BlogPosts: FC<PostsList> = ({ posts }) => {
     setCategory("ALL"); 
   };
 
-  const filtredPost = posts.filter((post) => {
-    const categoryMatch =
+const filtredPost = posts.filter((post) => {
+  const categoryMatch =
     category.toLocaleLowerCase() === "all" ||
     post.category.toLocaleLowerCase() === category.toLocaleLowerCase();
-    const searchMatch = post.category
-      .toLocaleLowerCase()
-      .includes(searchTerm.toLocaleLowerCase());
-    return categoryMatch && searchMatch;
-  });
+  const searchMatch = 
+    post.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || 
+    post.category.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()); 
+  return categoryMatch && searchMatch;
+});
+
 
   const handleSearchFocus = () => {
     setCategory("ALL");
