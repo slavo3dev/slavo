@@ -16,7 +16,7 @@ export const CategoryTags: FC<CategoryTagsProps> = ({ categories, handleCategory
                         key={categoryName}
                         onClick={() => handleCategoryClick(categoryName)}
                         className={`text-xs font-semibold text-indigo-600 border border-indigo-300 rounded-full inline-flex items-center px-2.5 py-1 hover:text-red-600 ${
-                            isActive(categoryName) ? "bg-blue-500 text-white" : "bg-indigo-50"
+                            isActive(categoryName) ? "bg-blue-500 text-white" : "bg-indigo-50 text-indigo-600"
                         }`}
                     >
                         {categoryName === "all" ? "ALL" : categoryName}
