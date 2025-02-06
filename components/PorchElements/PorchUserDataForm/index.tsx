@@ -16,6 +16,7 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
 
     // Fetch user activity and learning data
     const fetchUserAndLearningData = async () => {
+
         if (!userInfo?.email) {
             console.warn('No user email available');
             return;
@@ -168,7 +169,7 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
             }
 
             const data = await response.json();
-            
+
             setShowUserForm(false);
         } catch (error) {
             console.error('Error updating user activity:', error);
