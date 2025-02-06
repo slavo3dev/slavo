@@ -169,6 +169,7 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
             }
 
             const data = await response.json();
+
             setShowUserForm(false);
         } catch (error) {
             console.error('Error updating user activity:', error);

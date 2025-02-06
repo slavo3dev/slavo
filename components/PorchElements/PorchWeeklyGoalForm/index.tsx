@@ -72,6 +72,7 @@ const WeeklyGoalForm = ({setShowUserForm}: { setShowUserForm: (value: boolean) =
            
                 if (!response.ok) throw new Error('Failed to update weekly goal');
 
+
             } else {
                 // Create new record
                 const { error: insertError } = await supabase
