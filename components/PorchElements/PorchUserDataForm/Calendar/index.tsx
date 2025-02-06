@@ -112,29 +112,39 @@ const Calendar: FC<CalendarProps> = ({ learningDates }) => {
    }, [selectedMonth, selectedYear]);
 
     // render the actual calendar in html 
+    
    const renderCalendar = () => {
+    const today = new Date();
+    const currentMonth = today.getMonth();
+    const currentYear = today.getFullYear();
+    const currentDay = today.getDate();
+
+
     return calendarDates.map((week, weekIndex) => (
-        <tr key={weekIndex} >
+        <tr key={weekIndex}>
             {week.map((day, dayIndex) => {
+
+                const isToday = day === currentDay && selectedMonth === currentMonth && selectedYear === currentYear;
 
                 const learningDate = learningDates.find((ld) => Number(ld.date.split("-")[2]) === day && Number(ld.date.split("-")[1]) === selectedMonth + 1 && Number(ld.date.split("-")[0]) === selectedYear)
                 
                 const className = day === 0
                 ? 'empty'
+                : isToday
+                ? 'text-center bg-blue-100 pl-2 pr-2 rounded-full'
                 : learningDate
                 ? learningDate.count === 1
                     ? 'text-center bg-green-300 pl-2 pr-2 rounded-full'
                     : 'text-center bg-white'
                 : 'text-center bg-white'
                 return (
-
                     <td key={dayIndex} className={className}>
                         {day !== 0 ? day : ''}
                     </td>
-                )
-   })}
+                );
+            })}
         </tr>
-    ))
+    ));
    }; 
 
     return (
@@ -178,7 +188,7 @@ const Calendar: FC<CalendarProps> = ({ learningDates }) => {
                 <tbody>
                        {renderCalendar()}
                 </tbody>
-            </table> 
+            </table>
         </div>
     );
 }

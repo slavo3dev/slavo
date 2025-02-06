@@ -22,7 +22,6 @@ export const FreeSource: FC<FreeSourceProps> = ({ fact, setFacts }) => {
   const { userInfo } = useContext(UserInfoContext);
   const [hasVoted, setHasVoted] = useState<boolean>(false);
 
-
   useEffect(() => {
     if (userInfo?.email) {
       const userHasVoted = fact.likes.includes(userInfo.email);
@@ -98,5 +97,4 @@ export const FreeSource: FC<FreeSourceProps> = ({ fact, setFacts }) => {
     }
   />
 );
-
 };

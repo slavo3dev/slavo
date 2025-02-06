@@ -1,7 +1,8 @@
+
 import { FC } from "react";
 import { AiFillHeart } from "react-icons/ai";
 import { GiCheckMark } from "react-icons/gi";
-
+        
 interface CardLayoutProps {
   title: string;
   porch: any;
@@ -33,6 +34,12 @@ export const CardLayout: FC<CardLayoutProps> = ({
   hasVoted,
   isLoggedIn,
 }) => {
+  const buttonClasses = `flex items-center justify-center rounded-xl px-8 py-1 text-md font-extrabold text-white transition-all duration-300 ${
+    hasVoted
+      ? "bg-red-600 hover:bg-red-700"
+      : "bg-blue-700 hover:bg-blue-800"
+  }`;
+
   return (
     <div className="flex flex-col overflow-hidden transition-all duration-200 transform bg-white shadow group rounded-xl hover:shadow-lg hover:-translate-y-1 hover:bg-sky-100">
       <div className="flex-1 py-3 px-4 sm:p-6">
@@ -72,6 +79,10 @@ export const CardLayout: FC<CardLayoutProps> = ({
               {porch.source}
             </span>
           </a>
+          <p className="pl-2 text-sm font-medium text-gray-900">
+            <b>Date: </b>
+            <span className="whitespace-normal">{formattedDate}</span>
+          </p>      
         </div>
         <div className="py-8 px-2 mt-auto border-gray-100 sm:px-1">
           <div className="flex items-center justify-between">
