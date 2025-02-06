@@ -58,7 +58,6 @@ export const FreeSource: FC<FreeSourceProps> = ({ fact, setFacts }) => {
       setFacts((prevFacts) =>
         prevFacts.map((f) => (f.id === fact.id ? { ...f, likes: updatedLikes } : f))
       );
-
       setHasVoted(!hasVoted);
     } catch (err) {
       console.error("Unexpected error:", err);

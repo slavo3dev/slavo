@@ -114,6 +114,7 @@ const Calendar: FC<CalendarProps> = ({ learningDates }) => {
     // render the actual calendar in html 
     
    const renderCalendar = () => {
+
     const today = new Date();
     const currentMonth = today.getMonth();
     const currentYear = today.getFullYear();

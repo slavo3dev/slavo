@@ -1,4 +1,3 @@
-
 import { FC } from "react";
 import { AiFillHeart } from "react-icons/ai";
 import { GiCheckMark } from "react-icons/gi";

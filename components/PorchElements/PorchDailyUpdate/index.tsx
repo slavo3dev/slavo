@@ -96,6 +96,7 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({
 
   const commentText = porch.text;
   const [showMore, setShowMore] = useState<boolean>(false);
+  
   const displayComment = showMore
     ? commentText
     : commentText.slice(0, 90);
@@ -125,3 +126,4 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({
     </>
   );
 };
+
