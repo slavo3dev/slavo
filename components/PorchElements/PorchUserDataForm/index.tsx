@@ -14,7 +14,6 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
     const [learningDates, setLearningDates] = useState<{ date: string; count: number }[]>([]);
     const { userInfo } = useContext(UserInfoContext);
 
-
     // Fetch user activity and learning data
     const fetchUserAndLearningData = async () => {
 
@@ -170,7 +169,6 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
             }
 
             const data = await response.json();
-            
             setShowUserForm(false);
         } catch (error) {
             console.error('Error updating user activity:', error);
@@ -182,7 +180,6 @@ const PorchUserDataForm = ({ setShowUserForm }: { setShowUserForm: (value: boole
     useEffect(() => {
         fetchUserAndLearningData();
     }, [userInfo?.email]);
-
 
     // Memoize learning dates
     const memoizedLearningDates = useMemo(() => learningDates, [learningDates]);
