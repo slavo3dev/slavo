@@ -1,6 +1,6 @@
 ---
 title: "How JavaScript and TypeScript Are Executed: A Deep Dive for Web Developers"
-date: "2025-12-03"
+date: "2025-03-13"
 author: "Slavo"
 image: "ts-compiled.png"
 excerpt: "This article will break down the execution process of JavaScript and TypeScript in detail,..."
