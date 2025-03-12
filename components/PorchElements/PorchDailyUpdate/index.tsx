@@ -31,13 +31,16 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({
   const toggleLoginModal = () => setShowLoginModal((prev) => !prev);
   const [hasVoted, setHasVoted] = useState<boolean>(false);
   const [textUpdate, setTextUpdate] = useState<string>(porch.text);
-
+  const userEmail = userInfo?.email; // Logged-in user's email
+  
   useEffect(() => {
     if (userInfo?.email) {
       const userHasVoted = porch.likes.includes(userInfo.email);
       setHasVoted(userHasVoted);
     }
   }, [userInfo, porch.likes]);
+
+ 
 
   const date = new Date(porch.created_at);
   const formattedDate = `${(date.getMonth() + 1)
@@ -156,6 +159,7 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({
         }
         isLoggedIn={!!userInfo?.email}
         submitChange={submitChange}
+        userEmail={userEmail}
       />
     </>
   );

@@ -16,7 +16,8 @@ interface CardLayoutProps {
   hasVoted: boolean;
   extraContent: React.ReactNode;
   isLoggedIn: boolean;
-  submitChange: (porchId: string, updatedText: string) => void; 
+  submitChange: (porchId: string, updatedText: string) => void;
+  userEmail?: string | null;
 }
 
 export const CardLayout: FC<CardLayoutProps> = ({
@@ -33,7 +34,8 @@ export const CardLayout: FC<CardLayoutProps> = ({
   isVoteDisabled,
   hasVoted,
   isLoggedIn,
-  submitChange
+  submitChange,
+  userEmail,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [tempComment, setTempComment] = useState(commentText); 
@@ -42,6 +44,7 @@ export const CardLayout: FC<CardLayoutProps> = ({
       ? "bg-red-600 hover:bg-red-700"
       : "bg-blue-700 hover:bg-blue-800"
   }`;
+  const isOwner = userEmail === porch.email;
 
   const handleEditClick = () => {
     setTempComment(commentText);
@@ -115,7 +118,7 @@ export const CardLayout: FC<CardLayoutProps> = ({
                 </p>
               )}
             </div>
-            {isLoggedIn && (
+            {isLoggedIn && isOwner && (
               <div className="flex items-center space-x-2">
                 {isEditing ? (
                   <button
