@@ -18,6 +18,7 @@ interface PorchType {
 interface PorchDailyUpdateProps {
   porch: PorchType;
   setPorchs: React.Dispatch<React.SetStateAction<PorchType[]>>;
+
 }
 
 export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({
@@ -26,10 +27,10 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({
 }) => {
   const [isUpdating, setIsUpdating] = useState<boolean>(false);
   const { userInfo } = useContext(UserInfoContext);
-  const [showLoginModal, setShowLoginModal] =
-    useState<boolean>(false);
+  const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
   const toggleLoginModal = () => setShowLoginModal((prev) => !prev);
   const [hasVoted, setHasVoted] = useState<boolean>(false);
+  const [textUpdate, setTextUpdate] = useState<string>(porch.text);
 
   useEffect(() => {
     if (userInfo?.email) {
@@ -103,6 +104,37 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({
     : commentText.slice(0, 90);
   const handleMore = () => setShowMore(true);
 
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setTextUpdate(e.target.value);
+  };
+
+  const submitChange = async (porchId: string, newText: string) => {
+    setIsUpdating(true);
+  
+    try {
+      const { error } = await supabase
+        .from("porch")
+        .update({ text: newText })
+        .eq("new_id", porchId);
+  
+      if (error) {
+        console.error("Error updating porch:", error);
+        alert("Failed to update. Please try again.");
+      } else {
+        setPorchs((prevPorchs) =>
+          prevPorchs.map((p) =>
+            p.new_id === porchId ? { ...p, text: newText } : p
+          )
+        );
+      }
+    } catch (err) {
+      console.error("Unexpected error:", err);
+      alert("An unexpected error occurred.");
+    } finally {
+      setIsUpdating(false);
+    }
+  };
+  
   return (
     <>
       <CardLayout
@@ -123,6 +155,7 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({
           </div>
         }
         isLoggedIn={!!userInfo?.email}
+        submitChange={submitChange}
       />
     </>
   );
