@@ -16,7 +16,7 @@ interface CardLayoutProps {
   hasVoted: boolean;
   extraContent: React.ReactNode;
   isLoggedIn: boolean;
-  submitChange: (porchId: string, updatedText: string) => void;
+  submitChange?: (porchId: string, updatedText: string) => void;
   userEmail?: string | null;
 }
 
@@ -52,7 +52,9 @@ export const CardLayout: FC<CardLayoutProps> = ({
   };
 
   const handleUpdateClick = () => {
-    submitChange(porch.new_id, tempComment); 
+    if (submitChange) {
+      submitChange(porch.new_id, tempComment);
+    }
     setIsEditing(false); 
   };
 
