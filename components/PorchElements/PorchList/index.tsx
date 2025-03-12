@@ -15,6 +15,7 @@ export const PorchList: React.FC<PorchListProps> = ({ porchs, setPorchs }) => {
 	const [dailyUpdates, setDailyUpdates] = useState<PorchType[]>(porchs);
 	const [buttonTitle, setButtonTitle] = useState<string>("Track Your Daily Updates");
 	const [learningDays, setLearningDays] = useState<number>(0);
+	const [nodeData, setNodeData] = useState<PorchType[]>(porchs);
 
 	useEffect(() => {
 		setDailyUpdates(porchs);
@@ -55,6 +56,15 @@ export const PorchList: React.FC<PorchListProps> = ({ porchs, setPorchs }) => {
 		});
 	  };
 
+	useEffect(() => {
+		const fetchPorchNodeApi = async () => {
+			const resonse = await fetch("http://localhost:9000/api/porch")
+			const data = await resonse.json()
+			setNodeData(data)
+		}
+		fetchPorchNodeApi()
+	}, [])
+
 	return (
 		<section className="py-1 sm:py-1 lg:py-1 border-y-4">
 			<div className=" mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -76,6 +86,11 @@ export const PorchList: React.FC<PorchListProps> = ({ porchs, setPorchs }) => {
 									</button>
 								</>
 							) : null}
+						</div>
+						<div>
+							{nodeData.map((nod) => (
+								<p>{nod.text}</p>
+							))}
 						</div>
 						<div className="mt-6 space-y-3">
 						{filteringUpdatesPerUser.map((porch) => (
