@@ -9,7 +9,7 @@ category: "Self Help"
 ---
 
 - **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
-- **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/A75tvDvZ)
+- **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/rpfrPaAbFK)
 
 Finding time to sit and focus on learning can be challenging in today's fast-paced world. Between work, family, and social commitments, most people need more than dedicating hours to traditional study methods. Enter **microlearning**—a revolutionary educational approach gaining popularity and shaping how we acquire knowledge.
 
@@ -253,7 +253,7 @@ Incorporating these digital learning strategies into your microlearning approach
 - [The Road To Excellence: The Acquisition of Expert Performance in the Arts and Sciences, Sports, and Games](https://amzn.to/3OGIm3n)
 - [Outliers: The Story of Success](https://amzn.to/49evFFj)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/A75tvDvZ)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/rpfrPaAbFK)
 
 **_Welcome to our mentorship program explicitly designed to help you overcome Imposter Syndrome._**
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
