@@ -1,4 +1,4 @@
-import { GetStaticProps, NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import { useState, useCallback, MouseEvent } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import supabase from "../lib/supabase";
@@ -138,7 +138,7 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 
 export default PorchPage;
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
 	const { data: porchs, error } = await supabase
 		.from("porch")
 		.select("*")
@@ -158,6 +158,5 @@ export const getStaticProps: GetStaticProps = async () => {
 		props: {
 			initialPorchs: porchs,
 		},
-		revalidate: 60, 
 	};
 };
