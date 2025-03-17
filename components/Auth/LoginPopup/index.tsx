@@ -40,6 +40,7 @@ export const LoginModal: FC<LoginModalProps> = ({ isOpen, onClose, className }) 
             ) : (
                 <ResetPassword
                     resetPassword={() => toggleState(setIsResetPassword)}
+                    onClose={onClose}
                 />
             )}
         </Modal>
