@@ -5,6 +5,7 @@ import UserInfoContext from "@/context/UserInfoContext";
 import { CreateAccount } from "@/components/Auth/CreateAccount";
 import { ResetPassword } from "@/components/Auth/ResetPassword";
 import { LoginForm } from "@/components/Auth/Login";
+import { on } from "events";
 
 const Test: NextPage = () =>
 {
@@ -39,7 +40,8 @@ const Test: NextPage = () =>
 					)
 				) : (
 					<ResetPassword 
-						resetPassword={() => toggleState(setIsResetPassword)} 
+						resetPassword={() => toggleState(setIsResetPassword)}
+						onClose={() => toggleState(setIsResetPassword)} // added this line to fix the error with modal since onClose is not defined in ResetPassword. (we are not using this page for now)
 					/>
 				)}
 			</>
