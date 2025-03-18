@@ -15,6 +15,7 @@ export const useCategoryHook = (categories: string[], selectedCategoryKey: strin
 
     const handleCategoryClick = (category: string) => {
         setActiveCategory(category);
+        setActiveCategory(category);
         localStorage.setItem(selectedCategoryKey, category);
     };
 

@@ -1,5 +1,5 @@
 import { useCategoryHook } from "@/lib/hooks/useCategoryHook";
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { CategoryTags } from "@/lib/helpers/categoryTags";
 
 export interface CatProps {
@@ -10,14 +10,8 @@ export interface CatProps {
 }
 
 
-export const BlogMenuCat: FC<CatProps> = ({ categories, onSearch,selectedCategory, setActiveCategory  }) => {
+export const BlogMenuCat: FC<CatProps> = ({ categories, onSearch, selectedCategory, setActiveCategory  }) => {
     const { activeCategory, handleCategoryClick, isActive } = useCategoryHook(categories, "selectedCategory");
-
-    useEffect(() => {
-        if (selectedCategory === "ALL") {
-            handleCategoryClick("ALL");;
-        }
-    }, [selectedCategory, handleCategoryClick]);
 
     return (
         <CategoryTags

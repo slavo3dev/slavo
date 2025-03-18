@@ -4,11 +4,18 @@ import { PostsGrid } from "./PostsGrid";
 import { PostsList } from "Types/PostsList";
 import { Loader } from "@/components/ui/Loader";
 import { BlogMenuCat } from "../BlogMenuCat";
-import { getCategories } from "lib/helpers";
+import { useRouter } from "next/router";
+import { getCategories } from "@/lib/helpers";
 
 export const BlogPosts: FC<PostsList> = ({ posts }) => {
   const [category, setCategory] = useState("ALL");
   const [searchTerm, setSearchTerm] = useState("");
+
+  const router = useRouter(); 
+  const { category: currentCategory } = router.query;
+
+  const isCategoryPage = currentCategory && currentCategory !== "ALL";
+
 
    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -64,16 +71,18 @@ export const BlogPosts: FC<PostsList> = ({ posts }) => {
               className="search-input w-full lg:w-auto px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
             />
           </div>
-          <div className="max-w-md mx-auto lg:flex lg:items-center lg:justify-between lg:max-w-none">
-            <BlogMenuCat
-              categories={getCategories(posts)}
-              onSearch={(cat?: string) => {
-                setCategory(cat || "ALL");
-              }}
-              selectedCategory={category} 
-              setActiveCategory={() => setCategory("ALL")} 
-            />
-          </div>
+         {!isCategoryPage && (
+            <div className="max-w-md mx-auto lg:flex lg:items-center lg:justify-between lg:max-w-none">
+              <BlogMenuCat
+                categories={getCategories(posts)}
+                onSearch={(cat?: string) => {
+                  setCategory(cat || "ALL");
+                }}
+                selectedCategory={category}
+                setActiveCategory={() => setCategory("ALL")}
+              />
+            </div>
+          )}
         </div>
         {posts ? (
           <PostsGrid posts={sortedPosts} />
