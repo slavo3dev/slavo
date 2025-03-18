@@ -3,16 +3,25 @@ import { useState, useEffect, FC } from "react";
 import { saveContactData } from "lib/savecontactdata";
 import { notificationStatus } from "lib/notificationStatus";
 import { Notification } from "../Notification";
+import { validateEmail } from "@/lib/helpers/validateEmail";
+import { NotificationTest } from "./notificationTest";
 
 export const ContactForm: FC= () => {
-	const [payload, setPayload] = useState({
-		email: "",
-		subject: "No Subject",
-		message: "No Message",
-		department: "",
-		name: "No Name",
-		terms: "none"
-	});
+	const initialPayload = {
+  email: "",
+  subject: "",
+  message: "",
+  department: "",
+  name: "",
+  terms: ""
+};
+
+const [payload, setPayload] = useState(initialPayload);
+
+const resetForm = () => {
+  setPayload(initialPayload); 
+}
+
 	const [reqStatus, setReqStatus] = useState<any>();
 	// const [reqError, setReqError] = useState<any>();
 
@@ -36,6 +45,7 @@ export const ContactForm: FC= () => {
 
 		if (res.data.message === "Succesfuly Stored") {
 			setReqStatus("success");
+      resetForm();
 		} else {
 			setReqStatus("error");
 			// setReqError(null);
@@ -48,12 +58,6 @@ export const ContactForm: FC= () => {
         message: string 
     } = notificationStatus( reqStatus );
 
-	const isValidEmail = (email: string) => {
-		// eslint-disable-next-line no-useless-escape
-		const emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
-		return emailReg.test(email);
-	};
-    
 
 	return (
 		<>
@@ -61,7 +65,7 @@ export const ContactForm: FC= () => {
 				className="mb-4 text-sm wow animate__animated animate__fadeIn animated"
 				data-wow-delay=".1s"
 			>
-				<span className="mr-4 font-semibold">Departament:</span>
+				<span className="mr-4 font-semibold">Department:</span>
 				<label className="mr-4">
 					<input
 						className="mr-1"
@@ -103,6 +107,7 @@ export const ContactForm: FC= () => {
 							className="w-full p-4 text-xs font-semibold leading-none bg-blueGray-50 rounded outline-none"
 							type="text"
 							placeholder="Subject"
+              value={payload.subject}
 							onChange={(e) =>
 								setPayload((prevState: any) => ({
 									...prevState,
@@ -116,6 +121,7 @@ export const ContactForm: FC= () => {
 							className="w-full p-4 text-xs font-semibold leading-none bg-blueGray-50 rounded outline-none"
 							type="text"
 							placeholder="Name"
+              value={payload.name}
 							onChange={(e) =>
 								setPayload((prevState: any) => ({
 									...prevState,
@@ -131,11 +137,12 @@ export const ContactForm: FC= () => {
 							placeholder="name@example.com"
 							style={{
 								border: payload.email
-									? !isValidEmail(payload?.email)
+									? !validateEmail(payload?.email)
 										? "1px solid red"
 										: "none"
 									: "none",
 							}}
+              value={payload.email}
 							onChange={(e) =>
 								setPayload((prevState: any) => ({
 									...prevState,
@@ -162,6 +169,7 @@ export const ContactForm: FC= () => {
 					<textarea
 						className="w-full h-full p-4 text-xs font-semibold leading-none resize-none bg-blueGray-50 rounded outline-none"
 						placeholder="Message..."
+            value={payload.message}
 						onChange={(e) =>
 							setPayload((prevState: any) => ({
 								...prevState,
@@ -178,10 +186,11 @@ export const ContactForm: FC= () => {
 						type="checkbox"
 						name="terms"
 						value="accept"
+            checked={payload.terms === "accept"}
 						onChange={(e) =>
 							setPayload((prevState: any) => ({
 								...prevState,
-								terms: e.target.value,
+								terms: e.target.checked ? "accept" : "",
 							}))
 						}
 					/>
@@ -193,10 +202,10 @@ export const ContactForm: FC= () => {
 					className="py-4 px-8 text-sm text-white font-semibold leading-none bg-blue-400 hover:bg-blue-500 rounded"
 					// type="submit"
 					onClick={(e) => {
-						payload?.terms === "accept" && isValidEmail( payload.email ) && payload?.department
+						payload?.terms === "accept" && validateEmail( payload.email ) && payload?.department
 							? sendPayload( e, payload )
 							: alert( `Please check: 
-                                ${ !isValidEmail( payload.email ) && "eMail is not Valid, " } 
+                                ${ !validateEmail( payload.email ) && "eMail is not Valid, " } 
                                 ${ payload.terms !== "accept" ? "You need to Accept Terms, ": "" }
                                 ${!payload.department ? "Please Choose Deparment" : "" }`
 								, );
