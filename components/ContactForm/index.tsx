@@ -36,6 +36,14 @@ export const ContactForm: FC= () => {
 
 		if (res.data.message === "Succesfuly Stored") {
 			setReqStatus("success");
+			setPayload({
+				email: "",
+				subject: "No Subject",
+				message: "No Message",
+				department: "",
+				name: "No Name",
+				terms: "none"
+			});
 		} else {
 			setReqStatus("error");
 			// setReqError(null);
@@ -68,6 +76,7 @@ export const ContactForm: FC= () => {
 						type="radio"
 						name="department"
 						value="Consulting"
+						checked={payload.department === "Consulting"} 
 						onChange={(e) =>
 							setPayload((prevState: any) => ({
 								...prevState,
@@ -83,6 +92,7 @@ export const ContactForm: FC= () => {
 						type="radio"
 						name="department"
 						value="Support"
+						checked={payload.department === "Support"}
 						onChange={(e) =>
 							setPayload((prevState: any) => ({
 								...prevState,
@@ -103,6 +113,7 @@ export const ContactForm: FC= () => {
 							className="w-full p-4 text-xs font-semibold leading-none bg-blueGray-50 rounded outline-none"
 							type="text"
 							placeholder="Subject"
+							value={payload.subject}
 							onChange={(e) =>
 								setPayload((prevState: any) => ({
 									...prevState,
@@ -116,6 +127,7 @@ export const ContactForm: FC= () => {
 							className="w-full p-4 text-xs font-semibold leading-none bg-blueGray-50 rounded outline-none"
 							type="text"
 							placeholder="Name"
+							value={payload.name}
 							onChange={(e) =>
 								setPayload((prevState: any) => ({
 									...prevState,
@@ -129,6 +141,7 @@ export const ContactForm: FC= () => {
 							className="w-full p-4 text-xs font-semibold leading-none bg-blueGray-50 rounded outline-none"
 							type="email"
 							placeholder="name@example.com"
+							value={payload.email}
 							style={{
 								border: payload.email
 									? !isValidEmail(payload?.email)
@@ -162,6 +175,7 @@ export const ContactForm: FC= () => {
 					<textarea
 						className="w-full h-full p-4 text-xs font-semibold leading-none resize-none bg-blueGray-50 rounded outline-none"
 						placeholder="Message..."
+						value={payload.message}
 						onChange={(e) =>
 							setPayload((prevState: any) => ({
 								...prevState,
@@ -178,6 +192,7 @@ export const ContactForm: FC= () => {
 						type="checkbox"
 						name="terms"
 						value="accept"
+						checked={payload.terms === "accept"}
 						onChange={(e) =>
 							setPayload((prevState: any) => ({
 								...prevState,
