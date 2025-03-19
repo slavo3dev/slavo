@@ -4,7 +4,7 @@ import { saveContactData } from "lib/savecontactdata";
 import { notificationStatus } from "lib/notificationStatus";
 import { Notification } from "../Notification";
 import { validateEmail } from "@/lib/helpers/validateEmail";
-import { NotificationTest } from "./notificationTest";
+import { NotificationTest } from "./notificationTest";  // for testing purposes 
 
 export const ContactForm: FC= () => {
 	const initialPayload = {
@@ -62,7 +62,7 @@ const resetForm = () => {
 	return (
 		<>
 			<div
-				className="mb-4 text-sm wow animate__animated animate__fadeIn animated"
+				className="mb-4 text-sm wow animate__animated animate__fadeIn animated max-xs:flex flex-col items-start gap-2"
 				data-wow-delay=".1s"
 			>
 				<span className="mr-4 font-semibold">Department:</span>
@@ -179,10 +179,10 @@ const resetForm = () => {
 					></textarea>
 				</div>
 			</div>
-			<div className="flex justify-between items-center">
-				<label>
+			<div className="flex justify-between items-center max-sm:flex-col gap-3">
+				<label className="flex items-center gap-1">
 					<input
-						className="mr-1"
+						className="w-5 h-5 shrink-0 accent-blue-500"
 						type="checkbox"
 						name="terms"
 						value="accept"
@@ -194,8 +194,8 @@ const resetForm = () => {
 							}))
 						}
 					/>
-					<span className="text-sm font-semibold">
-            I agree to terms and conditions.
+					<span className="text-sm sm:text-md font-semibold leading-none align-middle">
+            I agree to Terms and Conditions.
 					</span>
 				</label>
 				<button

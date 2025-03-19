@@ -12,6 +12,10 @@ module.exports = {
         "8xl": "1920px",
       },
     },
+      screens: {
+        'max-sm': { 'max': '426px' }, // custom max-width for screens smaller than 375px
+        'max-xs': { 'max': '326px' },
+      },
   },
   variants: {
     opacity: ({ after }) => after(["disabled"]),
