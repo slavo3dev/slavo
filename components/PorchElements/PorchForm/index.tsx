@@ -4,6 +4,7 @@ import { isValidHttpUrl } from "lib/constants";
 import { Loader } from "@/components/ui/Loader";
 import { PorchType } from "@/Types/PorchTypes";
 import { trackEvent } from "lib/ga";
+import { HiX } from 'react-icons/hi'
 
 
 interface PorchFormProps {
@@ -77,7 +78,7 @@ export const PorchForm: React.FC<PorchFormProps> = ({ setPorchs, setShowForm }) 
 					<div className="relative bg-gray-300 rounded-lg w-full max-w-lg p-9 shadow-lg shadow-gray-100 transition-all">
 					<button onClick={() => setShowForm(false)} 
 							className="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
-							&times;
+							<HiX size={26} className="cursor-pointer hover:text-blue-500" />
 						</button>
 					<form className="flex flex-col" onSubmit={handleSubmit}>
 						<div className="flex flex-col">

@@ -6,10 +6,10 @@ const Contact: NextPage = () => {
 
 
 	return (
-		<>
+		<div className="">
 			<HeadBasePage title={"Contact Us for Expert Career Change Guidance - Slavo.io Mentorship"} description="Discover how a career change into web development can open up new opportunities. Learn web development skills, programming languages, and tools to start your journey today." />
-			<section className="py-20 h-screen" >
-				<div className="container ">
+      <section className="flex flex-col min-h-screen py-20 items-center px-4">
+				<div className="container">
 					<div className="max-w-2xl mx-auto text-center">
 						<div className="max-w-md mb-8 mx-auto">
 							<span
@@ -19,8 +19,8 @@ const Contact: NextPage = () => {
                 Contact Us
 							</span>
 							<h2
-								className="mt-2 text-4xl font-bold font-heading wow animate__animatedanimated animate__fadeIn"
-								data-wow-delay=".s"
+                className="mt-2 text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-heading"  							
+                data-wow-delay=".s"
 							>
                 We will{" "}
 								<span className="text-blue-500">be glad</span> to
@@ -31,7 +31,7 @@ const Contact: NextPage = () => {
 					</div>
 				</div>
 			</section>
-		</>
+		</div>
 	);
 };
 

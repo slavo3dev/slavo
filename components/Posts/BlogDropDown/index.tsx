@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { useRouter } from 'next/router'
-import { DropDown } from '@/components/DropDown'
+import { DropDownMenu } from '@/components/DropDown'
 import { useCategoryHook } from '@/lib/hooks/useCategoryHook'
 import { CatProps } from "../BlogMenuCat"
 
@@ -19,10 +19,10 @@ export const BlogDropDown: FC<CatProps> = ({ categories, onSearch }) => {
     };
 
     return (
-        <DropDown
+        <DropDownMenu
             label="Blog" 
             items={categories}
-            handleClick={handleItemClick}
+            onSelect={handleItemClick}
         />
     );
 };
