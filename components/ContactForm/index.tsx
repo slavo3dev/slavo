@@ -204,10 +204,10 @@ const resetForm = () => {
 					onClick={(e) => {
 						payload?.terms === "accept" && validateEmail( payload.email ) && payload?.department
 							? sendPayload( e, payload )
-							: alert( `Please check: 
-                                ${ !validateEmail( payload.email ) && "eMail is not Valid, " } 
-                                ${ payload.terms !== "accept" ? "You need to Accept Terms, ": "" }
-                                ${!payload.department ? "Please Choose Deparment" : "" }`
+							: alert( `Please check fields: 
+            ${ !validateEmail( payload.email ) && "The Email is not valid " } 
+            ${ payload.terms !== "accept" ? "You need to accept Terms ": "" }
+            ${ !payload.department ? "Please choose Deparment" : "" }`
 								, );
 					} } >
                     Submit
