@@ -62,7 +62,7 @@ const resetForm = () => {
 	return (
 		<>
 			<div
-				className="mb-4 text-sm wow animate__animated animate__fadeIn animated max-xs:flex flex-col items-start gap-2"
+				className="mb-4 text-sm wow animate__animated animate__fadeIn animated xs-max:flex flex-col items-start gap-2"
 				data-wow-delay=".1s"
 			>
 				<span className="mr-4 font-semibold">Department:</span>
@@ -179,7 +179,7 @@ const resetForm = () => {
 					></textarea>
 				</div>
 			</div>
-			<div className="flex justify-between items-center max-sm:flex-col gap-3">
+			<div className="flex justify-between items-center sm-max:flex-col gap-3">
 				<label className="flex items-center gap-1">
 					<input
 						className="w-5 h-5 shrink-0 accent-blue-500"
