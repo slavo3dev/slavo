@@ -5,7 +5,6 @@ import UserInfoContext from "@/context/UserInfoContext";
 import { CreateAccount } from "@/components/Auth/CreateAccount";
 import { ResetPassword } from "@/components/Auth/ResetPassword";
 import { LoginForm } from "@/components/Auth/Login";
-import { on } from "events";
 
 const Test: NextPage = () =>
 {
