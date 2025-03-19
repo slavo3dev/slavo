@@ -91,6 +91,7 @@ export const Footer:FC = () => {
 							</a>
 							<a  className="inline-block px-2"
 								href="https://www.linkedin.com/in/slavopopovic/"
+								target="_blank"
 							>
 								<Image src={"/images/icons/linkedin-circled-48.png"}
 									alt="slavo.io software development - Consulting "
