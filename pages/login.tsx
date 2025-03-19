@@ -39,7 +39,8 @@ const Test: NextPage = () =>
 					)
 				) : (
 					<ResetPassword 
-						resetPassword={() => toggleState(setIsResetPassword)} 
+						resetPassword={() => toggleState(setIsResetPassword)}
+						onClose={() => toggleState(setIsResetPassword)} // added this line to fix the error with modal since onClose is not defined in ResetPassword. (we are not using this page for now)
 					/>
 				)}
 			</>
