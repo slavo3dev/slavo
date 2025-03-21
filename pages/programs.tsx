@@ -5,6 +5,8 @@ import { Subscribe, ContactForm, CounterUp } from "@components";
 import Head from "next/head";
 //import Stripe from "stripe";
 import { GetStaticProps } from "next";
+import { HeadBasePage } from "@components";
+import { Breadcrumb } from "@components";
 
 
 const Programs: NextPage = ({ plans }: any ) => {
@@ -14,69 +16,28 @@ const Programs: NextPage = ({ plans }: any ) => {
 	return (
 		<>
 			<>
-				<Head>
-					<title>
-                        Software Web/Mobile Development - Consulting - Slavo_3
-					</title>
-					<meta
-						name="Learning and Building Web and Mobile Application"
-						content="Become Software Developer / Consulting for Business and Startups"
-					/>
-				</Head>
+			<HeadBasePage 
+        title="Software Web/Mobile Development - Consulting - Slavo_3"
+        description="Become Software Developer / Consulting for Business and Startups"
+        canonicalPath="/programs"
+      />
 				{/* <section className="flex flex-col bg-white justify-center items-center h-full p-8"> */}
-				<section className="flex flex-col -mt-24 pb-12 bg-white p-10 justify-center items-center pt-40 border-t-2 border-r-orange-950">
-					<div className="container">
-						<h1 className="text-2xl lg:text-5xl font-bold mb-5 wow animate__animated animate__fadeIn animated">
-                        Programs
-						</h1>
-						<ul className="flex text-gray-500 text-sm lg:text-sm pb-12 wow animate__animated animate__fadeIn animated">
-							<li className="inline-flex items-center">
-								<a
-									href="#"
-									className="hover:text-blue-500 text-gray-800"
-								>
-                  Home
-								</a>
-								<svg
-									fill="currentColor"
-									viewBox="0 0 20 20"
-									className="h-5 w-auto text-gray-300"
-								>
-									<path
-										fillRule="evenodd"
-										d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-										clipRule="evenodd"
-									></path>
-								</svg>
-							</li>
-							<li className="inline-flex items-center">
-								<a
-									href="#"
-									className="hover:text-blue-500 text-gray-800"
-								>
-                  Programs
-								</a>
-								<svg
-									fill="currentColor"
-									viewBox="0 0 20 20"
-									className="h-5 w-auto text-gray-300"
-								>
-									<path
-										fillRule="evenodd"
-										d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-										clipRule="evenodd"
-									></path>
-								</svg>
-							</li>
-							<li className="inline-flex items-center text-gray-400">
-								<span>
-                  Career Change / Become a Freelancer / Business
-                  Growth / Digtal Nomad...
-								</span>
-							</li>
-						</ul>
-					</div>
-				</section>
+			<section className="flex flex-col pt-16 pb-12 bg-white px-6 lg:px-10 justify-center items-center border-t-2 border-t-orange-950">
+        <div className="container">
+          <h1 className="text-2xl lg:text-5xl font-bold mb-5 wow animate__animated animate__fadeIn animated">
+            Programs
+          </h1>
+          
+          <Breadcrumb 
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Programs", href: "/programs" },
+              { label: "Career Change / Become a Freelancer / Business Growth / Digital Nomad..." }
+            ]}
+          />
+					
+        </div>
+      </section>
 				<section className="pt-12">
 					<div className="container py-12 mx-auto">
 						<div className="flex flex-wrap">
@@ -801,12 +762,12 @@ const Programs: NextPage = ({ plans }: any ) => {
 					</div>
 				</section>
 
-				<section className="flex flex-col bg-white justify-center items-center h-full  pb-20">
+				<section className="flex flex-col bg-blueGray-50 justify-center items-center h-full  pb-20 mt-3">
 					<div className="container">
 						<div className="max-w-2xl mx-auto text-center">
 							<div className="max-w-md mb-8 mx-auto">
 								<span
-									className="text-xs py-1 px-3 text-blue-500 font-semibold bg-blue-50 rounded-xl wow animate__animated animate__fadeInDown"
+									className="text-xs py-1 px-3 text-blue-500 font-semibold bg-blue-100 rounded-xl wow animate__animated animate__fadeInDown"
 									data-wow-delay=".9s"
 								>
                   Contact Us
