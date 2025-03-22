@@ -1,19 +1,19 @@
+
 import { FC } from "react";
 import CountUp from "react-countup";
-import VisibilitySensor from "react-visibility-sensor";
-import React from "react";
+import { useInView } from "react-intersection-observer";
 
-export const CounterUp: FC<any>= ({ count, time }) => {
-	return (
-		<>
-			{/* {/ <CountUp end={count} duration={3}/> /} */}
-			<CountUp end={count} duration={time}>
-				{({ countUpRef, start }) => (
-					<VisibilitySensor onChange={start} delayedCall>
-						<span ref={countUpRef}>count</span>
-					</VisibilitySensor>
-				)}
-			</CountUp>
-		</>
-	);
+interface CounterUpProps {
+  count: number;
+  time: number;
+}
+
+export const CounterUp: FC<CounterUpProps> = ({ count, time }) => {
+  const { ref, inView } = useInView({ triggerOnce: true });
+
+  return (
+    <span ref={ref}>
+      {inView ? <CountUp end={count} duration={time} /> : 0}
+    </span>
+  );
 };

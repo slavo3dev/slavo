@@ -1,7 +1,7 @@
 import React from "react";
 import type { NextPage } from "next";
 // import Layout from "../components/layout/Layout";
-import { Subscribe, ContactForm, CounterUp } from "@components";
+import { Subscribe, ContactForm, CounterUp, PricingSection } from "@components";
 import Head from "next/head";
 //import Stripe from "stripe";
 import { GetStaticProps } from "next";
@@ -759,7 +759,9 @@ const Programs: NextPage = ({ plans }: any ) => {
 								</div>
 							</div>
 						</div>
+						<PricingSection />
 					</div>
+					
 				</section>
 
 				<section className="flex flex-col bg-blueGray-50 justify-center items-center h-full  pb-20 mt-3">

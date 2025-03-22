@@ -14,7 +14,7 @@ import { MentorAI } from "./MentorAI";
 import { NewResourceFrom } from "./Forms";
 import { FreeSourcesList } from "./FreeSourcesList";
 import { VideoCard, VideoLine } from "./VideoElements";
-import { Breadcrumb, Growth, Solution, CounterUp } from "./Sections";
+import { Breadcrumb, Growth, Solution, CounterUp, PricingSection } from "./Sections";
 import { LinkEvents } from "./Primitives";
 import { SignUp } from "./Auth/SingUp";
 import { SignIn } from "./Auth/SignIn";
@@ -22,4 +22,5 @@ import { PorchList, PorchHeader, PorchForm } from "./PorchElements";
 import { Preloader } from "./Elements";
 
 
-export {Layout, LearningSources, FeaturedPosts, HeadBasePage, MainNavigation, BlogPosts, PostContent, PostHeader, ContactForm, Subscribe, Footer,  CategorySearch, MentorAI, NewResourceFrom, FreeSourcesList, VideoCard, VideoLine, Breadcrumb, CounterUp, Growth, Solution, Hero, LinkEvents, SignIn, SignUp, PorchList, PorchHeader, PorchForm, Preloader };
+
+export {Layout, LearningSources, FeaturedPosts, HeadBasePage, MainNavigation, BlogPosts, PostContent, PostHeader, ContactForm, Subscribe, Footer,  CategorySearch, MentorAI, NewResourceFrom, FreeSourcesList, VideoCard, VideoLine, Breadcrumb, CounterUp, Growth, Solution, Hero, LinkEvents, SignIn, SignUp, PorchList, PorchHeader, PorchForm, Preloader, PricingSection };
