@@ -1,10 +1,12 @@
 import axios from "axios";
 
-interface MessageForm
-{
-    text: string;
-    email: string;
-    message: string;
+interface MessageForm {
+  email: string;
+  subject: string;
+  message: string;
+  department: string;
+  name: string;
+  terms: string;
 }
 
 
