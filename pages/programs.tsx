@@ -14,30 +14,23 @@ const Programs: NextPage = ({ plans }: any ) => {
 	console.log( "Plans: ", plans );
     
 	return (
+	          <>
 		<>
-			<>
 			<HeadBasePage 
-        title="Software Web/Mobile Development - Consulting - Slavo_3"
-        description="Become Software Developer / Consulting for Business and Startups"
-        canonicalPath="/programs"
-      />
+				title="Software Web/Mobile Development - Consulting - Slavo_3"
+				description="Become Software Developer / Consulting for Business and Startups"
+			canonicalPath="/programs"
+			/>
 				{/* <section className="flex flex-col bg-white justify-center items-center h-full p-8"> */}
-			<section className="flex flex-col pt-16 pb-12 bg-white px-6 lg:px-10 justify-center items-center border-t-2 border-t-orange-950">
-        <div className="container">
-          <h1 className="text-2xl lg:text-5xl font-bold mb-5 wow animate__animated animate__fadeIn animated">
-            Programs
-          </h1>
-          
-          <Breadcrumb 
-            items={[
-              { label: "Home", href: "/" },
-              { label: "Programs", href: "/programs" },
-              { label: "Career Change / Become a Freelancer / Business Growth / Digital Nomad..." }
-            ]}
-          />
-					
-        </div>
-      </section>
+            
+			<Breadcrumb 
+			items={[
+				{ label: "Home", href: "/" },
+				{ label: "Programs", href: "/programs" },
+				{ label: "Career Change / Become a Freelancer / Business Growth / Digital Nomad..." }
+			]}
+			/>
+	
 				<section className="pt-12">
 					<div className="container py-12 mx-auto">
 						<div className="flex flex-wrap">
