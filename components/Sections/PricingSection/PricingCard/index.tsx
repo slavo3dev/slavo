@@ -45,12 +45,12 @@ export const PricingCard: FC<PricingCardProps> = ({ id, title, price, features, 
           ))}
           </ul>
           <div>
-          <a className={`block sm:inline-block py-4 px-6 mb-4 sm:mb-0 sm:mr-3 text-xs rounded  text-center font-semibold leading-none, ${ id%2 === 0 ? "text-blue-500 bg-white border border-gray-200 hover:bg-gray-200" : "text-white bg-blue-400 hover:bg-blue-200"} `}
+          <a className={`block sm:inline-block py-4 px-6 mb-4 sm:mb-0 sm:mr-3 text-xs rounded text-center font-semibold leading-none, ${ id%2 === 0 ? "text-blue-500 bg-white border border-gray-200 hover:bg-gray-200" : "text-white bg-blue-400 hover:bg-blue-200"} `}
               href="#"
             >
               Learn More...
             </a>
-            <a className={`block sm:inline-block py-4 px-6 text-xs text-blueGray-500 hover:text-blueGray-600 text-center font-semibold leading-none rounded ${ id%2 === 0 ? "text-white bg-blue-400 hover:bg-blue-200" : "bg-white border border-gray-200 hover:bg-gray-200"}`}
+            <a className={`block sm:inline-block py-4 px-6 text-xs text-center font-semibold leading-none rounded ${ id%2 === 0 ? "text-white bg-blue-400 hover:bg-blue-200" : "text-blue-500 bg-white border border-gray-200 hover:bg-gray-200"}`}
               href="#"
             >
               Purchase
