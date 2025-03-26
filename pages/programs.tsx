@@ -1,17 +1,8 @@
-import React from "react";
 import type { NextPage } from "next";
-// import Layout from "../components/layout/Layout";
-import { PricingSection, FeaturesSection, StatisticsSection, InfoSection, ContactSection } from "@components";
-import Head from "next/head";
-//import Stripe from "stripe";
-import { GetStaticProps } from "next";
-import { HeadBasePage } from "@components";
-import { Breadcrumb } from "@components";
+import { PricingSection, FeaturesSection, StatisticsSection, InfoSection, ContactSection, Breadcrumb, HeadBasePage} from "@components";
 
-
-const Programs: NextPage = ({ plans }: any) => {
-  console.log("Plans: ", plans);
-
+const Programs: NextPage = () => {
+ 
   return (
     <>
       <HeadBasePage
