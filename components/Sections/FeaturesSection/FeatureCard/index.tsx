@@ -14,7 +14,7 @@ export const FeatureCard:FC<FeatureCardProps> = ({ id, title, description, image
               className="hover-up-5 w-full md:w-1/2 lg:w-1/3 px-3 mb-6 wow animate__animated animate__fadeIn"
               data-wow-delay={delay}
             >
-              <div className="p-12 bg-white shadow rounded">
+              <div className="p-12 bg-white shadow rounded flex flex-col h-full">
                 <div className="flex w-12 h-12 mx-auto items-center justify-center text-blue-800 font-bold font-heading bg-blue-200 rounded-full">
                   {id}
                 </div>

@@ -15,17 +15,17 @@ export const PricingCard: FC<PricingCardProps> = ({ id, title, price, features, 
   return (
     
     <div className="w-full md:w-1/2 lg:w-1/3 px-3 mb-6">
-    <div className={clsx("hover-up-5 border border-gray-200 pt-16 pb-8 px-4 text-center rounded", bgColor, textColor)}>
+    <div className={clsx("hover-up-5 border border-gray-200 pt-16 pb-8 px-4 text-center rounded flex flex-col h-full", bgColor, textColor)}>
       <img src={image} alt={title} className="h-20 mb-6 mx-auto" />
       <h3 className="mb-2 text-4xl font-bold font-heading">{title}</h3>
       <span className="text-4xl font-bold font-heading">{price}</span>
       <p className="mt-2 mb-8">per month</p>
       <div className="flex flex-col items-center mb-8">
-          <ul className="">
+          <ul className="w-full">
           {features.map((feature, index) => (
-            <li key={index} className="flex mb-3">
+            <li key={index} className="flex items-start mb-3">
               <svg
-                className="w-6 h-6 mr-2 text-green-500"
+                className="w-6 h-6 min-w-[24px] min-h-[24px] flex-shrink-0 text-green-500"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -38,23 +38,25 @@ export const PricingCard: FC<PricingCardProps> = ({ id, title, price, features, 
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                ></path>
                </svg>
-            <span>
+            <span className="ml-2 text-left">
                {feature}
             </span>
             </li>
           ))}
           </ul>
           <div>
-          <a className={`block sm:inline-block py-4 px-6 mb-4 sm:mb-0 sm:mr-3 text-xs rounded text-center font-semibold leading-none, ${ id%2 === 0 ? "text-blue-500 bg-white border border-gray-200 hover:bg-gray-200" : "text-white bg-blue-400 hover:bg-blue-200"} `}
-              href="#"
-            >
-              Learn More...
+          <div className="flex flex-col sm:flex-row w-full gap-2">
+            <a className={`flex-1 flex items-center justify-center py-2 px-6 text-xs rounded font-semibold text-center, ${ id%2 === 0 ? "text-blue-500 bg-white border border-gray-200 hover:bg-gray-200" : "text-white bg-blue-400 hover:bg-blue-200"} `}
+                href="#"
+              >
+                Learn More...
+              </a>
+              <a className={`flex-1 flex items-center justify-center py-2 px-6 text-xs rounded font-semibold text-center ${ id%2 === 0 ? "text-white bg-blue-400 hover:bg-blue-200" : "text-blue-500 bg-white border border-gray-200 hover:bg-gray-200"}`}
+                href="#"
+              >
+                Purchase
             </a>
-            <a className={`block sm:inline-block py-4 px-6 text-xs text-center font-semibold leading-none rounded ${ id%2 === 0 ? "text-white bg-blue-400 hover:bg-blue-200" : "text-blue-500 bg-white border border-gray-200 hover:bg-gray-200"}`}
-              href="#"
-            >
-              Purchase
-          </a>
+          </div>
          </div>
       </div>
     </div>

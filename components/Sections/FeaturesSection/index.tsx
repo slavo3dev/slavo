@@ -27,7 +27,7 @@ export const FeaturesSection = () => {
                   </div>
                 </div>
         
-                <div className="flex flex-wrap -mx-3 -mb-6 text-center">
+                <div className="flex flex-wrap -mx-3 -mb-6 text-center items-stretch">
                   {features.map((feature) => (
                     <FeatureCard key={feature.id} {...feature} />
                   ))}

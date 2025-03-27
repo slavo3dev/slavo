@@ -21,7 +21,7 @@ export const PricingSection = () => {
             Start Your Growth Today! Learn, Build and Grow as fast as possible!
           </p>
         </div>
-        <div className="flex flex-wrap justify-center -mx-3">
+        <div className="flex flex-wrap justify-center -mx-3 items-stretch">
           {pricingPlans.map((plan, index) => (
             <PricingCard key={index} {...plan} />
           ))}
