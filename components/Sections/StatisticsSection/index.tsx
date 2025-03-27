@@ -1,4 +1,4 @@
-import { statistics } from "./Statisctics";
+import { statistics } from "@/lib/constants/programsPageInfo/statistics";
 import { StatisticCard } from "./StatisticCard"
 
 export const StatisticsSection = () => {

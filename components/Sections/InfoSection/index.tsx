@@ -1,5 +1,5 @@
 import { InfoItem } from "./InfoItem/Index";
-import { infos } from "./Infos";
+import { infos } from "@/lib/constants/programsPageInfo";
 
 export const InfoSection = () => {
           return (

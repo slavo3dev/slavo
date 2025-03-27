@@ -1,4 +1,12 @@
-export const statistics = [
+interface Statistic {
+  icon: JSX.Element;
+  count: number;
+  suffix?: string;
+  label: string;
+  delay: string;
+}
+
+export const statistics: Statistic[] = [
   {
     icon: (
       <svg

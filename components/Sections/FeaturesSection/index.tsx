@@ -1,5 +1,5 @@
 import { FeatureCard } from "./FeatureCard";
-import { features } from "./Features";
+import { features } from "@/lib/constants/programsPageInfo";
 
 export const FeaturesSection = () => {
           return (

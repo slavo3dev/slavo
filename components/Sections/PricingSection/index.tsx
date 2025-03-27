@@ -1,5 +1,5 @@
 import { PricingCard } from "./PricingCard";
-import { pricingPlans } from "./PricingPlans";
+import { pricingPlans } from "@/lib/constants/programsPageInfo";
 
 export const PricingSection = () => {
   return (

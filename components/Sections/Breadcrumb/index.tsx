@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FC } from "react";
-import { items } from "./Items";
+import { breadcrumbItems } from "@/lib/constants/programsPageInfo";
 
 export const Breadcrumb = () => {
   return (
@@ -10,7 +10,7 @@ export const Breadcrumb = () => {
           Programs
         </h1>
         <ul className="flex text-gray-500 text-sm lg:text-sm pb-12 wow animate__animated animate__fadeIn animated">
-          {items.map((item, index) => (
+          {breadcrumbItems.map((item, index) => (
             <li key={index} className="inline-flex items-center">
               {item.href ? (
                 <Link href={item.href} className="hover:text-blue-500 text-gray-800">
@@ -19,7 +19,7 @@ export const Breadcrumb = () => {
               ) : (
                 <span className="text-gray-400">{item.label}</span>
               )}
-              {index < items.length - 1 && (
+              {index < breadcrumbItems.length - 1 && (
                 <svg
                   fill="currentColor"
                   viewBox="0 0 20 20"
