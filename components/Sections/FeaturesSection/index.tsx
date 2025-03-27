@@ -7,7 +7,7 @@ export const FeaturesSection = () => {
               className="pt-20 pb-24 bg-blueGray-50 flex flex-col justify-center items-center h-full"
               id="how-we-work"
             >
-              <div className="container">
+              <div className="container px-3">
                 <div className="flex flex-wrap items-center justify-between max-w-2xl lg:max-w-full mb-12">
                   <div className="w-full lg:w-1/2 mb-4 lg:mb-0">
                     <h2 className="text-3xl md:text-4xl font-bold font-heading wow animate__animated animate__fadeInDown">

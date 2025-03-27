@@ -7,7 +7,7 @@ export const InfoSection = () => {
             <div className="container py-12 mx-auto">
               <div className="flex flex-wrap">
                 <div
-                  className="w-full md:w-1/2 pr-12 px-3 order-0 md:order-0 mb-12 md:mb-0 wow animate__animated animate__fadeIn"
+                  className="w-full md:w-1/2 pr-12 px-3 mb-12 md:mb-0 wow animate__animated animate__fadeIn"
                   data-wow-delay=".5s"
                 >
                   <img

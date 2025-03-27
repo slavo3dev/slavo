@@ -3,7 +3,7 @@ import { ContactForm } from "@/components/ContactForm"
 export const ContactSection = () => {
   return (
     <section className="flex flex-col bg-blueGray-50 justify-center items-center h-full  pb-20 mt-3">
-					<div className="container">
+					<div className="container px-3">
 						<div className="max-w-2xl mx-auto text-center">
 							<div className="max-w-md mb-8 mx-auto">
 								<span

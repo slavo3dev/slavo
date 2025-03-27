@@ -10,18 +10,7 @@ const Programs: NextPage = () => {
         description="Become Software Developer / Consulting for Business and Startups"
         canonicalPath="/programs"
       />
-
-      <Breadcrumb
-        items={[
-          { label: "Home", href: "/" },
-          { label: "Programs", href: "/programs" },
-          {
-            label:
-              "Career Change / Become a Freelancer / Business Growth / Digital Nomad...",
-          },
-        ]}
-      />
-
+      <Breadcrumb />
       <InfoSection />
       <StatisticsSection />
       <FeaturesSection />

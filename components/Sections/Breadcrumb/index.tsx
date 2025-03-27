@@ -1,11 +1,8 @@
 import Link from "next/link";
 import { FC } from "react";
+import { items } from "./Items";
 
-interface BreadcrumbProps {
-  items: { label: string; href?: string }[];
-}
-
-export const Breadcrumb:FC<BreadcrumbProps> = ({ items }) => {
+export const Breadcrumb = () => {
   return (
     <section className="flex flex-col pt-16 pb-12 bg-white px-6 lg:px-10 justify-center items-center border-t-2 border-t-orange-950">
       <div className="container">
