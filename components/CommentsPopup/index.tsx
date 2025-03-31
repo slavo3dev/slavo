@@ -1,17 +1,56 @@
-import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
+import React, { useState, useEffect, forwardRef } from "react";
 import dynamic from "next/dynamic";
-import "react-quill/dist/quill.snow.css";
+import "quill/dist/quill.snow.css";
 
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false,  }) as unknown as React.ComponentType<any>;
+// Define the props type for ReactQuill including ref forwarding
+interface ReactQuillProps {
+  value: string;
+  onChange: (value: string) => void;
+  modules: any;
+  className?: string;
+  theme?: string;
+  formats?: string[];
+  ref?: React.Ref<any>;
+}
 
-const toolbarOptions = [
-  [{ header: [1, 2, 3, false] }],
-  [{ bold: true }, { italic: true }, { underline: true }],
-  [{ list: "ordered" }, { list: "bullet" }],
-  [{ align: [] }],
-  ["link", "blockquote", "code-block"],
-  [{ color: [] }, { background: [] }],
-];
+// Create a typed version of the component
+const ReactQuillComponent = forwardRef<typeof import("react-quill-new").default, ReactQuillProps>(
+  (props, ref) => {
+    const [Component, setComponent] = useState<React.ComponentType<ReactQuillProps> | null>(null);
+
+    useEffect(() => {
+      import("react-quill-new").then((module) => {
+        setComponent(() => (module.default as unknown) as React.ComponentType<ReactQuillProps>);
+      });
+    }, []);
+
+    if (!Component) return <p>Loading editor...</p>;
+
+    return <Component ref={ref} {...props} />;
+  }
+);
+
+// Dynamic import with proper typing
+const ReactQuill = dynamic(
+  () => Promise.resolve(ReactQuillComponent),
+  { 
+    ssr: false,
+    loading: () => <p>Loading editor...</p>
+  }
+) as React.ForwardRefExoticComponent<
+  ReactQuillProps & React.RefAttributes<typeof import("react-quill-new").default>
+>;
+
+const toolbarOptions = {
+  container: [
+    [{ header: [1, 2, 3, false] }],
+    ["bold", "italic", "underline"],
+    [{ list: "ordered" }, { list: "bullet" }],
+    [{ align: [] }],
+    ["link", "blockquote", "code-block"],
+    [{ color: [] }, { background: [] }],
+  ],
+};
 
 interface CommentsPopupProps {
   comment: string;
@@ -54,16 +93,18 @@ const CommentsPopup: React.FC<CommentsPopupProps> = ({
           Edit Your Comment
         </h2>
         <form onSubmit={handleSubmit} className="space-y-6">
-          <ReactQuill
-            value={updatedComment}
-            onChange={handleChange}
-            modules={{
-              toolbar: toolbarOptions,
-            }}
-            className="focus:ring-2 focus:ring-blue-500 text-sm h-40 rounded-lg"
-          />
-          <div className="pt-12"></div>
-          <div className="flex justify-end space-x-4 mt-12">
+          <div className="h-64">
+            <ReactQuill
+              value={updatedComment}
+              onChange={handleChange}
+              modules={{
+                toolbar: toolbarOptions,
+              }}
+              className="focus:ring-2 focus:ring-blue-500 text-sm h-full rounded-lg bg-white"
+              theme="snow"
+            />
+          </div>
+          <div className="flex justify-end space-x-4 pt-4">
             <button
               type="button"
               onClick={handleCancel}

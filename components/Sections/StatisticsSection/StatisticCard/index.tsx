@@ -2,7 +2,7 @@ import { FC } from "react";
 import { CounterUp } from "../CounterUp";
 
 interface StatiscticsCardProps {
-  icon: JSX.Element;
+  icon: React.ReactNode;
   count: number;
   label: string;
   delay: string;

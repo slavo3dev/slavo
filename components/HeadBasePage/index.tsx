@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 import { HeadProps } from "lib/types";
 import { META_DESCRIPTION } from "lib/constants";
 
+const ScriptComponent = Script as any;
+
 export const HeadBasePage: FC<HeadProps> = (props) => {
 	const router = useRouter();
 	const {
@@ -24,12 +26,15 @@ export const HeadBasePage: FC<HeadProps> = (props) => {
 					href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 				/>
         
-				<Script
+				<ScriptComponent
 					src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"
 					integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g=="
 					crossOrigin="anonymous"
+					strategy="beforeInteractive"
 				/>
-				<Script>new WOW().init();</Script>
+				<ScriptComponent strategy="afterInteractive">
+					{`new WOW().init();`}
+				</ScriptComponent>
 
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 				<meta name="description" content={description} />

@@ -1,5 +1,5 @@
 interface Statistic {
-  icon: JSX.Element;
+  icon: React.ReactNode;
   count: number;
   suffix?: string;
   label: string;
