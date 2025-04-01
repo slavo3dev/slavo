@@ -16,6 +16,18 @@ You can edit the page by modifying `pages/index.tsx`. The page auto-updates as y
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
+## Constants Naming Rules
+
+To maintain consistency in the codebase, follow these naming conventions when defining constants:
+
+### Single-line Constants (Strings, Numbers, Keys)
+
+Use uppercase letters with underscores (SCREAMING_SNAKE_CASE).
+
+### Array and Object Constants
+
+Use camelCase naming.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
