@@ -4,10 +4,11 @@ import { getVideos } from "../../../lib/videos";
 import { VideoCard } from "../..";
 import UserInfoContext from "@/context/UserInfoContext";
 
+interface VideoLineProps {
+	channelLine: string;
+}
 
-
-export const VideoLine: FC<string>  = (channelLine) => {
-
+export const VideoLine: FC<VideoLineProps> = ({ channelLine }) => {
 	const { userInfo } = useContext(UserInfoContext);
 	const isAuth = userInfo?.email;
 	const LineVideos: VideoType[] = getVideos(channelLine);
@@ -20,16 +21,14 @@ export const VideoLine: FC<string>  = (channelLine) => {
 					// eslint-disable-next-line @typescript-eslint/ban-types
 					idx: {},
 				) => (
-					<>
-						<VideoCard
-							id={idx}
-							videoURL={isAuth ? (`/video/${video.id}`): ((""))}
-							key={video.id}
-							imgUrl={video.imgUrl}
-							title={video.title}
-							name={video.channelName}
-						/>
-					</>
+					<VideoCard
+						key={video.id}
+						id={idx}
+						videoURL={isAuth ? (`/video/${video.id}`): ((""))}
+						imgUrl={video.imgUrl}
+						title={video.title}
+						name={video.channelName}
+					/>
 				),
 			)}
 		</div>

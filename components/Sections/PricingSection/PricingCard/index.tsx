@@ -1,5 +1,6 @@
 import { FC } from "react";
 import clsx from "clsx";
+import { loadStripe } from "@stripe/stripe-js";
 
 interface PricingCardProps {
   id: number;
@@ -10,8 +11,24 @@ interface PricingCardProps {
   bgColor: string;
   textColor: string;
 }
+if (!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY) {
+  throw new Error ('NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY is not defined')
+}
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 export const PricingCard: FC<PricingCardProps> = ({ id, title, price, features, image, bgColor, textColor }) => {
+  
+  const handleCheckout = async () => {
+    const stripe = await stripePromise;
+    const response = await fetch('/api/checkout-sessions/create', {
+      method: 'POST',
+    })
+    const session = await response.json()
+    await stripe?.redirectToCheckout({sessionId: session.id})
+  }
+  
+  
+  
   return (
 
     <div className="w-full md:w-1/2 lg:w-1/3 px-3 mb-6">
@@ -51,11 +68,10 @@ export const PricingCard: FC<PricingCardProps> = ({ id, title, price, features, 
               >
                 Learn More...
               </a>
-              <a className={`flex-1 flex items-center justify-center py-2 px-6 text-xs rounded font-semibold text-center ${ id%2 === 0 ? "text-white bg-blue-400 hover:bg-blue-200" : "text-blue-500 bg-white border border-gray-200 hover:bg-gray-200"}`}
-                href="#"
+              <button onClick={handleCheckout} className={`flex-1 flex items-center justify-center py-2 px-6 text-xs rounded font-semibold text-center ${ id%2 === 0 ? "text-white bg-blue-400 hover:bg-blue-200" : "text-blue-500 bg-white border border-gray-200 hover:bg-gray-200"}`}
               >
                 Purchase
-            </a>
+            </button>
           </div>
          </div>
       </div>

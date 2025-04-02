@@ -5,10 +5,6 @@ import { useContext } from "react";
 import { HeadBasePage } from "../components";
 
 const Videos: NextPage = () => {
-	const udacityVideos = VideoLine("channelOne");
-	const freeCodeCampVideos = VideoLine("channelTwo");
-	const webDevVideos = VideoLine("channelThree");
-
 	const context = useContext(VideoContext);
 
 	return (
@@ -21,7 +17,7 @@ const Videos: NextPage = () => {
 					<h1 className="text-3xl  ml-6 font-bold font-family-jakarta text-black">Udacity</h1>
 					<div className="overflow-scroll overflow-y-hidden"
 						onClick={() => context.setVideoLine("channelOne")}>
-						{udacityVideos}
+						<VideoLine channelLine="channelOne" />
 					</div>
 				</div>
 				<div>
@@ -29,14 +25,14 @@ const Videos: NextPage = () => {
 					<div
 						className="overflow-scroll overflow-y-hidden"
 						onClick={() => context.setVideoLine("channelTwo")}>
-						{freeCodeCampVideos}
+						<VideoLine channelLine="channelTwo" />
 					</div>
 				</div>
 				<div><h1 className="text-3xl  ml-6 font-bold font-family-jakarta text-black">WebDev Simplified</h1>
 					<div
 						className="overflow-scroll overflow-y-hidden"
 						onClick={() => context.setVideoLine("channelThree")}>
-						{webDevVideos}
+						<VideoLine channelLine="channelThree" />
 					</div>
 				</div>
 			</div>
