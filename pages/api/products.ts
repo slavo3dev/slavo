@@ -1,37 +1,40 @@
-// pages/api/products.js
+// pages/api/products.ts
 import Stripe from 'stripe';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 if(!process.env.STRIPE_SECRET_KEY) {
   throw new Error("STRIPE_SECRET_KEY is not defined")
 }
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {apiVersion: "2025-03-31.basil"})
 
-export default async function handler(req: NextRequest, res: NextResponse) {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  if (req.method !== 'GET') {
+    return res.status(405).json({ message: 'Method not allowed' });
+  }
+
   try {
-    // Fetch all products from Stripe
-    const products = await stripe.products.list();
+    const products = await stripe.products.list({
+      active: true,
+      expand: ['data.default_price'],
+    });
 
-    // Fetch all prices for the products
-    const prices = await stripe.prices.list();
+    const simplifiedProducts = products.data.map((product) => {
+      const price = product.default_price as Stripe.Price;
 
-    // Format the products and prices into a more useful structure
-    const productsWithPrices = products.data.map((product) => {
-      const productPrices = prices.data.filter(
-        (price) => price.product === product.id
-      );
       return {
         id: product.id,
         name: product.name,
-        description: product.description,
-        images: product.images,
-        prices: productPrices,
-      };
-    });
+        price: {
+          amount: price?.unit_amount ?? 0,
+          currency: price?.currency ?? 'usd',
+        }
+      }
+    })
 
-    res.status(200).json(productsWithPrices);
-  } catch (error) {
-    console.error('Error fetching products:', error);
-    res.status(500).json({ error: 'Failed to fetch products' });
+    res.status(200).json(simplifiedProducts);
+  } catch (error: any) {
+    console.error("Stripe Error", error)
+    res.status(500).json({ message: 'Failed to fetch products', error: error.message });
   }
 }
+ export default handler;
