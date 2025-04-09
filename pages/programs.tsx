@@ -2,6 +2,7 @@ import { NextPage } from 'next';
 import { GetStaticProps } from 'next';
 import { PricingSection } from "@components"; // Import the PricingSection
 import { pricingPlans } from '@/lib/constants/programsPageInfo'; // Import the static PricingPlans
+import { getAllProducts } from '@/lib/stripe';
 
 interface PricingPlan {
   id: number;
@@ -16,17 +17,6 @@ interface PricingPlan {
   textColor: string;
 }
 
-interface ApiProduct {
-  id: string;
-  name: string;
-  description: string;
-  images: string[];
-  default_price: {
-    unit_amount: number;
-    currency: string;
-  };
-}
-
 const Programs: NextPage<{ pricingPlans: PricingPlan[] }> = ({ pricingPlans }) => {
   return (
     <>
@@ -35,41 +25,36 @@ const Programs: NextPage<{ pricingPlans: PricingPlan[] }> = ({ pricingPlans }) =
   );
 };
 
-// Use getStaticProps to fetch data and pass it to the component
 export const getStaticProps: GetStaticProps = async () => {
-  try {
-    const response = await fetch('http://localhost:3000/api/products'); // Ensure this is the correct endpoint
-    const data: ApiProduct[] = await response.json();
+
+    const data = await getAllProducts();
 
     // Map over the static pricingPlans and merge with data from API
     const updatedPricingPlans = pricingPlans.map((plan) => {
-      const apiProduct = data.find((product) => product.id === plan.product_id.toString());
+      const apiProduct = data.find((product) => product.id === plan.product_id);
 
       // Merge API product data with static plan
       return {
           ...plan,
-          name: apiProduct?.name, // Fallback to static title if API is missing
+          name: apiProduct?.name ?? "No Name", // Fallback to static title if API is missing
           price: {
-            amount: apiProduct?.default_price.unit_amount,
-            currency: apiProduct?.default_price.currency,
+            amount: apiProduct?.price.amount ?? 0,
+            currency: apiProduct?.price.currency ?? "usd",
           },
-          image: apiProduct?.images[0], // Use the first image if available
-          features: [apiProduct?.description || plan.features.join(', ')], // You can further split description if needed
+          image: apiProduct?.images[0], 
+          features: plan.features, 
         };
     });
 
-    // Filter out any invalid plans with missing required fields
-    const validPricingPlans = updatedPricingPlans.filter((plan) => plan.name && plan.price && plan.image);
+    const sortedPricingPlans = updatedPricingPlans
+      .filter(plan => plan.price?.amount !== undefined)
+      .sort((a, b) => a.price.amount - b.price.amount);
 
     return {
-      props: { pricingPlans: validPricingPlans },
-      revalidate: 60, // Optional: Revalidate after 60 seconds
+      props: { pricingPlans: sortedPricingPlans },
+      revalidate: 6000, // Optional: Revalidate after 60 seconds
     };
-  } catch (error) {
-    console.error('Error fetching pricing data:', error);
-    // Return the static plans if the API fails
-    return { props: { pricingPlans } };
-  }
+  
 };
 
 export default Programs;

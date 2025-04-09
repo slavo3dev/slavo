@@ -2,7 +2,6 @@
 import { FC } from "react";
 import clsx from "clsx";
 import { loadStripe } from "@stripe/stripe-js";
-import { toNamespacedPath } from "path/win32";
 
 interface PricingCardProps {
   id: number;
@@ -40,12 +39,19 @@ export const PricingCard: FC<PricingCardProps> = ({
     await stripe?.redirectToCheckout({ sessionId: session.id });
   };
 
+  const formatCurrency = (amount: number, currency: string) =>
+    new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: currency.toUpperCase(),
+    }).format(amount / 100);
+
   return (
     <div className="w-full md:w-1/2 lg:w-1/3 px-3 mb-6">
       <div className={clsx("hover-up-5 border border-gray-200 pt-16 pb-8 px-4 text-center rounded flex flex-col h-full", bgColor, textColor)}>
         <img src={image} alt={name} className="h-20 mb-6 mx-auto" />
         <h3 className="mb-2 text-4xl font-bold font-heading">{name}</h3>
-        <span className="text-4xl font-bold font-heading">{`${price?.amount / 100} ${price?.currency.toUpperCase()}`}</span>
+        <span className="text-4xl font-bold font-heading">{formatCurrency(price.amount, price.currency)}
+        </span>
         <p className="mt-2 mb-8">per month</p>
         <div className="flex flex-col items-center mb-8">
           <ul className="w-full">
