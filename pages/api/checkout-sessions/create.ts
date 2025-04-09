@@ -1,4 +1,5 @@
 import Stripe from "stripe";
+import supabase from "@/lib/supabase";
 import { NextApiRequest, NextApiResponse } from "next";
 
 if (!process.env.STRIPE_SECRET_KEY) {
@@ -6,35 +7,59 @@ if (!process.env.STRIPE_SECRET_KEY) {
 }
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {apiVersion: "2025-03-31.basil"})
-console.log(stripe.products)
+
+
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method === "POST") {
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      line_items: [
-        {
-          price_data: {
-            currency: 'usd',
-            product_data: {
-              name: 'Your Product Name'
-            },
-            unit_amount: 1000,
-          },
-          quantity: 1,
-        }
-      ],
-      mode: 'payment',
-      success_url: `${req.headers.origin}/success`,
-      cancel_url: `${req.headers.origin}/cancel`
-    })
 
-    res.status(200).json({id: session.id})
+  const products = await stripe.products.list();
+console.log(products);
 
-  } else {
-    res.setHeader("AllOW", "POST");
-    res.status(405).end("Method Not Allowed")
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
   }
+
+  const { priceId, userId } = req.body;
+
+  // Get user data from Supabase
+  const { data: user, error } = await supabase
+    .from("profile")
+    .select("stripe_customer")
+    .eq("id", userId)
+    .single();
+
+  if (error) {
+    return res.status(500).json({ error: "User not found" });
+  }
+
+  let customerId = user?.stripe_customer;
+
+  // If the user doesn't have a Stripe customer ID, create one
+  if (!customerId) {
+    const customer = await stripe.customers.create({
+      metadata: { userId },
+    });
+
+    customerId = customer.id;
+
+    // Store the Stripe customer ID in Supabase
+    await supabase
+      .from("profile")
+      .update({ stripe_customer: customerId })
+      .eq("id", userId);
+  }
+
+  // Create a checkout session
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ["card"],
+    mode: "subscription",
+    customer: customerId,
+    line_items: [{ price: priceId, quantity: 1 }],
+    success_url: `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/success`,
+    cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/cancel`,
+  });
+
+  res.json({ url: session.url });
 }
 
 export default handler;

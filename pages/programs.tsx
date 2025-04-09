@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import { GetStaticProps } from 'next';
-import { PricingSection } from "@components"; // Import the PricingSection
-import { pricingPlans } from '@/lib/constants/programsPageInfo'; // Import the static PricingPlans
+import { PricingSection } from "@components"; 
+import { pricingPlans } from '@/lib/constants/programsPageInfo';
 import { getAllProducts } from '@/lib/stripe';
 
 interface PricingPlan {
