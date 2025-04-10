@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import { GetStaticProps } from 'next';
 import { PricingSection } from "@components"; 
 import { pricingPlans } from '@/lib/constants/programsPageInfo';
-import { getAllProducts } from '@/lib/stripe';
+import { getAllProducts } from '@/lib/getAllProducts';
 
 interface PricingPlan {
   id: number;

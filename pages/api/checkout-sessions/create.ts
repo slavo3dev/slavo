@@ -1,4 +1,4 @@
-import Stripe from "stripe";
+import { stripe } from "@/lib/stripe";
 import supabase from "@/lib/supabase";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -6,13 +6,10 @@ if (!process.env.STRIPE_SECRET_KEY) {
   throw new Error('STRIPE_SECRET_KEY is not defined');
 }
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {apiVersion: "2025-03-31.basil"})
-
-
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
-  const products = await stripe.products.list();
+const products = await stripe.products.list();
 console.log(products);
 
   if (req.method !== "POST") {
