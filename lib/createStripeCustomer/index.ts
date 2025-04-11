@@ -5,15 +5,15 @@ import { stripe } from "../stripe";
 
 export const createOrRetrieveCustomer = async (userId: string, email: string) => {
   const { data, error } = await supabase
-    .from('profiles')
-    .select('stripe_customer_id')
+    .from('profile')
+    .select('stripe_customer')
     .eq('id', userId)
     .single();
 
   if (error) throw new Error(error.message);
 
-  if (data?.stripe_customer_id) {
-    return data.stripe_customer_id;
+  if (data?.stripe_customer) {
+    return data.stripe_customer;
   }
 
   // Create customer in Stripe
@@ -21,8 +21,8 @@ export const createOrRetrieveCustomer = async (userId: string, email: string) =>
 
   // Save to Supabase
   const { error: updateError } = await supabase
-    .from('profiles')
-    .update({ stripe_customer_id: customer.id })
+    .from('profile')
+    .update({ stripe_customer: customer.id })
     .eq('id', userId);
 
   if (updateError) throw new Error(updateError.message);

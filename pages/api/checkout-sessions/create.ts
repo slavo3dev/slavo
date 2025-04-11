@@ -1,10 +1,8 @@
 import { stripe } from "@/lib/stripe";
-import supabase from "@/lib/supabase";
+import { useContext } from "react";
+import UserInfoContext from "@/context/UserInfoContext";
 import { NextApiRequest, NextApiResponse } from "next";
-
-if (!process.env.STRIPE_SECRET_KEY) {
-  throw new Error('STRIPE_SECRET_KEY is not defined');
-}
+import { createOrRetrieveCustomer } from "@/lib/createStripeCustomer";
 
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -16,47 +14,38 @@ console.log(products);
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { priceId, userId } = req.body;
+ 
+  
+try {
 
-  // Get user data from Supabase
-  const { data: user, error } = await supabase
-    .from("profile")
-    .select("stripe_customer")
-    .eq("id", userId)
-    .single();
+  const body = req.body;
+    console.log("Request body:", body);
 
-  if (error) {
-    return res.status(500).json({ error: "User not found" });
+  const { userId, email, priceId } = req.body;
+
+  if (!userId || !email || !priceId) {
+    return res.status(400).json({ error: "Missing required fields" });
   }
-
-  let customerId = user?.stripe_customer;
-
-  // If the user doesn't have a Stripe customer ID, create one
-  if (!customerId) {
-    const customer = await stripe.customers.create({
-      metadata: { userId },
-    });
-
-    customerId = customer.id;
-
-    // Store the Stripe customer ID in Supabase
-    await supabase
-      .from("profile")
-      .update({ stripe_customer: customerId })
-      .eq("id", userId);
-  }
-
-  // Create a checkout session
+  const customerId = await createOrRetrieveCustomer(userId, email);
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
     mode: "subscription",
-    customer: customerId,
-    line_items: [{ price: priceId, quantity: 1 }],
+    line_items: [{ 
+      price: priceId,
+      quantity: 1 
+    }],
+    customer_email: email,
+    metadata: {
+      userId,
+    },
     success_url: `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/success`,
     cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/cancel`,
   });
-
-  res.json({ url: session.url });
+  return res.status(200).json({ sessionId: session.id });
+}
+  catch (err) {
+    return res.status(500).json({ error: 'Something went wrong creating the session' });
+  }
 }
 
 export default handler;

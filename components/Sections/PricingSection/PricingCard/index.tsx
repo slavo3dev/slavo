@@ -1,11 +1,13 @@
 // components/PricingCard.tsx
-import { FC } from "react";
+import { FC, useContext } from "react";
 import clsx from "clsx";
 import { loadStripe } from "@stripe/stripe-js";
+import UserInfoContext from "@/context/UserInfoContext";
 
 interface PricingCardProps {
   id: number;
   name: string;
+  priceId: string;
   price: {
     amount: number;
     currency: string;
@@ -24,19 +26,49 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 export const PricingCard: FC<PricingCardProps> = ({
   id,
   name,
+  priceId,
   price,
   features,
   image,
   bgColor,
   textColor,
 }) => {
-  const handleCheckout = async () => {
-    const stripe = await stripePromise;
+
+  const { userInfo } = useContext(UserInfoContext)
+
+  const handleCheckout = async (selectedPriceId: string) => {
+    if (!userInfo?.id || !userInfo?.email) {
+      alert("Please log in to continue.");
+      return;
+    }
+
+    console.log("userInfo in handleCheckout", userInfo);
+
     const response = await fetch('/api/checkout-sessions/create', {
-      method: 'POST',
-    });
-    const session = await response.json();
-    await stripe?.redirectToCheckout({ sessionId: session.id });
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          priceId: selectedPriceId,
+          userId: userInfo.id,
+          email: userInfo.email,
+         }),
+      });
+      if (!response.ok) {
+        const error = await response.json();
+        console.error("Checkout error:", error);
+        alert("Failed to initiate checkout.");
+        return;
+      }
+
+      console.log("Sending to API:", {
+        priceId,
+        userId: userInfo.id,
+        email: userInfo.email,
+      });
+    
+      const { sessionId } = await response.json();
+      const stripe = await stripePromise;
+      await stripe?.redirectToCheckout({ sessionId });
   };
 
   const formatCurrency = (amount: number, currency: string) =>
@@ -84,7 +116,7 @@ export const PricingCard: FC<PricingCardProps> = ({
                 Learn More...
               </a>
               <button
-                onClick={handleCheckout}
+                onClick={() => handleCheckout(priceId)}
                 className={`flex-1 flex items-center justify-center py-2 px-6 text-xs rounded font-semibold text-center ${id % 2 === 0 ? "text-white bg-blue-400 hover:bg-blue-200" : "text-blue-500 bg-white border border-gray-200 hover:bg-gray-200"}`}
               >
                 Purchase

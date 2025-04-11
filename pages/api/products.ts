@@ -3,10 +3,6 @@ import Stripe from 'stripe';
 import { stripe } from '@/lib/stripe';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-if(!process.env.STRIPE_SECRET_KEY) {
-  throw new Error("STRIPE_SECRET_KEY is not defined")
-}
-
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'GET') {
     return res.status(405).json({ message: 'Method not allowed' });
@@ -18,12 +14,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       expand: ['data.default_price'],
     });
 
+    console.log(products)
+
     const simplifiedProducts = products.data.map((product) => {
       const price = product.default_price as Stripe.Price;
 
       return {
         id: product.id,
         name: product.name,
+        priceId: product.default_price,
         price: {
           amount: price?.unit_amount ?? 0,
           currency: price?.currency ?? 'usd',

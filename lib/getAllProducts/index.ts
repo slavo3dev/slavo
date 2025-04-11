@@ -19,6 +19,7 @@ export async function getAllProducts() {
         id: product.id,
         name: product.name,
         images: product.images,
+        priceId: product.default_price,
         price: {
           amount: defaultPrice.unit_amount ?? 0,
           currency: defaultPrice.currency,
