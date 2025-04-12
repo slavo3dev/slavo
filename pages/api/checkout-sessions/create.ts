@@ -1,50 +1,40 @@
 import { stripe } from "@/lib/stripe";
-import { useContext } from "react";
-import UserInfoContext from "@/context/UserInfoContext";
 import { NextApiRequest, NextApiResponse } from "next";
 import { createOrRetrieveCustomer } from "@/lib/createStripeCustomer";
-
+import { updateStripeCustomer } from "@/lib/updateStripeCustomer"; // assuming the updateProfile function is exported from somewhere
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-
-const products = await stripe.products.list();
-console.log(products);
-
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
- 
-  
-try {
+  try {
+    const { userId, email, priceId } = req.body;
+    if (!userId || !email || !priceId) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
 
-  const body = req.body;
-    console.log("Request body:", body);
+    // Retrieve or create Stripe customer
+    const customerId = await createOrRetrieveCustomer(userId, email);
 
-  const { userId, email, priceId } = req.body;
+    // Create Stripe checkout session
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
+      mode: "subscription",
+      line_items: [{ price: priceId, quantity: 1 }],
+      customer: customerId,
+      metadata: { userId },
+      success_url: `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/success`,
+      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/cancel`,
+    });
 
-  if (!userId || !email || !priceId) {
-    return res.status(400).json({ error: "Missing required fields" });
-  }
-  const customerId = await createOrRetrieveCustomer(userId, email);
-  const session = await stripe.checkout.sessions.create({
-    payment_method_types: ["card"],
-    mode: "subscription",
-    line_items: [{ 
-      price: priceId,
-      quantity: 1 
-    }],
-    customer_email: email,
-    metadata: {
-      userId,
-    },
-    success_url: `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/success`,
-    cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/cancel`,
-  });
-  return res.status(200).json({ sessionId: session.id });
-}
-  catch (err) {
-    return res.status(500).json({ error: 'Something went wrong creating the session' });
+    // Update the profile table after the checkout session is created
+    //await updateStripeCustomer(userId, email, customerId, false); // Set is_subscribed to true
+
+    return res.status(200).json({ sessionId: session.id });
+  } catch (err) {
+    console.error("Stripe session creation error:", err);
+    return res.status(500).json({ error: 'Something went wrong creating the session', details: (err as Error).message });
   }
 }
 

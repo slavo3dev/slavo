@@ -7,6 +7,7 @@ import { getAllProducts } from '@/lib/getAllProducts';
 interface PricingPlan {
   id: number;
   name: string;
+  priceId: string;
   price: {
     amount: number;
     currency: string;
@@ -28,6 +29,7 @@ const Programs: NextPage<{ pricingPlans: PricingPlan[] }> = ({ pricingPlans }) =
 export const getStaticProps: GetStaticProps = async () => {
 
     const data = await getAllProducts();
+    console.log("API data:", data);
 
     // Map over the static pricingPlans and merge with data from API
     const updatedPricingPlans = pricingPlans.map((plan) => {
@@ -42,6 +44,7 @@ export const getStaticProps: GetStaticProps = async () => {
             currency: apiProduct?.price.currency ?? "usd",
           },
           image: apiProduct?.images[0], 
+          priceId: apiProduct?.priceId ?? "", // <-- Corrected assignment
           features: plan.features, 
         };
     });

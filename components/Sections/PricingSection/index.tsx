@@ -5,6 +5,7 @@ import { PricingCard } from './PricingCard';
 interface PricingPlan {
   id: number;
   name: string;
+  priceId: string;
   price: {
     amount: number;
     currency: string;
@@ -36,7 +37,7 @@ export const PricingSection: FC<PricingSectionProps> = ({ pricingPlans }) => {
         </div>
         <div className="flex flex-wrap justify-center -mx-3 items-stretch">
           {pricingPlans?.map((plan, index) => (
-            <PricingCard key={index} {...plan} />
+            <PricingCard key={index} {...plan}/>
           ))}
         </div>
       </div>

@@ -41,35 +41,47 @@ export const PricingCard: FC<PricingCardProps> = ({
       alert("Please log in to continue.");
       return;
     }
-
-    console.log("userInfo in handleCheckout", userInfo);
-
-    const response = await fetch('/api/checkout-sessions/create', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
+  
+    try {
+      console.log("Sending to API:", {
+        priceId: selectedPriceId,
+        userId: userInfo.id,
+        email: userInfo.email,
+      });
+  
+      const response = await fetch("/api/checkout-sessions/create", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           priceId: selectedPriceId,
           userId: userInfo.id,
           email: userInfo.email,
-         }),
+        }),
       });
+  
       if (!response.ok) {
         const error = await response.json();
         console.error("Checkout error:", error);
         alert("Failed to initiate checkout.");
         return;
       }
-
-      console.log("Sending to API:", {
-        priceId,
-        userId: userInfo.id,
-        email: userInfo.email,
-      });
-    
+  
       const { sessionId } = await response.json();
       const stripe = await stripePromise;
-      await stripe?.redirectToCheckout({ sessionId });
+  
+      if (!stripe) {
+        console.error("Stripe.js failed to load.");
+        return;
+      }
+  
+      await stripe.redirectToCheckout({ sessionId });
+  
+    } catch (err) {
+      console.error("Unexpected error during checkout:", err);
+      alert("Something went wrong during checkout.");
+    }
   };
+  
 
   const formatCurrency = (amount: number, currency: string) =>
     new Intl.NumberFormat('en-US', {
