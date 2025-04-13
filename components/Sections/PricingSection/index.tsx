@@ -1,4 +1,3 @@
-// components/PricingSection.tsx
 import { FC } from 'react';
 import { PricingCard } from './PricingCard';
 

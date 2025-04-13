@@ -41,12 +41,29 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(400).send("Missing userId in metadata");
     }
 
-    const customerId = session.customer as string;
+    //const customerId = session.customer as string;
 
-    const { error } = await supabase
+    const { data: profileCheck } = await supabase
+  .from("profile")
+  .select("*")
+  .eq("id", userId);
+
+console.log("Matching profile:", profileCheck);
+
+    const { data, error } = await supabase
       .from("profile")
-      .update({is_subscribed: true, stripe_customer: customerId,})
-      .eq("id", userId);
+      .update({is_subscribed: true, }) // do i need this in update method? stripe_customer: customerId,
+      .eq("id", userId)
+      .select();
+
+      console.log("Updating profile:", {
+        is_subscribed: true,
+        
+      });
+    console.log("Result:", data);
+    console.log("User ID from Stripe metadata:", userId);
+
+    
 
     if (error) {
       console.error("Error updating profile in webhook:", error);

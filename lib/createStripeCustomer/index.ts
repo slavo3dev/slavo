@@ -4,7 +4,7 @@ import { stripe } from "../stripe";
 // Retrieve or create a Stripe customer
 export const createOrRetrieveCustomer = async (userId: string, email: string) => {
   // Check if a customer already exists in Supabase
-  const { data, error, count } = await supabase
+  const { data, error } = await supabase
     .from('profile')
     .select('stripe_customer')
     .eq('id', userId)
