@@ -9,18 +9,6 @@ interface PricingPlan {
         
 export const pricingPlans: PricingPlan[] = [
   {
-    id: 1,
-    product_id: "prod_OrnGlnicPmbacJ", // Make sure these match the Stripe product IDs
-    features: [
-      "Cue creation",
-      "Mentor: Regular Check-Ins",
-      "Daily Notifications: Reminder Mechanism",
-      "Monitor Progress",
-    ],
-    bgColor: "bg-white",
-    textColor: "text-blue-500",
-  },
-  {
     id: 2,
     product_id: "prod_Orn71pKZtCEQ4z",
     features: [
@@ -32,6 +20,19 @@ export const pricingPlans: PricingPlan[] = [
     bgColor: "bg-blue-500",
     textColor: "text-white",
   },
+  {
+    id: 1,
+    product_id: "prod_OrnGlnicPmbacJ", // Make sure these match the Stripe product IDs
+    features: [
+      "Cue creation",
+      "Mentor: Regular Check-Ins",
+      "Daily Notifications: Reminder Mechanism",
+      "Monitor Progress",
+    ],
+    bgColor: "bg-white",
+    textColor: "text-blue-500",
+  },
+ 
   {
     id: 3,
     product_id: "prod_OgDf6eZ2xl1kZW",

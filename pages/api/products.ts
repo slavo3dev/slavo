@@ -1,4 +1,3 @@
-// pages/api/products.ts
 import Stripe from 'stripe';
 import { stripe } from '@/lib/stripe';
 import { NextApiRequest, NextApiResponse } from 'next';

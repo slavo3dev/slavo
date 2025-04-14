@@ -1,7 +1,6 @@
 import { stripe } from "@/lib/stripe";
 import { NextApiRequest, NextApiResponse } from "next";
 import { createOrRetrieveCustomer } from "@/lib/createStripeCustomer";
-import { updateStripeCustomer } from "@/lib/updateStripeCustomer"; // assuming the updateProfile function is exported from somewhere
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== "POST") {
@@ -27,9 +26,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/success`,
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/cancel`,
     });
-
-    // Update the profile table after the checkout session is created
-    //await updateStripeCustomer(userId, email, customerId, false); // Set is_subscribed to true
 
     return res.status(200).json({ sessionId: session.id });
   } catch (err) {
