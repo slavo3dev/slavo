@@ -6,9 +6,8 @@ import insta from "public/images/icons/instagram-blue.svg";
 import twit from "public/images/icons/twitter-blue.svg";
 import face from "public/images/icons/facebook-blue.svg";
 import link from "public/images/icons/linkedinIcon.webp";
-import classes from "./navigation.module.css";
 import { Subscribe } from "@/components/Subscribe";
-import LoginModal from "@/components/Auth/LoginPopup";
+import { LoginModal } from "@/components/Auth/LoginPopup";
 import { useRouter } from "next/router";
 
 export const Burger: FC<any> = ( { userInfo } ) => {

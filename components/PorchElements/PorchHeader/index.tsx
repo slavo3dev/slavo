@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import UserInfoContext from "@/context/UserInfoContext";
 import { MdOutlineTrendingUp } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
-import LoginModal from "@/components/Auth/LoginPopup";
+import { LoginModal } from "@/components/Auth/LoginPopup";
 import { GoArrowLeft } from "react-icons/go";
 import { QuoteFetcher } from "@/components/Quotes";
 

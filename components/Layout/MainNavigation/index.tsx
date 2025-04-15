@@ -6,7 +6,7 @@ import { Burger } from "./mobileView";
 import { useRouter } from "next/router";
 import UserInfoContext from "context/UserInfoContext";
 import { Subscribe } from "@/components/Subscribe";
-import LoginModal from "@/components/Auth/LoginPopup";
+import { LoginModal } from "@/components/Auth/LoginPopup";
 import { NavigationProps } from "@/Types/Navigation";
 import { BlogDropDown } from "@/components/Posts/BlogDropDown";
 
