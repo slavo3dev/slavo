@@ -2,7 +2,7 @@
 import { FC, useMemo, useEffect,useState, useContext} from "react";
 import { NewResourceFrom } from "../Forms";
 import { FreeSourcesList } from "../FreeSourcesList";
-import { CategoryFilter } from "../CategoryFilter/CategoryFilter";
+import { CategoryFilter } from "../CategoryFilter";
 import { Title } from "../Title";
 import UserInfoContext from "@/context/UserInfoContext";
 
