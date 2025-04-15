@@ -2,8 +2,8 @@ import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import UserInfoContext from "@/context/UserInfoContext";
-import { CreateAccount } from "@/components/Auth/CreateAccount";
-import { ResetPassword } from "@/components/Auth/ResetPassword";
+import { CreateAccount } from "@/components/Auth/CreateAccount/CreateAccount";
+import { ResetPassword } from "@/components/Auth/ResetPassword/ResetPassword";
 import { LoginForm } from "@/components/Auth/Login";
 
 const Test: NextPage = () =>

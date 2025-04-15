@@ -4,10 +4,11 @@ import { getVideos } from "../../../lib/videos";
 import { VideoCard } from "../..";
 import UserInfoContext from "@/context/UserInfoContext";
 
+interface VideoLineProps {
+	channelLine: string;
+}
 
-
-export const VideoLine: FC<string>  = (channelLine) => {
-
+export const VideoLine: FC<VideoLineProps> = ({ channelLine }) => {
 	const { userInfo } = useContext(UserInfoContext);
 	const isAuth = userInfo?.email;
 	const LineVideos: VideoType[] = getVideos(channelLine);
