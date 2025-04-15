@@ -2,7 +2,7 @@ import { useState, ChangeEvent, FormEvent, useContext, useEffect } from "react";
 import UserInfoContext from "context/UserInfoContext";
 import { CommentsError } from "lib/err/err";
 import DOMPurify from "dompurify";
-import CommentsPopup from "./CommentsPopup/ReactQuillComponent";
+import CommentsPopup from "./CommentsPopup/CommentsPopup";
 
 interface Comment {
   id?: string;

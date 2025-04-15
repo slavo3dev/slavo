@@ -1,1 +1,1 @@
-export { ReactQuillComponent } from "./ReactQuillComponent";
+export { CommentsPopup } from "./CommentsPopup";
