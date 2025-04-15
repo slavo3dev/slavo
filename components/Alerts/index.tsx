@@ -1,3 +1,1 @@
-import { ErrorAlertMsg } from "./ErrorAlertMsg";
-
-export { ErrorAlertMsg };
+export { ErrorAlertMsg } from "./ErrorAlertMsg";

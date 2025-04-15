@@ -14,7 +14,7 @@ interface ReactQuillProps {
 }
 
 // Create a typed version of the component
-const ReactQuillComponent = forwardRef<typeof import("react-quill-new").default, ReactQuillProps>(
+export const ReactQuillComponent = forwardRef<typeof import("react-quill-new").default, ReactQuillProps>(
   (props, ref) => {
     const [Component, setComponent] = useState<React.ComponentType<ReactQuillProps> | null>(null);
 
@@ -125,4 +125,3 @@ const CommentsPopup: React.FC<CommentsPopupProps> = ({
   );
 };
 
-export default CommentsPopup;

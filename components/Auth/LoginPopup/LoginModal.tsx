@@ -1,8 +1,8 @@
 import { FC, useState } from 'react';
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { LoginForm } from '@/components/Auth/Login';
-import { CreateAccount } from '@/components/Auth/CreateAccount';
-import { ResetPassword } from '@/components/Auth/ResetPassword';
+import { CreateAccount } from '@/components/Auth/CreateAccount/CreateAccount';
+import { ResetPassword } from '@/components/Auth/ResetPassword/ResetPassword';
 import { Modal } from "@/components/Modal";
 
 interface LoginModalProps {
