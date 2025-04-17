@@ -40,11 +40,9 @@ useEffect(() => {
 
   return (
     <>
-    <div className="lg:hidden mt-2 mr-8">
-      <Subscribe />
-    </div>
+   
     <div className="lg:hidden flex-row overflow-show">
-      <button onClick={handleBurger} className=" z-50 right-4 items-center py-2 px-3 mt-4 mr-4 text-blue-500 hover:text-blue-700 rounded border border-blue-200 hover:border-blue-300">
+      <button onClick={handleBurger} className=" z-50 right-4 items-center py-2 px-3 mt-2 mr-4 text-blue-500 hover:text-blue-700 rounded border border-blue-200 hover:border-blue-300">
         <svg className="fill-current h-4 w-4" viewBox="0 0 20 20"xmlns="http://www.w3.org/2000/svg">
           <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
         </svg>
@@ -132,8 +130,8 @@ useEffect(() => {
 				</>
      		)}
 		<div className="text-center">
-          <div>Contact us slavo@slavo.io</div>
-     <div>
+      <div>Contact us slavo@slavo.io</div>
+        <div className="flex justify-center">
           <a href={"https://www.instagram.com/slavo_3/"} target="_blank" rel="noopener noreferrer">
              <Image width={50} height={50} src={insta} alt="Instagram Logo" /></a>
           <a href={"https://twitter.com/slavo3dev"} target="_blank" rel="noopener noreferrer">
@@ -145,7 +143,7 @@ useEffect(() => {
           <a href={"https://www.linkedin.com/in/slavopopovic/"} target="_blank" rel="noopener noreferrer">
             <Image width={50} height={50} src={link} alt="Linkedin Logo" />
           </a>
-          </div>
+        </div>
 		</div>
         </div>
       </div>

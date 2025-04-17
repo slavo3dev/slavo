@@ -55,12 +55,13 @@ export const MainNavigation: FC<NavigationProps> = ({categories}) => {
 	return (
 		<header className={headStyle ? classes.header : classes.header1}>
 			<Logo />
-			<div>
+			<div className="flex">
 				<nav className={classes.navMenu}>
 					<ul>
 						{/* <li>
 						<Link href="/about">About</Link>
 					</li> */}
+						
 						<li className={router.pathname === "/programs" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/programs">Programs</Link>
 						</li>
@@ -94,11 +95,10 @@ export const MainNavigation: FC<NavigationProps> = ({categories}) => {
 						{userEmail && <li className="hover:text-blue-500 hover:bg-blue-50">
 							{userEmail}
 						</li>}
-						<li>
-							<Subscribe />
-						</li>
 					</ul>
+					
 				</nav>
+				<Subscribe />
 			</div>
 			<Burger userInfo={ userInfo } categories={categories} />
 			{showLoginModal && (
