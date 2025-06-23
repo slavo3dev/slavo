@@ -1,11 +1,9 @@
 import { FC, useContext } from "react";
-import clsx from "clsx";
 import UserInfoContext from "@/context/UserInfoContext";
 import { formatCurrency } from "@/lib/formatCurrecny";
 import { handleCheckout } from "@/lib/handleCheckout";
 
 interface PricingCardProps {
-  id: number;
   name: string;
   priceId: string;
   price: {
@@ -14,19 +12,14 @@ interface PricingCardProps {
   };
   features: string[];
   image: string;
-  bgColor: string;
-  textColor: string;
 }
 
 export const PricingCard: FC<PricingCardProps> = ({
-  id,
   name,
   priceId,
   price,
   features,
   image,
-  bgColor,
-  textColor,
 }) => {
 
   const { userInfo } = useContext(UserInfoContext)
@@ -46,7 +39,7 @@ export const PricingCard: FC<PricingCardProps> = ({
    
   return (
     <div className="w-full md:w-1/2 lg:w-1/3 px-3 mb-6">
-      <div className={clsx("hover-up-5 border border-gray-200 pt-16 pb-8 px-4 text-center rounded flex flex-col h-full", bgColor, textColor)}>
+      <div className="hover-up-5 border border-gray-200 pt-16 pb-8 px-4 text-center rounded flex flex-col h-full bg-white text-blue-500">
         <img src={image} alt={name} className="h-20 mb-6 mx-auto" />
         <h3 className="mb-2 text-4xl font-bold font-heading">{name}</h3>
         <span className="text-4xl font-bold font-heading">{formatCurrency(price.amount, price.currency)}
@@ -77,14 +70,14 @@ export const PricingCard: FC<PricingCardProps> = ({
           <div>
             <div className="flex flex-col sm:flex-row w-full gap-2">
               <a
-                className={`flex-1 flex items-center justify-center py-2 px-6 text-xs rounded font-semibold text-center, ${id % 2 === 0 ? "text-blue-500 bg-white border border-gray-200 hover:bg-gray-200" : "text-white bg-blue-400 hover:bg-blue-200"}`}
+                className="flex-1 flex items-center justify-center py-2 px-6 text-xs rounded font-semibold text-center text-blue-500 bg-white border border-gray-200 hover:bg-gray-200" 
                 href="#"
               >
                 Learn More...
               </a>
               <button
                 onClick={onCheckout}
-                className={`flex-1 flex items-center justify-center py-2 px-6 text-xs rounded font-semibold text-center ${id % 2 === 0 ? "text-white bg-blue-400 hover:bg-blue-200" : "text-blue-500 bg-white border border-gray-200 hover:bg-gray-200"}`}
+                className="flex-1 flex items-center justify-center py-2 px-6 text-xs rounded font-semibold text-center text-white bg-blue-400 hover:bg-blue-200"
               >
                 Purchase
               </button>

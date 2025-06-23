@@ -2,12 +2,23 @@ import { stripe } from "../stripe";
 
 export async function getAllProducts() {
   const products = await stripe.products.list({
+    active: true,
     expand: ['data.default_price'],
   });
 
   return products.data.map((product) => {
     const defaultPrice = product.default_price;
 
+   // Get features from metadata keys like feature1, feature2, etc.
+  const featureKeys = Object.keys(product.metadata || {}).filter((key) =>
+    key.startsWith("feature")
+  );
+
+  const features = featureKeys
+    .sort() // ensure they're in order: feature1, feature2, ...
+    .map((key) => product.metadata[key]);
+
+    console.log(product.metadata);
     // Type guard: check if it's an object and not null
     if (
       defaultPrice &&
@@ -24,6 +35,7 @@ export async function getAllProducts() {
           amount: defaultPrice.unit_amount ?? 0,
           currency: defaultPrice.currency,
         },
+        features,
       };
     }
 
@@ -37,6 +49,7 @@ export async function getAllProducts() {
         amount: 0,
         currency: 'usd',
       },
+      features, 
     };
   });
 }

@@ -1,7 +1,5 @@
-import { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { PricingSection } from "@components"; 
-import { pricingPlans } from '@/lib/constants/programsPageInfo';
+import { NextPage, GetStaticProps } from 'next';
+import { PricingSection } from '@components';
 import { getAllProducts } from '@/lib/getAllProducts';
 
 interface PricingPlan {
@@ -14,50 +12,34 @@ interface PricingPlan {
   };
   image: string;
   features: string[];
-  bgColor: string;
-  textColor: string;
 }
 
 const Programs: NextPage<{ pricingPlans: PricingPlan[] }> = ({ pricingPlans }) => {
-  return (
-    <>
-      <PricingSection pricingPlans={pricingPlans} />
-    </>
-  );
+  return <PricingSection pricingPlans={pricingPlans} />;
 };
 
 export const getStaticProps: GetStaticProps = async () => {
+  const data = await getAllProducts();
 
-    const data = await getAllProducts();
-    console.log("API data:", data);
+  const pricingPlans = data
+    .filter(product => product.price?.amount !== undefined)
+    .map(product => ({
+      id: Number(product.id),
+      name: product.name,
+      priceId: product.priceId,
+      price: {
+        amount: product.price.amount,
+        currency: product.price.currency,
+      },
+      image: product.images?.[0] ?? '',
+      features: product.features ?? [],
+    }))
+    .sort((a, b) => a.price.amount - b.price.amount); // Optional: sort by price
 
-    // Map over the static pricingPlans and merge with data from API
-    const updatedPricingPlans = pricingPlans.map((plan) => {
-      const apiProduct = data.find((product) => product.id === plan.product_id);
-
-      // Merge API product data with static plan
-      return {
-          ...plan,
-          name: apiProduct?.name ?? "No Name", // Fallback to static title if API is missing
-          price: {
-            amount: apiProduct?.price.amount ?? 0,
-            currency: apiProduct?.price.currency ?? "usd",
-          },
-          image: apiProduct?.images[0], 
-          priceId: apiProduct?.priceId ?? "", // <-- Corrected assignment
-          features: plan.features, 
-        };
-    });
-
-    const sortedPricingPlans = updatedPricingPlans
-      .filter(plan => plan.price?.amount !== undefined)
-      .sort((a, b) => a.price.amount - b.price.amount);
-
-    return {
-      props: { pricingPlans: sortedPricingPlans },
-      revalidate: 6000, // Optional: Revalidate after 60 seconds
-    };
-  
+  return {
+    props: { pricingPlans },
+    revalidate: 6000,
+  };
 };
 
 export default Programs;

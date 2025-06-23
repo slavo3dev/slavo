@@ -11,8 +11,6 @@ interface PricingPlan {
   };
   image: string;
   features: string[];
-  bgColor: string;
-  textColor: string;
 }
 
 interface PricingSectionProps {
