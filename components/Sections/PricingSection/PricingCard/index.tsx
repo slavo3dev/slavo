@@ -2,6 +2,7 @@ import { FC, useContext } from "react";
 import UserInfoContext from "@/context/UserInfoContext";
 import { formatCurrency } from "@/lib/formatCurrecny";
 import { handleCheckout } from "@/lib/handleCheckout";
+import Link from "next/link";
 
 interface PricingCardProps {
   name: string;
@@ -74,12 +75,12 @@ export const PricingCard: FC<PricingCardProps> = ({
           </ul>
           <div>
             <div className="flex flex-col sm:flex-row w-full gap-2">
-              <a
-                className="flex-1 flex items-center justify-center py-2 px-6 text-xs rounded font-semibold text-center text-blue-500 bg-white border border-gray-200 hover:bg-gray-200" 
-                href="#"
+              <Link
+                className="flex-1 flex items-center justify-center py-2 px-6 text-xs rounded font-semibold text-center text-blue-500 bg-white border border-gray-200 hover:bg-gray-200"
+                href={`/programs/${priceId}`}
               >
                 Learn More...
-              </a>
+              </Link>
               <button
                 onClick={onCheckout}
                 className="flex-1 flex items-center justify-center py-2 px-6 text-xs rounded font-semibold text-center text-white bg-blue-400 hover:bg-blue-200"

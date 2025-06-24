@@ -8,6 +8,7 @@ interface PricingPlan {
   price: {
     amount: number;
     currency: string;
+    recurring: string | null;
   };
   image: string;
   features: string[];

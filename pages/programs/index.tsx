@@ -33,7 +33,7 @@ export const getStaticProps: GetStaticProps = async () => {
         currency: product.price.currency,
         recurring:  product.price.recurring ?? null,
       },
-      image: product.images?.[0] ?? '',
+      image: product.image ?? '',
       features: product.features ?? [],
     }))
     .sort((a, b) => a.price.amount - b.price.amount); // Optional: sort by price

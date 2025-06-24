@@ -13,7 +13,7 @@ export async function getAllProducts() {
 
   const recurring = defaultPrice?.recurring?.interval ?? null;
 
-  console.log("Product:", product.name, "| Recurring:", recurring);
+  
 
    // Get features from metadata keys like feature1, feature2, etc.
     const featureKeys = Object.keys(product.metadata || {}).filter((key) =>
@@ -34,7 +34,7 @@ export async function getAllProducts() {
       return {
         id: product.id,
         name: product.name,
-        images: product.images,
+        image: product.images?.[0] ?? null,
         priceId: defaultPrice.id,
         price: {
           amount: defaultPrice.unit_amount ?? 0,
@@ -49,7 +49,7 @@ export async function getAllProducts() {
     return {
       id: product.id,
       name: product.name,
-      images: product.images,
+      image: null,
       priceId: null,
       price: {
         amount: 0,
