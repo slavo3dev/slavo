@@ -9,6 +9,7 @@ interface PricingPlan {
   price: {
     amount: number;
     currency: string;
+    recurring: string | null;
   };
   image: string;
   features: string[];
@@ -20,7 +21,7 @@ const Programs: NextPage<{ pricingPlans: PricingPlan[] }> = ({ pricingPlans }) =
 
 export const getStaticProps: GetStaticProps = async () => {
   const data = await getAllProducts();
-
+  
   const pricingPlans = data
     .filter(product => product.price?.amount !== undefined)
     .map(product => ({
@@ -30,6 +31,7 @@ export const getStaticProps: GetStaticProps = async () => {
       price: {
         amount: product.price.amount,
         currency: product.price.currency,
+        recurring:  product.price.recurring ?? null,
       },
       image: product.images?.[0] ?? '',
       features: product.features ?? [],

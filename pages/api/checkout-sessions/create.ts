@@ -3,6 +3,8 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { createOrRetrieveCustomer } from "@/lib/createStripeCustomer";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  
+  
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
@@ -13,13 +15,18 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(400).json({ error: "Missing required fields" });
     }
 
+    const price = await stripe.prices.retrieve(priceId);
+
+    // Dynamically decide checkout mode
+    const isRecurring = price.recurring !== null;
+
     // Retrieve or create Stripe customer
     const customerId = await createOrRetrieveCustomer(userId, email);
 
     // Create Stripe checkout session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
-      mode: "subscription",
+      mode: price.recurring ? "subscription" : "payment",
       line_items: [{ price: priceId, quantity: 1 }],
       customer: customerId,
       metadata: { userId },

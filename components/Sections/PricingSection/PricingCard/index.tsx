@@ -9,6 +9,7 @@ interface PricingCardProps {
   price: {
     amount: number;
     currency: string;
+    recurring: string | null;
   };
   features: string[];
   image: string;
@@ -23,6 +24,8 @@ export const PricingCard: FC<PricingCardProps> = ({
 }) => {
 
   const { userInfo } = useContext(UserInfoContext)
+
+  console.log(`Recurring for ${name}:`, price.recurring); // ✅ Log value
 
   const onCheckout = () => {
     if (!userInfo) {
@@ -44,7 +47,9 @@ export const PricingCard: FC<PricingCardProps> = ({
         <h3 className="mb-2 text-4xl font-bold font-heading">{name}</h3>
         <span className="text-4xl font-bold font-heading">{formatCurrency(price.amount, price.currency)}
         </span>
-        <p className="mt-2 mb-8">per month</p>
+        <p className="mt-2 mb-8">
+           {price.recurring ? `per ${price.recurring}` : "One-time payment"}
+        </p>
         <div className="flex flex-col items-center mb-8">
           <ul className="w-full">
             {features.map((feature, index) => (

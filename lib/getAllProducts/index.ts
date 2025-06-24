@@ -1,4 +1,5 @@
 import { stripe } from "../stripe";
+import type Stripe from "stripe";
 
 export async function getAllProducts() {
   const products = await stripe.products.list({
@@ -6,19 +7,23 @@ export async function getAllProducts() {
     expand: ['data.default_price'],
   });
 
+
   return products.data.map((product) => {
-    const defaultPrice = product.default_price;
+    const defaultPrice = product.default_price as Stripe.Price;
+
+  const recurring = defaultPrice?.recurring?.interval ?? null;
+
+  console.log("Product:", product.name, "| Recurring:", recurring);
 
    // Get features from metadata keys like feature1, feature2, etc.
-  const featureKeys = Object.keys(product.metadata || {}).filter((key) =>
+    const featureKeys = Object.keys(product.metadata || {}).filter((key) =>
     key.startsWith("feature")
-  );
+   );
 
-  const features = featureKeys
+   const features = featureKeys
     .sort() // ensure they're in order: feature1, feature2, ...
     .map((key) => product.metadata[key]);
 
-    console.log(product.metadata);
     // Type guard: check if it's an object and not null
     if (
       defaultPrice &&
@@ -34,6 +39,7 @@ export async function getAllProducts() {
         price: {
           amount: defaultPrice.unit_amount ?? 0,
           currency: defaultPrice.currency,
+          recurring,
         },
         features,
       };
@@ -48,6 +54,7 @@ export async function getAllProducts() {
       price: {
         amount: 0,
         currency: 'usd',
+        recurring: null
       },
       features, 
     };
