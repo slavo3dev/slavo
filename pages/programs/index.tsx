@@ -1,5 +1,5 @@
 import { NextPage, GetStaticProps } from 'next';
-import { PricingSection } from '@components';
+import { PricingSection, FeaturesSection, StatisticsSection, InfoSection, ContactSection, Breadcrumb, HeadBasePage} from "@components";
 import { getAllProducts } from '@/lib/getAllProducts';
 
 interface PricingPlan {
@@ -16,7 +16,21 @@ interface PricingPlan {
 }
 
 const Programs: NextPage<{ pricingPlans: PricingPlan[] }> = ({ pricingPlans }) => {
-  return <PricingSection pricingPlans={pricingPlans} />;
+  return (
+    <>
+      <HeadBasePage
+        title="Software Web/Mobile Development - Consulting - Slavo_3"
+        description="Become Software Developer / Consulting for Business and Startups"
+        canonicalPath="/programs"
+      />
+      <Breadcrumb />
+      <InfoSection />
+      <StatisticsSection />
+      <FeaturesSection />
+      <PricingSection pricingPlans={pricingPlans} />
+      <ContactSection /> 
+    </>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async () => {

@@ -1,7 +1,5 @@
 import { Growth } from "./Growth";
 import { Solution } from "./Solution";
-import { PricingSection } from "./PricingSection";
-
 import { Breadcrumb} from "./Breadcrumb";
 import { PricingSection } from "./PricingSection";
 import { FeaturesSection } from "./FeaturesSection";
