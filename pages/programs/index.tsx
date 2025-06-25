@@ -15,6 +15,8 @@ interface PricingPlan {
   features: string[];
 }
 
+// Main component for the Programs page
+
 const Programs: NextPage<{ pricingPlans: PricingPlan[] }> = ({ pricingPlans }) => {
   return (
     <>
