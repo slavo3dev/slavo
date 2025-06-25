@@ -7,6 +7,7 @@ import UserInfoContext from "@/context/UserInfoContext";
 
 interface ProductPageProps {
   product: {
+    id: string;
     name: string;
     image: string;
     priceId: string;
@@ -72,11 +73,9 @@ const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const products = await getAllProducts();
 
-  const paths = products
-    .filter((product) => typeof product.priceId === "string" && product.priceId)
-    .map((product) => ({
-      params: { priceId: product.priceId as string },
-    }));
+   const paths = products.map((product) => ({
+    params: { id: product.id },
+  }));
 
   return {
     paths,
@@ -86,7 +85,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const products = await getAllProducts();
-  const product = products.find((p) => p.priceId === context.params?.priceId);
+  const product = products.find((p) => p.id === context.params?.id);
 
   if (!product) {
     return { notFound: true };

@@ -5,6 +5,7 @@ import { handleCheckout } from "@/lib/handleCheckout";
 import Link from "next/link";
 
 interface PricingCardProps {
+  id: string;
   name: string;
   priceId: string;
   price: {
@@ -17,6 +18,7 @@ interface PricingCardProps {
 }
 
 export const PricingCard: FC<PricingCardProps> = ({
+  id,
   name,
   priceId,
   price,
@@ -77,7 +79,7 @@ export const PricingCard: FC<PricingCardProps> = ({
             <div className="flex flex-col sm:flex-row w-full gap-2">
               <Link
                 className="flex-1 flex items-center justify-center py-2 px-6 text-xs rounded font-semibold text-center text-blue-500 bg-white border border-gray-200 hover:bg-gray-200"
-                href={`/programs/${priceId}`}
+                href={`/programs/${id}`}
               >
                 Learn More...
               </Link>

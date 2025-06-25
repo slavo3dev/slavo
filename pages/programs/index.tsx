@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const pricingPlans = data
     .filter(product => product.price?.amount !== undefined)
     .map(product => ({
-      id: Number(product.id),
+      id: product.id,
       name: product.name,
       priceId: product.priceId,
       price: {
