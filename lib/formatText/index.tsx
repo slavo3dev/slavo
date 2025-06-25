@@ -4,7 +4,7 @@ import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Image from "next/image";
 import classes from "./formatText.module.css";
 
-
+const SyntaxHighlighterComponent = SyntaxHighlighter as any;
 
 export const CodeBlock = ({ className, children }: { className?: string; children: React.ReactNode }) => {
 	const [isMounted, setIsMounted] = useState(false);
@@ -18,7 +18,7 @@ export const CodeBlock = ({ className, children }: { className?: string; childre
 	// Use children directly instead of code.children
 	return (
 		isMounted ? (
-			<SyntaxHighlighter style={atomDark} language={language} children={children} />
+			<SyntaxHighlighterComponent style={atomDark} language={language} children={children} />
 		) : (
 			<p>Loading...</p> // This can be a placeholder or null if you prefer not to show anything
 		)

@@ -6,9 +6,8 @@ import insta from "public/images/icons/instagram-blue.svg";
 import twit from "public/images/icons/twitter-blue.svg";
 import face from "public/images/icons/facebook-blue.svg";
 import link from "public/images/icons/linkedinIcon.webp";
-import classes from "./navigation.module.css";
 import { Subscribe } from "@/components/Subscribe";
-import LoginModal from "@/components/Auth/LoginPopup";
+import { LoginModal } from "@/components/Auth/LoginPopup";
 import { useRouter } from "next/router";
 
 export const Burger: FC<any> = ( { userInfo } ) => {
@@ -75,6 +74,9 @@ useEffect(() => {
             <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Pricing</li>
             <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Team</li> */}
             <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
+				        <Link href="/programs">Programs</Link>
+            </li>
+            <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
 				<Link href="/porch">Porch</Link>
             </li>
             <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
@@ -86,7 +88,7 @@ useEffect(() => {
             <li className="w-11/12 text-sm text-gray-500 rounded-xl">
                <span /*onClick={handleBlog}*/ className="relative block hover:text-blue-500 hover:bg-blue-50 w-full p-4 rounded-xl"> 
                               <Link href="/blog">Blog</Link>
-                              
+                            
 				{/* <div className="absolute right-2 bottom-1">
                   {!showBlog ? ( <p className="text-md h-8 w-8 text-center ">+</p>)
 				: (<p className="absolute right-1 bottom-0.5 text-md h-8 w-8 text-center ">-</p>)}
@@ -99,6 +101,7 @@ useEffect(() => {
                 <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Blog 4</li>
               </ul> */}
             </li>
+           
 			{/* <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">Faqs</li> */}
             {/* <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
 				<Link href="/videos">Videos</Link>

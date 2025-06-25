@@ -1,6 +1,8 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import Script from "next/script";
 
+const ScriptComponent = Script as any;
+
 export default class MyDocument extends Document {
 	render() {
 		return (
@@ -39,11 +41,11 @@ export default class MyDocument extends Document {
 					/>
           
 					{/* Google Analytics (using Next.js Script component) */}
-					<Script
+					<ScriptComponent
 						strategy="lazyOnload"
 						src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
 					/>
-					<Script
+					<ScriptComponent
 						id="google-analytics"
 						strategy="lazyOnload"
 						dangerouslySetInnerHTML={{

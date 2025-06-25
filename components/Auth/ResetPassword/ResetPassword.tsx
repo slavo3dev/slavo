@@ -14,14 +14,37 @@ export const ResetPassword: FC<ResetPasswordProps> = ( { resetPassword, onClose 
 	const [email, setEmail] = useState("");
 	const [errorMsg, setErrorMsg ] = useState("");
 	const router = useRouter();
+	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	const isEmailValid = email && emailRegex.test(email);
 	
 	const handlePasswordReset = async () => {
+
+		setErrorMsg(""); // Clear previous error message
+
+		if (!email) {
+			setErrorMsg("Email is required.");
+			return;
+		}
+
+		if (!emailRegex.test(email)) {
+			setErrorMsg("Please enter a valid email address.");
+			return;
+		}
+
 		try {
-			await supabase.auth.resetPasswordForEmail( email, {
+			const {error} = await supabase.auth.resetPasswordForEmail( email, {
 				redirectTo: "https://slavo.io/update-password"
 			});
 			//handlePasswordReset();
+
+			if (error) {
+				throw error;
+			}
+
+			setErrorMsg("Password reset email sent successfully. Please check your inbox.");	
+
 			onClose();
+
 			router.push(`/password-reset-success?email=${encodeURIComponent(email)}`);
 		} catch (error: any) {
 			console.log(`<ResetPassword Request>Error Msg: ${error.message}`);
@@ -65,7 +88,9 @@ export const ResetPassword: FC<ResetPasswordProps> = ( { resetPassword, onClose 
 						</div>
 						{ errorMsg }
 						<div>
-							<button type="button" className="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md focus:outline-none hover:bg-blue-700 focus:bg-blue-700"
+							<button type="button" disabled={!isEmailValid} 	className={`inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 border border-transparent rounded-md focus:outline-none ${
+		                                                            isEmailValid ? "bg-blue-600 hover:bg-blue-700 focus:bg-blue-700" : "bg-gray-400 cursor-not-allowed"
+	}`}
 								onClick={ async () => { await handlePasswordReset(); } }>
 		                                                            Reset Password
 							</button>

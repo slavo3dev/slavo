@@ -9,6 +9,7 @@ import PorchUserButton from "@/components/PorchElements/PorchInteractivity";
 import PorchUserDataForm from "@/components/PorchElements/PorchUserDataForm";
 import { GoArrowLeft } from "react-icons/go";
 
+const InfiniteScrollComponent = InfiniteScroll as any;
 
 interface PorchPageProps {
   initialPorchs: PorchType[];
@@ -122,7 +123,7 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 					>
 					{showUserForm ? (<PorchUserDataForm setShowUserForm={setShowUserForm}/>) : null}
 					</div>
-					<InfiniteScroll
+					<InfiniteScrollComponent
 						dataLength={porchList.length}
 						next={loadMorePorchs}
 						hasMore={hasMore}
@@ -130,7 +131,7 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 						endMessage={<p style={{ textAlign: "center" }}>Yay! You have seen it all</p>}
 					>
 						<PorchList porchs={porchList} setPorchs={setPorchs} />
-					</InfiniteScroll>
+					</InfiniteScrollComponent>
 				</div>
 		</>
 	);

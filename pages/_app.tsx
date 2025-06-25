@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import * as ga from "../lib/ga";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import "animate.css";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
@@ -10,7 +11,7 @@ import VideoContext from "context/VideoContext";
 import UserInfoContext from "context/UserInfoContext";
 import supabase from "lib/supabase";
 import { User } from "@supabase/supabase-js";
-import { SpeedInsights } from "@vercel/speed-insights/react";
+
 
 function MyApp ( { Component, pageProps }: AppProps ) {
     
@@ -80,7 +81,7 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 						<HeadBasePage title="Career Change: Learn Web Development for a Bright Future" />
 						<MainNavigation categories={categories}/>
 						<Component { ...pageProps } />
-						<SpeedInsights route={router.pathname} />
+						<SpeedInsights />
 						<Footer />
 					</Layout>
 					<GoogleAnalytics gaId={GA_TRACKING_ID} />

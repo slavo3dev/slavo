@@ -2,7 +2,7 @@ import { FC, useContext, useState, MouseEvent, useEffect } from 'react';
 import { CiCirclePlus } from "react-icons/ci";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import UserInfoContext from "@/context/UserInfoContext";
-import LoginModal from '@/components/Auth/LoginPopup';
+import {LoginModal} from '@/components/Auth/LoginPopup';
 
 
 interface PorchUserButtonProps {
