@@ -3,7 +3,7 @@ import { PricingSection } from '@components';
 import { getAllProducts } from '@/lib/getAllProducts';
 
 interface PricingPlan {
-  id: number;
+  id: string;
   name: string;
   priceId: string;
   price: {

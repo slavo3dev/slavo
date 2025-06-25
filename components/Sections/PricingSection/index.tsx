@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { PricingCard } from './PricingCard';
 
 interface PricingPlan {
-  id: number;
+  id: string;
   name: string;
   priceId: string;
   price: {
