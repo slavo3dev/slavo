@@ -5,7 +5,9 @@ import supabase from "@/lib/supabase";
 import type Stripe from "stripe";
 
 export const config = {
-  api: { bodyParser: false },
+  api: {
+    bodyParser: false,
+  },
 };
 
 const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -15,6 +17,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const sig = req.headers["stripe-signature"] as string;
 
   let event: Stripe.Event;
+
   try {
     event = stripe.webhooks.constructEvent(
       buf.toString(),
@@ -22,53 +25,105 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       process.env.STRIPE_WEBHOOK_SECRET!
     );
   } catch (err) {
-    console.error("Webhook signature verification failed:", err);
+    console.error("❌ Webhook signature verification failed:", err);
     return res.status(400).send(`Webhook Error: ${(err as Error).message}`);
   }
 
-  if (event.type === "checkout.session.completed") {
-    const session = event.data.object as Stripe.Checkout.Session;
-    const userId = session.metadata?.userId;
+  switch (event.type) {
+    case "checkout.session.completed": {
+      const session = event.data.object as Stripe.Checkout.Session;
+      const userId = session.metadata?.userId;
 
-    if (!userId) {
-      console.error("Missing userId in metadata.");
-      return res.status(400).send("Missing userId");
+      if (!userId) {
+        console.error("❌ User ID missing in metadata.");
+        return res.status(400).send("Missing userId");
+      }
+
+      const customerId = session.customer as string;
+      let interval = "unlimited"; // Default: one-time payment
+
+      const subscriptionId = session.subscription;
+
+      if (subscriptionId) {
+        try {
+          const subscription = await stripe.subscriptions.retrieve(subscriptionId as string);
+          const plan = subscription.items.data[0].plan;
+
+          const billingInterval = plan.interval; // e.g. "month"
+          const intervalCount = plan.interval_count; // e.g. 1
+
+          const intervalDate = new Date();
+
+          if (billingInterval === "month") {
+            intervalDate.setMonth(intervalDate.getMonth() + intervalCount);
+          } else if (billingInterval === "year") {
+            intervalDate.setFullYear(intervalDate.getFullYear() + intervalCount);
+          }
+
+          interval = intervalDate.toISOString();
+          console.log("✅ Manually calculated interval end date:", interval);
+        } catch (err) {
+          console.error("⚠️ Failed to retrieve subscription or calculate interval:", err);
+          interval = "";
+        }
+      }
+
+      const { error: updateError } = await supabase
+        .from("profile")
+        .update({
+          is_subscribed: true,
+          stripe_customer: customerId,
+          interval,
+        })
+        .eq("id", userId);
+
+      if (updateError) {
+        console.error("❌ Supabase update error:", updateError);
+        return res.status(500).send("Supabase update failed");
+      }
+
+      console.log(`✅ User ${userId} marked as subscribed with interval: ${interval}`);
+      break;
     }
 
-    // Optional: Check first
-    const { data: profileCheck, error: checkError } = await supabase
-      .from("profile")
-      .select("is_subscribed")
-      .eq("id", userId)
-      .single();
+    case "customer.subscription.deleted":
+    case "invoice.payment_failed": {
+      const subscription = event.data.object as Stripe.Subscription;
+      const customerId = subscription.customer as string;
 
-    if (checkError) {
-      console.error("Profile fetch error:", checkError);
-      return res.status(500).send("Supabase profile fetch failed");
+      const { data: profile, error } = await supabase
+        .from("profile")
+        .select("id")
+        .eq("stripe_customer", customerId)
+        .single();
+
+      if (error || !profile?.id) {
+        console.error("❌ Could not find user for Stripe customer:", customerId);
+        return res.status(404).end();
+      }
+
+      const { error: subError } = await supabase
+        .from("profile")
+        .update({
+          is_subscribed: false,
+          interval: null,
+        })
+        .eq("id", profile.id);
+
+      if (subError) {
+        console.error("❌ Error updating subscription status:", subError);
+        return res.status(500).send("Update failed");
+      }
+
+      console.log(`🔒 Subscription deactivated for user ${profile.id}`);
+      break;
     }
 
-    if (profileCheck?.is_subscribed) {
-      console.log(`User ${userId} already subscribed.`);
-      return res.status(200).end();
-    }
-
-    const { error } = await supabase
-      .from("profile")
-      .update({
-        is_subscribed: true,
-        stripe_customer: session.customer as string,
-      })
-      .eq("id", userId);
-
-    if (error) {
-      console.error("Error updating profile:", error);
-      return res.status(500).send("Failed to update profile");
-    }
-
-    console.log(`Successfully marked user ${userId} as subscribed.`);
+    default:
+      console.log(`ℹ️ Unhandled event type: ${event.type}`);
   }
 
-  res.status(200).end();
+  return res.status(200).end(); // Don't return objects here
 };
 
 export default webhookHandler;
