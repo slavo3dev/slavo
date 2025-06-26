@@ -2,50 +2,30 @@ import supabase from "../supabase";
 import { stripe } from "../stripe";
 
 // Retrieve or create a Stripe customer
-export const createOrRetrieveCustomer = async (userId: string, email: string) => {
-  // Check if a customer already exists in Supabase
+export const createOrRetrieveCustomer = async (userId: string, email: string): Promise<string> => {
+  // 1. Try to get the stripe_customer field for the user
   const { data, error } = await supabase
     .from('profile')
     .select('stripe_customer')
     .eq('id', userId)
-    //.single(); // .single() ensures only one row is expected
-    console.log("Result:", data);
+    .single(); // Ensure only one user is returned
 
   if (error) {
     console.error("Error retrieving user from profile table:", error);
-    throw new Error(error.message);
+    throw new Error("Supabase fetch error: " + error.message);
   }
 
-  if (!data) {
-    // If no user record found, create a new Stripe customer
-    const customer = await stripe.customers.create({ email });
-    console.log("Created new Stripe customer:", customer);
-
-    // Save the new Stripe customer ID in Supabase
-    const { error: updateError } = await supabase
-      .from('profile')
-      .update({ stripe_customer: customer.id })
-      .eq('id', userId);
-
-    if (updateError) {
-      console.error("Error updating Supabase profile:", updateError);
-      throw new Error(updateError.message);
-    }
-  console.log("Created new Stripe customer:", customer);
-
-    return customer.id;
+  // 2. If stripe_customer already exists, return it
+  if (data?.stripe_customer) {
+    console.log("Stripe customer already exists:", data.stripe_customer);
+    return data.stripe_customer;
   }
 
-  // If user record found and has a stripe_customer, return it
-  if (data[0]?.stripe_customer) {
-    return data[0].stripe_customer;
-  }
-
-  // If user exists but has no stripe_customer, create one
+  // 3. Otherwise, create a new Stripe customer
   const customer = await stripe.customers.create({ email });
   console.log("Created new Stripe customer:", customer.id);
 
-  // Save the new Stripe customer ID in Supabase
+  // 4. Update Supabase with the new Stripe customer ID
   const { error: updateError } = await supabase
     .from('profile')
     .update({ stripe_customer: customer.id })
@@ -53,7 +33,7 @@ export const createOrRetrieveCustomer = async (userId: string, email: string) =>
 
   if (updateError) {
     console.error("Error updating Supabase profile:", updateError);
-    throw new Error(updateError.message);
+    throw new Error("Supabase update error: " + updateError.message);
   }
 
   return customer.id;

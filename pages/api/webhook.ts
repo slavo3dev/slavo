@@ -1,26 +1,20 @@
 import { buffer } from "micro";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { stripe } from "@/lib/stripe";
-import type Stripe from "stripe";
 import supabase from "@/lib/supabase";
+import type Stripe from "stripe";
 
-// Disable body parsing (required by Stripe)
 export const config = {
-  api: {
-    bodyParser: false,
-  },
+  api: { bodyParser: false },
 };
 
 const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method !== "POST") {
-    return res.status(405).end("Method Not Allowed");
-  }
+  if (req.method !== "POST") return res.status(405).end("Method Not Allowed");
 
   const buf = await buffer(req);
   const sig = req.headers["stripe-signature"] as string;
 
-  let event;
-
+  let event: Stripe.Event;
   try {
     event = stripe.webhooks.constructEvent(
       buf.toString(),
@@ -37,36 +31,37 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     const userId = session.metadata?.userId;
 
     if (!userId) {
-      console.error("User ID not found in session metadata.");
-      return res.status(400).send("Missing userId in metadata");
+      console.error("Missing userId in metadata.");
+      return res.status(400).send("Missing userId");
     }
 
-    //const customerId = session.customer as string;
-
-    const { data: profileCheck } = await supabase
-  .from("profile")
-  .select("*")
-  .eq("id", userId);
-
-console.log("Matching profile:", profileCheck);
-
-    const { data, error } = await supabase
+    // Optional: Check first
+    const { data: profileCheck, error: checkError } = await supabase
       .from("profile")
-      .update({is_subscribed: true, }) // do i need this in update method? stripe_customer: customerId,
+      .select("is_subscribed")
       .eq("id", userId)
-      .select();
+      .single();
 
-      console.log("Updating profile:", {
+    if (checkError) {
+      console.error("Profile fetch error:", checkError);
+      return res.status(500).send("Supabase profile fetch failed");
+    }
+
+    if (profileCheck?.is_subscribed) {
+      console.log(`User ${userId} already subscribed.`);
+      return res.status(200).end();
+    }
+
+    const { error } = await supabase
+      .from("profile")
+      .update({
         is_subscribed: true,
-        
-      });
-    console.log("Result:", data);
-    console.log("User ID from Stripe metadata:", userId);
-
-    
+        stripe_customer: session.customer as string,
+      })
+      .eq("id", userId);
 
     if (error) {
-      console.error("Error updating profile in webhook:", error);
+      console.error("Error updating profile:", error);
       return res.status(500).send("Failed to update profile");
     }
 
