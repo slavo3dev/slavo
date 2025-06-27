@@ -42,6 +42,7 @@
         "react-visibility-sensor": "^5.1.1",
         "react-wow": "^1.0.0",
         "remark-gfm": "^3.0.1",
+        "resend": "^4.6.0",
         "stripe": "^18.0.0",
         "uuid": "^9.0.1",
         "wow.js": "^1.2.2",

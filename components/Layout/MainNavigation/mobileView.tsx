@@ -77,6 +77,9 @@ useEffect(() => {
 				        <Link href="/programs">Programs</Link>
             </li>
             <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
+				        <Link href="/subscription">Subscription</Link>
+            </li>
+            <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
 				<Link href="/porch">Porch</Link>
             </li>
             <li className="w-11/12 p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">

@@ -64,6 +64,9 @@ export const MainNavigation: FC<NavigationProps> = ({categories}) => {
 						<li className={router.pathname === "/programs" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/programs">Programs</Link>
 						</li>
+						<li className={router.pathname === "/subscription" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
+							<Link href="/subscription">Subscription</Link>
+						</li>
 						<li className={router.pathname === "/porch" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
 							<Link href="/porch">Porch</Link>
 						</li>
