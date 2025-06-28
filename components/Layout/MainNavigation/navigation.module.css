@@ -4,12 +4,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
   padding: 0 10%;
   position: sticky;
   top: 0;
   z-index: 10;
   background-color: white;
-}
+  }
 
 .header1 {
   -webkit-animation: 700ms ease-in-out 0s normal none 1 running fadeInDown;
@@ -21,6 +22,7 @@
   top: 0;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
   padding: 0 10%;
   position: sticky;
   z-index: 10;
@@ -35,7 +37,7 @@
 .header ul {
   list-style: none;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   margin: 0;
   padding: 0;
 }
@@ -100,7 +102,7 @@
     display: none;
   }
 }
-@media (max-width: 1024px) and (min-width: 500px) {
+@media (max-width: 767.5px) and (min-width: 500px) {
   .navMenu ul {
     display: none;
   }
@@ -114,3 +116,6 @@
     display: block;
   }
 }
+
+
+
