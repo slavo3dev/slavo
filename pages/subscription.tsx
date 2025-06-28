@@ -2,13 +2,16 @@ import { useContext, useEffect, useState } from "react";
 import UserInfoContext from "@/context/UserInfoContext";
 import { useRouter } from "next/router";
 import supabase from "@/lib/supabase";
-import { Loader } from "@/components/ui/Loader"; // optional loading spinner if you have one
+import { Loader } from "@/components/ui/Loader";
 import { NextPage } from "next";
+import { format } from "date-fns";
+import { LoginModal } from "@/components/Auth/LoginPopup";
 
 const SubscriptionPage: NextPage = () => {
   const router = useRouter();
   const { userInfo } = useContext(UserInfoContext);
   const [loading, setLoading] = useState(true);
+  const [showLogin, setShowLogin] = useState(false);
   const [subscriptionData, setSubscriptionData] = useState<{
     is_subscribed: boolean;
     interval: string | null;
@@ -16,7 +19,8 @@ const SubscriptionPage: NextPage = () => {
 
   useEffect(() => {
     if (!userInfo) {
-      router.push("/login"); // redirect if not logged in
+      setShowLogin(true); // Trigger login modal
+      setLoading(false);
       return;
     }
 
@@ -28,7 +32,7 @@ const SubscriptionPage: NextPage = () => {
         .single();
 
       if (error) {
-        console.error("Error fetching subscription:", error);
+        console.error("❌ Error fetching subscription:", error);
         setSubscriptionData(null);
       } else {
         setSubscriptionData(data);
@@ -43,9 +47,13 @@ const SubscriptionPage: NextPage = () => {
   if (loading) {
     return (
       <div className="min-h-[40vh] flex items-center justify-center text-blue-500">
-        <Loader title = "Loading..."/> {/* Optional spinner */}
+        <Loader title="Loading..." />
       </div>
     );
+  }
+
+  if (showLogin) {
+    return <LoginModal isOpen={true} onClose={() => router.push("/")} />;
   }
 
   if (!subscriptionData) {
@@ -58,7 +66,10 @@ const SubscriptionPage: NextPage = () => {
   }
 
   const { is_subscribed, interval } = subscriptionData;
-  const formattedDate = interval ? new Date(interval).toLocaleDateString() : null;
+  const formattedDate =
+    interval && interval !== "unlimited"
+      ? format(new Date(interval), "PPP")
+      : "Unlimited / Not Set";
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10 text-blue-500">
@@ -77,7 +88,7 @@ const SubscriptionPage: NextPage = () => {
 
           <p className="text-lg">
             <span className="font-semibold">Valid Until:</span>{" "}
-            {formattedDate ? formattedDate : "Unlimited / Not Set"}
+            {formattedDate}
           </p>
         </div>
 
