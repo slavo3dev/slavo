@@ -28,12 +28,6 @@ export const Burger: FC<BurgerProps> = ({ userInfo }) => {
 
   const toggleUserDropdown = () => setShowUserDropdown((prev) => !prev);
 
-  // const logout = () => {
-  //   router.push("/auth/logout");
-  //   setShowUserDropdown(false);
-  //   setShowDrop(false);
-  // };
-
   useEffect(() => {
     if (userEmail) {
       setShowLoginModal(false);
@@ -107,8 +101,14 @@ export const Burger: FC<BurgerProps> = ({ userInfo }) => {
                     <div className="absolute right-0 mt-2 w-full bg-white border border-gray-200 rounded shadow-md z-50 p-4 text-sm">
                       <p className="mb-2 text-gray-800 font-medium truncate">{userEmail}</p>
                       <Link
+                        href={"/profile"}
+                        className="hover:text-blue-500 hover:bg-blue-50 w-full block"
+                      >
+                        Profile
+                      </Link>
+                      <Link
                         href={"/auth/logout"}
-                        className="text-red-600 hover:underline w-full text-left"
+                        className="hover:text-blue-500 hover:bg-blue-50 w-full mt-2"
                       >
                         Logout
                       </Link>
