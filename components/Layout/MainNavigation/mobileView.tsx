@@ -70,9 +70,7 @@ export const Burger: FC<BurgerProps> = ({ userInfo }) => {
               <li className="p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
                 <Link href="/programs">Programs</Link>
               </li>
-              <li className="p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
-                <Link href="/subscription">Subscription</Link>
-              </li>
+              
               <li className="p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
                 <Link href="/porch">Porch</Link>
               </li>
@@ -101,10 +99,16 @@ export const Burger: FC<BurgerProps> = ({ userInfo }) => {
                     <div className="absolute right-0 mt-2 w-full bg-white border border-gray-200 rounded shadow-md z-50 p-4 text-sm">
                       <p className="mb-2 text-gray-800 font-medium truncate">{userEmail}</p>
                       <Link
-                        href={"/profile"}
+                        href={"/subscription"}
                         className="hover:text-blue-500 hover:bg-blue-50 w-full block"
                       >
-                        Profile
+                        Subscription
+                      </Link>
+                      <Link
+                        href={"/dashboard"}
+                        className="hover:text-blue-500 hover:bg-blue-50 w-full block"
+                      >
+                        Dashboard
                       </Link>
                       <Link
                         href={"/auth/logout"}

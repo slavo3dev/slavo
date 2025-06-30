@@ -66,9 +66,7 @@ export const MainNavigation: FC<NavigationProps> = ({ categories }) => {
             <li className={router.pathname === "/programs" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
               <Link href="/programs">Programs</Link>
             </li>
-            <li className={router.pathname === "/subscription" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
-              <Link href="/subscription">Subscription</Link>
-            </li>
+            
             <li className={router.pathname === "/porch" ? "bg-blue-50" : "hover:text-blue-500 hover:bg-blue-50"}>
               <Link href="/porch">Porch</Link>
             </li>
@@ -93,12 +91,18 @@ export const MainNavigation: FC<NavigationProps> = ({ categories }) => {
                   {showUserDropdown && (
                     <div className="absolute right-0 mt-2 w-52 bg-white border border-gray-200 rounded shadow-md z-50 p-4 text-sm">
                       <p className="mb-2 text-gray-800 font-medium truncate">{userEmail}</p>
-                       <Link
-                        href={"/profile"}
+                      <Link
+                        href={"/subscription"}
                         className="hover:text-blue-500 hover:bg-blue-50 w-full block text-left "
                       >
-                        Profile
-                      </Link> 
+                        Subscription
+                      </Link>
+                       <Link
+                        href={"/dashboard"}
+                        className="hover:text-blue-500 hover:bg-blue-50 w-full block text-left mt-2"
+                      >
+                        Dashboard
+                      </Link>
                       <Link
                         href={"/auth/logout"}
                         className=" hover:text-blue-500 hover:bg-blue-50 w-full block text-left mt-2"
