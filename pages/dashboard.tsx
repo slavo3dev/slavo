@@ -1,11 +1,12 @@
 import { useState, useEffect, useContext, useMemo, ChangeEvent } from 'react';
 import UserInfoContext from '@/context/UserInfoContext';
 import supabase from '@/lib/supabase';
-import Calendar from '@/components/PorchElements/PorchUserDataForm/Calendar';
+import { Calendar } from '@/components/PorchElements/Calendar';
 import { NextPage } from 'next';
 
 const Dashboard: NextPage = () => {
   const [weeklyGoal, setWeeklyGoal] = useState<number>(1);
+  const [selectedGoal, setSelectedGoal] = useState<number>(1);
   const [currentStreak, setCurrentStreak] = useState<number>(0);
   const [longestStreak, setLongestStreak] = useState<number>(0);
   const [weeklyLearningDays, setWeeklyLearningDays] = useState<number>(0);
@@ -20,7 +21,10 @@ const Dashboard: NextPage = () => {
       const response = await fetch(`/api/getUserActivity?email=${encodeURIComponent(userInfo.email)}`);
       const { userActivityData, learningData } = await response.json();
 
-      if (userActivityData?.weekly_goal) setWeeklyGoal(userActivityData.weekly_goal);
+      if (userActivityData?.weekly_goal) {
+        setWeeklyGoal(userActivityData.weekly_goal);
+        setSelectedGoal(userActivityData.weekly_goal);
+      }
       setLongestStreak(userActivityData?.longest_streak ?? 0);
 
       if (learningData?.length) {
@@ -105,10 +109,11 @@ const Dashboard: NextPage = () => {
     return 8 - dayOfWeek;
   };
 
-  const handleNewGoal = async (e: ChangeEvent<HTMLSelectElement>) => {
-    const newGoal = Number(e.target.value);
-    setWeeklyGoal(newGoal);
+  const handleGoalSelect = (e: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedGoal(Number(e.target.value));
+  };
 
+  const saveNewGoal = async () => {
     if (!userInfo?.email) return;
 
     try {
@@ -119,12 +124,13 @@ const Dashboard: NextPage = () => {
         await fetch('/api/updateUserActivity', {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: userInfo.email, weekly_goal: newGoal }),
+          body: JSON.stringify({ email: userInfo.email, weekly_goal: selectedGoal }),
         });
       } else {
-        await supabase.from('user_activity').insert([{ user_email: userInfo.email, weekly_goal: newGoal }]);
+        await supabase.from('user_activity').insert([{ user_email: userInfo.email, weekly_goal: selectedGoal }]);
       }
 
+      setWeeklyGoal(selectedGoal);
       setNotification('✅ Weekly goal updated!');
       setTimeout(() => setNotification(null), 3000);
     } catch (err) {
@@ -140,11 +146,7 @@ const Dashboard: NextPage = () => {
 
   return (
     <main className="max-w-5xl mx-auto px-4 py-8">
-      {notification && (
-        <div className="mb-4 px-4 py-2 text-sm text-white bg-green-500 rounded shadow-md">
-          {notification}
-        </div>
-      )}
+     
 
       <h2 className="text-2xl font-semibold mb-6">Your Weekly Learning Summary</h2>
 
@@ -195,8 +197,8 @@ const Dashboard: NextPage = () => {
             name="weekly-goal"
             id="weekly-goal"
             className="border rounded p-2"
-            value={weeklyGoal}
-            onChange={handleNewGoal}
+            value={selectedGoal}
+            onChange={handleGoalSelect}
           >
             {Array.from({ length: getRemainingDaysInWeek() }, (_, i) => (
               <option key={i + 1} value={i + 1}>{i + 1}</option>
@@ -206,15 +208,17 @@ const Dashboard: NextPage = () => {
         </div>
         <button
           type="button"
-          onClick={() => {
-            setNotification('✅ Weekly goal confirmed!');
-            setTimeout(() => setNotification(null), 3000);
-          }}
+          onClick={saveNewGoal}
           className="border bg-blue-200 text-sm rounded-full px-3 py-1 hover:bg-opacity-80"
         >
           Save Weekly Goal
         </button>
       </div>
+       {notification && (
+        <div className="mb-4 px-4 py-2 text-sm text-white bg-green-500 rounded shadow-md">
+          {notification}
+        </div>
+      )}
     </main>
   );
 };

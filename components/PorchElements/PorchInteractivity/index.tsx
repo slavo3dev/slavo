@@ -10,8 +10,8 @@ interface PorchUserButtonProps {
     setShowUserForm: React.Dispatch<React.SetStateAction<boolean>>;
   }
 
-const PorchUserButton : FC<PorchUserButtonProps> = ( { showUserForm, setShowUserForm} ) => {
-    
+export const PorchUserButton : FC<PorchUserButtonProps> = ( { showUserForm, setShowUserForm} ) => {
+
     const { userInfo } = useContext(UserInfoContext)
     const [showLoginPopup, setShowLoginPopup] = useState(false);
     const isAuth = userInfo?.email;
@@ -57,4 +57,4 @@ const PorchUserButton : FC<PorchUserButtonProps> = ( { showUserForm, setShowUser
     );
 }
 
-export default PorchUserButton;
+
