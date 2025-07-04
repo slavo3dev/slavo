@@ -5,14 +5,19 @@ import { useRouter } from "next/router";
 import { Subscribe } from "@/components/Subscribe";
 import { LoginModal } from "@/components/Auth/LoginPopup";
 import { FiUser } from "react-icons/fi";
-
 import insta from "public/images/icons/instagram-blue.svg";
 import twit from "public/images/icons/twitter-blue.svg";
 import face from "public/images/icons/facebook-blue.svg";
 import link from "public/images/icons/linkedinIcon.webp";
+import supabase from "@/lib/supabase";
+
+interface UserInfo {
+  id: string;
+  email?: string;
+}
 
 interface BurgerProps {
-  userInfo: { email?: string } | null;
+  userInfo: UserInfo | null;
   categories?: string[];
 }
 
@@ -23,6 +28,7 @@ export const Burger: FC<BurgerProps> = ({ userInfo }) => {
   const userEmail = userInfo?.email;
   const router = useRouter();
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const [isSubscribed, setIsSubscribed] = useState<boolean>(false);
 
   const toggleLoginModal = () => setShowLoginModal((prev) => !prev);
 
@@ -48,6 +54,26 @@ export const Burger: FC<BurgerProps> = ({ userInfo }) => {
       document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+      const fetchSubscriptionStatus = async () => {
+        if (!userInfo) return;
+
+        const { data, error } = await supabase
+          .from("profile")
+          .select("is_subscribed")
+          .eq("id", userInfo.id)
+          .single();
+
+        if (error) {
+          console.error("Error fetching subscription status:", error);
+        } else {
+          setIsSubscribed(data?.is_subscribed || false);
+        }
+      };
+
+      fetchSubscriptionStatus();
+    }, [userInfo]);
+  
   return (
     <>
       <div className="md:hidden flex-row overflow-show">
@@ -90,7 +116,13 @@ export const Burger: FC<BurgerProps> = ({ userInfo }) => {
                 <div ref={dropdownRef} className="relative w-full">
                   <button
                     onClick={toggleUserDropdown}
-                    className="flex items-center justify-center w-full py-2 text-blue-500 border border-blue-200 rounded hover:border-blue-300"
+                    className={`flex items-center justify-center w-full py-2 text-blue-500 border border-blue-200 rounded hover:border-blue-300 ${
+                      isSubscribed === true
+                        ? "bg-green-100 text-green-600"
+                        : isSubscribed === false
+                        ? "bg-yellow-100 text-yellow-600"
+                        : "text-blue-500"
+                    }`}
                   >
                     <FiUser size={22} />
                   </button>

@@ -1,4 +1,4 @@
-import { FC, useEffect, useState, useContext, useRef } from "react";
+import { FC, useEffect, useState, useContext, useRef, use } from "react";
 import Link from "next/link";
 import classes from "./navigation.module.css";
 import { Logo } from "../Logo";
@@ -10,6 +10,8 @@ import { LoginModal } from "@/components/Auth/LoginPopup";
 import { NavigationProps } from "@/Types/Navigation";
 import { BlogDropDown } from "@/components/Posts/BlogDropDown";
 import { FiUser } from "react-icons/fi";
+import supabase from "@/lib/supabase"; 
+
 
 export const MainNavigation: FC<NavigationProps> = ({ categories }) => {
   const [headStyle, setHeadStyle] = useState<boolean>(true);
@@ -17,6 +19,7 @@ export const MainNavigation: FC<NavigationProps> = ({ categories }) => {
   const [selectedCategory, setSelectedCategory] = useState("ALL");
   const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
   const [showUserDropdown, setShowUserDropdown] = useState(false);
+  const [isSubscribed, setIsSubscribed] = useState<boolean>(false);
   const userEmail = userInfo?.email;
   const router = useRouter();
 
@@ -57,6 +60,26 @@ export const MainNavigation: FC<NavigationProps> = ({ categories }) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    const fetchSubscriptionStatus = async () => {
+      if (!userInfo) return;
+
+      const { data, error } = await supabase
+        .from("profile")
+        .select("is_subscribed")
+        .eq("id", userInfo.id)
+        .single();
+
+      if (error) {
+        console.error("Error fetching subscription status:", error);
+      } else {
+        setIsSubscribed(data?.is_subscribed || false);
+      }
+    };
+
+    fetchSubscriptionStatus();
+  }, [userInfo]);
+
   return (
     <header className={headStyle ? classes.header : classes.header1}>
       <Logo />
@@ -84,7 +107,13 @@ export const MainNavigation: FC<NavigationProps> = ({ categories }) => {
                 <div ref={dropdownRef} className="relative">
                   <button
                     onClick={() => setShowUserDropdown((prev) => !prev)}
-                    className="text-blue-500 p-2 rounded-full hover:bg-blue-100"
+                    className={`p-2 rounded-full hover:bg-blue-100 ${
+                      isSubscribed === true
+                        ? "bg-green-100 text-green-600"
+                        : isSubscribed === false
+                        ? "bg-yellow-100 text-yellow-600"
+                        : "text-blue-500"
+                    }`}
                   >
                     <FiUser size={24} />
                   </button>
