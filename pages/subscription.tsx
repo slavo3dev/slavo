@@ -70,39 +70,72 @@ const SubscriptionPage: NextPage = () => {
     interval && interval !== "unlimited"
       ? format(new Date(interval), "PPP")
       : "Unlimited / Not Set";
+      
+  const handleCancelSubscription = async () => {
+    const response = await fetch("/api/cancel-subscription", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userId: userInfo?.id }),
+    });
+
+    if (response.ok) {
+      setSubscriptionData((prev) => ({ ...prev, is_subscribed: false, interval: null }));
+    } else {
+      console.error("❌ Error canceling subscription:", response);
+    }
+  };
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10 text-blue-500">
       <div className="border border-gray-200 rounded-lg shadow p-6 bg-white">
         <h1 className="text-3xl font-bold mb-4 text-center">My Subscription</h1>
 
-        <div className="space-y-4 text-center">
-          <p className="text-lg">
-            <span className="font-semibold">Status:</span>{" "}
-            {is_subscribed ? (
-              <span className="text-green-500 font-semibold">Active</span>
-            ) : (
-              <span className="text-red-500 font-semibold">Inactive</span>
+        <div className="space-y-6 text-center mt-6">
+          <div className="bg-blue-50 p-4 rounded-lg shadow-sm">
+            <p className="text-lg font-semibold text-blue-700">
+              Status:{" "}
+              {is_subscribed ? (
+                <span className="text-green-600 font-bold">Active</span>
+              ) : (
+                <span className="text-red-500 font-bold">Inactive</span>
+              )}
+            </p>
+
+            {is_subscribed && (
+              <div className="mt-4">
+                <button
+                  onClick={handleCancelSubscription}
+                  className="px-5 py-2 text-sm font-medium text-white bg-red-500 rounded-lg hover:bg-red-600 transition"
+                >
+                  Cancel Subscription
+                </button>
+              </div>
             )}
-          </p>
+          </div>
 
-          <p className="text-lg">
-            <span className="font-semibold">Valid Until:</span>{" "}
-            {formattedDate}
-          </p>
-        </div>
+          <div className="bg-white p-4 rounded-lg border border-gray-100 shadow">
+            <p className="text-lg font-semibold text-blue-700">
+              Valid Until:{" "}
+              <span className="text-gray-700 font-medium">{formattedDate}</span>
+            </p>
+          </div>
 
-        <div className="mt-8 text-center">
-          <a
-            href="/programs"
-            className="inline-block px-6 py-2 text-sm font-medium text-blue-500 bg-white border border-blue-300 rounded hover:bg-blue-50"
-          >
-            Explore Programs
-          </a>
-        </div>
+          <div className="pt-4">
+            <a
+              href="/programs"
+              className="inline-block px-6 py-2 text-sm font-medium text-blue-600 border border-blue-300 rounded-lg hover:bg-blue-50 transition"
+            >
+              Explore Programs
+            </a>
+          </div>
+        </div> 
       </div>
     </div>
   );
 };
 
 export default SubscriptionPage;
+
+

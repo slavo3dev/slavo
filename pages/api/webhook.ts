@@ -73,6 +73,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         .update({
           is_subscribed: true,
           stripe_customer: customerId,
+          subscription_id: subscriptionId || null,
           interval,
         })
         .eq("id", userId);
@@ -106,6 +107,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         .from("profile")
         .update({
           is_subscribed: false,
+          subscription_id: null,
           interval: null,
         })
         .eq("id", profile.id);
