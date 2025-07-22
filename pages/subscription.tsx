@@ -16,6 +16,7 @@ const SubscriptionPage: NextPage = () => {
     is_subscribed: boolean;
     interval: string | null;
   } | null>(null);
+  const [subscriptionCancelled, setSubscriptionCancelled] = useState<{ is_subscribed: boolean } | null>(null);
 
   useEffect(() => {
     if (!userInfo) {
@@ -81,7 +82,7 @@ const SubscriptionPage: NextPage = () => {
     });
 
     if (response.ok) {
-      setSubscriptionData((prev) => ({ ...prev, is_subscribed: false, interval: null }));
+      setSubscriptionCancelled({ is_subscribed: false });
     } else {
       console.error("❌ Error canceling subscription:", response);
     }
