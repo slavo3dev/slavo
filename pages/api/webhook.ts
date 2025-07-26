@@ -121,6 +121,33 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       break;
     }
 
+    case "customer.subscription.updated": {
+      const subscription = event.data.object as Stripe.Subscription;
+
+      const { customer, cancel_at, cancel_at_period_end } = subscription;
+
+      const { data: profile, error } = await supabase
+        .from("profile")
+        .select("id")
+        .eq("stripe_customer", customer as string)
+        .single();
+
+        if (error || !profile?.id) {
+        console.error("❌ Could not find user for Stripe customer:", customer);
+        return res.status(404).end();
+      }
+
+      await supabase
+        .from("profile")
+        .update({
+          cancel_at: cancel_at ? new Date(cancel_at * 1000) : null,
+          cancel_at_period_end,
+        })
+        .eq("id", profile.id);
+      break;
+  }
+
+
     default:
       console.log(`ℹ️ Unhandled event type: ${event.type}`);
   }

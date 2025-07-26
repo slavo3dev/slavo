@@ -29,10 +29,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       cancel_at_period_end: true,
     });
     
-    await supabase
-      .from("profile")
-      .update({ subscription_id: null })
-      .eq("id", userId);
+   
       return res.status(200).json({ message: "Subscription cancellation scheduled" });
  
   } catch (err) {

@@ -15,6 +15,8 @@ const SubscriptionPage: NextPage = () => {
   const [subscriptionData, setSubscriptionData] = useState<{
     is_subscribed: boolean;
     interval: string | null;
+    cancel_at: string | null;
+    cancel_at_period_end: boolean | null;
   } | null>(null);
   const [subscriptionCancelled, setSubscriptionCancelled] = useState<{ is_subscribed: boolean } | null>(null);
 
@@ -28,7 +30,7 @@ const SubscriptionPage: NextPage = () => {
     const fetchSubscription = async () => {
       const { data, error } = await supabase
         .from("profile")
-        .select("is_subscribed, interval")
+        .select("is_subscribed, interval, cancel_at, cancel_at_period_end")
         .eq("id", userInfo.id)
         .single();
 
@@ -82,7 +84,16 @@ const SubscriptionPage: NextPage = () => {
     });
 
     if (response.ok) {
-      setSubscriptionCancelled({ is_subscribed: false });
+    // Refetch subscription to show cancel_at_period_end message
+      const { data, error } = await supabase
+        .from("profile")
+        .select("is_subscribed, interval, cancel_at, cancel_at_period_end")
+        .eq("id", userInfo?.id)
+        .single();
+
+      if (!error) {
+        setSubscriptionData(data);
+      }
     } else {
       console.error("❌ Error canceling subscription:", response);
     }
@@ -122,6 +133,18 @@ const SubscriptionPage: NextPage = () => {
               <span className="text-gray-700 font-medium">{formattedDate}</span>
             </p>
           </div>
+
+          {subscriptionData.cancel_at_period_end && subscriptionData.cancel_at && (
+              <div className="mt-4 bg-yellow-100 p-3 rounded-lg border border-yellow-300">
+                <p className="text-yellow-800 font-medium">
+                  ⚠️ Your subscription will end on{" "}
+                  <span className="font-semibold">
+                    {format(new Date(subscriptionData.cancel_at), "PPP")}
+                  </span>
+                </p>
+              </div>
+            )}
+
 
           <div className="pt-4">
             <a
