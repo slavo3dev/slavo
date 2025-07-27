@@ -18,14 +18,14 @@ const SubscriptionPage: NextPage = () => {
     cancel_at: string | null;
     cancel_at_period_end: boolean | null;
   } | null>(null);
-  const [subscriptionCancelled, setSubscriptionCancelled] = useState<{ is_subscribed: boolean } | null>(null);
-
+  
   useEffect(() => {
+    if (userInfo === undefined) return; // Still loading context
     if (!userInfo) {
-      setShowLogin(true); // Trigger login modal
+      setShowLogin(true);
       setLoading(false);
       return;
-    }
+}
 
     const fetchSubscription = async () => {
       const { data, error } = await supabase
@@ -70,11 +70,15 @@ const SubscriptionPage: NextPage = () => {
 
   const { is_subscribed, interval } = subscriptionData;
   const formattedDate =
-    interval && interval !== "unlimited"
-      ? format(new Date(interval), "PPP")
-      : "Unlimited / Not Set";
+  subscriptionData.cancel_at_period_end && subscriptionData.cancel_at
+    ? format(new Date(subscriptionData.cancel_at), "PPP")
+    : interval && interval !== "unlimited"
+    ? format(new Date(interval), "PPP")
+    : "Unlimited / Not Set";
+
       
   const handleCancelSubscription = async () => {
+    setLoading(true); 
     const response = await fetch("/api/cancel-subscription", {
       method: "POST",
       headers: {
@@ -97,6 +101,7 @@ const SubscriptionPage: NextPage = () => {
     } else {
       console.error("❌ Error canceling subscription:", response);
     }
+    setLoading(false);
   };
 
   return (
@@ -109,7 +114,8 @@ const SubscriptionPage: NextPage = () => {
             <p className="text-lg font-semibold text-blue-700">
               Status:{" "}
               {is_subscribed ? (
-                <span className="text-green-600 font-bold">Active</span>
+                <span className="text-green-600 font-bold">Active
+                {subscriptionData.cancel_at_period_end && " (Cancels Soon)"}</span>
               ) : (
                 <span className="text-red-500 font-bold">Inactive</span>
               )}
