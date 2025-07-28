@@ -125,9 +125,18 @@ const SubscriptionPage: NextPage = () => {
               <div className="mt-4">
                 <button
                   onClick={handleCancelSubscription}
-                  className="px-5 py-2 text-sm font-medium text-white bg-red-500 rounded-lg hover:bg-red-600 transition"
+                  disabled={loading || !!subscriptionData?.cancel_at_period_end}
+                  className={`px-5 py-2 text-sm font-medium text-white rounded-lg transition
+                    ${loading || subscriptionData?.cancel_at_period_end
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "bg-red-500 hover:bg-red-600"
+                    }`}
                 >
-                  Cancel Subscription
+                  {subscriptionData?.cancel_at_period_end
+                    ? "Cancellation Scheduled"
+                    : loading
+                      ? "Processing..."
+                      : "Cancel Subscription"}
                 </button>
               </div>
             )}
