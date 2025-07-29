@@ -101,6 +101,8 @@ const SubscriptionPage: NextPage = () => {
       if (!error) {
         setSubscriptionData(data);
       }
+
+      console.log("Here is my data:", data);
     } else {
       console.error("❌ Error canceling subscription:", response);
     }
