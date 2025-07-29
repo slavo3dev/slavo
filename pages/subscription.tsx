@@ -72,9 +72,12 @@ const SubscriptionPage: NextPage = () => {
   const formattedDate =
   subscriptionData.cancel_at_period_end && subscriptionData.cancel_at
     ? format(new Date(subscriptionData.cancel_at), "PPP")
-    : interval && interval !== "unlimited"
-    ? format(new Date(interval), "PPP")
-    : "Unlimited / Not Set";
+    : interval === null
+    ? "Not set"
+    : interval === "unlimited"
+    ? "Unlimited access"
+    : format(new Date(interval), "PPP");
+
 
       
   const handleCancelSubscription = async () => {
@@ -121,7 +124,7 @@ const SubscriptionPage: NextPage = () => {
               )}
             </p>
 
-            {is_subscribed && (
+            {is_subscribed && interval !== "unlimited" && (
               <div className="mt-4">
                 <button
                   onClick={handleCancelSubscription}

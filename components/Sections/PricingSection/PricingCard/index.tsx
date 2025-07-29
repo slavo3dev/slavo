@@ -1,8 +1,10 @@
-import { FC, useContext } from "react";
+import { FC, useContext, useEffect } from "react";
 import UserInfoContext from "@/context/UserInfoContext";
 import { formatCurrency } from "@/lib/formatCurrecny";
 import { handleCheckout } from "@/lib/handleCheckout";
 import Link from "next/link";
+import supabase from "@/lib/supabase";
+import { useState } from "react";
 
 interface PricingCardProps {
   id: string;
@@ -26,10 +28,11 @@ export const PricingCard: FC<PricingCardProps> = ({
   image,
 }) => {
 
+  const [interval, setInterval] = useState<string | null>(null);
+
   const { userInfo } = useContext(UserInfoContext)
 
-  console.log(`Recurring for ${name}:`, price.recurring); // ✅ Log value
-
+ 
   const onCheckout = () => {
     if (!userInfo) {
       alert("Please log in to continue.");
@@ -41,8 +44,23 @@ export const PricingCard: FC<PricingCardProps> = ({
       userId: userInfo.id!,
       email: userInfo.email!,
     });
-  };
+  };  
    
+  useEffect(() => {
+    const fetchInterval = async () => {
+      if (!userInfo) return;
+
+      const { data } = await supabase
+        .from("profile")
+        .select("interval")
+        .eq("id", userInfo.id)
+        .single();
+      
+        setInterval(data?.interval ?? null);
+    }
+    fetchInterval();
+  },[])     
+
   return (
     <div className="w-full md:w-1/2 lg:w-1/3 px-3 mb-6">
       <div className="hover-up-5 border border-gray-200 pt-16 pb-8 px-4 text-center rounded flex flex-col h-full bg-white text-blue-500">
@@ -84,10 +102,11 @@ export const PricingCard: FC<PricingCardProps> = ({
                 Learn More...
               </Link>
               <button
+                disabled={interval !== null}
                 onClick={onCheckout}
-                className="flex-1 flex items-center justify-center py-2 px-6 text-xs rounded font-semibold text-center text-white bg-blue-400 hover:bg-blue-200"
+                className={`flex-1 flex items-center justify-center py-2 px-6 text-xs rounded font-semibold text-center ${interval === null ? "text-white bg-blue-400 hover:bg-blue-200" : "text-gray-400 bg-gray-200 cursor-not-allowed"}`}
               >
-                Purchase
+                {interval === null ? "Purchase" : "Already have access"}
               </button>
             </div>
           </div>
