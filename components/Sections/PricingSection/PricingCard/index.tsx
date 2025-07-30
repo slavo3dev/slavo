@@ -1,10 +1,9 @@
-import { FC, useContext, useEffect } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import UserInfoContext from "@/context/UserInfoContext";
 import { formatCurrency } from "@/lib/formatCurrecny";
 import { handleCheckout } from "@/lib/handleCheckout";
 import Link from "next/link";
 import supabase from "@/lib/supabase";
-import { useState } from "react";
 
 interface PricingCardProps {
   id: string;

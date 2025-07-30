@@ -2,8 +2,9 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { getAllProducts } from "@/lib/getAllProducts";
 import { formatCurrency } from "@/lib/formatCurrecny";
 import { handleCheckout } from "@/lib/handleCheckout";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import UserInfoContext from "@/context/UserInfoContext";
+import supabase from "@/lib/supabase";
 
 interface ProductPageProps {
   product: {
@@ -21,6 +22,8 @@ interface ProductPageProps {
 }
 
 const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
+
+  const [interval, setInterval] = useState<string | null>(null);
   const { userInfo } = useContext(UserInfoContext);
 
   const onCheckout = () => {
@@ -35,6 +38,21 @@ const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
       email: userInfo.email!,
     });
   };
+
+  useEffect(() => {
+    const fetchInterval = async () => {
+      if (!userInfo) return;
+
+      const { data } = await supabase
+        .from("profile")
+        .select("interval")
+        .eq("id", userInfo.id)
+        .single();
+      
+        setInterval(data?.interval ?? null);
+    }
+    fetchInterval();
+  },[]) 
 
   return (
     <div className="max-w-4xl mx-auto p-6 text-blue-500">
@@ -60,10 +78,11 @@ const ProductPage: NextPage<ProductPageProps> = ({ product }) => {
         </ul>
 
         <button
+          disabled={interval !== null}
           onClick={onCheckout}
-          className="px-6 py-3 rounded bg-blue-500 text-white font-semibold hover:bg-blue-400"
+          className={`px-6 py-3 rounded ${interval === null ? "text-white bg-blue-400 hover:bg-blue-200" : "text-gray-400 bg-gray-200 cursor-not-allowed"}`}
         >
-          Purchase
+          {interval === null ? "Purchase" : "Already have access"}
         </button>
       </div>
     </div>

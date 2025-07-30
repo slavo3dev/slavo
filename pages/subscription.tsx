@@ -81,33 +81,38 @@ const SubscriptionPage: NextPage = () => {
 
       
   const handleCancelSubscription = async () => {
-    setLoading(true); 
-    const response = await fetch("/api/cancel-subscription", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ userId: userInfo?.id }),
-    });
+  setLoading(true);
 
-    if (response.ok) {
-    // Refetch subscription to show cancel_at_period_end message
-      const { data, error } = await supabase
-        .from("profile")
-        .select("is_subscribed, interval, cancel_at, cancel_at_period_end")
-        .eq("id", userInfo?.id)
-        .single();
+  const response = await fetch("/api/cancel-subscription", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ userId: userInfo?.id }),
+  });
 
-      if (!error) {
-        setSubscriptionData(data);
-      }
+  if (response.ok) {
+    // Estimate when the subscription will end based on `interval`
+    let estimatedCancelDate: string | null = null;
 
-      console.log("Here is my data:", data);
-    } else {
-      console.error("❌ Error canceling subscription:", response);
+    if (subscriptionData?.interval && subscriptionData.interval !== "unlimited") {
+      const parsedInterval = new Date(subscriptionData.interval);
+      estimatedCancelDate = parsedInterval.toISOString(); // Keep existing end date
     }
-    setLoading(false);
-  };
+
+    // Optimistically update UI without waiting for webhook
+    setSubscriptionData((prev) => ({
+      ...prev!,
+      cancel_at_period_end: true,
+      cancel_at: estimatedCancelDate,
+    }));
+  } else {
+    console.error("❌ Error canceling subscription:", response);
+  }
+
+  setLoading(false);
+};
+
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10 text-blue-500">
