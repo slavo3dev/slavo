@@ -20,7 +20,7 @@ const SubscriptionPage: NextPage = () => {
   } | null>(null);
   
   useEffect(() => {
-    if (userInfo === undefined) return; // Still loading context
+    if (userInfo === undefined) return; 
     if (!userInfo) {
       setShowLogin(true);
       setLoading(false);
@@ -92,15 +92,13 @@ const SubscriptionPage: NextPage = () => {
   });
 
   if (response.ok) {
-    // Estimate when the subscription will end based on `interval`
     let estimatedCancelDate: string | null = null;
 
     if (subscriptionData?.interval && subscriptionData.interval !== "unlimited") {
       const parsedInterval = new Date(subscriptionData.interval);
-      estimatedCancelDate = parsedInterval.toISOString(); // Keep existing end date
+      estimatedCancelDate = parsedInterval.toISOString();
     }
-
-    // Optimistically update UI without waiting for webhook
+    
     setSubscriptionData((prev) => ({
       ...prev!,
       cancel_at_period_end: true,
