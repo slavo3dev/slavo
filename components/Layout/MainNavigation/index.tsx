@@ -32,7 +32,7 @@ export const MainNavigation: FC<NavigationProps> = ({ categories }) => {
     router.push(category === "ALL" ? "/blog" : `/category/${category}`);
   };
 
-
+  console.log(`ENV: ${process.env.NODE_ENV}`)
   useEffect(() => {
     const handleScroll = () => {
       setHeadStyle(window.scrollY <= 50);
