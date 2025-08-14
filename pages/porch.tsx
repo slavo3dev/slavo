@@ -5,9 +5,7 @@ import supabase from "../lib/supabase";
 import { Loader } from "@/components/ui/Loader";
 import { HeadBasePage, PorchList, PorchHeader, PorchForm } from "@components";
 import { PorchType } from "@/Types/PorchTypes";
-import PorchUserButton from "@/components/PorchElements/PorchInteractivity";
-import PorchUserDataForm from "@/components/PorchElements/PorchUserDataForm";
-import { GoArrowLeft } from "react-icons/go";
+
 
 const InfiniteScrollComponent = InfiniteScroll as any;
 
@@ -16,19 +14,16 @@ interface PorchPageProps {
 }
 
 const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
-	const [ showForm, setShowForm ] = useState( false );
-	const [ showUserForm, setShowUserForm ] = useState( false );
+	const [showForm, setShowForm] = useState( false );     
 	const [porchList, setPorchs] = useState<PorchType[]>(initialPorchs);
 	const [page, setPage] = useState(1);
 	const [hasMore, setHasMore] = useState(initialPorchs.length === 100);
-	const [comments, setComments] = useState<[]>([]);
-
-	const [position, setPosition] = useState({x: 211, y: 196})
-    const [dragging, setDragging] = useState<boolean>(false);
-    const [offset, setOffset] = useState({x: 0, y: 0})
+	const [position, setPosition] = useState({x: 211, y: 196});
+	const [dragging, setDragging] = useState<boolean>(false);
+	const [offset, setOffset] = useState({x: 0, y: 0});
 
 
-
+   
 
 	const loadMorePorchs = useCallback(async () => {
 		try {
@@ -88,11 +83,7 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 					<div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm z-40" />
 				)}
 					<div className="flex flex-col">
-						<div className="flex flex-row items-center">
-							<PorchUserButton showUserForm={showUserForm} setShowUserForm={setShowUserForm}/>
-							<p className="pl-2 pb-2"><GoArrowLeft /></p>
-							<p className="pl-2 pb-2 text-xs">Check your <span className="font-bold text-blue-700">stats</span> and update your <span className="font-bold text-blue-700">goals!</span></p>
-						</div>
+						
 						<div className="">
 							<PorchHeader showForm={showForm} setShowForm={setShowForm} />
 							<div
@@ -121,7 +112,7 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 						onMouseMove={handleMouseMove}
 						onMouseUp={handleMouseUp} 
 					>
-					{showUserForm ? (<PorchUserDataForm setShowUserForm={setShowUserForm}/>) : null}
+					
 					</div>
 					<InfiniteScrollComponent
 						dataLength={porchList.length}

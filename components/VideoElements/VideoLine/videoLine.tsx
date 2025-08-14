@@ -21,16 +21,14 @@ export const VideoLine: FC<VideoLineProps> = ({ channelLine }) => {
 					// eslint-disable-next-line @typescript-eslint/ban-types
 					idx: {},
 				) => (
-					<>
-						<VideoCard
-							id={idx}
-							videoURL={isAuth ? (`/video/${video.id}`): ((""))}
-							key={video.id}
-							imgUrl={video.imgUrl}
-							title={video.title}
-							name={video.channelName}
-						/>
-					</>
+					<VideoCard
+						key={video.id}
+						id={idx}
+						videoURL={isAuth ? (`/video/${video.id}`): ((""))}
+						imgUrl={video.imgUrl}
+						title={video.title}
+						name={video.channelName}
+					/>
 				),
 			)}
 		</div>
