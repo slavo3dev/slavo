@@ -12,7 +12,7 @@ React offers powerful tools to manage your application's data and interactions. 
 
 - [React Key Concepts](https://amzn.to/43XOCJM)
 - [Mentorship & Consulting - Contact us for more info](/contact)
-- **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/A75tvDvZ)
+- **_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/rpfrPaAbFK)
 
 #### What is `state` in React?
 
@@ -396,6 +396,6 @@ By mastering the use of `state` and `ref`, you can elevate your React developmen
 
 [Mentorship & Consulting - Contact us for more info](/contact)
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/A75tvDvZ)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/rpfrPaAbFK)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

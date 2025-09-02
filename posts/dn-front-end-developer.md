@@ -275,7 +275,7 @@ Embarking on a career as a Front-End Developer opens up possibilities. This path
 
 The journey of a Front-End Developer is one of continuous discovery, creativity, and impact. It’s a career that offers financial rewards and job security and provides a platform for personal and professional fulfillment. By choosing this path, you position yourself at the crossroads of technology and design, with the power to create meaningful and enjoyable digital experiences. Let your passion for technology and design guide you, and embrace the vast opportunities that await in the exciting world of front-end development.
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/A75tvDvZ)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/rpfrPaAbFK)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
 

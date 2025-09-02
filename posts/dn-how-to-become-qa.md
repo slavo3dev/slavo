@@ -10,7 +10,7 @@ category: "Digital Nomad"
 
 Are you considering a career switch to Quality Assurance (QA) as a manual tester or engineer? If so, you're in the right place. This blog post will guide you through the steps to become a QA professional, why this career is a great choice, what you need to learn, the benefits of working remotely, how to progress in your career, and a detailed learning roadmap. Let's dive in!
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/A75tvDvZ)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/rpfrPaAbFK)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
 
@@ -67,7 +67,7 @@ The skills and experience gained in QA are highly transferable across different 
 
 A career in QA offers a blend of stability, growth, learning, and flexibility. It’s an excellent choice for individuals looking to transition into tech, with ample career advancement and professional development opportunities. Whether you're seeking job security, a diverse range of opportunities, or the chance to impact product quality significantly, QA has much to offer.
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/A75tvDvZ)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/rpfrPaAbFK)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
 
@@ -524,7 +524,7 @@ While QA Manual Testers and QA Engineers are critical in ensuring software quali
 
 Understanding these differences can help you decide which path to pursue based on your interests, skills, and career goals. Whether you start as a manual tester and transition to automation or directly aim for a QA Engineer role, both paths offer rewarding opportunities for growth and development in the field of Quality Assurance.
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/A75tvDvZ)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/rpfrPaAbFK)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
 

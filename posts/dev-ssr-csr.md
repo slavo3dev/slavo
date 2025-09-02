@@ -153,6 +153,6 @@ Keep innovating, and until next time, happy coding!
 
 - [Clean Architecture](https://amzn.to/3FhINMC) **_A Craftsman's Guide to Software Structure and Design_**
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/A75tvDvZ)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/rpfrPaAbFK)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)

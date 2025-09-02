@@ -1,6 +1,6 @@
 import { AiFillHeart } from "react-icons/ai";
 import { GiCheckMark } from "react-icons/gi";
-import { FC, useState, ChangeEvent } from "react";
+import { FC, useState } from "react";
         
 interface CardLayoutProps {
   title: string;

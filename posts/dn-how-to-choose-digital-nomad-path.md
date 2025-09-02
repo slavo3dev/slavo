@@ -503,6 +503,6 @@ Remember, making a decision and starting small is just the beginning. Your caree
 - [Deep Work](https://amzn.to/3G9VwBs) **_Rules for Focused Success in a Distracted_**
 - [Atomic Habits](https://amzn.to/46tHp4t) **_An Easy & Proven Way to Build Good Habits & Break Bad Ones_**
 
-**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/A75tvDvZ)
+**_Join Our Discord Community_** [Unleash your potential, join a vibrant community of like-minded learners, and let's shape the future of programming together. Click here to join us on Discord.](https://discord.gg/rpfrPaAbFK)
 
 **_For Consulting and Mentorship, feel free to contact_** [slavo.io](/contact)
