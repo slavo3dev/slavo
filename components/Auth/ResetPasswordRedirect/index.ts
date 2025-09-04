@@ -1,0 +1,1 @@
+export { ResetPasswordRedirect } from "./ResetPasswordRedirect";

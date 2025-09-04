@@ -1,6 +1,6 @@
-import { FC } from "react";
 import { AiFillHeart } from "react-icons/ai";
 import { GiCheckMark } from "react-icons/gi";
+import { FC, useState } from "react";
         
 interface CardLayoutProps {
   title: string;
@@ -16,6 +16,8 @@ interface CardLayoutProps {
   hasVoted: boolean;
   extraContent: React.ReactNode;
   isLoggedIn: boolean;
+  submitChange?: (porchId: string, updatedText: string) => void;
+  userEmail?: string | null;
 }
 
 export const CardLayout: FC<CardLayoutProps> = ({
@@ -32,12 +34,29 @@ export const CardLayout: FC<CardLayoutProps> = ({
   isVoteDisabled,
   hasVoted,
   isLoggedIn,
+  submitChange,
+  userEmail,
 }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [tempComment, setTempComment] = useState(commentText); 
   const buttonClasses = `flex items-center justify-center rounded-xl px-8 py-1 text-md font-extrabold text-white transition-all duration-300 ${
     hasVoted
       ? "bg-red-600 hover:bg-red-700"
       : "bg-blue-700 hover:bg-blue-800"
   }`;
+  const isOwner = userEmail === porch.email;
+
+  const handleEditClick = () => {
+    setTempComment(commentText);
+    setIsEditing(true);
+  };
+
+  const handleUpdateClick = () => {
+    if (submitChange) {
+      submitChange(porch.new_id, tempComment);
+    }
+    setIsEditing(false); 
+  };
 
   return (
     <div className="flex flex-col overflow-hidden transition-all duration-200 transform bg-white shadow group rounded-xl hover:shadow-lg hover:-translate-y-1 hover:bg-sky-100">
@@ -85,16 +104,41 @@ export const CardLayout: FC<CardLayoutProps> = ({
         </div>
         <div className="py-8 px-2 mt-auto border-gray-100 sm:px-1">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <p className="pl-1 text-base font-medium text-gray-900">
-                {displayComment}
-                {!showMore && commentText.length > 90 && (
-                  <button onClick={handleMore}>... read more</button>
-                )}
-              </p>
+            <div className="flex items-center space-x-2 w-full">
+              {isEditing ? (
+                <textarea
+                  value={tempComment}
+                  onChange={(e) => setTempComment(e.target.value)}
+                  className="w-full p-2 border border-gray-300 rounded"
+                />
+              ) : (
+                <p className="pl-1 text-base font-medium text-gray-900">
+                  {displayComment}
+                  {!showMore && commentText.length > 90 && (
+                    <button onClick={handleMore}>... read more</button>
+                  )}
+                </p>
+              )}
             </div>
+            {isLoggedIn && isOwner && (
+              <div className="flex items-center space-x-2">
+                {isEditing ? (
+                  <button
+                    onClick={handleUpdateClick}
+                    className="text-green-500"
+                  >
+                    Update
+                  </button>
+                ) : (
+                  <button onClick={handleEditClick} className="text-blue-500">
+                    Edit
+                  </button>
+                )}
+              </div>
+            )}
           </div>
         </div>
+
         <div className="p-2">
           <p className="text-sm text-black">
             <b>Likes: </b> {porch.likes.length}

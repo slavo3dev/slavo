@@ -4,6 +4,7 @@ import Link from "next/link";
 import UserInfoContext from "@/context/UserInfoContext";
 import { OpenAI } from "../OpenAI";
 
+const TypingEffect = ReactTypingEffect as any;
 
 export const MentorAI: FC = () => {
 	const { userInfo } = useContext(UserInfoContext);
@@ -30,7 +31,7 @@ export const MentorAI: FC = () => {
                                       If you feel stack ask about advice, suggestions... etc.</p><br />
 										<p>Practice Every Day with your {" "}</p>
 										<span className="typewrite d-inline text-brand">
-											<ReactTypingEffect text={["FrontEnd Mentor", "Front End Mentor and learn about: HTML, CSS , JavaScript, TypeScript, React"]} />
+											<TypingEffect text={["FrontEnd Mentor", "Front End Mentor and learn about: HTML, CSS , JavaScript, TypeScript, React"]} />
 										</span>
 										<h4 className="text-blueGray-400 leading-relaxed wow animate__animated animate__fadeIn mt-3 text-xl">
                                 Learn HTML, CSS, JavaScript, React, TypeScript<br/><strong>with power of ChatGPT</strong> 

@@ -8,7 +8,7 @@ export const notificationStatus = (reqStatus: any) => {
 		return {
 			status: "pending",
 			title: "Sending Message...",
-			message: "Thank You, We are sending your Message!",
+			message: "Your message is on its way.",
 		};
 	}
 
@@ -17,7 +17,7 @@ export const notificationStatus = (reqStatus: any) => {
 			status: "success",
 			title: "Message Stored",
 			message:
-        "Significant, We Received your message. We will get back to you ASAP",
+        "Thank you! We’ve received your message and will get back to you as soon as possible.",
 		};
 	}
 
@@ -26,7 +26,7 @@ export const notificationStatus = (reqStatus: any) => {
 			status: "error",
 			title: "Oops...",
 			message:
-        "We are sorry, but something went worng, please try to send message again!",
+       "Something went wrong. Please try again later.",
 		};
 	}
 };

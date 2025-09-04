@@ -7,10 +7,12 @@ interface TextProps
     text2: string
 }
 
+const TypingEffect = ReactTypingEffect as any;
+
 export const TextEffect:FC<TextProps> = ({ text1, text2 }) => {
 	return (
 		<>
-			<ReactTypingEffect text={[text1, text2]} />
+			<TypingEffect text={[text1, text2]} />
 		</>
 	);
 };

@@ -80,7 +80,7 @@ export const PorchList: React.FC<PorchListProps> = ({ porchs, setPorchs }) => {
 						<div className="mt-6 space-y-3">
 						{filteringUpdatesPerUser.map((porch) => (
                 			<PorchDailyUpdate
-                 				key={porch.id + Math.random()}
+                 				key={porch.new_id || porch.created_at} //Use a Consistent and Unique Identifier
                   				porch={porch}
                   				setPorchs={setPorchs}
                 			/>

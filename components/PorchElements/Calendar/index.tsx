@@ -9,7 +9,7 @@ interface CalendarProps {
     learningDates: { date: string; count: number; }[];
 }
 
-const Calendar: FC<CalendarProps> = ({ learningDates }) => {
+export const Calendar: FC<CalendarProps> = ({ learningDates }) => {
     const [selectedMonth, setSelectedMonth] = useState<number>(new Date().getMonth());
     const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
     const [calendarDates, setCalendarDates] = useState<number[][]>([]);
@@ -194,4 +194,4 @@ const Calendar: FC<CalendarProps> = ({ learningDates }) => {
     );
 }
 
-export default Calendar;
+
