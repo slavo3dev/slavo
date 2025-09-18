@@ -62,7 +62,7 @@ export const PostContent: FC<PostContentDataType> = ({ post }) => {
 								</a>
 							
 							
-								<a href="https://discord.gg/A75tvDvZ" target="_blank" title="slavo discord" className="inline-flex items-center justify-center w-10 h-10 text-gray-900 transition-all duration-200 border border-gray-200 rounded-full hover:bg-gray-900 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
+								<a href="https://discord.gg/rpfrPaAbFK" target="_blank" title="slavo discord" className="inline-flex items-center justify-center w-10 h-10 text-gray-900 transition-all duration-200 border border-gray-200 rounded-full hover:bg-gray-900 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
 									<span className="sr-only"> Discord </span>
 									<svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
 										<path
