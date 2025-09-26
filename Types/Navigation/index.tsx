@@ -9,4 +9,5 @@ export interface DropDownMenuProps {
     items: string[];
     onSelect: (item: string) => void;
     className?: string; 
+    value?: string;
 }
