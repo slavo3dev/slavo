@@ -16,7 +16,6 @@ import supabase from "@/lib/supabase";
 export const MainNavigation: FC<NavigationProps> = ({ categories }) => {
   const [headStyle, setHeadStyle] = useState<boolean>(true);
   const { userInfo } = useContext(UserInfoContext);
-  const [selectedCategory, setSelectedCategory] = useState("ALL");
   const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState<boolean>(false);
@@ -28,7 +27,6 @@ export const MainNavigation: FC<NavigationProps> = ({ categories }) => {
   const toggleLoginModal = () => setShowLoginModal((prev) => !prev);
 
   const handleCategorySearch = (category: string) => {
-    setSelectedCategory(category);
     router.push(category === "ALL" ? "/blog" : `/category/${category}`);
   };
 
