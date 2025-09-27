@@ -4,7 +4,7 @@ date: "2024-04-25"
 author: "Slavo"
 image: "sf-learna-and-travel.png"
 excerpt: "The balcony is the most important feature I look for when booking an apartment while traveling...."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

@@ -4,7 +4,7 @@ date: "2024-07-09"
 author: "Slavo"
 image: "dn-qa-developer.png"
 excerpt: "Are you considering a career switch to Quality Assurance (QA) as a manual tester or engineer? If so, you're in the right place"
-isFeatured: true
+isFeatured: false
 category: "Digital Nomad"
 ---
 

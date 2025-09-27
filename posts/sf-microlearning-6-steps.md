@@ -4,7 +4,7 @@ date: "2024-07-05"
 author: "Slavo"
 image: "sf-micro-learning.png"
 excerpt: "Enter microlearning—a revolutionary approach that breaks down learning into manageable...."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 
