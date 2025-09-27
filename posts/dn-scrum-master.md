@@ -4,7 +4,7 @@ date: "2024-07-15"
 author: "Slavo"
 image: "dn-scrum-developer.png"
 excerpt: "Change is inevitable and a powerful catalyst for personal and professional development. In our careers, embracing change can open doors to new possibilities and greater satisfaction."
-isFeatured: true
+isFeatured: false
 category: "Digital Nomad"
 ---
 
