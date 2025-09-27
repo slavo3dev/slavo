@@ -94,18 +94,20 @@ export default function PorchShowcase({
               <li key={u.new_id ?? u.id ?? u.created_at} className="group">
                 <article className="h-full rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition hover:shadow-md focus-within:shadow-md">
                   <header className="flex items-center gap-3">
-                    <Avatar name={u.name ?? u.email ?? "Student"} avatarUrl={u.avatar_url} />
-                    <div className="min-w-0">
-                      <p className="truncate font-semibold text-gray-900">{u.name ?? "Student"}</p>
-                      <div className="flex items-center gap-2 text-xs text-gray-500">
-                        <time dateTime={u.created_at}>{timeAgo(new Date(u.created_at))}</time>
-                        {typeof (u as any).streak === "number" && (u as any).streak > 0 && (
-                          <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-medium text-blue-700">
-                            🔥 {(u as any).streak}-day streak
-                          </span>
-                        )}
-                      </div>
+                  <Avatar name={u.email ?? u.name ?? "Student"} avatarUrl={u.avatar_url} />
+                  <div className="min-w-0">
+                    <p className="truncate font-semibold text-gray-900">
+                      {u.email ?? u.name ?? "Student"}
+                    </p>
+                    <div className="flex items-center gap-2 text-xs text-gray-500">
+                      <time dateTime={u.created_at}>{timeAgo(new Date(u.created_at))}</time>
+                      {typeof (u as any).streak === "number" && (u as any).streak > 0 && (
+                        <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-medium text-blue-700">
+                          🔥 {(u as any).streak}-day streak
+                        </span>
+                      )}
                     </div>
+                  </div>
                   </header>
 
                   <p className="mt-3 line-clamp-3 text-sm text-gray-700">

@@ -20,7 +20,45 @@ import { SignUp } from "./Auth/SingUp";
 import { SignIn } from "./Auth/SignIn";
 import { PorchList, PorchHeader, PorchForm, PorchShowcase } from "./PorchElements";
 import { Preloader } from "./Elements";
+import { WhoItsFor, ProgramsOverview, FreeResourcesTeaser} from "./Marketing";
 
 
-export {Layout, LearningSources, FeaturedPosts, HeadBasePage, MainNavigation, BlogPosts, PostContent, PostHeader, ContactForm, Subscribe, Footer,  CategorySearch, MentorAI, NewResourceFrom, FreeSourcesList, VideoCard, VideoLine, Breadcrumb, Growth, Solution, Hero, LinkEvents, SignIn, SignUp, PorchList, PorchHeader, PorchForm, Preloader, PricingSection, FeaturesSection, StatisticsSection, InfoSection, ContactSection, PorchShowcase };
-
+export {
+  Layout,
+  LearningSources,
+  FeaturedPosts,
+  HeadBasePage,
+  MainNavigation,
+  BlogPosts,
+  PostContent,
+  PostHeader,
+  ContactForm,
+  Subscribe,
+  Footer,
+  CategorySearch,
+  MentorAI,
+  NewResourceFrom,
+  FreeSourcesList,
+  VideoCard,
+  VideoLine,
+  Breadcrumb,
+  Growth,
+  Solution,
+  Hero,
+  LinkEvents,
+  SignIn,
+  SignUp,
+  PorchList,
+  PorchHeader,
+  PorchForm,
+  Preloader,
+  PricingSection,
+  FeaturesSection,
+  StatisticsSection,
+  InfoSection,
+  ContactSection,
+  PorchShowcase,
+  WhoItsFor,
+  ProgramsOverview,
+  FreeResourcesTeaser
+};
