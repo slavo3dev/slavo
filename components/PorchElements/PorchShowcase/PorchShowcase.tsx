@@ -119,7 +119,7 @@ export default function PorchShowcase({
                       {(u as any).topics.slice(0, 4).map((t: string) => (
                         <span
                           key={t}
-                          className="inline-flex items-center gap-1 rounded-full bg-gradient-to-b from-white to gray-50 px-2.5 py-1 text-xs text-gray-800 border border-gray-200 shadow-sm"
+                          className="inline-flex items-center gap-1 rounded-full bg-gradient-to-b from-white to-gray-50 px-2.5 py-1 text-xs text-gray-800 border border-gray-200 shadow-sm"
                         >
                           <span className="h-1.5 w-1.5 rounded-full bg-gray-400" />
                           {t}
