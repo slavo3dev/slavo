@@ -1,5 +1,5 @@
 ---
-title: "Trends in Remote Work & Digital Skills in 2025"
+title: "Trends in Remote Work & Digital Skills in 2026"
 date: "2025-09-24"
 author: "Slavo"
 image: "dn-trends-remote.png"
