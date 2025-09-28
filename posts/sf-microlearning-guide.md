@@ -4,7 +4,7 @@ date: "2024-09-07"
 author: "Slavo"
 image: "sf-micro-learning-expert.png"
 excerpt: "Embarking on a journey from novice to expert can feel like standing at the base of a towering mountain..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

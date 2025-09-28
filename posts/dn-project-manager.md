@@ -4,7 +4,7 @@ date: "2024-07-21"
 author: "Slavo"
 image: "dn-project-manager.png"
 excerpt: "Change is inevitable and a powerful catalyst for personal and professional development. In our careers, embracing change can open doors to new possibilities and greater satisfaction."
-isFeatured: true
+isFeatured: false
 category: "Digital Nomad"
 ---
 

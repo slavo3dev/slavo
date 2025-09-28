@@ -4,7 +4,7 @@ date: "2023-11-21"
 author: "Slavo"
 image: "webdeveloper.png"
 excerpt: "Outline a roadmap for web developers looking to move from part-time freelancing to a full-time career."
-isFeatured: true
+isFeatured: false
 category: "Digital Nomad"
 ---
 

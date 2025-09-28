@@ -4,7 +4,7 @@ date: "2024-09-24"
 author: "Slavo"
 image: "sf-microlearning-modal.png"
 excerpt: "Microlearning effectively improves focus by leveraging the brain's natural ability to concentrate for shorter periods. Delivering information in small...."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

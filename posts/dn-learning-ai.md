@@ -4,7 +4,7 @@ date: "2025-09-24"
 author: "Slavo"
 image: "dn-ai-learning-operator.png"
 excerpt: "Break free from the 9–5 and launch a freelance career as an AI Operator (Prompt Specialist). Learn what the role involves, why demand is exploding, tools to master, service packages, pricing, and a 3–6 month roadmap to paid work."
-isFeatured: true
+isFeatured: false
 category: "Digital Nomad"
 ---
 

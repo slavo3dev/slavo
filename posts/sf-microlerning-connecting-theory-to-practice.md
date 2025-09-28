@@ -4,7 +4,7 @@ date: "2024-09-06"
 author: "Slavo"
 image: "sf-micro-learning-practice.png"
 excerpt: "In the fast-paced education and professional development world, Microlearning has emerged as a powerful strategy..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

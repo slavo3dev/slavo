@@ -4,7 +4,7 @@ date: "2024-12-26"
 author: "Slavo"
 image: "sf-block-time.png"
 excerpt: "We live in a world of constant notifications, demanding schedules, and never-ending to-do lists.."
-isFeatured: true
+isFeatured: flase
 category: "Self Help"
 ---
 
