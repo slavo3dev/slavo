@@ -18,9 +18,47 @@ import { Breadcrumb, Growth, Solution, PricingSection, FeaturesSection, Statisti
 import { LinkEvents } from "./Primitives";
 import { SignUp } from "./Auth/SingUp";
 import { SignIn } from "./Auth/SignIn";
-import { PorchList, PorchHeader, PorchForm } from "./PorchElements";
+import { PorchList, PorchHeader, PorchForm, PorchShowcase } from "./PorchElements";
 import { Preloader } from "./Elements";
+import { WhoItsFor, ProgramsOverview, FreeResourcesTeaser} from "./Marketing";
 
 
-export {Layout, LearningSources, FeaturedPosts, HeadBasePage, MainNavigation, BlogPosts, PostContent, PostHeader, ContactForm, Subscribe, Footer,  CategorySearch, MentorAI, NewResourceFrom, FreeSourcesList, VideoCard, VideoLine, Breadcrumb, Growth, Solution, Hero, LinkEvents, SignIn, SignUp, PorchList, PorchHeader, PorchForm, Preloader, PricingSection, FeaturesSection, StatisticsSection, InfoSection, ContactSection };
-
+export {
+  Layout,
+  LearningSources,
+  FeaturedPosts,
+  HeadBasePage,
+  MainNavigation,
+  BlogPosts,
+  PostContent,
+  PostHeader,
+  ContactForm,
+  Subscribe,
+  Footer,
+  CategorySearch,
+  MentorAI,
+  NewResourceFrom,
+  FreeSourcesList,
+  VideoCard,
+  VideoLine,
+  Breadcrumb,
+  Growth,
+  Solution,
+  Hero,
+  LinkEvents,
+  SignIn,
+  SignUp,
+  PorchList,
+  PorchHeader,
+  PorchForm,
+  Preloader,
+  PricingSection,
+  FeaturesSection,
+  StatisticsSection,
+  InfoSection,
+  ContactSection,
+  PorchShowcase,
+  WhoItsFor,
+  ProgramsOverview,
+  FreeResourcesTeaser
+};

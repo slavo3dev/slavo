@@ -4,7 +4,7 @@ date: "2024-09-04"
 author: "Slavo"
 image: "sf-micro-learning-skill.png"
 excerpt: "Learning must be quick, efficient, and effective in our fast-paced..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

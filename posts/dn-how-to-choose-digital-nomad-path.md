@@ -4,7 +4,7 @@ date: "2024-09-28"
 author: "Slavo"
 image: "dn-career-digital-nomad.png"
 excerpt: "Choosing the right digital nomad career starts with deeply understanding your current skills and interests. This self-assessment is crucial..."
-isFeatured: true
+isFeatured: false
 category: "Digital Nomad"
 ---
 

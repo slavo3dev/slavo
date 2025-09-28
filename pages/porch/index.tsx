@@ -1,7 +1,7 @@
 import { GetServerSideProps, NextPage } from "next";
 import { useState, useCallback, MouseEvent } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import supabase from "../lib/supabase";
+import supabase from "../../lib/supabase";
 import { Loader } from "@/components/ui/Loader";
 import { HeadBasePage, PorchList, PorchHeader, PorchForm } from "@components";
 import { PorchType } from "@/Types/PorchTypes";

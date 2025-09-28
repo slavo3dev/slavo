@@ -4,7 +4,7 @@ date: "2024-09-03"
 author: "Slavo"
 image: "sf-micro-learning-mistakes.png"
 excerpt: "Microlearning has become a popular approach to education, especially in our fast-paced digital world...."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

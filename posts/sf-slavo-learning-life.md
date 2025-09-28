@@ -4,7 +4,7 @@ date: "2024-03-23"
 author: "Slavo"
 image: "sf-learning-programming.png"
 excerpt: "Though theoretically straightforward, the concept of microlearning and spaced repetition was transformative in practice...."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

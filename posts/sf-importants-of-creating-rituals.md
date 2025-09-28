@@ -4,7 +4,7 @@ date: "2025-03-14"
 author: "Slavo"
 image: "sf-routines.png"
 excerpt: "Self-learning is one of the most powerful ways to grow, acquire new skills, and adapt to an ever-changing world...."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 

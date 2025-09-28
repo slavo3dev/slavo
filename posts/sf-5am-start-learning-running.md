@@ -4,7 +4,7 @@ date: "2024-02-22"
 author: "Slavo"
 image: "5am-start.png"
 excerpt: "In the tranquil early hours before the world stirs, I have found a serene space for personal growth and rejuvenation..."
-isFeatured: true
+isFeatured: false
 category: "Self Help"
 ---
 
