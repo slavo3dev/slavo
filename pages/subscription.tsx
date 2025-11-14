@@ -10,7 +10,7 @@ import { LoginModal } from "@/components/Auth/LoginPopup";
 const SubscriptionPage: NextPage = () => {
   const router = useRouter();
   const { userInfo } = useContext(UserInfoContext);
-  const [loading, setLoading] = useState(true);
+  //const [loading, setLoading] = useState(true);
   const [showLogin, setShowLogin] = useState(false);
   const [subscriptionData, setSubscriptionData] = useState<{
     is_subscribed: boolean;
@@ -23,7 +23,7 @@ const SubscriptionPage: NextPage = () => {
     if (userInfo === undefined) return; 
     if (!userInfo) {
       setShowLogin(true);
-      setLoading(false);
+      //setLoading(false);
       return;
 }
 
@@ -41,19 +41,19 @@ const SubscriptionPage: NextPage = () => {
         setSubscriptionData(data);
       }
 
-      setLoading(false);
+      //setLoading(false);
     };
 
     fetchSubscription();
   }, [userInfo]);
 
-  if (loading) {
-    return (
-      <div className="min-h-[40vh] flex items-center justify-center text-blue-500">
-        <Loader title="Loading..." />
-      </div>
-    );
-  }
+  //if (loading) {
+    //return (
+      //<div className="min-h-[40vh] flex items-center justify-center text-blue-500">
+        //<Loader title="Loading..." />
+      //</div>
+    //);
+  //}
 
   if (showLogin) {
     return <LoginModal isOpen={true} onClose={() => router.push("/")} />;
@@ -61,8 +61,8 @@ const SubscriptionPage: NextPage = () => {
 
   if (!subscriptionData) {
     return (
-      <div className="max-w-2xl mx-auto text-center py-10 text-blue-500">
-        <h1 className="text-2xl font-bold mb-2">Subscription</h1>
+      <div className="max-w-2xl py-10 mx-auto text-center text-blue-500">
+        <h1 className="mb-2 text-2xl font-bold">Subscription</h1>
         <p className="text-gray-600">We couldn’t find your subscription info.</p>
       </div>
     );
@@ -81,7 +81,7 @@ const SubscriptionPage: NextPage = () => {
 
       
   const handleCancelSubscription = async () => {
-  setLoading(true);
+  //setLoading(true);
 
   const response = await fetch("/api/cancel-subscription", {
     method: "POST",
@@ -108,24 +108,23 @@ const SubscriptionPage: NextPage = () => {
     console.error("❌ Error canceling subscription:", response);
   }
 
-  setLoading(false);
+  //setLoading(false);
 };
 
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-10 text-blue-500">
-      <div className="border border-gray-200 rounded-lg shadow p-6 bg-white">
-        <h1 className="text-3xl font-bold mb-4 text-center">My Subscription</h1>
-
-        <div className="space-y-6 text-center mt-6">
-          <div className="bg-blue-50 p-4 rounded-lg shadow-sm">
+    <div className="max-w-2xl px-4 py-10 mx-auto text-blue-500">
+      <div className="p-6 bg-white border border-gray-200 rounded-lg shadow">
+        <h1 className="mb-4 text-3xl font-bold text-center">My Subscription</h1>
+        <div className="mt-6 space-y-6 text-center">
+          <div className="p-4 rounded-lg shadow-sm bg-blue-50">
             <p className="text-lg font-semibold text-blue-700">
               Status:{" "}
               {is_subscribed ? (
-                <span className="text-green-600 font-bold">Active
+                <span className="font-bold text-green-600">Active
                 {subscriptionData.cancel_at_period_end && " (Cancels Soon)"}</span>
               ) : (
-                <span className="text-red-500 font-bold">Inactive</span>
+                <span className="font-bold text-red-500">Inactive</span>
               )}
             </p>
 
@@ -133,33 +132,30 @@ const SubscriptionPage: NextPage = () => {
               <div className="mt-4">
                 <button
                   onClick={handleCancelSubscription}
-                  disabled={loading || !!subscriptionData?.cancel_at_period_end}
+                  disabled={!!subscriptionData?.cancel_at_period_end}
                   className={`px-5 py-2 text-sm font-medium text-white rounded-lg transition
-                    ${loading || subscriptionData?.cancel_at_period_end
+                    ${subscriptionData?.cancel_at_period_end
                       ? "bg-gray-400 cursor-not-allowed"
                       : "bg-red-500 hover:bg-red-600"
                     }`}
                 >
                   {subscriptionData?.cancel_at_period_end
-                    ? "Cancellation Scheduled"
-                    : loading
-                      ? "Processing..."
-                      : "Cancel Subscription"}
+                    ? "Cancellation Scheduled" : "Cancel Subscription"}
                 </button>
               </div>
             )}
           </div>
 
-          <div className="bg-white p-4 rounded-lg border border-gray-100 shadow">
+          <div className="p-4 bg-white border border-gray-100 rounded-lg shadow">
             <p className="text-lg font-semibold text-blue-700">
               Valid Until:{" "}
-              <span className="text-gray-700 font-medium">{formattedDate}</span>
+              <span className="font-medium text-gray-700">{formattedDate}</span>
             </p>
           </div>
 
           {subscriptionData.cancel_at_period_end && subscriptionData.cancel_at && (
-              <div className="mt-4 bg-yellow-100 p-3 rounded-lg border border-yellow-300">
-                <p className="text-yellow-800 font-medium">
+              <div className="p-3 mt-4 bg-yellow-100 border border-yellow-300 rounded-lg">
+                <p className="font-medium text-yellow-800">
                   ⚠️ Your subscription will end on{" "}
                   <span className="font-semibold">
                     {format(new Date(subscriptionData.cancel_at), "PPP")}
@@ -172,7 +168,7 @@ const SubscriptionPage: NextPage = () => {
           <div className="pt-4">
             <a
               href="/programs"
-              className="inline-block px-6 py-2 text-sm font-medium text-blue-600 border border-blue-300 rounded-lg hover:bg-blue-50 transition"
+              className="inline-block px-6 py-2 text-sm font-medium text-blue-600 transition border border-blue-300 rounded-lg hover:bg-blue-50"
             >
               Explore Programs
             </a>

@@ -11,21 +11,25 @@ import VideoContext from "context/VideoContext";
 import UserInfoContext from "context/UserInfoContext";
 import supabase from "lib/supabase";
 import { User } from "@supabase/supabase-js";
+import SmallRouteLoader from "../components/SmallRouteLoader";
+
 
 
 function MyApp ( { Component, pageProps }: AppProps ) {
     
 	const [userInfo, setUserInfo] = useState<User | null>(null);
 	const router = useRouter();
-	const [ loading, setLoading ] = useState( true );
+	const [firstLoad, setFirstLoad] = useState(true);
+	const [routeLoading, setRouteLoading] = useState(false);
+	//const [ loading, setLoading ] = useState( true );
 	const [categories, setCategories] = useState<string[]>([]);
     
 	useEffect(() => {
-		setLoading(true);
 		setTimeout(() => {
-			setLoading(false);
-		}, 700);
+			setFirstLoad(false);
+		}, 700); // your branded intro
 	}, []);
+
     
 	const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || ""; 
     
@@ -73,26 +77,56 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 	  
 		fetchCategories();
 	  }, []);
+
+	useEffect(() => {
+  let timer: NodeJS.Timeout;
+
+  const start = () => {
+    timer = setTimeout(() => {
+      setRouteLoading(true);
+    }, 200); // loader only for slow transitions
+  };
+
+  const stop = () => {
+    clearTimeout(timer);
+    setRouteLoading(false);
+  };
+
+  router.events.on("routeChangeStart", start);
+  router.events.on("routeChangeComplete", stop);
+  router.events.on("routeChangeError", stop);
+
+  return () => {
+    router.events.off("routeChangeStart", start);
+    router.events.off("routeChangeComplete", stop);
+    router.events.off("routeChangeError", stop);
+  };
+}, [router]);
+
+
+	if (firstLoad) {
+		return <Preloader />; 
+	}
      
-	const App =(
-		<UserInfoContext.Provider value={ { userInfo, setUserInfo } }>
-			<VideoContext.Provider value={ { videoLine, setVideoLine } }>
-					<Layout>
-						<HeadBasePage title="Career Change: Learn Web Development for a Bright Future" />
-						<MainNavigation categories={categories}/>
-						<Component { ...pageProps } />
-						<SpeedInsights />
-						<Footer />
-					</Layout>
-					<GoogleAnalytics gaId={GA_TRACKING_ID} />
-			</VideoContext.Provider>
-		</UserInfoContext.Provider>
-	);
+	return (
+  <>
+    {routeLoading && <SmallRouteLoader />} 
+    <UserInfoContext.Provider value={{ userInfo, setUserInfo }}>
+      <VideoContext.Provider value={{ videoLine, setVideoLine }}>
+        <Layout>
+          <HeadBasePage title="Career Change: Learn Web Development for a Bright Future" />
+          <MainNavigation categories={categories} />
+          <Component {...pageProps} />
+          <SpeedInsights />
+          <Footer />
+        </Layout>
+        <GoogleAnalytics gaId={GA_TRACKING_ID} />
+      </VideoContext.Provider>
+    </UserInfoContext.Provider>
+  </>
+);
     
-	const AppLoaded = !loading ? App : <Preloader />;
-	
-	return  AppLoaded;
-}
+	}
 
 export default MyApp;
 
