@@ -1,3 +1,4 @@
+import { SmallRouteLoader } from './SmallRouteLoader/index';
 import { Layout } from "./Layout/layout";
 import { Hero } from "./Hero";
 import { MainNavigation } from "./Layout/MainNavigation";
@@ -21,6 +22,7 @@ import { SignIn } from "./Auth/SignIn";
 import { PorchList, PorchHeader, PorchForm, PorchShowcase } from "./PorchElements";
 import { Preloader } from "./Elements";
 import { WhoItsFor, ProgramsOverview, FreeResourcesTeaser} from "./Marketing";
+import { CommentsFetcher } from './CommentsFetcher';
 
 
 export {
@@ -60,5 +62,7 @@ export {
   PorchShowcase,
   WhoItsFor,
   ProgramsOverview,
-  FreeResourcesTeaser
+  FreeResourcesTeaser,
+  SmallRouteLoader,
+  CommentsFetcher,
 };

@@ -1,8 +1,8 @@
 import { FC, useState, useContext, useEffect } from "react";
 import supabase from "lib/supabase";
 import UserInfoContext from "@/context/UserInfoContext";
-import { Comments } from "@/components/Comments";
 import { CardLayout } from "@/components/Layout/CardsLayout";
+import { CommentsFetcher } from "@/components/CommentsFetcher";
 
 interface Fact {
   id: number;
@@ -92,7 +92,7 @@ export const FreeSource: FC<FreeSourceProps> = ({ fact, setFacts }) => {
     isLoggedIn={!!userInfo?.email} 
     extraContent={
       <div className="py-5">
-        <Comments sourceId={fact.id} />
+        <CommentsFetcher sourceId={fact.id} getRoute="getComments" postRoute="postComments" />
       </div>
     }
   />

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import { useRouter } from "next/router";
 import * as ga from "../lib/ga";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -11,7 +11,7 @@ import VideoContext from "context/VideoContext";
 import UserInfoContext from "context/UserInfoContext";
 import supabase from "lib/supabase";
 import { User } from "@supabase/supabase-js";
-import SmallRouteLoader from "../components/SmallRouteLoader";
+import { SmallRouteLoader } from "../components/SmallRouteLoader";
 
 
 
@@ -21,20 +21,20 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 	const router = useRouter();
 	const [firstLoad, setFirstLoad] = useState(true);
 	const [routeLoading, setRouteLoading] = useState(false);
-	//const [ loading, setLoading ] = useState( true );
 	const [categories, setCategories] = useState<string[]>([]);
+
+	const routeTimerRef = useRef<NodeJS.Timeout | null>(null);
     
 	useEffect(() => {
-		setTimeout(() => {
-			setFirstLoad(false);
-		}, 700); // your branded intro
-	}, []);
+    const t = setTimeout(() => setFirstLoad(false), 700);
+    return () => clearTimeout(t);
+  }, []);
 
     
 	const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || ""; 
     
 	useEffect( () => {
-		const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+		const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
 			const currentUser = session?.user || null;
 			setUserInfo(currentUser);
 		});
@@ -79,30 +79,37 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 	  }, []);
 
 	useEffect(() => {
-  let timer: NodeJS.Timeout;
+    const start = () => {
+      routeTimerRef.current = setTimeout(() => {
+        setRouteLoading(true);
+      }, 200);
+    };
 
-  const start = () => {
-    timer = setTimeout(() => {
-      setRouteLoading(true);
-    }, 200); // loader only for slow transitions
-  };
+    const stop = () => {
+      if (routeTimerRef.current) clearTimeout(routeTimerRef.current);
+      setRouteLoading(false);
+    };
 
-  const stop = () => {
-    clearTimeout(timer);
-    setRouteLoading(false);
-  };
+    router.events.on("routeChangeStart", start);
+    router.events.on("routeChangeComplete", stop);
+    router.events.on("routeChangeError", stop);
 
-  router.events.on("routeChangeStart", start);
-  router.events.on("routeChangeComplete", stop);
-  router.events.on("routeChangeError", stop);
+    return () => {
+      router.events.off("routeChangeStart", start);
+      router.events.off("routeChangeComplete", stop);
+      router.events.off("routeChangeError", stop);
+    };
+  }, [router]);
 
-  return () => {
-    router.events.off("routeChangeStart", start);
-    router.events.off("routeChangeComplete", stop);
-    router.events.off("routeChangeError", stop);
-  };
-}, [router]);
+	const userInfoValue = useMemo(
+    () => ({ userInfo, setUserInfo }),
+    [userInfo]
+  );
 
+  const videoValue = useMemo(
+    () => ({ videoLine, setVideoLine }),
+    [videoLine]
+  );
 
 	if (firstLoad) {
 		return <Preloader />; 
@@ -111,8 +118,8 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 	return (
   <>
     {routeLoading && <SmallRouteLoader />} 
-    <UserInfoContext.Provider value={{ userInfo, setUserInfo }}>
-      <VideoContext.Provider value={{ videoLine, setVideoLine }}>
+    <UserInfoContext.Provider value={ userInfoValue }>
+      <VideoContext.Provider value={ videoValue }>
         <Layout>
           <HeadBasePage title="Career Change: Learn Web Development for a Bright Future" />
           <MainNavigation categories={categories} />

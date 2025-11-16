@@ -2,7 +2,7 @@ import { useState, ChangeEvent, FormEvent, useContext, useEffect } from "react";
 import UserInfoContext from "context/UserInfoContext";
 import { CommentsError } from "lib/err/err";
 import DOMPurify from "dompurify";
-import {CommentsPopup} from "./CommentsPopup";
+import {CommentsPopup} from "../CommentsPopup";
 
 interface Comment {
   id?: string;
@@ -11,11 +11,14 @@ interface Comment {
   sourceId: number | string;
 }
 
-interface PorchCommentsProps {
+interface CommentsProps {
   sourceId: number | string;
+  getRoute: "getPorchComments" | "getComments";
+  postRoute: "postPorchComments" | "postComments";
+  
 }
 
-export const PorchComments = ({ sourceId }: PorchCommentsProps) => {
+export const CommentsFetcher = ({ sourceId, getRoute, postRoute }: CommentsProps) => {
   const [comment, setComment] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [showComments, setShowComments] = useState<boolean>(false);
@@ -28,7 +31,7 @@ export const PorchComments = ({ sourceId }: PorchCommentsProps) => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await fetch(`/api/getPorchComments?sourceId=${sourceId}`);
+        const response = await fetch(`/api/${getRoute}?sourceId=${sourceId}`);
         if (!response.ok) throw new Error("Failed to fetch comments.");
         const data = await response.json();
         setPostComments(data);
@@ -90,7 +93,7 @@ export const PorchComments = ({ sourceId }: PorchCommentsProps) => {
     const newComment: Comment = { userInfo: userEmail || "Anonymous", message: comment, sourceId };
 
     try {
-      const response = await fetch('/api/postPorchComments', {
+      const response = await fetch(`/api/${postRoute}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: comment, userInfo: userEmail, sourceId })
@@ -132,7 +135,7 @@ export const PorchComments = ({ sourceId }: PorchCommentsProps) => {
       setPostComments(updatedComments);
 
       try {
-        const response = await fetch(`/api/postPorchComments?id=${editingComment.id}`, {
+        const response = await fetch(`/api/${postRoute}?id=${editingComment.id}`, {
           method: "PUT", 
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ message: updatedMessage })
@@ -161,7 +164,7 @@ export const PorchComments = ({ sourceId }: PorchCommentsProps) => {
     setPostComments(updatedComments);
 
     try {
-      const response = await fetch(`/api/postPorchComments?id=${commentId}`, {
+      const response = await fetch(`/api/${postRoute}?id=${commentId}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" }
       });
@@ -175,10 +178,10 @@ export const PorchComments = ({ sourceId }: PorchCommentsProps) => {
   };
 
   return (
-    <div className="flex flex-col z-50">
+    <div className="z-50 flex flex-col">
       <button
         onClick={toggleComments}
-        className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700"
+        className="inline-block px-3 py-1 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full"
       >
         {showComments ? "Hide Comments" : "Show Comments"}
       </button>
@@ -193,11 +196,11 @@ export const PorchComments = ({ sourceId }: PorchCommentsProps) => {
               className="p-3 border"
               rows={4}
             />
-            {error && <p className="text-red-500 text-sm">{error}</p>}
+            {error && <p className="text-sm text-red-500">{error}</p>}
             <button
               type="submit"
               disabled={error !== ""}
-              className="py-2 px-4 rounded bg-blue-500 text-white disabled:bg-gray-300"
+              className="px-4 py-2 text-white bg-blue-500 rounded disabled:bg-gray-300"
             >
               Post Comment
             </button>
