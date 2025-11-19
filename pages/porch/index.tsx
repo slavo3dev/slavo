@@ -152,3 +152,17 @@ export const getServerSideProps: GetServerSideProps = async () => {
 		},
 	};
 };
+
+
+
+//export const getServerSideProps: GetServerSideProps = async ({params}) => {
+
+  //const id = params?.id
+
+	//const response = await fetch(`/api/getPorchComments?sourceId=${id}`)
+  //const initialComments = await response.json();
+
+	//return {
+		//props: { initialComments},
+	//}
+//}

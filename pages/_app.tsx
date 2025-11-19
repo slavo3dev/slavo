@@ -12,6 +12,7 @@ import UserInfoContext from "context/UserInfoContext";
 import supabase from "lib/supabase";
 import { User } from "@supabase/supabase-js";
 import { SmallRouteLoader } from "../components/SmallRouteLoader";
+import { GetServerSideProps } from "next";
 
 
 
@@ -79,6 +80,9 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 	  }, []);
 
 	useEffect(() => {
+
+		if (firstLoad) return;
+
     const start = () => {
       routeTimerRef.current = setTimeout(() => {
         setRouteLoading(true);
@@ -114,7 +118,8 @@ function MyApp ( { Component, pageProps }: AppProps ) {
 	if (firstLoad) {
 		return <Preloader />; 
 	}
-     
+
+	     
 	return (
   <>
     {routeLoading && <SmallRouteLoader />} 
@@ -135,7 +140,8 @@ function MyApp ( { Component, pageProps }: AppProps ) {
     
 	}
 
-export default MyApp;
+
+
 
 
 
