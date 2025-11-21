@@ -1,8 +1,10 @@
-import { useState, ChangeEvent, FormEvent, useContext, useEffect } from "react";
+import { useState, ChangeEvent, FormEvent, useContext } from "react";
+import useSWR from "swr";
 import UserInfoContext from "context/UserInfoContext";
 import { CommentsError } from "lib/err/err";
 import DOMPurify from "dompurify";
-import {CommentsPopup} from "../CommentsPopup";
+import { CommentsPopup } from "../CommentsPopup";
+import { Edit, Trash2 } from "lucide-react";
 
 interface Comment {
   id?: string;
@@ -15,235 +17,194 @@ interface CommentsProps {
   sourceId: number | string;
   getRoute: "getPorchComments" | "getComments";
   postRoute: "postPorchComments" | "postComments";
-  
 }
 
+// SWR fetcher function
+const fetcher = async (url: string) => {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error("Failed to fetch data");
+  return res.json();
+};
+
 export const CommentsFetcher = ({ sourceId, getRoute, postRoute }: CommentsProps) => {
-  const [comment, setComment] = useState<string>("");
-  const [error, setError] = useState<string>("");
-  const [showComments, setShowComments] = useState<boolean>(false);
-  const [successMessage, setSuccessMessage] = useState<string>("");
-  const [postComments, setPostComments] = useState<Comment[]>([]);
-  const [editingComment, setEditingComment] = useState<Comment | null>(null);
   const { userInfo } = useContext(UserInfoContext);
   const userEmail = userInfo?.email;
 
-  useEffect(() => {
-    const fetchComments = async () => {
-      try {
-        const response = await fetch(`/api/${getRoute}?sourceId=${sourceId}`);
-        if (!response.ok) throw new Error("Failed to fetch comments.");
-        const data = await response.json();
-        setPostComments(data);
-      } catch (error) {
-        console.error("Error fetching comments:", error);
-        setError(CommentsError.fetchError);
-      }
-    };
+  const [comment, setComment] = useState<string>("");
+  const [error, setError] = useState<string>("");
+  const [successMessage, setSuccessMessage] = useState<string>("");
+  const [editingComment, setEditingComment] = useState<Comment | null>(null);
+  const [showComments, setShowComments] = useState<boolean>(false);
 
-    fetchComments();
-  }, [sourceId]);
+  // SWR hook to fetch comments
+  const { data: postComments = [], mutate } = useSWR<Comment[]>(
+    showComments ? `/api/${getRoute}?sourceId=${sourceId}` : null,
+    fetcher
+  );
 
-  useEffect(() => {
-    if (showComments) {
+  const countWords = (text: string): number => text.trim().split(/\s+/).filter(Boolean).length;
+
+  const onChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    const value = e.target.value;
+    const words = countWords(value);
+
+    if (!value) setError(CommentsError.onSubmitError);
+    else if (words > 96) setError(CommentsError.wordLimitError);
+    else {
+      setComment(value);
       setError("");
     }
-  }, [showComments]);
-
-  useEffect(() => {
-    if (successMessage) {
-      const timer = setTimeout(() => {
-        setSuccessMessage("");
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [successMessage]);
-
-  const countWords = (text: string): number => {
-    return text.trim().split(/\s+/).filter(Boolean).length;
   };
 
-  const onChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    const commentValue = event.target.value;
-    const wordCount = countWords(commentValue);
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-    if (!commentValue) {
-      setError(CommentsError.onSubmitError);
-    } else if (wordCount > 96) {
-      setError(CommentsError.wordLimitError);
-    } else {
-      setComment(commentValue);
-      setError(""); 
-    }
-  };
+    if (!comment.trim()) return setError(CommentsError.onSubmitError);
+    if (countWords(comment) > 96) return setError(CommentsError.wordLimitError);
+    if (!userEmail) return setError(CommentsError.notLoggedInError);
 
-  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    if (!comment.trim()) {
-      setError(CommentsError.onSubmitError);
-      return;
-    }
-    
-    if (countWords(comment) > 96) {
-      setError(CommentsError.wordLimitError);
-      return;
-    }
-
-    const newComment: Comment = { userInfo: userEmail || "Anonymous", message: comment, sourceId };
+    const newComment: Comment = { userInfo: userEmail, message: comment, sourceId };
 
     try {
-      const response = await fetch(`/api/${postRoute}`, {
+      const res = await fetch(`/api/${postRoute}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: comment, userInfo: userEmail, sourceId })
+        body: JSON.stringify(newComment),
       });
+      if (!res.ok) throw new Error("Failed to post comment");
 
-      if (!response.ok) throw new Error("Failed to post comment.");
-
-      const data = await response.json();
-      setPostComments((prevComments) => [...prevComments, data.payload]);
-      setComment(""); 
+      const data = await res.json();
+      // Update SWR cache
+      mutate([...postComments, data.payload], false);
+      setComment("");
       setSuccessMessage("Comment submitted successfully!");
-    } catch (error) {
-      console.error("Error posting comment:", error);
+    } catch (err) {
+      console.error(err);
       setError(CommentsError.fetchError);
     }
-
-    if (!userEmail) {
-      setError(CommentsError.notLoggedInError);
-    }
   };
 
-  const toggleComments = () => {
-    setShowComments(!showComments);
-  };
+  const toggleComments = () => setShowComments(!showComments);
 
-  const handleEditComment = (comment: Comment) => {
-    if (comment.userInfo !== userEmail) {
+  const handleEditComment = (c: Comment) => {
+    if (c.userInfo !== userEmail) {
       setError("You can only edit your own comments.");
       return;
     }
-    setEditingComment(comment); 
+    setEditingComment(c);
   };
 
   const saveEditedComment = async (updatedMessage: string) => {
-    if (editingComment) {
-      const updatedComments = postComments.map((comment) =>
-        comment.id === editingComment.id ? { ...comment, message: updatedMessage } : comment
+    if (!editingComment) return;
+
+    try {
+      const res = await fetch(`/api/${postRoute}?id=${editingComment.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: updatedMessage }),
+      });
+      if (!res.ok) throw new Error("Failed to update comment");
+
+      const updatedComments = postComments.map((c) =>
+        c.id === editingComment.id ? { ...c, message: updatedMessage } : c
       );
-      setPostComments(updatedComments);
-
-      try {
-        const response = await fetch(`/api/${postRoute}?id=${editingComment.id}`, {
-          method: "PUT", 
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: updatedMessage })
-        });
-
-        if (!response.ok) throw new Error("Failed to update comment.");
-        setSuccessMessage("Comment updated successfully!");
-      } catch (error) {
-        console.error("Error updating comment:", error);
-        setError(CommentsError.fetchError);
-      }
-
+      mutate(updatedComments, false);
+      setSuccessMessage("Comment updated successfully!");
       setEditingComment(null);
+    } catch (err) {
+      console.error(err);
+      setError(CommentsError.fetchError);
     }
   };
 
   const handleDeleteComment = async (commentId: string) => {
-    const commentToDelete = postComments.find((comment) => comment.id === commentId);
+    const commentToDelete = postComments.find((c) => c.id === commentId);
+    if (!commentToDelete) return;
 
-    if (commentToDelete?.userInfo !== userEmail) {
+    if (commentToDelete.userInfo !== userEmail) {
       setError("You can only delete your own comments.");
       return;
     }
 
-    const updatedComments = postComments.filter((comment) => comment.id !== commentId);
-    setPostComments(updatedComments);
-
     try {
-      const response = await fetch(`/api/${postRoute}?id=${commentId}`, {
+      const res = await fetch(`/api/${postRoute}?id=${commentId}`, {
         method: "DELETE",
-        headers: { "Content-Type": "application/json" }
+        headers: { "Content-Type": "application/json" },
       });
+      if (!res.ok) throw new Error("Failed to delete comment");
 
-      if (!response.ok) throw new Error("Failed to delete comment.");
+      mutate(postComments.filter((c) => c.id !== commentId), false);
       setSuccessMessage("Comment deleted successfully!");
-    } catch (error) {
-      console.error("Error deleting comment:", error);
+    } catch (err) {
+      console.error(err);
       setError(CommentsError.fetchError);
     }
   };
 
   return (
-    <div className="z-50 flex flex-col">
+    <div className="z-50 flex flex-col space-y-4">
       <button
         onClick={toggleComments}
-        className="inline-block px-3 py-1 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full"
+        className="px-4 py-2 mx-6 text-white transition bg-blue-500 rounded-md w-max hover:bg-blue-600 disabled:bg-gray-300"
       >
         {showComments ? "Hide Comments" : "Show Comments"}
       </button>
 
       {showComments && (
-        <div className="mt-4">
+        <div className="mt-4 space-y-4">
           <form onSubmit={onSubmit} className="flex flex-col gap-3">
             <textarea
               placeholder="Write your comment..."
               value={comment}
               onChange={onChange}
-              className="p-3 border"
+              className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
               rows={4}
             />
             {error && <p className="text-sm text-red-500">{error}</p>}
             <button
               type="submit"
-              disabled={error !== ""}
-              className="px-4 py-2 text-white bg-blue-500 rounded disabled:bg-gray-300"
+              disabled={!!error}
+              className="px-4 py-2 mx-6 text-white transition bg-blue-500 rounded-md w-max hover:bg-blue-600 disabled:bg-gray-300"
             >
               Post Comment
             </button>
           </form>
           {successMessage && <p className="text-green-500">{successMessage}</p>}
-          <div className="mt-6">
+
+          <div className="space-y-4">
             {postComments.map((comment) => (
-              <div key={comment.id || ""} className="flex flex-col mt-4">
-                <div>
-                  <strong>{comment.userInfo}</strong>
+              <div
+                key={comment.id || Math.random()}
+                className="p-4 bg-white border border-gray-200 rounded-md shadow-sm dark:bg-gray-800 dark:border-gray-700"
+              >
+                <div className="flex items-center justify-between">
+                  <strong className="text-gray-800 dark:text-gray-200">{comment.userInfo}</strong>
+                  <div className="flex gap-2">
+                    <button onClick={() => handleEditComment(comment)} className="text-blue-500 hover:text-blue-700">
+                      <Edit size={16} />
+                    </button>
+                    <button onClick={() => handleDeleteComment(comment.id || "")} className="text-red-500 hover:text-red-700">
+                      <Trash2 size={16} />
+                    </button>
+                  </div>
                 </div>
                 <div
-                  dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize(comment.message),
-                  }}
+                  className="mt-2 text-gray-700 break-words dark:text-gray-300"
+                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(comment.message) }}
                 />
-                <div className="flex gap-4 mt-2">
-                  <button
-                    onClick={() => handleEditComment(comment)}
-                    className="text-blue-500"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDeleteComment(comment.id || "")}
-                    className="text-red-500"
-                  >
-                    Delete
-                  </button>
-                </div>
               </div>
             ))}
           </div>
         </div>
       )}
+
       {editingComment && (
         <CommentsPopup
           comment={editingComment.message}
-          onClose={() => setEditingComment(null)}  
-          onSave={saveEditedComment} 
+          onClose={() => setEditingComment(null)}
+          onSave={saveEditedComment}
         />
       )}
     </div>
   );
 };
-
