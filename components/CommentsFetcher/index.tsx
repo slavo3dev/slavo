@@ -145,9 +145,10 @@ export const CommentsFetcher = ({ sourceId, getRoute, postRoute }: CommentsProps
     <div className="z-50 flex flex-col space-y-4">
       <button
         onClick={toggleComments}
-        className="px-3 py-2 mx-6"
+        className="flex items-center gap-2 px-3 py-2 mx-6"
       >
         {showComments ? <MessageSquare size={18} /> : <ChevronDown size={18} />}
+        <span>{showComments ? "Hide comments" : "Show comments"}</span>
       </button>
 
       {showComments && (
