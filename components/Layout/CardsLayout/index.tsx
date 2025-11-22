@@ -1,7 +1,7 @@
 import { AiFillHeart } from "react-icons/ai";
 import { GiCheckMark } from "react-icons/gi";
 import { FC, useState } from "react";
-import { Edit } from "lucide-react";
+import { Edit, Check } from "lucide-react";
         
 interface CardLayoutProps {
   title: string;
@@ -61,7 +61,7 @@ export const CardLayout: FC<CardLayoutProps> = ({
 
   return (
     <div className="flex flex-col overflow-hidden transition-all duration-200 transform bg-white shadow group rounded-xl hover:shadow-lg hover:-translate-y-1 hover:bg-sky-100">
-      <div className="flex-1 px-4 py-3 sm:p-6">
+      <div className="flex-1 px-4 py-3">
         <div className="flex items-center justify-between">
           <b className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-blue-500 to-blue-800">
             {title}
@@ -103,7 +103,7 @@ export const CardLayout: FC<CardLayoutProps> = ({
             <span className="whitespace-normal">{formattedDate}</span>
           </p>      
         </div>
-        <div className="px-2 py-8 mt-auto border-gray-100 sm:px-1">
+        <div className="px-2 py-4 mt-auto border-gray-100 sm:px-1">
           <div className="flex items-center justify-between">
             <div className="flex items-center w-full space-x-2">
               {isEditing ? (
@@ -126,9 +126,9 @@ export const CardLayout: FC<CardLayoutProps> = ({
                 {isEditing ? (
                   <button
                     onClick={handleUpdateClick}
-                    className="text-green-500"
+                    className="px-2 text-green-500"
                   >
-                    Update
+                    <Check size={16} />
                   </button>
                 ) : (
                   <button onClick={handleEditClick} className="text-blue-500">

@@ -153,7 +153,7 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({
         isVoteDisabled={false}
         hasVoted={hasVoted}
         extraContent={
-          <div className="py-5">
+          <div className="pb-6">
              <CommentsFetcher sourceId={porch.new_id} getRoute="getPorchComments" postRoute="postPorchComments" />
           </div>
         }

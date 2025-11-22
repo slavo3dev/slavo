@@ -91,7 +91,7 @@ export const FreeSource: FC<FreeSourceProps> = ({ fact, setFacts }) => {
     hasVoted={hasVoted}
     isLoggedIn={!!userInfo?.email} 
     extraContent={
-      <div className="py-5">
+      <div className="pb-6">
         <CommentsFetcher sourceId={fact.id} getRoute="getComments" postRoute="postComments" />
       </div>
     }

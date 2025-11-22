@@ -4,7 +4,7 @@ import UserInfoContext from "context/UserInfoContext";
 import { CommentsError } from "lib/err/err";
 import DOMPurify from "dompurify";
 import { CommentsPopup } from "../CommentsPopup";
-import { Edit, Trash2 } from "lucide-react";
+import { Edit, Trash2, MessageSquare, ChevronDown, Check  } from "lucide-react";
 
 interface Comment {
   id?: string;
@@ -145,9 +145,9 @@ export const CommentsFetcher = ({ sourceId, getRoute, postRoute }: CommentsProps
     <div className="z-50 flex flex-col space-y-4">
       <button
         onClick={toggleComments}
-        className="px-4 py-2 mx-6 text-white transition bg-blue-500 rounded-md w-max hover:bg-blue-600 disabled:bg-gray-300"
+        className="px-3 py-2 mx-6"
       >
-        {showComments ? "Hide Comments" : "Show Comments"}
+        {showComments ? <MessageSquare size={18} /> : <ChevronDown size={18} />}
       </button>
 
       {showComments && (
@@ -164,9 +164,9 @@ export const CommentsFetcher = ({ sourceId, getRoute, postRoute }: CommentsProps
             <button
               type="submit"
               disabled={!!error}
-              className="px-4 py-2 mx-6 text-white transition bg-blue-500 rounded-md w-max hover:bg-blue-600 disabled:bg-gray-300"
+              className="px-3 py-2 mx-6"
             >
-              Post Comment
+              <Check size={18}/>
             </button>
           </form>
           {successMessage && <p className="text-green-500">{successMessage}</p>}
