@@ -88,8 +88,8 @@ export const CommentsPopup: React.FC<CommentsPopupProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-gradient-to-br from-blue-50 via-blue-100 to-blue-300 rounded-xl shadow-2xl p-6 w-full max-w-xl mx-4">
-        <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
+      <div className="w-full max-w-xl p-6 mx-4 shadow-2xl bg-gradient-to-br from-blue-50 via-blue-100 to-blue-300 rounded-xl">
+        <h2 className="mb-6 text-2xl font-bold text-center text-gray-800">
           Edit Your Comment
         </h2>
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -100,11 +100,11 @@ export const CommentsPopup: React.FC<CommentsPopupProps> = ({
               modules={{
                 toolbar: toolbarOptions,
               }}
-              className="focus:ring-2 focus:ring-blue-500 text-sm h-full rounded-lg bg-white"
+              className="h-full text-sm bg-white rounded-lg focus:ring-2 focus:ring-blue-500"
               theme="snow"
             />
           </div>
-          <div className="flex justify-end space-x-4 pt-4">
+          <div className="flex justify-end pt-4 space-x-4">
             <button
               type="button"
               onClick={handleCancel}

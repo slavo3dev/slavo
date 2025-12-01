@@ -10,7 +10,7 @@ type Props = { update: PorchType | null };
 const PorchUpdatePage: NextPage<Props> = ({ update }) => {
   if (!update) {
     return (
-      <main className="mx-auto max-w-3xl px-6 py-16">
+      <main className="max-w-3xl px-6 py-16 mx-auto">
         <h1 className="text-2xl font-bold text-gray-900">Update not found</h1>
         <p className="mt-2 text-gray-600">
           The update you’re looking for doesn’t exist or was removed.
@@ -42,16 +42,16 @@ const PorchUpdatePage: NextPage<Props> = ({ update }) => {
         />
       </Head>
 
-      <main className="mx-auto max-w-3xl px-6 py-12">
+      <main className="max-w-3xl px-6 py-12 mx-auto">
         <Link href="/porch" className="text-sm text-gray-600 hover:underline">
           ← Back to Porch
         </Link>
 
-        <article className="mt-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+        <article className="p-6 mt-4 bg-white border border-gray-100 shadow-sm rounded-2xl">
           <header className="flex items-center gap-3">
             <Avatar name={email} avatarUrl={(update as any).avatar_url} />
             <div className="min-w-0">
-              <h1 className="truncate text-lg font-semibold text-gray-900">
+              <h1 className="text-lg font-semibold text-gray-900 truncate">
                 {email}
               </h1>
               <div className="flex items-center gap-2 text-xs text-gray-500">
@@ -72,7 +72,7 @@ const PorchUpdatePage: NextPage<Props> = ({ update }) => {
           </div>
 
           {Array.isArray((update as any).topics) && (update as any).topics.length > 0 && (
-            <div className="mt-6 flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 mt-6">
               {(update as any).topics.map((t: string) => (
                 <span
                   key={t}
@@ -85,7 +85,7 @@ const PorchUpdatePage: NextPage<Props> = ({ update }) => {
             </div>
           )}
 
-          <footer className="mt-6 flex items-center justify-between">
+          <footer className="flex items-center justify-between mt-6">
             <Link href="/porch" className="text-sm font-medium text-blue-700 hover:underline">
               View all updates
             </Link>
@@ -158,11 +158,11 @@ function Avatar({ name, avatarUrl }: { name: string; avatarUrl?: string | null }
       alt={`${name} avatar`}
       width={40}
       height={40}
-      className="h-10 w-10 rounded-full object-cover"
+      className="object-cover w-10 h-10 rounded-full"
     />
   ) : (
     <div
-      className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-200 text-sm font-semibold text-gray-700"
+      className="flex items-center justify-center w-10 h-10 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full"
       title={name}
     >
       {initials(name)}

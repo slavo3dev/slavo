@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextPage } from "next";
+import { GetServerSideProps, GetStaticProps, NextPage } from "next";
 import { useState, useCallback, MouseEvent } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import supabase from "../../lib/supabase";
@@ -78,9 +78,9 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 	return (
 		<>
 			<HeadBasePage title={ "Share Your Daily Learning Journey - Career Change in Web Development" } description={"Join our community to share your daily learning updates and track your progress in web development. Engage with others on the same career change journey, get support, and stay motivated. Start your path to a bright future with Slavo.io!"} />
-			<div className="p-10 text-slate-800 relative">
+			<div className="relative p-10 text-slate-800">
 			{showForm && (
-					<div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm z-40" />
+					<div className="fixed inset-0 z-40 bg-black bg-opacity-30 backdrop-blur-sm" />
 				)}
 					<div className="flex flex-col">
 						
@@ -105,7 +105,7 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 							left: `${position.x}px`,
 							top: `${position.y}px`,
 							cursor: dragging ? 'grabbing' :'grab',
-							transition: dragging ? 'none' : '0.2 ease-out',
+							transition: dragging ? 'none' : '0.2s ease-out',
 							zIndex: 50
 						}}
 						onMouseDown={handleMouseDown}
@@ -130,7 +130,7 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 
 export default PorchPage;
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
 	const { data: porchs, error } = await supabase
 		.from("porch")
 		.select("*")
@@ -143,6 +143,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 			props: {
 				initialPorchs: [],
 			},
+			revalidate: 60,
 		};
 	}
 
@@ -150,5 +151,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
 		props: {
 			initialPorchs: porchs,
 		},
+		revalidate: 60,
 	};
 };

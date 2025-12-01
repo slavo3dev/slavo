@@ -1,57 +1,59 @@
 {
-    "compilerOptions": {
-        "target": "esnext",
-        "lib": [
-            "dom",
-            "dom.iterable",
-            "esnext"
-        ],
-        "allowJs": true,
-        "skipLibCheck": true,
-        "strict": true,
-        "forceConsistentCasingInFileNames": true,
-        "noEmit": true,
-        "esModuleInterop": true,
-        "module": "esnext",
-        "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "jsx": "preserve",
-        "types": ["react"],
-        "incremental": true,
-        "baseUrl": ".",
-        "paths": {
-            "@/components/*": [
-                "components/*"
-            ],
-            "@/context/*": [
-                "context/*"
-            ],
-            "@components": [
-                "components"
-            ],
-            "@/public/*": [
-                "public/*"
-            ],
-            "@/lib/*": [
-                "lib/*"
-            ],
-            "@/api/*": [
-                "pages/api/*"
-            ],
-            "@/Types/*": [
-                "Types/*"
-            ]
-        },
-    },
-    "include": [
-        "next-env.d.ts",
-        "**/*.ts",
-        "**/*.tsx",
-        "pages/index.jsx",
-        "."
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
     ],
-    "exclude": [
-        "node_modules"
-    ]
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "types": [
+      "react"
+    ],
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/context/*": [
+        "context/*"
+      ],
+      "@components": [
+        "components"
+      ],
+      "@/public/*": [
+        "public/*"
+      ],
+      "@/lib/*": [
+        "lib/*"
+      ],
+      "@/api/*": [
+        "pages/api/*"
+      ],
+      "@/Types/*": [
+        "Types/*"
+      ]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "pages/index.jsx",
+    "."
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
