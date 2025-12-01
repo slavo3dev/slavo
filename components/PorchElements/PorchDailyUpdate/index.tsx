@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import UserInfoContext from "@/context/UserInfoContext";
 import { CardLayout } from "@/components/Layout/CardsLayout";
-import { PorchComments } from "@/components/porchComments";
+import { CommentsFetcher } from "@/components/CommentsFetcher";
 import supabase from "@/lib/supabase";
 
 interface PorchType {
@@ -153,8 +153,8 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({
         isVoteDisabled={false}
         hasVoted={hasVoted}
         extraContent={
-          <div className="py-5">
-            <PorchComments sourceId={porch.new_id} />
+          <div className="pb-6">
+             <CommentsFetcher sourceId={porch.new_id} getRoute="getPorchComments" postRoute="postPorchComments" />
           </div>
         }
         isLoggedIn={!!userInfo?.email}

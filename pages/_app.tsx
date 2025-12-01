@@ -1,100 +1,157 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import { useRouter } from "next/router";
 import * as ga from "../lib/ga";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { SpeedInsights } from '@vercel/speed-insights/next';
-import "animate.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 import "../styles/globals.css";
+import "animate.css";
+
 import type { AppProps } from "next/app";
 import { Layout, HeadBasePage, MainNavigation, Footer, Preloader } from "../components";
+import { SmallRouteLoader } from "../components/SmallRouteLoader";
+
 import VideoContext from "context/VideoContext";
 import UserInfoContext from "context/UserInfoContext";
+
 import supabase from "lib/supabase";
 import { User } from "@supabase/supabase-js";
 
 
-function MyApp ( { Component, pageProps }: AppProps ) {
-    
-	const [userInfo, setUserInfo] = useState<User | null>(null);
-	const router = useRouter();
-	const [ loading, setLoading ] = useState( true );
-	const [categories, setCategories] = useState<string[]>([]);
-    
-	useEffect(() => {
-		setLoading(true);
-		setTimeout(() => {
-			setLoading(false);
-		}, 700);
-	}, []);
-    
-	const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || ""; 
-    
-	useEffect( () => {
-		const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
-			const currentUser = session?.user || null;
-			setUserInfo(currentUser);
-		});
-        
-		//  Unsubscribe when the component unmounts
-		return () => {
-			authListener?.subscription?.unsubscribe();
-		};
-		
-	}, [] );
-    
-	useEffect(() => {
-		const handleRouteChange = (url: string) => {
-			ga.pageview(url);
-		};
-		//When the component is mounted, subscribe to router changes
-		//and log those page views
-		router.events.on("routeChangeComplete", handleRouteChange);
+function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
 
-		// If the component is unmounted, unsubscribe
-		// from the event with the `off` method
-		return () => {
-			router.events.off("routeChangeComplete", handleRouteChange);
-		};
-	}, [ router.events ] );
-    
-	const [ videoLine, setVideoLine ] = useState( "channelOne" );
+  const [userInfo, setUserInfo] = useState<User | null>(null);
+  const [categories, setCategories] = useState<string[]>([]);
+  const [videoLine, setVideoLine] = useState("channelOne");
 
-	useEffect(() => {
-		const fetchCategories = async () => {
-		  try {
-			const response = await fetch("/api/categories");
-			if (!response.ok) throw new Error("Failed to fetch categories");
-			const data = await response.json();
-			setCategories(data);
-		  } catch (error) {
-			console.error("Error fetching categories:", error);
-		  }
-		};
-	  
-		fetchCategories();
-	  }, []);
-     
-	const App =(
-		<UserInfoContext.Provider value={ { userInfo, setUserInfo } }>
-			<VideoContext.Provider value={ { videoLine, setVideoLine } }>
-					<Layout>
-						<HeadBasePage title="Career Change: Learn Web Development for a Bright Future" />
-						<MainNavigation categories={categories}/>
-						<Component { ...pageProps } />
-						<SpeedInsights />
-						<Footer />
-					</Layout>
-					<GoogleAnalytics gaId={GA_TRACKING_ID} />
-			</VideoContext.Provider>
-		</UserInfoContext.Provider>
-	);
-    
-	const AppLoaded = !loading ? App : <Preloader />;
-	
-	return  AppLoaded;
+  const [firstLoad, setFirstLoad] = useState(true);
+  const [routeLoading, setRouteLoading] = useState(false);
+
+  const routeTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || "";
+
+  // ----------------------------------------------------
+  // 1. First-load preloader timeout
+  // ----------------------------------------------------
+  useEffect(() => {
+    const timeout = setTimeout(() => setFirstLoad(false), 700);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  // ----------------------------------------------------
+  // 2. Supabase Authentication Listener
+  // ----------------------------------------------------
+  useEffect(() => {
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setUserInfo(session?.user || null);
+      }
+    );
+
+    return () => authListener?.subscription?.unsubscribe();
+  }, []);
+
+  // ----------------------------------------------------
+  // 3. Google Analytics Route Tracking
+  // ----------------------------------------------------
+  useEffect(() => {
+    const handleRouteChange = (url: string) => ga.pageview(url);
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
+
+  // ----------------------------------------------------
+  // 4. Route Loading Indicator
+  // ----------------------------------------------------
+  useEffect(() => {
+    if (firstLoad) return;
+
+    const start = () => {
+      routeTimerRef.current = setTimeout(() => setRouteLoading(true), 200);
+    };
+
+    const stop = () => {
+      if (routeTimerRef.current) clearTimeout(routeTimerRef.current);
+      setRouteLoading(false);
+    };
+
+    router.events.on("routeChangeStart", start);
+    router.events.on("routeChangeComplete", stop);
+    router.events.on("routeChangeError", stop);
+
+    return () => {
+      router.events.off("routeChangeStart", start);
+      router.events.off("routeChangeComplete", stop);
+      router.events.off("routeChangeError", stop);
+    };
+  }, [router, firstLoad]);
+
+  // ----------------------------------------------------
+  // 5. Fetch Categories Once
+  // ----------------------------------------------------
+  useEffect(() => {
+    async function fetchCategories() {
+      try {
+        const res = await fetch("/api/categories");
+        if (!res.ok) throw new Error("Failed to fetch categories");
+        const data = await res.json();
+        setCategories(data);
+      } catch (err) {
+        console.error("Error fetching categories:", err);
+      }
+    }
+
+    fetchCategories();
+  }, []);
+
+  // ----------------------------------------------------
+  // 6. Memoized Context Values
+  // ----------------------------------------------------
+  const userInfoValue = useMemo(
+    () => ({ userInfo, setUserInfo }),
+    [userInfo]
+  );
+
+  const videoValue = useMemo(
+    () => ({ videoLine, setVideoLine }),
+    [videoLine]
+  );
+
+  // ----------------------------------------------------
+  // 7. First Load Preloader
+  // ----------------------------------------------------
+  if (firstLoad) return <Preloader />;
+
+  // ----------------------------------------------------
+  // Render Tree
+  // ----------------------------------------------------
+  return (
+    <>
+      {routeLoading && <SmallRouteLoader />}
+
+      <UserInfoContext.Provider value={userInfoValue}>
+        <VideoContext.Provider value={videoValue}>
+          <Layout>
+            <HeadBasePage title="Career Change: Learn Web Development for a Bright Future" />
+            <MainNavigation categories={categories} />
+
+            <Component {...pageProps} />
+
+            <SpeedInsights />
+            <Footer />
+          </Layout>
+
+          <GoogleAnalytics gaId={GA_TRACKING_ID} />
+        </VideoContext.Provider>
+      </UserInfoContext.Provider>
+    </>
+  );
 }
 
 export default MyApp;
-
-
-

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { NextPage, GetServerSideProps } from "next";
+import type { NextPage, GetServerSideProps, GetStaticProps } from "next";
 import { HeadBasePage, LearningSources } from "../components";
 import { Source } from "@/Types/FreeReSources";
 import supabase from "lib/supabase";
@@ -23,7 +23,7 @@ const FreeSource: NextPage<FreeSourceProps> = ( { sources }: any ) => {
 	);
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
 
 	const { data: sources, error } = await supabase
 		.from("sources")
@@ -36,6 +36,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 				sources: [],
 				error: "There was a problem getting data",
 			},
+			revalidate: 60,
 		};
 	}
 
@@ -43,6 +44,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 		props: {
 			sources,
 		},
+		revalidate: 60,
 	};
 };
 
