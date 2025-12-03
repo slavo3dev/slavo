@@ -141,14 +141,19 @@ const PorchPage: NextPage<PorchPageProps> = ({ initialPorchs }) => {
 export default PorchPage;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data: porchs, error } = await supabase
-    .from("porch")
-    .select("*")
-    .order("created_at", { ascending: false })
-    .limit(100);
+  try {
+    const res = await fetch('http://localhost:3001/porch');
+    if (!res.ok) throw new Error('Failed to fetch porchs');
+    const data = await res.json();
 
-  if (error) {
-    console.error("Error fetching data from Supabase:", error);
+    return {
+      props: {
+        initialPorchs: data.data || [],
+      },
+      revalidate: 60,
+    };
+  } catch (err) {
+    console.error(err);
     return {
       props: {
         initialPorchs: [],
@@ -156,11 +161,5 @@ export const getStaticProps: GetStaticProps = async () => {
       revalidate: 60,
     };
   }
-
-  return {
-    props: {
-      initialPorchs: porchs,
-    },
-    revalidate: 60,
-  };
 };
+
