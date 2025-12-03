@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import UserInfoContext from "@/context/UserInfoContext";
 import { CardLayout } from "@/components/Layout/CardsLayout";
 import { CommentsFetcher } from "@/components/CommentsFetcher";
-import supabase from "@/lib/supabase";
+import { API_BASE_URL } from "@/lib/apiUrl";
 
 interface PorchType {
   new_id: string;
@@ -18,7 +18,6 @@ interface PorchType {
 interface PorchDailyUpdateProps {
   porch: PorchType;
   setPorchs: React.Dispatch<React.SetStateAction<PorchType[]>>;
-
 }
 
 export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({
@@ -26,21 +25,22 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({
   setPorchs,
 }) => {
   const [isUpdating, setIsUpdating] = useState<boolean>(false);
-  const { userInfo } = useContext(UserInfoContext);
-  const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
+  const [showLoginModal, setShowLoginModal] =
+    useState<boolean>(false);
+  const [showMore, setShowMore] = useState(false);
   const toggleLoginModal = () => setShowLoginModal((prev) => !prev);
   const [hasVoted, setHasVoted] = useState<boolean>(false);
   const [textUpdate, setTextUpdate] = useState<string>(porch.text);
-  const userEmail = userInfo?.email; // Logged-in user's email
-  
+
+  const { userInfo } = useContext(UserInfoContext);
+  const userEmail = userInfo?.email;
+
   useEffect(() => {
     if (userInfo?.email) {
       const userHasVoted = porch.likes.includes(userInfo.email);
       setHasVoted(userHasVoted);
     }
-  }, [userInfo, porch.likes]);
-
- 
+  }, [userEmail, porch.likes]);
 
   const date = new Date(porch.created_at);
   const formattedDate = `${(date.getMonth() + 1)
@@ -51,93 +51,122 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({
     .padStart(2, "0")}-${date.getFullYear()}`;
 
   const handleVote = async () => {
-    if (!userInfo?.email) {
+    if (!userEmail) {
       toggleLoginModal();
       return;
     }
 
+    const previousLikes = porch.likes;
+
+    // ✅ Optimistic update
+    const optimisticLikes = hasVoted
+      ? previousLikes.filter((e) => e !== userEmail)
+      : [...previousLikes, userEmail];
+
+    setPorchs((prev) =>
+      prev.map((p) =>
+        p.new_id === porch.new_id
+          ? { ...p, likes: optimisticLikes }
+          : p,
+      ),
+    );
+
+    setHasVoted(!hasVoted);
     setIsUpdating(true);
 
     try {
-      let updatedLikes = [...porch.likes];
+      const endpoint = hasVoted
+        ? `${API_BASE_URL}/porch/${porch.new_id}/unlike`
+        : `${API_BASE_URL}/porch/${porch.new_id}/like`;
 
-      if (hasVoted) {
-        updatedLikes = updatedLikes.filter(
-          (email) => email !== userInfo.email,
-        );
-      } else {
-        updatedLikes.push(userInfo.email); 
-      }
+      const res = await fetch(endpoint, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: userEmail }),
+      });
 
-      const { error } = await supabase
-        .from("porch")
-        .update({ likes: updatedLikes })
-        .eq("new_id", porch.new_id);
+      const result = await res.json();
+      if (!res.ok) throw new Error(result.message);
 
-      if (error) {
-        console.error("Error updating likes:", error);
-        alert("Failed to update likes. Please try again.");
-        setIsUpdating(false);
-        return;
-      }
+      const updated = result.data;
 
-      setPorchs((porchs) =>
-        porchs.map((p) =>
+      // ✅ Sync UI with server truth
+      setPorchs((prev) =>
+        prev.map((p) => (p.new_id === porch.new_id ? updated : p)),
+      );
+    } catch (error) {
+      console.error("Like failed:", error);
+
+      // ❌ Rollback on error
+      setPorchs((prev) =>
+        prev.map((p) =>
           p.new_id === porch.new_id
-            ? { ...p, likes: updatedLikes }
+            ? { ...p, likes: previousLikes }
             : p,
         ),
       );
 
-      setHasVoted(!hasVoted);
-      setIsUpdating(false);
-    } catch (err) {
-      console.error("Unexpected error:", err);
-      alert("An unexpected error occurred. Please try again.");
+      setHasVoted(!!previousLikes.includes(userEmail));
+      alert("Like action failed. Reverted.");
+    } finally {
       setIsUpdating(false);
     }
   };
 
   const commentText = porch.text;
-  const [showMore, setShowMore] = useState<boolean>(false);
 
-  
   const displayComment = showMore
     ? commentText
     : commentText.slice(0, 90);
   const handleMore = () => setShowMore(true);
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setTextUpdate(e.target.value);
-  };
-
   const submitChange = async (porchId: string, newText: string) => {
+    const previousText = porch.text;
+
+    // ✅ Optimistic UI update
+    setPorchs((prev) =>
+      prev.map((p) =>
+        p.new_id === porchId ? { ...p, text: newText } : p,
+      ),
+    );
+
     setIsUpdating(true);
-  
+
     try {
-      const { error } = await supabase
-        .from("porch")
-        .update({ text: newText })
-        .eq("new_id", porchId);
-  
-      if (error) {
-        console.error("Error updating porch:", error);
-        alert("Failed to update. Please try again.");
-      } else {
-        setPorchs((prevPorchs) =>
-          prevPorchs.map((p) =>
-            p.new_id === porchId ? { ...p, text: newText } : p
-          )
-        );
-      }
-    } catch (err) {
-      console.error("Unexpected error:", err);
-      alert("An unexpected error occurred.");
+      const res = await fetch(`${API_BASE_URL}/porch/${porchId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text: newText }),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) throw new Error(result.message);
+
+      // ✅ Ensure server version is final truth
+      const updated = result.data;
+
+      setPorchs((prev) =>
+        prev.map((p) => (p.new_id === porchId ? updated : p)),
+      );
+    } catch (error) {
+      console.error("Update failed:", error);
+
+      // ❌ Rollback on error
+      setPorchs((prev) =>
+        prev.map((p) =>
+          p.new_id === porchId ? { ...p, text: previousText } : p,
+        ),
+      );
+
+      alert("Failed to update text. Changes reverted.");
     } finally {
       setIsUpdating(false);
     }
   };
-  
+
   return (
     <>
       <CardLayout
@@ -154,7 +183,11 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({
         hasVoted={hasVoted}
         extraContent={
           <div className="pb-6">
-             <CommentsFetcher sourceId={porch.new_id} getRoute="getPorchComments" postRoute="postPorchComments" />
+            <CommentsFetcher
+              sourceId={porch.new_id}
+              getRoute="getPorchComments"
+              postRoute="postPorchComments"
+            />
           </div>
         }
         isLoggedIn={!!userInfo?.email}
@@ -164,4 +197,3 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({
     </>
   );
 };
-

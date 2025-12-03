@@ -1,7 +1,6 @@
-import { GetServerSideProps, GetStaticProps, NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import { useState, useCallback, MouseEvent } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import supabase from "../../lib/supabase";
 import { Loader } from "@/components/ui/Loader";
 import {
   HeadBasePage,
@@ -142,8 +141,8 @@ export default PorchPage;
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const res = await fetch('http://localhost:3001/porch');
-    if (!res.ok) throw new Error('Failed to fetch porchs');
+    const res = await fetch(`${API_BASE_URL}/porch`);
+    if (!res.ok) throw new Error("Failed to fetch porchs");
     const data = await res.json();
 
     return {
@@ -162,4 +161,3 @@ export const getStaticProps: GetStaticProps = async () => {
     };
   }
 };
-
