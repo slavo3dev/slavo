@@ -1,6 +1,6 @@
 
 ## Getting Started
 
-## Mentoroship app
+## Mentorship app
 
 
