@@ -1,4 +1,4 @@
-import { SmallRouteLoader } from './SmallRouteLoader/index';
+import { SmallRouteLoader } from "./SmallRouteLoader/index";
 import { Layout } from "./Layout/layout";
 import { Hero } from "./Hero";
 import { MainNavigation } from "./Layout/MainNavigation";
@@ -15,15 +15,33 @@ import { MentorAI } from "./MentorAI";
 import { NewResourceFrom } from "./Forms";
 import { FreeSourcesList } from "./FreeSourcesList";
 import { VideoCard, VideoLine } from "./VideoElements";
-import { Breadcrumb, Growth, Solution, PricingSection, FeaturesSection, StatisticsSection, InfoSection, ContactSection } from "./Sections";
+import {
+  Breadcrumb,
+  Growth,
+  Solution,
+  PricingSection,
+  FeaturesSection,
+  StatisticsSection,
+  InfoSection,
+  ContactSection,
+} from "./Sections";
 import { LinkEvents } from "./Primitives";
 import { SignUp } from "./Auth/SingUp";
 import { SignIn } from "./Auth/SignIn";
-import { PorchList, PorchHeader, PorchForm, PorchShowcase } from "./PorchElements";
+import {
+  PorchList,
+  PorchHeader,
+  PorchForm,
+  PorchShowcase,
+} from "./PorchElements";
 import { Preloader } from "./Elements";
-import { WhoItsFor, ProgramsOverview, FreeResourcesTeaser} from "./Marketing";
-import { CommentsFetcher } from './CommentsFetcher';
-
+import {
+  WhoItsFor,
+  ProgramsOverview,
+  FreeResourcesTeaser,
+} from "./Marketing";
+import { CommentsFetcher } from "./CommentsFetcher";
+import { Calendar } from "./PorchElements";
 
 export {
   Layout,
@@ -65,4 +83,7 @@ export {
   FreeResourcesTeaser,
   SmallRouteLoader,
   CommentsFetcher,
+  Calendar,
 };
+
+export * from "./Auth";

@@ -1,4 +1,4 @@
-import { BlogPosts, CategorySearch } from "@components";
+import { BlogPosts, CategorySearch, HeadBasePage } from "@components";
 import { useRouter } from "next/router";
 import { getAllPosts } from "lib/posts-lib";
 import { slugify, deslugify } from "lib/formatText/slug";
@@ -17,15 +17,15 @@ export async function getStaticPaths() {
     new Set(
       posts
         .map((p: any) => (p.category ?? "").toString().trim())
-        .filter(Boolean)
-    )
+        .filter(Boolean),
+    ),
   );
   const paths = categories.map((cat) => ({
     params: { category: [slugify(cat)] },
   }));
 
   return {
-    paths,   
+    paths,
     fallback: "blocking",
   };
 }
@@ -34,11 +34,12 @@ export default function Category(props: any) {
   const router = useRouter();
 
   const slugId = Array.isArray(router.query.category)
-    ? router.query.category[0] ?? ""
-    : (router.query.category as string) ?? "";
+    ? (router.query.category[0] ?? "")
+    : ((router.query.category as string) ?? "");
 
   const categoryPosts = (props.posts || []).filter(
-    (blog: any) => slugify((blog.category ?? "").toString()) === slugId
+    (blog: any) =>
+      slugify((blog.category ?? "").toString()) === slugId,
   );
 
   function findCategoryHandle(category: string) {
@@ -46,13 +47,20 @@ export default function Category(props: any) {
     router.push(fullPath);
   }
 
-  const title = (slugId ? deslugify(slugId) : "Title Not Found")
-    .toUpperCase();
+  const title = (
+    slugId ? deslugify(slugId) : "Title Not Found"
+  ).toUpperCase();
 
   return (
     <>
-      <CategorySearch onSearch={findCategoryHandle} posts={props.posts} />
-      <h1 style={{ textAlign: "center", padding: "10px" }}>{title}</h1>
+      <HeadBasePage title={title} description={props.posts} />
+      <CategorySearch
+        onSearch={findCategoryHandle}
+        posts={props.posts}
+      />
+      <h1 style={{ textAlign: "center", padding: "10px" }}>
+        {title}
+      </h1>
       <BlogPosts posts={categoryPosts} />
     </>
   );

@@ -1,71 +1,71 @@
 import { FC } from "react";
 import Head from "next/head";
-import Script from "next/script";
 import { useRouter } from "next/router";
 import { HeadProps } from "lib/types";
 import { META_DESCRIPTION } from "lib/constants";
 
-const ScriptComponent = Script as any;
+const SITE_URL =
+  process.env.NEXT_PUBLIC_BASE_URL || "https://www.slavo.io";
 
-export const HeadBasePage: FC<HeadProps> = (props) => {
-	const router = useRouter();
-	const {
-		title = "Slavo Software Development Consulting",
-		description = META_DESCRIPTION,
-		canonicalPath,
-	} = props;
-    
-	
-	return (
-		<>
-			<Head>
-				<title>{title}</title>
-        
-				<link
-					rel="stylesheet"
-					href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-				/>
-        
-				<ScriptComponent
-					src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"
-					integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g=="
-					crossOrigin="anonymous"
-					strategy="beforeInteractive"
-				/>
-				<ScriptComponent strategy="afterInteractive">
-					{`new WOW().init();`}
-				</ScriptComponent>
+type Props = HeadProps & {
+  /** Optional override image for OG/Twitter (1200x630 recommended) */
+  ogImage?: string;
+  /** For pages you don't want indexed (login/dashboard/etc) */
+  noIndex?: boolean;
+  /** Override og:type if needed */
+  ogType?: "website" | "article";
+};
 
-				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
-				<meta name="description" content={description} />
-				<meta name="keywords" content="career change, web development, learn web development, programming, coding, frontend, backend, full stack, HTML, CSS, JavaScript, frameworks, libraries, React, React Native, ChatGPT, Mentorship, Mentor" />
+export const HeadBasePage: FC<Props> = ({
+  title = "Slavo | Mentorship & Coding Habits",
+  description = META_DESCRIPTION,
+  canonicalPath,
+  ogImage,
+  noIndex = false,
+  ogType = "website",
+}) => {
+  const router = useRouter();
 
-				{/* Open Graph Meta Tags */}
-				<meta property="og:title" content="Career Change: Learn Web Development for a Bright Future" />
-				<meta property="og:description" content={description} />
-				<meta property="og:image" content="https://www.slavo.io/images/components/team.svg" />
-				<meta property="og:url" content="https://slavo.io" />
-				<meta property="og:type" content="website" />
-				<meta property="og:locale" content="en_EU" />
-				<meta property="og:site_name" content="Slavo Software Development Consulting & Mentorship - Learn & Create Digital Products" />  
+  const canonical = `${SITE_URL}${canonicalPath ?? router.asPath}`;
+  const image = ogImage ?? `${SITE_URL}/og-image.jpg`;
 
-				{/* Twitter Meta Tags */}
-				<meta name="twitter:card" content="https://www.slavo.io/_next/image?url=%2Fimages%2Fpost-img%2Fremote-business-ideas-post.png&w=1080&q=75" />
-				<meta name="twitter:title" content="Career Change: Learn Web Development for a Bright Future" />
-				<meta name="twitter:description" content={description} />
-				<meta name="twitter:image" content="https://www.slavo.io/_next/image?url=%2Fimages%2Fpost-img%2Fremote-business-ideas-post.png&w=1080&q=75" />
-				<meta name="twitter:site" content="@slavo3dev" />
-				<meta name="twitter:creator" content="@slavo3dev" />
+  return (
+    <Head>
+      {/* Primary */}
+      <title>{title}</title>
+      <meta name="description" content={description} />
 
-				<meta name="title" content={title} />
-				<meta property="og:title" content={title} />
-				<meta property="og:url" content={`${process.env.NEXT_PUBLIC_BASE_URL}${router.asPath}`} />
-				<meta property="og:image" content={`${process.env.NEXT_PUBLIC_BASE_URL}/images/lion-favicon.jpeg`} />
-        
-				<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet" />
-				<link rel="icon" type="image/x-icon" href="/images/lion-favicon.jpeg" />
-				<link rel="canonical" href={`${process.env.BASE_URL}${canonicalPath || router.asPath}`} />
-			</Head>
-		</>
-	);
+      {/* Canonical */}
+      <link rel="canonical" href={canonical} />
+
+      {/* Robots control */}
+      {noIndex ? (
+        <meta name="robots" content="noindex, nofollow" />
+      ) : null}
+
+      {/* Open Graph */}
+      <meta property="og:site_name" content="Slavo" />
+      <meta property="og:type" content={ogType} />
+      <meta property="og:url" content={canonical} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={image} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={image} />
+      <meta name="twitter:site" content="@slavo3dev" />
+      <meta name="twitter:creator" content="@slavo3dev" />
+
+      {/* Optional keywords (not very important for SEO, but harmless) */}
+      <meta
+        name="keywords"
+        content="career change, web development, learn web development, coding habits, mentorship, react, javascript"
+      />
+    </Head>
+  );
 };

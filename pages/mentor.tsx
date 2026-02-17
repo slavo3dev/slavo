@@ -1,10 +1,16 @@
 import type { NextPage } from "next";
-import { MentorAI } from "../components";
-
+import { HeadBasePage, MentorAI } from "../components";
 
 const Mentor: NextPage = () => {
-	return <MentorAI />;
+  return (
+    <>
+      <HeadBasePage
+        title="Mentor | Slavo"
+        description="Access mentorship and coding resources with Slavo."
+      />
+      <MentorAI />
+    </>
+  );
 };
-
 
 export default Mentor;

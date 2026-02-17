@@ -1,24 +1,35 @@
-import { useEffect, useState, useRef, useMemo } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
-import * as ga from "../lib/ga";
+import Head from "next/head";
+
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import "../styles/globals.css";
 import "animate.css";
 
-import type { AppProps } from "next/app";
-import { Layout, HeadBasePage, MainNavigation, Footer, Preloader } from "../components";
+import {
+  Layout,
+  HeadBasePage,
+  MainNavigation,
+  Footer,
+  Preloader,
+} from "../components";
 import { SmallRouteLoader } from "../components/SmallRouteLoader";
 
 import VideoContext from "context/VideoContext";
 import UserInfoContext from "context/UserInfoContext";
 
 import supabase from "lib/supabase";
-import { User } from "@supabase/supabase-js";
+import type { User } from "@supabase/supabase-js";
 
+const SITE_URL = "https://www.slavo.io";
+const DEFAULT_TITLE = "Slavo | Mentorship & Coding Habits";
+const DEFAULT_DESCRIPTION =
+  "Build coding habits and transition into tech with structured mentorship and accountability.";
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   const [userInfo, setUserInfo] = useState<User | null>(null);
@@ -30,10 +41,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   const routeTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || "";
+  const GA_TRACKING_ID =
+    process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || "";
 
   // ----------------------------------------------------
-  // 1. First-load preloader timeout
+  // 1) First-load preloader timeout
   // ----------------------------------------------------
   useEffect(() => {
     const timeout = setTimeout(() => setFirstLoad(false), 700);
@@ -41,39 +53,46 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   // ----------------------------------------------------
-  // 2. Supabase Authentication Listener
+  // 2) Supabase initial session + auth listener
   // ----------------------------------------------------
   useEffect(() => {
+    let isMounted = true;
+
+    // Load initial session (important on refresh)
+    supabase.auth
+      .getSession()
+      .then(({ data }) => {
+        if (!isMounted) return;
+        setUserInfo(data.session?.user ?? null);
+      })
+      .catch(() => {
+        // ignore; keep userInfo null
+      });
+
+    // Listen for changes
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (_event, session) => {
         setUserInfo(session?.user || null);
-      }
+      },
     );
 
-    return () => authListener?.subscription?.unsubscribe();
+    return () => {
+      isMounted = false;
+      authListener?.subscription?.unsubscribe();
+    };
   }, []);
 
   // ----------------------------------------------------
-  // 3. Google Analytics Route Tracking
-  // ----------------------------------------------------
-  useEffect(() => {
-    const handleRouteChange = (url: string) => ga.pageview(url);
-
-    router.events.on("routeChangeComplete", handleRouteChange);
-
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
-
-  // ----------------------------------------------------
-  // 4. Route Loading Indicator
+  // 3) Route Loading Indicator
   // ----------------------------------------------------
   useEffect(() => {
     if (firstLoad) return;
 
     const start = () => {
-      routeTimerRef.current = setTimeout(() => setRouteLoading(true), 200);
+      routeTimerRef.current = setTimeout(
+        () => setRouteLoading(true),
+        200,
+      );
     };
 
     const stop = () => {
@@ -90,10 +109,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       router.events.off("routeChangeComplete", stop);
       router.events.off("routeChangeError", stop);
     };
-  }, [router, firstLoad]);
+  }, [router.events, firstLoad]);
 
   // ----------------------------------------------------
-  // 5. Fetch Categories Once
+  // 4) Fetch Categories Once
   // ----------------------------------------------------
   useEffect(() => {
     async function fetchCategories() {
@@ -111,47 +130,83 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   // ----------------------------------------------------
-  // 6. Memoized Context Values
+  // 5) Memoized Context Values
   // ----------------------------------------------------
   const userInfoValue = useMemo(
     () => ({ userInfo, setUserInfo }),
-    [userInfo]
+    [userInfo],
   );
-
   const videoValue = useMemo(
     () => ({ videoLine, setVideoLine }),
-    [videoLine]
+    [videoLine],
   );
 
   // ----------------------------------------------------
-  // 7. First Load Preloader
+  // 6) First Load Preloader
   // ----------------------------------------------------
   if (firstLoad) return <Preloader />;
+
+  // If you want canonical to reflect current route by default:
+  const canonical = `${SITE_URL}${router.asPath === "/" ? "" : router.asPath}`;
 
   // ----------------------------------------------------
   // Render Tree
   // ----------------------------------------------------
   return (
     <>
+      {/* Global SEO defaults (pages can override with their own <Head>) */}
+      <Head>
+        <title>{DEFAULT_TITLE}</title>
+        <meta name="description" content={DEFAULT_DESCRIPTION} />
+
+        <link rel="canonical" href={canonical} />
+
+        {/* Open Graph */}
+        <meta property="og:site_name" content="Slavo" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:title" content={DEFAULT_TITLE} />
+        <meta
+          property="og:description"
+          content={DEFAULT_DESCRIPTION}
+        />
+        <meta
+          property="og:image"
+          content={`${SITE_URL}/og-image.jpg`}
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={DEFAULT_TITLE} />
+        <meta
+          name="twitter:description"
+          content={DEFAULT_DESCRIPTION}
+        />
+        <meta
+          name="twitter:image"
+          content={`${SITE_URL}/og-image.jpg`}
+        />
+      </Head>
+
       {routeLoading && <SmallRouteLoader />}
 
       <UserInfoContext.Provider value={userInfoValue}>
         <VideoContext.Provider value={videoValue}>
           <Layout>
-            <HeadBasePage title="Career Change: Learn Web Development for a Bright Future" />
             <MainNavigation categories={categories} />
-
             <Component {...pageProps} />
-
             <SpeedInsights />
             <Footer />
           </Layout>
 
-          <GoogleAnalytics gaId={GA_TRACKING_ID} />
+          {/* GA: Keep ONLY this (remove GA scripts from _document.tsx, and remove ga.pageview from _app) */}
+          {GA_TRACKING_ID ? (
+            <GoogleAnalytics gaId={GA_TRACKING_ID} />
+          ) : null}
         </VideoContext.Provider>
       </UserInfoContext.Provider>
     </>
   );
 }
-
-export default MyApp;
