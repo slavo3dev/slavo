@@ -21,7 +21,8 @@ const blog: NextPage = ({ posts }: any) => {
         title={`Blog Posts | Slavo`}
         description={`Read the latest blog posts on Slavo.`}
         ogType="article"
-        ogImage="/default-og-image.jpg"
+        ogImage="/og-image.png
+        "
       />
       <CategorySearch onSearch={findCategoryHandle} posts={posts} />
       <BlogPosts posts={posts} />

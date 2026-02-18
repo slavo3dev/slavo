@@ -27,7 +27,7 @@ export const HeadBasePage: FC<Props> = ({
   const router = useRouter();
 
   const canonical = `${SITE_URL}${canonicalPath ?? router.asPath}`;
-  const image = ogImage ?? `${SITE_URL}/og-image.jpg`;
+  const image = ogImage ?? `${SITE_URL}/og-image.png`;
 
   return (
     <Head>

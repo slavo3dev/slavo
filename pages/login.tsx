@@ -35,6 +35,7 @@ const Test: NextPage = () => {
       <HeadBasePage
         title="Login | Slavo"
         description="Login to your Slavo account to access mentorship and coding resources."
+        noIndex
       />
       {!isResetPassword ? (
         isAccountCreated ? (

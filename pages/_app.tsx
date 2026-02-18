@@ -172,7 +172,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         />
         <meta
           property="og:image"
-          content={`${SITE_URL}/og-image.jpg`}
+          content={`${SITE_URL}/og-image.png`}
         />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -186,7 +186,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         />
         <meta
           name="twitter:image"
-          content={`${SITE_URL}/og-image.jpg`}
+          content={`${SITE_URL}/og-image.png`}
         />
       </Head>
 

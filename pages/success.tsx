@@ -13,6 +13,7 @@ const Success: NextPage = () => {
       <HeadBasePage
         title="Payment Successful | Slavo"
         description="Your payment was successful. Thank you for your purchase!"
+        noIndex
       />
       <section className="flex flex-col bg-white justify-center items-center h-screen pt-20 pb-16 px-4 text-center">
         <div className="container">
