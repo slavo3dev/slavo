@@ -17,8 +17,9 @@ const Home: NextPage = ({ posts }: any) => {
   return (
     <>
       <HeadBasePage
-        title="Slavo | Build Coding Habits With Mentorship"
-        description="Daily accountability + mentorship for developers learning web dev."
+        title="Web Development Mentorship &  Habit System | Slavo"
+        description="Learn web development with a structured roadmap, daily accountability, and mentorship. Build coding habits, ship projects, and transition into tech."
+        canonicalPath="/"
       />
       <Hero />
       <WhoItsFor />
