@@ -6,6 +6,7 @@ import {
   Solution,
   Hero,
   PorchShowcase,
+  SeoTextBlock,
   WhoItsFor,
   ProgramsOverview,
   FreeResourcesTeaser,
@@ -22,6 +23,7 @@ const Home: NextPage = ({ posts }: any) => {
         canonicalPath="/"
       />
       <Hero />
+      <SeoTextBlock />
       <WhoItsFor />
       <ProgramsOverview />
       <PorchShowcase limit={9} className="bg-white" />

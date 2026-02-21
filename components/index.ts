@@ -87,3 +87,4 @@ export {
 };
 
 export * from "./Auth";
+export * from "./SeoTextBlock";
