@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextPage } from "next";
+import Head from "next/head";
 import {
   FeaturedPosts,
   Growth,
@@ -22,6 +23,21 @@ const Home: NextPage = ({ posts }: any) => {
         description="Learn web development with a structured roadmap, daily accountability, and mentorship. Build coding habits, ship projects, and transition into tech."
         canonicalPath="/"
       />
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Slavo",
+              url: "https://www.slavo.io",
+              description:
+                "Web development mentorship and coding habit system with accountability and curated resources.",
+            }),
+          }}
+        />
+      </Head>
       <Hero />
       <SeoTextBlock />
       <WhoItsFor />
