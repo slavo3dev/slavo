@@ -148,7 +148,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   // If you want canonical to reflect current route by default:
   const canonical = `${SITE_URL}${router.asPath === "/" ? "" : router.asPath}`;
-
   // ----------------------------------------------------
   // Render Tree
   // ----------------------------------------------------
@@ -189,7 +188,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           content={`${SITE_URL}/og-image.png`}
         />
       </Head>
-
       {routeLoading && <SmallRouteLoader />}
 
       <UserInfoContext.Provider value={userInfoValue}>
@@ -200,7 +198,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             <SpeedInsights />
             <Footer />
           </Layout>
-
           {/* GA: Keep ONLY this (remove GA scripts from _document.tsx, and remove ga.pageview from _app) */}
           {GA_TRACKING_ID ? (
             <GoogleAnalytics gaId={GA_TRACKING_ID} />
