@@ -3,7 +3,7 @@
 import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
- import { Users, Hammer, Globe } from "lucide-react";
+import { Users, Hammer, Globe } from "lucide-react";
 
 export const Hero: FC = () => {
   return (
@@ -22,24 +22,25 @@ export const Hero: FC = () => {
           {/* Copy */}
           <div className="lg:col-span-7">
             <div className="mx-auto max-w-2xl lg:mx-0">
-              <h1
-                id="hero-heading"
-                className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl"
-              >
-                Build your dream career{" "}
-                <span className="text-blue-600">from anywhere</span>
+              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                Web Development Mentorship +{" "}
+                <span className="text-blue-600">
+                  daily coding habits
+                </span>
               </h1>
 
-               <p className="mt-5 text-lg leading-7 text-gray-600">
-                <strong className="text-blue-600">slavo.io</strong> is a Creative
-                Mentorship Platform for marketers, founders, creators, digital
-                nomads, and anyone <span className="font-medium">stuck in their career who wants to build freedom</span>.
-                Learn faster, execute smarter, and grow with guidance, accountability, and curated resources.
+              <p className="mt-5 text-lg leading-7 text-gray-600">
+                <strong className="text-blue-600">Slavo.io</strong>{" "}
+                helps you learn{" "}
+                <span className="font-medium">web development</span>{" "}
+                with a clear roadmap, accountability, and mentorship.
+                Build consistent coding habits, ship real projects,
+                and transition into tech — remote-first.
               </p>
 
               <p className="mt-3 text-sm leading-6 text-gray-500">
-                Together, we’ll shape your roadmap and unlock personal + business
-                growth—without the office.
+                Together, we’ll shape your roadmap and unlock personal
+                + business growth—without the office.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -63,7 +64,7 @@ export const Hero: FC = () => {
                 >
                   Free resources
                 </Link>
-				<Link
+                <Link
                   href="/porch"
                   className="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold text-gray-700 underline-offset-4 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                 >
@@ -73,21 +74,21 @@ export const Hero: FC = () => {
 
               {/* Slim social proof row (optional) */}
               <div className="mt-6 flex flex-wrap items-center gap-2 text-sm">
-				<span className="inline-flex items-center gap-2 rounded-full bg-gradient-to-b from-white to-gray-50 px-3 py-1 text-gray-800 border border-gray-200 shadow-sm transition hover:shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
-					<Users className="h-4 w-4" aria-hidden="true" />
-					1:1 & group mentorship
-				</span>
+                <span className="inline-flex items-center gap-2 rounded-full bg-gradient-to-b from-white to-gray-50 px-3 py-1 text-gray-800 border border-gray-200 shadow-sm transition hover:shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+                  <Users className="h-4 w-4" aria-hidden="true" />
+                  1:1 & group mentorship
+                </span>
 
-				<span className="inline-flex items-center gap-2 rounded-full bg-gradient-to-b from-white to-gray-50 px-3 py-1 text-gray-800 border border-gray-200 shadow-sm transition hover:shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
-					<Hammer className="h-4 w-4" aria-hidden="true" />
-					Project-based learning
-				</span>
+                <span className="inline-flex items-center gap-2 rounded-full bg-gradient-to-b from-white to-gray-50 px-3 py-1 text-gray-800 border border-gray-200 shadow-sm transition hover:shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+                  <Hammer className="h-4 w-4" aria-hidden="true" />
+                  Project-based learning
+                </span>
 
-				<span className="inline-flex items-center gap-2 rounded-full bg-gradient-to-b from-white to-gray-50 px-3 py-1 text-gray-800 border border-gray-200 shadow-sm transition hover:shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
-					<Globe className="h-4 w-4" aria-hidden="true" />
-					Remote-first playbooks
-				</span>
-			  </div>
+                <span className="inline-flex items-center gap-2 rounded-full bg-gradient-to-b from-white to-gray-50 px-3 py-1 text-gray-800 border border-gray-200 shadow-sm transition hover:shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+                  <Globe className="h-4 w-4" aria-hidden="true" />
+                  Remote-first playbooks
+                </span>
+              </div>
             </div>
           </div>
 
@@ -102,7 +103,7 @@ export const Hero: FC = () => {
                   height={520}
                   priority
                 />
-        
+
                 <div
                   aria-hidden="true"
                   className="absolute -inset-x-6 -bottom-8 h-20 rounded-full bg-blue-100/50 blur-2xl"

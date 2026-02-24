@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Block private / non-content pages
+Disallow: /dashboard
+Disallow: /login
+Disallow: /success
+Disallow: /cancel
+
+Sitemap: https://www.slavo.io/sitemap.xml
