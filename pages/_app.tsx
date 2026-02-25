@@ -11,7 +11,6 @@ import "animate.css";
 
 import {
   Layout,
-  HeadBasePage,
   MainNavigation,
   Footer,
   Preloader,
@@ -36,19 +35,27 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   const [categories, setCategories] = useState<string[]>([]);
   const [videoLine, setVideoLine] = useState("channelOne");
 
-  const [firstLoad, setFirstLoad] = useState(true);
-  const [routeLoading, setRouteLoading] = useState(false);
+  // ✅ IMPORTANT: do NOT block SSR with a preloader return.
+  // Render the site immediately, and only show a client-side overlay loader.
+  const [showFirstLoadOverlay, setShowFirstLoadOverlay] =
+    useState(false);
 
+  const [routeLoading, setRouteLoading] = useState(false);
   const routeTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   const GA_TRACKING_ID =
     process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || "";
 
   // ----------------------------------------------------
-  // 1) First-load preloader timeout
+  // 1) First-load overlay (client only)
   // ----------------------------------------------------
   useEffect(() => {
-    const timeout = setTimeout(() => setFirstLoad(false), 700);
+    // Ensure this never affects SSR HTML (useEffect runs only on client)
+    setShowFirstLoadOverlay(true);
+    const timeout = setTimeout(
+      () => setShowFirstLoadOverlay(false),
+      700,
+    );
     return () => clearTimeout(timeout);
   }, []);
 
@@ -58,7 +65,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     let isMounted = true;
 
-    // Load initial session (important on refresh)
     supabase.auth
       .getSession()
       .then(({ data }) => {
@@ -69,7 +75,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         // ignore; keep userInfo null
       });
 
-    // Listen for changes
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (_event, session) => {
         setUserInfo(session?.user || null);
@@ -86,8 +91,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   // 3) Route Loading Indicator
   // ----------------------------------------------------
   useEffect(() => {
-    if (firstLoad) return;
-
     const start = () => {
       routeTimerRef.current = setTimeout(
         () => setRouteLoading(true),
@@ -109,7 +112,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       router.events.off("routeChangeComplete", stop);
       router.events.off("routeChangeError", stop);
     };
-  }, [router.events, firstLoad]);
+  }, [router.events]);
 
   // ----------------------------------------------------
   // 4) Fetch Categories Once
@@ -142,15 +145,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   );
 
   // ----------------------------------------------------
-  // 6) First Load Preloader
+  // Canonical (strip query/hash so it stays clean)
   // ----------------------------------------------------
-  if (firstLoad) return <Preloader />;
+  const path = router.asPath.split("?")[0].split("#")[0];
+  const canonical = `${SITE_URL}${path === "/" ? "" : path}`;
 
-  // If you want canonical to reflect current route by default:
-  const canonical = `${SITE_URL}${router.asPath === "/" ? "" : router.asPath}`;
-  // ----------------------------------------------------
-  // Render Tree
-  // ----------------------------------------------------
   return (
     <>
       {/* Global SEO defaults (pages can override with their own <Head>) */}
@@ -188,6 +187,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           content={`${SITE_URL}/og-image.png`}
         />
       </Head>
+
       {routeLoading && <SmallRouteLoader />}
 
       <UserInfoContext.Provider value={userInfoValue}>
@@ -198,7 +198,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             <SpeedInsights />
             <Footer />
           </Layout>
-          {/* GA: Keep ONLY this (remove GA scripts from _document.tsx, and remove ga.pageview from _app) */}
+
+          {/* ✅ Overlay preloader so SSR HTML still contains real page content */}
+          {showFirstLoadOverlay ? <Preloader overlay /> : null}
+
+          {/* GA */}
           {GA_TRACKING_ID ? (
             <GoogleAnalytics gaId={GA_TRACKING_ID} />
           ) : null}
