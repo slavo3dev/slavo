@@ -32,7 +32,8 @@ export const Burger: FC<BurgerProps> = ({ userInfo }) => {
 
   const toggleLoginModal = () => setShowLoginModal((prev) => !prev);
 
-  const toggleUserDropdown = () => setShowUserDropdown((prev) => !prev);
+  const toggleUserDropdown = () =>
+    setShowUserDropdown((prev) => !prev);
 
   useEffect(() => {
     if (userEmail) {
@@ -55,25 +56,25 @@ export const Burger: FC<BurgerProps> = ({ userInfo }) => {
   }, []);
 
   useEffect(() => {
-      const fetchSubscriptionStatus = async () => {
-        if (!userInfo) return;
+    const fetchSubscriptionStatus = async () => {
+      if (!userInfo) return;
 
-        const { data, error } = await supabase
-          .from("profile")
-          .select("is_subscribed")
-          .eq("id", userInfo.id)
-          .single();
+      const { data, error } = await supabase
+        .from("profile")
+        .select("is_subscribed")
+        .eq("id", userInfo.id)
+        .single();
 
-        if (error) {
-          console.error("Error fetching subscription status:", error);
-        } else {
-          setIsSubscribed(data?.is_subscribed || false);
-        }
-      };
+      if (error) {
+        console.error("Error fetching subscription status:", error);
+      } else {
+        setIsSubscribed(data?.is_subscribed || false);
+      }
+    };
 
-      fetchSubscriptionStatus();
-    }, [userInfo]);
-  
+    fetchSubscriptionStatus();
+  }, [userInfo]);
+
   return (
     <>
       <div className="md:hidden flex-row overflow-show">
@@ -92,11 +93,14 @@ export const Burger: FC<BurgerProps> = ({ userInfo }) => {
 
         <div className={showDrop ? "visible" : "hidden"}>
           <div className="fixed flex-col h-5/6 overflow-scroll top-20 bg-white left-0 z-40 mt-2 w-full rounded border-[.5px] border-light px-5 py-5 transition-all">
-            <ul onClick={() => setShowDrop(false)} className="flex flex-col w-full">
+            <ul
+              onClick={() => setShowDrop(false)}
+              className="flex flex-col w-full"
+            >
               <li className="p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
                 <Link href="/programs">Programs</Link>
               </li>
-              
+
               <li className="p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
                 <Link href="/porch">Porch</Link>
               </li>
@@ -120,8 +124,8 @@ export const Burger: FC<BurgerProps> = ({ userInfo }) => {
                       isSubscribed === true
                         ? "bg-green-100 text-green-600"
                         : isSubscribed === false
-                        ? "bg-yellow-100 text-yellow-600"
-                        : "text-blue-500"
+                          ? "bg-yellow-100 text-yellow-600"
+                          : "text-blue-500"
                     }`}
                   >
                     <FiUser size={22} />
@@ -129,12 +133,20 @@ export const Burger: FC<BurgerProps> = ({ userInfo }) => {
 
                   {showUserDropdown && (
                     <div className="absolute right-0 mt-2 w-full bg-white border border-gray-200 rounded shadow-md z-50 p-4 text-sm">
-                      <p className="mb-2 text-gray-800 font-medium truncate">{userEmail}</p>
+                      <p className="mb-2 text-gray-800 font-medium truncate">
+                        {userEmail}
+                      </p>
                       <Link
                         href={"/subscription"}
                         className="hover:text-blue-500 hover:bg-blue-50 w-full block"
                       >
                         Subscription
+                      </Link>
+                      <Link
+                        href={"/mentor"}
+                        className="hover:text-blue-500 hover:bg-blue-50 w-full block"
+                      >
+                        Mentor
                       </Link>
                       <Link
                         href={"/dashboard"}
@@ -176,17 +188,53 @@ export const Burger: FC<BurgerProps> = ({ userInfo }) => {
             <div className="text-center mt-6">
               <div>Contact us slavo@slavo.io</div>
               <div className="flex justify-center mt-2 gap-2">
-                <a href="https://www.instagram.com/slavo_3/" target="_blank" rel="noopener noreferrer">
-                  <Image width={40} height={40} src={insta} alt="Instagram Logo" />
+                <a
+                  href="https://www.instagram.com/slavo_3/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    width={40}
+                    height={40}
+                    src={insta}
+                    alt="Instagram Logo"
+                  />
                 </a>
-                <a href="https://twitter.com/slavo3dev" target="_blank" rel="noopener noreferrer">
-                  <Image width={40} height={40} src={twit} alt="Twitter Logo" />
+                <a
+                  href="https://twitter.com/slavo3dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    width={40}
+                    height={40}
+                    src={twit}
+                    alt="Twitter Logo"
+                  />
                 </a>
-                <a href="https://facebook.com/slavo.io" target="_blank" rel="noopener noreferrer">
-                  <Image width={40} height={40} src={face} alt="Facebook Logo" />
+                <a
+                  href="https://facebook.com/slavo.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    width={40}
+                    height={40}
+                    src={face}
+                    alt="Facebook Logo"
+                  />
                 </a>
-                <a href="https://www.linkedin.com/in/slavopopovic/" target="_blank" rel="noopener noreferrer">
-                  <Image width={40} height={40} src={link} alt="LinkedIn Logo" />
+                <a
+                  href="https://www.linkedin.com/in/slavopopovic/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    width={40}
+                    height={40}
+                    src={link}
+                    alt="LinkedIn Logo"
+                  />
                 </a>
               </div>
             </div>
