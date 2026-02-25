@@ -11,7 +11,7 @@ import { ContactForm } from "./ContactForm/ContactForm";
 import { Subscribe } from "./Subscribe";
 import { Footer } from "./Footer";
 import { CategorySearch } from "./Categorysearch";
-import { MentorAI } from "./MentorAI";
+// import { MentorAI } from "./MentorAI";
 import { NewResourceFrom } from "./Forms";
 import { FreeSourcesList } from "./FreeSourcesList";
 import { VideoCard, VideoLine } from "./VideoElements";
@@ -56,7 +56,7 @@ export {
   Subscribe,
   Footer,
   CategorySearch,
-  MentorAI,
+  // MentorAI,
   NewResourceFrom,
   FreeSourcesList,
   VideoCard,
