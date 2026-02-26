@@ -56,7 +56,6 @@ export {
   Subscribe,
   Footer,
   CategorySearch,
-  // MentorAI,
   NewResourceFrom,
   FreeSourcesList,
   VideoCard,
@@ -88,3 +87,5 @@ export {
 
 export * from "./Auth";
 export * from "./SeoTextBlock";
+export * from "./MentorAI";
+export * from "./OpenAI";
