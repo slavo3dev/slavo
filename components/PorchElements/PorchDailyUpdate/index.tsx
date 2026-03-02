@@ -18,7 +18,6 @@ interface PorchType {
 interface PorchDailyUpdateProps {
   porch: PorchType;
   setPorchs: React.Dispatch<React.SetStateAction<PorchType[]>>;
-
 }
 
 export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({
@@ -27,20 +26,19 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({
 }) => {
   const [isUpdating, setIsUpdating] = useState<boolean>(false);
   const { userInfo } = useContext(UserInfoContext);
-  const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
+  const [showLoginModal, setShowLoginModal] =
+    useState<boolean>(false);
   const toggleLoginModal = () => setShowLoginModal((prev) => !prev);
   const [hasVoted, setHasVoted] = useState<boolean>(false);
   const [textUpdate, setTextUpdate] = useState<string>(porch.text);
   const userEmail = userInfo?.email; // Logged-in user's email
-  
+
   useEffect(() => {
     if (userInfo?.email) {
       const userHasVoted = porch.likes.includes(userInfo.email);
       setHasVoted(userHasVoted);
     }
   }, [userInfo, porch.likes]);
-
- 
 
   const date = new Date(porch.created_at);
   const formattedDate = `${(date.getMonth() + 1)
@@ -66,7 +64,7 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({
           (email) => email !== userInfo.email,
         );
       } else {
-        updatedLikes.push(userInfo.email); 
+        updatedLikes.push(userInfo.email);
       }
 
       const { error } = await supabase
@@ -101,33 +99,34 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({
   const commentText = porch.text;
   const [showMore, setShowMore] = useState<boolean>(false);
 
-  
   const displayComment = showMore
     ? commentText
     : commentText.slice(0, 90);
   const handleMore = () => setShowMore(true);
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement>,
+  ) => {
     setTextUpdate(e.target.value);
   };
 
   const submitChange = async (porchId: string, newText: string) => {
     setIsUpdating(true);
-  
+
     try {
       const { error } = await supabase
         .from("porch")
         .update({ text: newText })
         .eq("new_id", porchId);
-  
+
       if (error) {
         console.error("Error updating porch:", error);
         alert("Failed to update. Please try again.");
       } else {
         setPorchs((prevPorchs) =>
           prevPorchs.map((p) =>
-            p.new_id === porchId ? { ...p, text: newText } : p
-          )
+            p.new_id === porchId ? { ...p, text: newText } : p,
+          ),
         );
       }
     } catch (err) {
@@ -137,7 +136,7 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({
       setIsUpdating(false);
     }
   };
-  
+
   return (
     <>
       <CardLayout
@@ -153,8 +152,12 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({
         isVoteDisabled={false}
         hasVoted={hasVoted}
         extraContent={
-          <div className="pb-6">
-             <CommentsFetcher sourceId={porch.new_id} getRoute="getPorchComments" postRoute="postPorchComments" />
+          <div className="pt-2 sm:pt-4">
+            <CommentsFetcher
+              sourceId={porch.new_id}
+              getRoute="getPorchComments"
+              postRoute="postPorchComments"
+            />
           </div>
         }
         isLoggedIn={!!userInfo?.email}
@@ -164,4 +167,3 @@ export const PorchDailyUpdate: React.FC<PorchDailyUpdateProps> = ({
     </>
   );
 };
-
