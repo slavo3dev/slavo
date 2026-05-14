@@ -1,22 +1,17 @@
-import {
-  FC,
-  useEffect,
-  useState,
-  useContext,
-  useRef,
-  use,
-} from "react";
+import { FC, useEffect, useState, useContext, useRef } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { FiUser } from "react-icons/fi";
+
 import classes from "./navigation.module.css";
 import { Logo } from "../Logo";
 import { Burger } from "./mobileView";
-import { useRouter } from "next/router";
 import UserInfoContext from "context/UserInfoContext";
 import { Subscribe } from "@/components/Subscribe";
 import { LoginModal } from "@/components/Auth/LoginPopup";
 import { NavigationProps } from "@/Types/Navigation";
 import { BlogDropDown } from "@/components/Posts/BlogDropDown";
-import { FiUser } from "react-icons/fi";
+import { NotificationsBell } from "@/components/NotificationsBell";
 import supabase from "@/lib/supabase";
 
 export const MainNavigation: FC<NavigationProps> = ({
@@ -28,6 +23,7 @@ export const MainNavigation: FC<NavigationProps> = ({
     useState<boolean>(false);
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState<boolean>(false);
+
   const userEmail = userInfo?.email;
   const router = useRouter();
 
@@ -41,12 +37,13 @@ export const MainNavigation: FC<NavigationProps> = ({
     );
   };
 
-  console.log(`ENV: ${process.env.NODE_ENV}`);
   useEffect(() => {
     const handleScroll = () => {
       setHeadStyle(window.scrollY <= 50);
     };
+
     window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -65,7 +62,9 @@ export const MainNavigation: FC<NavigationProps> = ({
         setShowUserDropdown(false);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
+
     return () =>
       document.removeEventListener("mousedown", handleClickOutside);
   }, []);
@@ -93,7 +92,8 @@ export const MainNavigation: FC<NavigationProps> = ({
   return (
     <header className={headStyle ? classes.header : classes.header1}>
       <Logo />
-      <div className="flex">
+
+      <div className="flex items-center gap-3">
         <nav className={classes.navMenu}>
           <ul>
             <li
@@ -115,6 +115,7 @@ export const MainNavigation: FC<NavigationProps> = ({
             >
               <Link href="/porch">Porch</Link>
             </li>
+
             <li
               className={
                 router.pathname === "/free-resources"
@@ -124,6 +125,7 @@ export const MainNavigation: FC<NavigationProps> = ({
             >
               <Link href="/free-resources">Free Resources</Link>
             </li>
+
             <li
               className={
                 router.pathname === "/blog"
@@ -138,6 +140,7 @@ export const MainNavigation: FC<NavigationProps> = ({
                 setActiveCategory={() => {}}
               />
             </li>
+
             <li
               className={
                 router.pathname === "/contact"
@@ -147,73 +150,90 @@ export const MainNavigation: FC<NavigationProps> = ({
             >
               <Link href="/contact">Contact</Link>
             </li>
-            <li>
+
+            <li className="flex items-center">
               {userEmail ? (
-                <div ref={dropdownRef} className="relative">
-                  <button
-                    onClick={() =>
-                      setShowUserDropdown((prev) => !prev)
-                    }
-                    className={`p-2 rounded-full hover:bg-blue-100 ${
-                      isSubscribed === true
-                        ? "bg-green-100 text-green-600"
-                        : isSubscribed === false
-                          ? "bg-yellow-100 text-yellow-600"
-                          : "text-blue-500"
-                    }`}
-                  >
-                    <FiUser size={24} />
-                  </button>
-                  {showUserDropdown && (
-                    <div className="absolute right-0 mt-2 w-52 bg-white border border-gray-200 rounded shadow-md z-50 p-4 text-sm">
-                      <p className="mb-2 text-gray-800 font-medium truncate">
-                        {userEmail}
-                      </p>
-                      <Link
-                        href={"/subscription"}
-                        className="hover:text-blue-500 hover:bg-blue-50 w-full block text-left "
-                      >
-                        Subscription
-                      </Link>
-                      <Link
-                        href={"/mentor"}
-                        className="hover:text-blue-500 hover:bg-blue-50 w-full block text-left mt-2"
-                      >
-                        Mentor
-                      </Link>
-                      <Link
-                        href={"/dashboard"}
-                        className="hover:text-blue-500 hover:bg-blue-50 w-full block text-left mt-2"
-                      >
-                        Dashboard
-                      </Link>
-                      <Link
-                        href={"/auth/logout"}
-                        className=" hover:text-blue-500 hover:bg-blue-50 w-full block text-left mt-2"
-                      >
-                        Logout
-                      </Link>
-                    </div>
-                  )}
+                <div className="flex items-center gap-2">
+                  <NotificationsBell />
+
+                  <div ref={dropdownRef} className="relative">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setShowUserDropdown((prev) => !prev)
+                      }
+                      className={`rounded-full p-2 hover:bg-blue-100 ${
+                        isSubscribed === true
+                          ? "bg-green-100 text-green-600"
+                          : isSubscribed === false
+                            ? "bg-yellow-100 text-yellow-600"
+                            : "text-blue-500"
+                      }`}
+                      aria-label="Open user menu"
+                    >
+                      <FiUser size={24} />
+                    </button>
+
+                    {showUserDropdown && (
+                      <div className="absolute right-0 z-50 mt-2 w-52 rounded border border-gray-200 bg-white p-4 text-sm shadow-md">
+                        <p className="mb-2 truncate font-medium text-gray-800">
+                          {userEmail}
+                        </p>
+
+                        <Link
+                          href="/subscription"
+                          className="block w-full text-left hover:bg-blue-50 hover:text-blue-500"
+                        >
+                          Subscription
+                        </Link>
+
+                        <Link
+                          href="/mentor"
+                          className="mt-2 block w-full text-left hover:bg-blue-50 hover:text-blue-500"
+                        >
+                          Mentor
+                        </Link>
+
+                        <Link
+                          href="/dashboard"
+                          className="mt-2 block w-full text-left hover:bg-blue-50 hover:text-blue-500"
+                        >
+                          Dashboard
+                        </Link>
+
+                        <Link
+                          href="/auth/logout"
+                          className="mt-2 block w-full text-left hover:bg-blue-50 hover:text-blue-500"
+                        >
+                          Logout
+                        </Link>
+                      </div>
+                    )}
+                  </div>
                 </div>
               ) : (
-                <span
+                <button
+                  type="button"
                   onClick={toggleLoginModal}
-                  className="font-montserrat font-semibold cursor-pointer text-lg hover:text-blue-500 hover:bg-blue-50 rounded-md"
+                  className="cursor-pointer rounded-md text-lg font-semibold hover:bg-blue-50 hover:text-blue-500"
                 >
                   Login
-                </span>
+                </button>
               )}
             </li>
           </ul>
         </nav>
+
         <Subscribe />
       </div>
+
       <Burger userInfo={userInfo} categories={categories} />
+
       {showLoginModal && (
         <>
-          <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40"></div>
-          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 rounded-lg max-w-xl w-full p-6">
+          <div className="fixed inset-0 z-40 bg-black bg-opacity-50 backdrop-blur-md" />
+
+          <div className="fixed left-1/2 top-1/2 z-50 w-full max-w-xl -translate-x-1/2 -translate-y-1/2 transform rounded-lg p-6">
             <LoginModal
               isOpen={showLoginModal}
               onClose={toggleLoginModal}

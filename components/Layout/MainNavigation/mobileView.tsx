@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FC, useState, useEffect, useRef } from "react";
-import { useRouter } from "next/router";
-import { Subscribe } from "@/components/Subscribe";
-import { LoginModal } from "@/components/Auth/LoginPopup";
 import { FiUser } from "react-icons/fi";
+
+import { LoginModal } from "@/components/Auth/LoginPopup";
+import { NotificationsBell } from "@/components/NotificationsBell";
 import insta from "public/images/icons/instagram-blue.svg";
 import twit from "public/images/icons/twitter-blue.svg";
 import face from "public/images/icons/facebook-blue.svg";
@@ -25,10 +25,10 @@ export const Burger: FC<BurgerProps> = ({ userInfo }) => {
   const [showDrop, setShowDrop] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showUserDropdown, setShowUserDropdown] = useState(false);
-  const userEmail = userInfo?.email;
-  const router = useRouter();
-  const dropdownRef = useRef<HTMLDivElement>(null);
   const [isSubscribed, setIsSubscribed] = useState<boolean>(false);
+
+  const userEmail = userInfo?.email;
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleLoginModal = () => setShowLoginModal((prev) => !prev);
 
@@ -50,7 +50,9 @@ export const Burger: FC<BurgerProps> = ({ userInfo }) => {
         setShowUserDropdown(false);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
+
     return () =>
       document.removeEventListener("mousedown", handleClickOutside);
   }, []);
@@ -77,106 +79,127 @@ export const Burger: FC<BurgerProps> = ({ userInfo }) => {
 
   return (
     <>
-      <div className="md:hidden flex-row overflow-show">
+      <div className="flex-row overflow-visible md:hidden">
         <button
+          type="button"
           onClick={() => setShowDrop(!showDrop)}
-          className="z-50 right-4 items-center py-2 px-3 mr-4 text-blue-500 hover:text-blue-700 rounded border border-blue-200 hover:border-blue-300"
+          className="right-4 z-50 mr-4 items-center rounded border border-blue-200 px-3 py-2 text-blue-500 hover:border-blue-300 hover:text-blue-700"
+          aria-label="Open mobile menu"
         >
           <svg
-            className="fill-current h-4 w-4"
+            className="h-4 w-4 fill-current"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
           </svg>
         </button>
 
         <div className={showDrop ? "visible" : "hidden"}>
-          <div className="fixed flex-col h-5/6 overflow-scroll top-20 bg-white left-0 z-40 mt-2 w-full rounded border-[.5px] border-light px-5 py-5 transition-all">
+          <div className="fixed left-0 top-20 z-40 mt-2 flex h-5/6 w-full flex-col overflow-scroll rounded border-[.5px] border-light bg-white px-5 py-5 transition-all">
             <ul
               onClick={() => setShowDrop(false)}
-              className="flex flex-col w-full"
+              className="flex w-full flex-col"
             >
-              <li className="p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
+              <li className="rounded-xl p-4 text-sm text-gray-500 hover:bg-blue-50 hover:text-blue-500">
                 <Link href="/programs">Programs</Link>
               </li>
 
-              <li className="p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
+              <li className="rounded-xl p-4 text-sm text-gray-500 hover:bg-blue-50 hover:text-blue-500">
                 <Link href="/porch">Porch</Link>
               </li>
-              <li className="p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
+
+              <li className="rounded-xl p-4 text-sm text-gray-500 hover:bg-blue-50 hover:text-blue-500">
                 <Link href="/free-resources">Free Resources</Link>
               </li>
-              <li className="p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
+
+              <li className="rounded-xl p-4 text-sm text-gray-500 hover:bg-blue-50 hover:text-blue-500">
                 <Link href="/blog">Blog</Link>
               </li>
-              <li className="p-4 text-sm text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-xl">
+
+              <li className="rounded-xl p-4 text-sm text-gray-500 hover:bg-blue-50 hover:text-blue-500">
                 <Link href="/contact">Contact</Link>
               </li>
             </ul>
 
-            <div className="w-full mt-6 pt-6 border-t border-blueGray-50 flex flex-col items-center">
+            <div className="mt-6 flex w-full flex-col items-center border-t border-blueGray-50 pt-6">
               {userEmail ? (
-                <div ref={dropdownRef} className="relative w-full">
-                  <button
-                    onClick={toggleUserDropdown}
-                    className={`flex items-center justify-center w-full py-2 text-blue-500 border border-blue-200 rounded hover:border-blue-300 ${
-                      isSubscribed === true
-                        ? "bg-green-100 text-green-600"
-                        : isSubscribed === false
-                          ? "bg-yellow-100 text-yellow-600"
-                          : "text-blue-500"
-                    }`}
-                  >
-                    <FiUser size={22} />
-                  </button>
+                <div className="flex w-full flex-col gap-3">
+                  <NotificationsBell fullWidth />
 
-                  {showUserDropdown && (
-                    <div className="absolute right-0 mt-2 w-full bg-white border border-gray-200 rounded shadow-md z-50 p-4 text-sm">
-                      <p className="mb-2 text-gray-800 font-medium truncate">
-                        {userEmail}
-                      </p>
-                      <Link
-                        href={"/subscription"}
-                        className="hover:text-blue-500 hover:bg-blue-50 w-full block"
-                      >
-                        Subscription
-                      </Link>
-                      <Link
-                        href={"/mentor"}
-                        className="hover:text-blue-500 hover:bg-blue-50 w-full block"
-                      >
-                        Mentor
-                      </Link>
-                      <Link
-                        href={"/dashboard"}
-                        className="hover:text-blue-500 hover:bg-blue-50 w-full block"
-                      >
-                        Dashboard
-                      </Link>
-                      <Link
-                        href={"/auth/logout"}
-                        className="hover:text-blue-500 hover:bg-blue-50 w-full mt-2"
-                      >
-                        Logout
-                      </Link>
-                    </div>
-                  )}
+                  <div ref={dropdownRef} className="relative w-full">
+                    <button
+                      type="button"
+                      onClick={toggleUserDropdown}
+                      className={`flex w-full items-center justify-center rounded border border-blue-200 py-2 text-blue-500 hover:border-blue-300 ${
+                        isSubscribed === true
+                          ? "bg-green-100 text-green-600"
+                          : isSubscribed === false
+                            ? "bg-yellow-100 text-yellow-600"
+                            : "text-blue-500"
+                      }`}
+                      aria-label="Open user menu"
+                    >
+                      <FiUser size={22} />
+                    </button>
+
+                    {showUserDropdown && (
+                      <div className="absolute right-0 z-50 mt-2 w-full rounded border border-gray-200 bg-white p-4 text-sm shadow-md">
+                        <p className="mb-2 truncate font-medium text-gray-800">
+                          {userEmail}
+                        </p>
+
+                        <Link
+                          href="/subscription"
+                          className="block w-full hover:bg-blue-50 hover:text-blue-500"
+                          onClick={() => setShowDrop(false)}
+                        >
+                          Subscription
+                        </Link>
+
+                        <Link
+                          href="/mentor"
+                          className="mt-2 block w-full hover:bg-blue-50 hover:text-blue-500"
+                          onClick={() => setShowDrop(false)}
+                        >
+                          Mentor
+                        </Link>
+
+                        <Link
+                          href="/dashboard"
+                          className="mt-2 block w-full hover:bg-blue-50 hover:text-blue-500"
+                          onClick={() => setShowDrop(false)}
+                        >
+                          Dashboard
+                        </Link>
+
+                        <Link
+                          href="/auth/logout"
+                          className="mt-2 block w-full hover:bg-blue-50 hover:text-blue-500"
+                          onClick={() => setShowDrop(false)}
+                        >
+                          Logout
+                        </Link>
+                      </div>
+                    )}
+                  </div>
                 </div>
               ) : (
-                <div
+                <button
+                  type="button"
                   onClick={toggleLoginModal}
-                  className="w-full px-4 py-3 mb-3 text-blue-500 hover:text-blue-700 text-center font-semibold rounded-xl border border-blue-200 hover:border-blue-300 cursor-pointer"
+                  className="mb-3 w-full cursor-pointer rounded-xl border border-blue-200 px-4 py-3 text-center font-semibold text-blue-500 hover:border-blue-300 hover:text-blue-700"
                 >
                   Login
-                </div>
+                </button>
               )}
             </div>
 
             {showLoginModal && (
               <>
-                <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40"></div>
-                <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 rounded-lg max-w-xl w-full p-6">
+                <div className="fixed inset-0 z-40 bg-black bg-opacity-50 backdrop-blur-md" />
+
+                <div className="fixed left-1/2 top-1/2 z-50 w-full max-w-xl -translate-x-1/2 -translate-y-1/2 transform rounded-lg p-6">
                   <LoginModal
                     isOpen={showLoginModal}
                     onClose={toggleLoginModal}
@@ -185,9 +208,10 @@ export const Burger: FC<BurgerProps> = ({ userInfo }) => {
               </>
             )}
 
-            <div className="text-center mt-6">
+            <div className="mt-6 text-center">
               <div>Contact us slavo@slavo.io</div>
-              <div className="flex justify-center mt-2 gap-2">
+
+              <div className="mt-2 flex justify-center gap-2">
                 <a
                   href="https://www.instagram.com/slavo_3/"
                   target="_blank"
@@ -200,6 +224,7 @@ export const Burger: FC<BurgerProps> = ({ userInfo }) => {
                     alt="Instagram Logo"
                   />
                 </a>
+
                 <a
                   href="https://twitter.com/slavo3dev"
                   target="_blank"
@@ -212,6 +237,7 @@ export const Burger: FC<BurgerProps> = ({ userInfo }) => {
                     alt="Twitter Logo"
                   />
                 </a>
+
                 <a
                   href="https://facebook.com/slavo.io"
                   target="_blank"
@@ -224,6 +250,7 @@ export const Burger: FC<BurgerProps> = ({ userInfo }) => {
                     alt="Facebook Logo"
                   />
                 </a>
+
                 <a
                   href="https://www.linkedin.com/in/slavopopovic/"
                   target="_blank"
