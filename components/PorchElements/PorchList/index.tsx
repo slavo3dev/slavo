@@ -1,6 +1,11 @@
-import React, { useState, useEffect, useContext, useMemo } from "react";
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  useMemo,
+} from "react";
 import UserInfoContext from "@/context/UserInfoContext";
-import { PorchDailyUpdate } from "../PorchDailyUpdate"; 
+import { PorchDailyUpdate } from "../PorchDailyUpdate";
 import { PorchType } from "@/Types/PorchTypes";
 import supabase from "lib/supabase";
 
@@ -9,86 +14,120 @@ interface PorchListProps {
   setPorchs: React.Dispatch<React.SetStateAction<PorchType[]>>;
 }
 
-export const PorchList: React.FC<PorchListProps> = ({ porchs, setPorchs }) => {
-	const { userInfo } = useContext(UserInfoContext);
-	const [filtered, setFiltered] = useState<boolean>(false);
-	const [dailyUpdates, setDailyUpdates] = useState<PorchType[]>(porchs);
-	const [buttonTitle, setButtonTitle] = useState<string>("Track Your Daily Updates");
-	const [learningDays, setLearningDays] = useState<number>(0);
+export const PorchList: React.FC<PorchListProps> = ({
+  porchs,
+  setPorchs,
+}) => {
+  const { userInfo } = useContext(UserInfoContext);
 
-	useEffect(() => {
-		setDailyUpdates(porchs);
-	}, [porchs]);
+  const [filtered, setFiltered] = useState(false);
+  const [dailyUpdates, setDailyUpdates] =
+    useState<PorchType[]>(porchs);
+  const [learningDays, setLearningDays] = useState(0);
 
-	const filteringUpdatesPerUser = useMemo(() => {
-		const updates = filtered 
-			? dailyUpdates.filter((porch) => porch.email === userInfo?.email)
-			: dailyUpdates; 
-			return updates.slice().sort((a,b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
-	}, [dailyUpdates, userInfo?.email, filtered]);
+  useEffect(() => {
+    setDailyUpdates(porchs);
+  }, [porchs]);
 
-	useEffect(() => {
-		const fetchLearningDays = async () => {
-			if (userInfo?.email) {
-				const { count, error } = await supabase
-					.from("porch")
-					.select("*", { count: "exact" })
-					.eq("email", userInfo.email);
+  const filteringUpdatesPerUser = useMemo(() => {
+    const updates = filtered
+      ? dailyUpdates.filter(
+          (porch) => porch.email === userInfo?.email,
+        )
+      : dailyUpdates;
 
-				if (error) {
-					console.error("Error fetching learning days from Supabase:", error);
-				} else {
-					setLearningDays(count || 0);
-				}
-			}
-		};
-		fetchLearningDays();
-	}, [userInfo?.email]);
+    return updates
+      .slice()
+      .sort(
+        (a, b) =>
+          new Date(b.created_at).getTime() -
+          new Date(a.created_at).getTime(),
+      );
+  }, [dailyUpdates, userInfo?.email, filtered]);
 
-	const handleFiltering = () => {
-		setFiltered((prevState) => {
-		  const newFiltered = !prevState;
-		  setButtonTitle(
-			newFiltered ? "All Daily Updates" : "Track Your Daily Updates"
-		  );
-		  return newFiltered;
-		});
-	  };
+  useEffect(() => {
+    const fetchLearningDays = async () => {
+      if (!userInfo?.email) return;
 
-	return (
-		<section className="py-1 sm:py-1 lg:py-1 border-y-4">
-			<div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-				<div className="mx-auto overflow-hidden bg-gray-100 max-w- rounded-xl">
-					<div className="py-5 sm:p-6">
-						<div className="ml-2">
-							<p className="text-lg font-bold text-gray-900">Daily Highlights</p>
-							<p className="mt-1 text-sm font-medium text-gray-500">Growth and Learning News</p>
-							{userInfo?.email ? (
-								<>
-									<p className="mt-5 text-lg font-medium text-gray-800">
-                    You've been dedicated to learning for <b>{learningDays}</b> days!
-									</p>
-									<button
-										onClick={handleFiltering}
-										className="px-4 py-2 mt-3 text-sm font-medium text-white transition duration-300 ease-in-out bg-blue-500 rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-									>
-										{buttonTitle}
-									</button>
-								</>
-							) : null}
-						</div>
-						<div className="mt-6 space-y-3">
-						{filteringUpdatesPerUser.map((porch) => (
-                			<PorchDailyUpdate
-                 				key={porch.new_id || porch.created_at} //Use a Consistent and Unique Identifier
-                  				porch={porch}
-                  				setPorchs={setPorchs}
-                			/>
-              			))}
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-	);
+      const { count, error } = await supabase
+        .from("porch")
+        .select("*", { count: "exact", head: true })
+        .eq("email", userInfo.email);
+
+      if (error) {
+        console.error(
+          "Error fetching learning days from Supabase:",
+          error,
+        );
+        return;
+      }
+
+      setLearningDays(count || 0);
+    };
+
+    fetchLearningDays();
+  }, [userInfo?.email]);
+
+  const handleFiltering = () => {
+    setFiltered((prevState) => !prevState);
+  };
+
+  return (
+    <section className="py-6">
+      <div className="mx-auto max-w-4xl">
+        <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white/90 shadow-sm">
+          <div className="border-b border-slate-200 bg-gradient-to-r from-blue-50 to-sky-50 p-5 sm:p-6">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-xl font-bold text-slate-950">
+                  Daily Highlights
+                </p>
+                <p className="mt-1 text-sm font-medium text-slate-500">
+                  Growth and learning news from the community.
+                </p>
+
+                {userInfo?.email ? (
+                  <p className="mt-4 text-sm font-medium text-slate-700">
+                    You&apos;ve been dedicated to learning for{" "}
+                    <b className="text-blue-700">{learningDays}</b>{" "}
+                    days.
+                  </p>
+                ) : null}
+              </div>
+
+              {userInfo?.email ? (
+                <button
+                  type="button"
+                  onClick={handleFiltering}
+                  className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                >
+                  {filtered
+                    ? "Show All Daily Updates"
+                    : "My Daily Updates"}
+                </button>
+              ) : null}
+            </div>
+          </div>
+
+          <div className="space-y-5 bg-slate-50 p-4 sm:p-6">
+            {filteringUpdatesPerUser.length > 0 ? (
+              filteringUpdatesPerUser.map((porch) => (
+                <PorchDailyUpdate
+                  key={porch.new_id || porch.created_at}
+                  porch={porch}
+                  setPorchs={setPorchs}
+                />
+              ))
+            ) : (
+              <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center">
+                <p className="text-sm font-medium text-slate-500">
+                  No daily updates yet.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
