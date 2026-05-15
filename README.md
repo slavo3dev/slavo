@@ -1,6 +1,9 @@
+# Mentorship & Consulting
 
-## Getting Started
+## Learning How to Code:
 
-## Mentorship app
+## Tech Stack:
 
-
+- NextJS
+- Supabase
+- Vercal Deployment
