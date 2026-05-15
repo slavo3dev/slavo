@@ -89,3 +89,4 @@ export * from "./Auth";
 export * from "./SeoTextBlock";
 export * from "./MentorAI";
 export * from "./OpenAI";
+export * from "./NotificationsBell";
