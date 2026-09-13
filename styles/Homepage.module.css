@@ -1,0 +1,45 @@
+.homePage {
+  background: #fffdf7;
+  color: #1b302a;
+  font-family: "Space Grotesk", sans-serif;
+  text-shadow: none;
+}
+
+.homePage :global(section) {
+  overflow: visible;
+  padding-bottom: 0;
+}
+
+.homePage :global(h1),
+.homePage :global(h2) {
+  font-family: "DM Serif Display", Georgia, serif;
+}
+
+.heroTitle {
+  text-wrap: balance;
+}
+
+.heroSupport,
+.heroVisual {
+  display: none;
+}
+
+.heroImage {
+  object-fit: contain;
+}
+
+@media (min-width: 1024px) {
+  .heroSupport {
+    display: flex;
+  }
+
+  .heroVisual {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroImage {
+    animation: none;
+  }
+}

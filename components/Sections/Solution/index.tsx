@@ -3,98 +3,35 @@ import Link from "next/link";
 
 export const Solution : FC = () =>{
 	return(
-		<div className="flex flex-col bg-white justify-center items-center h-full p-8">
-			<section className="py-20" id="how-we-work">
-				<div className="container overflow-hidden">
-					<div className="flex flex-wrap -mx-8">
-						<div className="w-full lg:w-1/2 px-8">
-							<div className="mb-12 lg:mb-0 pb-12 lg:pb-0 border-b lg:border-b-0">
-								<h2
-									className="mb-4 text-3xl lg:text-4xl font-bold font-heading max-w-md wow animate__animated animate__fadeIn"
-									data-wow-delay=".1s"
-								>
-                    Commit<span className="text-blue-600"> to</span>{" "}
-                    Your Personal Growth.
-								</h2>
-								<p
-									className="mb-8 leading-loose text-blueGray-400 wow animate__animated animate__fadeIn"
-									data-wow-delay=".3s"
-								>
-                                    Are you caught in a career rut? <br /> Enthralled by the world of technology but uncertain how to pivot? <br /> With our exclusive mentorship program, let's convert your passion into your new reality.<br />
-									<strong>Revamp. Recharge. Reinvent.<br /> Picture yourself as a successful Software Engineer - flexible work arrangements, a thriving income, the fulfillment of creating solutions that impact lives, and the pride of being part of the technology frontier. Your journey to transform your career and life starts here. Embrace the future with us today!</strong>
-								</p>
-								<Link href="/contact">
-									<span
-										className="inline-block text-xs py-4 px-8 text-white font-semibold leading-none bg-blue-400 hover:bg-blue-500 rounded hover-up-2 wow animate__animated animate__fadeIn"
-										data-wow-delay=".5s"
-									>
-                      Contact
-									</span>
-								</Link>
-							</div>
-						</div>
-						<div className="w-full lg:w-1/2 px-8">
-							<ul className="space-y-12">
-								<li
-									className="flex -mx-4 wow animate__animated animate__fadeIn"
-									data-wow-delay=".3s"
-								>
-									<div className="px-4">
-										<span className="flex w-16 h-16 mx-auto items-center justify-center text-2xl font-bold font-heading rounded-full bg-blue-50 text-blue-600">
-                        1
-										</span>
-									</div>
-									<div className="px-4">
-										<h3 className="my-4 text-xl font-semibold">
-                        Habit & Learning Development
-										</h3>
-										<p className="text-blueGray-400 leading-loose">
-                        Team up with a dedicated mentor to recognize your unique skills and interests. We'll fuel your fascination for technology, fostering a solid habit of continuous learning, which will empower you as a future software engineer and enhance your problem-solving skills and creative thinking in everyday life.
-										</p>
-									</div>
-								</li>
-								<li
-									className="flex -mx-4 wow animate__animated animate__fadeIn"
-									data-wow-delay=".5s"
-								>
-									<div className="px-4">
-										<span className="flex w-16 h-16 mx-auto items-center justify-center text-2xl font-bold font-heading rounded-full bg-blue-50 text-blue-600">
-                        2
-										</span>
-									</div>
-									<div className="px-4">
-										<h3 className="my-4 text-xl font-semibold">
-                        Plan
-										</h3>
-										<p className="text-blueGray-400 leading-loose">
-                        Create a personalized learning pathway toward becoming a Software Engineer. With your mentor's guidance, delve into programming languages, comprehend algorithms, and master crucial software development methodologies - all carefully aligned with your career ambitions.
-										</p>
-									</div>
-								</li>
-								<li
-									className="flex -mx-4 wow animate__animated animate__fadeIn"
-									data-wow-delay=".7s"
-								>
-									<div className="px-4">
-										<span className="flex w-16 h-16 mx-auto items-center justify-center text-2xl font-bold font-heading rounded-full bg-blue-50 text-blue-600">
-                        3
-										</span>
-									</div>
-									<div className="px-4">
-										<h3 className="my-4 text-xl font-semibold">
-                        Act
-										</h3>
-										<p className="text-blueGray-400 leading-loose">
-                        Bring your plan to life! Construct real-world projects, contribute to open-source platforms, and enrich your portfolio. As you evolve into a proficient Software Engineer, you'll also enjoy the flexibility, fulfillment, and endless opportunities this profession brings. Your mentor will offer consistent support, guidance, and feedback throughout this transformative journey.
-										</p>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
+		<section id="how-we-work" aria-labelledby="how-we-work-heading" className="bg-[#18342c] px-6 py-16 text-white sm:py-20 lg:px-8">
+			<div className="mx-auto max-w-7xl">
+				<div className="max-w-2xl">
+					<p className="text-xs font-bold uppercase tracking-[0.16em] text-[#f5d66d]">How learning works</p>
+					<h2 id="how-we-work-heading" className="mt-3 text-3xl sm:text-4xl">Small steps. Real momentum.</h2>
+					<p className="mt-4 leading-7 text-[#d3e1d9]">A sustainable learning rhythm turns a big career goal into practical work you can finish, review, and build on.</p>
 				</div>
-			</section>
-		</div>
+				<ol className="mt-10 grid gap-8 border-t border-[#476257] pt-7 sm:grid-cols-3">
+					<li>
+						<span className="text-sm font-semibold text-[#f5d66d]">01</span>
+						<h3 className="mt-3 text-xl font-semibold text-white">Choose your next step</h3>
+						<p className="mt-2 leading-6 text-[#d3e1d9]">Set a clear goal and focus on the skills that move you toward it.</p>
+					</li>
+					<li>
+						<span className="text-sm font-semibold text-[#f5d66d]">02</span>
+						<h3 className="mt-3 text-xl font-semibold text-white">Practice with a plan</h3>
+						<p className="mt-2 leading-6 text-[#d3e1d9]">Learn the fundamentals, make time to practice, and ask for feedback.</p>
+					</li>
+					<li>
+						<span className="text-sm font-semibold text-[#f5d66d]">03</span>
+						<h3 className="mt-3 text-xl font-semibold text-white">Build and share</h3>
+						<p className="mt-2 leading-6 text-[#d3e1d9]">Turn new skills into projects and make progress visible on Porch.</p>
+					</li>
+				</ol>
+				<div className="mt-8">
+					<Link href="/porch" className="inline-flex items-center gap-2 text-sm font-semibold text-[#f5d66d] hover:text-white">See learning in action <span aria-hidden="true">→</span></Link>
+				</div>
+			</div>
+		</section>
 	);
 };
 

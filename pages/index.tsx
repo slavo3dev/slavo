@@ -3,7 +3,6 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import {
   FeaturedPosts,
-  Growth,
   Solution,
   Hero,
   PorchShowcase,
@@ -14,13 +13,14 @@ import {
   HeadBasePage,
 } from "@components";
 import { getFeaturedPosts } from "lib/posts-lib";
+import styles from "styles/Homepage.module.css";
 
 const Home: NextPage = ({ posts }: any) => {
   return (
     <>
       <HeadBasePage
-        title="Web Development Mentorship &  Habit System | Slavo"
-        description="Learn web development with a structured roadmap, daily accountability, and mentorship. Build coding habits, ship projects, and transition into tech."
+        title="Learn Web Development by Building Real Projects | Slavo.io"
+        description="A clearer way to learn web development: follow a practical path, build real projects, and get support from experienced mentors."
         canonicalPath="/"
       />
       <Head>
@@ -30,24 +30,24 @@ const Home: NextPage = ({ posts }: any) => {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              name: "Slavo",
+              name: "Slavo.io",
               url: "https://www.slavo.io",
               description:
-                "Web development mentorship and coding habit system with accountability and curated resources.",
+                "A practical web-development learning community built around clear paths, real projects, and consistent practice.",
             }),
           }}
         />
       </Head>
-      <Hero />
-      <SeoTextBlock />
-      <WhoItsFor />
-      <ProgramsOverview />
-      <PorchShowcase limit={9} className="bg-white" />
-      <FreeResourcesTeaser />
-      <FeaturedPosts posts={posts} />
-      {/* <LearningSources /> */}
-      <Solution />
-      <Growth />
+      <main className={styles.homePage}>
+        <Hero />
+        <WhoItsFor />
+        <Solution />
+        <ProgramsOverview />
+        <PorchShowcase limit={9} className="bg-[#f0f5ef]" />
+        <FreeResourcesTeaser />
+        <FeaturedPosts posts={posts} />
+        <SeoTextBlock />
+      </main>
     </>
   );
 };
