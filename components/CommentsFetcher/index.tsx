@@ -353,7 +353,7 @@ export const CommentsFetcher = ({
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <p className="truncate text-sm font-bold text-slate-900">
-                          {item.userInfo}
+                          {item.userInfo === userEmail ? "You" : "Community member"}
                         </p>
                       </div>
 

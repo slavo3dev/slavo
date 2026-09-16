@@ -1,138 +1,117 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { FC, useState, useEffect, useContext } from "react";
+import { FC, FormEvent, useState } from "react";
 import axios from "axios";
 import { Modal } from "../Modal";
-import UserInfoContext from "@/context/UserInfoContext";
 import { validateEmail } from "@/lib/helpers/validateEmail";
 import { ModalButton } from "../Modal/modalButton";
 
+type SubmitState = "idle" | "loading" | "success" | "error";
 
-export const Subscribe: FC = (className?) => {
-	const [email, setEmail] = useState<string>("");
-	const [state, setState] = useState<any>("idle");
-	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-	const { userInfo } = useContext(UserInfoContext);
-	const isAuth = userInfo?.email;
-	const [errorMsg, setErrorMsg] = useState<string>("");
+export const Subscribe: FC = () => {
+  const [email, setEmail] = useState("");
+  const [state, setState] = useState<SubmitState>("idle");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
-	useEffect(() => {
-		const subscribeOpen = JSON.parse(localStorage.getItem("subscribeOpen") as string);
-		
-		if (isAuth) {
-			return;
-		}
-		if (subscribeOpen === null || subscribeOpen === false) {
-			localStorage.setItem("subscribeOpen", JSON.stringify(true));
-			setIsModalOpen(true);
-		}
-	}, [isAuth]);
-	
+  const closeSubscribe = () => {
+    localStorage.setItem("subscribeOpen", JSON.stringify(false));
+    setIsModalOpen(false);
+  };
 
-	const closeSubscribe = () => {
-		localStorage.setItem("subscribeOpen", JSON.stringify(false)); 
-		setIsModalOpen(false); 
-	}
+  const handleSubscribe = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-	const handleSubscribe = async (e: any) => {
-		e.preventDefault();
+    if (!validateEmail(email)) {
+      setErrorMsg("Please enter a valid email address.");
+      setState("error");
+      return;
+    }
 
-		if (!validateEmail(email)){
-			setErrorMsg("Please enter a valid email address.")
-		} else {
-			setErrorMsg(""); 
-		}
+    setErrorMsg("");
+    setState("loading");
 
-		setState("Loading");
-		try {
-			await axios.post("/api/subscribe", { email });
-			setState("Success");
-			setEmail("");
-			setTimeout(() => {
-				setState("idle");
-				closeSubscribe(); 
-			}, 4000);
-		} catch (e: any) {
-			//setErrorMsg(e.response.data.detail);
-			console.error("Error:", e)
-			if (validateEmail(email)) {
-			setState("Error");
-			setTimeout(() => {
-				setState("idle");
-			}, 900);
-		}}
-	};
+    try {
+      await axios.post("/api/subscribe", { email });
+      setState("success");
+      setEmail("");
+      setTimeout(() => {
+        setState("idle");
+        closeSubscribe();
+      }, 4000);
+    } catch (error) {
+      console.error("Newsletter subscription failed:", error);
+      setState("error");
+      setErrorMsg("We could not complete your signup. Please try again.");
+    }
+  };
 
-	const subscribeForm = (
-		
-		<div className="flex flex-wrap p-6 justify-center">
-			<div className={`flex w-full sm:w-full md:w-2/3 px-3 mb-3 md:mb-0 md:mr-6 bg-blue-500 border ${errorMsg ? 'border-red-500' : 'border-blue-300'} rounded`}>				<svg
-					className="h-6 w-6 my-auto text-blue-300"
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 20 20"
-					fill="currentColor"
-				>
-					<path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-					<path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-				</svg>
-				<input
-					className="w-full pl-3 py-4 before:text-xs text-white placeholder-white font-semibold leading-none bg-blue-500 outline-none"
-					type="email"
-					placeholder="Type your e-mail"
-					onChange={(e) => setEmail(e.target.value)}
-					value={email}
-				/>
-			</div>
-			<button
-				className="w-full sm:w-full md:w-auto py-4 px-8 text-xs text-blue-800 hover:text-white font-semibold leading-none border border-blue-300 hover:border-blue-300 bg-white hover:bg-blue-500 rounded transition duration-300 ease-in-out"
-				type="submit"
-				onClick={handleSubscribe}
-			>
-				{" "}
-        Sign Up{" "}
-			</button>
-			{errorMsg && <p className="text-red-500 pt-5 text-xl">{errorMsg}</p>}
-		</div>
-	);
-
-	return (
-		<> 
-			<ModalButton 
-				setIsModalOpen={setIsModalOpen} 
-				localStorageKey="subscribeOpen" 
-				storageValue={isModalOpen}
-				className="mx-auto block px-2 py-2 text-white text-xs bg-blue-400 rounded hover:bg-blue-500 transition md:ml-0 md:py-2 md:px-5 md:text-sm"
-			/>
-			{isModalOpen && (
-				<div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm z-40" />
-			)}
-			<Modal isOpen={isModalOpen} className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-400 rounded-lg shadow-lg max-w-xl w-full z-50">
-				<div className="flex justify-end pr-2">
-					<button 
-						className="text-white text-xl pt-2 pr-2"
-						onClick={closeSubscribe}>
-						X
-					</button>
-				</div>
-				<div className="text-center max-w-xl mx-auto w-5/6 sm:w-full md:w-full">
-					<h2 className="mb-4 mt-4 text-base lg:text-3xl sm:text-3xl text-white font-bold font-heading">
-						<span>Subscribe now to </span>
-						<span className="text-blue-200">Our Newsletter</span>{" "}
-						<br />
-						<span>and get the Coupon code.</span>
-					</h2>
-					<p className="mb-8 text-white">
-						All your information is completely confidential
-					</p>
-					{state === "Success" ? (
-						<p className="lg:text-4xl text-white pb-8">
-							Awesome, you have been subscribed to Slavo
-						</p>
-					) : (
-						subscribeForm
-					)}
-				</div>
-				{state === "Error" && alert("Oops Something went WRONG \nPlease Try Again or You are already a member !!!")}
-			</Modal>
-		</>
-	);
+  return (
+    <>
+      <ModalButton
+        setIsModalOpen={setIsModalOpen}
+        localStorageKey="subscribeOpen"
+        storageValue={isModalOpen}
+        className="mx-auto block rounded-md bg-blue-800 px-2 py-2 text-xs text-white transition hover:bg-blue-900 md:ml-0 md:px-5 md:py-2 md:text-sm"
+      />
+      {isModalOpen ? (
+        <div className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm" />
+      ) : null}
+      <Modal
+        isOpen={isModalOpen}
+        className="fixed left-1/2 top-1/2 z-50 w-full max-w-xl -translate-x-1/2 -translate-y-1/2 transform rounded-md bg-[#102a43] shadow-lg"
+      >
+        <div className="flex justify-end pr-2">
+          <button
+            type="button"
+            className="px-2 pt-2 text-xl text-white"
+            aria-label="Close newsletter signup"
+            onClick={closeSubscribe}
+          >
+            X
+          </button>
+        </div>
+        <div className="mx-auto w-5/6 max-w-xl text-center sm:w-full">
+          <h2 className="mb-4 mt-4 text-2xl font-bold text-white sm:text-3xl">
+            Keep learning with <span className="text-blue-200">Slavo</span>
+          </h2>
+          <p className="mb-8 text-blue-100">
+            Occasional notes on AI, technology, and building.
+          </p>
+          {state === "success" ? (
+            <p className="pb-8 text-xl text-white">
+              You are subscribed to Slavo learning notes.
+            </p>
+          ) : (
+            <form
+              className="flex flex-wrap justify-center gap-3 p-6"
+              onSubmit={handleSubscribe}
+            >
+              <label className="flex w-full items-center rounded-md border border-blue-300 bg-blue-800 px-3 md:w-2/3">
+                <span className="sr-only">Email address</span>
+                <input
+                  className="w-full bg-blue-800 py-4 pl-3 font-semibold leading-none text-white outline-none placeholder:text-blue-100"
+                  type="email"
+                  placeholder="Type your e-mail"
+                  onChange={(event) => setEmail(event.target.value)}
+                  value={email}
+                  required
+                />
+              </label>
+              <button
+                className="w-full rounded-md border border-blue-300 bg-white px-8 py-4 text-xs font-semibold text-blue-900 transition hover:bg-blue-100 disabled:opacity-60 md:w-auto"
+                type="submit"
+                disabled={state === "loading"}
+              >
+                {state === "loading" ? "Signing up..." : "Sign Up"}
+              </button>
+              {errorMsg ? (
+                <p className="w-full pt-2 text-sm text-blue-100" role="alert">
+                  {errorMsg}
+                </p>
+              ) : null}
+            </form>
+          )}
+        </div>
+      </Modal>
+    </>
+  );
 };

@@ -6,21 +6,25 @@ import {
   Solution,
   Hero,
   PorchShowcase,
-  SeoTextBlock,
-  WhoItsFor,
-  ProgramsOverview,
-  FreeResourcesTeaser,
   HeadBasePage,
 } from "@components";
 import { getFeaturedPosts } from "lib/posts-lib";
 import styles from "styles/Homepage.module.css";
+import {
+  LearningPaths,
+  DeliberatePractice,
+  DailySession,
+  BuildAndShare,
+  FounderIntroduction,
+  FinalLearningCallToAction,
+} from "components/Marketing/LearningExperience";
 
 const Home: NextPage = ({ posts }: any) => {
   return (
     <>
       <HeadBasePage
-        title="Learn Web Development by Building Real Projects | Slavo.io"
-        description="A clearer way to learn web development: follow a practical path, build real projects, and get support from experienced mentors."
+        title="Never Stop Learning | Slavo.io"
+        description="Learn something new, practice with purpose, and build something real. Slavo.io is a learning and builder community for AI and technology."
         canonicalPath="/"
       />
       <Head>
@@ -33,20 +37,24 @@ const Home: NextPage = ({ posts }: any) => {
               name: "Slavo.io",
               url: "https://www.slavo.io",
               description:
-                "A practical web-development learning community built around clear paths, real projects, and consistent practice.",
+                "A learning and builder community for AI, technology, deliberate practice, and real-world projects.",
             }),
           }}
         />
       </Head>
       <main className={styles.homePage}>
         <Hero />
-        <WhoItsFor />
         <Solution />
-        <ProgramsOverview />
-        <PorchShowcase limit={9} className="bg-[#f0f5ef]" />
-        <FreeResourcesTeaser />
+        <LearningPaths />
+        <DeliberatePractice />
+        <DailySession />
+        <BuildAndShare />
+        <div id="community" className="bg-[#f5f9fe]">
+          <PorchShowcase limit={6} />
+        </div>
         <FeaturedPosts posts={posts} />
-        <SeoTextBlock />
+        <FounderIntroduction />
+        <FinalLearningCallToAction />
       </main>
     </>
   );

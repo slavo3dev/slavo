@@ -105,6 +105,9 @@ export const MainNavigation: FC<NavigationProps> = ({
             >
               <Link href="/programs">Programs</Link>
             </li>
+            <li className="hover:bg-blue-50 hover:text-blue-700">
+              <Link href="/#learning-paths">Learning Paths</Link>
+            </li>
 
             <li
               className={
@@ -164,9 +167,9 @@ export const MainNavigation: FC<NavigationProps> = ({
                       }
                       className={`rounded-full p-2 hover:bg-blue-100 ${
                         isSubscribed === true
-                          ? "bg-green-100 text-green-600"
+                          ? "bg-blue-100 text-blue-800"
                           : isSubscribed === false
-                            ? "bg-yellow-100 text-yellow-600"
+                            ? "bg-blue-50 text-blue-600"
                             : "text-blue-500"
                       }`}
                       aria-label="Open user menu"

@@ -1,6 +1,12 @@
 .homePage {
-  background: #fffdf7;
-  color: #1b302a;
+  --slavo-navy: #102a43;
+  --slavo-deep-blue: #1d4f91;
+  --slavo-blue: #3b78b8;
+  --slavo-light-blue: #eaf3fc;
+  --slavo-pale-blue: #f5f9fe;
+  --slavo-border: #d5e3f2;
+  background: #ffffff;
+  color: var(--slavo-navy);
   font-family: "Space Grotesk", sans-serif;
   text-shadow: none;
 }
@@ -15,6 +21,10 @@
   font-family: "DM Serif Display", Georgia, serif;
 }
 
+.hero {
+  background: var(--slavo-pale-blue);
+}
+
 .heroTitle {
   text-wrap: balance;
 }
@@ -24,8 +34,65 @@
   display: none;
 }
 
-.heroImage {
-  object-fit: contain;
+.heroVisual {
+  max-width: 34rem;
+}
+
+.sessionBoard {
+  overflow: hidden;
+  border: 1px solid var(--slavo-border);
+  border-radius: 0.375rem;
+  background: #ffffff;
+  box-shadow: 0 24px 60px rgba(16, 42, 67, 0.1);
+}
+
+.sessionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background: var(--slavo-navy);
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sessionBody {
+  padding: 1.5rem;
+}
+
+.sessionStep {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  border-top: 1px solid var(--slavo-border);
+  padding: 0.85rem 0;
+  color: var(--slavo-navy);
+  font-size: 0.875rem;
+}
+
+.sessionStepIndex,
+.sessionTime {
+  color: var(--slavo-blue);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.practiceLine {
+  height: 0.45rem;
+  border-radius: 999px;
+  background: var(--slavo-light-blue);
+}
+
+.practiceLine span {
+  display: block;
+  width: 68%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--slavo-blue);
 }
 
 @media (min-width: 1024px) {
@@ -35,11 +102,5 @@
 
   .heroVisual {
     display: block;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .heroImage {
-    animation: none;
   }
 }

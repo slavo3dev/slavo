@@ -1,37 +1,33 @@
 import { FC } from "react";
-import Link from "next/link";
 
-export const Solution : FC = () =>{
-	return(
-		<section id="how-we-work" aria-labelledby="how-we-work-heading" className="bg-[#18342c] px-6 py-16 text-white sm:py-20 lg:px-8">
-			<div className="mx-auto max-w-7xl">
-				<div className="max-w-2xl">
-					<p className="text-xs font-bold uppercase tracking-[0.16em] text-[#f5d66d]">How learning works</p>
-					<h2 id="how-we-work-heading" className="mt-3 text-3xl sm:text-4xl">Small steps. Real momentum.</h2>
-					<p className="mt-4 leading-7 text-[#d3e1d9]">A sustainable learning rhythm turns a big career goal into practical work you can finish, review, and build on.</p>
-				</div>
-				<ol className="mt-10 grid gap-8 border-t border-[#476257] pt-7 sm:grid-cols-3">
-					<li>
-						<span className="text-sm font-semibold text-[#f5d66d]">01</span>
-						<h3 className="mt-3 text-xl font-semibold text-white">Choose your next step</h3>
-						<p className="mt-2 leading-6 text-[#d3e1d9]">Set a clear goal and focus on the skills that move you toward it.</p>
-					</li>
-					<li>
-						<span className="text-sm font-semibold text-[#f5d66d]">02</span>
-						<h3 className="mt-3 text-xl font-semibold text-white">Practice with a plan</h3>
-						<p className="mt-2 leading-6 text-[#d3e1d9]">Learn the fundamentals, make time to practice, and ask for feedback.</p>
-					</li>
-					<li>
-						<span className="text-sm font-semibold text-[#f5d66d]">03</span>
-						<h3 className="mt-3 text-xl font-semibold text-white">Build and share</h3>
-						<p className="mt-2 leading-6 text-[#d3e1d9]">Turn new skills into projects and make progress visible on Porch.</p>
-					</li>
-				</ol>
-				<div className="mt-8">
-					<Link href="/porch" className="inline-flex items-center gap-2 text-sm font-semibold text-[#f5d66d] hover:text-white">See learning in action <span aria-hidden="true">→</span></Link>
-				</div>
-			</div>
-		</section>
-	);
-};
+const learningStages = [
+  { title: "Discover", description: "Choose what you want to learn and why." },
+  { title: "Plan", description: "Find a useful next step and a realistic pace." },
+  { title: "Learn", description: "Focus on one concept at a time." },
+  { title: "Practice", description: "Work toward a clear skill and success criterion." },
+  { title: "Build", description: "Apply what you know to a tangible project." },
+  { title: "Share", description: "Ask for feedback and learn with others." },
+  { title: "Review", description: "Recall key ideas and revisit them over time." },
+];
+
+export const Solution: FC = () => (
+    <section id="learning-system" aria-labelledby="learning-system-heading" className="bg-[#102a43] px-6 py-10 text-white sm:py-12 lg:px-8">
+    <div className="mx-auto max-w-7xl">
+      <div className="max-w-2xl">
+        <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#b8d7f5]">The Slavo Learning System</p>
+        <h2 id="learning-system-heading" className="mt-3 text-3xl text-white sm:text-4xl">Learning that moves into the real world.</h2>
+        <p className="mt-4 leading-7 text-[#d9e8f7]">A repeatable cycle helps turn curiosity into useful skill, and useful skill into work you can share.</p>
+      </div>
+      <ol className="mt-10 grid gap-x-7 gap-y-8 border-t border-[#47617b] pt-7 sm:grid-cols-2 lg:grid-cols-4">
+        {learningStages.map((stage, index) => (
+          <li key={stage.title}>
+            <span className="text-sm font-semibold text-[#b8d7f5]">0{index + 1}</span>
+            <h3 className="mt-2 text-xl font-semibold text-white">{stage.title}</h3>
+            <p className="mt-2 text-sm leading-6 text-[#d9e8f7]">{stage.description}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+);
 

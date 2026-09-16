@@ -106,6 +106,10 @@ export const Burger: FC<BurgerProps> = ({ userInfo }) => {
               </li>
 
               <li className="rounded-xl p-4 text-sm text-gray-500 hover:bg-blue-50 hover:text-blue-500">
+                <Link href="/#learning-paths">Learning Paths</Link>
+              </li>
+
+              <li className="rounded-xl p-4 text-sm text-gray-500 hover:bg-blue-50 hover:text-blue-500">
                 <Link href="/porch">Porch</Link>
               </li>
 
@@ -133,9 +137,9 @@ export const Burger: FC<BurgerProps> = ({ userInfo }) => {
                       onClick={toggleUserDropdown}
                       className={`flex w-full items-center justify-center rounded border border-blue-200 py-2 text-blue-500 hover:border-blue-300 ${
                         isSubscribed === true
-                          ? "bg-green-100 text-green-600"
+                          ? "bg-blue-100 text-blue-800"
                           : isSubscribed === false
-                            ? "bg-yellow-100 text-yellow-600"
+                            ? "bg-blue-50 text-blue-600"
                             : "text-blue-500"
                       }`}
                       aria-label="Open user menu"

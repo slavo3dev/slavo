@@ -4,7 +4,6 @@ import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import supabase from "lib/supabase";
-import { PorchType } from "@/Types/PorchTypes";
 
 type Props = {
   isAuthenticated?: boolean;
@@ -12,12 +11,19 @@ type Props = {
   className?: string;
 };
 
+type PorchShowcaseItem = {
+  new_id: string;
+  created_at: string;
+  text: string | null;
+  source: string | null;
+};
+
 export default function PorchShowcase({
   isAuthenticated = false,
   limit = 6,
   className = "",
 }: Props) {
-  const [rows, setRows] = React.useState<PorchType[] | null>(null); // renamed from "data" to avoid shadowing
+  const [rows, setRows] = React.useState<PorchShowcaseItem[] | null>(null);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState<string | null>(null);
 
@@ -28,11 +34,11 @@ export default function PorchShowcase({
         setLoading(true);
         const { data: result, error } = await supabase
           .from("porch")
-          .select("*")
+          .select("new_id, created_at, text, source")
           .order("created_at", { ascending: false })
           .limit(limit);
         if (error) throw error;
-        if (mounted) setRows(result as PorchType[]);
+        if (mounted) setRows(result as PorchShowcaseItem[]);
       } catch (e: any) {
         if (mounted) setError(e?.message ?? "Failed to load Porch updates");
       } finally {
@@ -87,23 +93,23 @@ export default function PorchShowcase({
             ))}
           </div>
         ) : error ? (
-          <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700">{error}</div>
+          <div role="status" className="rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900">{error}</div>
         ) : rows && rows.length > 0 ? (
           <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {rows.map((u) => (
-              <li key={u.new_id ?? u.id ?? u.created_at} className="group">
+              <li key={u.new_id} className="group">
                 <article className="h-full rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition hover:shadow-md focus-within:shadow-md">
                   <header className="flex items-center gap-3">
-                  <Avatar name={u.email ?? u.name ?? "Student"} avatarUrl={u.avatar_url} />
+                  <Avatar name="Community learner" />
                   <div className="min-w-0">
                     <p className="truncate font-semibold text-gray-900">
-                      {u.email ?? u.name ?? "Student"}
+                      Community learner
                     </p>
                     <div className="flex items-center gap-2 text-xs text-gray-500">
                       <time dateTime={u.created_at}>{timeAgo(new Date(u.created_at))}</time>
                       {typeof (u as any).streak === "number" && (u as any).streak > 0 && (
                         <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-medium text-blue-700">
-                          🔥 {(u as any).streak}-day streak
+                          {(u as any).streak}-day streak
                         </span>
                       )}
                     </div>
@@ -132,16 +138,10 @@ export default function PorchShowcase({
                   )}
 
                   <footer className="mt-5 flex items-center justify-between">
-                    <Link href={`/porch/${u.new_id ?? u.id ?? ""}`} className="text-sm font-medium text-blue-700 hover:underline">
+                    <Link href={`/porch/${u.new_id}`} className="text-sm font-medium text-blue-700 hover:underline">
                       View update
                     </Link>
-                    {(u as any).username ? (
-                      <Link href={`/u/${(u as any).username}`} className="text-sm text-gray-500 hover:text-gray-700">
-                        Profile →
-                      </Link>
-                    ) : (
-                      <span className="text-sm text-gray-400"> </span>
-                    )}
+                    <span className="text-sm text-gray-400" />
                   </footer>
                 </article>
               </li>

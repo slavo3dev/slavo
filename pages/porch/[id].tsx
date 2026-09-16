@@ -5,7 +5,11 @@ import Image from "next/image";
 import supabase from "@/lib/supabase";
 import { PorchType } from "@/Types/PorchTypes";
 
-type Props = { update: PorchType | null };
+type PublicPorchUpdate = Pick<PorchType, "new_id" | "created_at" | "text"> & {
+  id: string;
+};
+
+type Props = { update: PublicPorchUpdate | null };
 
 const PorchUpdatePage: NextPage<Props> = ({ update }) => {
   if (!update) {
@@ -24,18 +28,18 @@ const PorchUpdatePage: NextPage<Props> = ({ update }) => {
     );
   }
 
-  const email = update.email ?? update.name ?? "Student";
+  const displayName = (update as any).display_name ?? (update as any).name ?? "Community learner";
   const created = new Date(update.created_at);
 
   return (
     <>
       <Head>
-        <title>{`Porch update by ${email}`}</title>
+        <title>Learning update | Slavo.io</title>
         <meta
           name="description"
           content={truncate(update.text ?? (update as any).content ?? "Learning update", 140)}
         />
-        <meta property="og:title" content={`Porch update by ${email}`} />
+        <meta property="og:title" content="Learning update | Slavo.io" />
         <meta
           property="og:description"
           content={truncate(update.text ?? (update as any).content ?? "Learning update", 140)}
@@ -49,16 +53,16 @@ const PorchUpdatePage: NextPage<Props> = ({ update }) => {
 
         <article className="p-6 mt-4 bg-white border border-gray-100 shadow-sm rounded-2xl">
           <header className="flex items-center gap-3">
-            <Avatar name={email} avatarUrl={(update as any).avatar_url} />
+            <Avatar name={displayName} avatarUrl={(update as any).avatar_url} />
             <div className="min-w-0">
               <h1 className="text-lg font-semibold text-gray-900 truncate">
-                {email}
+                {displayName}
               </h1>
               <div className="flex items-center gap-2 text-xs text-gray-500">
                 <time dateTime={update.created_at}>{formatDate(created)}</time>
                 {typeof (update as any).streak === "number" && (update as any).streak > 0 && (
                   <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-medium text-blue-700">
-                    🔥 {(update as any).streak}-day streak
+                    {(update as any).streak}-day streak
                   </span>
                 )}
               </div>
@@ -109,27 +113,27 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   const id = ctx.params?.id as string;
 
   // Try id first; if your table uses new_id, try that too.
-  let update: PorchType | null = null;
+  let update: PublicPorchUpdate | null = null;
 
   // Try primary id
   const { data: byId, error: e1 } = await supabase
     .from("porch")
-    .select("*")
+    .select("id, new_id, created_at, text")
     .eq("id", id)
     .limit(1)
     .single();
 
   if (!e1 && byId) {
-    update = byId as PorchType;
+    update = byId as PublicPorchUpdate;
   } else {
     // Fallback to new_id
     const { data: byNewId } = await supabase
       .from("porch")
-      .select("*")
+      .select("id, new_id, created_at, text")
       .eq("new_id", id)
       .limit(1)
       .maybeSingle();
-    if (byNewId) update = byNewId as PorchType;
+    if (byNewId) update = byNewId as PublicPorchUpdate;
   }
 
   return { props: { update } };
