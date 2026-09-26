@@ -13,7 +13,24 @@
 
 .homePage :global(section) {
   overflow: visible;
+  padding-bottom: 4rem;
+}
+
+.homePage :global(ol),
+.homePage :global(ul) {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.homePage :global(section).hero {
   padding-bottom: 0;
+}
+
+@media (min-width: 640px) {
+  .homePage :global(section) {
+    padding-bottom: 5rem;
+  }
 }
 
 .homePage :global(h1),

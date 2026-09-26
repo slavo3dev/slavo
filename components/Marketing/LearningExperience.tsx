@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import Link from "next/link";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import UserInfoContext from "context/UserInfoContext";
 
 const plannedPaths = [
   {
@@ -153,15 +155,17 @@ export function FounderIntroduction() {
 }
 
 export function FinalLearningCallToAction() {
+  const { userInfo } = useContext(UserInfoContext);
+
   return (
     <section aria-labelledby="final-learning-heading" className="bg-[#102a43] px-6 py-16 text-white sm:py-20 lg:px-8">
-      <div className="mx-auto flex max-w-7xl flex-col gap-7 md:flex-row md:items-end md:justify-between">
+      <div className="mx-auto flex max-w-7xl flex-col gap-7 md:flex-row md:items-center md:justify-between">
         <div className="max-w-2xl">
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#b8d7f5]">Your next step starts small</p>
           <h2 id="final-learning-heading" className="mt-3 text-3xl text-white sm:text-4xl">Never stop learning.</h2>
           <p className="mt-4 leading-7 text-[#d9e8f7]">Explore the free learning resources already available on Slavo.io.</p>
         </div>
-        <Link href="/free-resources" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-white px-5 py-3 text-sm font-semibold text-[#102a43] hover:bg-[#eaf3fc] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#102a43]">
+        <Link href={userInfo ? "/dashboard" : "/login"} className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 self-start rounded-md bg-white px-5 py-3 text-sm font-semibold text-[#102a43] hover:bg-[#eaf3fc] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#102a43] md:self-auto">
           Start Learning Free <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
         </Link>
       </div>

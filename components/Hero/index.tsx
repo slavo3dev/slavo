@@ -1,11 +1,14 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useContext } from "react";
 import Link from "next/link";
 import { ArrowUpRight, BookOpen, Code2, Route } from "lucide-react";
 import styles from "styles/Homepage.module.css";
+import UserInfoContext from "context/UserInfoContext";
 
 export const Hero: FC = () => {
+  const { userInfo } = useContext(UserInfoContext);
+
   return (
     <section id="hero" aria-labelledby="hero-heading" className={styles.hero}>
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-10 sm:py-16 lg:grid-cols-2 lg:px-8 lg:py-12">
@@ -29,7 +32,7 @@ export const Hero: FC = () => {
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
-              href="/free-resources"
+              href={userInfo ? "/dashboard" : "/login"}
               className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-[#1d4f91] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#102a43] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3b78b8] focus-visible:ring-offset-2"
             >
               Start Learning Free

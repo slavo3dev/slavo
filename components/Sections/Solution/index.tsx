@@ -18,7 +18,7 @@ export const Solution: FC = () => (
         <h2 id="learning-system-heading" className="mt-3 text-3xl text-white sm:text-4xl">Learning that moves into the real world.</h2>
         <p className="mt-4 leading-7 text-[#d9e8f7]">A repeatable cycle helps turn curiosity into useful skill, and useful skill into work you can share.</p>
       </div>
-      <ol className="mt-10 grid gap-x-7 gap-y-8 border-t border-[#47617b] pt-7 sm:grid-cols-2 lg:grid-cols-4">
+      <ol role="list" className="mt-10 grid gap-x-7 gap-y-8 border-t border-[#47617b] pt-7 sm:grid-cols-2 lg:grid-cols-4">
         {learningStages.map((stage, index) => (
           <li key={stage.title}>
             <span className="text-sm font-semibold text-[#b8d7f5]">0{index + 1}</span>
