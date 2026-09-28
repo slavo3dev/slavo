@@ -33,7 +33,8 @@
 
 ## Technical Debt, Accessibility, and Performance
 
-- `package.json` has no test script. `yarn lint` invokes `next lint`, incompatible with the installed Next.js 16 CLI. Direct ESLint is blocked by an invalid `linebreak-style` rule in `.eslintrc.json` that specifies both `unix` and `windows`.
+- Sprint update (2026-11-14): `yarn lint` now runs ESLint directly with a valid Unix line-ending rule. Legacy formatting/declaration findings remain warnings; new learning files have strict unused-variable/explicit-any checks. The existing TypeScript parser emits a supported-version warning; no broad lint dependency upgrade was performed.
+- Vitest unit tests and Playwright production-route/browser tests now run through `yarn test` and `yarn test:smoke`; typechecking is available through `yarn typecheck`.
 - `yarn build` succeeds and generated 180 static pages during audit. It reports deprecated `swcMinify`, stale Browserslist data, and approximately 2.78 MB page data for `/blog` and `/category/[...category]`.
 - Existing global CSS applies broad section rules and legacy visual styles; `.hidden { display: none !important }` overrode responsive Tailwind display utilities during homepage work.
 - Some Porch components use broad `any` fields and client-side direct Supabase mutations. Keyboard, contrast, screen-reader, and Core Web Vitals coverage has not been measured systematically.
@@ -43,8 +44,9 @@
 
 - Preserve existing URLs, Supabase authentication, Stripe products/subscriptions, learning-resource records, blog content, and Porch records.
 - Refactor public identity to use display names, improve Porch authorization only after RLS/session contracts are verified, and align shared navigation and marketing surfaces with the learning brand.
-- No learning-path, module, lesson, enrollment, exercise-attempt, review-schedule, skill-mastery, challenge, or project-submission model was found. Profile learning goals/skill-level/privacy-preference fields are **unknown**.
-- No checked-in test suite or automated route smoke tests were found through package scripts.
+- The original app had no learning domain model. Typed path/module/lesson/outcome/enrollment/progress/exercise/attempt/feedback/review contracts and curated Day 1 content are now in `lib/learning/`. These are not deployed database tables; profile learning goals/skill-level/privacy-preference fields remain **unknown**.
+- `/learn`, `/learn/ai-from-zero/day-1`, and a read-only `/api/learning/catalog` now expose a session-only preview. Private text is kept in React memory and clears on reload/identity change. Enrollment and durable saving remain unavailable.
+- The existing `/dashboard` retains its activity/calendar controls and now includes a preview learning overview.
 
 ## Recommended Order
 

@@ -106,7 +106,7 @@ export const Burger: FC<BurgerProps> = ({ userInfo }) => {
               </li>
 
               <li className="rounded-xl p-4 text-sm text-gray-500 hover:bg-blue-50 hover:text-blue-500">
-                <Link href="/#learning-paths">Learning Paths</Link>
+                <Link href="/learn">Learning Paths</Link>
               </li>
 
               <li className="rounded-xl p-4 text-sm text-gray-500 hover:bg-blue-50 hover:text-blue-500">

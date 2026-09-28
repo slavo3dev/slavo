@@ -27,3 +27,7 @@ The home uses the existing Space Grotesk body face and DM Serif Display for edit
 7. Founder-led mission and final free-learning action.
 
 Keep the hero's next-section heading visible on phone-sized first viewports. Maintain responsive order and prevent horizontal overflow. Do not rely on color alone to convey availability or status.
+
+## Learning Surfaces
+
+The Day 1 page and dashboard panel use `styles/Learning.module.css`: unframed reading sections, labeled native radio/checkbox controls, a labeled reflection field, keyboard focus outlines, and a restrained progress bar. Enrollment is visibly disabled with a reason; preview completion never appears as durable account progress or mastery. Mobile and desktop screenshots are produced by Playwright after the shared first-load overlay clears.

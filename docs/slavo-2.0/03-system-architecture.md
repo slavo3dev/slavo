@@ -19,7 +19,15 @@ No framework, database, deployment, or authentication replacement is proposed. N
 
 These are logical boundaries, not a requirement for separate services or schemas. Keep LearningWar integration behind a future documented API contract; add no cross-project dependency before review.
 
-## Proposed Learning Records (Not Implemented)
+## Learning Foundation Sprint
+
+- `lib/learning/contracts.ts` defines typed domain and mutation DTO contracts; `day-one.ts` is the curated content source; `engine.ts` implements pure feedback and preview completion rules.
+- `LearningPreviewProvider` holds transient answers, attempts, reflection, and preview completion in React memory. It is keyed to the existing Supabase user UUID (or guest scope) so identity changes reset preview state. No localStorage, cookie, API, or database submission is used for learning work.
+- `/learn` and the Day 1 route expose the preview; the existing dashboard gains a preview panel without replacing its activity/calendar features.
+- `GET /api/learning/catalog` is public and read-only; all other methods return 405. It explicitly reports persistence unavailable.
+- Proposed table keys, indexes, ownership constraints, and future API errors are documented in `08-learning-engine-design.md`. Deployed readiness remains blocked in `07-supabase-readiness.md`.
+
+## Proposed Learning Records (Not Deployed)
 
 Use existing naming conventions after schema inspection. Candidate records: `learning_paths`, `modules`, `lessons`, `enrollments`, `exercises`, `exercise_attempts`, `feedback`, `review_schedules`, `challenges`, `challenge_enrollments`, `projects`, and project milestones. Avoid duplicate user identity tables; reference the existing Supabase auth/profile identity.
 

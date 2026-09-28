@@ -46,3 +46,7 @@ Treat these as defaults, not a mandatory timer. A learner may shorten a session 
 9. Sharing results and planning next steps.
 
 Each day should specify an objective, estimated duration, concise lesson, practical example, focused exercise, submission format, feedback criteria, reflection prompt, completion state, and optional community-sharing action. Begin with curated content and deterministic progress; add AI assistance behind a provider-independent interface only when justified.
+
+## Implemented Day 1 Preview
+
+The first lesson teaches AI limitations, source verification, and human checkpoints. Learners choose a safe next action for three scenarios: summarizing their own non-sensitive notes, checking an AI-provided citation, and seeking help for an urgent medical symptom. Feedback comes from an explicit answer key; it does not infer skill mastery. Reading confirmation, a checked passing attempt, and a 20–1,000 character reflection are required to complete the session preview. Attempts and reflection remain in memory, not a persisted learning history. Days 2–9 and durable review scheduling are not implemented.

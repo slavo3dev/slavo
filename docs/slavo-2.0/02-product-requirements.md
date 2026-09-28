@@ -29,7 +29,7 @@ Users should be able to discover a learning path, understand expected outcomes a
 - Phase 3: curated nine-day AI From Zero challenge, exercise submission/feedback/reflection, and a focused learner dashboard.
 - Phase 4: Porch privacy, public learning updates, project sharing, feedback, and moderation foundations.
 
-AI From Zero is the first planned path. The current app does not yet contain its nine-day challenge; the homepage must not imply the challenge is live until implemented. Coding & Technology, AI Automation & Agents, and Build & Launch remain upcoming.
+AI From Zero now has a curated Day 1 session-only preview. The full nine-day challenge, authenticated enrollment, durable saving, and cross-session resume are not available. The homepage and catalog must distinguish this preview from a live enrolled challenge. Coding & Technology, AI Automation & Agents, and Build & Launch remain upcoming.
 
 ## Functional Expectations
 

@@ -9,6 +9,7 @@ import UserInfoContext from "@/context/UserInfoContext";
 import supabase from "@/lib/supabase";
 import { NextPage } from "next";
 import { HeadBasePage, Calendar } from "@components";
+import { LearnerOverview } from "components/Learning/LearnerOverview";
 
 const Dashboard: NextPage = () => {
   const [weeklyGoal, setWeeklyGoal] = useState<number>(1);
@@ -191,6 +192,7 @@ const Dashboard: NextPage = () => {
         noIndex
       />
       <main className="max-w-5xl mx-auto px-4 py-8">
+        <LearnerOverview />
         <h2 className="text-2xl font-semibold mb-6">
           Your Weekly Learning Summary
         </h2>

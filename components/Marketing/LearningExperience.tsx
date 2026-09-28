@@ -6,7 +6,7 @@ import UserInfoContext from "context/UserInfoContext";
 const plannedPaths = [
   {
     name: "AI From Zero",
-    status: "First path in development",
+    status: "Day 1 preview available",
     description:
       "Build practical AI literacy, learn to work with current tools, and check what they produce.",
     featured: true,
@@ -38,7 +38,7 @@ export function LearningPaths() {
         <div className="max-w-2xl">
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#1d4f91]">Choose a direction</p>
           <h2 id="learning-paths-heading" className="mt-3 text-3xl text-[#102a43] sm:text-4xl">Explore learning paths</h2>
-          <p className="mt-4 leading-7 text-[#526a83]">Focused paths will connect small lessons to practice and real projects. We’ll open each path when its curriculum is ready.</p>
+          <p className="mt-4 leading-7 text-[#526a83]">Try the session-only AI From Zero Day 1 preview. Enrollment and saving are not yet available; the remaining tracks are planned.</p>
         </div>
         <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {plannedPaths.map((path) => (
@@ -47,10 +47,10 @@ export function LearningPaths() {
               <h3 className="mt-4 text-xl font-semibold text-[#102a43]">{path.name}</h3>
               <p className="mt-3 text-sm leading-6 text-[#526a83]">{path.description}</p>
               {path.featured ? (
-                <p className="mt-5 inline-flex items-center gap-2 text-xs font-medium text-[#1d4f91]">
+                <Link href="/learn/ai-from-zero/day-1" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#1d4f91]">
                   <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
-                  The first planned learning challenge
-                </p>
+                  Preview Day 1
+                </Link>
               ) : null}
             </article>
           ))}

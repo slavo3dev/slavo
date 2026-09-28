@@ -19,6 +19,7 @@ import { SmallRouteLoader } from "../components/SmallRouteLoader";
 
 import VideoContext from "context/VideoContext";
 import UserInfoContext from "context/UserInfoContext";
+import { LearningPreviewProvider } from "context/LearningPreviewContext";
 
 import supabase from "lib/supabase";
 import type { User } from "@supabase/supabase-js";
@@ -191,6 +192,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       {routeLoading && <SmallRouteLoader />}
 
       <UserInfoContext.Provider value={userInfoValue}>
+        <LearningPreviewProvider key={userInfo?.id ?? "guest"}>
         <VideoContext.Provider value={videoValue}>
           <Layout>
             <MainNavigation categories={categories} />
@@ -207,6 +209,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             <GoogleAnalytics gaId={GA_TRACKING_ID} />
           ) : null}
         </VideoContext.Provider>
+        </LearningPreviewProvider>
       </UserInfoContext.Provider>
     </>
   );

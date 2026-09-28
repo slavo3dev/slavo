@@ -106,7 +106,7 @@ export const MainNavigation: FC<NavigationProps> = ({
               <Link href="/programs">Programs</Link>
             </li>
             <li className="hover:bg-blue-50 hover:text-blue-700">
-              <Link href="/#learning-paths">Learning Paths</Link>
+              <Link href="/learn">Learning Paths</Link>
             </li>
 
             <li
